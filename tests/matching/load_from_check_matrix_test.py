@@ -1,4 +1,5 @@
 # Copyright 2022 PyMatching Contributors
+# Modified for Beyond Blossom, 2026.
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +17,8 @@ import numpy as np
 from scipy.sparse import csr_matrix, csc_matrix
 import pytest
 
-from pymatching import Matching
-from pymatching._cpp_pymatching import sparse_column_check_matrix_to_matching_graph
+from beyond_blossom import Matching
+from beyond_blossom._cpp_beyond_blossom import sparse_column_check_matrix_to_matching_graph
 
 
 def test_boundary_from_check_matrix():

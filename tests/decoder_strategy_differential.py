@@ -199,13 +199,13 @@ def cpu_map(requested):
 
 
 def environment(strategy):
-    env = {key: value for key, value in os.environ.items() if not key.startswith("PM_") and key not in ["OMP_PLACES", "GOMP_CPU_AFFINITY"]}
+    env = {key: value for key, value in os.environ.items() if not key.startswith("BB_") and key not in ["OMP_PLACES", "GOMP_CPU_AFFINITY"]}
     env.update(OMP_NUM_THREADS="1", OMP_DYNAMIC="FALSE", OMP_PROC_BIND="FALSE", OMP_WAIT_POLICY="PASSIVE",
                GOMP_SPINCOUNT="0", OMP_THREAD_LIMIT="8", OMP_MAX_ACTIVE_LEVELS="1", OPENBLAS_NUM_THREADS="1",
                MKL_NUM_THREADS="1", NUMEXPR_NUM_THREADS="1", LD_PRELOAD="")
     if strategy == "spatial":
-        env.update(PM_FIXED_SEED_CONSTRUCTION="fused", PM_FIXED_SEED_INPUT="indexed",
-                   PM_IMPORT_PREPARATION="captained_serial", PM_IMPORT_RESET_OWNER="captain")
+        env.update(BB_FIXED_SEED_CONSTRUCTION="fused", BB_FIXED_SEED_INPUT="indexed",
+                   BB_IMPORT_PREPARATION="captained_serial", BB_IMPORT_RESET_OWNER="captain")
     return env
 
 
@@ -356,7 +356,7 @@ def main():
     check = commands.add_parser("run")
     check.add_argument("--input", required=True, type=Path)
     check.add_argument("--new-binary", required=True, type=Path)
-    check.add_argument("--new-cli", type=Path, help="Also verify the formal pymatching predict entry for all six methods")
+    check.add_argument("--new-cli", type=Path, help="Also verify the formal beyond_blossom predict entry for all six methods")
     check.add_argument("--output", required=True, type=Path)
     check.add_argument("--cpus")
     check.add_argument("--timeout", type=int, default=600)

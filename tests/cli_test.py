@@ -5,9 +5,9 @@ from unittest.mock import patch
 
 import pytest
 
-import pymatching
-from pymatching import cli
-from pymatching._cli_argv import cli_argv
+import beyond_blossom
+from beyond_blossom import cli
+from beyond_blossom._cli_argv import cli_argv
 
 
 def predict_args(dem_file: Path, input_file: Path, output_file: Path) -> List[str]:
@@ -21,7 +21,7 @@ def predict_args(dem_file: Path, input_file: Path, output_file: Path) -> List[st
     ]
 
 
-@pytest.mark.parametrize("cli_function", [cli, pymatching._cpp_pymatching.main])
+@pytest.mark.parametrize("cli_function", [cli, beyond_blossom._cpp_beyond_blossom.main])
 @pytest.mark.parametrize("input_format", ["dets", "b8"])
 def test_calling_cli_creates_expected_file(
     tmp_path: Path,
@@ -62,7 +62,7 @@ def test_load_surface_code_b8_cli(tmp_path: Path, data_dir: Path):
     dets_b8_in_path = data_dir / "surface_code_rotated_memory_x_13_0.01_1000_shots.b8"
     out_fn = tmp_path / "surface_code_rotated_memory_x_13_0.01_1000_shots_temp_predictions.b8"
 
-    pymatching._cpp_pymatching.main(command_line_args=[
+    beyond_blossom._cpp_beyond_blossom.main(command_line_args=[
         "predict",
         "--dem", str(dem_path),
         "--in", str(dets_b8_in_path),
@@ -71,3 +71,25 @@ def test_load_surface_code_b8_cli(tmp_path: Path, data_dir: Path):
         "--out_format", "b8",
         "--in_includes_appended_observables"
     ])
+
+
+def test_console_entry_returns_native_failure(tmp_path, capfd):
+    with patch.object(sys, "argv", ["beyond-blossom", "predict", "--dem", str(tmp_path / "missing.dem")]):
+        assert cli_argv() != 0
+    assert "Failed to open" in capfd.readouterr().err
+
+
+def test_console_unknown_command_has_no_traceback(capsys):
+    with patch.object(sys, "argv", ["beyond-blossom", "unknown-command"]):
+        assert cli_argv() == 2
+    message = capsys.readouterr().err
+    assert "Unrecognized command" in message
+    assert "Traceback" not in message
+
+
+def test_console_help_is_success(capfd):
+    with patch.object(sys, "argv", ["beyond-blossom", "--help"]):
+        assert cli_argv() == 0
+    output = capfd.readouterr()
+    assert "unstructured|structured|predecoded" in output.out
+    assert not output.err

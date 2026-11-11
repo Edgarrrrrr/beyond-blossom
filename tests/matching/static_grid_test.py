@@ -1,9 +1,14 @@
 import itertools
+import json
+import math
+from pathlib import Path
+
+import networkx as nx
 
 import numpy as np
 import pytest
 
-import pymatching
+import beyond_blossom
 
 stim = pytest.importorskip("stim")
 SIMD_VARIANTS = ["scalar", "auto", "avx2", "avx512vl", "avx512"]
@@ -65,7 +70,7 @@ def test_static_grid_ties_return_a_valid_optimal_correction(simd, num_observable
         assert len(optimum[0b0101][1]) > 1
 
     for structured in [False, True]:
-        matching = pymatching.Matching()
+        matching = beyond_blossom.Matching()
         # Reverse insertion makes original adjacency order differ from grid order.
         for (u, v), weight, fault_id in reversed(list(zip(endpoints, weights, fault_ids))):
             if v is None:
@@ -109,7 +114,7 @@ def surface_case(geometry, basis="z", distance=3, rounds=None, correlations=Fals
         after_clifford_depolarization=0.01, before_measure_flip_probability=0.01,
         after_reset_flip_probability=0.01)
     dem = circuit.detector_error_model(decompose_errors=True)
-    matching = pymatching.Matching.from_detector_error_model(dem, enable_correlations=correlations)
+    matching = beyond_blossom.Matching.from_detector_error_model(dem, enable_correlations=correlations)
     return circuit, dem, matching
 
 
@@ -180,7 +185,7 @@ def test_static_grid_rejects_correlations_without_changing_generic(geometry):
 
 
 def test_static_grid_negative_weights_and_large_observables():
-    matching = pymatching.Matching()
+    matching = beyond_blossom.Matching()
     matching.add_edge(0, 1, weight=-2, fault_ids={65})
     matching.add_edge(1, 2, weight=4, fault_ids={1})
     matching.add_boundary_edge(0, weight=-3, fault_ids={2})
@@ -219,7 +224,7 @@ def test_static_grid_failure_and_reconfiguration():
 
 
 def test_static_grid_reuse_after_unsatisfiable_syndrome():
-    matching = pymatching.Matching()
+    matching = beyond_blossom.Matching()
     matching.add_edge(0, 1, weight=1, fault_ids={0})
     matching.configure_static_grid(
         distance=3, rounds=3, geometry="unrotated", detector_coordinates=[[0, 0, 0], [2, 0, 0]])
@@ -229,18 +234,103 @@ def test_static_grid_reuse_after_unsatisfiable_syndrome():
         np.testing.assert_array_equal(matching.decode([1, 1]), [1])
 
 
+def assert_integer_correction(matching, shot, prediction, expected_weight, edges, normalizer):
+    edge_data = {tuple(sorted((u, -1 if v is None else v))): data for u, v, data in matching.edges()}
+    parity = np.zeros(matching.num_detectors, dtype=np.uint8)
+    observables = np.zeros(matching.num_fault_ids, dtype=np.uint8)
+    integer_weight = 0
+    seen = set()
+    for u, v in edges:
+        key = tuple(sorted((int(u), int(v))))
+        assert key not in seen
+        seen.add(key)
+        data = edge_data[key]
+        assert data["weight"] >= 0  # These circuit fixtures have positive log odds.
+        integer_weight += 2 * math.floor(data["weight"] * normalizer / 2 + 0.5)
+        parity[u] ^= 1
+        if v != -1:
+            parity[v] ^= 1
+        for observable in data["fault_ids"]:
+            observables[observable] ^= 1
+    np.testing.assert_array_equal(parity, shot)
+    np.testing.assert_array_equal(observables, prediction)
+    assert integer_weight == expected_weight
+
+
 @pytest.mark.parametrize("geometry", ["rotated", "unrotated"])
 def test_static_grid_three_distance_rounds(geometry):
-    circuit, dem, matching = surface_case(geometry, distance=3, rounds=9)
+    circuit, dem, generic = surface_case(geometry, distance=3, rounds=9)
     shots = circuit.compile_detector_sampler(seed=751).sample(256)
-    expected = matching.decode_batch(shots)
-    matching.configure_static_grid(
+    expected, expected_weights = generic.decode_batch(shots, return_weights=True)
+    structured = beyond_blossom.Matching.from_detector_error_model(dem)
+    structured.configure_static_grid(
         distance=3, rounds=9, geometry=geometry, detector_coordinates=dem.get_detector_coordinates())
-    np.testing.assert_array_equal(matching.decode_batch(shots), expected)
+    actual, actual_weights = structured.decode_batch(shots, return_weights=True)
+    np.testing.assert_array_equal(actual_weights, expected_weights)
+    normalizer = beyond_blossom.StructuredDecoder(
+        dem, distance=3, rounds=9, geometry=geometry).metadata["normalising_constant"]
+    # Equal-weight corrections may cross different logical observables. Whenever
+    # predictions differ, require explicit correction witnesses for both answers.
+    for index in np.flatnonzero(np.any(actual != expected, axis=1)):
+        optimum = round(expected_weights[index] * normalizer)
+        for decoder, prediction in [(generic, expected[index]), (structured, actual[index])]:
+            assert_integer_correction(decoder, shots[index], prediction, optimum,
+                                      decoder.decode_to_edges_array(shots[index]), normalizer)
+
+
+def independent_integer_matching_weight(matching, events, normalizer):
+    graph = nx.Graph()
+    for u, v, data in matching.edges():
+        assert data["weight"] >= 0
+        graph.add_edge(u, -1 if v is None else v,
+                       weight=2 * math.floor(data["weight"] * normalizer / 2 + 0.5))
+    # A separate exact-integer MWPM oracle on the defect metric closure. Each
+    # defect has its own boundary copy; unused copies match at zero cost.
+    count = len(events)
+    closure = nx.Graph()
+    closure.add_nodes_from(range(2 * count))
+    for i, event in enumerate(events):
+        distances = nx.single_source_dijkstra_path_length(graph, event, weight="weight")
+        closure.add_edge(i, count + i, weight=distances[-1])
+        for j in range(i + 1, count):
+            closure.add_edge(i, j, weight=distances[events[j]])
+            closure.add_edge(count + i, count + j, weight=0)
+    pairs = nx.min_weight_matching(closure, weight="weight")
+    assert len(pairs) == count
+    return sum(closure[u][v]["weight"] for u, v in pairs)
+
+
+def test_unrotated_long_rounds_degenerate_logical_corrections_regression():
+    fixtures = Path(__file__).with_name("fixtures")
+    dem = stim.DetectorErrorModel((fixtures / "unrotated_d3_r9_ties.dem").read_text())
+    cases = json.loads((fixtures / "unrotated_d3_r9_ties.json").read_text())
+    generic = beyond_blossom.Matching.from_detector_error_model(dem)
+    structured = beyond_blossom.Matching.from_detector_error_model(dem)
+    structured.configure_static_grid(distance=3, rounds=9, geometry="unrotated",
+                                     detector_coordinates=dem.get_detector_coordinates())
+    normalizer = beyond_blossom.StructuredDecoder(
+        dem, distance=3, rounds=9, geometry="unrotated").metadata["normalising_constant"]
+    assert normalizer == cases["normalising_constant"]
+    for case in cases["results"]:
+        shot = np.zeros(dem.num_detectors, dtype=np.uint8)
+        shot[case["events"]] = 1
+        optimum = independent_integer_matching_weight(generic, case["events"], normalizer)
+        # Retained witnesses establish both logical classes at the same optimum,
+        # independently of which tie each current implementation happens to pick.
+        assert {tuple(w["prediction"]) for w in case["outputs"].values()} == {(0,), (1,)}
+        for witness in case["outputs"].values():
+            assert witness["integer_weight"] == optimum
+            assert_integer_correction(generic, shot, witness["prediction"], optimum,
+                                      witness["edges"], normalizer)
+        for decoder in (generic, structured):
+            prediction, weight = decoder.decode(shot, return_weight=True)
+            assert round(weight * normalizer) == optimum
+            assert_integer_correction(decoder, shot, prediction, optimum,
+                                      decoder.decode_to_edges_array(shot), normalizer)
 
 
 def test_static_grid_explicit_groups_hole_and_weight_update():
-    matching = pymatching.Matching()
+    matching = beyond_blossom.Matching()
     coordinates = []
     groups = []
     for group in [10, 20]:
@@ -307,7 +397,7 @@ def test_static_grid_explicit_groups_hole_and_weight_update():
 
 def test_static_grid_independent_caches_follow_graph_mutations():
     def make_matching():
-        graph = pymatching.Matching()
+        graph = beyond_blossom.Matching()
         graph.add_edge(0, 1, weight=2, fault_ids={0})
         graph.add_edge(1, 2, weight=3, fault_ids={1})
         graph.add_boundary_edge(0, weight=5, fault_ids={2})
@@ -357,7 +447,7 @@ def test_static_grid_independent_caches_follow_graph_mutations():
 
 
 def test_static_grid_rejects_new_unsupported_topology_without_losing_generic_graph():
-    matching = pymatching.Matching()
+    matching = beyond_blossom.Matching()
     matching.add_edge(0, 1, weight=2, fault_ids={0})
     matching.add_edge(1, 2, weight=2, fault_ids={1})
     matching.add_boundary_edge(0, weight=3)
@@ -389,7 +479,7 @@ def test_static_grid_large_registry_surface_models(distance, multiple):
 
 
 def test_static_grid_interleaved_components_negative_weights_and_80_observables():
-    matching = pymatching.Matching()
+    matching = beyond_blossom.Matching()
     matching.add_edge(0, 2, weight=-0.713, fault_ids={0, 79})
     matching.add_edge(1, 3, weight=190.123, fault_ids={65, 79})
     matching.add_boundary_edge(0, weight=1.029, fault_ids={79})
@@ -420,7 +510,7 @@ def test_static_grid_interleaved_components_negative_weights_and_80_observables(
 
 
 def test_static_grid_shared_boundary_keeps_components_separate():
-    matching = pymatching.Matching()
+    matching = beyond_blossom.Matching()
     matching.add_edge(0, 2, weight=2, fault_ids={0})
     matching.add_edge(1, 3, weight=4, fault_ids={1})
     matching.add_edge(2, 4, weight=6, fault_ids={0})
@@ -445,7 +535,7 @@ def test_static_grid_shared_boundary_keeps_components_separate():
 
 
 def test_static_grid_other_component_recovers_after_unsatisfiable_shot():
-    matching = pymatching.Matching()
+    matching = beyond_blossom.Matching()
     matching.add_edge(0, 2, weight=2, fault_ids={0})
     matching.add_edge(1, 3, weight=3, fault_ids={1})
     matching.configure_static_grid(
@@ -467,7 +557,7 @@ def test_static_grid_distinct_stencils_with_interleaved_ids_and_search(geometry,
         [2 * (x - y), 2 * (x + y), t] if geometry == "rotated" else [2 * x, 2 * y, t]
         for x, y, t in lattice_coordinates
     ]
-    matching = pymatching.Matching()
+    matching = beyond_blossom.Matching()
     matching.add_edge(0, 2, weight=2, fault_ids={0, 79})
     matching.add_edge(1, 3, weight=3, fault_ids={65, 79})
     matching.add_boundary_edge(0, weight=7, fault_ids={79})
@@ -502,7 +592,7 @@ def test_static_grid_rejects_mixed_stencil_without_dropping_edges(geometry):
         [2 * (x - y), 2 * (x + y), t] if geometry == "rotated" else [2 * x, 2 * y, t]
         for x, y, t in lattice_coordinates
     ]
-    matching = pymatching.Matching()
+    matching = beyond_blossom.Matching()
     matching.add_edge(0, 1, weight=2, fault_ids={0})
     matching.add_edge(0, 2, weight=3, fault_ids={1})
     matching.add_boundary_edge(0, weight=7)
@@ -532,7 +622,7 @@ def test_static_grid_boundary_cannot_use_an_excluded_direction(extra_pairs):
     pairs = [(0, 0, 1), (1, 0, 0), (0, 1, 0), (-1, 0, 1)] + extra_pairs
     offsets = [tuple(sign * value for value in delta) for delta in pairs for sign in [1, -1]]
     coordinates = [[2, 2, 1]] + [[2 * (1 + dx), 2 * (1 + dy), 1 + dt] for dx, dy, dt in offsets]
-    matching = pymatching.Matching()
+    matching = beyond_blossom.Matching()
     for node in range(1, 13):
         matching.add_edge(0, node, weight=node + 2, fault_ids={node % 3})
     matching.add_boundary_edge(0, weight=1, fault_ids={3})

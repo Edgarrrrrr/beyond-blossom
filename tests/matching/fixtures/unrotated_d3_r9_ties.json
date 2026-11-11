@@ -1,0 +1,251 @@
+{
+  "normalising_constant": 5666474.097063462,
+  "results": [
+    {
+      "index": 74,
+      "events": [
+        23,
+        25,
+        37,
+        38,
+        40,
+        50,
+        52,
+        57,
+        59,
+        69,
+        71,
+        81,
+        82,
+        91,
+        92,
+        96,
+        98,
+        100,
+        102
+      ],
+      "outputs": {
+        "unstructured": {
+          "prediction": [
+            0
+          ],
+          "weight": 40.210748359033424,
+          "integer_weight": 227853164,
+          "edge_integer_weight": 227853164,
+          "edge_observable": 0,
+          "edges": [
+            [
+              23,
+              -1
+            ],
+            [
+              25,
+              37
+            ],
+            [
+              38,
+              50
+            ],
+            [
+              40,
+              52
+            ],
+            [
+              57,
+              69
+            ],
+            [
+              59,
+              71
+            ],
+            [
+              81,
+              82
+            ],
+            [
+              91,
+              96
+            ],
+            [
+              92,
+              102
+            ],
+            [
+              98,
+              -1
+            ],
+            [
+              100,
+              -1
+            ]
+          ],
+          "parity_valid": true
+        },
+        "structured": {
+          "prediction": [
+            1
+          ],
+          "weight": 40.210748359033424,
+          "integer_weight": 227853164,
+          "edge_integer_weight": 227853164,
+          "edge_observable": 1,
+          "edges": [
+            [
+              25,
+              37
+            ],
+            [
+              38,
+              50
+            ],
+            [
+              57,
+              69
+            ],
+            [
+              81,
+              -1
+            ],
+            [
+              82,
+              98
+            ],
+            [
+              92,
+              102
+            ],
+            [
+              23,
+              -1
+            ],
+            [
+              40,
+              52
+            ],
+            [
+              59,
+              71
+            ],
+            [
+              91,
+              96
+            ],
+            [
+              100,
+              -1
+            ]
+          ],
+          "parity_valid": true
+        }
+      }
+    },
+    {
+      "index": 212,
+      "events": [
+        4,
+        10,
+        40,
+        81,
+        82,
+        83,
+        92,
+        95,
+        97,
+        98,
+        99,
+        102
+      ],
+      "outputs": {
+        "unstructured": {
+          "prediction": [
+            1
+          ],
+          "weight": 28.94114420905705,
+          "integer_weight": 163994244,
+          "edge_integer_weight": 163994244,
+          "edge_observable": 1,
+          "edges": [
+            [
+              4,
+              10
+            ],
+            [
+              40,
+              -1
+            ],
+            [
+              102,
+              92
+            ],
+            [
+              81,
+              97
+            ],
+            [
+              82,
+              -1
+            ],
+            [
+              83,
+              95
+            ],
+            [
+              98,
+              99
+            ]
+          ],
+          "parity_valid": true
+        },
+        "structured": {
+          "prediction": [
+            0
+          ],
+          "weight": 28.94114420905705,
+          "integer_weight": 163994244,
+          "edge_integer_weight": 163994244,
+          "edge_observable": 0,
+          "edges": [
+            [
+              4,
+              10
+            ],
+            [
+              81,
+              82
+            ],
+            [
+              92,
+              102
+            ],
+            [
+              97,
+              -1
+            ],
+            [
+              98,
+              99
+            ],
+            [
+              40,
+              -1
+            ],
+            [
+              83,
+              95
+            ]
+          ],
+          "parity_valid": true
+        }
+      }
+    }
+  ],
+  "circuit": {
+    "task": "surface_code:unrotated_memory_z",
+    "distance": 3,
+    "rounds": 9,
+    "after_clifford_depolarization": 0.01,
+    "before_measure_flip_probability": 0.01,
+    "after_reset_flip_probability": 0.01
+  },
+  "sampler_seed": 751
+}

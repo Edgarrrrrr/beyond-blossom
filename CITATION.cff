@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "Please cite this software and the associated Beyond Blossom manuscript."
+type: software
+title: Beyond Blossom
+version: 0.1.0
+license: Apache-2.0
+repository-code: https://github.com/Edgarrrrrr/beyond-blossom
+authors:
+  - family-names: Fu
+    given-names: Jiayu
+  - family-names: Shen
+    given-names: Zirong
+  - family-names: Zhang
+    given-names: Yiming
+  - family-names: Han
+    given-names: Wenjing
+  - family-names: Gan
+    given-names: Lin
+  - family-names: Sun
+    given-names: Xiaoming
+  - family-names: Li
+    given-names: Riling
+  - family-names: Yang
+    given-names: Guangwen

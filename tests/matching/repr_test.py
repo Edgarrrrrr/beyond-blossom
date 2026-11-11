@@ -1,4 +1,5 @@
 # Copyright 2022 PyMatching Contributors
+# Modified for Beyond Blossom, 2026.
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
 
 import networkx as nx
 
-from pymatching import Matching
+from beyond_blossom import Matching
 
 
 def test_repr():
@@ -26,5 +27,5 @@ def test_repr():
     g.nodes[3]['is_boundary'] = True
     g.add_edge(0, 3, weight=0.0)
     m = Matching(g)
-    assert m.__repr__() == ("<pymatching.Matching object with "
+    assert m.__repr__() == ("<beyond_blossom.Matching object with "
                             "2 detectors, 2 boundary nodes, and 4 edges>")

@@ -1,4 +1,5 @@
 # Copyright 2022 PyMatching Contributors
+# Modified for Beyond Blossom, 2026.
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
 
 import pytest
 
-from pymatching.matching import Matching
+from beyond_blossom.matching import Matching
 
 
 def test_qubit_id_accepted_using_add_edge():

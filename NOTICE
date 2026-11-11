@@ -1,0 +1,14 @@
+Beyond Blossom
+Copyright 2026 Beyond Blossom contributors
+
+This distribution contains modified software originally developed by
+PyMatching contributors (Copyright 2022–2026), including Oscar Higgott
+and Craig Gidney. Original file-level notices are preserved.
+
+Source snapshot: Edgarrrrrr/PyMatching-experiments,
+commit 241160314087e5ae698c6e76c3c055a11c3ad422.
+The project changes package names, backend organization, primal inlining,
+public interfaces, predecoding, and artifact-evaluation workflows.
+
+Stim, pybind11, and GoogleTest are separately licensed dependencies;
+their licenses remain with their source distributions.

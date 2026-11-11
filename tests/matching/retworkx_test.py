@@ -1,6 +1,6 @@
 import pytest
 
-from pymatching import Matching
+from beyond_blossom import Matching
 
 
 def test_load_from_retworkx_deprecated():

@@ -12,7 +12,11 @@ import xml.etree.ElementTree as ET
 
 def reference(path):
     path = Path(path).resolve()
-    return {"path": str(path), "sha256": hashlib.file_digest(path.open("rb"), "sha256").hexdigest()}
+    digest = hashlib.sha256()
+    with path.open("rb") as source:
+        for block in iter(lambda: source.read(1 << 20), b""):
+            digest.update(block)
+    return {"path": str(path), "sha256": digest.hexdigest()}
 
 
 def main():
@@ -34,7 +38,7 @@ def main():
     env["GOMP_SPINCOUNT"] = "0"
     records = []
     success = True
-    for name in ("pymatching_tests", "pymatching_profile_tests"):
+    for name in ("beyond_blossom_tests", "beyond_blossom_profile_tests"):
         executable = build / name
         xml = output / (name + ".xml")
         log = output / (name + ".log")

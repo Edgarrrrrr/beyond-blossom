@@ -1,4 +1,5 @@
 # Copyright 2022 PyMatching Contributors
+# Modified for Beyond Blossom, 2026.
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import pymatching
+import beyond_blossom
 
 import doctest
 import pytest
@@ -21,8 +22,8 @@ import pytest
 def test_matching_docstrings():
     pytest.importorskip("stim")
     pytest.importorskip("rustworkx")
-    doctest.testmod(pymatching.matching, raise_on_error=True)
+    doctest.testmod(beyond_blossom.matching, raise_on_error=True)
 
 
-def test_cpp_pymatching_docstrings():
-    doctest.testmod(pymatching._cpp_pymatching, raise_on_error=True)
+def test_cpp_beyond_blossom_docstrings():
+    doctest.testmod(beyond_blossom._cpp_beyond_blossom, raise_on_error=True)

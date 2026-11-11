@@ -1,0 +1,17 @@
+/build*/
+/.local/
+/.venv/
+/dist/
+*.egg-info/
+__pycache__/
+.pytest_cache/
+*.so
+*.dylib
+*.pyd
+*.o
+*.a
+*.gcno
+*.gcda
+/AE/runs/
+/AE/output/
+/AE/.cache/

@@ -1,0 +1,13 @@
+{
+  "project": "Beyond Blossom",
+  "source_revision": "241160314087e5ae698c6e76c3c055a11c3ad422",
+  "source_branch": "test/m4-code-ae-merged-20261112",
+  "source_repository": "https://github.com/Edgarrrrrr/PyMatching-experiments",
+  "source_archive_sha256": "ace4c1c55e0ba0a5742a3a8595f60d10714c6b6f73fc65c17a5eb1b915b26ddc",
+  "development_branch": "beyond-blossom",
+  "license": "Apache-2.0",
+  "dependency_revisions": {
+    "stim": "1320ad7eac7de34d2e9c70daa44fbc6d84174450",
+    "googletest": "58d77fa8070e8cec2dc1ed015d66b454c8d78850"
+  }
+}

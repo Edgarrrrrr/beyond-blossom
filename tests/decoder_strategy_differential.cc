@@ -14,8 +14,8 @@
 #include <string>
 #include <vector>
 
-#include "pymatching/sparse_blossom/driver/backend_user_graph.h"
-#include "pymatching/sparse_blossom/driver/decoder_strategy.h"
+#include "beyond_blossom/driver/backend_user_graph.h"
+#include "beyond_blossom/driver/decoder_strategy.h"
 #include "stim.h"
 
 namespace {
@@ -36,13 +36,13 @@ uint64_t mix(uint64_t state, uint64_t value) {
     state *= 0x94d049bb133111ebULL;
     return state ^ (state >> 31);
 }
-bool equal(const pm::MatchingResult& a, const pm::MatchingResult& b) {
+bool equal(const beyond_blossom::MatchingResult& a, const beyond_blossom::MatchingResult& b) {
     return a.weight == b.weight && a.obs_mask == b.obs_mask;
 }
 struct Input {
     std::array<uint64_t, 12> header;
     std::vector<std::vector<uint64_t>> hits;
-    std::vector<pm::MatchingResult> expected;
+    std::vector<beyond_blossom::MatchingResult> expected;
 };
 Input load(const std::filesystem::path& path) {
     static_assert(std::endian::native == std::endian::little);
@@ -72,7 +72,7 @@ Input load(const std::filesystem::path& path) {
         }
         require(std::is_sorted(hits.begin(), hits.end()) &&
             std::adjacent_find(hits.begin(), hits.end()) == hits.end(), "Frozen events must be sorted and unique");
-        pm::MatchingResult expected;
+        beyond_blossom::MatchingResult expected;
         expected.obs_mask = read<uint64_t>(input);
         expected.weight = read<int64_t>(input);
         result_hash = mix(mix(result_hash, expected.obs_mask), static_cast<uint64_t>(expected.weight));
@@ -93,7 +93,7 @@ std::vector<int> parse_cpus(const std::string& text) {
     require(std::set<int>(result.begin(), result.end()).size() == result.size(), "CPU IDs must be distinct");
     return result;
 }
-void metadata(std::ostream& out, const pm::DecoderMetadata& m) {
+void metadata(std::ostream& out, const beyond_blossom::DecoderMetadata& m) {
     out << "{\"requested_threads\":" << m.requested_threads << ",\"actual_threads\":" << m.actual_threads
         << ",\"partitions\":" << m.partitions << ",\"predecode_enabled\":" << (m.predecode_enabled ? "true" : "false")
         << ",\"selected_simd\":[";
@@ -135,20 +135,20 @@ int main(int argc, const char** argv) {
         require(bool(file), "Cannot open frozen DEM");
         const auto dem = stim::DetectorErrorModel::from_file(file.get());
         require(dem.count_detectors() == data.header[5], "Frozen DEM detector count differs");
-        pm::DecoderOptions options;
-        options.strategy = pm::parse_decoder_strategy(strategy);
-        if (options.strategy != pm::DecoderStrategy::Upstream)
-            options.grid = pm::static_grid_spec_from_dem(dem, data.header[2], data.header[2], true, pm::GridSimd::avx512vl);
-        if (options.strategy == pm::DecoderStrategy::Component || options.strategy == pm::DecoderStrategy::TailReset ||
-            options.strategy == pm::DecoderStrategy::Spatial) options.cpus = cpus;
-        pm::StrategyDecoder decoder(dem, options);
+        beyond_blossom::DecoderOptions options;
+        options.strategy = beyond_blossom::parse_decoder_strategy(strategy);
+        if (options.strategy != beyond_blossom::DecoderStrategy::Unstructured)
+            options.grid = beyond_blossom::static_grid_spec_from_dem(dem, data.header[2], data.header[2], true, beyond_blossom::GridSimd::avx512vl);
+        if (options.strategy == beyond_blossom::DecoderStrategy::ComponentParallel || options.strategy == beyond_blossom::DecoderStrategy::Pipelined ||
+            options.strategy == beyond_blossom::DecoderStrategy::ParallelPredecode) options.cpus = cpus;
+        beyond_blossom::StrategyDecoder decoder(dem, options);
         require(std::bit_cast<uint64_t>(decoder.metadata().normalising_constant) == data.header[10], "Integer quantization scale differs");
         const auto batch = decoder.decode_batch(data.hits);
         require(batch.size() == data.hits.size(), "Public batch returned the wrong count");
         const auto batch_metadata = decoder.metadata();
-        std::vector<pm::MatchingResult> stream;
+        std::vector<beyond_blossom::MatchingResult> stream;
         stream.reserve(data.hits.size());
-        decoder.run_with_team([&](pm::StrategyDecoder& active) {
+        decoder.run_with_team([&](beyond_blossom::StrategyDecoder& active) {
             for (const auto& hits : data.hits) stream.push_back(active.decode(hits));
             active.drain();
         });

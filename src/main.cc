@@ -1,4 +1,5 @@
 // Copyright 2022 PyMatching Contributors
+// Modified for Beyond Blossom, 2026.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,11 +16,11 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "pymatching/fill_match.h"
+#include "beyond_blossom/fill_match.h"
 
 int main(int argc, const char** argv) {
     try {
-        return pm::main(argc, argv);
+        return beyond_blossom::main(argc, argv);
     } catch (std::invalid_argument& ex) {
         std::cerr << ex.what() << "\n";
         return EXIT_FAILURE;

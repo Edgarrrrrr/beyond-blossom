@@ -1,0 +1,9 @@
+include CMakeLists.txt LICENSE NOTICE README.md
+recursive-include cmake *.cmake.in
+recursive-include src *.h *.inl *.cc
+recursive-include python *.py
+prune build
+prune .local
+include CONTRIBUTING.md SECURITY.md SOURCE.json CITATION.cff
+recursive-include tests *.py *.cc *.dem *.json
+recursive-include data *.dem *.stim *.b8 *.dets *.txt

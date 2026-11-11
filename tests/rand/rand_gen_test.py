@@ -1,6 +1,6 @@
 from scipy.sparse import csr_matrix
 import numpy as np
-from pymatching import Matching, rand_float
+from beyond_blossom import Matching, rand_float
 
 
 def test_add_noise_without_error_probabilities_returns_none():
