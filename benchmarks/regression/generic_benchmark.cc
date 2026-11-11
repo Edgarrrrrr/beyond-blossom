@@ -97,7 +97,7 @@ int run_benchmark(int argc, char** argv) {
     uint64_t validation_weight_hash = 14695981039346656037ULL;
     std::vector<decoder::total_weight_int> validation_weights;
     validation_weights.reserve(shots.size());
-    size_t complete = 0;
+    size_t complete = 0, skipped = 0;
     for (const auto& shot : shots) {
         const auto weight = decoder::decode_detection_events_for_up_to_64_observables(mwpm, shot, false).weight;
         validation_weight += weight;
@@ -105,6 +105,7 @@ int run_benchmark(int argc, char** argv) {
         validation_weight_hash = (validation_weight_hash ^ uint64_t(weight)) * 1099511628211ULL;
 #ifndef BEYOND_BENCHMARK_BASELINE
         complete += mwpm.predecode_enabled && mwpm.predecoder.complete;
+        skipped += mwpm.predecode_enabled && mwpm.predecoder.skipped;
 #endif
     }
     if (!expected_weights.empty()) {
@@ -132,7 +133,7 @@ int run_benchmark(int argc, char** argv) {
                 output.put(char((uint64_t(weight) >> (8 * byte)) & 255));
         if (!output) throw std::runtime_error("Failed to write per-shot weights");
     }
-    std::cout << "workload,variant,repeat,shots,elapsed_ns,ns_per_shot,weight_checksum,weight_sequence_hash,observable_checksum,complete_shots\n";
+    std::cout << "workload,variant,repeat,shots,elapsed_ns,ns_per_shot,weight_checksum,weight_sequence_hash,observable_checksum,complete_shots,skipped_shots\n";
     for (size_t repeat = 0; repeat < repeats; ++repeat) {
         int64_t weight_checksum = 0;
         uint64_t observable_checksum = 0;
@@ -148,7 +149,7 @@ int run_benchmark(int argc, char** argv) {
         std::cout << argv[6] << ',' << variant << ',' << repeat << ',' << shots.size() << ',' << elapsed << ','
                   << std::setprecision(12) << double(elapsed) / shots.size() << ',' << weight_checksum << ','
                   << validation_weight_hash << ','
-                  << observable_checksum << ',' << complete << '\n';
+                  << observable_checksum << ',' << complete << ',' << skipped << '\n';
     }
     return 0;
 }

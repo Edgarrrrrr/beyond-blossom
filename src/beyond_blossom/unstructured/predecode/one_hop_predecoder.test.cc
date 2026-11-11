@@ -232,3 +232,79 @@ TEST(UnstructuredPredecode, CorrelationInputFailuresLeaveDecoderReusable) {
     EXPECT_THROW(decode_detection_events_for_up_to_64_observables(negative, {0, 0}, false), std::invalid_argument);
     EXPECT_EQ(decode_detection_events_for_up_to_64_observables(negative, {0, 1}, false), MatchingResult(1, -4));
 }
+
+TEST(UnstructuredPredecode, SparseHighDegreeFallbackPreservesDenseComponentsAndGraphChanges) {
+    const auto create = [] {
+        // Thousands of irrelevant vertices must not turn the dense shot into
+        // a sparse one. Dispatch observes the active neighborhood instead.
+        MatchingGraph graph(4096, 0);
+        for (size_t u = 0; u < 128; ++u)
+            for (size_t v = u + 1; v < 128; ++v)
+                graph.add_edge(u, v, 2, {});
+        return Mwpm{GraphFlooder(std::move(graph))};
+    };
+    auto decoder = create();
+    auto reference = create();
+    reference.predecode_enabled = false;
+    const std::vector<uint64_t> sparse{0, 1, 2, 3, 4, 5, 6, 7};
+    EXPECT_EQ(decode_detection_events_for_up_to_64_observables(decoder, sparse, false).weight, 8);
+    EXPECT_EQ(decode_detection_events_for_up_to_64_observables(reference, sparse, false).weight, 8);
+    ASSERT_TRUE(decoder.predecoder.skipped);
+    for (const auto& seed : decoder.predecoder.seeds) {
+        EXPECT_EQ(seed.radius, 0);
+        EXPECT_EQ(seed.mate, OneHopPredecoder::UNMATCHED);
+    }
+    EXPECT_THROW(decode_detection_events_for_up_to_64_observables(decoder, {0, 1, 2}, false), std::invalid_argument);
+    EXPECT_TRUE(decoder.flooder.queue.empty());
+    EXPECT_EQ(decode_detection_events_for_up_to_64_observables(decoder, sparse, false).weight, 8);
+    std::vector<uint64_t> dense;
+    for (size_t node = 0; node < 96; ++node)
+        dense.push_back(node);
+    EXPECT_EQ(decode_detection_events_for_up_to_64_observables(decoder, dense, false).weight, 96);
+    EXPECT_EQ(decode_detection_events_for_up_to_64_observables(reference, dense, false).weight, 96);
+    EXPECT_FALSE(decoder.predecoder.skipped);
+    EXPECT_GT(decoder.predecoder.weight, 0);
+    // Public adjacency/weight changes are observed on the next shot, without
+    // a stale topology or weight cache suppressing useful boundary matches.
+    for (auto node : sparse)
+        decoder.flooder.graph.add_boundary_edge(node, 0, {});
+    EXPECT_EQ(decode_detection_events_for_up_to_64_observables(decoder, sparse, false).weight, 0);
+    EXPECT_FALSE(decoder.predecoder.skipped);
+    EXPECT_TRUE(decoder.predecoder.complete);
+}
+
+TEST(UnstructuredPredecode, SparseFallbackNormalizesNegativeWeightsAndRecoversFromErrors) {
+    const auto create = [] {
+        MatchingGraph graph(128, 70);
+        SearchGraph search(128);
+        for (size_t u = 0; u < 128; ++u)
+            for (size_t v = u + 1; v < 128; ++v) {
+                const signed_weight_int weight = u == 0 && v == 127 ? -2 : 2;
+                const std::vector<size_t> observables{weight < 0 ? size_t{65} : size_t{66}};
+                graph.add_edge(u, v, weight, observables);
+                search.add_edge(u, v, weight, observables);
+            }
+        Mwpm result{GraphFlooder(std::move(graph)), SearchFlooder(std::move(search))};
+        result.flooder.sync_negative_weight_observables_and_detection_events();
+        return result;
+    };
+    auto decoder = create();
+    auto reference = create();
+    reference.predecode_enabled = false;
+    const std::vector<uint64_t> events{0, 1, 2, 3, 4, 5};
+    for (bool correlated : {false, true}) {
+        EXPECT_THROW(decode_detection_events_for_up_to_64_observables(decoder, {0, 999}, correlated), std::invalid_argument);
+        EXPECT_THROW(decode_detection_events_for_up_to_64_observables(decoder, {0, 0}, correlated), std::invalid_argument);
+        std::vector<uint8_t> observed(70), expected(70);
+        total_weight_int weight = 0, reference_weight = 0;
+        decode_detection_events(decoder, events, observed.data(), weight, correlated);
+        decode_detection_events(reference, events, expected.data(), reference_weight, correlated);
+        EXPECT_EQ(weight, 4);
+        EXPECT_EQ(weight, reference_weight);
+        EXPECT_EQ(observed, expected);
+        EXPECT_EQ(observed[65], 1);
+        EXPECT_TRUE(decoder.predecode_enabled);
+        if (!correlated)
+            EXPECT_TRUE(decoder.predecoder.skipped);
+    }
+}

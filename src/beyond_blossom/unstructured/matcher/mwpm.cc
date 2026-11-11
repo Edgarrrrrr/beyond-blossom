@@ -545,6 +545,13 @@ void Mwpm::create_detection_event(DetectorNode *node) {
 }
 
 void Mwpm::import_predecode_state() {
+    if (predecoder.skipped) {
+        // prepare() already validated and normalized these events. A dispatch
+        // fallback needs no radius/matching import or second syndrome pass.
+        for (const auto& seed : predecoder.seeds)
+            create_detection_event(seed.node);
+        return;
+    }
     // Publish every singleton before scheduling any event: a provisional
     // match must remain visible to later alternating trees and blossoms.
     for (const auto& seed : predecoder.seeds) {

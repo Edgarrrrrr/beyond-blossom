@@ -27,6 +27,7 @@ class OneHopPredecoder {
     };
     std::vector<Seed> seeds;
     bool complete = false;
+    bool skipped = false;
     bool result_pending = false;
     obs_int obs_mask = 0;
     total_weight_int weight = 0;
@@ -45,7 +46,10 @@ class OneHopPredecoder {
     std::vector<size_t> active;
     std::vector<Candidate> candidates;
     DetectorNode* nodes = nullptr;
-    size_t seed_index(const DetectorNode* node) const noexcept;
+    size_t seed_index(const DetectorNode* node) const noexcept {
+        return node ? active[size_t(node - nodes)] : 0;
+    }
+    bool should_skip_sparse_high_degree() const noexcept;
     void grow(size_t index);
     void run_one(size_t index);
 };
