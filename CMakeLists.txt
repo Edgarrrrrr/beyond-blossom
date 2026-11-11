@@ -80,7 +80,10 @@ endfunction()
 set(SIMD_WIDTH 128)
 if (NOT(MSVC))
     if (CMAKE_SYSTEM_PROCESSOR MATCHES x86_64)
-         set(ARCH_OPT "-O3" "-mno-avx2")
+         # Intrinsic wrappers inherit the translation unit's target features.
+         # Pin the baseline so a toolchain default such as POPCNT cannot leak
+         # into callbacks that deliberately disable that independent feature.
+         set(ARCH_OPT "-O3" "-march=x86-64" "-mno-avx2")
     else ()
          set(ARCH_OPT "-O3")
     endif ()

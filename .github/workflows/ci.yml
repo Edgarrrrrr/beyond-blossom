@@ -3,11 +3,17 @@ on: [push, pull_request]
 jobs:
   linux:
     runs-on: ubuntu-latest
+    env:
+      CMAKE_BUILD_PARALLEL_LEVEL: 2
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Compiler target features
+        run: |
+          c++ --version
+          c++ -Q --help=target
       - run: python -m pip install '.[test]'
       - run: python -m pytest tests
       - run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBB_BUILD_PYTHON=OFF

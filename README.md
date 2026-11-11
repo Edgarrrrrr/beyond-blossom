@@ -77,7 +77,7 @@ find_package(BeyondBlossom CONFIG REQUIRED)
 target_link_libraries(my_decoder PRIVATE BeyondBlossom::decoder)
 ```
 
-`BB_PREDECODE_SIMD=ON` enables construction-time selection of the supported SIMD kernels. The portable executable does not require AVX2 for every function. `BB_SANITIZERS=ON` enables ASan and UBSan. `BB_BUILD_PROFILE_TOOLS=ON` builds separate diagnostic tools; their instrumentation is excluded from the normal decoder.
+`BB_PREDECODE_SIMD=ON` enables construction-time selection of the supported SIMD kernels. GNU and Clang x86-64 builds explicitly use the baseline x86-64 target; specialized functions enable their own SIMD features. The portable executable does not require AVX2 for every function. `BB_SANITIZERS=ON` enables ASan and UBSan. `BB_BUILD_PROFILE_TOOLS=ON` builds separate diagnostic tools; their instrumentation is excluded from the normal decoder.
 
 ## Source layout
 
