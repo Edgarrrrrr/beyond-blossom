@@ -195,7 +195,7 @@ def collect(args):
                 records[str(destination.relative_to(root))]=digest(destination)
         build_records[label]=records
     plan = dict(schema=1, created_utc=datetime.now(timezone.utc).isoformat(), profile=args.profile,
-                source=identity, build_records=build_records, platform=platform.platform(), machine=platform.machine(),placement=('Darwin USER_INITIATED QoS; physical affinity unverified' if platform.system()=='Darwin' else 'Linux physical CPU affinity'),
+                source=identity, build_records=build_records, platform=platform.platform(), machine=platform.machine(),host=platform.node(),placement=('Darwin USER_INITIATED QoS; physical affinity unverified' if platform.system()=='Darwin' else 'Linux physical CPU affinity'),
                 binary=dict(path=str(binary),sha256=digest(binary),build_record=build_record),
                 reference=dict(path=str(reference),sha256=digest(reference),independent=bool(args.reference_binary),build_record=reference_record),
                 collector_sha256=digest(__file__), distances=distances,error_rates=rates,rounds='distance',

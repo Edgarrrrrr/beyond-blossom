@@ -18,7 +18,7 @@ def file_identity(root, paths):
 
 def source_files():
     repo = HERE.parent
-    paths = [repo / 'CMakeLists.txt', HERE / 'build_native.py']
+    paths = [repo / 'CMakeLists.txt', HERE / 'build_native.py', HERE / 'tailreset_statistics.h']
     for directory in (repo / 'src', repo / 'cmake', HERE / 'native'):
         paths.extend(directory.rglob('*'))
     return file_identity(repo, paths)

@@ -261,11 +261,67 @@ is the median of three complete-batch means; divide a setting's block time by d 
 obtain time per measurement round. Historical CSV recalculation is supported;
 Linux smoke tests do not establish a successful current M4 build or new M4 timings.
 
+## Fresh figures, tables and macros
+
+The fresh exporter reads completed runs, verifies their sealed artifacts, and writes
+the current article's figures and numeric macros. Missing settings are never filled
+from archives. Xeon runs must share a source commit, saved inputs and host; M4 runs
+must identify Apple Silicon and the same source commit. Existing output is rejected.
+
+```sh
+python AE/export_results.py --profile paper \
+  --native-run "$AE_WORK/native-batch" --external-run "$AE_WORK/external-million" \
+  --l2-run "$AE_WORK/pmu-l2" --l3-run "$AE_WORK/pmu-l3" \
+  --policy-timing "0=$AE_WORK/policy-0-timing" "1=$AE_WORK/policy-1-timing" "2=$AE_WORK/policy-2-timing" \
+  --policy-counts "0=$AE_WORK/policy-0-counts" "1=$AE_WORK/policy-1-counts" "2=$AE_WORK/policy-2-counts" \
+  --m4-run "$AE_WORK/m4-batch" --output "$AE_WORK/fresh-paper"
+```
+
+Outputs include `canonical.json`, per-method CSVs, selected configurations,
+`performance-macros.tex`, `predecoder_numbers.tex`, a calculation audit and a sealed
+completion receipt. Numeric macros use raw integer timing/count operands and final
+decimal rounding. The fixed official reference is the speedup denominator. The
+selection pool is explicitly `structured`, `predecoded`, `component-parallel`,
+`pipelined`, and `parallel-predecode`; the additional `unstructured` regression
+column is not substituted for the reference or a structured variant.
+
+| Group | Fresh outputs | Required runs |
+| --- | --- | --- |
+| `ablation` | `incremental_ablation_1107_v1` PDF/SVG/PNG | Native batch matrix |
+| `comparison` | `decoder_comparison_shows_speedup_v3` PDF/SVG/PNG | Native and external matrices on the same saved inputs |
+| `predecoder` | `decoding_time`, `remaining_syndromes`, `predecoder.csv`, 58 table macros | All three pipeline policy timings and all three untimed statistics runs |
+| `m4` | `m4_pro_per_round` PDF/SVG/PNG | M4 batch matrix, median of three passes |
+| `macros` | Performance and 58 predecoder macros, audit | Native, both PMU levels, all policy timing/count runs and M4 |
+
+Groups can be exported separately before cross-platform collection finishes:
+
+```sh
+python AE/export_results.py --native-run "$AE_WORK/native-batch" \
+  --groups ablation --output "$AE_WORK/fresh-ablation"
+python AE/export_results.py --native-run "$AE_WORK/native-batch" \
+  --external-run "$AE_WORK/external-million" --groups comparison \
+  --output "$AE_WORK/fresh-comparison"
+python AE/export_results.py --native-run "$AE_WORK/native-batch" \
+  --policy-timing "0=$AE_WORK/policy-0-timing" "1=$AE_WORK/policy-1-timing" "2=$AE_WORK/policy-2-timing" \
+  --policy-counts "0=$AE_WORK/policy-0-counts" "1=$AE_WORK/policy-1-counts" "2=$AE_WORK/policy-2-counts" \
+  --groups predecoder --output "$AE_WORK/fresh-predecoder"
+python AE/export_results.py --native-run "$AE_WORK/native-batch" \
+  --m4-run "$AE_WORK/m4-batch" --groups m4 --output "$AE_WORK/fresh-m4"
+```
+
+`--no-render` exports verified tables and macros without drawing. `--profile smoke`
+permits small development runs and marks their figures accordingly; it does not
+establish paper performance. External marker fill records the actual shot count,
+and the comparison caption preserves the differing native timing scopes. Replacing
+article figures remains a deliberate operation; the exporter never edits the paper.
+
 ## Evidence boundaries
 
 Historical identifiers and checksums remain unchanged. A historical receipt describes
 its original run, not validation of the current implementation. New timings require
-new completed runs on the stated hardware. The commands above collect fresh native,
-PMU, predecoder, M4 and external results; the archived paper plotting commands remain
-bound to their original datasets. Fresh result tables require an explicit plotting
-source update before replacing any published figure or macro.
+new completed runs on the stated hardware. The commands above collect and plot fresh
+native, PMU, predecoder, M4 and external results. Archived plotting remains bound to
+its original datasets. The three older grid diagnostic figures and the mixed-LTO
+ablation are supplemental archived experiments, not figures referenced by the current
+article; `replot.py` reproduces them without fabricating new measurements for their
+different PMU protocols.
