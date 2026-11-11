@@ -1,0 +1,1332 @@
+{
+  "complete": true,
+  "scope": "Light Node VM execution of semantic models; not browser/UI or native runtime verification",
+  "model_sha256": "312999d2d008475a1885fc9fa575d7c3235225df7fd404ae159a32d407fa55c4",
+  "scenarios": 15,
+  "records": [
+    {
+      "model": "primal",
+      "scene": "leaf",
+      "frames": 14,
+      "source_targets": "verified",
+      "final_state": {
+        "event": "REGION_HIT_BOUNDARY",
+        "num_active_trees": 0,
+        "regions": {
+          "A": {
+            "tree": null,
+            "match": "边界",
+            "frozen": true
+          }
+        },
+        "arena": [],
+        "returned": true,
+        "verified": true
+      }
+    },
+    {
+      "model": "primal",
+      "scene": "child",
+      "frames": 24,
+      "source_targets": "verified",
+      "final_state": {
+        "event": "REGION_HIT_BOUNDARY",
+        "num_active_trees": 0,
+        "regions": {
+          "A": {
+            "tree": null,
+            "match": "边界",
+            "frozen": true
+          },
+          "B": {
+            "tree": null,
+            "match": "C",
+            "frozen": true
+          },
+          "C": {
+            "tree": null,
+            "match": "B",
+            "frozen": true
+          }
+        },
+        "arena": [],
+        "returned": true,
+        "verified": true
+      }
+    },
+    {
+      "model": "primal",
+      "scene": "none",
+      "frames": 4,
+      "source_targets": "verified",
+      "final_state": {
+        "event": "NO_EVENT",
+        "num_active_trees": 1,
+        "regions": {
+          "A": {
+            "tree": "root",
+            "match": null,
+            "frozen": false
+          }
+        },
+        "arena": [
+          "root"
+        ],
+        "returned": true
+      }
+    },
+    {
+      "model": "generic",
+      "scene": "pair",
+      "frames": 16,
+      "source_targets": "verified",
+      "final_state": {
+        "seeds": [
+          {
+            "id": "A",
+            "radius": 8,
+            "cap": 8,
+            "mate": "B",
+            "saturated": true,
+            "match_observables": 1
+          },
+          {
+            "id": "B",
+            "radius": 0,
+            "cap": 8,
+            "mate": "A",
+            "saturated": false,
+            "match_observables": 1
+          }
+        ],
+        "edges": [
+          [
+            "A",
+            "B",
+            8
+          ]
+        ],
+        "weight": 8,
+        "obs_mask": 1,
+        "returned": true,
+        "outer_state": "全部 tight 匹配，可直接提取结果",
+        "constraint": "A: min(cap, 8−0) = 8",
+        "tight": true,
+        "complete": true,
+        "dual_lower_bound": 8,
+        "verified": true
+      }
+    },
+    {
+      "model": "generic",
+      "scene": "partial",
+      "frames": 23,
+      "source_targets": "verified",
+      "final_state": {
+        "seeds": [
+          {
+            "id": "A",
+            "radius": 8,
+            "cap": 8,
+            "mate": "B",
+            "saturated": true,
+            "match_observables": 1
+          },
+          {
+            "id": "B",
+            "radius": 0,
+            "cap": 8,
+            "mate": "A",
+            "saturated": false,
+            "match_observables": 1
+          },
+          {
+            "id": "C",
+            "radius": 4,
+            "cap": 4,
+            "mate": null,
+            "saturated": true
+          }
+        ],
+        "edges": [
+          [
+            "A",
+            "B",
+            8
+          ],
+          [
+            "C",
+            "X",
+            4
+          ],
+          [
+            "X",
+            "边界",
+            4
+          ]
+        ],
+        "weight": 8,
+        "obs_mask": 1,
+        "returned": true,
+        "outer_state": "有未匹配 seed，导入完整求解器",
+        "constraint": "A: min(cap, 8−0) = 8",
+        "tight": true,
+        "complete": false,
+        "dual_lower_bound": 12,
+        "imported": [
+          {
+            "id": "A",
+            "radius": 8,
+            "growth": 0,
+            "mate": "B"
+          },
+          {
+            "id": "B",
+            "radius": 0,
+            "growth": 0,
+            "mate": "A"
+          },
+          {
+            "id": "C",
+            "radius": 4,
+            "growth": 1,
+            "mate": null
+          }
+        ],
+        "outer_solver": "下一步：完整 blossom，可撤销暂配；本页未模拟其内部求解"
+      }
+    },
+    {
+      "model": "generic",
+      "scene": "untight",
+      "frames": 24,
+      "source_targets": "verified",
+      "final_state": {
+        "seeds": [
+          {
+            "id": "A",
+            "radius": 4,
+            "cap": 4,
+            "mate": null,
+            "saturated": true
+          },
+          {
+            "id": "B",
+            "radius": 4,
+            "cap": 4,
+            "mate": null,
+            "saturated": true
+          }
+        ],
+        "edges": [
+          [
+            "A",
+            "B",
+            10
+          ],
+          [
+            "A",
+            "X",
+            4
+          ],
+          [
+            "B",
+            "Y",
+            4
+          ]
+        ],
+        "weight": 0,
+        "obs_mask": 0,
+        "returned": true,
+        "outer_state": "有未匹配 seed，导入完整求解器",
+        "constraint": "B: min(cap, 10−4) = 4",
+        "tight": false,
+        "complete": false,
+        "dual_lower_bound": 8,
+        "imported": [
+          {
+            "id": "A",
+            "radius": 4,
+            "growth": 1,
+            "mate": null
+          },
+          {
+            "id": "B",
+            "radius": 4,
+            "growth": 1,
+            "mate": null
+          }
+        ],
+        "outer_solver": "下一步：完整 blossom，可撤销暂配；本页未模拟其内部求解"
+      }
+    },
+    {
+      "model": "generic",
+      "scene": "boundary",
+      "frames": 11,
+      "source_targets": "verified",
+      "final_state": {
+        "seeds": [
+          {
+            "id": "A",
+            "radius": 6,
+            "cap": 6,
+            "mate": "边界",
+            "saturated": true,
+            "match_observables": 2
+          }
+        ],
+        "edges": [
+          [
+            "A",
+            "边界",
+            6
+          ]
+        ],
+        "weight": 6,
+        "obs_mask": 2,
+        "returned": true,
+        "outer_state": "全部 tight 匹配，可直接提取结果",
+        "complete": true,
+        "dual_lower_bound": 6,
+        "verified": true
+      }
+    },
+    {
+      "model": "gate",
+      "scene": "sparse",
+      "frames": 144,
+      "source_targets": "verified",
+      "final_state": {
+        "seed_count": 16,
+        "degree": 64,
+        "seed_position": 16,
+        "seed_error": 0,
+        "sampled": 128,
+        "active_neighbors": 0,
+        "sample_positions": [
+          0,
+          4,
+          8,
+          12
+        ],
+        "probed": [
+          {
+            "slot": 0,
+            "id": 128,
+            "active": false
+          },
+          {
+            "slot": 2,
+            "id": 130,
+            "active": false
+          },
+          {
+            "slot": 4,
+            "id": 132,
+            "active": false
+          },
+          {
+            "slot": 6,
+            "id": 134,
+            "active": false
+          },
+          {
+            "slot": 8,
+            "id": 136,
+            "active": false
+          },
+          {
+            "slot": 10,
+            "id": 138,
+            "active": false
+          },
+          {
+            "slot": 12,
+            "id": 140,
+            "active": false
+          },
+          {
+            "slot": 14,
+            "id": 142,
+            "active": false
+          },
+          {
+            "slot": 16,
+            "id": 144,
+            "active": false
+          },
+          {
+            "slot": 18,
+            "id": 146,
+            "active": false
+          },
+          {
+            "slot": 20,
+            "id": 148,
+            "active": false
+          },
+          {
+            "slot": 22,
+            "id": 150,
+            "active": false
+          },
+          {
+            "slot": 24,
+            "id": 152,
+            "active": false
+          },
+          {
+            "slot": 26,
+            "id": 154,
+            "active": false
+          },
+          {
+            "slot": 28,
+            "id": 156,
+            "active": false
+          },
+          {
+            "slot": 30,
+            "id": 158,
+            "active": false
+          },
+          {
+            "slot": 32,
+            "id": 160,
+            "active": false
+          },
+          {
+            "slot": 34,
+            "id": 162,
+            "active": false
+          },
+          {
+            "slot": 36,
+            "id": 164,
+            "active": false
+          },
+          {
+            "slot": 38,
+            "id": 166,
+            "active": false
+          },
+          {
+            "slot": 40,
+            "id": 168,
+            "active": false
+          },
+          {
+            "slot": 42,
+            "id": 170,
+            "active": false
+          },
+          {
+            "slot": 44,
+            "id": 172,
+            "active": false
+          },
+          {
+            "slot": 46,
+            "id": 174,
+            "active": false
+          },
+          {
+            "slot": 48,
+            "id": 176,
+            "active": false
+          },
+          {
+            "slot": 50,
+            "id": 178,
+            "active": false
+          },
+          {
+            "slot": 52,
+            "id": 180,
+            "active": false
+          },
+          {
+            "slot": 54,
+            "id": 182,
+            "active": false
+          },
+          {
+            "slot": 56,
+            "id": 184,
+            "active": false
+          },
+          {
+            "slot": 58,
+            "id": 186,
+            "active": false
+          },
+          {
+            "slot": 60,
+            "id": 188,
+            "active": false
+          },
+          {
+            "slot": 62,
+            "id": 190,
+            "active": false
+          }
+        ],
+        "returned": true,
+        "degree_sum": 1024,
+        "average_degree": 64,
+        "seed_samples": 4,
+        "seed_step": 4,
+        "seed_remainder": 0,
+        "sample": 3,
+        "current_slot": 62,
+        "current_neighbor": 190,
+        "active_fraction": 0,
+        "recurrence_verified": true,
+        "skip": true,
+        "output": "回退：规范化 seed → 普通 roots → 完整求解器"
+      }
+    },
+    {
+      "model": "gate",
+      "scene": "remainder",
+      "frames": 179,
+      "source_targets": "verified",
+      "final_state": {
+        "seed_count": 17,
+        "degree": 64,
+        "seed_position": 17,
+        "seed_error": 0,
+        "sampled": 160,
+        "active_neighbors": 0,
+        "sample_positions": [
+          0,
+          3,
+          6,
+          10,
+          13
+        ],
+        "probed": [
+          {
+            "slot": 0,
+            "id": 128,
+            "active": false
+          },
+          {
+            "slot": 2,
+            "id": 130,
+            "active": false
+          },
+          {
+            "slot": 4,
+            "id": 132,
+            "active": false
+          },
+          {
+            "slot": 6,
+            "id": 134,
+            "active": false
+          },
+          {
+            "slot": 8,
+            "id": 136,
+            "active": false
+          },
+          {
+            "slot": 10,
+            "id": 138,
+            "active": false
+          },
+          {
+            "slot": 12,
+            "id": 140,
+            "active": false
+          },
+          {
+            "slot": 14,
+            "id": 142,
+            "active": false
+          },
+          {
+            "slot": 16,
+            "id": 144,
+            "active": false
+          },
+          {
+            "slot": 18,
+            "id": 146,
+            "active": false
+          },
+          {
+            "slot": 20,
+            "id": 148,
+            "active": false
+          },
+          {
+            "slot": 22,
+            "id": 150,
+            "active": false
+          },
+          {
+            "slot": 24,
+            "id": 152,
+            "active": false
+          },
+          {
+            "slot": 26,
+            "id": 154,
+            "active": false
+          },
+          {
+            "slot": 28,
+            "id": 156,
+            "active": false
+          },
+          {
+            "slot": 30,
+            "id": 158,
+            "active": false
+          },
+          {
+            "slot": 32,
+            "id": 160,
+            "active": false
+          },
+          {
+            "slot": 34,
+            "id": 162,
+            "active": false
+          },
+          {
+            "slot": 36,
+            "id": 164,
+            "active": false
+          },
+          {
+            "slot": 38,
+            "id": 166,
+            "active": false
+          },
+          {
+            "slot": 40,
+            "id": 168,
+            "active": false
+          },
+          {
+            "slot": 42,
+            "id": 170,
+            "active": false
+          },
+          {
+            "slot": 44,
+            "id": 172,
+            "active": false
+          },
+          {
+            "slot": 46,
+            "id": 174,
+            "active": false
+          },
+          {
+            "slot": 48,
+            "id": 176,
+            "active": false
+          },
+          {
+            "slot": 50,
+            "id": 178,
+            "active": false
+          },
+          {
+            "slot": 52,
+            "id": 180,
+            "active": false
+          },
+          {
+            "slot": 54,
+            "id": 182,
+            "active": false
+          },
+          {
+            "slot": 56,
+            "id": 184,
+            "active": false
+          },
+          {
+            "slot": 58,
+            "id": 186,
+            "active": false
+          },
+          {
+            "slot": 60,
+            "id": 188,
+            "active": false
+          },
+          {
+            "slot": 62,
+            "id": 190,
+            "active": false
+          }
+        ],
+        "returned": true,
+        "degree_sum": 1088,
+        "average_degree": 64,
+        "seed_samples": 5,
+        "seed_step": 3,
+        "seed_remainder": 2,
+        "sample": 4,
+        "current_slot": 62,
+        "current_neighbor": 190,
+        "active_fraction": 0,
+        "recurrence_verified": true,
+        "skip": true,
+        "output": "回退：规范化 seed → 普通 roots → 完整求解器"
+      }
+    },
+    {
+      "model": "gate",
+      "scene": "mixed",
+      "frames": 58,
+      "source_targets": "verified",
+      "final_state": {
+        "seed_count": 8,
+        "degree": "16–64",
+        "seed_position": 8,
+        "seed_error": 0,
+        "sampled": 48,
+        "active_neighbors": 0,
+        "sample_positions": [
+          0,
+          4
+        ],
+        "probed": [
+          {
+            "slot": 0,
+            "id": 128,
+            "active": false
+          },
+          {
+            "slot": 2,
+            "id": 130,
+            "active": false
+          },
+          {
+            "slot": 4,
+            "id": 132,
+            "active": false
+          },
+          {
+            "slot": 6,
+            "id": 134,
+            "active": false
+          },
+          {
+            "slot": 8,
+            "id": 136,
+            "active": false
+          },
+          {
+            "slot": 10,
+            "id": 138,
+            "active": false
+          },
+          {
+            "slot": 12,
+            "id": 140,
+            "active": false
+          },
+          {
+            "slot": 14,
+            "id": 142,
+            "active": false
+          },
+          {
+            "slot": 16,
+            "id": 144,
+            "active": false
+          },
+          {
+            "slot": 18,
+            "id": 146,
+            "active": false
+          },
+          {
+            "slot": 20,
+            "id": 148,
+            "active": false
+          },
+          {
+            "slot": 22,
+            "id": 150,
+            "active": false
+          },
+          {
+            "slot": 24,
+            "id": 152,
+            "active": false
+          },
+          {
+            "slot": 26,
+            "id": 154,
+            "active": false
+          },
+          {
+            "slot": 28,
+            "id": 156,
+            "active": false
+          },
+          {
+            "slot": 30,
+            "id": 158,
+            "active": false
+          },
+          {
+            "slot": 32,
+            "id": 160,
+            "active": false
+          },
+          {
+            "slot": 34,
+            "id": 162,
+            "active": false
+          },
+          {
+            "slot": 36,
+            "id": 164,
+            "active": false
+          },
+          {
+            "slot": 38,
+            "id": 166,
+            "active": false
+          },
+          {
+            "slot": 40,
+            "id": 168,
+            "active": false
+          },
+          {
+            "slot": 42,
+            "id": 170,
+            "active": false
+          },
+          {
+            "slot": 44,
+            "id": 172,
+            "active": false
+          },
+          {
+            "slot": 46,
+            "id": 174,
+            "active": false
+          },
+          {
+            "slot": 48,
+            "id": 176,
+            "active": false
+          },
+          {
+            "slot": 50,
+            "id": 178,
+            "active": false
+          },
+          {
+            "slot": 52,
+            "id": 180,
+            "active": false
+          },
+          {
+            "slot": 54,
+            "id": 182,
+            "active": false
+          },
+          {
+            "slot": 56,
+            "id": 184,
+            "active": false
+          },
+          {
+            "slot": 58,
+            "id": 186,
+            "active": false
+          },
+          {
+            "slot": 60,
+            "id": 188,
+            "active": false
+          },
+          {
+            "slot": 62,
+            "id": 190,
+            "active": false
+          }
+        ],
+        "returned": true,
+        "degree_sum": 464,
+        "average_degree": 58,
+        "seed_samples": 2,
+        "seed_step": 4,
+        "seed_remainder": 0,
+        "sample": 1,
+        "current_slot": 62,
+        "current_neighbor": 190,
+        "active_fraction": 0,
+        "recurrence_verified": true,
+        "skip": true,
+        "output": "回退：规范化 seed → 普通 roots → 完整求解器"
+      }
+    },
+    {
+      "model": "gate",
+      "scene": "dense",
+      "frames": 284,
+      "source_targets": "verified",
+      "final_state": {
+        "seed_count": 64,
+        "degree": 64,
+        "seed_position": 64,
+        "seed_error": 0,
+        "sampled": 256,
+        "active_neighbors": 256,
+        "sample_positions": [
+          0,
+          8,
+          16,
+          24,
+          32,
+          40,
+          48,
+          56
+        ],
+        "probed": [
+          {
+            "slot": 0,
+            "id": 57,
+            "active": true
+          },
+          {
+            "slot": 2,
+            "id": 59,
+            "active": true
+          },
+          {
+            "slot": 4,
+            "id": 61,
+            "active": true
+          },
+          {
+            "slot": 6,
+            "id": 63,
+            "active": true
+          },
+          {
+            "slot": 8,
+            "id": 0,
+            "active": true
+          },
+          {
+            "slot": 10,
+            "id": 2,
+            "active": true
+          },
+          {
+            "slot": 12,
+            "id": 4,
+            "active": true
+          },
+          {
+            "slot": 14,
+            "id": 6,
+            "active": true
+          },
+          {
+            "slot": 16,
+            "id": 8,
+            "active": true
+          },
+          {
+            "slot": 18,
+            "id": 10,
+            "active": true
+          },
+          {
+            "slot": 20,
+            "id": 12,
+            "active": true
+          },
+          {
+            "slot": 22,
+            "id": 14,
+            "active": true
+          },
+          {
+            "slot": 24,
+            "id": 16,
+            "active": true
+          },
+          {
+            "slot": 26,
+            "id": 18,
+            "active": true
+          },
+          {
+            "slot": 28,
+            "id": 20,
+            "active": true
+          },
+          {
+            "slot": 30,
+            "id": 22,
+            "active": true
+          },
+          {
+            "slot": 32,
+            "id": 24,
+            "active": true
+          },
+          {
+            "slot": 34,
+            "id": 26,
+            "active": true
+          },
+          {
+            "slot": 36,
+            "id": 28,
+            "active": true
+          },
+          {
+            "slot": 38,
+            "id": 30,
+            "active": true
+          },
+          {
+            "slot": 40,
+            "id": 32,
+            "active": true
+          },
+          {
+            "slot": 42,
+            "id": 34,
+            "active": true
+          },
+          {
+            "slot": 44,
+            "id": 36,
+            "active": true
+          },
+          {
+            "slot": 46,
+            "id": 38,
+            "active": true
+          },
+          {
+            "slot": 48,
+            "id": 40,
+            "active": true
+          },
+          {
+            "slot": 50,
+            "id": 42,
+            "active": true
+          },
+          {
+            "slot": 52,
+            "id": 44,
+            "active": true
+          },
+          {
+            "slot": 54,
+            "id": 46,
+            "active": true
+          },
+          {
+            "slot": 56,
+            "id": 48,
+            "active": true
+          },
+          {
+            "slot": 58,
+            "id": 50,
+            "active": true
+          },
+          {
+            "slot": 60,
+            "id": 52,
+            "active": true
+          },
+          {
+            "slot": 62,
+            "id": 54,
+            "active": true
+          }
+        ],
+        "returned": true,
+        "degree_sum": 4096,
+        "average_degree": 64,
+        "seed_samples": 8,
+        "seed_step": 8,
+        "seed_remainder": 0,
+        "sample": 7,
+        "current_slot": 62,
+        "current_neighbor": 54,
+        "active_fraction": 1,
+        "recurrence_verified": true,
+        "skip": false,
+        "output": "保留：候选扫描 → tight 预解码"
+      }
+    },
+    {
+      "model": "gate",
+      "scene": "threshold",
+      "frames": 74,
+      "source_targets": "verified",
+      "final_state": {
+        "seed_count": 8,
+        "degree": 64,
+        "seed_position": 8,
+        "seed_error": 0,
+        "sampled": 64,
+        "active_neighbors": 8,
+        "sample_positions": [
+          0,
+          4
+        ],
+        "probed": [
+          {
+            "slot": 0,
+            "id": 5,
+            "active": true
+          },
+          {
+            "slot": 2,
+            "id": 6,
+            "active": true
+          },
+          {
+            "slot": 4,
+            "id": 2,
+            "active": true
+          },
+          {
+            "slot": 6,
+            "id": 3,
+            "active": true
+          },
+          {
+            "slot": 8,
+            "id": 136,
+            "active": false
+          },
+          {
+            "slot": 10,
+            "id": 138,
+            "active": false
+          },
+          {
+            "slot": 12,
+            "id": 140,
+            "active": false
+          },
+          {
+            "slot": 14,
+            "id": 142,
+            "active": false
+          },
+          {
+            "slot": 16,
+            "id": 144,
+            "active": false
+          },
+          {
+            "slot": 18,
+            "id": 146,
+            "active": false
+          },
+          {
+            "slot": 20,
+            "id": 148,
+            "active": false
+          },
+          {
+            "slot": 22,
+            "id": 150,
+            "active": false
+          },
+          {
+            "slot": 24,
+            "id": 152,
+            "active": false
+          },
+          {
+            "slot": 26,
+            "id": 154,
+            "active": false
+          },
+          {
+            "slot": 28,
+            "id": 156,
+            "active": false
+          },
+          {
+            "slot": 30,
+            "id": 158,
+            "active": false
+          },
+          {
+            "slot": 32,
+            "id": 160,
+            "active": false
+          },
+          {
+            "slot": 34,
+            "id": 162,
+            "active": false
+          },
+          {
+            "slot": 36,
+            "id": 164,
+            "active": false
+          },
+          {
+            "slot": 38,
+            "id": 166,
+            "active": false
+          },
+          {
+            "slot": 40,
+            "id": 168,
+            "active": false
+          },
+          {
+            "slot": 42,
+            "id": 170,
+            "active": false
+          },
+          {
+            "slot": 44,
+            "id": 172,
+            "active": false
+          },
+          {
+            "slot": 46,
+            "id": 174,
+            "active": false
+          },
+          {
+            "slot": 48,
+            "id": 176,
+            "active": false
+          },
+          {
+            "slot": 50,
+            "id": 178,
+            "active": false
+          },
+          {
+            "slot": 52,
+            "id": 180,
+            "active": false
+          },
+          {
+            "slot": 54,
+            "id": 182,
+            "active": false
+          },
+          {
+            "slot": 56,
+            "id": 184,
+            "active": false
+          },
+          {
+            "slot": 58,
+            "id": 186,
+            "active": false
+          },
+          {
+            "slot": 60,
+            "id": 188,
+            "active": false
+          },
+          {
+            "slot": 62,
+            "id": 190,
+            "active": false
+          }
+        ],
+        "returned": true,
+        "degree_sum": 512,
+        "average_degree": 64,
+        "seed_samples": 2,
+        "seed_step": 4,
+        "seed_remainder": 0,
+        "sample": 1,
+        "current_slot": 62,
+        "current_neighbor": 190,
+        "active_fraction": 0.125,
+        "recurrence_verified": true,
+        "skip": false,
+        "output": "保留：候选扫描 → tight 预解码"
+      }
+    },
+    {
+      "model": "gate",
+      "scene": "low",
+      "frames": 3,
+      "source_targets": "verified",
+      "final_state": {
+        "seed_count": 16,
+        "degree": 12,
+        "seed_position": 0,
+        "seed_error": 0,
+        "sampled": 0,
+        "active_neighbors": 0,
+        "sample_positions": [],
+        "probed": [],
+        "returned": true,
+        "degree_sum": 192,
+        "average_degree": 12,
+        "skip": false,
+        "output": "保留：候选扫描 → tight 预解码"
+      }
+    },
+    {
+      "model": "gate",
+      "scene": "boundary",
+      "frames": 2,
+      "source_targets": "verified",
+      "final_state": {
+        "seed_count": 16,
+        "degree": 64,
+        "seed_position": 0,
+        "seed_error": 0,
+        "sampled": 0,
+        "active_neighbors": 0,
+        "sample_positions": [],
+        "probed": [],
+        "returned": true,
+        "degree_sum": 0,
+        "skip": false,
+        "output": "保留：候选扫描 → tight 预解码"
+      }
+    },
+    {
+      "model": "gate",
+      "scene": "empty",
+      "frames": 2,
+      "source_targets": "verified",
+      "final_state": {
+        "seed_count": 0,
+        "degree": 64,
+        "seed_position": 0,
+        "seed_error": 0,
+        "sampled": 0,
+        "active_neighbors": 0,
+        "sample_positions": [],
+        "probed": [],
+        "returned": true,
+        "skip": false,
+        "output": "保留：候选扫描 → tight 预解码"
+      }
+    }
+  ]
+}

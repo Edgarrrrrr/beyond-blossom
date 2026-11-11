@@ -1,0 +1,49 @@
+[  0%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/decoder.cc.o
+[  0%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/predecode/one_hop_predecoder.cc.o
+[  0%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/driver/namespaced_main.cc.o
+[  8%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/driver/mwpm_decoding.cc.o
+[  8%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/flooder/graph.cc.o
+[  8%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/flooder/detector_node.cc.o
+[  8%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/interop/compressed_edge.cc.o
+[ 16%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/flooder/graph_fill_region.cc.o
+[ 16%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/flooder/match.cc.o
+[ 16%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/flooder/graph_flooder.cc.o
+[ 25%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/matcher/alternating_tree.cc.o
+[ 25%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/matcher/mwpm.cc.o
+[ 25%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/interop/region_edge.cc.o
+[ 25%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/interop/mwpm_event.cc.o
+[ 33%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/tracker/flood_check_event.cc.o
+[ 33%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/diagram/animation_main.cc.o
+[ 33%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/diagram/mwpm_diagram.cc.o
+[ 33%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/search/search_graph.cc.o
+[ 41%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/search/search_detector_node.cc.o
+[ 41%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/search/search_flooder.cc.o
+[ 41%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/driver/user_graph.cc.o
+[ 41%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/rand/rand_gen.cc.o
+[ 50%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/driver/backend_user_graph.cc.o
+[ 50%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/driver/decoder_strategy.cc.o
+[ 50%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/diagram/mwpm_diagram.cc.o
+[ 58%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/driver/component_decoder.cc.o
+[ 58%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/driver/shared_component_decoder.cc.o
+[ 58%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/driver/mwpm_decoding.cc.o
+[ 58%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/predecode/one_hop_predecoder.cc.o
+[ 66%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder/detector_node.cc.o
+[ 66%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder/graph.cc.o
+[ 66%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder/graph_fill_region.cc.o
+[ 66%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder/graph_flooder.cc.o
+[ 75%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder/match.cc.o
+[ 75%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder_matcher_interop/compressed_edge.cc.o
+[ 75%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder_matcher_interop/mwpm_event.cc.o
+[ 83%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder_matcher_interop/region_edge.cc.o
+[ 83%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/grid/static_grid.cc.o
+[ 83%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/matcher/alternating_tree.cc.o
+[ 83%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/matcher/mwpm.cc.o
+[ 91%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/search/search_detector_node.cc.o
+[ 91%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/search/search_flooder.cc.o
+[ 91%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/search/search_graph.cc.o
+[ 91%] Building CXX object decoder/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/tracker/flood_check_event.cc.o
+[100%] Linking CXX static library libbeyond_blossom.a
+[100%] Built target libbeyond_blossom
+[100%] Building CXX object CMakeFiles/bb_benchmark.dir/benchmark.cc.o
+[100%] Linking CXX executable bin/bb_benchmark
+[100%] Built target bb_benchmark

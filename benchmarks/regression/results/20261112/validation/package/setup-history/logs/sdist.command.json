@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "/home/fujy/dev/PyMatching/.conda-env/bin/python",
+    "setup.py",
+    "sdist",
+    "--dist-dir",
+    "/tmp/beyond-package-final/artifacts/dist"
+  ],
+  "cwd": "/tmp/beyond-package-final/artifacts/source",
+  "expected_returncode": 0,
+  "name": "sdist"
+}

@@ -1,0 +1,412 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Beyond Blossom：代码迁移与性能复核</title><style>*{box-sizing:border-box}body{margin:0;background:#f4f7fa;color:#1f3749;font:16px/1.65 system-ui,sans-serif}main{max-width:1180px;margin:auto;padding:35px 28px 70px}header{border-bottom:3px solid #248477;margin-bottom:24px}h1{font-size:32px;line-height:1.25;margin:0 0 12px}h2{font-size:24px;margin-top:40px}h3{font-size:18px;margin:22px 0 9px}p{max-width:1080px}a{color:#176c97}nav{display:flex;gap:16px;flex-wrap:wrap;padding:14px 0;border-block:1px solid #d8e3eb}.lead{font-size:20px;font-weight:650}.meta,.note{font-size:13px;color:#5a7182}.table-scroll{overflow:auto}table{border-collapse:collapse;background:#fff;width:100%;font-size:14px}th{background:#e6eff5;text-align:left}th,td{padding:10px;border-bottom:1px solid #dbe5ec}td:nth-child(n+2){font-variant-numeric:tabular-nums;white-space:nowrap}.gain{color:#087762}.loss{color:#9c4330}.callout{padding:14px 18px;border-left:4px solid #b66b42;background:#fff5ed}details{background:#fff;border:1px solid #d7e1e8;border-radius:8px;padding:14px;margin:18px 0}summary{font-weight:650;cursor:pointer}.json{max-height:420px;overflow:auto;font:12px/1.55 ui-monospace,monospace}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.cards article{background:#fff;padding:17px;border:1px solid #d6e3eb;border-radius:9px}.cards h3{margin-top:0}.flow{font-size:14px;color:#31637c}code{font-size:.9em;overflow-wrap:anywhere}figure{margin:20px 0}figure img{max-width:100%;height:auto}figcaption{font-size:13px;color:#5b7281}@media(max-width:850px){main{padding:22px 14px}.cards{grid-template-columns:1fr}h1{font-size:27px}table{font-size:12px}td,th{padding:8px}}</style><main><header><p class="meta">离线技术报告 · 2026-11-12 · 修订 r1 · 采集完成</p><h1>Beyond Blossom：代码迁移与性能复核</h1></header><p class="lead">本机结构化矩阵的126个官方比较点均更快；与同名同线程的来源版相比，34个点耗时增加，最大为3.426%。全部比较共享保存输入，并保留逐配置结果。</p><p>实现承接原始来源版 <b>Source 241</b>；运行时固定为 <b>Beyond Blossom edd29b6</b>。结构化主比较使用独立构建的 <b>Official e27</b>，迁移比较另列 <b>Source 241 / Beyond Blossom</b>。三个名称和完整提交映射见下方来源附件。</p><figure><a href="figures/overview.svg"><img src="figures/overview.png" alt="优化方法、主结果与适用范围汇总"></a><figcaption>方法与实际效果；数值取自本报告唯一 summary.json。</figcaption></figure><nav><a href="#results">测量结果</a><a href="#mechanisms">三个机制</a><a href="#validation">验证与复现</a><a href="code-diff/index.html">独立代码对照</a><a href="summary.json">唯一数值来源</a></nav><h2 id="results">测量结果与适用范围</h2><h3>通用图迁移：10 个固定工作负载</h3><p>下表对照版本为 Source 241；加速比 = Source耗时 / 候选on耗时，耗时变化 = (候选on耗时 / Source耗时 − 1) × 100%。预解码 off/on 通过显式设置 <code>Mwpm::predecode_enabled</code> 形成同一候选二进制的控制；这些任意图用例没有同轮官方上游数据。每个进程先对同一输入集合的 native 批次取中位数，再对七次交替启动的进程取中位数。表中时间单位为 µs/shot；保存记录数不会随重复执行增加。</p><div class="table-scroll"><table><thead><tr><th>工作负载</th><th>保存记录</th><th>Source 241</th><th>候选 off</th><th>候选 on</th><th>Source/on ↑</th><th>耗时变化</th></tr></thead><tbody><tr><td>surface_saved_shots</td><td>1000</td><td>133.135</td><td>133.436</td><td>112.139</td><td><strong class="gain">1.187×</strong></td><td>-15.77%</td></tr><tr><td>irregular_sparse_pairs</td><td>1000</td><td>13.252</td><td>13.340</td><td>11.822</td><td><strong class="gain">1.121×</strong></td><td>-10.80%</td></tr><tr><td>irregular_sparse_unpaired</td><td>1000</td><td>367.676</td><td>368.431</td><td>307.201</td><td><strong class="gain">1.197×</strong></td><td>-16.45%</td></tr><tr><td>high_degree_sparse</td><td>1000</td><td>361.458</td><td>359.282</td><td>360.569</td><td><strong class="gain">1.002×</strong></td><td>-0.25%</td></tr><tr><td>irregular_dense</td><td>300</td><td>329.168</td><td>330.865</td><td>226.442</td><td><strong class="gain">1.454×</strong></td><td>-31.21%</td></tr><tr><td>ring_separated_dense</td><td>300</td><td>337.257</td><td>340.621</td><td>333.449</td><td><strong class="gain">1.011×</strong></td><td>-1.13%</td></tr><tr><td>holdout_hubs_sparse</td><td>200</td><td>85.889</td><td>85.788</td><td>86.831</td><td><strong class="loss">0.989×</strong></td><td>+1.10%</td></tr><tr><td>holdout_community_sparse</td><td>200</td><td>153.323</td><td>152.145</td><td>144.425</td><td><strong class="gain">1.062×</strong></td><td>-5.80%</td></tr><tr><td>holdout_dense_component</td><td>200</td><td>652.524</td><td>653.216</td><td>584.004</td><td><strong class="gain">1.117×</strong></td><td>-10.50%</td></tr><tr><td>high_degree_dense</td><td>300</td><td>18,739.473</td><td>18,682.691</td><td>9,095.240</td><td><strong class="gain">2.060×</strong></td><td>-51.46%</td></tr></tbody></table></div><p>全工作负载等权几何平均迁移加速比为 <b>1.190×</b>，范围 0.989–2.060×；该等权矩阵摘要不代表生产流量分布。</p><p class="callout">holdout_hubs_sparse 仍有 1.097% 耗时增加：85.889 → 86.831 µs/shot。七个进程中位数的观察范围为 Source 85.771–88.653，候选 85.220–88.200 µs/shot。范围重叠属于描述性观察，没有据此宣称统计等价。</p><details><summary>通用图原始数据、计时范围与全部进程中位数</summary><p><b>generic-fast</b>：3780 条原始记录；steady_clock; entire saved shot batch; graph construction, parsing, warmup excluded。<a href="evidence/generic-fast/manifest.json">manifest.json</a> · <a href="evidence/generic-fast/raw.csv">raw.csv</a> · <a href="evidence/generic-fast/summary.json">summary.json</a> · <a href="evidence/generic-fast/artifacts/baseline-build.json">baseline-build.json</a> · <a href="evidence/generic-fast/artifacts/candidate-build.json">candidate-build.json</a> · <a href="evidence/generic-fast/artifacts/run_generic.py">run_generic.py</a> · <a href="evidence/generic-fast/validation-audit.json">validation-audit.json</a> · <a href="evidence/generic-fast/artifacts/source-identity.json">source-identity.json</a> · <a href="evidence/generic-fast/artifacts/input-files.json">input-files.json</a> · <a href="evidence/generic-fast/artifacts/final-hardware.json">final-hardware.json</a> · <a href="evidence/generic-fast/artifacts/generic-final-protocol.json">generic-final-protocol.json</a></p><p><b>generic-dense</b>：21 条原始记录；steady_clock; entire saved shot batch; graph construction, parsing, warmup excluded。<a href="evidence/generic-dense/manifest.json">manifest.json</a> · <a href="evidence/generic-dense/raw.csv">raw.csv</a> · <a href="evidence/generic-dense/summary.json">summary.json</a> · <a href="evidence/generic-dense/artifacts/baseline-build.json">baseline-build.json</a> · <a href="evidence/generic-dense/artifacts/candidate-build.json">candidate-build.json</a> · <a href="evidence/generic-dense/artifacts/run_generic.py">run_generic.py</a> · <a href="evidence/generic-dense/validation-audit.json">validation-audit.json</a> · <a href="evidence/generic-dense/artifacts/source-identity.json">source-identity.json</a> · <a href="evidence/generic-dense/artifacts/input-files.json">input-files.json</a> · <a href="evidence/generic-dense/artifacts/final-hardware.json">final-hardware.json</a> · <a href="evidence/generic-dense/artifacts/generic-final-protocol.json">generic-final-protocol.json</a></p><pre class="json">[
+  {
+    &quot;workload&quot;: &quot;surface_saved_shots&quot;,
+    &quot;records&quot;: 1000,
+    &quot;process_repeats&quot;: 7,
+    &quot;batches_per_process&quot;: 20,
+    &quot;process_medians_ns&quot;: {
+      &quot;baseline&quot;: [
+        136557.338,
+        135572.636,
+        132159.20750000002,
+        131358.74599999998,
+        136408.956,
+        132844.74349999998,
+        133135.44150000002
+      ],
+      &quot;off&quot;: [
+        133599.617,
+        132393.2,
+        134876.842,
+        132937.104,
+        133954.925,
+        132875.00300000003,
+        133436.478
+      ],
+      &quot;on&quot;: [
+        112961.28,
+        108700.924,
+        112853.6575,
+        114778.49299999999,
+        112139.2985,
+        111660.902,
+        111388.55549999999
+      ]
+    },
+    &quot;complete_shots&quot;: [
+      0
+    ],
+    &quot;skipped_shots&quot;: [
+      0
+    ]
+  },
+  {
+    &quot;workload&quot;: &quot;irregular_sparse_pairs&quot;,
+    &quot;records&quot;: 1000,
+    &quot;process_repeats&quot;: 7,
+    &quot;batches_per_process&quot;: 20,
+    &quot;process_medians_ns&quot;: {
+      &quot;baseline&quot;: [
+        13338.399,
+        12801.2885,
+        13693.358,
+        13252.117,
+        13229.6735,
+        13232.567500000001,
+        13263.8925
+      ],
+      &quot;off&quot;: [
+        13564.246,
+        12783.1895,
+        13660.782,
+        13319.5965,
+        13365.6345,
+        13340.2245,
+        13179.381
+      ],
+      &quot;on&quot;: [
+        11817.053,
+        11810.9665,
+        12679.504,
+        11805.2115,
+        11821.521,
+        11969.6835,
+        11988.49
+      ]
+    },
+    &quot;complete_shots&quot;: [
+      5
+    ],
+    &quot;skipped_shots&quot;: [
+      0
+    ]
+  },
+  {
+    &quot;workload&quot;: &quot;irregular_sparse_unpaired&quot;,
+    &quot;records&quot;: 1000,
+    &quot;process_repeats&quot;: 7,
+    &quot;batches_per_process&quot;: 20,
+    &quot;process_medians_ns&quot;: {
+      &quot;baseline&quot;: [
+        367676.03599999996,
+        361271.603,
+        373864.471,
+        366086.6145,
+        366954.836,
+        373926.4175,
+        369671.18350000004
+      ],
+      &quot;off&quot;: [
+        368430.706,
+        364713.9525,
+        371585.3595,
+        366750.995,
+        365844.00899999996,
+        368734.3595,
+        370215.684
+      ],
+      &quot;on&quot;: [
+        307876.80449999997,
+        306928.5755,
+        311627.31799999997,
+        306219.929,
+        307200.956,
+        306081.69,
+        307912.438
+      ]
+    },
+    &quot;complete_shots&quot;: [
+      0
+    ],
+    &quot;skipped_shots&quot;: [
+      0
+    ]
+  },
+  {
+    &quot;workload&quot;: &quot;high_degree_sparse&quot;,
+    &quot;records&quot;: 1000,
+    &quot;process_repeats&quot;: 7,
+    &quot;batches_per_process&quot;: 20,
+    &quot;process_medians_ns&quot;: {
+      &quot;baseline&quot;: [
+        359813.35199999996,
+        354821.137,
+        361882.0235,
+        361543.9125,
+        361457.55350000004,
+        361449.4365,
+        361833.8545
+      ],
+      &quot;off&quot;: [
+        359281.63399999996,
+        355976.079,
+        360230.577,
+        358912.2885,
+        360906.421,
+        359006.27749999997,
+        361034.331
+      ],
+      &quot;on&quot;: [
+        357169.6725,
+        358215.846,
+        356871.5625,
+        362214.985,
+        364489.7755,
+        361397.73699999996,
+        360569.0785
+      ]
+    },
+    &quot;complete_shots&quot;: [
+      0
+    ],
+    &quot;skipped_shots&quot;: [
+      997
+    ]
+  },
+  {
+    &quot;workload&quot;: &quot;irregular_dense&quot;,
+    &quot;records&quot;: 300,
+    &quot;process_repeats&quot;: 7,
+    &quot;batches_per_process&quot;: 20,
+    &quot;process_medians_ns&quot;: {
+      &quot;baseline&quot;: [
+        322001.58166666667,
+        325796.4666666667,
+        328710.225,
+        329168.025,
+        329761.8616666667,
+        329664.725,
+        330844.45166666666
+      ],
+      &quot;off&quot;: [
+        329482.5166666667,
+        326837.465,
+        330876.6016666667,
+        332537.89666666667,
+        332273.9733333333,
+        330865.44666666666,
+        328835.52
+      ],
+      &quot;on&quot;: [
+        223198.52833333332,
+        226838.515,
+        228884.43666666668,
+        226441.92333333334,
+        225813.665,
+        228731.70666666667,
+        224449.34999999998
+      ]
+    },
+    &quot;complete_shots&quot;: [
+      0
+    ],
+    &quot;skipped_shots&quot;: [
+      0
+    ]
+  },
+  {
+    &quot;workload&quot;: &quot;ring_separated_dense&quot;,
+    &quot;records&quot;: 300,
+    &quot;process_repeats&quot;: 7,
+    &quot;batches_per_process&quot;: 20,
+    &quot;process_medians_ns&quot;: {
+      &quot;baseline&quot;: [
+        328581.5066666667,
+        330363.23333333334,
+        339663.5016666667,
+        341081.46166666667,
+        340345.7916666667,
+        337256.76166666666,
+        336225.4766666667
+      ],
+      &quot;off&quot;: [
+        339563.8433333333,
+        329557.0883333334,
+        340678.57833333337,
+        344481.0983333334,
+        339336.6,
+        341261.94166666665,
+        340621.315
+      ],
+      &quot;on&quot;: [
+        331380.0966666667,
+        333438.305,
+        339411.14,
+        336002.36,
+        336186.905,
+        333448.76,
+        333137.7766666667
+      ]
+    },
+    &quot;complete_shots&quot;: [
+      0
+    ],
+    &quot;skipped_shots&quot;: [
+      0
+    ]
+  },
+  {
+    &quot;workload&quot;: &quot;holdout_hubs_sparse&quot;,
+    &quot;records&quot;: 200,
+    &quot;process_repeats&quot;: 7,
+    &quot;batches_per_process&quot;: 20,
+    &quot;process_medians_ns&quot;: {
+      &quot;baseline&quot;: [
+        85889.17749999999,
+        88652.95749999999,
+        85770.6,
+        87228.88,
+        86725.7125,
+        85827.9725,
+        85779.6375
+      ],
+      &quot;off&quot;: [
+        86802.70749999999,
+        84765.69,
+        86268.5775,
+        87279.86,
+        85427.5025,
+        85787.89249999999,
+        85638.945
+      ],
+      &quot;on&quot;: [
+        87996.33499999999,
+        85219.56,
+        88199.60750000001,
+        87448.275,
+        86831.07999999999,
+        85614.51000000001,
+        85939.76000000001
+      ]
+    },
+    &quot;complete_shots&quot;: [
+      0
+    ],
+    &quot;skipped_shots&quot;: [
+      200
+    ]
+  },
+  {
+    &quot;workload&quot;: &quot;holdout_community_sparse&quot;,
+    &quot;records&quot;: 200,
+    &quot;process_repeats&quot;: 7,
+    &quot;batches_per_process&quot;: 20,
+    &quot;process_medians_ns&quot;: {
+      &quot;baseline&quot;: [
+        153479.355,
+        150111.54249999998,
+        158740.5625,
+        153946.5375,
+        152710.635,
+        153322.6475,
+        151081.6775
+      ],
+      &quot;off&quot;: [
+        149936.245,
+        149261.2625,
+        153783.77,
+        153305.8075,
+        152144.6575,
+        154761.445,
+        148603.64500000002
+      ],
+      &quot;on&quot;: [
+        141558.35249999998,
+        144425.44,
+        146513.88,
+        144774.2975,
+        143834.6825,
+        144470.0125,
+        140336.01
+      ]
+    },
+    &quot;complete_shots&quot;: [
+      0
+    ],
+    &quot;skipped_shots&quot;: [
+      26
+    ]
+  },
+  {
+    &quot;workload&quot;: &quot;holdout_dense_component&quot;,
+    &quot;records&quot;: 200,
+    &quot;process_repeats&quot;: 7,
+    &quot;batches_per_process&quot;: 20,
+    &quot;process_medians_ns&quot;: {
+      &quot;baseline&quot;: [
+        642034.4575,
+        652524.4375,
+        659043.5225,
+        665677.2424999999,
+        650966.095,
+        661891.4575,
+        647748.5675
+      ],
+      &quot;off&quot;: [
+        651732.5175000001,
+        653216.1475,
+        655496.1950000001,
+        651890.3475,
+        653797.61,
+        649363.63,
+        655646.8374999999
+      ],
+      &quot;on&quot;: [
+        568635.875,
+        588868.06,
+        593515.8325,
+        584004.2475,
+        581927.645,
+        580866.63,
+        587312.7424999999
+      ]
+    },
+    &quot;complete_shots&quot;: [
+      0
+    ],
+    &quot;skipped_shots&quot;: [
+      0
+    ]
+  },
+  {
+    &quot;workload&quot;: &quot;high_degree_dense&quot;,
+    &quot;records&quot;: 300,
+    &quot;process_repeats&quot;: 7,
+    &quot;batches_per_process&quot;: 1,
+    &quot;process_medians_ns&quot;: {
+      &quot;baseline&quot;: [
+        18787941.04,
+        18739473.203333333,
+        18790873.15,
+        18647459.55,
+        18599626.463333335,
+        18603791.703333333,
+        18793356.973333333
+      ],
+      &quot;off&quot;: [
+        18520184.116666667,
+        18714442.64,
+        18550320.033333335,
+        18857945.666666668,
+        18659037.096666668,
+        18682691.32,
+        18832672.206666667
+      ],
+      &quot;on&quot;: [
+        9086819.66,
+        9068119.55,
+        9021737.186666667,
+        9095239.713333333,
+        9262541.773333333,
+        9215536.293333333,
+        9136062.63
+      ]
+    },
+    &quot;complete_shots&quot;: [
+      0
+    ],
+    &quot;skipped_shots&quot;: [
+      0
+    ]
+  }
+]</pre></details><h3>结构化与默认路径：21 个设置、每设置 10,000 条保存输入</h3><p>同轮比较 Official e27、Source 241 和候选。每配置重复 3 次，使用相同保存输入；方法顺序轮转，source/candidate 紧邻交替，官方调用在组间轮转。主比值为官方批均值中位数 / 候选批均值中位数；迁移比值单列。结构化内核使用 avx512vl；官方与 unstructured 路径采用 generic 后端。LTO关闭。批次均值的轮间范围不是逐 shot 尾延迟分布。</p><div class="table-scroll"><table><thead><tr><th>配置</th><th>Official/候选 几何均值 ↑</th><th>Source/候选 几何均值 ↑</th><th>迁移加速比范围</th><th>慢于来源设置数</th></tr></thead><tbody><tr><td>通用图默认路径</td><td><strong class="gain">1.602×</strong></td><td><strong class="gain">1.652×</strong></td><td>1.336–2.362×</td><td>0</td></tr><tr><td>结构化单线程</td><td><strong class="gain">1.212×</strong></td><td><strong class="gain">1.065×</strong></td><td>1.018–1.118×</td><td>0</td></tr><tr><td>结构化预解码</td><td><strong class="gain">4.222×</strong></td><td><strong class="gain">1.008×</strong></td><td>0.968–1.073×</td><td>8</td></tr><tr><td>组件并行</td><td><strong class="gain">4.578×</strong></td><td><strong class="gain">1.004×</strong></td><td>0.967–1.051×</td><td>9</td></tr><tr><td>流水线</td><td><strong class="gain">4.702×</strong></td><td><strong class="gain">1.006×</strong></td><td>0.981–1.086×</td><td>11</td></tr><tr><td>并行预解码</td><td><strong class="gain">5.073×</strong></td><td><strong class="gain">1.012×</strong></td><td>0.971–1.077×</td><td>6</td></tr></tbody></table></div><h3>迁移比较中最慢的六个配置</h3><p>完整矩阵保留全部设置；这里按 Source/候选 从小到大选择，用于检查退化。</p><div class="table-scroll"><table><thead><tr><th>设置 / 配置</th><th>Official µs/shot</th><th>Source µs/shot</th><th>候选 µs/shot</th><th>Official/候选 ↑</th><th>Source/候选 ↑</th></tr></thead><tbody><tr><td>d17, p=0.003 · 组件并行</td><td>89.911</td><td>20.336</td><td>21.033</td><td><strong class="gain">4.275×</strong></td><td><strong class="loss">0.967×</strong></td></tr><tr><td>d17, p=0.003 · 结构化预解码</td><td>89.911</td><td>28.641</td><td>29.588</td><td><strong class="gain">3.039×</strong></td><td><strong class="loss">0.968×</strong></td></tr><tr><td>d13, p=0.0005 · 并行预解码</td><td>4.447</td><td>1.373</td><td>1.413</td><td><strong class="gain">3.146×</strong></td><td><strong class="loss">0.971×</strong></td></tr><tr><td>d33, p=0.001 · 流水线</td><td>235.938</td><td>32.158</td><td>32.787</td><td><strong class="gain">7.196×</strong></td><td><strong class="loss">0.981×</strong></td></tr><tr><td>d33, p=0.001 · 结构化预解码</td><td>235.938</td><td>50.265</td><td>51.192</td><td><strong class="gain">4.609×</strong></td><td><strong class="loss">0.982×</strong></td></tr><tr><td>d33, p=0.0005 · 结构化预解码</td><td>96.600</td><td>18.855</td><td>19.178</td><td><strong class="gain">5.037×</strong></td><td><strong class="loss">0.983×</strong></td></tr></tbody></table></div><p class="callout">最大迁移耗时增加出现在 d17-p0.003 的 组件并行：3.426%，即 20.336 → 21.033 µs/shot。三次批均值的范围为 Source 20.158–20.896，候选 20.935–21.407 µs/shot。这里只报告本轮观察，不把小幅差异解释为统计等价或单项机制成本。</p><p>以下退化配置的三次批均值范围不重叠：d33-p0.0005 并行预解码 +1.450%；d17-p0.001 流水线 +1.438%；d17-p0.003 组件并行 +3.426%。这类观察不能直接归为纯噪声。<a href="evidence/structured-audit/all_positive_median_latency_changes.csv">全部正延迟变化</a>与<a href="evidence/structured-audit/audit.json">独立审计</a>保留每次配对结果；5%筛查带不构成性能等价证明。</p><details><summary>完整结构化矩阵与原始凭据</summary><a href="evidence/structured/plan.json">plan.json</a> · <a href="evidence/structured/complete.json">complete.json</a> · <a href="evidence/structured/raw.csv">raw.csv</a> · <a href="evidence/structured/summary.json">summary.json</a> · <a href="evidence/structured/summary.csv">summary.csv</a> · <a href="evidence/structured/build/build.json">build.json</a> · <a href="evidence/structured/build/candidate/CMakeCache.txt">CMakeCache.txt</a> · <a href="evidence/structured/build/candidate/compile_commands.json">compile_commands.json</a> · <a href="evidence/structured/build/candidate/flags.make">flags.make</a> · <a href="evidence/structured/build/candidate-identity.json">candidate-identity.json</a> · <a href="evidence/structured/build/reference.json">reference.json</a> · <a href="evidence/structured/build/source/CMakeCache.txt">CMakeCache.txt</a> · <a href="evidence/structured/build/source/compile_commands.json">compile_commands.json</a> · <a href="evidence/structured/build/source/flags.make">flags.make</a> · <a href="evidence/structured/build/source-identity.json">source-identity.json</a><div class="table-scroll"><table><thead><tr><th>设置</th><th>配置</th><th>线程</th><th>保存记录</th><th>Official µs</th><th>Source µs</th><th>候选 µs</th><th>Official/候选</th><th>Source/候选</th></tr></thead><tbody><tr><td>d09-p0.0005</td><td>unstructured</td><td>1</td><td>10000</td><td>1.306</td><td>1.326</td><td>0.569</td><td><strong class="gain">2.297×</strong></td><td><strong class="gain">2.332×</strong></td></tr><tr><td>d09-p0.0005</td><td>structured</td><td>1</td><td>10000</td><td>1.306</td><td>1.407</td><td>1.267</td><td><strong class="gain">1.031×</strong></td><td><strong class="gain">1.111×</strong></td></tr><tr><td>d09-p0.0005</td><td>predecoded</td><td>1</td><td>10000</td><td>1.306</td><td>0.369</td><td>0.343</td><td><strong class="gain">3.803×</strong></td><td><strong class="gain">1.073×</strong></td></tr><tr><td>d09-p0.0005</td><td>component-parallel</td><td>2</td><td>10000</td><td>1.306</td><td>0.434</td><td>0.418</td><td><strong class="gain">3.126×</strong></td><td><strong class="gain">1.039×</strong></td></tr><tr><td>d09-p0.0005</td><td>pipelined</td><td>4</td><td>10000</td><td>1.306</td><td>0.592</td><td>0.545</td><td><strong class="gain">2.395×</strong></td><td><strong class="gain">1.086×</strong></td></tr><tr><td>d09-p0.0005</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>1.306</td><td>0.630</td><td>0.585</td><td><strong class="gain">2.234×</strong></td><td><strong class="gain">1.077×</strong></td></tr><tr><td>d13-p0.0005</td><td>unstructured</td><td>1</td><td>10000</td><td>4.447</td><td>4.467</td><td>1.892</td><td><strong class="gain">2.351×</strong></td><td><strong class="gain">2.362×</strong></td></tr><tr><td>d13-p0.0005</td><td>structured</td><td>1</td><td>10000</td><td>4.447</td><td>4.184</td><td>3.741</td><td><strong class="gain">1.189×</strong></td><td><strong class="gain">1.118×</strong></td></tr><tr><td>d13-p0.0005</td><td>predecoded</td><td>1</td><td>10000</td><td>4.447</td><td>0.879</td><td>0.867</td><td><strong class="gain">5.126×</strong></td><td><strong class="gain">1.013×</strong></td></tr><tr><td>d13-p0.0005</td><td>component-parallel</td><td>2</td><td>10000</td><td>4.447</td><td>1.134</td><td>1.135</td><td><strong class="gain">3.918×</strong></td><td><strong class="loss">0.999×</strong></td></tr><tr><td>d13-p0.0005</td><td>pipelined</td><td>4</td><td>10000</td><td>4.447</td><td>1.249</td><td>1.243</td><td><strong class="gain">3.579×</strong></td><td><strong class="gain">1.005×</strong></td></tr><tr><td>d13-p0.0005</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>4.447</td><td>1.373</td><td>1.413</td><td><strong class="gain">3.146×</strong></td><td><strong class="loss">0.971×</strong></td></tr><tr><td>d17-p0.0005</td><td>unstructured</td><td>1</td><td>10000</td><td>10.706</td><td>11.245</td><td>5.305</td><td><strong class="gain">2.018×</strong></td><td><strong class="gain">2.120×</strong></td></tr><tr><td>d17-p0.0005</td><td>structured</td><td>1</td><td>10000</td><td>10.706</td><td>9.848</td><td>9.100</td><td><strong class="gain">1.176×</strong></td><td><strong class="gain">1.082×</strong></td></tr><tr><td>d17-p0.0005</td><td>predecoded</td><td>1</td><td>10000</td><td>10.706</td><td>1.969</td><td>1.954</td><td><strong class="gain">5.480×</strong></td><td><strong class="gain">1.008×</strong></td></tr><tr><td>d17-p0.0005</td><td>component-parallel</td><td>2</td><td>10000</td><td>10.706</td><td>3.097</td><td>3.100</td><td><strong class="gain">3.453×</strong></td><td><strong class="loss">0.999×</strong></td></tr><tr><td>d17-p0.0005</td><td>pipelined</td><td>4</td><td>10000</td><td>10.706</td><td>2.804</td><td>2.782</td><td><strong class="gain">3.848×</strong></td><td><strong class="gain">1.008×</strong></td></tr><tr><td>d17-p0.0005</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>10.706</td><td>3.103</td><td>2.981</td><td><strong class="gain">3.591×</strong></td><td><strong class="gain">1.041×</strong></td></tr><tr><td>d21-p0.0005</td><td>unstructured</td><td>1</td><td>10000</td><td>21.492</td><td>21.957</td><td>11.745</td><td><strong class="gain">1.830×</strong></td><td><strong class="gain">1.870×</strong></td></tr><tr><td>d21-p0.0005</td><td>structured</td><td>1</td><td>10000</td><td>21.492</td><td>19.524</td><td>18.392</td><td><strong class="gain">1.169×</strong></td><td><strong class="gain">1.062×</strong></td></tr><tr><td>d21-p0.0005</td><td>predecoded</td><td>1</td><td>10000</td><td>21.492</td><td>3.840</td><td>3.827</td><td><strong class="gain">5.616×</strong></td><td><strong class="gain">1.003×</strong></td></tr><tr><td>d21-p0.0005</td><td>component-parallel</td><td>2</td><td>10000</td><td>21.492</td><td>4.681</td><td>4.668</td><td><strong class="gain">4.604×</strong></td><td><strong class="gain">1.003×</strong></td></tr><tr><td>d21-p0.0005</td><td>pipelined</td><td>4</td><td>10000</td><td>21.492</td><td>4.307</td><td>4.327</td><td><strong class="gain">4.967×</strong></td><td><strong class="loss">0.995×</strong></td></tr><tr><td>d21-p0.0005</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>21.492</td><td>4.014</td><td>3.957</td><td><strong class="gain">5.432×</strong></td><td><strong class="gain">1.014×</strong></td></tr><tr><td>d25-p0.0005</td><td>unstructured</td><td>1</td><td>10000</td><td>37.518</td><td>38.344</td><td>22.412</td><td><strong class="gain">1.674×</strong></td><td><strong class="gain">1.711×</strong></td></tr><tr><td>d25-p0.0005</td><td>structured</td><td>1</td><td>10000</td><td>37.518</td><td>35.338</td><td>33.368</td><td><strong class="gain">1.124×</strong></td><td><strong class="gain">1.059×</strong></td></tr><tr><td>d25-p0.0005</td><td>predecoded</td><td>1</td><td>10000</td><td>37.518</td><td>6.879</td><td>6.879</td><td><strong class="gain">5.454×</strong></td><td><strong class="loss">1.000×</strong></td></tr><tr><td>d25-p0.0005</td><td>component-parallel</td><td>2</td><td>10000</td><td>37.518</td><td>7.387</td><td>7.353</td><td><strong class="gain">5.102×</strong></td><td><strong class="gain">1.005×</strong></td></tr><tr><td>d25-p0.0005</td><td>pipelined</td><td>4</td><td>10000</td><td>37.518</td><td>6.758</td><td>6.638</td><td><strong class="gain">5.652×</strong></td><td><strong class="gain">1.018×</strong></td></tr><tr><td>d25-p0.0005</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>37.518</td><td>5.482</td><td>5.532</td><td><strong class="gain">6.782×</strong></td><td><strong class="loss">0.991×</strong></td></tr><tr><td>d29-p0.0005</td><td>unstructured</td><td>1</td><td>10000</td><td>59.637</td><td>61.631</td><td>38.576</td><td><strong class="gain">1.546×</strong></td><td><strong class="gain">1.598×</strong></td></tr><tr><td>d29-p0.0005</td><td>structured</td><td>1</td><td>10000</td><td>59.637</td><td>57.812</td><td>55.151</td><td><strong class="gain">1.081×</strong></td><td><strong class="gain">1.048×</strong></td></tr><tr><td>d29-p0.0005</td><td>predecoded</td><td>1</td><td>10000</td><td>59.637</td><td>12.107</td><td>11.604</td><td><strong class="gain">5.140×</strong></td><td><strong class="gain">1.043×</strong></td></tr><tr><td>d29-p0.0005</td><td>component-parallel</td><td>2</td><td>10000</td><td>59.637</td><td>11.232</td><td>10.983</td><td><strong class="gain">5.430×</strong></td><td><strong class="gain">1.023×</strong></td></tr><tr><td>d29-p0.0005</td><td>pipelined</td><td>4</td><td>10000</td><td>59.637</td><td>9.979</td><td>10.105</td><td><strong class="gain">5.902×</strong></td><td><strong class="loss">0.988×</strong></td></tr><tr><td>d29-p0.0005</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>59.637</td><td>7.846</td><td>7.933</td><td><strong class="gain">7.518×</strong></td><td><strong class="loss">0.989×</strong></td></tr><tr><td>d33-p0.0005</td><td>unstructured</td><td>1</td><td>10000</td><td>96.600</td><td>100.484</td><td>61.061</td><td><strong class="gain">1.582×</strong></td><td><strong class="gain">1.646×</strong></td></tr><tr><td>d33-p0.0005</td><td>structured</td><td>1</td><td>10000</td><td>96.600</td><td>91.514</td><td>87.175</td><td><strong class="gain">1.108×</strong></td><td><strong class="gain">1.050×</strong></td></tr><tr><td>d33-p0.0005</td><td>predecoded</td><td>1</td><td>10000</td><td>96.600</td><td>18.855</td><td>19.178</td><td><strong class="gain">5.037×</strong></td><td><strong class="loss">0.983×</strong></td></tr><tr><td>d33-p0.0005</td><td>component-parallel</td><td>2</td><td>10000</td><td>96.600</td><td>16.264</td><td>16.255</td><td><strong class="gain">5.943×</strong></td><td><strong class="gain">1.001×</strong></td></tr><tr><td>d33-p0.0005</td><td>pipelined</td><td>4</td><td>10000</td><td>96.600</td><td>15.037</td><td>15.079</td><td><strong class="gain">6.406×</strong></td><td><strong class="loss">0.997×</strong></td></tr><tr><td>d33-p0.0005</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>96.600</td><td>10.607</td><td>10.760</td><td><strong class="gain">8.977×</strong></td><td><strong class="loss">0.986×</strong></td></tr><tr><td>d09-p0.001</td><td>unstructured</td><td>1</td><td>10000</td><td>2.785</td><td>2.911</td><td>1.384</td><td><strong class="gain">2.013×</strong></td><td><strong class="gain">2.103×</strong></td></tr><tr><td>d09-p0.001</td><td>structured</td><td>1</td><td>10000</td><td>2.785</td><td>2.769</td><td>2.535</td><td><strong class="gain">1.098×</strong></td><td><strong class="gain">1.092×</strong></td></tr><tr><td>d09-p0.001</td><td>predecoded</td><td>1</td><td>10000</td><td>2.785</td><td>0.729</td><td>0.729</td><td><strong class="gain">3.820×</strong></td><td><strong class="loss">1.000×</strong></td></tr><tr><td>d09-p0.001</td><td>component-parallel</td><td>2</td><td>10000</td><td>2.785</td><td>0.844</td><td>0.803</td><td><strong class="gain">3.467×</strong></td><td><strong class="gain">1.051×</strong></td></tr><tr><td>d09-p0.001</td><td>pipelined</td><td>4</td><td>10000</td><td>2.785</td><td>0.971</td><td>0.965</td><td><strong class="gain">2.887×</strong></td><td><strong class="gain">1.007×</strong></td></tr><tr><td>d09-p0.001</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>2.785</td><td>1.046</td><td>1.026</td><td><strong class="gain">2.714×</strong></td><td><strong class="gain">1.019×</strong></td></tr><tr><td>d13-p0.001</td><td>unstructured</td><td>1</td><td>10000</td><td>9.391</td><td>9.570</td><td>5.000</td><td><strong class="gain">1.878×</strong></td><td><strong class="gain">1.914×</strong></td></tr><tr><td>d13-p0.001</td><td>structured</td><td>1</td><td>10000</td><td>9.391</td><td>8.428</td><td>7.746</td><td><strong class="gain">1.212×</strong></td><td><strong class="gain">1.088×</strong></td></tr><tr><td>d13-p0.001</td><td>predecoded</td><td>1</td><td>10000</td><td>9.391</td><td>2.061</td><td>1.997</td><td><strong class="gain">4.703×</strong></td><td><strong class="gain">1.032×</strong></td></tr><tr><td>d13-p0.001</td><td>component-parallel</td><td>2</td><td>10000</td><td>9.391</td><td>2.948</td><td>2.995</td><td><strong class="gain">3.136×</strong></td><td><strong class="loss">0.984×</strong></td></tr><tr><td>d13-p0.001</td><td>pipelined</td><td>4</td><td>10000</td><td>9.391</td><td>2.784</td><td>2.777</td><td><strong class="gain">3.382×</strong></td><td><strong class="gain">1.003×</strong></td></tr><tr><td>d13-p0.001</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>9.391</td><td>3.314</td><td>3.345</td><td><strong class="gain">2.808×</strong></td><td><strong class="loss">0.991×</strong></td></tr><tr><td>d17-p0.001</td><td>unstructured</td><td>1</td><td>10000</td><td>22.698</td><td>23.558</td><td>14.070</td><td><strong class="gain">1.613×</strong></td><td><strong class="gain">1.674×</strong></td></tr><tr><td>d17-p0.001</td><td>structured</td><td>1</td><td>10000</td><td>22.698</td><td>20.367</td><td>18.933</td><td><strong class="gain">1.199×</strong></td><td><strong class="gain">1.076×</strong></td></tr><tr><td>d17-p0.001</td><td>predecoded</td><td>1</td><td>10000</td><td>22.698</td><td>4.795</td><td>4.796</td><td><strong class="gain">4.732×</strong></td><td><strong class="loss">1.000×</strong></td></tr><tr><td>d17-p0.001</td><td>component-parallel</td><td>2</td><td>10000</td><td>22.698</td><td>5.323</td><td>5.301</td><td><strong class="gain">4.282×</strong></td><td><strong class="gain">1.004×</strong></td></tr><tr><td>d17-p0.001</td><td>pipelined</td><td>4</td><td>10000</td><td>22.698</td><td>4.849</td><td>4.918</td><td><strong class="gain">4.615×</strong></td><td><strong class="loss">0.986×</strong></td></tr><tr><td>d17-p0.001</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>22.698</td><td>5.021</td><td>4.831</td><td><strong class="gain">4.699×</strong></td><td><strong class="gain">1.039×</strong></td></tr><tr><td>d21-p0.001</td><td>unstructured</td><td>1</td><td>10000</td><td>45.764</td><td>47.320</td><td>30.681</td><td><strong class="gain">1.492×</strong></td><td><strong class="gain">1.542×</strong></td></tr><tr><td>d21-p0.001</td><td>structured</td><td>1</td><td>10000</td><td>45.764</td><td>41.277</td><td>39.259</td><td><strong class="gain">1.166×</strong></td><td><strong class="gain">1.051×</strong></td></tr><tr><td>d21-p0.001</td><td>predecoded</td><td>1</td><td>10000</td><td>45.764</td><td>9.609</td><td>9.604</td><td><strong class="gain">4.765×</strong></td><td><strong class="gain">1.000×</strong></td></tr><tr><td>d21-p0.001</td><td>component-parallel</td><td>2</td><td>10000</td><td>45.764</td><td>9.061</td><td>9.134</td><td><strong class="gain">5.010×</strong></td><td><strong class="loss">0.992×</strong></td></tr><tr><td>d21-p0.001</td><td>pipelined</td><td>4</td><td>10000</td><td>45.764</td><td>8.368</td><td>8.378</td><td><strong class="gain">5.462×</strong></td><td><strong class="loss">0.999×</strong></td></tr><tr><td>d21-p0.001</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>45.764</td><td>7.474</td><td>7.393</td><td><strong class="gain">6.190×</strong></td><td><strong class="gain">1.011×</strong></td></tr><tr><td>d25-p0.001</td><td>unstructured</td><td>1</td><td>10000</td><td>82.002</td><td>84.703</td><td>56.513</td><td><strong class="gain">1.451×</strong></td><td><strong class="gain">1.499×</strong></td></tr><tr><td>d25-p0.001</td><td>structured</td><td>1</td><td>10000</td><td>82.002</td><td>74.956</td><td>70.543</td><td><strong class="gain">1.162×</strong></td><td><strong class="gain">1.063×</strong></td></tr><tr><td>d25-p0.001</td><td>predecoded</td><td>1</td><td>10000</td><td>82.002</td><td>17.835</td><td>17.789</td><td><strong class="gain">4.610×</strong></td><td><strong class="gain">1.003×</strong></td></tr><tr><td>d25-p0.001</td><td>component-parallel</td><td>2</td><td>10000</td><td>82.002</td><td>14.802</td><td>14.891</td><td><strong class="gain">5.507×</strong></td><td><strong class="loss">0.994×</strong></td></tr><tr><td>d25-p0.001</td><td>pipelined</td><td>4</td><td>10000</td><td>82.002</td><td>13.910</td><td>13.913</td><td><strong class="gain">5.894×</strong></td><td><strong class="loss">1.000×</strong></td></tr><tr><td>d25-p0.001</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>82.002</td><td>11.325</td><td>11.201</td><td><strong class="gain">7.321×</strong></td><td><strong class="gain">1.011×</strong></td></tr><tr><td>d29-p0.001</td><td>unstructured</td><td>1</td><td>10000</td><td>135.646</td><td>146.229</td><td>90.792</td><td><strong class="gain">1.494×</strong></td><td><strong class="gain">1.611×</strong></td></tr><tr><td>d29-p0.001</td><td>structured</td><td>1</td><td>10000</td><td>135.646</td><td>124.473</td><td>117.018</td><td><strong class="gain">1.159×</strong></td><td><strong class="gain">1.064×</strong></td></tr><tr><td>d29-p0.001</td><td>predecoded</td><td>1</td><td>10000</td><td>135.646</td><td>30.689</td><td>30.855</td><td><strong class="gain">4.396×</strong></td><td><strong class="loss">0.995×</strong></td></tr><tr><td>d29-p0.001</td><td>component-parallel</td><td>2</td><td>10000</td><td>135.646</td><td>23.125</td><td>23.131</td><td><strong class="gain">5.864×</strong></td><td><strong class="loss">1.000×</strong></td></tr><tr><td>d29-p0.001</td><td>pipelined</td><td>4</td><td>10000</td><td>135.646</td><td>21.540</td><td>21.701</td><td><strong class="gain">6.251×</strong></td><td><strong class="loss">0.993×</strong></td></tr><tr><td>d29-p0.001</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>135.646</td><td>16.595</td><td>16.458</td><td><strong class="gain">8.242×</strong></td><td><strong class="gain">1.008×</strong></td></tr><tr><td>d33-p0.001</td><td>unstructured</td><td>1</td><td>10000</td><td>235.938</td><td>241.139</td><td>155.381</td><td><strong class="gain">1.518×</strong></td><td><strong class="gain">1.552×</strong></td></tr><tr><td>d33-p0.001</td><td>structured</td><td>1</td><td>10000</td><td>235.938</td><td>199.561</td><td>189.799</td><td><strong class="gain">1.243×</strong></td><td><strong class="gain">1.051×</strong></td></tr><tr><td>d33-p0.001</td><td>predecoded</td><td>1</td><td>10000</td><td>235.938</td><td>50.265</td><td>51.192</td><td><strong class="gain">4.609×</strong></td><td><strong class="loss">0.982×</strong></td></tr><tr><td>d33-p0.001</td><td>component-parallel</td><td>2</td><td>10000</td><td>235.938</td><td>34.615</td><td>34.656</td><td><strong class="gain">6.808×</strong></td><td><strong class="loss">0.999×</strong></td></tr><tr><td>d33-p0.001</td><td>pipelined</td><td>4</td><td>10000</td><td>235.938</td><td>32.158</td><td>32.787</td><td><strong class="gain">7.196×</strong></td><td><strong class="loss">0.981×</strong></td></tr><tr><td>d33-p0.001</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>235.938</td><td>23.451</td><td>23.368</td><td><strong class="gain">10.097×</strong></td><td><strong class="gain">1.004×</strong></td></tr><tr><td>d09-p0.003</td><td>unstructured</td><td>1</td><td>10000</td><td>11.136</td><td>11.163</td><td>7.369</td><td><strong class="gain">1.511×</strong></td><td><strong class="gain">1.515×</strong></td></tr><tr><td>d09-p0.003</td><td>structured</td><td>1</td><td>10000</td><td>11.136</td><td>9.470</td><td>8.666</td><td><strong class="gain">1.285×</strong></td><td><strong class="gain">1.093×</strong></td></tr><tr><td>d09-p0.003</td><td>predecoded</td><td>1</td><td>10000</td><td>11.136</td><td>3.524</td><td>3.479</td><td><strong class="gain">3.201×</strong></td><td><strong class="gain">1.013×</strong></td></tr><tr><td>d09-p0.003</td><td>component-parallel</td><td>2</td><td>10000</td><td>11.136</td><td>3.973</td><td>3.957</td><td><strong class="gain">2.814×</strong></td><td><strong class="gain">1.004×</strong></td></tr><tr><td>d09-p0.003</td><td>pipelined</td><td>4</td><td>10000</td><td>11.136</td><td>3.934</td><td>3.905</td><td><strong class="gain">2.852×</strong></td><td><strong class="gain">1.008×</strong></td></tr><tr><td>d09-p0.003</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>11.136</td><td>4.648</td><td>4.555</td><td><strong class="gain">2.445×</strong></td><td><strong class="gain">1.021×</strong></td></tr><tr><td>d13-p0.003</td><td>unstructured</td><td>1</td><td>10000</td><td>36.793</td><td>37.886</td><td>27.491</td><td><strong class="gain">1.338×</strong></td><td><strong class="gain">1.378×</strong></td></tr><tr><td>d13-p0.003</td><td>structured</td><td>1</td><td>10000</td><td>36.793</td><td>29.591</td><td>28.479</td><td><strong class="gain">1.292×</strong></td><td><strong class="gain">1.039×</strong></td></tr><tr><td>d13-p0.003</td><td>predecoded</td><td>1</td><td>10000</td><td>36.793</td><td>11.502</td><td>11.397</td><td><strong class="gain">3.228×</strong></td><td><strong class="gain">1.009×</strong></td></tr><tr><td>d13-p0.003</td><td>component-parallel</td><td>2</td><td>10000</td><td>36.793</td><td>9.722</td><td>9.617</td><td><strong class="gain">3.826×</strong></td><td><strong class="gain">1.011×</strong></td></tr><tr><td>d13-p0.003</td><td>pipelined</td><td>4</td><td>10000</td><td>36.793</td><td>9.188</td><td>9.242</td><td><strong class="gain">3.981×</strong></td><td><strong class="loss">0.994×</strong></td></tr><tr><td>d13-p0.003</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>36.793</td><td>10.050</td><td>9.695</td><td><strong class="gain">3.795×</strong></td><td><strong class="gain">1.037×</strong></td></tr><tr><td>d17-p0.003</td><td>unstructured</td><td>1</td><td>10000</td><td>89.911</td><td>92.761</td><td>69.434</td><td><strong class="gain">1.295×</strong></td><td><strong class="gain">1.336×</strong></td></tr><tr><td>d17-p0.003</td><td>structured</td><td>1</td><td>10000</td><td>89.911</td><td>72.820</td><td>69.127</td><td><strong class="gain">1.301×</strong></td><td><strong class="gain">1.053×</strong></td></tr><tr><td>d17-p0.003</td><td>predecoded</td><td>1</td><td>10000</td><td>89.911</td><td>28.641</td><td>29.588</td><td><strong class="gain">3.039×</strong></td><td><strong class="loss">0.968×</strong></td></tr><tr><td>d17-p0.003</td><td>component-parallel</td><td>2</td><td>10000</td><td>89.911</td><td>20.336</td><td>21.033</td><td><strong class="gain">4.275×</strong></td><td><strong class="loss">0.967×</strong></td></tr><tr><td>d17-p0.003</td><td>pipelined</td><td>4</td><td>10000</td><td>89.911</td><td>19.587</td><td>19.407</td><td><strong class="gain">4.633×</strong></td><td><strong class="gain">1.009×</strong></td></tr><tr><td>d17-p0.003</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>89.911</td><td>19.626</td><td>19.596</td><td><strong class="gain">4.588×</strong></td><td><strong class="gain">1.001×</strong></td></tr><tr><td>d21-p0.003</td><td>unstructured</td><td>1</td><td>10000</td><td>189.073</td><td>192.531</td><td>143.178</td><td><strong class="gain">1.321×</strong></td><td><strong class="gain">1.345×</strong></td></tr><tr><td>d21-p0.003</td><td>structured</td><td>1</td><td>10000</td><td>189.073</td><td>150.826</td><td>143.657</td><td><strong class="gain">1.316×</strong></td><td><strong class="gain">1.050×</strong></td></tr><tr><td>d21-p0.003</td><td>predecoded</td><td>1</td><td>10000</td><td>189.073</td><td>57.479</td><td>56.831</td><td><strong class="gain">3.327×</strong></td><td><strong class="gain">1.011×</strong></td></tr><tr><td>d21-p0.003</td><td>component-parallel</td><td>2</td><td>10000</td><td>189.073</td><td>38.122</td><td>37.848</td><td><strong class="gain">4.996×</strong></td><td><strong class="gain">1.007×</strong></td></tr><tr><td>d21-p0.003</td><td>pipelined</td><td>4</td><td>10000</td><td>189.073</td><td>37.073</td><td>37.326</td><td><strong class="gain">5.065×</strong></td><td><strong class="loss">0.993×</strong></td></tr><tr><td>d21-p0.003</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>189.073</td><td>35.080</td><td>34.626</td><td><strong class="gain">5.460×</strong></td><td><strong class="gain">1.013×</strong></td></tr><tr><td>d25-p0.003</td><td>unstructured</td><td>1</td><td>10000</td><td>365.310</td><td>386.080</td><td>271.102</td><td><strong class="gain">1.347×</strong></td><td><strong class="gain">1.424×</strong></td></tr><tr><td>d25-p0.003</td><td>structured</td><td>1</td><td>10000</td><td>365.310</td><td>279.445</td><td>268.435</td><td><strong class="gain">1.361×</strong></td><td><strong class="gain">1.041×</strong></td></tr><tr><td>d25-p0.003</td><td>predecoded</td><td>1</td><td>10000</td><td>365.310</td><td>108.517</td><td>106.575</td><td><strong class="gain">3.428×</strong></td><td><strong class="gain">1.018×</strong></td></tr><tr><td>d25-p0.003</td><td>component-parallel</td><td>2</td><td>10000</td><td>365.310</td><td>66.884</td><td>66.847</td><td><strong class="gain">5.465×</strong></td><td><strong class="gain">1.001×</strong></td></tr><tr><td>d25-p0.003</td><td>pipelined</td><td>4</td><td>10000</td><td>365.310</td><td>64.296</td><td>64.442</td><td><strong class="gain">5.669×</strong></td><td><strong class="loss">0.998×</strong></td></tr><tr><td>d25-p0.003</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>365.310</td><td>58.278</td><td>57.667</td><td><strong class="gain">6.335×</strong></td><td><strong class="gain">1.011×</strong></td></tr><tr><td>d29-p0.003</td><td>unstructured</td><td>1</td><td>10000</td><td>645.709</td><td>657.621</td><td>477.733</td><td><strong class="gain">1.352×</strong></td><td><strong class="gain">1.377×</strong></td></tr><tr><td>d29-p0.003</td><td>structured</td><td>1</td><td>10000</td><td>645.709</td><td>465.874</td><td>457.736</td><td><strong class="gain">1.411×</strong></td><td><strong class="gain">1.018×</strong></td></tr><tr><td>d29-p0.003</td><td>predecoded</td><td>1</td><td>10000</td><td>645.709</td><td>185.890</td><td>185.977</td><td><strong class="gain">3.472×</strong></td><td><strong class="loss">1.000×</strong></td></tr><tr><td>d29-p0.003</td><td>component-parallel</td><td>2</td><td>10000</td><td>645.709</td><td>108.039</td><td>109.423</td><td><strong class="gain">5.901×</strong></td><td><strong class="loss">0.987×</strong></td></tr><tr><td>d29-p0.003</td><td>pipelined</td><td>4</td><td>10000</td><td>645.709</td><td>110.833</td><td>104.409</td><td><strong class="gain">6.184×</strong></td><td><strong class="gain">1.062×</strong></td></tr><tr><td>d29-p0.003</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>645.709</td><td>91.104</td><td>91.163</td><td><strong class="gain">7.083×</strong></td><td><strong class="loss">0.999×</strong></td></tr><tr><td>d33-p0.003</td><td>unstructured</td><td>1</td><td>10000</td><td>1,032.231</td><td>1,069.929</td><td>798.914</td><td><strong class="gain">1.292×</strong></td><td><strong class="gain">1.339×</strong></td></tr><tr><td>d33-p0.003</td><td>structured</td><td>1</td><td>10000</td><td>1,032.231</td><td>740.921</td><td>702.307</td><td><strong class="gain">1.470×</strong></td><td><strong class="gain">1.055×</strong></td></tr><tr><td>d33-p0.003</td><td>predecoded</td><td>1</td><td>10000</td><td>1,032.231</td><td>306.970</td><td>300.269</td><td><strong class="gain">3.438×</strong></td><td><strong class="gain">1.022×</strong></td></tr><tr><td>d33-p0.003</td><td>component-parallel</td><td>2</td><td>10000</td><td>1,032.231</td><td>171.301</td><td>168.072</td><td><strong class="gain">6.142×</strong></td><td><strong class="gain">1.019×</strong></td></tr><tr><td>d33-p0.003</td><td>pipelined</td><td>4</td><td>10000</td><td>1,032.231</td><td>168.266</td><td>167.745</td><td><strong class="gain">6.154×</strong></td><td><strong class="gain">1.003×</strong></td></tr><tr><td>d33-p0.003</td><td>parallel-predecode</td><td>8</td><td>10000</td><td>1,032.231</td><td>144.529</td><td>141.004</td><td><strong class="gain">7.321×</strong></td><td><strong class="gain">1.025×</strong></td></tr></tbody></table></div></details><p class="note">本轮是代码迁移与回归验证。结构化10,000-shot矩阵、通用图固定语料和64-shot外部集成 smoke 各有独立口径；它们没有替代归档论文的一百万-shot采集。AE 的 <code>unstructured</code> 行运行当前库默认预解码路径；该 harness 的 <code>--predecode 0</code> 只控制结构化适配器。严格 on/off 对照来自上面的通用图专用实验。</p><h2 id="mechanisms">实现变化与三个机制</h2><p>库名与 namespace 统一为 <code>beyond_blossom</code>，构建前缀为 <code>BB_</code>。<code>core</code> 保留共享基础类型；<code>unstructured</code> 使用动态邻接图；<code>structured</code> 独立保留网格、局部预解码与并行路径；<code>driver</code> 提供公共入口。历史测量身份保持不变。</p><div class="cards"><article><h3>1. 结构化 primal 内联</h3><p>把事件分派与交替树操作从 .cc 移入头文件可见的 .inl；减少无 LTO 时的翻译单元障碍。状态更新顺序保持一致，重型结果提取仍留在 .cc。</p><p class="flow">边界事件 → 树旋转/回收 → 区域匹配 → 返回</p><a href="mechanisms/structured-primal-inlining.html">打开完整交互页 →</a></article><article><h3>2. 有证书的通用图预解码</h3><p>按当前边权保持 dual 可行性，只配 tight 边。完整匹配达到下界后直接提取；部分结果导入全部 singleton，完整 blossom 仍可改配。</p><p class="flow">合法增长 → tight 配对 → 完整检查或全部状态导入</p><a href="mechanisms/certified-generic-predecode.html">打开完整交互页 →</a></article><article><h3>3. 有界局部密度门控</h3><p>先检查活动节点平均度和直接边界，再做最多8×32邻接探测；局部活动比例不足1/8时回退。短 syndrome 按 ceil(seed数/4) 缩小采样预算。</p><p class="flow">局部采样 → 阈值 → 普通 roots 或预解码</p><a href="mechanisms/bounded-density-gate.html">打开完整交互页 →</a></article></div><p>商余数递推保持与 floor(k×N/count) 相同的节点索引；每邻域32槽使用右移计算，类内 <code>seed_index</code> 提供内联机会。已有 Release 对象反汇编保留为<a href="evidence/validation/generic-codegen.txt">机器码证据</a>，其范围是库对象而非重新反汇编的最终 ELF。端到端结果检验组合实现，没有把组合收益分配给单一语句或内联动作。</p><p><a href="code-diff/index.html">打开独立代码对照</a> · <a href="code-diff/diff.patch">下载原始 patch</a> · <a href="sources/manifest.json">固定来源和范围清单</a> · <a href="optimization-coverage.json">机制覆盖清单</a></p><h2 id="validation">验证与复现</h2><p>从 clean edd29b6 的源码包构建 wheel，在仓库外安装与导入，250 项 Python 测试通过；CLI、公共与直接 native Structured API、独立 CMake consumer 和许可证随包检查均有回执。AE 的 66 项测试及 44 项子测试通过。</p><p>正式 AE native 构建封存源码、依赖与二进制。七种方法在同一批 1025 输入上完成 smoke；最终 wheel 的转换器配合五种外部 native 方法，对 64 条输入完成 320 次 parity 和 320 次独立校正链检查。Parity/Fusion要求整数最优，其余三种UF记录最优性差距。集成 smoke 期间有并发构建，性能结果仅使用后续串行冻结回归采集。</p><p>Release与ASan/UBSan各有356项C++测试通过。LeakSanitizer在本机ptrace环境下关闭；最终源码封存与构建身份单独归档。<a href="evidence/validation/release-final-ctest.log">Release日志</a> · <a href="evidence/validation/asan-final-ctest.log">ASan/UBSan日志</a></p><p><a href="validation.json">验证摘要与原始回执索引</a> · <a href="evidence/validation/package-audit.json">源码包、wheel、SDK审计</a> · <a href="evidence/validation/ae-tests.log">AE测试日志</a> · <a href="evidence/validation/asan-final-validation.json">最终356项C++测试的源码和artifact收据</a></p><h3>三个复现入口</h3><ol><li><b>最小验证：</b>按仓库 <code>AE/README.md</code> 构建固定官方参考与 candidate，再运行 <code>reproduce.py run --profile smoke</code>；本报告的native与外部闭环均已执行。</li><li><b>完整重新采集：</b>使用 <code>benchmarks/regression/run_generic.py</code> 与 <code>run_structured.py</code>，按封存协议中的 commands 创建新目录；官方、来源和候选读取相同输入。论文级百万-shot矩阵使用AE教程的独立命令。</li><li><b>仅重算：</b>运行本目录的 <code>scripts/summarize_results.py</code> 读取已完成的三个run，再运行 <code>build_pages.py</code> 和 <code>build_report.py</code>。所有数值由 <code>summary.json</code> 派生。</li></ol><p>具体命令见 <a href="REPRODUCE.md">复现说明</a>。大二进制和输入语料由工作区归档另行提供；本紧凑包保留小型 raw、采集凭据与哈希。大归档的<a href="evidence/validation/root-archives-verification.json">完整性校验</a>与<a href="evidence/validation/replay-verification.json">异路径重算回执</a>随包保留。在线发布未执行；所有机制页和源码对照可直接离线打开。</p><details><summary>完整技术身份与统计约定</summary><div class="table-scroll"><table><thead><tr><th>角色</th><th>身份</th></tr></thead><tbody><tr><td>原始迁移来源</td><td>241160314087e5ae698c6e76c3c055a11c3ad422</td></tr><tr><td>本地历史恢复tag</td><td>source-2411603 → 9651df809d8c2c034717bd3b036c35fda1c90fcb</td></tr><tr><td>被测实现</td><td>edd29b6780713dc78f6a99d67c4c4d192e9c52b5</td></tr><tr><td>固定官方上游</td><td>e27b8c6a5f5ba10fb74d4ebb29822f2df5e12bcd</td></tr><tr><td>结构化采集器后续提交</td><td>0ad4fde55adaae41e337a6ee89974703c07bb8cd</td></tr><tr><td>机器</td><td>Intel Xeon Gold 6230R · zeus · Linux x86_64</td></tr><tr><td>比较方向</td><td>baseline/candidate，大于1更快；耗时变化=(candidate/baseline−1)×100%</td></tr></tbody></table></div><p>summary.json SHA256：<code>9e96e381b6ab1b29bce81205b7b9cc1a5e8188a3c3b4615c7fb97a0425e461d9</code></p><p>完整矩阵保留每个工作负载的正负结果。重复使用固定输入只增加执行次数。范围描述观察到的批次或进程波动，不推导逐 shot 分位数、统计显著性或生产分布。</p></details></main></html>

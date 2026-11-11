@@ -1,0 +1,15 @@
+[
+  "c++",
+  "-std=c++20",
+  "-O3",
+  "-DNDEBUG",
+  "-DBENCH_LDPC",
+  "-I/home/fujy/dev/beyond_blossom/repo/AE/external/sources/ldpc-union-find/diagnostic_include",
+  "-I/home/fujy/dev/beyond_blossom/repo/AE/external/sources/ldpc-union-find",
+  "-I/home/fujy/dev/beyond_blossom/repo/AE/external/sources/ldpc-union-find/upstream/src_cpp",
+  "-I/home/fujy/dev/beyond_blossom/repo/AE/external/sources/ldpc-union-find/upstream/include/robin_map",
+  "-I/home/fujy/dev/beyond_blossom/repo/AE/external/sources/unionfind/deps",
+  "/home/fujy/dev/beyond_blossom/repo/AE/external/native/uf.cpp",
+  "-o",
+  "/tmp/beyond-external-build-final01/ldpc-uf"
+]

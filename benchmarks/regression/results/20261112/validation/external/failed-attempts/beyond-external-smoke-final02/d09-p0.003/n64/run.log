@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/fujy/dev/beyond_blossom/repo/AE/external/run.py", line 286, in <module>
+    main()
+  File "/home/fujy/dev/beyond_blossom/repo/AE/external/run.py", line 221, in main
+    cpus = physical_cpus(args.cpus)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fujy/dev/beyond_blossom/repo/AE/external/run.py", line 46, in physical_cpus
+    raise ValueError('Select distinct physical cores on one socket')
+ValueError: Select distinct physical cores on one socket

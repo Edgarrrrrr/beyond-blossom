@@ -1,0 +1,8 @@
+[ 50%] Building CXX object CMakeFiles/consumer.dir/main.cc.o
+/tmp/beyond-package-final/artifacts-r2/outside/cpp-consumer/main.cc: In function ‘int main()’:
+/tmp/beyond-package-final/artifacts-r2/outside/cpp-consumer/main.cc:7:35: error: variable ‘stim::DetectorErrorModel model’ has initializer but incomplete type
+    7 |     stim::DetectorErrorModel model(R"(
+      |                                   ^
+gmake[2]: *** [CMakeFiles/consumer.dir/build.make:79: CMakeFiles/consumer.dir/main.cc.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:87: CMakeFiles/consumer.dir/all] Error 2
+gmake: *** [Makefile:91: all] Error 2

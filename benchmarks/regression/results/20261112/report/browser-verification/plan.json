@@ -1,0 +1,72 @@
+[
+  {
+    "page": "index.html",
+    "width": 1440,
+    "dump": "report-1440.dom.html",
+    "screenshot": "report-1440.png",
+    "source_sha256": "7f764417f29193e0ff0d35a811ceeb5fdb7b29b90f145e8141949de70a2fa494"
+  },
+  {
+    "page": "index.html",
+    "width": 760,
+    "dump": "report-760.dom.html",
+    "screenshot": "report-760.png",
+    "source_sha256": "7f764417f29193e0ff0d35a811ceeb5fdb7b29b90f145e8141949de70a2fa494"
+  },
+  {
+    "page": "mechanisms/structured-primal-inlining.html",
+    "width": 1440,
+    "dump": "structured-primal-inlining-1440.dom.html",
+    "screenshot": "structured-primal-inlining-1440.png",
+    "source_sha256": "eccf0d436f94e32db3d35d14dd596a81003960862061308664e930a8717eb5db"
+  },
+  {
+    "page": "mechanisms/structured-primal-inlining.html",
+    "width": 760,
+    "dump": "structured-primal-inlining-760.dom.html",
+    "screenshot": "structured-primal-inlining-760.png",
+    "source_sha256": "eccf0d436f94e32db3d35d14dd596a81003960862061308664e930a8717eb5db"
+  },
+  {
+    "page": "mechanisms/certified-generic-predecode.html",
+    "width": 1440,
+    "dump": "certified-generic-predecode-1440.dom.html",
+    "screenshot": "certified-generic-predecode-1440.png",
+    "source_sha256": "be7b019e5a6800072ca1b70139605866351dac081444970d14e3a6fd34f27197"
+  },
+  {
+    "page": "mechanisms/certified-generic-predecode.html",
+    "width": 760,
+    "dump": "certified-generic-predecode-760.dom.html",
+    "screenshot": "certified-generic-predecode-760.png",
+    "source_sha256": "be7b019e5a6800072ca1b70139605866351dac081444970d14e3a6fd34f27197"
+  },
+  {
+    "page": "mechanisms/bounded-density-gate.html",
+    "width": 1440,
+    "dump": "bounded-density-gate-1440.dom.html",
+    "screenshot": "bounded-density-gate-1440.png",
+    "source_sha256": "fecb848c0bb0413b804d8725ca44d213e44d21f1d16f97559f40355b5b3f7222"
+  },
+  {
+    "page": "mechanisms/bounded-density-gate.html",
+    "width": 760,
+    "dump": "bounded-density-gate-760.dom.html",
+    "screenshot": "bounded-density-gate-760.png",
+    "source_sha256": "fecb848c0bb0413b804d8725ca44d213e44d21f1d16f97559f40355b5b3f7222"
+  },
+  {
+    "page": "code-diff/index.html",
+    "width": 1440,
+    "dump": "code-diff-1440.dom.html",
+    "screenshot": "code-diff-1440.png",
+    "source_sha256": "6f95f138cf64016e4b8353427340e67e6d8c37b51717025284d1aff2c0079cab"
+  },
+  {
+    "page": "code-diff/index.html",
+    "width": 760,
+    "dump": "code-diff-760.dom.html",
+    "screenshot": "code-diff-760.png",
+    "source_sha256": "6f95f138cf64016e4b8353427340e67e6d8c37b51717025284d1aff2c0079cab"
+  }
+]

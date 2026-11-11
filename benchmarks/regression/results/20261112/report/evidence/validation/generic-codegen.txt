@@ -1,0 +1,1392 @@
+
+/tmp/beyond-build/candidate/CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/predecode/one_hop_predecoder.cc.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <beyond_blossom::OneHopPredecoder::reset()>:
+       0:	4c 8b 17             	mov    (%rdi),%r10
+       3:	48 8b 4f 08          	mov    0x8(%rdi),%rcx
+       7:	4c 39 d1             	cmp    %r10,%rcx
+       a:	74 3f                	je     4b <beyond_blossom::OneHopPredecoder::reset()+0x4b>
+       c:	4c 8b 4f 60          	mov    0x60(%rdi),%r9
+      10:	4c 8b 47 30          	mov    0x30(%rdi),%r8
+      14:	4c 89 d2             	mov    %r10,%rdx
+      17:	48 be cd cc cc cc cc 	movabs $0xcccccccccccccccd,%rsi
+      1e:	cc cc cc 
+      21:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+      28:	48 8b 02             	mov    (%rdx),%rax
+      2b:	48 83 c2 30          	add    $0x30,%rdx
+      2f:	4c 29 c8             	sub    %r9,%rax
+      32:	48 c1 f8 05          	sar    $0x5,%rax
+      36:	48 0f af c6          	imul   %rsi,%rax
+      3a:	49 c7 04 c0 00 00 00 	movq   $0x0,(%r8,%rax,8)
+      41:	00 
+      42:	48 39 d1             	cmp    %rdx,%rcx
+      45:	75 e1                	jne    28 <beyond_blossom::OneHopPredecoder::reset()+0x28>
+      47:	4c 89 57 08          	mov    %r10,0x8(%rdi)
+      4b:	48 8b 47 48          	mov    0x48(%rdi),%rax
+      4f:	48 3b 47 50          	cmp    0x50(%rdi),%rax
+      53:	74 04                	je     59 <beyond_blossom::OneHopPredecoder::reset()+0x59>
+      55:	48 89 47 50          	mov    %rax,0x50(%rdi)
+      59:	c6 47 1a 00          	movb   $0x0,0x1a(%rdi)
+      5d:	66 c7 47 18 00 00    	movw   $0x0,0x18(%rdi)
+      63:	48 c7 47 20 00 00 00 	movq   $0x0,0x20(%rdi)
+      6a:	00 
+      6b:	48 c7 47 28 00 00 00 	movq   $0x0,0x28(%rdi)
+      72:	00 
+      73:	c3                   	ret
+      74:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+      7b:	00 00 00 00 
+      7f:	90                   	nop
+
+0000000000000080 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)>:
+      80:	41 57                	push   %r15
+      82:	41 56                	push   %r14
+      84:	49 89 d6             	mov    %rdx,%r14
+      87:	41 55                	push   %r13
+      89:	41 54                	push   %r12
+      8b:	55                   	push   %rbp
+      8c:	48 89 f5             	mov    %rsi,%rbp
+      8f:	53                   	push   %rbx
+      90:	48 89 fb             	mov    %rdi,%rbx
+      93:	48 83 ec 38          	sub    $0x38,%rsp
+      97:	48 89 4c 24 10       	mov    %rcx,0x10(%rsp)
+      9c:	e8 00 00 00 00       	call   a1 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x21>
+      a1:	4c 8b 65 00          	mov    0x0(%rbp),%r12
+      a5:	48 8b 45 08          	mov    0x8(%rbp),%rax
+      a9:	48 ba cd cc cc cc cc 	movabs $0xcccccccccccccccd,%rdx
+      b0:	cc cc cc 
+      b3:	4c 8b 7b 38          	mov    0x38(%rbx),%r15
+      b7:	4c 29 e0             	sub    %r12,%rax
+      ba:	48 c1 f8 05          	sar    $0x5,%rax
+      be:	4c 89 fe             	mov    %r15,%rsi
+      c1:	48 0f af c2          	imul   %rdx,%rax
+      c5:	48 8b 53 30          	mov    0x30(%rbx),%rdx
+      c9:	48 29 d6             	sub    %rdx,%rsi
+      cc:	48 89 f1             	mov    %rsi,%rcx
+      cf:	48 c1 f9 03          	sar    $0x3,%rcx
+      d3:	48 39 c1             	cmp    %rax,%rcx
+      d6:	0f 82 44 04 00 00    	jb     520 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x4a0>
+      dc:	48 39 c8             	cmp    %rcx,%rax
+      df:	0f 82 1b 04 00 00    	jb     500 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x480>
+      e5:	49 8b 46 08          	mov    0x8(%r14),%rax
+      e9:	4d 8b 2e             	mov    (%r14),%r13
+      ec:	4c 89 63 60          	mov    %r12,0x60(%rbx)
+      f0:	48 89 04 24          	mov    %rax,(%rsp)
+      f4:	49 39 c5             	cmp    %rax,%r13
+      f7:	75 65                	jne    15e <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0xde>
+      f9:	e9 72 02 00 00       	jmp    370 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x2f0>
+      fe:	66 90                	xchg   %ax,%ax
+     100:	66 0f 6f 25 00 00 00 	movdqa 0x0(%rip),%xmm4        # 108 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x88>
+     107:	00 
+     108:	4d 89 34 24          	mov    %r14,(%r12)
+     10c:	49 83 c4 30          	add    $0x30,%r12
+     110:	48 bf ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaab,%rdi
+     117:	aa aa aa 
+     11a:	49 c7 44 24 e8 00 00 	movq   $0x0,-0x18(%r12)
+     121:	00 00 
+     123:	41 0f 11 64 24 d8    	movups %xmm4,-0x28(%r12)
+     129:	49 c7 44 24 f0 00 00 	movq   $0x0,-0x10(%r12)
+     130:	00 00 
+     132:	66 41 c7 44 24 f8 00 	movw   $0x0,-0x8(%r12)
+     139:	00 
+     13a:	4c 89 63 08          	mov    %r12,0x8(%rbx)
+     13e:	4d 29 fc             	sub    %r15,%r12
+     141:	49 c1 fc 04          	sar    $0x4,%r12
+     145:	4c 0f af e7          	imul   %rdi,%r12
+     149:	4c 89 20             	mov    %r12,(%rax)
+     14c:	49 83 c5 08          	add    $0x8,%r13
+     150:	4c 39 2c 24          	cmp    %r13,(%rsp)
+     154:	0f 84 16 02 00 00    	je     370 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x2f0>
+     15a:	4c 8b 65 00          	mov    0x0(%rbp),%r12
+     15e:	48 8b 45 08          	mov    0x8(%rbp),%rax
+     162:	49 8b 55 00          	mov    0x0(%r13),%rdx
+     166:	48 bf cd cc cc cc cc 	movabs $0xcccccccccccccccd,%rdi
+     16d:	cc cc cc 
+     170:	4c 29 e0             	sub    %r12,%rax
+     173:	48 c1 f8 05          	sar    $0x5,%rax
+     177:	48 0f af c7          	imul   %rdi,%rax
+     17b:	48 39 c2             	cmp    %rax,%rdx
+     17e:	0f 83 00 00 00 00    	jae    184 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x104>
+     184:	48 8b 8d 80 00 00 00 	mov    0x80(%rbp),%rcx
+     18b:	48 8b 85 90 00 00 00 	mov    0x90(%rbp),%rax
+     192:	8b b5 98 00 00 00    	mov    0x98(%rbp),%esi
+     198:	48 29 c8             	sub    %rcx,%rax
+     19b:	48 8d 04 c6          	lea    (%rsi,%rax,8),%rax
+     19f:	48 39 c2             	cmp    %rax,%rdx
+     1a2:	73 43                	jae    1e7 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x167>
+     1a4:	48 85 d2             	test   %rdx,%rdx
+     1a7:	48 8d 42 3f          	lea    0x3f(%rdx),%rax
+     1ab:	48 0f 49 c2          	cmovns %rdx,%rax
+     1af:	48 c1 f8 06          	sar    $0x6,%rax
+     1b3:	48 8d 34 c1          	lea    (%rcx,%rax,8),%rsi
+     1b7:	48 89 d0             	mov    %rdx,%rax
+     1ba:	48 c1 f8 3f          	sar    $0x3f,%rax
+     1be:	48 c1 e8 3a          	shr    $0x3a,%rax
+     1c2:	48 8d 0c 02          	lea    (%rdx,%rax,1),%rcx
+     1c6:	83 e1 3f             	and    $0x3f,%ecx
+     1c9:	48 29 c1             	sub    %rax,%rcx
+     1cc:	79 08                	jns    1d6 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x156>
+     1ce:	48 83 c1 40          	add    $0x40,%rcx
+     1d2:	48 83 ee 08          	sub    $0x8,%rsi
+     1d6:	b8 01 00 00 00       	mov    $0x1,%eax
+     1db:	48 d3 e0             	shl    %cl,%rax
+     1de:	48 23 06             	and    (%rsi),%rax
+     1e1:	0f 85 65 ff ff ff    	jne    14c <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0xcc>
+     1e7:	48 8d 04 d5 00 00 00 	lea    0x0(,%rdx,8),%rax
+     1ee:	00 
+     1ef:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
+     1f4:	48 03 43 30          	add    0x30(%rbx),%rax
+     1f8:	48 83 38 00          	cmpq   $0x0,(%rax)
+     1fc:	0f 85 00 00 00 00    	jne    202 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x182>
+     202:	4c 8b 63 08          	mov    0x8(%rbx),%r12
+     206:	48 8b 73 10          	mov    0x10(%rbx),%rsi
+     20a:	4c 8d 34 92          	lea    (%rdx,%rdx,4),%r14
+     20e:	49 c1 e6 05          	shl    $0x5,%r14
+     212:	4c 8b 3b             	mov    (%rbx),%r15
+     215:	4c 03 73 60          	add    0x60(%rbx),%r14
+     219:	49 39 f4             	cmp    %rsi,%r12
+     21c:	0f 85 de fe ff ff    	jne    100 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x80>
+     222:	48 bf ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaab,%rdi
+     229:	aa aa aa 
+     22c:	4c 89 e0             	mov    %r12,%rax
+     22f:	4c 29 f8             	sub    %r15,%rax
+     232:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+     237:	48 c1 f8 04          	sar    $0x4,%rax
+     23b:	48 0f af c7          	imul   %rdi,%rax
+     23f:	48 bf aa aa aa aa aa 	movabs $0x2aaaaaaaaaaaaaa,%rdi
+     246:	aa aa 02 
+     249:	48 39 f8             	cmp    %rdi,%rax
+     24c:	0f 84 99 06 00 00    	je     8eb <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x86b>
+     252:	4d 39 fc             	cmp    %r15,%r12
+     255:	ba 01 00 00 00       	mov    $0x1,%edx
+     25a:	48 0f 45 d0          	cmovne %rax,%rdx
+     25e:	48 01 d0             	add    %rdx,%rax
+     261:	0f 82 44 06 00 00    	jb     8ab <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x82b>
+     267:	48 85 c0             	test   %rax,%rax
+     26a:	0f 85 bf 05 00 00    	jne    82f <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x7af>
+     270:	b8 30 00 00 00       	mov    $0x30,%eax
+     275:	31 c9                	xor    %ecx,%ecx
+     277:	31 d2                	xor    %edx,%edx
+     279:	48 8b 7c 24 18       	mov    0x18(%rsp),%rdi
+     27e:	66 0f 6f 05 00 00 00 	movdqa 0x0(%rip),%xmm0        # 286 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x206>
+     285:	00 
+     286:	48 01 d7             	add    %rdx,%rdi
+     289:	4c 89 37             	mov    %r14,(%rdi)
+     28c:	48 c7 47 18 00 00 00 	movq   $0x0,0x18(%rdi)
+     293:	00 
+     294:	48 c7 47 20 00 00 00 	movq   $0x0,0x20(%rdi)
+     29b:	00 
+     29c:	66 c7 47 28 00 00    	movw   $0x0,0x28(%rdi)
+     2a2:	0f 11 47 08          	movups %xmm0,0x8(%rdi)
+     2a6:	4d 39 fc             	cmp    %r15,%r12
+     2a9:	0f 84 09 04 00 00    	je     6b8 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x638>
+     2af:	48 89 d7             	mov    %rdx,%rdi
+     2b2:	4c 89 f8             	mov    %r15,%rax
+     2b5:	0f 1f 00             	nopl   (%rax)
+     2b8:	f3 0f 6f 08          	movdqu (%rax),%xmm1
+     2bc:	f3 0f 6f 50 10       	movdqu 0x10(%rax),%xmm2
+     2c1:	48 83 c0 30          	add    $0x30,%rax
+     2c5:	48 83 c7 30          	add    $0x30,%rdi
+     2c9:	f3 0f 6f 58 f0       	movdqu -0x10(%rax),%xmm3
+     2ce:	0f 11 4f d0          	movups %xmm1,-0x30(%rdi)
+     2d2:	0f 11 57 e0          	movups %xmm2,-0x20(%rdi)
+     2d6:	0f 11 5f f0          	movups %xmm3,-0x10(%rdi)
+     2da:	49 39 c4             	cmp    %rax,%r12
+     2dd:	75 d9                	jne    2b8 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x238>
+     2df:	48 bf ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaab,%rdi
+     2e6:	aa aa 0a 
+     2e9:	49 8d 44 24 d0       	lea    -0x30(%r12),%rax
+     2ee:	4c 29 f8             	sub    %r15,%rax
+     2f1:	48 c1 e8 04          	shr    $0x4,%rax
+     2f5:	48 0f af c7          	imul   %rdi,%rax
+     2f9:	48 bf ff ff ff ff ff 	movabs $0xfffffffffffffff,%rdi
+     300:	ff ff 0f 
+     303:	48 21 f8             	and    %rdi,%rax
+     306:	48 bf ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaab,%rdi
+     30d:	aa aa aa 
+     310:	4c 8d 64 40 06       	lea    0x6(%rax,%rax,2),%r12
+     315:	49 c1 e4 04          	shl    $0x4,%r12
+     319:	4a 8d 04 22          	lea    (%rdx,%r12,1),%rax
+     31d:	49 c1 fc 04          	sar    $0x4,%r12
+     321:	4c 0f af e7          	imul   %rdi,%r12
+     325:	4d 85 ff             	test   %r15,%r15
+     328:	74 29                	je     353 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x2d3>
+     32a:	4c 29 fe             	sub    %r15,%rsi
+     32d:	4c 89 ff             	mov    %r15,%rdi
+     330:	48 89 44 24 28       	mov    %rax,0x28(%rsp)
+     335:	48 89 4c 24 20       	mov    %rcx,0x20(%rsp)
+     33a:	48 89 54 24 18       	mov    %rdx,0x18(%rsp)
+     33f:	e8 00 00 00 00       	call   344 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x2c4>
+     344:	48 8b 44 24 28       	mov    0x28(%rsp),%rax
+     349:	48 8b 4c 24 20       	mov    0x20(%rsp),%rcx
+     34e:	48 8b 54 24 18       	mov    0x18(%rsp),%rdx
+     353:	48 89 43 08          	mov    %rax,0x8(%rbx)
+     357:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+     35c:	48 89 13             	mov    %rdx,(%rbx)
+     35f:	48 03 43 30          	add    0x30(%rbx),%rax
+     363:	48 89 4b 10          	mov    %rcx,0x10(%rbx)
+     367:	e9 dd fd ff ff       	jmp    149 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0xc9>
+     36c:	0f 1f 40 00          	nopl   0x0(%rax)
+     370:	48 8b 44 24 10       	mov    0x10(%rsp),%rax
+     375:	48 8b 70 08          	mov    0x8(%rax),%rsi
+     379:	4c 8b 28             	mov    (%rax),%r13
+     37c:	48 89 34 24          	mov    %rsi,(%rsp)
+     380:	4c 39 ee             	cmp    %r13,%rsi
+     383:	75 70                	jne    3f5 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x375>
+     385:	e9 67 01 00 00       	jmp    4f1 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x471>
+     38a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+     390:	48 8d 44 52 fd       	lea    -0x3(%rdx,%rdx,2),%rax
+     395:	f3 41 0f 6f 6c 24 d0 	movdqu -0x30(%r12),%xmm5
+     39c:	49 83 ec 30          	sub    $0x30,%r12
+     3a0:	48 c1 e0 04          	shl    $0x4,%rax
+     3a4:	4c 01 f0             	add    %r14,%rax
+     3a7:	0f 11 28             	movups %xmm5,(%rax)
+     3aa:	f3 41 0f 6f 74 24 10 	movdqu 0x10(%r12),%xmm6
+     3b1:	0f 11 70 10          	movups %xmm6,0x10(%rax)
+     3b5:	f3 41 0f 6f 7c 24 1a 	movdqu 0x1a(%r12),%xmm7
+     3bc:	0f 11 78 1a          	movups %xmm7,0x1a(%rax)
+     3c0:	48 8b 00             	mov    (%rax),%rax
+     3c3:	48 29 f8             	sub    %rdi,%rax
+     3c6:	48 bf cd cc cc cc cc 	movabs $0xcccccccccccccccd,%rdi
+     3cd:	cc cc cc 
+     3d0:	48 c1 f8 05          	sar    $0x5,%rax
+     3d4:	48 0f af c7          	imul   %rdi,%rax
+     3d8:	48 89 14 c6          	mov    %rdx,(%rsi,%rax,8)
+     3dc:	4c 89 63 08          	mov    %r12,0x8(%rbx)
+     3e0:	48 c7 01 00 00 00 00 	movq   $0x0,(%rcx)
+     3e7:	49 83 c5 08          	add    $0x8,%r13
+     3eb:	4c 39 2c 24          	cmp    %r13,(%rsp)
+     3ef:	0f 84 fc 00 00 00    	je     4f1 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x471>
+     3f5:	48 8b 8d 80 00 00 00 	mov    0x80(%rbp),%rcx
+     3fc:	48 8b 95 90 00 00 00 	mov    0x90(%rbp),%rdx
+     403:	8b b5 98 00 00 00    	mov    0x98(%rbp),%esi
+     409:	49 8b 45 00          	mov    0x0(%r13),%rax
+     40d:	48 29 ca             	sub    %rcx,%rdx
+     410:	48 8d 14 d6          	lea    (%rsi,%rdx,8),%rdx
+     414:	48 39 d0             	cmp    %rdx,%rax
+     417:	73 3a                	jae    453 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x3d3>
+     419:	48 85 c0             	test   %rax,%rax
+     41c:	48 8d 50 3f          	lea    0x3f(%rax),%rdx
+     420:	48 0f 49 d0          	cmovns %rax,%rdx
+     424:	48 c1 fa 06          	sar    $0x6,%rdx
+     428:	48 8d 34 d1          	lea    (%rcx,%rdx,8),%rsi
+     42c:	48 99                	cqto
+     42e:	48 c1 ea 3a          	shr    $0x3a,%rdx
+     432:	48 8d 0c 10          	lea    (%rax,%rdx,1),%rcx
+     436:	83 e1 3f             	and    $0x3f,%ecx
+     439:	48 29 d1             	sub    %rdx,%rcx
+     43c:	79 08                	jns    446 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x3c6>
+     43e:	48 83 c1 40          	add    $0x40,%rcx
+     442:	48 83 ee 08          	sub    $0x8,%rsi
+     446:	ba 01 00 00 00       	mov    $0x1,%edx
+     44b:	48 d3 e2             	shl    %cl,%rdx
+     44e:	48 23 16             	and    (%rsi),%rdx
+     451:	75 94                	jne    3e7 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x367>
+     453:	48 8b 73 30          	mov    0x30(%rbx),%rsi
+     457:	4c 8d 3c c5 00 00 00 	lea    0x0(,%rax,8),%r15
+     45e:	00 
+     45f:	48 8b 7b 60          	mov    0x60(%rbx),%rdi
+     463:	4c 8b 63 08          	mov    0x8(%rbx),%r12
+     467:	4c 8b 33             	mov    (%rbx),%r14
+     46a:	4a 8d 0c 3e          	lea    (%rsi,%r15,1),%rcx
+     46e:	48 8b 11             	mov    (%rcx),%rdx
+     471:	48 85 d2             	test   %rdx,%rdx
+     474:	0f 85 16 ff ff ff    	jne    390 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x310>
+     47a:	48 8d 04 80          	lea    (%rax,%rax,4),%rax
+     47e:	48 8b 73 10          	mov    0x10(%rbx),%rsi
+     482:	48 c1 e0 05          	shl    $0x5,%rax
+     486:	48 01 f8             	add    %rdi,%rax
+     489:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
+     48e:	4c 39 e6             	cmp    %r12,%rsi
+     491:	0f 84 c9 00 00 00    	je     560 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x4e0>
+     497:	66 0f 6f 35 00 00 00 	movdqa 0x0(%rip),%xmm6        # 49f <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x41f>
+     49e:	00 
+     49f:	49 89 04 24          	mov    %rax,(%r12)
+     4a3:	49 83 c4 30          	add    $0x30,%r12
+     4a7:	48 b8 ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaab,%rax
+     4ae:	aa aa aa 
+     4b1:	49 c7 44 24 e8 00 00 	movq   $0x0,-0x18(%r12)
+     4b8:	00 00 
+     4ba:	41 0f 11 74 24 d8    	movups %xmm6,-0x28(%r12)
+     4c0:	49 c7 44 24 f0 00 00 	movq   $0x0,-0x10(%r12)
+     4c7:	00 00 
+     4c9:	66 41 c7 44 24 f8 00 	movw   $0x0,-0x8(%r12)
+     4d0:	00 
+     4d1:	4c 89 63 08          	mov    %r12,0x8(%rbx)
+     4d5:	4d 29 f4             	sub    %r14,%r12
+     4d8:	49 c1 fc 04          	sar    $0x4,%r12
+     4dc:	4c 0f af e0          	imul   %rax,%r12
+     4e0:	4c 89 21             	mov    %r12,(%rcx)
+     4e3:	49 83 c5 08          	add    $0x8,%r13
+     4e7:	4c 39 2c 24          	cmp    %r13,(%rsp)
+     4eb:	0f 85 04 ff ff ff    	jne    3f5 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x375>
+     4f1:	48 83 c4 38          	add    $0x38,%rsp
+     4f5:	5b                   	pop    %rbx
+     4f6:	5d                   	pop    %rbp
+     4f7:	41 5c                	pop    %r12
+     4f9:	41 5d                	pop    %r13
+     4fb:	41 5e                	pop    %r14
+     4fd:	41 5f                	pop    %r15
+     4ff:	c3                   	ret
+     500:	48 8d 04 c2          	lea    (%rdx,%rax,8),%rax
+     504:	49 39 c7             	cmp    %rax,%r15
+     507:	0f 84 d8 fb ff ff    	je     e5 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x65>
+     50d:	48 89 43 38          	mov    %rax,0x38(%rbx)
+     511:	e9 cf fb ff ff       	jmp    e5 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x65>
+     516:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+     51d:	00 00 00 
+     520:	48 89 c7             	mov    %rax,%rdi
+     523:	48 29 c8             	sub    %rcx,%rax
+     526:	49 89 c5             	mov    %rax,%r13
+     529:	48 8b 43 40          	mov    0x40(%rbx),%rax
+     52d:	4c 29 f8             	sub    %r15,%rax
+     530:	48 c1 f8 03          	sar    $0x3,%rax
+     534:	4c 39 e8             	cmp    %r13,%rax
+     537:	0f 82 8b 01 00 00    	jb     6c8 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x648>
+     53d:	49 c1 e5 03          	shl    $0x3,%r13
+     541:	31 f6                	xor    %esi,%esi
+     543:	4c 89 ff             	mov    %r15,%rdi
+     546:	4c 89 ea             	mov    %r13,%rdx
+     549:	4d 01 fd             	add    %r15,%r13
+     54c:	e8 00 00 00 00       	call   551 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x4d1>
+     551:	4c 89 6b 38          	mov    %r13,0x38(%rbx)
+     555:	e9 8b fb ff ff       	jmp    e5 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x65>
+     55a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+     560:	48 ba ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaab,%rdx
+     567:	aa aa aa 
+     56a:	48 89 f0             	mov    %rsi,%rax
+     56d:	4c 29 f0             	sub    %r14,%rax
+     570:	48 89 44 24 10       	mov    %rax,0x10(%rsp)
+     575:	48 c1 f8 04          	sar    $0x4,%rax
+     579:	48 0f af c2          	imul   %rdx,%rax
+     57d:	48 ba aa aa aa aa aa 	movabs $0x2aaaaaaaaaaaaaa,%rdx
+     584:	aa aa 02 
+     587:	48 39 d0             	cmp    %rdx,%rax
+     58a:	0f 84 4f 03 00 00    	je     8df <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x85f>
+     590:	4d 39 f4             	cmp    %r14,%r12
+     593:	ba 01 00 00 00       	mov    $0x1,%edx
+     598:	48 0f 45 d0          	cmovne %rax,%rdx
+     59c:	48 01 d0             	add    %rdx,%rax
+     59f:	0f 82 26 03 00 00    	jb     8cb <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x84b>
+     5a5:	48 85 c0             	test   %rax,%rax
+     5a8:	0f 85 bf 02 00 00    	jne    86d <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x7ed>
+     5ae:	b8 30 00 00 00       	mov    $0x30,%eax
+     5b3:	31 c9                	xor    %ecx,%ecx
+     5b5:	31 d2                	xor    %edx,%edx
+     5b7:	48 8b 7c 24 10       	mov    0x10(%rsp),%rdi
+     5bc:	4c 8b 4c 24 08       	mov    0x8(%rsp),%r9
+     5c1:	66 0f 6f 05 00 00 00 	movdqa 0x0(%rip),%xmm0        # 5c9 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x549>
+     5c8:	00 
+     5c9:	48 01 d7             	add    %rdx,%rdi
+     5cc:	4c 89 0f             	mov    %r9,(%rdi)
+     5cf:	48 c7 47 18 00 00 00 	movq   $0x0,0x18(%rdi)
+     5d6:	00 
+     5d7:	48 c7 47 20 00 00 00 	movq   $0x0,0x20(%rdi)
+     5de:	00 
+     5df:	66 c7 47 28 00 00    	movw   $0x0,0x28(%rdi)
+     5e5:	0f 11 47 08          	movups %xmm0,0x8(%rdi)
+     5e9:	4d 39 f4             	cmp    %r14,%r12
+     5ec:	0f 84 e4 01 00 00    	je     7d6 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x756>
+     5f2:	48 89 d7             	mov    %rdx,%rdi
+     5f5:	4c 89 f0             	mov    %r14,%rax
+     5f8:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+     5ff:	00 
+     600:	f3 0f 6f 00          	movdqu (%rax),%xmm0
+     604:	f3 0f 6f 68 20       	movdqu 0x20(%rax),%xmm5
+     609:	48 83 c0 30          	add    $0x30,%rax
+     60d:	48 83 c7 30          	add    $0x30,%rdi
+     611:	0f 11 47 d0          	movups %xmm0,-0x30(%rdi)
+     615:	f3 0f 6f 40 e0       	movdqu -0x20(%rax),%xmm0
+     61a:	0f 11 6f f0          	movups %xmm5,-0x10(%rdi)
+     61e:	0f 11 47 e0          	movups %xmm0,-0x20(%rdi)
+     622:	4c 39 e0             	cmp    %r12,%rax
+     625:	75 d9                	jne    600 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x580>
+     627:	48 bf ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaab,%rdi
+     62e:	aa aa 0a 
+     631:	48 83 e8 30          	sub    $0x30,%rax
+     635:	4c 29 f0             	sub    %r14,%rax
+     638:	48 c1 e8 04          	shr    $0x4,%rax
+     63c:	48 0f af c7          	imul   %rdi,%rax
+     640:	48 bf ff ff ff ff ff 	movabs $0xfffffffffffffff,%rdi
+     647:	ff ff 0f 
+     64a:	48 21 f8             	and    %rdi,%rax
+     64d:	48 bf ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaab,%rdi
+     654:	aa aa aa 
+     657:	4c 8d 64 40 06       	lea    0x6(%rax,%rax,2),%r12
+     65c:	49 c1 e4 04          	shl    $0x4,%r12
+     660:	4a 8d 04 22          	lea    (%rdx,%r12,1),%rax
+     664:	49 c1 fc 04          	sar    $0x4,%r12
+     668:	4c 0f af e7          	imul   %rdi,%r12
+     66c:	4d 85 f6             	test   %r14,%r14
+     66f:	74 29                	je     69a <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x61a>
+     671:	4c 29 f6             	sub    %r14,%rsi
+     674:	4c 89 f7             	mov    %r14,%rdi
+     677:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+     67c:	48 89 4c 24 10       	mov    %rcx,0x10(%rsp)
+     681:	48 89 54 24 08       	mov    %rdx,0x8(%rsp)
+     686:	e8 00 00 00 00       	call   68b <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x60b>
+     68b:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+     690:	48 8b 4c 24 10       	mov    0x10(%rsp),%rcx
+     695:	48 8b 54 24 08       	mov    0x8(%rsp),%rdx
+     69a:	48 89 4b 10          	mov    %rcx,0x10(%rbx)
+     69e:	48 8b 4b 30          	mov    0x30(%rbx),%rcx
+     6a2:	48 89 13             	mov    %rdx,(%rbx)
+     6a5:	48 89 43 08          	mov    %rax,0x8(%rbx)
+     6a9:	4c 01 f9             	add    %r15,%rcx
+     6ac:	e9 2f fe ff ff       	jmp    4e0 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x460>
+     6b1:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+     6b8:	41 bc 01 00 00 00    	mov    $0x1,%r12d
+     6be:	e9 62 fc ff ff       	jmp    325 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x2a5>
+     6c3:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+     6c8:	48 b8 ff ff ff ff ff 	movabs $0xfffffffffffffff,%rax
+     6cf:	ff ff 0f 
+     6d2:	48 29 c8             	sub    %rcx,%rax
+     6d5:	4c 39 e8             	cmp    %r13,%rax
+     6d8:	0f 82 e1 01 00 00    	jb     8bf <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x83f>
+     6de:	4c 39 e9             	cmp    %r13,%rcx
+     6e1:	0f 82 d1 00 00 00    	jb     7b8 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x738>
+     6e7:	48 b8 f8 ff ff ff ff 	movabs $0x7ffffffffffffff8,%rax
+     6ee:	ff ff 7f 
+     6f1:	48 8d 3c 09          	lea    (%rcx,%rcx,1),%rdi
+     6f5:	48 89 04 24          	mov    %rax,(%rsp)
+     6f9:	48 39 cf             	cmp    %rcx,%rdi
+     6fc:	0f 83 b6 00 00 00    	jae    7b8 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x738>
+     702:	48 8b 3c 24          	mov    (%rsp),%rdi
+     706:	48 89 74 24 08       	mov    %rsi,0x8(%rsp)
+     70b:	49 c1 e5 03          	shl    $0x3,%r13
+     70f:	e8 00 00 00 00       	call   714 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x694>
+     714:	48 8b 74 24 08       	mov    0x8(%rsp),%rsi
+     719:	4c 89 ea             	mov    %r13,%rdx
+     71c:	49 89 c4             	mov    %rax,%r12
+     71f:	48 8d 3c 30          	lea    (%rax,%rsi,1),%rdi
+     723:	31 f6                	xor    %esi,%esi
+     725:	e8 00 00 00 00       	call   72a <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x6aa>
+     72a:	4c 8b 43 30          	mov    0x30(%rbx),%r8
+     72e:	4c 89 fa             	mov    %r15,%rdx
+     731:	4c 29 c2             	sub    %r8,%rdx
+     734:	49 01 d5             	add    %rdx,%r13
+     737:	4d 01 e5             	add    %r12,%r13
+     73a:	4d 39 c7             	cmp    %r8,%r15
+     73d:	0f 84 9e 00 00 00    	je     7e1 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x761>
+     743:	4c 89 c6             	mov    %r8,%rsi
+     746:	4c 89 e7             	mov    %r12,%rdi
+     749:	4c 89 44 24 08       	mov    %r8,0x8(%rsp)
+     74e:	e8 00 00 00 00       	call   753 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x6d3>
+     753:	48 8b 43 38          	mov    0x38(%rbx),%rax
+     757:	4c 8b 44 24 08       	mov    0x8(%rsp),%r8
+     75c:	48 89 c2             	mov    %rax,%rdx
+     75f:	4c 29 fa             	sub    %r15,%rdx
+     762:	4c 39 f8             	cmp    %r15,%rax
+     765:	0f 84 b5 00 00 00    	je     820 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x7a0>
+     76b:	4c 89 ef             	mov    %r13,%rdi
+     76e:	4c 89 fe             	mov    %r15,%rsi
+     771:	4c 89 44 24 18       	mov    %r8,0x18(%rsp)
+     776:	48 89 54 24 08       	mov    %rdx,0x8(%rsp)
+     77b:	e8 00 00 00 00       	call   780 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x700>
+     780:	48 8b 54 24 08       	mov    0x8(%rsp),%rdx
+     785:	4c 8b 44 24 18       	mov    0x18(%rsp),%r8
+     78a:	49 01 d5             	add    %rdx,%r13
+     78d:	48 8b 73 40          	mov    0x40(%rbx),%rsi
+     791:	4c 29 c6             	sub    %r8,%rsi
+     794:	4c 89 c7             	mov    %r8,%rdi
+     797:	e8 00 00 00 00       	call   79c <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x71c>
+     79c:	48 8b 0c 24          	mov    (%rsp),%rcx
+     7a0:	4c 89 63 30          	mov    %r12,0x30(%rbx)
+     7a4:	4c 89 6b 38          	mov    %r13,0x38(%rbx)
+     7a8:	4c 01 e1             	add    %r12,%rcx
+     7ab:	4c 8b 65 00          	mov    0x0(%rbp),%r12
+     7af:	48 89 4b 40          	mov    %rcx,0x40(%rbx)
+     7b3:	e9 2d f9 ff ff       	jmp    e5 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x65>
+     7b8:	48 b8 ff ff ff ff ff 	movabs $0xfffffffffffffff,%rax
+     7bf:	ff ff 0f 
+     7c2:	48 39 c7             	cmp    %rax,%rdi
+     7c5:	48 0f 46 c7          	cmovbe %rdi,%rax
+     7c9:	48 c1 e0 03          	shl    $0x3,%rax
+     7cd:	48 89 04 24          	mov    %rax,(%rsp)
+     7d1:	e9 2c ff ff ff       	jmp    702 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x682>
+     7d6:	41 bc 01 00 00 00    	mov    $0x1,%r12d
+     7dc:	e9 8b fe ff ff       	jmp    66c <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x5ec>
+     7e1:	48 8b 43 38          	mov    0x38(%rbx),%rax
+     7e5:	49 89 c7             	mov    %rax,%r15
+     7e8:	4d 29 c7             	sub    %r8,%r15
+     7eb:	49 39 c0             	cmp    %rax,%r8
+     7ee:	74 1d                	je     80d <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x78d>
+     7f0:	4c 89 c6             	mov    %r8,%rsi
+     7f3:	4c 89 ef             	mov    %r13,%rdi
+     7f6:	4c 89 fa             	mov    %r15,%rdx
+     7f9:	4c 89 44 24 08       	mov    %r8,0x8(%rsp)
+     7fe:	e8 00 00 00 00       	call   803 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x783>
+     803:	4d 01 fd             	add    %r15,%r13
+     806:	4c 8b 44 24 08       	mov    0x8(%rsp),%r8
+     80b:	eb 80                	jmp    78d <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x70d>
+     80d:	4d 01 fd             	add    %r15,%r13
+     810:	4d 85 c0             	test   %r8,%r8
+     813:	74 87                	je     79c <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x71c>
+     815:	e9 73 ff ff ff       	jmp    78d <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x70d>
+     81a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+     820:	48 8b 73 40          	mov    0x40(%rbx),%rsi
+     824:	49 01 d5             	add    %rdx,%r13
+     827:	4c 29 c6             	sub    %r8,%rsi
+     82a:	e9 65 ff ff ff       	jmp    794 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x714>
+     82f:	48 ba aa aa aa aa aa 	movabs $0x2aaaaaaaaaaaaaa,%rdx
+     836:	aa aa 02 
+     839:	48 39 d0             	cmp    %rdx,%rax
+     83c:	48 0f 47 c2          	cmova  %rdx,%rax
+     840:	48 8d 04 40          	lea    (%rax,%rax,2),%rax
+     844:	48 c1 e0 04          	shl    $0x4,%rax
+     848:	48 89 44 24 20       	mov    %rax,0x20(%rsp)
+     84d:	48 89 c7             	mov    %rax,%rdi
+     850:	e8 00 00 00 00       	call   855 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x7d5>
+     855:	48 8b 4c 24 20       	mov    0x20(%rsp),%rcx
+     85a:	48 89 c2             	mov    %rax,%rdx
+     85d:	48 8b 73 10          	mov    0x10(%rbx),%rsi
+     861:	48 01 c1             	add    %rax,%rcx
+     864:	48 8d 40 30          	lea    0x30(%rax),%rax
+     868:	e9 0c fa ff ff       	jmp    279 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x1f9>
+     86d:	48 ba aa aa aa aa aa 	movabs $0x2aaaaaaaaaaaaaa,%rdx
+     874:	aa aa 02 
+     877:	48 39 d0             	cmp    %rdx,%rax
+     87a:	48 0f 47 c2          	cmova  %rdx,%rax
+     87e:	48 8d 04 40          	lea    (%rax,%rax,2),%rax
+     882:	48 c1 e0 04          	shl    $0x4,%rax
+     886:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+     88b:	48 89 c7             	mov    %rax,%rdi
+     88e:	e8 00 00 00 00       	call   893 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x813>
+     893:	48 8b 4c 24 18       	mov    0x18(%rsp),%rcx
+     898:	48 89 c2             	mov    %rax,%rdx
+     89b:	48 8b 73 10          	mov    0x10(%rbx),%rsi
+     89f:	48 01 c1             	add    %rax,%rcx
+     8a2:	48 8d 40 30          	lea    0x30(%rax),%rax
+     8a6:	e9 0c fd ff ff       	jmp    5b7 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x537>
+     8ab:	48 b8 e0 ff ff ff ff 	movabs $0x7fffffffffffffe0,%rax
+     8b2:	ff ff 7f 
+     8b5:	48 89 44 24 20       	mov    %rax,0x20(%rsp)
+     8ba:	48 89 c7             	mov    %rax,%rdi
+     8bd:	eb 91                	jmp    850 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x7d0>
+     8bf:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 8c6 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x846>
+     8c6:	e8 00 00 00 00       	call   8cb <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x84b>
+     8cb:	48 b8 e0 ff ff ff ff 	movabs $0x7fffffffffffffe0,%rax
+     8d2:	ff ff 7f 
+     8d5:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+     8da:	48 89 c7             	mov    %rax,%rdi
+     8dd:	eb af                	jmp    88e <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x80e>
+     8df:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 8e6 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x866>
+     8e6:	e8 00 00 00 00       	call   8eb <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x86b>
+     8eb:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 8f2 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x872>
+     8f2:	e8 00 00 00 00       	call   8f7 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x877>
+     8f7:	e9 00 00 00 00       	jmp    8fc <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&)+0x87c>
+     8fc:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000000900 <beyond_blossom::OneHopPredecoder::grow(unsigned long)>:
+     900:	4c 8b 07             	mov    (%rdi),%r8
+     903:	48 8d 0c 76          	lea    (%rsi,%rsi,2),%rcx
+     907:	48 c1 e1 04          	shl    $0x4,%rcx
+     90b:	4d 8d 14 08          	lea    (%r8,%rcx,1),%r10
+     90f:	41 80 7a 29 00       	cmpb   $0x0,0x29(%r10)
+     914:	0f 85 a6 00 00 00    	jne    9c0 <beyond_blossom::OneHopPredecoder::grow(unsigned long)+0xc0>
+     91a:	48 89 fa             	mov    %rdi,%rdx
+     91d:	48 83 c6 01          	add    $0x1,%rsi
+     921:	4d 8b 1a             	mov    (%r10),%r11
+     924:	41 8b 7a 24          	mov    0x24(%r10),%edi
+     928:	49 b9 ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaab,%r9
+     92f:	aa aa aa 
+     932:	48 8b 42 08          	mov    0x8(%rdx),%rax
+     936:	4c 29 c0             	sub    %r8,%rax
+     939:	48 c1 f8 04          	sar    $0x4,%rax
+     93d:	49 0f af c1          	imul   %r9,%rax
+     941:	48 39 c6             	cmp    %rax,%rsi
+     944:	72 72                	jb     9b8 <beyond_blossom::OneHopPredecoder::grow(unsigned long)+0xb8>
+     946:	48 8b 4a 50          	mov    0x50(%rdx),%rcx
+     94a:	48 2b 4a 48          	sub    0x48(%rdx),%rcx
+     94e:	48 c1 f9 04          	sar    $0x4,%rcx
+     952:	49 8b 42 18          	mov    0x18(%r10),%rax
+     956:	48 39 c8             	cmp    %rcx,%rax
+     959:	73 6d                	jae    9c8 <beyond_blossom::OneHopPredecoder::grow(unsigned long)+0xc8>
+     95b:	53                   	push   %rbx
+     95c:	4c 8b 4a 48          	mov    0x48(%rdx),%r9
+     960:	48 c1 e0 04          	shl    $0x4,%rax
+     964:	48 c1 e1 04          	shl    $0x4,%rcx
+     968:	49 8b 5b 58          	mov    0x58(%r11),%rbx
+     96c:	4c 01 c8             	add    %r9,%rax
+     96f:	49 01 c9             	add    %rcx,%r9
+     972:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+     978:	48 8b 10             	mov    (%rax),%rdx
+     97b:	48 8b 70 08          	mov    0x8(%rax),%rsi
+     97f:	48 8d 0c 52          	lea    (%rdx,%rdx,2),%rcx
+     983:	8b 14 b3             	mov    (%rbx,%rsi,4),%edx
+     986:	48 c1 e1 04          	shl    $0x4,%rcx
+     98a:	41 2b 54 08 20       	sub    0x20(%r8,%rcx,1),%edx
+     98f:	39 d7                	cmp    %edx,%edi
+     991:	0f 47 fa             	cmova  %edx,%edi
+     994:	48 83 c0 10          	add    $0x10,%rax
+     998:	49 39 c1             	cmp    %rax,%r9
+     99b:	75 db                	jne    978 <beyond_blossom::OneHopPredecoder::grow(unsigned long)+0x78>
+     99d:	49 8b 43 40          	mov    0x40(%r11),%rax
+     9a1:	49 39 43 48          	cmp    %rax,0x48(%r11)
+     9a5:	74 0c                	je     9b3 <beyond_blossom::OneHopPredecoder::grow(unsigned long)+0xb3>
+     9a7:	83 e7 fe             	and    $0xfffffffe,%edi
+     9aa:	41 c6 42 29 01       	movb   $0x1,0x29(%r10)
+     9af:	41 89 7a 20          	mov    %edi,0x20(%r10)
+     9b3:	5b                   	pop    %rbx
+     9b4:	c3                   	ret
+     9b5:	0f 1f 00             	nopl   (%rax)
+     9b8:	49 8b 4c 08 48       	mov    0x48(%r8,%rcx,1),%rcx
+     9bd:	eb 93                	jmp    952 <beyond_blossom::OneHopPredecoder::grow(unsigned long)+0x52>
+     9bf:	90                   	nop
+     9c0:	c3                   	ret
+     9c1:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+     9c8:	49 8b 43 40          	mov    0x40(%r11),%rax
+     9cc:	49 39 43 48          	cmp    %rax,0x48(%r11)
+     9d0:	74 ee                	je     9c0 <beyond_blossom::OneHopPredecoder::grow(unsigned long)+0xc0>
+     9d2:	83 e7 fe             	and    $0xfffffffe,%edi
+     9d5:	41 c6 42 29 01       	movb   $0x1,0x29(%r10)
+     9da:	41 89 7a 20          	mov    %edi,0x20(%r10)
+     9de:	c3                   	ret
+     9df:	90                   	nop
+
+00000000000009e0 <beyond_blossom::OneHopPredecoder::run_one(unsigned long)>:
+     9e0:	41 57                	push   %r15
+     9e2:	41 56                	push   %r14
+     9e4:	49 89 f6             	mov    %rsi,%r14
+     9e7:	41 55                	push   %r13
+     9e9:	41 54                	push   %r12
+     9eb:	55                   	push   %rbp
+     9ec:	48 89 fd             	mov    %rdi,%rbp
+     9ef:	53                   	push   %rbx
+     9f0:	48 8d 1c 76          	lea    (%rsi,%rsi,2),%rbx
+     9f4:	48 c1 e3 04          	shl    $0x4,%rbx
+     9f8:	48 83 ec 28          	sub    $0x28,%rsp
+     9fc:	4c 8b 3f             	mov    (%rdi),%r15
+     9ff:	49 01 df             	add    %rbx,%r15
+     a02:	49 8b 17             	mov    (%r15),%rdx
+     a05:	48 89 54 24 08       	mov    %rdx,0x8(%rsp)
+     a0a:	e8 00 00 00 00       	call   a0f <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0x2f>
+     a0f:	48 8b 7d 00          	mov    0x0(%rbp),%rdi
+     a13:	48 8b 45 08          	mov    0x8(%rbp),%rax
+     a17:	48 be ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaab,%rsi
+     a1e:	aa aa aa 
+     a21:	49 8d 4e 01          	lea    0x1(%r14),%rcx
+     a25:	48 8b 54 24 08       	mov    0x8(%rsp),%rdx
+     a2a:	48 29 f8             	sub    %rdi,%rax
+     a2d:	48 c1 f8 04          	sar    $0x4,%rax
+     a31:	48 0f af c6          	imul   %rsi,%rax
+     a35:	48 39 c1             	cmp    %rax,%rcx
+     a38:	0f 83 ea 00 00 00    	jae    b28 <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0x148>
+     a3e:	48 8b 4c 1f 48       	mov    0x48(%rdi,%rbx,1),%rcx
+     a43:	4d 8b 6f 18          	mov    0x18(%r15),%r13
+     a47:	49 39 cd             	cmp    %rcx,%r13
+     a4a:	0f 83 f0 00 00 00    	jae    b40 <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0x160>
+     a50:	4d 89 ec             	mov    %r13,%r12
+     a53:	49 c1 e4 04          	shl    $0x4,%r12
+     a57:	4c 03 65 48          	add    0x48(%rbp),%r12
+     a5b:	49 8b 34 24          	mov    (%r12),%rsi
+     a5f:	4d 8b 44 24 08       	mov    0x8(%r12),%r8
+     a64:	48 8d 1c 76          	lea    (%rsi,%rsi,2),%rbx
+     a68:	48 c1 e3 04          	shl    $0x4,%rbx
+     a6c:	48 01 fb             	add    %rdi,%rbx
+     a6f:	48 83 7b 08 ff       	cmpq   $0xffffffffffffffff,0x8(%rbx)
+     a74:	75 5a                	jne    ad0 <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0xf0>
+     a76:	8b 7b 20             	mov    0x20(%rbx),%edi
+     a79:	41 8b 47 20          	mov    0x20(%r15),%eax
+     a7d:	48 01 f8             	add    %rdi,%rax
+     a80:	48 8b 7a 58          	mov    0x58(%rdx),%rdi
+     a84:	42 8b 3c 87          	mov    (%rdi,%r8,4),%edi
+     a88:	48 39 f8             	cmp    %rdi,%rax
+     a8b:	72 5b                	jb     ae8 <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0x108>
+     a8d:	48 39 f8             	cmp    %rdi,%rax
+     a90:	75 3e                	jne    ad0 <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0xf0>
+     a92:	48 8b 52 70          	mov    0x70(%rdx),%rdx
+     a96:	49 8b 0c 24          	mov    (%r12),%rcx
+     a9a:	4a 8d 14 c2          	lea    (%rdx,%r8,8),%rdx
+     a9e:	49 89 4f 08          	mov    %rcx,0x8(%r15)
+     aa2:	4c 89 73 08          	mov    %r14,0x8(%rbx)
+     aa6:	48 8b 0a             	mov    (%rdx),%rcx
+     aa9:	48 89 4b 10          	mov    %rcx,0x10(%rbx)
+     aad:	49 89 4f 10          	mov    %rcx,0x10(%r15)
+     ab1:	48 8b 12             	mov    (%rdx),%rdx
+     ab4:	48 01 45 28          	add    %rax,0x28(%rbp)
+     ab8:	48 31 55 20          	xor    %rdx,0x20(%rbp)
+     abc:	48 83 c4 28          	add    $0x28,%rsp
+     ac0:	5b                   	pop    %rbx
+     ac1:	5d                   	pop    %rbp
+     ac2:	41 5c                	pop    %r12
+     ac4:	41 5d                	pop    %r13
+     ac6:	41 5e                	pop    %r14
+     ac8:	41 5f                	pop    %r15
+     aca:	c3                   	ret
+     acb:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+     ad0:	49 83 c5 01          	add    $0x1,%r13
+     ad4:	4c 39 e9             	cmp    %r13,%rcx
+     ad7:	74 67                	je     b40 <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0x160>
+     ad9:	48 8b 7d 00          	mov    0x0(%rbp),%rdi
+     add:	e9 6e ff ff ff       	jmp    a50 <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0x70>
+     ae2:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+     ae8:	48 89 ef             	mov    %rbp,%rdi
+     aeb:	4c 89 44 24 18       	mov    %r8,0x18(%rsp)
+     af0:	48 89 54 24 10       	mov    %rdx,0x10(%rsp)
+     af5:	48 89 4c 24 08       	mov    %rcx,0x8(%rsp)
+     afa:	e8 00 00 00 00       	call   aff <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0x11f>
+     aff:	8b 73 20             	mov    0x20(%rbx),%esi
+     b02:	41 8b 47 20          	mov    0x20(%r15),%eax
+     b06:	48 8b 54 24 10       	mov    0x10(%rsp),%rdx
+     b0b:	4c 8b 44 24 18       	mov    0x18(%rsp),%r8
+     b10:	48 01 f0             	add    %rsi,%rax
+     b13:	48 8b 4c 24 08       	mov    0x8(%rsp),%rcx
+     b18:	48 8b 72 58          	mov    0x58(%rdx),%rsi
+     b1c:	42 8b 3c 86          	mov    (%rsi,%r8,4),%edi
+     b20:	e9 68 ff ff ff       	jmp    a8d <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0xad>
+     b25:	0f 1f 00             	nopl   (%rax)
+     b28:	48 8b 4d 50          	mov    0x50(%rbp),%rcx
+     b2c:	48 2b 4d 48          	sub    0x48(%rbp),%rcx
+     b30:	48 c1 f9 04          	sar    $0x4,%rcx
+     b34:	e9 0a ff ff ff       	jmp    a43 <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0x63>
+     b39:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+     b40:	48 8b 42 40          	mov    0x40(%rdx),%rax
+     b44:	48 39 42 48          	cmp    %rax,0x48(%rdx)
+     b48:	0f 84 6e ff ff ff    	je     abc <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0xdc>
+     b4e:	48 83 38 00          	cmpq   $0x0,(%rax)
+     b52:	0f 85 64 ff ff ff    	jne    abc <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0xdc>
+     b58:	48 8b 42 58          	mov    0x58(%rdx),%rax
+     b5c:	8b 00                	mov    (%rax),%eax
+     b5e:	41 39 47 20          	cmp    %eax,0x20(%r15)
+     b62:	0f 85 54 ff ff ff    	jne    abc <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0xdc>
+     b68:	48 8b 52 70          	mov    0x70(%rdx),%rdx
+     b6c:	49 c7 47 08 fe ff ff 	movq   $0xfffffffffffffffe,0x8(%r15)
+     b73:	ff 
+     b74:	48 8b 12             	mov    (%rdx),%rdx
+     b77:	49 89 57 10          	mov    %rdx,0x10(%r15)
+     b7b:	48 31 55 20          	xor    %rdx,0x20(%rbp)
+     b7f:	48 01 45 28          	add    %rax,0x28(%rbp)
+     b83:	e9 34 ff ff ff       	jmp    abc <beyond_blossom::OneHopPredecoder::run_one(unsigned long)+0xdc>
+     b88:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+     b8f:	00 
+
+0000000000000b90 <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const>:
+     b90:	41 57                	push   %r15
+     b92:	4c 8b 47 08          	mov    0x8(%rdi),%r8
+     b96:	41 56                	push   %r14
+     b98:	41 55                	push   %r13
+     b9a:	4c 8b 2f             	mov    (%rdi),%r13
+     b9d:	41 54                	push   %r12
+     b9f:	55                   	push   %rbp
+     ba0:	53                   	push   %rbx
+     ba1:	4d 39 c5             	cmp    %r8,%r13
+     ba4:	0f 84 46 01 00 00    	je     cf0 <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const+0x160>
+     baa:	4c 89 e9             	mov    %r13,%rcx
+     bad:	31 c0                	xor    %eax,%eax
+     baf:	90                   	nop
+     bb0:	48 8b 31             	mov    (%rcx),%rsi
+     bb3:	48 8b 56 48          	mov    0x48(%rsi),%rdx
+     bb7:	48 8b 76 40          	mov    0x40(%rsi),%rsi
+     bbb:	48 39 d6             	cmp    %rdx,%rsi
+     bbe:	74 0a                	je     bca <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const+0x3a>
+     bc0:	48 83 3e 00          	cmpq   $0x0,(%rsi)
+     bc4:	0f 84 26 01 00 00    	je     cf0 <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const+0x160>
+     bca:	48 29 f2             	sub    %rsi,%rdx
+     bcd:	48 83 c1 30          	add    $0x30,%rcx
+     bd1:	48 c1 fa 03          	sar    $0x3,%rdx
+     bd5:	48 01 d0             	add    %rdx,%rax
+     bd8:	49 39 c8             	cmp    %rcx,%r8
+     bdb:	75 d3                	jne    bb0 <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const+0x20>
+     bdd:	48 ba ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaab,%rdx
+     be4:	aa aa aa 
+     be7:	4d 29 e8             	sub    %r13,%r8
+     bea:	49 c1 f8 04          	sar    $0x4,%r8
+     bee:	4c 0f af c2          	imul   %rdx,%r8
+     bf2:	31 d2                	xor    %edx,%edx
+     bf4:	49 f7 f0             	div    %r8
+     bf7:	31 d2                	xor    %edx,%edx
+     bf9:	48 83 f8 1f          	cmp    $0x1f,%rax
+     bfd:	0f 86 ef 00 00 00    	jbe    cf2 <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const+0x162>
+     c03:	4d 8d 60 ff          	lea    -0x1(%r8),%r12
+     c07:	b8 08 00 00 00       	mov    $0x8,%eax
+     c0c:	4d 89 ea             	mov    %r13,%r10
+     c0f:	49 bb cd cc cc cc cc 	movabs $0xcccccccccccccccd,%r11
+     c16:	cc cc cc 
+     c19:	49 c1 ec 02          	shr    $0x2,%r12
+     c1d:	49 83 c4 01          	add    $0x1,%r12
+     c21:	49 39 c4             	cmp    %rax,%r12
+     c24:	4c 0f 47 e0          	cmova  %rax,%r12
+     c28:	4c 89 c0             	mov    %r8,%rax
+     c2b:	31 d2                	xor    %edx,%edx
+     c2d:	45 31 f6             	xor    %r14d,%r14d
+     c30:	31 ed                	xor    %ebp,%ebp
+     c32:	31 db                	xor    %ebx,%ebx
+     c34:	45 31 c0             	xor    %r8d,%r8d
+     c37:	49 f7 f4             	div    %r12
+     c3a:	45 31 ff             	xor    %r15d,%r15d
+     c3d:	48 89 44 24 f0       	mov    %rax,-0x10(%rsp)
+     c42:	49 89 d1             	mov    %rdx,%r9
+     c45:	0f 1f 00             	nopl   (%rax)
+     c48:	48 8d 04 5b          	lea    (%rbx,%rbx,2),%rax
+     c4c:	48 c1 e0 04          	shl    $0x4,%rax
+     c50:	49 8b 04 02          	mov    (%r10,%rax,1),%rax
+     c54:	48 8b 50 48          	mov    0x48(%rax),%rdx
+     c58:	48 8b 70 40          	mov    0x40(%rax),%rsi
+     c5c:	48 89 d0             	mov    %rdx,%rax
+     c5f:	48 29 f0             	sub    %rsi,%rax
+     c62:	49 89 c5             	mov    %rax,%r13
+     c65:	49 c1 fd 03          	sar    $0x3,%r13
+     c69:	48 3d f8 00 00 00    	cmp    $0xf8,%rax
+     c6f:	0f 87 8b 00 00 00    	ja     d00 <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const+0x170>
+     c75:	48 39 f2             	cmp    %rsi,%rdx
+     c78:	74 30                	je     caa <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const+0x11a>
+     c7a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+     c80:	48 8b 06             	mov    (%rsi),%rax
+     c83:	48 85 c0             	test   %rax,%rax
+     c86:	74 19                	je     ca1 <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const+0x111>
+     c88:	48 2b 47 60          	sub    0x60(%rdi),%rax
+     c8c:	48 8b 4f 30          	mov    0x30(%rdi),%rcx
+     c90:	48 c1 f8 05          	sar    $0x5,%rax
+     c94:	49 0f af c3          	imul   %r11,%rax
+     c98:	48 83 3c c1 01       	cmpq   $0x1,(%rcx,%rax,8)
+     c9d:	49 83 d8 ff          	sbb    $0xffffffffffffffff,%r8
+     ca1:	48 83 c6 08          	add    $0x8,%rsi
+     ca5:	48 39 d6             	cmp    %rdx,%rsi
+     ca8:	75 d6                	jne    c80 <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const+0xf0>
+     caa:	4d 01 ef             	add    %r13,%r15
+     cad:	48 8b 44 24 f0       	mov    -0x10(%rsp),%rax
+     cb2:	4c 01 cd             	add    %r9,%rbp
+     cb5:	48 01 c3             	add    %rax,%rbx
+     cb8:	4c 39 e5             	cmp    %r12,%rbp
+     cbb:	72 07                	jb     cc4 <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const+0x134>
+     cbd:	48 83 c3 01          	add    $0x1,%rbx
+     cc1:	4c 29 e5             	sub    %r12,%rbp
+     cc4:	49 83 c6 01          	add    $0x1,%r14
+     cc8:	4d 39 e6             	cmp    %r12,%r14
+     ccb:	0f 85 77 ff ff ff    	jne    c48 <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const+0xb8>
+     cd1:	49 c1 e0 03          	shl    $0x3,%r8
+     cd5:	5b                   	pop    %rbx
+     cd6:	5d                   	pop    %rbp
+     cd7:	4d 39 f8             	cmp    %r15,%r8
+     cda:	41 5c                	pop    %r12
+     cdc:	41 5d                	pop    %r13
+     cde:	0f 92 c2             	setb   %dl
+     ce1:	41 5e                	pop    %r14
+     ce3:	41 5f                	pop    %r15
+     ce5:	89 d0                	mov    %edx,%eax
+     ce7:	c3                   	ret
+     ce8:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+     cef:	00 
+     cf0:	31 d2                	xor    %edx,%edx
+     cf2:	5b                   	pop    %rbx
+     cf3:	89 d0                	mov    %edx,%eax
+     cf5:	5d                   	pop    %rbp
+     cf6:	41 5c                	pop    %r12
+     cf8:	41 5d                	pop    %r13
+     cfa:	41 5e                	pop    %r14
+     cfc:	41 5f                	pop    %r15
+     cfe:	c3                   	ret
+     cff:	90                   	nop
+     d00:	4c 89 4c 24 f8       	mov    %r9,-0x8(%rsp)
+     d05:	31 c9                	xor    %ecx,%ecx
+     d07:	ba 20 00 00 00       	mov    $0x20,%edx
+     d0c:	0f 1f 40 00          	nopl   0x0(%rax)
+     d10:	48 89 c8             	mov    %rcx,%rax
+     d13:	48 c1 e8 05          	shr    $0x5,%rax
+     d17:	48 8b 04 c6          	mov    (%rsi,%rax,8),%rax
+     d1b:	48 85 c0             	test   %rax,%rax
+     d1e:	74 19                	je     d39 <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const+0x1a9>
+     d20:	48 2b 47 60          	sub    0x60(%rdi),%rax
+     d24:	4c 8b 4f 30          	mov    0x30(%rdi),%r9
+     d28:	48 c1 f8 05          	sar    $0x5,%rax
+     d2c:	49 0f af c3          	imul   %r11,%rax
+     d30:	49 83 3c c1 01       	cmpq   $0x1,(%r9,%rax,8)
+     d35:	49 83 d8 ff          	sbb    $0xffffffffffffffff,%r8
+     d39:	4c 01 e9             	add    %r13,%rcx
+     d3c:	48 83 ea 01          	sub    $0x1,%rdx
+     d40:	75 ce                	jne    d10 <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const+0x180>
+     d42:	4c 8b 4c 24 f8       	mov    -0x8(%rsp),%r9
+     d47:	49 83 c7 20          	add    $0x20,%r15
+     d4b:	e9 5d ff ff ff       	jmp    cad <beyond_blossom::OneHopPredecoder::should_skip_sparse_high_degree() const+0x11d>
+
+0000000000000d50 <beyond_blossom::OneHopPredecoder::run()>:
+     d50:	41 57                	push   %r15
+     d52:	41 56                	push   %r14
+     d54:	41 55                	push   %r13
+     d56:	41 54                	push   %r12
+     d58:	49 89 fc             	mov    %rdi,%r12
+     d5b:	55                   	push   %rbp
+     d5c:	53                   	push   %rbx
+     d5d:	48 83 ec 38          	sub    $0x38,%rsp
+     d61:	e8 00 00 00 00       	call   d66 <beyond_blossom::OneHopPredecoder::run()+0x16>
+     d66:	41 88 44 24 19       	mov    %al,0x19(%r12)
+     d6b:	84 c0                	test   %al,%al
+     d6d:	0f 85 c8 02 00 00    	jne    103b <beyond_blossom::OneHopPredecoder::run()+0x2eb>
+     d73:	49 8b 2c 24          	mov    (%r12),%rbp
+     d77:	4d 8b 54 24 08       	mov    0x8(%r12),%r10
+     d7c:	49 39 ea             	cmp    %rbp,%r10
+     d7f:	0f 84 a8 03 00 00    	je     112d <beyond_blossom::OneHopPredecoder::run()+0x3dd>
+     d85:	4d 8b 6c 24 50       	mov    0x50(%r12),%r13
+     d8a:	4d 8b 44 24 48       	mov    0x48(%r12),%r8
+     d8f:	48 b9 cd cc cc cc cc 	movabs $0xcccccccccccccccd,%rcx
+     d96:	cc cc cc 
+     d99:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+     da0:	4c 8b 75 00          	mov    0x0(%rbp),%r14
+     da4:	4c 89 e8             	mov    %r13,%rax
+     da7:	c7 45 24 ff ff ff ff 	movl   $0xffffffff,0x24(%rbp)
+     dae:	4c 29 c0             	sub    %r8,%rax
+     db1:	49 8b 7e 48          	mov    0x48(%r14),%rdi
+     db5:	49 8b 56 40          	mov    0x40(%r14),%rdx
+     db9:	48 c1 f8 04          	sar    $0x4,%rax
+     dbd:	48 89 45 18          	mov    %rax,0x18(%rbp)
+     dc1:	48 39 d7             	cmp    %rdx,%rdi
+     dc4:	0f 84 ee 02 00 00    	je     10b8 <beyond_blossom::OneHopPredecoder::run()+0x368>
+     dca:	45 31 ff             	xor    %r15d,%r15d
+     dcd:	be ff ff ff ff       	mov    $0xffffffff,%esi
+     dd2:	31 db                	xor    %ebx,%ebx
+     dd4:	eb 3b                	jmp    e11 <beyond_blossom::OneHopPredecoder::run()+0xc1>
+     dd6:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+     ddd:	00 00 00 
+     de0:	49 2b 44 24 60       	sub    0x60(%r12),%rax
+     de5:	49 8b 74 24 30       	mov    0x30(%r12),%rsi
+     dea:	48 c1 f8 05          	sar    $0x5,%rax
+     dee:	48 0f af c1          	imul   %rcx,%rax
+     df2:	48 8b 34 c6          	mov    (%rsi,%rax,8),%rsi
+     df6:	48 85 f6             	test   %rsi,%rsi
+     df9:	75 3d                	jne    e38 <beyond_blossom::OneHopPredecoder::run()+0xe8>
+     dfb:	48 89 f8             	mov    %rdi,%rax
+     dfe:	48 83 c3 01          	add    $0x1,%rbx
+     e02:	48 29 d0             	sub    %rdx,%rax
+     e05:	48 c1 f8 03          	sar    $0x3,%rax
+     e09:	48 39 c3             	cmp    %rax,%rbx
+     e0c:	73 52                	jae    e60 <beyond_blossom::OneHopPredecoder::run()+0x110>
+     e0e:	8b 75 24             	mov    0x24(%rbp),%esi
+     e11:	49 8b 46 58          	mov    0x58(%r14),%rax
+     e15:	8b 04 98             	mov    (%rax,%rbx,4),%eax
+     e18:	39 f0                	cmp    %esi,%eax
+     e1a:	0f 47 c6             	cmova  %esi,%eax
+     e1d:	89 45 24             	mov    %eax,0x24(%rbp)
+     e20:	48 8b 04 da          	mov    (%rdx,%rbx,8),%rax
+     e24:	48 85 c0             	test   %rax,%rax
+     e27:	75 b7                	jne    de0 <beyond_blossom::OneHopPredecoder::run()+0x90>
+     e29:	41 bf 01 00 00 00    	mov    $0x1,%r15d
+     e2f:	eb ca                	jmp    dfb <beyond_blossom::OneHopPredecoder::run()+0xab>
+     e31:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+     e38:	48 83 ee 01          	sub    $0x1,%rsi
+     e3c:	4d 39 6c 24 58       	cmp    %r13,0x58(%r12)
+     e41:	0f 84 d9 00 00 00    	je     f20 <beyond_blossom::OneHopPredecoder::run()+0x1d0>
+     e47:	49 89 75 00          	mov    %rsi,0x0(%r13)
+     e4b:	49 83 c5 10          	add    $0x10,%r13
+     e4f:	49 89 5d f8          	mov    %rbx,-0x8(%r13)
+     e53:	4d 89 6c 24 50       	mov    %r13,0x50(%r12)
+     e58:	eb a1                	jmp    dfb <beyond_blossom::OneHopPredecoder::run()+0xab>
+     e5a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+     e60:	4c 89 e8             	mov    %r13,%rax
+     e63:	4c 2b 7d 18          	sub    0x18(%rbp),%r15
+     e67:	ba 02 00 00 00       	mov    $0x2,%edx
+     e6c:	4c 29 c0             	sub    %r8,%rax
+     e6f:	48 c1 f8 04          	sar    $0x4,%rax
+     e73:	4c 01 f8             	add    %r15,%rax
+     e76:	48 39 d0             	cmp    %rdx,%rax
+     e79:	48 0f 47 c2          	cmova  %rdx,%rax
+     e7d:	88 45 28             	mov    %al,0x28(%rbp)
+     e80:	48 83 c5 30          	add    $0x30,%rbp
+     e84:	49 39 ea             	cmp    %rbp,%r10
+     e87:	0f 85 13 ff ff ff    	jne    da0 <beyond_blossom::OneHopPredecoder::run()+0x50>
+     e8d:	49 8b 6c 24 08       	mov    0x8(%r12),%rbp
+     e92:	49 8b 14 24          	mov    (%r12),%rdx
+     e96:	0f b7 05 00 00 00 00 	movzwl 0x0(%rip),%eax        # e9d <beyond_blossom::OneHopPredecoder::run()+0x14d>
+     e9d:	c6 44 24 2e 00       	movb   $0x0,0x2e(%rsp)
+     ea2:	4c 8d 7c 24 2c       	lea    0x2c(%rsp),%r15
+     ea7:	49 be ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaab,%r14
+     eae:	aa aa aa 
+     eb1:	66 89 44 24 2c       	mov    %ax,0x2c(%rsp)
+     eb6:	45 0f b6 2f          	movzbl (%r15),%r13d
+     eba:	48 39 ea             	cmp    %rbp,%rdx
+     ebd:	0f 84 f7 00 00 00    	je     fba <beyond_blossom::OneHopPredecoder::run()+0x26a>
+     ec3:	31 db                	xor    %ebx,%ebx
+     ec5:	eb 24                	jmp    eeb <beyond_blossom::OneHopPredecoder::run()+0x19b>
+     ec7:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+     ece:	00 00 
+     ed0:	48 89 e8             	mov    %rbp,%rax
+     ed3:	48 83 c3 01          	add    $0x1,%rbx
+     ed7:	48 29 d0             	sub    %rdx,%rax
+     eda:	48 c1 f8 04          	sar    $0x4,%rax
+     ede:	49 0f af c6          	imul   %r14,%rax
+     ee2:	48 39 c3             	cmp    %rax,%rbx
+     ee5:	0f 83 bd 00 00 00    	jae    fa8 <beyond_blossom::OneHopPredecoder::run()+0x258>
+     eeb:	48 8d 04 5b          	lea    (%rbx,%rbx,2),%rax
+     eef:	48 c1 e0 04          	shl    $0x4,%rax
+     ef3:	48 01 d0             	add    %rdx,%rax
+     ef6:	44 38 68 28          	cmp    %r13b,0x28(%rax)
+     efa:	75 d4                	jne    ed0 <beyond_blossom::OneHopPredecoder::run()+0x180>
+     efc:	48 83 78 08 ff       	cmpq   $0xffffffffffffffff,0x8(%rax)
+     f01:	75 cd                	jne    ed0 <beyond_blossom::OneHopPredecoder::run()+0x180>
+     f03:	48 89 de             	mov    %rbx,%rsi
+     f06:	4c 89 e7             	mov    %r12,%rdi
+     f09:	e8 00 00 00 00       	call   f0e <beyond_blossom::OneHopPredecoder::run()+0x1be>
+     f0e:	49 8b 6c 24 08       	mov    0x8(%r12),%rbp
+     f13:	49 8b 14 24          	mov    (%r12),%rdx
+     f17:	eb b7                	jmp    ed0 <beyond_blossom::OneHopPredecoder::run()+0x180>
+     f19:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+     f20:	48 bf ff ff ff ff ff 	movabs $0x7ffffffffffffff,%rdi
+     f27:	ff ff 07 
+     f2a:	4c 89 ea             	mov    %r13,%rdx
+     f2d:	4c 29 c2             	sub    %r8,%rdx
+     f30:	48 89 d0             	mov    %rdx,%rax
+     f33:	48 c1 f8 04          	sar    $0x4,%rax
+     f37:	48 39 f8             	cmp    %rdi,%rax
+     f3a:	0f 84 84 02 00 00    	je     11c4 <beyond_blossom::OneHopPredecoder::run()+0x474>
+     f40:	4d 39 c5             	cmp    %r8,%r13
+     f43:	bf 01 00 00 00       	mov    $0x1,%edi
+     f48:	48 0f 45 f8          	cmovne %rax,%rdi
+     f4c:	48 01 f8             	add    %rdi,%rax
+     f4f:	0f 82 7b 02 00 00    	jb     11d0 <beyond_blossom::OneHopPredecoder::run()+0x480>
+     f55:	48 85 c0             	test   %rax,%rax
+     f58:	0f 85 0a 02 00 00    	jne    1168 <beyond_blossom::OneHopPredecoder::run()+0x418>
+     f5e:	45 31 db             	xor    %r11d,%r11d
+     f61:	45 31 c9             	xor    %r9d,%r9d
+     f64:	49 8d 04 11          	lea    (%r9,%rdx,1),%rax
+     f68:	4d 8d 6c 11 10       	lea    0x10(%r9,%rdx,1),%r13
+     f6d:	48 89 30             	mov    %rsi,(%rax)
+     f70:	48 89 58 08          	mov    %rbx,0x8(%rax)
+     f74:	48 85 d2             	test   %rdx,%rdx
+     f77:	0f 8f d3 00 00 00    	jg     1050 <beyond_blossom::OneHopPredecoder::run()+0x300>
+     f7d:	4d 85 c0             	test   %r8,%r8
+     f80:	0f 85 39 01 00 00    	jne    10bf <beyond_blossom::OneHopPredecoder::run()+0x36f>
+     f86:	49 8b 7e 48          	mov    0x48(%r14),%rdi
+     f8a:	49 8b 56 40          	mov    0x40(%r14),%rdx
+     f8e:	4d 89 4c 24 48       	mov    %r9,0x48(%r12)
+     f93:	4d 89 c8             	mov    %r9,%r8
+     f96:	4d 89 6c 24 50       	mov    %r13,0x50(%r12)
+     f9b:	4d 89 5c 24 58       	mov    %r11,0x58(%r12)
+     fa0:	e9 56 fe ff ff       	jmp    dfb <beyond_blossom::OneHopPredecoder::run()+0xab>
+     fa5:	0f 1f 00             	nopl   (%rax)
+     fa8:	49 83 c7 01          	add    $0x1,%r15
+     fac:	48 8d 44 24 2f       	lea    0x2f(%rsp),%rax
+     fb1:	49 39 c7             	cmp    %rax,%r15
+     fb4:	0f 85 fc fe ff ff    	jne    eb6 <beyond_blossom::OneHopPredecoder::run()+0x166>
+     fba:	48 b9 ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaab,%rcx
+     fc1:	aa aa aa 
+     fc4:	48 89 e8             	mov    %rbp,%rax
+     fc7:	48 29 d0             	sub    %rdx,%rax
+     fca:	48 c1 f8 04          	sar    $0x4,%rax
+     fce:	48 0f af c1          	imul   %rcx,%rax
+     fd2:	48 89 c1             	mov    %rax,%rcx
+     fd5:	48 c1 f9 02          	sar    $0x2,%rcx
+     fd9:	48 85 c9             	test   %rcx,%rcx
+     fdc:	0f 8e ff 00 00 00    	jle    10e1 <beyond_blossom::OneHopPredecoder::run()+0x391>
+     fe2:	48 8d 04 49          	lea    (%rcx,%rcx,2),%rax
+     fe6:	48 c1 e0 06          	shl    $0x6,%rax
+     fea:	48 01 d0             	add    %rdx,%rax
+     fed:	eb 35                	jmp    1024 <beyond_blossom::OneHopPredecoder::run()+0x2d4>
+     fef:	90                   	nop
+     ff0:	48 83 7a 38 ff       	cmpq   $0xffffffffffffffff,0x38(%rdx)
+     ff5:	0f 84 02 01 00 00    	je     10fd <beyond_blossom::OneHopPredecoder::run()+0x3ad>
+     ffb:	48 83 7a 68 ff       	cmpq   $0xffffffffffffffff,0x68(%rdx)
+    1000:	0f 84 06 01 00 00    	je     110c <beyond_blossom::OneHopPredecoder::run()+0x3bc>
+    1006:	48 83 ba 98 00 00 00 	cmpq   $0xffffffffffffffff,0x98(%rdx)
+    100d:	ff 
+    100e:	0f 84 07 01 00 00    	je     111b <beyond_blossom::OneHopPredecoder::run()+0x3cb>
+    1014:	48 81 c2 c0 00 00 00 	add    $0xc0,%rdx
+    101b:	48 39 c2             	cmp    %rax,%rdx
+    101e:	0f 84 a5 00 00 00    	je     10c9 <beyond_blossom::OneHopPredecoder::run()+0x379>
+    1024:	48 83 7a 08 ff       	cmpq   $0xffffffffffffffff,0x8(%rdx)
+    1029:	75 c5                	jne    ff0 <beyond_blossom::OneHopPredecoder::run()+0x2a0>
+    102b:	48 39 ea             	cmp    %rbp,%rdx
+    102e:	0f 94 c0             	sete   %al
+    1031:	41 88 44 24 18       	mov    %al,0x18(%r12)
+    1036:	41 88 44 24 1a       	mov    %al,0x1a(%r12)
+    103b:	48 83 c4 38          	add    $0x38,%rsp
+    103f:	5b                   	pop    %rbx
+    1040:	5d                   	pop    %rbp
+    1041:	41 5c                	pop    %r12
+    1043:	41 5d                	pop    %r13
+    1045:	41 5e                	pop    %r14
+    1047:	41 5f                	pop    %r15
+    1049:	c3                   	ret
+    104a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+    1050:	4c 89 c6             	mov    %r8,%rsi
+    1053:	4c 89 cf             	mov    %r9,%rdi
+    1056:	4c 89 5c 24 10       	mov    %r11,0x10(%rsp)
+    105b:	4c 89 54 24 08       	mov    %r10,0x8(%rsp)
+    1060:	4c 89 04 24          	mov    %r8,(%rsp)
+    1064:	e8 00 00 00 00       	call   1069 <beyond_blossom::OneHopPredecoder::run()+0x319>
+    1069:	49 8b 74 24 58       	mov    0x58(%r12),%rsi
+    106e:	4c 8b 04 24          	mov    (%rsp),%r8
+    1072:	4c 8b 54 24 08       	mov    0x8(%rsp),%r10
+    1077:	4c 8b 5c 24 10       	mov    0x10(%rsp),%r11
+    107c:	49 89 c1             	mov    %rax,%r9
+    107f:	4c 29 c6             	sub    %r8,%rsi
+    1082:	4c 89 c7             	mov    %r8,%rdi
+    1085:	4c 89 5c 24 10       	mov    %r11,0x10(%rsp)
+    108a:	4c 89 4c 24 08       	mov    %r9,0x8(%rsp)
+    108f:	4c 89 14 24          	mov    %r10,(%rsp)
+    1093:	e8 00 00 00 00       	call   1098 <beyond_blossom::OneHopPredecoder::run()+0x348>
+    1098:	4c 8b 5c 24 10       	mov    0x10(%rsp),%r11
+    109d:	4c 8b 4c 24 08       	mov    0x8(%rsp),%r9
+    10a2:	48 b9 cd cc cc cc cc 	movabs $0xcccccccccccccccd,%rcx
+    10a9:	cc cc cc 
+    10ac:	4c 8b 14 24          	mov    (%rsp),%r10
+    10b0:	e9 d1 fe ff ff       	jmp    f86 <beyond_blossom::OneHopPredecoder::run()+0x236>
+    10b5:	0f 1f 00             	nopl   (%rax)
+    10b8:	31 c0                	xor    %eax,%eax
+    10ba:	e9 be fd ff ff       	jmp    e7d <beyond_blossom::OneHopPredecoder::run()+0x12d>
+    10bf:	49 8b 74 24 58       	mov    0x58(%r12),%rsi
+    10c4:	4c 29 c6             	sub    %r8,%rsi
+    10c7:	eb b9                	jmp    1082 <beyond_blossom::OneHopPredecoder::run()+0x332>
+    10c9:	48 b9 ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaab,%rcx
+    10d0:	aa aa aa 
+    10d3:	48 89 e8             	mov    %rbp,%rax
+    10d6:	48 29 d0             	sub    %rdx,%rax
+    10d9:	48 c1 f8 04          	sar    $0x4,%rax
+    10dd:	48 0f af c1          	imul   %rcx,%rax
+    10e1:	48 83 f8 02          	cmp    $0x2,%rax
+    10e5:	74 5d                	je     1144 <beyond_blossom::OneHopPredecoder::run()+0x3f4>
+    10e7:	48 83 f8 03          	cmp    $0x3,%rax
+    10eb:	74 48                	je     1135 <beyond_blossom::OneHopPredecoder::run()+0x3e5>
+    10ed:	48 83 f8 01          	cmp    $0x1,%rax
+    10f1:	74 60                	je     1153 <beyond_blossom::OneHopPredecoder::run()+0x403>
+    10f3:	b8 01 00 00 00       	mov    $0x1,%eax
+    10f8:	e9 34 ff ff ff       	jmp    1031 <beyond_blossom::OneHopPredecoder::run()+0x2e1>
+    10fd:	48 83 c2 30          	add    $0x30,%rdx
+    1101:	48 39 d5             	cmp    %rdx,%rbp
+    1104:	0f 94 c0             	sete   %al
+    1107:	e9 25 ff ff ff       	jmp    1031 <beyond_blossom::OneHopPredecoder::run()+0x2e1>
+    110c:	48 83 c2 60          	add    $0x60,%rdx
+    1110:	48 39 d5             	cmp    %rdx,%rbp
+    1113:	0f 94 c0             	sete   %al
+    1116:	e9 16 ff ff ff       	jmp    1031 <beyond_blossom::OneHopPredecoder::run()+0x2e1>
+    111b:	48 81 c2 90 00 00 00 	add    $0x90,%rdx
+    1122:	48 39 d5             	cmp    %rdx,%rbp
+    1125:	0f 94 c0             	sete   %al
+    1128:	e9 04 ff ff ff       	jmp    1031 <beyond_blossom::OneHopPredecoder::run()+0x2e1>
+    112d:	48 89 ea             	mov    %rbp,%rdx
+    1130:	e9 61 fd ff ff       	jmp    e96 <beyond_blossom::OneHopPredecoder::run()+0x146>
+    1135:	48 83 7a 08 ff       	cmpq   $0xffffffffffffffff,0x8(%rdx)
+    113a:	0f 84 eb fe ff ff    	je     102b <beyond_blossom::OneHopPredecoder::run()+0x2db>
+    1140:	48 83 c2 30          	add    $0x30,%rdx
+    1144:	48 83 7a 08 ff       	cmpq   $0xffffffffffffffff,0x8(%rdx)
+    1149:	0f 84 dc fe ff ff    	je     102b <beyond_blossom::OneHopPredecoder::run()+0x2db>
+    114f:	48 83 c2 30          	add    $0x30,%rdx
+    1153:	48 83 7a 08 ff       	cmpq   $0xffffffffffffffff,0x8(%rdx)
+    1158:	b8 01 00 00 00       	mov    $0x1,%eax
+    115d:	0f 85 ce fe ff ff    	jne    1031 <beyond_blossom::OneHopPredecoder::run()+0x2e1>
+    1163:	e9 c3 fe ff ff       	jmp    102b <beyond_blossom::OneHopPredecoder::run()+0x2db>
+    1168:	48 bf ff ff ff ff ff 	movabs $0x7ffffffffffffff,%rdi
+    116f:	ff ff 07 
+    1172:	48 39 f8             	cmp    %rdi,%rax
+    1175:	48 0f 47 c7          	cmova  %rdi,%rax
+    1179:	48 c1 e0 04          	shl    $0x4,%rax
+    117d:	49 89 c5             	mov    %rax,%r13
+    1180:	4c 89 ef             	mov    %r13,%rdi
+    1183:	4c 89 44 24 18       	mov    %r8,0x18(%rsp)
+    1188:	48 89 54 24 10       	mov    %rdx,0x10(%rsp)
+    118d:	4c 89 54 24 08       	mov    %r10,0x8(%rsp)
+    1192:	48 89 34 24          	mov    %rsi,(%rsp)
+    1196:	e8 00 00 00 00       	call   119b <beyond_blossom::OneHopPredecoder::run()+0x44b>
+    119b:	48 8b 34 24          	mov    (%rsp),%rsi
+    119f:	4c 8b 54 24 08       	mov    0x8(%rsp),%r10
+    11a4:	48 b9 cd cc cc cc cc 	movabs $0xcccccccccccccccd,%rcx
+    11ab:	cc cc cc 
+    11ae:	48 8b 54 24 10       	mov    0x10(%rsp),%rdx
+    11b3:	4c 8b 44 24 18       	mov    0x18(%rsp),%r8
+    11b8:	49 89 c1             	mov    %rax,%r9
+    11bb:	4e 8d 1c 28          	lea    (%rax,%r13,1),%r11
+    11bf:	e9 a0 fd ff ff       	jmp    f64 <beyond_blossom::OneHopPredecoder::run()+0x214>
+    11c4:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 11cb <beyond_blossom::OneHopPredecoder::run()+0x47b>
+    11cb:	e8 00 00 00 00       	call   11d0 <beyond_blossom::OneHopPredecoder::run()+0x480>
+    11d0:	49 bd f0 ff ff ff ff 	movabs $0x7ffffffffffffff0,%r13
+    11d7:	ff ff 7f 
+    11da:	eb a4                	jmp    1180 <beyond_blossom::OneHopPredecoder::run()+0x430>
+    11dc:	0f 1f 40 00          	nopl   0x0(%rax)
+
+00000000000011e0 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const>:
+    11e0:	41 57                	push   %r15
+    11e2:	41 56                	push   %r14
+    11e4:	41 55                	push   %r13
+    11e6:	41 54                	push   %r12
+    11e8:	55                   	push   %rbp
+    11e9:	48 89 f5             	mov    %rsi,%rbp
+    11ec:	53                   	push   %rbx
+    11ed:	48 83 ec 28          	sub    $0x28,%rsp
+    11f1:	48 8b 77 08          	mov    0x8(%rdi),%rsi
+    11f5:	48 8b 0f             	mov    (%rdi),%rcx
+    11f8:	48 39 ce             	cmp    %rcx,%rsi
+    11fb:	0f 84 27 01 00 00    	je     1328 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x148>
+    1201:	49 bc ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaab,%r12
+    1208:	aa aa aa 
+    120b:	49 89 fd             	mov    %rdi,%r13
+    120e:	31 db                	xor    %ebx,%ebx
+    1210:	eb 56                	jmp    1268 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x88>
+    1212:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+    1218:	48 39 d3             	cmp    %rdx,%rbx
+    121b:	73 30                	jae    124d <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x6d>
+    121d:	48 8d 14 52          	lea    (%rdx,%rdx,2),%rdx
+    1221:	4c 8b 30             	mov    (%rax),%r14
+    1224:	4c 8b 40 10          	mov    0x10(%rax),%r8
+    1228:	48 c1 e2 04          	shl    $0x4,%rdx
+    122c:	48 8b 45 08          	mov    0x8(%rbp),%rax
+    1230:	48 8b 14 11          	mov    (%rcx,%rdx,1),%rdx
+    1234:	48 3b 45 10          	cmp    0x10(%rbp),%rax
+    1238:	74 5c                	je     1296 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0xb6>
+    123a:	4c 89 30             	mov    %r14,(%rax)
+    123d:	48 83 c0 18          	add    $0x18,%rax
+    1241:	48 89 50 f0          	mov    %rdx,-0x10(%rax)
+    1245:	4c 89 40 f8          	mov    %r8,-0x8(%rax)
+    1249:	48 89 45 08          	mov    %rax,0x8(%rbp)
+    124d:	48 89 f0             	mov    %rsi,%rax
+    1250:	48 83 c3 01          	add    $0x1,%rbx
+    1254:	48 29 c8             	sub    %rcx,%rax
+    1257:	48 c1 f8 04          	sar    $0x4,%rax
+    125b:	49 0f af c4          	imul   %r12,%rax
+    125f:	48 39 c3             	cmp    %rax,%rbx
+    1262:	0f 83 c0 00 00 00    	jae    1328 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x148>
+    1268:	48 8d 04 5b          	lea    (%rbx,%rbx,2),%rax
+    126c:	48 c1 e0 04          	shl    $0x4,%rax
+    1270:	48 01 c8             	add    %rcx,%rax
+    1273:	48 8b 50 08          	mov    0x8(%rax),%rdx
+    1277:	48 83 fa ff          	cmp    $0xffffffffffffffff,%rdx
+    127b:	74 d0                	je     124d <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x6d>
+    127d:	48 83 fa fe          	cmp    $0xfffffffffffffffe,%rdx
+    1281:	75 95                	jne    1218 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x38>
+    1283:	4c 8b 30             	mov    (%rax),%r14
+    1286:	4c 8b 40 10          	mov    0x10(%rax),%r8
+    128a:	31 d2                	xor    %edx,%edx
+    128c:	48 8b 45 08          	mov    0x8(%rbp),%rax
+    1290:	48 3b 45 10          	cmp    0x10(%rbp),%rax
+    1294:	75 a4                	jne    123a <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x5a>
+    1296:	4c 8b 4d 00          	mov    0x0(%rbp),%r9
+    129a:	48 89 c6             	mov    %rax,%rsi
+    129d:	48 bf ab aa aa aa aa 	movabs $0xaaaaaaaaaaaaaaab,%rdi
+    12a4:	aa aa aa 
+    12a7:	4c 29 ce             	sub    %r9,%rsi
+    12aa:	48 89 f1             	mov    %rsi,%rcx
+    12ad:	48 c1 f9 03          	sar    $0x3,%rcx
+    12b1:	48 0f af cf          	imul   %rdi,%rcx
+    12b5:	48 bf 55 55 55 55 55 	movabs $0x555555555555555,%rdi
+    12bc:	55 55 05 
+    12bf:	48 39 f9             	cmp    %rdi,%rcx
+    12c2:	0f 84 17 01 00 00    	je     13df <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x1ff>
+    12c8:	4c 39 c8             	cmp    %r9,%rax
+    12cb:	b8 01 00 00 00       	mov    $0x1,%eax
+    12d0:	48 0f 45 c1          	cmovne %rcx,%rax
+    12d4:	48 01 c1             	add    %rax,%rcx
+    12d7:	0f 82 f6 00 00 00    	jb     13d3 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x1f3>
+    12dd:	48 85 c9             	test   %rcx,%rcx
+    12e0:	0f 85 9b 00 00 00    	jne    1381 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x1a1>
+    12e6:	45 31 ff             	xor    %r15d,%r15d
+    12e9:	31 c9                	xor    %ecx,%ecx
+    12eb:	48 8d 04 31          	lea    (%rcx,%rsi,1),%rax
+    12ef:	4c 89 30             	mov    %r14,(%rax)
+    12f2:	4c 8d 74 31 18       	lea    0x18(%rcx,%rsi,1),%r14
+    12f7:	48 89 50 08          	mov    %rdx,0x8(%rax)
+    12fb:	4c 89 40 10          	mov    %r8,0x10(%rax)
+    12ff:	48 85 f6             	test   %rsi,%rsi
+    1302:	7f 3c                	jg     1340 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x160>
+    1304:	4d 85 c9             	test   %r9,%r9
+    1307:	75 6f                	jne    1378 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x198>
+    1309:	48 89 4d 00          	mov    %rcx,0x0(%rbp)
+    130d:	49 8b 75 08          	mov    0x8(%r13),%rsi
+    1311:	4c 89 75 08          	mov    %r14,0x8(%rbp)
+    1315:	49 8b 4d 00          	mov    0x0(%r13),%rcx
+    1319:	4c 89 7d 10          	mov    %r15,0x10(%rbp)
+    131d:	e9 2b ff ff ff       	jmp    124d <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x6d>
+    1322:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+    1328:	48 83 c4 28          	add    $0x28,%rsp
+    132c:	5b                   	pop    %rbx
+    132d:	5d                   	pop    %rbp
+    132e:	41 5c                	pop    %r12
+    1330:	41 5d                	pop    %r13
+    1332:	41 5e                	pop    %r14
+    1334:	41 5f                	pop    %r15
+    1336:	c3                   	ret
+    1337:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+    133e:	00 00 
+    1340:	48 89 f2             	mov    %rsi,%rdx
+    1343:	48 89 cf             	mov    %rcx,%rdi
+    1346:	4c 89 ce             	mov    %r9,%rsi
+    1349:	4c 89 0c 24          	mov    %r9,(%rsp)
+    134d:	e8 00 00 00 00       	call   1352 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x172>
+    1352:	48 8b 75 10          	mov    0x10(%rbp),%rsi
+    1356:	4c 8b 0c 24          	mov    (%rsp),%r9
+    135a:	48 89 c1             	mov    %rax,%rcx
+    135d:	4c 29 ce             	sub    %r9,%rsi
+    1360:	4c 89 cf             	mov    %r9,%rdi
+    1363:	48 89 0c 24          	mov    %rcx,(%rsp)
+    1367:	e8 00 00 00 00       	call   136c <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x18c>
+    136c:	48 8b 0c 24          	mov    (%rsp),%rcx
+    1370:	eb 97                	jmp    1309 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x129>
+    1372:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+    1378:	48 8b 75 10          	mov    0x10(%rbp),%rsi
+    137c:	4c 29 ce             	sub    %r9,%rsi
+    137f:	eb df                	jmp    1360 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x180>
+    1381:	48 b8 55 55 55 55 55 	movabs $0x555555555555555,%rax
+    1388:	55 55 05 
+    138b:	48 39 c1             	cmp    %rax,%rcx
+    138e:	48 0f 47 c8          	cmova  %rax,%rcx
+    1392:	4c 8d 3c 49          	lea    (%rcx,%rcx,2),%r15
+    1396:	49 c1 e7 03          	shl    $0x3,%r15
+    139a:	4c 89 ff             	mov    %r15,%rdi
+    139d:	48 89 74 24 18       	mov    %rsi,0x18(%rsp)
+    13a2:	4c 89 4c 24 10       	mov    %r9,0x10(%rsp)
+    13a7:	48 89 54 24 08       	mov    %rdx,0x8(%rsp)
+    13ac:	4c 89 04 24          	mov    %r8,(%rsp)
+    13b0:	e8 00 00 00 00       	call   13b5 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x1d5>
+    13b5:	4c 8b 04 24          	mov    (%rsp),%r8
+    13b9:	48 8b 54 24 08       	mov    0x8(%rsp),%rdx
+    13be:	4c 8b 4c 24 10       	mov    0x10(%rsp),%r9
+    13c3:	48 8b 74 24 18       	mov    0x18(%rsp),%rsi
+    13c8:	48 89 c1             	mov    %rax,%rcx
+    13cb:	49 01 c7             	add    %rax,%r15
+    13ce:	e9 18 ff ff ff       	jmp    12eb <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x10b>
+    13d3:	49 bf f8 ff ff ff ff 	movabs $0x7ffffffffffffff8,%r15
+    13da:	ff ff 7f 
+    13dd:	eb bb                	jmp    139a <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x1ba>
+    13df:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 13e6 <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x206>
+    13e6:	e8 00 00 00 00       	call   13eb <beyond_blossom::OneHopPredecoder::append_match_edges(std::vector<beyond_blossom::CompressedEdge, std::allocator<beyond_blossom::CompressedEdge> >&) const+0x20b>
+
+Disassembly of section .text.unlikely:
+
+0000000000000000 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]>:
+   0:	bf 10 00 00 00       	mov    $0x10,%edi
+   5:	e8 00 00 00 00       	call   a <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0xa>
+   a:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 11 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x11>
+  11:	48 89 c7             	mov    %rax,%rdi
+  14:	49 89 c4             	mov    %rax,%r12
+  17:	e8 00 00 00 00       	call   1c <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x1c>
+  1c:	48 8b 15 00 00 00 00 	mov    0x0(%rip),%rdx        # 23 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x23>
+  23:	48 8b 35 00 00 00 00 	mov    0x0(%rip),%rsi        # 2a <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x2a>
+  2a:	4c 89 e7             	mov    %r12,%rdi
+  2d:	e8 00 00 00 00       	call   32 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x32>
+  32:	bf 10 00 00 00       	mov    $0x10,%edi
+  37:	e8 00 00 00 00       	call   3c <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x3c>
+  3c:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 43 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x43>
+  43:	48 89 c7             	mov    %rax,%rdi
+  46:	49 89 c4             	mov    %rax,%r12
+  49:	e8 00 00 00 00       	call   4e <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x4e>
+  4e:	48 8b 15 00 00 00 00 	mov    0x0(%rip),%rdx        # 55 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x55>
+  55:	48 8b 35 00 00 00 00 	mov    0x0(%rip),%rsi        # 5c <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x5c>
+  5c:	4c 89 e7             	mov    %r12,%rdi
+  5f:	e8 00 00 00 00       	call   64 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x64>
+  64:	48 89 c5             	mov    %rax,%rbp
+  67:	48 89 ef             	mov    %rbp,%rdi
+  6a:	e8 00 00 00 00       	call   6f <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x6f>
+  6f:	48 89 df             	mov    %rbx,%rdi
+  72:	e8 00 00 00 00       	call   77 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x77>
+  77:	e8 00 00 00 00       	call   7c <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x7c>
+  7c:	4c 89 e7             	mov    %r12,%rdi
+  7f:	48 89 c5             	mov    %rax,%rbp
+  82:	e8 00 00 00 00       	call   87 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x87>
+  87:	eb de                	jmp    67 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x67>
+  89:	48 89 c3             	mov    %rax,%rbx
+  8c:	e8 00 00 00 00       	call   91 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x91>
+  91:	48 89 df             	mov    %rbx,%rdi
+  94:	e8 00 00 00 00       	call   99 <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x99>
+  99:	eb e1                	jmp    7c <beyond_blossom::OneHopPredecoder::prepare(beyond_blossom::MatchingGraph&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&) [clone .cold]+0x7c>
+
+Disassembly of section .text.startup:
+
+0000000000000000 <_GLOBAL__sub_I_one_hop_predecoder.cc>:
+   0:	53                   	push   %rbx
+   1:	48 8d 1d 00 00 00 00 	lea    0x0(%rip),%rbx        # 8 <_GLOBAL__sub_I_one_hop_predecoder.cc+0x8>
+   8:	48 89 df             	mov    %rbx,%rdi
+   b:	e8 00 00 00 00       	call   10 <_GLOBAL__sub_I_one_hop_predecoder.cc+0x10>
+  10:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # 17 <_GLOBAL__sub_I_one_hop_predecoder.cc+0x17>
+  17:	48 89 de             	mov    %rbx,%rsi
+  1a:	5b                   	pop    %rbx
+  1b:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 22 <_GLOBAL__sub_I_one_hop_predecoder.cc+0x22>
+  22:	e9 00 00 00 00       	jmp    27 <.LC4+0x10>

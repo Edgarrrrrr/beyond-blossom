@@ -4,3 +4,5 @@ AE/external/patches/** -whitespace
 AE/data/** -whitespace
 AE/figures/** -whitespace
 AE/m4_pro/figures/** -whitespace
+# Keep sealed raw CSV line endings and original build-log whitespace intact.
+benchmarks/regression/results/** -text -whitespace

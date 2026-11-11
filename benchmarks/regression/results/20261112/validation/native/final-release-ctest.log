@@ -1,0 +1,718 @@
+Internal ctest changing into directory: /tmp/beyond-build/candidate
+Test project /tmp/beyond-build/candidate
+        Start  93: DoubleBufferComponents.Ty2x2MatchesGenericAcrossRegularAndFixedRoutes
+        Start  92: DoubleBufferComponents.ExpandedPartitionsMatchGenericAcrossRegularAndFixedRoutes
+  1/356 Test  #92: DoubleBufferComponents.ExpandedPartitionsMatchGenericAcrossRegularAndFixedRoutes ........................   Passed   11.47 sec
+        Start  42: SharedComponents.FixedAlgorithmIsDeterministicAcrossThreadsAndMatchesGenericWeight
+  2/356 Test  #93: DoubleBufferComponents.Ty2x2MatchesGenericAcrossRegularAndFixedRoutes ...................................   Passed   11.58 sec
+        Start  46: SharedComponents.FourPartitionsExerciseWideGridInteriorsAndSimdFootprints
+  3/356 Test  #46: SharedComponents.FourPartitionsExerciseWideGridInteriorsAndSimdFootprints ...............................   Passed    1.28 sec
+        Start  70: SharedComponents.ImportPreparationPreservesPreparedStateAcrossLayoutsAndWorkers
+  4/356 Test  #42: SharedComponents.FixedAlgorithmIsDeterministicAcrossThreadsAndMatchesGenericWeight ......................   Passed    1.60 sec
+        Start  66: SharedComponents.IndexedSeedInputPreservesPreparedSeedsAcrossGeometryAndThreads
+  5/356 Test  #66: SharedComponents.IndexedSeedInputPreservesPreparedSeedsAcrossGeometryAndThreads .........................   Passed    0.78 sec
+        Start  62: SharedComponents.FixedSeedConstructionKeepsPreparedStateAcrossYtAndThreads
+  6/356 Test  #70: SharedComponents.ImportPreparationPreservesPreparedStateAcrossLayoutsAndWorkers .........................   Passed    0.99 sec
+        Start 249: MwpmCorrelatedDecoding.BetterLogicalErrorRateThanUncorrelated
+  7/356 Test #249: MwpmCorrelatedDecoding.BetterLogicalErrorRateThanUncorrelated ...........................................   Passed    0.65 sec
+        Start  74: SharedComponents.ImportResetOwnerPreservesStateAndReuse
+  8/356 Test  #62: SharedComponents.FixedSeedConstructionKeepsPreparedStateAcrossYtAndThreads ..............................   Passed    0.72 sec
+        Start 102: DoubleBufferComponents.ImportResetOwnerPreservesBuffersAndRecovery
+  9/356 Test #102: DoubleBufferComponents.ImportResetOwnerPreservesBuffersAndRecovery ......................................   Passed    0.40 sec
+        Start  53: SharedComponents.GroupFourWorkersFillAndJoinAllFailuresBeforeOrderedRecovery
+ 10/356 Test  #74: SharedComponents.ImportResetOwnerPreservesStateAndReuse .................................................   Passed    0.60 sec
+        Start  79: SharedComponents.CaptainedBorrowedEntriesMatchOwnedAndKeepRankHoles
+ 11/356 Test  #53: SharedComponents.GroupFourWorkersFillAndJoinAllFailuresBeforeOrderedRecovery ............................   Passed    0.42 sec
+        Start 196: OneHopPredecoder.BoundPartitionPrefixesMatchExplicitSortWithoutTouchingHolesOrOtherScratch
+ 12/356 Test  #79: SharedComponents.CaptainedBorrowedEntriesMatchOwnedAndKeepRankHoles .....................................   Passed    0.39 sec
+        Start 195: OneHopPredecoder.FusedPartitionPrefixesMatchExplicitSortWithoutTouchingHolesOrOtherScratch
+ 13/356 Test #196: OneHopPredecoder.BoundPartitionPrefixesMatchExplicitSortWithoutTouchingHolesOrOtherScratch ..............   Passed    0.42 sec
+        Start  51: SharedComponents.GroupPreparedStateMatchesAcrossGeometriesThreadsAndImports
+ 14/356 Test #195: OneHopPredecoder.FusedPartitionPrefixesMatchExplicitSortWithoutTouchingHolesOrOtherScratch ..............   Passed    0.55 sec
+        Start 225: OneHopCap.BothSimdLayoutsMatchIndependentOracleAtAllRegisteredWidths
+ 15/356 Test  #51: SharedComponents.GroupPreparedStateMatchesAcrossGeometriesThreadsAndImports .............................   Passed    0.32 sec
+        Start 235: MwpmDecoding.CompareSolutionWeights
+ 16/356 Test #235: MwpmDecoding.CompareSolutionWeights .....................................................................   Passed    0.19 sec
+        Start  91: DoubleBufferComponents.SurfaceShotsMatchParentAcrossGroupsAndFallbacks
+ 17/356 Test #225: OneHopCap.BothSimdLayoutsMatchIndependentOracleAtAllRegisteredWidths ....................................   Passed    0.30 sec
+        Start 185: StaticGrid.LargeDistanceRegistryIncludesThreeDistanceRounds
+ 18/356 Test  #91: DoubleBufferComponents.SurfaceShotsMatchParentAcrossGroupsAndFallbacks ..................................   Passed    0.26 sec
+        Start 221: PredecodeNeighborhood.EveryActiveMaskAndBoundaryUnionAcrossWidthsAndStencils
+ 19/356 Test #185: StaticGrid.LargeDistanceRegistryIncludesThreeDistanceRounds .............................................   Passed    0.29 sec
+        Start 101: DoubleBufferComponents.ImportPreparationPreservesBuffersAndRecovery
+ 20/356 Test #221: PredecodeNeighborhood.EveryActiveMaskAndBoundaryUnionAcrossWidthsAndStencils ............................   Passed    0.25 sec
+        Start  71: SharedComponents.ImportPreparationJoinsFailuresAndRecovers
+ 21/356 Test #101: DoubleBufferComponents.ImportPreparationPreservesBuffersAndRecovery .....................................   Passed    0.22 sec
+        Start  99: DoubleBufferComponents.FixedSeedConstructionMatchesFusedAcrossBuffersAndThreads
+ 22/356 Test  #99: DoubleBufferComponents.FixedSeedConstructionMatchesFusedAcrossBuffersAndThreads .........................   Passed    0.18 sec
+        Start 100: DoubleBufferComponents.IndexedSeedInputPreservesBuffersAndRecovery
+ 23/356 Test  #71: SharedComponents.ImportPreparationJoinsFailuresAndRecovers ..............................................   Passed    0.23 sec
+        Start 227: OneHopSparseCap.DynamicWeightsAndAllMasksMatchFullRadiusOracle
+ 24/356 Test #100: DoubleBufferComponents.IndexedSeedInputPreservesBuffersAndRecovery ......................................   Passed    0.19 sec
+        Start 103: DoubleBufferComponents.CaptainedBorrowedBuffersMatchOwnedAndRecover
+ 25/356 Test #227: OneHopSparseCap.DynamicWeightsAndAllMasksMatchFullRadiusOracle ..........................................   Passed    0.20 sec
+        Start  29: SharedComponents.GroupStaticSpansPreserveFullScanOrderStateAndIgnoredEvents
+ 26/356 Test #103: DoubleBufferComponents.CaptainedBorrowedBuffersMatchOwnedAndRecover .....................................   Passed    0.18 sec
+        Start 236: MwpmDecoding.CompareSolutionWeightsWithNoLimitOnNumObservables
+ 27/356 Test  #29: SharedComponents.GroupStaticSpansPreserveFullScanOrderStateAndIgnoredEvents .............................   Passed    0.18 sec
+        Start 168: StaticGrid.ReusedDecoderMatchesGenericSurfaceGraphs
+ 28/356 Test #236: MwpmDecoding.CompareSolutionWeightsWithNoLimitOnNumObservables ..........................................   Passed    0.19 sec
+        Start  64: SharedComponents.FixedSeedConstructionJoinsInteriorAndConflictFailures
+ 29/356 Test #168: StaticGrid.ReusedDecoderMatchesGenericSurfaceGraphs .....................................................   Passed    0.18 sec
+        Start  75: SharedComponents.CaptainedImportFreezesModeAndJoinsEventFailures
+ 30/356 Test  #64: SharedComponents.FixedSeedConstructionJoinsInteriorAndConflictFailures ..................................   Passed    0.16 sec
+        Start  78: SharedComponents.SeedOnlyImportEventsMatchMwpmAcrossFixedHolesAndLanes
+ 31/356 Test  #75: SharedComponents.CaptainedImportFreezesModeAndJoinsEventFailures ........................................   Passed    0.14 sec
+        Start  68: SharedComponents.IndexedSeedInputJoinsWorkerFailuresAndPreservesMoves
+ 32/356 Test  #78: SharedComponents.SeedOnlyImportEventsMatchMwpmAcrossFixedHolesAndLanes ..................................   Passed    0.14 sec
+        Start  54: SharedComponents.GroupColdImportFailureJoinsPeerAndRecovers
+ 33/356 Test  #68: SharedComponents.IndexedSeedInputJoinsWorkerFailuresAndPreservesMoves ...................................   Passed    0.12 sec
+        Start 238: MwpmDecoding.DecodeToEdges
+ 34/356 Test #238: MwpmDecoding.DecodeToEdges ..............................................................................   Passed    0.10 sec
+        Start  31: SharedComponents.CachedBucketMatchesDynamicLayoutsAndKeepsRebindingTransactional
+ 35/356 Test  #54: SharedComponents.GroupColdImportFailureJoinsPeerAndRecovers .............................................   Passed    0.11 sec
+        Start 239: MwpmDecoding.CompareSolutionObsWithMaxNumBuckets
+ 36/356 Test  #31: SharedComponents.CachedBucketMatchesDynamicLayoutsAndKeepsRebindingTransactional ........................   Passed    0.10 sec
+        Start  47: SharedComponents.BulkImportMatchesSerialImportAndPreservesQueueAccounting
+ 37/356 Test #239: MwpmDecoding.CompareSolutionObsWithMaxNumBuckets ........................................................   Passed    0.10 sec
+        Start  39: SharedComponents.OwnerCellRangesPublishFinalIndicesAndClearAfterShot
+ 38/356 Test  #47: SharedComponents.BulkImportMatchesSerialImportAndPreservesQueueAccounting ...............................   Passed    0.09 sec
+        Start 194: OneHopPredecoder.FusedSerialLeavesPreserveStableOrderAndRepeatedRuns
+ 39/356 Test  #39: SharedComponents.OwnerCellRangesPublishFinalIndicesAndClearAfterShot ....................................   Passed    0.09 sec
+        Start  82: TimePartitionCuts.MatchesOriginalTimeFormulaForEverySmallGridCell
+ 40/356 Test #194: OneHopPredecoder.FusedSerialLeavesPreserveStableOrderAndRepeatedRuns ....................................   Passed    0.06 sec
+        Start 176: StaticGrid.MoveWithActiveRegionsPreservesNodeAddresses
+ 41/356 Test  #82: TimePartitionCuts.MatchesOriginalTimeFormulaForEverySmallGridCell .......................................   Passed    0.06 sec
+        Start  81: SharedComponents.P1BorrowedNormalAndSplitEntriesMatchOwnedAfterRecovery
+ 42/356 Test  #81: SharedComponents.P1BorrowedNormalAndSplitEntriesMatchOwnedAfterRecovery .................................   Passed    0.06 sec
+        Start 167: StaticGrid.TwelveDirectionComponentsPreserveEveryOriginalEdge
+ 43/356 Test #176: StaticGrid.MoveWithActiveRegionsPreservesNodeAddresses ..................................................   Passed    0.07 sec
+        Start  60: SharedComponents.GroupFixedStorageHolesAndDenseFallbackKeepObjectLifetimes
+ 44/356 Test #167: StaticGrid.TwelveDirectionComponentsPreserveEveryOriginalEdge ...........................................   Passed    0.06 sec
+        Start 105: DoubleBufferComponents.P1BorrowedExtractionRunsOnBothBuffersAndSurvivesErrorsAndMoves
+ 45/356 Test  #60: SharedComponents.GroupFixedStorageHolesAndDenseFallbackKeepObjectLifetimes ..............................   Passed    0.06 sec
+        Start 174: StaticGrid.CollisionStateTracksRegionTransitions
+ 46/356 Test #174: StaticGrid.CollisionStateTracksRegionTransitions ........................................................   Passed    0.04 sec
+        Start  49: SharedComponents.GroupCacheGeometryRebindsAtomicallyAndSurvivesMoves
+ 47/356 Test #105: DoubleBufferComponents.P1BorrowedExtractionRunsOnBothBuffersAndSurvivesErrorsAndMoves ...................   Passed    0.06 sec
+        Start 237: MwpmDecoding.DecodeToMatchEdges
+ 48/356 Test  #49: SharedComponents.GroupCacheGeometryRebindsAtomicallyAndSurvivesMoves ....................................   Passed    0.04 sec
+        Start 193: OneHopPredecoder.ExhaustiveSquareWeightsSyndromesAndBoundaries
+ 49/356 Test #237: MwpmDecoding.DecodeToMatchEdges .........................................................................   Passed    0.04 sec
+        Start 169: StaticGrid.AllSimdKernelsMatchIndependentCollisionFormula
+ 50/356 Test #193: OneHopPredecoder.ExhaustiveSquareWeightsSyndromesAndBoundaries ..........................................   Passed    0.05 sec
+        Start 204: OneHopPredecoder.AllMasksScalarAndAvx2AgreeWithIndependentRadiusFormula
+ 51/356 Test #169: StaticGrid.AllSimdKernelsMatchIndependentCollisionFormula ...............................................   Passed    0.04 sec
+        Start  55: SharedComponents.GroupPreservesPriorOwnersAcrossNormalFallbackMoveAndReset
+ 52/356 Test  #55: SharedComponents.GroupPreservesPriorOwnersAcrossNormalFallbackMoveAndReset ..............................   Passed    0.03 sec
+        Start  88: TimePartitionCuts.Ty2x2UnionSeparatesReadWriteFootprintsIncludingShortAxes
+ 53/356 Test #204: OneHopPredecoder.AllMasksScalarAndAvx2AgreeWithIndependentRadiusFormula .................................   Passed    0.04 sec
+        Start  36: SharedComponents.NeutralRegionsResetOnlySuccessfulImportsAcrossVariableShots
+ 54/356 Test  #88: TimePartitionCuts.Ty2x2UnionSeparatesReadWriteFootprintsIncludingShortAxes ..............................   Passed    0.03 sec
+        Start   4: UnstructuredPredecode.ExhaustiveTJoinOracleWithNegativeWeightsAndBoundaries
+ 55/356 Test  #36: SharedComponents.NeutralRegionsResetOnlySuccessfulImportsAcrossVariableShots ............................   Passed    0.03 sec
+        Start  87: TimePartitionCuts.GridConstructorPreservesLegacyTimeBuckets
+ 56/356 Test   #4: UnstructuredPredecode.ExhaustiveTJoinOracleWithNegativeWeightsAndBoundaries .............................   Passed    0.03 sec
+        Start 311: radix_heap_queue.wraparound_all_the_way_around
+ 57/356 Test  #87: TimePartitionCuts.GridConstructorPreservesLegacyTimeBuckets .............................................   Passed    0.03 sec
+        Start  20: DecoderStrategy.ParallelSessionEmptyOddExceptionalStreamsAndCapabilityBoundaries
+ 58/356 Test  #20: DecoderStrategy.ParallelSessionEmptyOddExceptionalStreamsAndCapabilityBoundaries ........................   Passed    0.01 sec
+        Start 248: MwpmCorrelatedDecoding.NegativeEdgeWeightsThrowException
+ 59/356 Test #311: radix_heap_queue.wraparound_all_the_way_around ..........................................................   Passed    0.03 sec
+        Start  80: SharedComponents.P1FixedStorageAndLifecycleOwnersAcrossFallbacksAndErrors
+ 60/356 Test #248: MwpmCorrelatedDecoding.NegativeEdgeWeightsThrowException ................................................   Passed    0.02 sec
+        Start 104: DoubleBufferComponents.P1OwnersRetainLifecycleAndStorageAcrossBothBuffers
+ 61/356 Test  #80: SharedComponents.P1FixedStorageAndLifecycleOwnersAcrossFallbacksAndErrors ...............................   Passed    0.03 sec
+        Start  86: TimePartitionCuts.ThreePlanesMatchClippedUnionAndSeparateReadWriteFootprints
+ 62/356 Test #104: DoubleBufferComponents.P1OwnersRetainLifecycleAndStorageAcrossBothBuffers ...............................   Passed    0.03 sec
+        Start  52: SharedComponents.GroupCanonicalPreparedStateForCrossBuildComparison
+ 63/356 Test  #86: TimePartitionCuts.ThreePlanesMatchClippedUnionAndSeparateReadWriteFootprints ............................   Passed    0.02 sec
+        Start  37: SharedComponents.DeferredSeedCleanupImplicitNextMoveAndRepeatedReset
+ 64/356 Test  #52: SharedComponents.GroupCanonicalPreparedStateForCrossBuildComparison .....................................   Passed    0.03 sec
+        Start  41: SharedComponents.SplitLifecyclePublishesBothComponentsBeforeMwpmAndPreservesResults
+ 65/356 Test  #37: SharedComponents.DeferredSeedCleanupImplicitNextMoveAndRepeatedReset ....................................   Passed    0.03 sec
+        Start 107: DoubleBufferComponents.ComponentChainFailuresJoinPeersAndPermitBothBufferReuse
+ 66/356 Test #107: DoubleBufferComponents.ComponentChainFailuresJoinPeersAndPermitBothBufferReuse ..........................   Passed    0.01 sec
+        Start 166: StaticGrid.IndependentComponentsAndVirtualBoundaries
+ 67/356 Test  #41: SharedComponents.SplitLifecyclePublishesBothComponentsBeforeMwpmAndPreservesResults .....................   Passed    0.03 sec
+        Start 244: MwpmDecoding.NegativeEdgeWeightFromStim
+ 68/356 Test #166: StaticGrid.IndependentComponentsAndVirtualBoundaries ....................................................   Passed    0.02 sec
+        Start  90: DoubleBufferComponents.EmptyOddBatchesKeepParityAndReturnOwnedResults
+ 69/356 Test #244: MwpmDecoding.NegativeEdgeWeightFromStim .................................................................   Passed    0.01 sec
+        Start  30: SharedComponents.GroupStaticSpansSupportArbitraryDetectorNumberingAndMoves
+ 70/356 Test  #90: DoubleBufferComponents.EmptyOddBatchesKeepParityAndReturnOwnedResults ...................................   Passed    0.01 sec
+        Start 247: MwpmDecoding.InvalidSyndromeForToricCode
+ 71/356 Test  #30: SharedComponents.GroupStaticSpansSupportArbitraryDetectorNumberingAndMoves ..............................   Passed    0.02 sec
+        Start  48: SharedComponents.ImportedContinuationFailureJoinsGroupsAndRecovers
+ 72/356 Test #247: MwpmDecoding.InvalidSyndromeForToricCode ................................................................   Passed    0.01 sec
+        Start 183: StaticGrid.CorrelatedDecodeIsRejectedAtStructuredEntry
+ 73/356 Test  #48: SharedComponents.ImportedContinuationFailureJoinsGroupsAndRecovers ......................................   Passed    0.01 sec
+        Start 152: StructuredSerialImport.CaptainedBorrowedFixedRanksMoveAndRollback
+ 74/356 Test #183: StaticGrid.CorrelatedDecodeIsRejectedAtStructuredEntry ..................................................   Passed    0.01 sec
+        Start  57: SharedComponents.GroupThreePlaneUnrestrictedTargetsKeepDualAndMatchingValid
+ 75/356 Test #152: StructuredSerialImport.CaptainedBorrowedFixedRanksMoveAndRollback .......................................   Passed    0.01 sec
+        Start 173: StaticGrid.DiagramUsesOriginalDetectorIds
+ 76/356 Test  #57: SharedComponents.GroupThreePlaneUnrestrictedTargetsKeepDualAndMatchingValid .............................   Passed    0.01 sec
+        Start  94: DoubleBufferComponents.ExceptionsJoinBothGroupsAndPermitReuse
+ 77/356 Test #173: StaticGrid.DiagramUsesOriginalDetectorIds ...............................................................   Passed    0.02 sec
+        Start 186: StaticGrid.ConstructedCellAccessKeepsInactiveCellsAndFirstMinimumMasked
+ 78/356 Test  #94: DoubleBufferComponents.ExceptionsJoinBothGroupsAndPermitReuse ...........................................   Passed    0.01 sec
+        Start 170: StaticGrid.InvalidConfigurationPreservesDecoder
+ 79/356 Test #186: StaticGrid.ConstructedCellAccessKeepsInactiveCellsAndFirstMinimumMasked .................................   Passed    0.01 sec
+        Start  72: SharedComponents.ImportPreparationHandlesCrossLanePairsAndEmptyRootLanes
+ 80/356 Test #170: StaticGrid.InvalidConfigurationPreservesDecoder .........................................................   Passed    0.01 sec
+        Start 106: DoubleBufferComponents.ComponentChainsSolveBeforePeerPreparationCompletes
+ 81/356 Test  #72: SharedComponents.ImportPreparationHandlesCrossLanePairsAndEmptyRootLanes ................................   Passed    0.01 sec
+        Start  56: SharedComponents.GroupOriginalLowComponentP1SignedAndFormalFailureRoutes
+ 82/356 Test #106: DoubleBufferComponents.ComponentChainsSolveBeforePeerPreparationCompletes ...............................   Passed    0.01 sec
+        Start 148: StructuredSerialImport.BorrowedNormalEntryMatchesOwnedAcrossTiesAndInputPermutations
+ 83/356 Test  #56: SharedComponents.GroupOriginalLowComponentP1SignedAndFormalFailureRoutes ................................   Passed    0.01 sec
+        Start 175: StaticGrid.MaskedDirectionsAndSignedPackedState
+ 84/356 Test #148: StructuredSerialImport.BorrowedNormalEntryMatchesOwnedAcrossTiesAndInputPermutations ....................   Passed    0.01 sec
+        Start 172: StaticGrid.UniformEventsRespectSlopesAndDirectionOrder
+ 85/356 Test #175: StaticGrid.MaskedDirectionsAndSignedPackedState .........................................................   Passed    0.01 sec
+        Start  76: SharedComponents.PositiveThresholdAlternatesFixedLazyAndPrepartitionFallback
+ 86/356 Test #172: StaticGrid.UniformEventsRespectSlopesAndDirectionOrder ..................................................   Passed    0.01 sec
+        Start  21: DecoderStrategy.SingleThreadControlPreservesParallelAlgorithmAndPublicLifecycle
+ 87/356 Test  #76: SharedComponents.PositiveThresholdAlternatesFixedLazyAndPrepartitionFallback ............................   Passed    0.01 sec
+        Start 233: Main.upstream_correlation_option_changes_the_decoded_correction
+ 88/356 Test  #21: DecoderStrategy.SingleThreadControlPreservesParallelAlgorithmAndPublicLifecycle .........................   Passed    0.01 sec
+        Start 177: StaticGrid.MovePreservesReweightedEdgeAddresses
+ 89/356 Test #233: Main.upstream_correlation_option_changes_the_decoded_correction .........................................   Passed    0.01 sec
+        Start  95: DoubleBufferComponents.MovesAndCallerGuardsRetainOwnership
+ 90/356 Test  #95: DoubleBufferComponents.MovesAndCallerGuardsRetainOwnership ..............................................   Passed    0.01 sec
+        Start  69: SharedComponents.ImportPreparationFreezesModeAndRetainsFallbacks
+ 91/356 Test #177: StaticGrid.MovePreservesReweightedEdgeAddresses .........................................................   Passed    0.01 sec
+        Start 230: Main.predict_default_upstream_formats_and_empty_single_odd_streams
+ 92/356 Test  #69: SharedComponents.ImportPreparationFreezesModeAndRetainsFallbacks ........................................   Passed    0.01 sec
+        Start  40: SharedComponents.SplitLifecycleFallbackAndNegativeNormalizationRemainExact
+ 93/356 Test #230: Main.predict_default_upstream_formats_and_empty_single_odd_streams ......................................   Passed    0.01 sec
+        Start  73: SharedComponents.ImportResetOwnerFreezesMode
+ 94/356 Test  #73: SharedComponents.ImportResetOwnerFreezesMode ............................................................   Passed    0.01 sec
+        Start 234: Main.decoder_options_reject_missing_or_invalid_geometry_and_cpu_maps
+ 95/356 Test  #40: SharedComponents.SplitLifecycleFallbackAndNegativeNormalizationRemainExact ..............................   Passed    0.01 sec
+        Start  38: SharedComponents.DeferredSeedCleanupJoinsSuccessfulAndFailingComponents
+ 96/356 Test #234: Main.decoder_options_reject_missing_or_invalid_geometry_and_cpu_maps ....................................   Passed    0.01 sec
+        Start  65: SharedComponents.IndexedSeedInputFreezesModeAndAllocatesOnlyForFixedRoute
+ 97/356 Test  #38: SharedComponents.DeferredSeedCleanupJoinsSuccessfulAndFailingComponents .................................   Passed    0.01 sec
+        Start  63: SharedComponents.FixedSeedConstructionPreservesFallbackAndSignedRoutes
+ 98/356 Test  #65: SharedComponents.IndexedSeedInputFreezesModeAndAllocatesOnlyForFixedRoute ...............................   Passed    0.01 sec
+        Start  45: SharedComponents.SignedGraphCorrectionMatchesExactSerialResult
+ 99/356 Test  #63: SharedComponents.FixedSeedConstructionPreservesFallbackAndSignedRoutes ..................................   Passed    0.01 sec
+        Start 111: SerialSeedStorage.DecodeMatchesDynamicStorage
+100/356 Test  #45: SharedComponents.SignedGraphCorrectionMatchesExactSerialResult ..........................................   Passed    0.01 sec
+        Start  59: SharedComponents.GroupFixedConstructionRetiresUsedStandaloneShot
+101/356 Test #111: SerialSeedStorage.DecodeMatchesDynamicStorage ...........................................................   Passed    0.01 sec
+        Start 218: OneHopPredecoder.FixedSeedViewRankSlicesSkipEmptyCapacityAndHoles
+102/356 Test  #59: SharedComponents.GroupFixedConstructionRetiresUsedStandaloneShot ........................................   Passed    0.01 sec
+        Start  43: SharedComponents.ReentrantFailureRecoveryAndMoveLifecycle
+103/356 Test #218: OneHopPredecoder.FixedSeedViewRankSlicesSkipEmptyCapacityAndHoles .......................................   Passed    0.01 sec
+        Start  50: SharedComponents.OwnerClearPreservesShotDataAcrossRoutesErrorsAndMoves
+104/356 Test  #43: SharedComponents.ReentrantFailureRecoveryAndMoveLifecycle ...............................................   Passed    0.01 sec
+        Start  27: SharedComponents.OrderedValidationRetainsErrorPriorityIgnoredIdsAndEpochWrap
+105/356 Test  #50: SharedComponents.OwnerClearPreservesShotDataAcrossRoutesErrorsAndMoves ..................................   Passed    0.01 sec
+        Start 220: PredecodeNeighborhood.PortableDegreeEnumeratesAllSixteenBitValues
+106/356 Test  #27: SharedComponents.OrderedValidationRetainsErrorPriorityIgnoredIdsAndEpochWrap ............................   Passed    0.01 sec
+        Start 231: Main.predict_default_upstream_more_than_64_observables
+107/356 Test #220: PredecodeNeighborhood.PortableDegreeEnumeratesAllSixteenBitValues .......................................   Passed    0.01 sec
+        Start 158: StructuredActiveTrees.UnchangedSeedsExtractWithoutRegionTeardownAcrossHolesAndReuse
+108/356 Test #231: Main.predict_default_upstream_more_than_64_observables ..................................................   Passed    0.01 sec
+        Start  58: SharedComponents.GroupFixedComponentMoveKeepsBindingBackingAndScratch
+109/356 Test #158: StructuredActiveTrees.UnchangedSeedsExtractWithoutRegionTeardownAcrossHolesAndReuse .....................   Passed    0.01 sec
+        Start  61: SharedComponents.FixedSeedConstructionFreezesModeAndRejectsInvalid
+110/356 Test  #58: SharedComponents.GroupFixedComponentMoveKeepsBindingBackingAndScratch ...................................   Passed    0.01 sec
+        Start 181: StaticGrid.IndependentDecodersMergeManyObservablesAdditively
+111/356 Test  #61: SharedComponents.FixedSeedConstructionFreezesModeAndRejectsInvalid ......................................   Passed    0.01 sec
+        Start  77: SharedComponents.PositiveThresholdImportsLazyMatchesWithResidualRoots
+112/356 Test #181: StaticGrid.IndependentDecodersMergeManyObservablesAdditively ............................................   Passed    0.01 sec
+        Start  16: DecoderStrategy.SerialMethodsRetainLargeObservableNegativeWeightAndEdgeContracts
+113/356 Test  #77: SharedComponents.PositiveThresholdImportsLazyMatchesWithResidualRoots ...................................   Passed    0.01 sec
+        Start  97: DoubleBufferComponents.SingleThreadControlUsesOnePhysicalOwnerForBothBuffers
+114/356 Test  #16: DecoderStrategy.SerialMethodsRetainLargeObservableNegativeWeightAndEdgeContracts ........................   Passed    0.01 sec
+        Start 146: StructuredSerialImport.DirectBindingChecksEveryPublicIdAndFallsBackForPermutedNodes
+115/356 Test  #97: DoubleBufferComponents.SingleThreadControlUsesOnePhysicalOwnerForBothBuffers ............................   Passed    0.01 sec
+        Start 178: StaticGrid.IndependentDecodersUseGlobalIdsAndIgnoreSharedBoundary
+116/356 Test #146: StructuredSerialImport.DirectBindingChecksEveryPublicIdAndFallsBackForPermutedNodes .....................   Passed    0.01 sec
+        Start 313: radix_heap_queue.sparse_bucket_bitmap_survives_wraparound_and_clear
+117/356 Test #178: StaticGrid.IndependentDecodersUseGlobalIdsAndIgnoreSharedBoundary .......................................   Passed    0.01 sec
+        Start 180: StaticGrid.EqualExplicitLabelsDoNotMergeDisconnectedComponents
+118/356 Test #313: radix_heap_queue.sparse_bucket_bitmap_survives_wraparound_and_clear .....................................   Passed    0.01 sec
+        Start 245: MwpmDecoding.NegativeEdgeWeightFromStimDecodeToEdges
+119/356 Test #180: StaticGrid.EqualExplicitLabelsDoNotMergeDisconnectedComponents ..........................................   Passed    0.01 sec
+        Start 144: StructuredSerialImport.SpatialFixedRangesKeepEagerNodesAndRankIndexedExtraction
+120/356 Test #245: MwpmDecoding.NegativeEdgeWeightFromStimDecodeToEdges ....................................................   Passed    0.01 sec
+        Start 160: StructuredActiveTrees.ZeroOddEvenFailureAndMovesAcrossRepeatedShots
+121/356 Test #144: StructuredSerialImport.SpatialFixedRangesKeepEagerNodesAndRankIndexedExtraction .........................   Passed    0.01 sec
+        Start  98: DoubleBufferComponents.AffinityStartupFailureStopsEveryGroupBeforeRethrow
+122/356 Test #160: StructuredActiveTrees.ZeroOddEvenFailureAndMovesAcrossRepeatedShots .....................................   Passed    0.01 sec
+        Start  18: DecoderStrategy.ArrayOutputOverwritesWeightAndXorsObservablesAtBothObservableWidths
+123/356 Test  #98: DoubleBufferComponents.AffinityStartupFailureStopsEveryGroupBeforeRethrow ...............................   Passed    0.01 sec
+        Start 184: StaticGrid.ShortestPathsUseGlobalIdsAndRejectUnreachableBoundary
+124/356 Test  #18: DecoderStrategy.ArrayOutputOverwritesWeightAndXorsObservablesAtBothObservableWidths .....................   Passed    0.01 sec
+        Start 149: StructuredSerialImport.BorrowedPairAndBoundaryTouchesPreserveMovesAndDeferredCleanup
+125/356 Test #184: StaticGrid.ShortestPathsUseGlobalIdsAndRejectUnreachableBoundary ........................................   Passed    0.01 sec
+        Start  44: SharedComponents.SerialFallbackPrecedesSpatialPreparation
+126/356 Test #149: StructuredSerialImport.BorrowedPairAndBoundaryTouchesPreserveMovesAndDeferredCleanup ....................   Passed    0.01 sec
+        Start  96: DoubleBufferComponents.RejectsOverlappingExplicitCpuAndUnequalGroups
+127/356 Test  #44: SharedComponents.SerialFallbackPrecedesSpatialPreparation ...............................................   Passed    0.01 sec
+        Start 139: StructuredSerialImport.RootsAndResidualEventsPreserveLegacyOrderAndRollback
+128/356 Test  #96: DoubleBufferComponents.RejectsOverlappingExplicitCpuAndUnequalGroups ....................................   Passed    0.01 sec
+        Start  23: StructuredPredecodeBinding.OppositePoliciesCoexistAndSurviveMoves
+129/356 Test #139: StructuredSerialImport.RootsAndResidualEventsPreserveLegacyOrderAndRollback .............................   Passed    0.01 sec
+        Start 229: Main.count_mistakes
+130/356 Test  #23: StructuredPredecodeBinding.OppositePoliciesCoexistAndSurviveMoves .......................................   Passed    0.01 sec
+        Start 223: StructuredProfile.NegativeNormalizationAndReuse
+131/356 Test #229: Main.count_mistakes .....................................................................................   Passed    0.01 sec
+        Start 242: MwpmDecoding.HandleAllNegativeWeights
+132/356 Test #223: StructuredProfile.NegativeNormalizationAndReuse .........................................................   Passed    0.01 sec
+        Start 112: SerialSeedStorage.BuildIndexCanBeDeferred
+133/356 Test #242: MwpmDecoding.HandleAllNegativeWeights ...................................................................   Passed    0.01 sec
+        Start 157: StructuredActiveTrees.FusedImportFinishKeepsEventOrderAndRecoversPartialForest
+134/356 Test #112: SerialSeedStorage.BuildIndexCanBeDeferred ...............................................................   Passed    0.01 sec
+        Start 202: OneHopPredecoder.NegativeWeightsAndSelfLoopsUseOriginalSignedObjective
+135/356 Test #157: StructuredActiveTrees.FusedImportFinishKeepsEventOrderAndRecoversPartialForest ..........................   Passed    0.01 sec
+        Start 208: OneHopPredecoder.IsolatedInfiniteCapRemainsUncached
+136/356 Test #202: OneHopPredecoder.NegativeWeightsAndSelfLoopsUseOriginalSignedObjective ..................................   Passed    0.01 sec
+        Start 182: StaticGrid.ComponentFailureDoesNotContaminateOtherDecoder
+137/356 Test #208: OneHopPredecoder.IsolatedInfiniteCapRemainsUncached .....................................................   Passed    0.01 sec
+        Start 147: StructuredSerialImport.CaptainedCompactEndpointsKeepFixedRanksAcrossMovesAndFallbackMappings
+138/356 Test #182: StaticGrid.ComponentFailureDoesNotContaminateOtherDecoder ...............................................   Passed    0.01 sec
+        Start 179: StaticGrid.IndependentDecodersKeepGlobalQuantizationAndNegativeWeights
+139/356 Test #147: StructuredSerialImport.CaptainedCompactEndpointsKeepFixedRanksAcrossMovesAndFallbackMappings ............   Passed    0.01 sec
+        Start 192: OneHopPredecoder.BoundKernelPreservesSeedStateAcrossTiesAndInputOrders
+140/356 Test #179: StaticGrid.IndependentDecodersKeepGlobalQuantizationAndNegativeWeights ..................................   Passed    0.01 sec
+        Start  34: SharedComponents.ComponentTailRejectsIncompatibleSchedules
+141/356 Test #192: OneHopPredecoder.BoundKernelPreservesSeedStateAcrossTiesAndInputOrders ..................................   Passed    0.01 sec
+        Start 159: StructuredActiveTrees.LazyMatchedSeedsMaterializeOnlyOnBoundaryOrPairCollision
+142/356 Test  #34: SharedComponents.ComponentTailRejectsIncompatibleSchedules ..............................................   Passed    0.01 sec
+        Start   9: UnstructuredPredecode.ArbitraryHighDegreeGraph
+143/356 Test #159: StructuredActiveTrees.LazyMatchedSeedsMaterializeOnlyOnBoundaryOrPairCollision ..........................   Passed    0.01 sec
+        Start 205: OneHopPredecoder.UnmatchedFrontCrossesEmptyNodeBeforeReachingFrozenPair
+144/356 Test   #9: UnstructuredPredecode.ArbitraryHighDegreeGraph ..........................................................   Passed    0.01 sec
+        Start  10: UnstructuredPredecode.CorrelationPassesBypassAndRestorePredecoder
+145/356 Test #205: OneHopPredecoder.UnmatchedFrontCrossesEmptyNodeBeforeReachingFrozenPair .................................   Passed    0.01 sec
+        Start 110: SerialSeedStorage.NegativeNormalizationFallsBack
+146/356 Test  #10: UnstructuredPredecode.CorrelationPassesBypassAndRestorePredecoder .......................................   Passed    0.01 sec
+        Start  28: SharedComponents.CachedBucketSentinelsOrderedValidationAndEpochWrap
+147/356 Test #110: SerialSeedStorage.NegativeNormalizationFallsBack ........................................................   Passed    0.01 sec
+        Start 187: StaticGrid.OneShotSeedOwnerPreservesComponentOrderAndMoveLifetime
+148/356 Test  #28: SharedComponents.CachedBucketSentinelsOrderedValidationAndEpochWrap .....................................   Passed    0.01 sec
+        Start  26: StructuredPredecodeBinding.ExplicitSharedConfigurationDoesNotReadLegacyEnvironment
+149/356 Test #187: StaticGrid.OneShotSeedOwnerPreservesComponentOrderAndMoveLifetime .......................................   Passed    0.01 sec
+        Start  35: SharedComponents.TailOwnerRejectsIncompatiblePlacement
+150/356 Test  #26: StructuredPredecodeBinding.ExplicitSharedConfigurationDoesNotReadLegacyEnvironment ......................   Passed    0.01 sec
+        Start  67: SharedComponents.IndexedSeedInputValidationAndReusePreserveErrorOrder
+151/356 Test  #35: SharedComponents.TailOwnerRejectsIncompatiblePlacement ..................................................   Passed    0.01 sec
+        Start 109: SerialSeedStorage.UnsortedValidationAndRecovery
+152/356 Test  #67: SharedComponents.IndexedSeedInputValidationAndReusePreserveErrorOrder ...................................   Passed    0.01 sec
+        Start 317: cyclic.arithmetic
+153/356 Test #109: SerialSeedStorage.UnsortedValidationAndRecovery .........................................................   Passed    0.01 sec
+        Start 325: UserGraph.ConstructGraph
+154/356 Test #317: cyclic.arithmetic .......................................................................................   Passed    0.01 sec
+        Start 289: AlternatingTree.BecomeRoot
+155/356 Test #325: UserGraph.ConstructGraph ................................................................................   Passed    0.01 sec
+        Start  85: TimePartitionCuts.RejectsInvalidGeometryBeforeMultiplyingCellCounts
+156/356 Test #289: AlternatingTree.BecomeRoot ..............................................................................   Passed    0.01 sec
+        Start  24: StructuredPredecodeBinding.LargeObservableAndNegativeNormalizationKeepBothBindings
+157/356 Test  #85: TimePartitionCuts.RejectsInvalidGeometryBeforeMultiplyingCellCounts .....................................   Passed    0.01 sec
+        Start 145: StructuredSerialImport.CompactAndPointerEndpointsSurviveMovesAndAlternatingImporters
+158/356 Test  #24: StructuredPredecodeBinding.LargeObservableAndNegativeNormalizationKeepBothBindings ......................   Passed    0.01 sec
+        Start 232: Main.count_mistakes_default_upstream_formats_and_stream_lengths
+159/356 Test #145: StructuredSerialImport.CompactAndPointerEndpointsSurviveMovesAndAlternatingImporters ....................   Passed    0.01 sec
+        Start 206: OneHopPredecoder.FiniteCapCacheIncludesZeroAndRebuildsEveryShot
+160/356 Test #232: Main.count_mistakes_default_upstream_formats_and_stream_lengths .........................................   Passed    0.01 sec
+        Start  84: TimePartitionCuts.SaturatesWideGuardsAndSupportsLargestValidVolume
+161/356 Test #206: OneHopPredecoder.FiniteCapCacheIncludesZeroAndRebuildsEveryShot .........................................   Passed    0.01 sec
+        Start 219: OneHopPredecoder.FixedSeedViewCompleteEdgesAndResetIgnoreHoleRecords
+162/356 Test  #84: TimePartitionCuts.SaturatesWideGuardsAndSupportsLargestValidVolume ......................................   Passed    0.01 sec
+        Start 113: SerialSeedStorage.LateInitializationLeavesDynamicDecoderUsable
+163/356 Test #113: SerialSeedStorage.LateInitializationLeavesDynamicDecoderUsable ..........................................   Passed    0.00 sec
+        Start 189: StaticGrid.ShotAddressEpochWrapResetAndFailedAttemptReuse
+164/356 Test #219: OneHopPredecoder.FixedSeedViewCompleteEdgesAndResetIgnoreHoleRecords ....................................   Passed    0.01 sec
+        Start 141: StructuredSerialImport.BoundaryAndPairCollisionsMaterializeBeforeReadingPaths
+165/356 Test #189: StaticGrid.ShotAddressEpochWrapResetAndFailedAttemptReuse ...............................................   Passed    0.01 sec
+        Start 114: SerialSeedStorage.FirstEmptyComponentPublishesZeroLengthScratch
+166/356 Test #141: StructuredSerialImport.BoundaryAndPairCollisionsMaterializeBeforeReadingPaths ...........................   Passed    0.01 sec
+        Start 275: GraphFillRegion.AddMatch
+167/356 Test #114: SerialSeedStorage.FirstEmptyComponentPublishesZeroLengthScratch .........................................   Passed    0.01 sec
+        Start 132: StructuredRegionPool.LazyLookupMaterializesOnlyRequestedEndpointAcrossStorageKinds
+168/356 Test #275: GraphFillRegion.AddMatch ................................................................................   Passed    0.01 sec
+        Start 203: OneHopPredecoder.InvalidAndOddInputsDoNotContaminateNextShot
+169/356 Test #132: StructuredRegionPool.LazyLookupMaterializesOnlyRequestedEndpointAcrossStorageKinds ......................   Passed    0.01 sec
+        Start 163: StaticGrid.SimdSignedArithmeticMasksAndFirstMinimumAcrossBatches
+170/356 Test #203: OneHopPredecoder.InvalidAndOddInputsDoNotContaminateNextShot ............................................   Passed    0.01 sec
+        Start 140: StructuredSerialImport.UntouchedSeedsStayCompactAcrossExtractionModesAndReuse
+171/356 Test #163: StaticGrid.SimdSignedArithmeticMasksAndFirstMinimumAcrossBatches ........................................   Passed    0.01 sec
+        Start 199: OneHopPredecoder.DeferredSeedCleanupShattersBlossomAndImmediatelyClearsGrownNodes
+172/356 Test #140: StructuredSerialImport.UntouchedSeedsStayCompactAcrossExtractionModesAndReuse ...........................   Passed    0.01 sec
+        Start 155: StructuredActiveTrees.VacatedShellNodeTrackersRetireBeforeTheNextShot
+173/356 Test #199: OneHopPredecoder.DeferredSeedCleanupShattersBlossomAndImmediatelyClearsGrownNodes .......................   Passed    0.01 sec
+        Start 142: StructuredSerialImport.ExplicitNodeQueriesAndHardResetRespectDeferredOwnership
+174/356 Test #155: StructuredActiveTrees.VacatedShellNodeTrackersRetireBeforeTheNextShot ...................................   Passed    0.01 sec
+        Start  19: DecoderStrategy.UnstructuredCorrelationPolicyIsBoundAtConstruction
+175/356 Test #142: StructuredSerialImport.ExplicitNodeQueriesAndHardResetRespectDeferredOwnership ..........................   Passed    0.01 sec
+        Start 345: IterDemInstructionsTest.CombinedComplexDem
+176/356 Test  #19: DecoderStrategy.UnstructuredCorrelationPolicyIsBoundAtConstruction ......................................   Passed    0.01 sec
+        Start 134: StructuredRegionPool.LazyMixedLifetimesSurviveRollbackHardResetAndSmallerShots
+177/356 Test #345: IterDemInstructionsTest.CombinedComplexDem ..............................................................   Passed    0.01 sec
+        Start  32: SharedComponents.RetainedSeedStorageResetsDefaultsAndCancelsInactiveStaging
+178/356 Test #134: StructuredRegionPool.LazyMixedLifetimesSurviveRollbackHardResetAndSmallerShots ..........................   Passed    0.01 sec
+        Start 222: StructuredProfile.CorrectnessResetAndPartialHandoff
+179/356 Test  #32: SharedComponents.RetainedSeedStorageResetsDefaultsAndCancelsInactiveStaging .............................   Passed    0.01 sec
+        Start 246: MwpmDecoding.NoValidSolutionForLineGraph
+180/356 Test #222: StructuredProfile.CorrectnessResetAndPartialHandoff .....................................................   Passed    0.01 sec
+        Start 151: StructuredSerialImport.BorrowedFixedRanksSurviveSlotReuseAndPartialRollback
+181/356 Test #246: MwpmDecoding.NoValidSolutionForLineGraph ................................................................   Passed    0.01 sec
+        Start 108: SerialSeedStorage.FixedComponentPrefixesAndAlignedScratchSurviveMoves
+182/356 Test #151: StructuredSerialImport.BorrowedFixedRanksSurviveSlotReuseAndPartialRollback .............................   Passed    0.01 sec
+        Start 215: OneHopPredecoder.RetiredViewDoesNotClearNewOwnerCells
+183/356 Test #108: SerialSeedStorage.FixedComponentPrefixesAndAlignedScratchSurviveMoves ...................................   Passed    0.01 sec
+        Start 260: Varying.TimeToXInterceptWhenAddedTo
+184/356 Test #215: OneHopPredecoder.RetiredViewDoesNotClearNewOwnerCells ...................................................   Passed    0.01 sec
+        Start  22: DecoderStrategy.CanonicalNamesAndHistoricalAliases
+185/356 Test #260: Varying.TimeToXInterceptWhenAddedTo .....................................................................   Passed    0.01 sec
+        Start 259: Varying.frozen
+186/356 Test  #22: DecoderStrategy.CanonicalNamesAndHistoricalAliases ......................................................   Passed    0.01 sec
+        Start 323: SearchFlooder.RepCodeSourceToDestPath
+187/356 Test #259: Varying.frozen ..........................................................................................   Passed    0.01 sec
+        Start 129: StructuredRegionPool.StaleShrinkEventCannotEnterNeutralOrReusedLifetime
+188/356 Test #323: SearchFlooder.RepCodeSourceToDestPath ...................................................................   Passed    0.01 sec
+        Start 213: OneHopPredecoder.PartitionScratchSeparatesCacheLinesAndPreservesStableGlobalOrder
+189/356 Test #129: StructuredRegionPool.StaleShrinkEventCannotEnterNeutralOrReusedLifetime .................................   Passed    0.01 sec
+        Start 263: Graph.AddEdge
+190/356 Test #213: OneHopPredecoder.PartitionScratchSeparatesCacheLinesAndPreservesStableGlobalOrder .......................   Passed    0.01 sec
+        Start 348: IterDemInstructionsTest.ComplexCombinationOfErrors
+191/356 Test #263: Graph.AddEdge ...........................................................................................   Passed    0.01 sec
+        Start  11: UnstructuredPredecode.OddLowLevelWeightsKeepDualFeasibleCaps
+192/356 Test #348: IterDemInstructionsTest.ComplexCombinationOfErrors ......................................................   Passed    0.01 sec
+        Start 125: StructuredRegionPool.ShellEqualityIgnoresInlineOrHeapStorage
+193/356 Test  #11: UnstructuredPredecode.OddLowLevelWeightsKeepDualFeasibleCaps ............................................   Passed    0.01 sec
+        Start 126: StructuredRegionPool.NeutralSeedsSurviveSmallerShotsAndOrdinaryAllocation
+194/356 Test #125: StructuredRegionPool.ShellEqualityIgnoresInlineOrHeapStorage ............................................   Passed    0.01 sec
+        Start 150: StructuredSerialImport.BorrowedSchedulingFailureRollsBackBeforeOrdinaryReuse
+195/356 Test #126: StructuredRegionPool.NeutralSeedsSurviveSmallerShotsAndOrdinaryAllocation ...............................   Passed    0.01 sec
+        Start 135: StructuredRegionPool.DeferredSeedNodesRemainCleanAcrossRetirementAndResetOwners
+196/356 Test #150: StructuredSerialImport.BorrowedSchedulingFailureRollsBackBeforeOrdinaryReuse ............................   Passed    0.01 sec
+        Start 349: IterDemInstructionsTest.ProbabilityGreaterThanHalfThrows
+197/356 Test #135: StructuredRegionPool.DeferredSeedNodesRemainCleanAcrossRetirementAndResetOwners .........................   Passed    0.01 sec
+        Start 327: UserGraph.NodesAlongShortestPath
+198/356 Test #349: IterDemInstructionsTest.ProbabilityGreaterThanHalfThrows ................................................   Passed    0.01 sec
+        Start 190: StaticGrid.ShotStaticAddressesAvoidMutableDetectorMetadata
+199/356 Test #327: UserGraph.NodesAlongShortestPath ........................................................................   Passed    0.01 sec
+        Start 302: Mwpm.ShatterAndMatchBlossomMatchedToBoundaryMatchEdges
+200/356 Test #190: StaticGrid.ShotStaticAddressesAvoidMutableDetectorMetadata ..............................................   Passed    0.01 sec
+        Start 138: StructuredRegionPool.CompactEndpointsMaterializeBeforeMatePublicationAndReuseAllStorageKinds
+201/356 Test #302: Mwpm.ShatterAndMatchBlossomMatchedToBoundaryMatchEdges ..................................................   Passed    0.01 sec
+        Start 299: Mwpm.ShatterBlossomAndExtractMatches
+202/356 Test #138: StructuredRegionPool.CompactEndpointsMaterializeBeforeMatePublicationAndReuseAllStorageKinds ............   Passed    0.01 sec
+        Start 154: StructuredActiveTrees.ImportedBoundaryMatchConsumesOneRoot
+203/356 Test #299: Mwpm.ShatterBlossomAndExtractMatches ....................................................................   Passed    0.00 sec
+        Start 127: StructuredRegionPool.NeutralMixedReservationRollbackAndHardReset
+204/356 Test #154: StructuredActiveTrees.ImportedBoundaryMatchConsumesOneRoot ..............................................   Passed    0.01 sec
+        Start 319: SearchGraph.AddEdge
+205/356 Test #127: StructuredRegionPool.NeutralMixedReservationRollbackAndHardReset ........................................   Passed    0.01 sec
+        Start 338: IterDemInstructionsTest.ErrorWithOneObservable
+206/356 Test #319: SearchGraph.AddEdge .....................................................................................   Passed    0.01 sec
+        Start 297: Mwpm.ShatterBlossomAndExtractMatchesForPair
+207/356 Test #338: IterDemInstructionsTest.ErrorWithOneObservable ..........................................................   Passed    0.01 sec
+        Start   8: UnstructuredPredecode.BoundaryNodesErrorsMovesAndRepeatedShots
+208/356 Test #297: Mwpm.ShatterBlossomAndExtractMatchesForPair .............................................................   Passed    0.01 sec
+        Start 201: OneHopPredecoder.BoundaryPriorityAndZeroTightEdges
+209/356 Test   #8: UnstructuredPredecode.BoundaryNodesErrorsMovesAndRepeatedShots ..........................................   Passed    0.01 sec
+        Start 329: UserGraph.PopulateImpliedEdgeWeights
+210/356 Test #201: OneHopPredecoder.BoundaryPriorityAndZeroTightEdges ......................................................   Passed    0.01 sec
+        Start 143: StructuredSerialImport.EmptyOddEvenFailureAndMovesPreserveCleanup
+211/356 Test #329: UserGraph.PopulateImpliedEdgeWeights ....................................................................   Passed    0.01 sec
+        Start 164: StaticGrid.SingleWeightRowDoesNotReadPastTwelveSlotTail
+212/356 Test #143: StructuredSerialImport.EmptyOddEvenFailureAndMovesPreserveCleanup .......................................   Passed    0.01 sec
+        Start 124: StructuredRegionPool.ShellStoresSingletonInlineAndPreservesOrderThroughGrowth
+213/356 Test #164: StaticGrid.SingleWeightRowDoesNotReadPastTwelveSlotTail .................................................   Passed    0.01 sec
+        Start 121: StructuredRegionPool.ReleasedShrinkIsDiscardedWithoutObjectAccess
+214/356 Test #124: StructuredRegionPool.ShellStoresSingletonInlineAndPreservesOrderThroughGrowth ...........................   Passed    0.01 sec
+        Start 128: StructuredRegionPool.NeutralGenerationExhaustionAndSuccessTokenAreTransactional
+215/356 Test #121: StructuredRegionPool.ReleasedShrinkIsDiscardedWithoutObjectAccess .......................................   Passed    0.01 sec
+        Start 165: StaticGrid.LastWeightBatchDoesNotTouchGuardPage
+216/356 Test #128: StructuredRegionPool.NeutralGenerationExhaustionAndSuccessTokenAreTransactional .........................   Passed    0.01 sec
+        Start 118: StructuredRegionPool.ResetAndReservedRollbackPreserveLifetimeIdentity
+217/356 Test #165: StaticGrid.LastWeightBatchDoesNotTouchGuardPage .........................................................   Passed    0.01 sec
+        Start 301: Mwpm.ShatterAndMatchBlossomMatchedToBoundaryMatch
+218/356 Test #118: StructuredRegionPool.ResetAndReservedRollbackPreserveLifetimeIdentity ...................................   Passed    0.01 sec
+        Start 341: IterDemInstructionsTest.ThreeDetectorErrorThrowsInvalidArgument
+219/356 Test #301: Mwpm.ShatterAndMatchBlossomMatchedToBoundaryMatch .......................................................   Passed    0.01 sec
+        Start 117: StructuredRegionPool.ReuseReconstructsVectorsAndAdvancesGeneration
+220/356 Test #341: IterDemInstructionsTest.ThreeDetectorErrorThrowsInvalidArgument .........................................   Passed    0.01 sec
+        Start 332: UserGraph.ConvertImpliedWeights_EmptyRules
+221/356 Test #332: UserGraph.ConvertImpliedWeights_EmptyRules ..............................................................   Passed    0.01 sec
+        Start 286: AlternatingTree.UnstableEraseAltTreeEdge
+222/356 Test #117: StructuredRegionPool.ReuseReconstructsVectorsAndAdvancesGeneration ......................................   Passed    0.01 sec
+        Start 133: StructuredRegionPool.LazyEndpointCanBeInspectedBeforePartnerImport
+223/356 Test #286: AlternatingTree.UnstableEraseAltTreeEdge ................................................................   Passed    0.01 sec
+        Start 295: Mwpm.BranchingTreeFormsBlossomThenHitsBoundaryMatch
+224/356 Test #133: StructuredRegionPool.LazyEndpointCanBeInspectedBeforePartnerImport ......................................   Passed    0.01 sec
+        Start 294: Mwpm.BlossomShatterDrivenWithoutFlooder
+225/356 Test #295: Mwpm.BranchingTreeFormsBlossomThenHitsBoundaryMatch .....................................................   Passed    0.01 sec
+        Start 123: StructuredRegionPool.ContiguousReservationAfterSmallerShotPreservesGeneration
+226/356 Test #294: Mwpm.BlossomShatterDrivenWithoutFlooder .................................................................   Passed    0.01 sec
+        Start 119: StructuredRegionPool.SeededConstructionCanGrowAndReturnToGeneralAllocation
+227/356 Test #123: StructuredRegionPool.ContiguousReservationAfterSmallerShotPreservesGeneration ...........................   Passed    0.01 sec
+        Start   1: MatchingResult.IndependentComponentComposition
+228/356 Test #119: StructuredRegionPool.SeededConstructionCanGrowAndReturnToGeneralAllocation ..............................   Passed    0.01 sec
+        Start 312: radix_heap_queue.clear
+229/356 Test   #1: MatchingResult.IndependentComponentComposition ..........................................................   Passed    0.01 sec
+        Start 267: DetectorNode.IndexOfNeighber
+230/356 Test #312: radix_heap_queue.clear ..................................................................................   Passed    0.01 sec
+        Start 264: Graph.AddBoundaryEdge
+231/356 Test #267: DetectorNode.IndexOfNeighber ............................................................................   Passed    0.01 sec
+        Start 288: AlternatingTree.TreeEqual
+232/356 Test #264: Graph.AddBoundaryEdge ...................................................................................   Passed    0.01 sec
+        Start 250: Varying.GrowingZeroRadiusAtTime
+233/356 Test #288: AlternatingTree.TreeEqual ...............................................................................   Passed    0.01 sec
+        Start 262: Varying.Equality
+234/356 Test #250: Varying.GrowingZeroRadiusAtTime .........................................................................   Passed    0.01 sec
+        Start 296: Mwpm.BoundaryMatchHitsTree
+235/356 Test #262: Varying.Equality ........................................................................................   Passed    0.01 sec
+        Start 197: OneHopPredecoder.NonSyndromeNeighborsBoundGrowthAndEnableMultihopSolution
+236/356 Test #296: Mwpm.BoundaryMatchHitsTree ..............................................................................   Passed    0.01 sec
+        Start 191: StaticGrid.ShotAddressEpochKeepsNegativeCycleCorrections
+237/356 Test #197: OneHopPredecoder.NonSyndromeNeighborsBoundGrowthAndEnableMultihopSolution ...............................   Passed    0.01 sec
+        Start 285: AlternatingTree.UnstableEraseInt
+238/356 Test #191: StaticGrid.ShotAddressEpochKeepsNegativeCycleCorrections ................................................   Passed    0.01 sec
+        Start 290: AlternatingTree.CommonAncestor
+239/356 Test #285: AlternatingTree.UnstableEraseInt ........................................................................   Passed    0.01 sec
+        Start  83: TimePartitionCuts.GuardEndpointsUseWholePlanesAndHalfOpenUpperEdge
+240/356 Test #290: AlternatingTree.CommonAncestor ..........................................................................   Passed    0.01 sec
+        Start 335: IterDemInstructionsTest.SingleDetectorErrorToBoundary
+241/356 Test  #83: TimePartitionCuts.GuardEndpointsUseWholePlanesAndHalfOpenUpperEdge ......................................   Passed    0.01 sec
+        Start 343: IterDemInstructionsTest.DecomposedErrorWithHyperedgeThrows
+242/356 Test #335: IterDemInstructionsTest.SingleDetectorErrorToBoundary ...................................................   Passed    0.01 sec
+        Start 306: Mwpm.RegionHittingMatchFormingBlossomThenMatchingToBoundary
+243/356 Test #343: IterDemInstructionsTest.DecomposedErrorWithHyperedgeThrows ..............................................   Passed    0.01 sec
+        Start 334: IterDemInstructionsTest.EmptyDem
+244/356 Test #306: Mwpm.RegionHittingMatchFormingBlossomThenMatchingToBoundary .............................................   Passed    0.01 sec
+        Start   3: HeaderODR.StructuredPrimalUsesOneDefinitionAcrossTranslationUnits
+245/356 Test #334: IterDemInstructionsTest.EmptyDem ........................................................................   Passed    0.01 sec
+        Start 198: OneHopPredecoder.PartialTightPairRemainsReversible
+246/356 Test   #3: HeaderODR.StructuredPrimalUsesOneDefinitionAcrossTranslationUnits .......................................   Passed    0.01 sec
+        Start 240: MwpmDecoding.FillBitVectorFromObsMask
+247/356 Test #198: OneHopPredecoder.PartialTightPairRemainsReversible ......................................................   Passed    0.01 sec
+        Start 243: MwpmDecoding.HandleSomeNegativeWeights
+248/356 Test #240: MwpmDecoding.FillBitVectorFromObsMask ...................................................................   Passed    0.01 sec
+        Start 156: StructuredActiveTrees.JoinedImportCountsOnlyUnmatchedSeedsAndRollsBackReservations
+249/356 Test #243: MwpmDecoding.HandleSomeNegativeWeights ..................................................................   Passed    0.01 sec
+        Start 316: cyclic.comparison
+250/356 Test #156: StructuredActiveTrees.JoinedImportCountsOnlyUnmatchedSeedsAndRollsBackReservations ......................   Passed    0.01 sec
+        Start 277: GraphFillRegion.descendance_ordering_lt
+251/356 Test #316: cyclic.comparison .......................................................................................   Passed    0.01 sec
+        Start 269: DetectorNode.compute_stitch_radius_at_time_bounded_by_region_towards_neighbor_across_collision
+252/356 Test #277: GraphFillRegion.descendance_ordering_lt .................................................................   Passed    0.01 sec
+        Start 307: flood_check_event.basic_usage
+253/356 Test #269: DetectorNode.compute_stitch_radius_at_time_bounded_by_region_towards_neighbor_across_collision ..........   Passed    0.01 sec
+        Start 153: StructuredActiveTrees.BlossomAbsorptionAndShatteringPreserveRootsUntilAugmentation
+254/356 Test #307: flood_check_event.basic_usage ...........................................................................   Passed    0.01 sec
+        Start 344: IterDemInstructionsTest.DecomposedErrorWithUndetectableErrorThrows
+255/356 Test #153: StructuredActiveTrees.BlossomAbsorptionAndShatteringPreserveRootsUntilAugmentation ......................   Passed    0.01 sec
+        Start 279: GraphFlooder.PriorityQueue
+256/356 Test #344: IterDemInstructionsTest.DecomposedErrorWithUndetectableErrorThrows ......................................   Passed    0.01 sec
+        Start 212: OneHopPredecoder.BulkImportResetRecoversConstructedAndReservedSlots
+257/356 Test #279: GraphFlooder.PriorityQueue ..............................................................................   Passed    0.01 sec
+        Start 137: StructuredRegionPool.DeferredSeedNodeInvalidationRestoresNodeBeforeMutation
+258/356 Test #212: OneHopPredecoder.BulkImportResetRecoversConstructedAndReservedSlots .....................................   Passed    0.01 sec
+        Start   6: UnstructuredPredecode.CompleteShotAvoidsArenasAndSupportsReverseSeedOrder
+259/356 Test #137: StructuredRegionPool.DeferredSeedNodeInvalidationRestoresNodeBeforeMutation .............................   Passed    0.01 sec
+        Start 300: Mwpm.ShatterBlossomAndExtractMatchEdges
+260/356 Test   #6: UnstructuredPredecode.CompleteShotAvoidsArenasAndSupportsReverseSeedOrder ...............................   Passed    0.01 sec
+        Start  25: StructuredPredecodeBinding.SharedRejectsAnExplicitNoPredecodeCore
+261/356 Test #300: Mwpm.ShatterBlossomAndExtractMatchEdges .................................................................   Passed    0.01 sec
+        Start 120: StructuredRegionPool.StaleShrinkCannotConsumeReusedRegionsEvent
+262/356 Test  #25: StructuredPredecodeBinding.SharedRejectsAnExplicitNoPredecodeCore .......................................   Passed    0.01 sec
+        Start 116: StructuredRegionPool.DirectObjectAndRadiusIndices
+263/356 Test #120: StructuredRegionPool.StaleShrinkCannotConsumeReusedRegionsEvent .........................................   Passed    0.01 sec
+        Start 214: OneHopPredecoder.CellClearRetainsResultsAndSurvivesMoveAndRebind
+264/356 Test #116: StructuredRegionPool.DirectObjectAndRadiusIndices .......................................................   Passed    0.01 sec
+        Start 266: Graph.AddBoundaryEdgeWithImpliedWeights
+265/356 Test #214: OneHopPredecoder.CellClearRetainsResultsAndSurvivesMoveAndRebind ........................................   Passed    0.01 sec
+        Start 253: Varying.ThenSlopeAt
+266/356 Test #266: Graph.AddBoundaryEdgeWithImpliedWeights .................................................................   Passed    0.01 sec
+        Start 162: StaticGrid.StorageMappingPreservesDirectionPairsAndRowSize
+267/356 Test #253: Varying.ThenSlopeAt .....................................................................................   Passed    0.01 sec
+        Start 310: radix_heap_queue.bucket_for
+268/356 Test #162: StaticGrid.StorageMappingPreservesDirectionPairsAndRowSize ..............................................   Passed    0.01 sec
+        Start 115: SerialSeedStorage.PartitionScratchFitsFixedAllocationThroughLastBucket
+269/356 Test #310: radix_heap_queue.bucket_for .............................................................................   Passed    0.01 sec
+        Start 303: Mwpm.MatchingResult
+270/356 Test #115: SerialSeedStorage.PartitionScratchFitsFixedAllocationThroughLastBucket ..................................   Passed    0.01 sec
+        Start 324: StimIO.MergeWeights
+271/356 Test #303: Mwpm.MatchingResult .....................................................................................   Passed    0.01 sec
+        Start 270: DetectorNode.compute_stitch_radius_at_time_bounded_by_region_towards_neighbor_across_skewed_collision
+272/356 Test #324: StimIO.MergeWeights .....................................................................................   Passed    0.01 sec
+        Start 283: GraphFlooder.RegionGrowingThenFrozenThenStartShrinking
+273/356 Test #270: DetectorNode.compute_stitch_radius_at_time_bounded_by_region_towards_neighbor_across_skewed_collision ...   Passed    0.01 sec
+        Start 255: Varying.InplaceAdditionAndSubtraction
+274/356 Test #283: GraphFlooder.RegionGrowingThenFrozenThenStartShrinking ..................................................   Passed    0.01 sec
+        Start 265: Graph.AddEdgeWithImpliedWeights
+275/356 Test #255: Varying.InplaceAdditionAndSubtraction ...................................................................   Passed    0.01 sec
+        Start 305: Mwpm.RegionHittingMatchThenMatchedToOtherRegion
+276/356 Test #265: Graph.AddEdgeWithImpliedWeights .........................................................................   Passed    0.01 sec
+        Start  13: UnstructuredPredecode.CorrelationInputFailuresLeaveDecoderReusable
+277/356 Test #305: Mwpm.RegionHittingMatchThenMatchedToOtherRegion .........................................................   Passed    0.01 sec
+        Start 200: OneHopPredecoder.FrozenBoundaryMatchCanBeReplaced
+278/356 Test  #13: UnstructuredPredecode.CorrelationInputFailuresLeaveDecoderReusable ......................................   Passed    0.01 sec
+        Start 271: CompressedEdge.Reversed
+279/356 Test #200: OneHopPredecoder.FrozenBoundaryMatchCanBeReplaced .......................................................   Passed    0.01 sec
+        Start 252: Varying.VaryingString
+280/356 Test #271: CompressedEdge.Reversed .................................................................................   Passed    0.01 sec
+        Start 274: GraphFillRegion.TopRegion
+281/356 Test #252: Varying.VaryingString ...................................................................................   Passed    0.01 sec
+        Start   2: ObservableBits.RoundTripAllBitsAndXorExistingOutput
+282/356 Test #274: GraphFillRegion.TopRegion ...............................................................................   Passed    0.01 sec
+        Start 207: OneHopPredecoder.MaximumCapSentinelCanBecomeFiniteWithinShot
+283/356 Test   #2: ObservableBits.RoundTripAllBitsAndXorExistingOutput .....................................................   Passed    0.01 sec
+        Start 224: StructuredProfile.ComponentPartitionTimingAndExceptionReuse
+284/356 Test #207: OneHopPredecoder.MaximumCapSentinelCanBecomeFiniteWithinShot ............................................   Passed    0.01 sec
+        Start 258: Varying.shrinking_value_at_time
+285/356 Test #224: StructuredProfile.ComponentPartitionTimingAndExceptionReuse .............................................   Passed    0.01 sec
+        Start 257: Varying.growing_value_at_time
+286/356 Test #258: Varying.shrinking_value_at_time .........................................................................   Passed    0.01 sec
+        Start 318: cyclic.widen_from_nearby_reference
+287/356 Test #257: Varying.growing_value_at_time ...........................................................................   Passed    0.01 sec
+        Start 130: StructuredRegionPool.UntouchedSeedRetirementReuseRollbackAndInvalidation
+288/356 Test #318: cyclic.widen_from_nearby_reference ......................................................................   Passed    0.01 sec
+        Start 308: radix_heap_queue.basic_usage
+289/356 Test #130: StructuredRegionPool.UntouchedSeedRetirementReuseRollbackAndInvalidation ................................   Passed    0.01 sec
+        Start 331: UserGraph.ConvertImpliedWeights_NoRules
+290/356 Test #308: radix_heap_queue.basic_usage ............................................................................   Passed    0.01 sec
+        Start 328: UserGraph.DecodeUserGraphDetectionEventOnBoundaryNode
+291/356 Test #331: UserGraph.ConvertImpliedWeights_NoRules .................................................................   Passed    0.01 sec
+        Start 216: OneHopPredecoder.LiveExternalCellOwnershipTransfersOnMoveAndAssignment
+292/356 Test #328: UserGraph.DecodeUserGraphDetectionEventOnBoundaryNode ...................................................   Passed    0.01 sec
+        Start 292: AlternatingTree.PrunedUpwardBackEdgePathStoppingBefore
+293/356 Test #216: OneHopPredecoder.LiveExternalCellOwnershipTransfersOnMoveAndAssignment ..................................   Passed    0.01 sec
+        Start  17: DecoderStrategy.ExplicitConfigurationAndMoveValidation
+294/356 Test #292: AlternatingTree.PrunedUpwardBackEdgePathStoppingBefore ..................................................   Passed    0.01 sec
+        Start 291: AlternatingTree.PrunedUpwardPathStoppingBefore
+295/356 Test  #17: DecoderStrategy.ExplicitConfigurationAndMoveValidation ..................................................   Passed    0.01 sec
+        Start 282: GraphFlooder.RegionHitRegion
+296/356 Test #291: AlternatingTree.PrunedUpwardPathStoppingBefore ..........................................................   Passed    0.01 sec
+        Start 320: SearchGraph.AddBoundaryEdge
+297/356 Test #282: GraphFlooder.RegionHitRegion ............................................................................   Passed    0.01 sec
+        Start 210: OneHopPredecoder.SharedRangesCanGrowAndPairTargetsOutsideTheSourceRange
+298/356 Test #320: SearchGraph.AddBoundaryEdge .............................................................................   Passed    0.01 sec
+        Start 330: UserGraph.ConvertImpliedWeights
+299/356 Test #210: OneHopPredecoder.SharedRangesCanGrowAndPairTargetsOutsideTheSourceRange .................................   Passed    0.01 sec
+        Start 226: OneHopCap.ConstructionBindsConfiguredLayoutOrScalarFallback
+300/356 Test #330: UserGraph.ConvertImpliedWeights .........................................................................   Passed    0.01 sec
+        Start 276: GraphFillRegion.descendance_ordering_le
+301/356 Test #226: OneHopCap.ConstructionBindsConfiguredLayoutOrScalarFallback .............................................   Passed    0.01 sec
+        Start 309: radix_heap_queue.sorts_fuzz
+302/356 Test #276: GraphFillRegion.descendance_ordering_le .................................................................   Passed    0.01 sec
+        Start 136: StructuredRegionPool.DeferredSeedNodeConstLookupRestoresNodeAcrossStorageKinds
+303/356 Test #309: radix_heap_queue.sorts_fuzz .............................................................................   Passed    0.01 sec
+        Start 339: IterDemInstructionsTest.ErrorWithMultipleObservables
+304/356 Test #136: StructuredRegionPool.DeferredSeedNodeConstLookupRestoresNodeAcrossStorageKinds ..........................   Passed    0.01 sec
+        Start   7: UnstructuredPredecode.WideObservablesNegativeEdgesAndEdgeExtraction
+305/356 Test #339: IterDemInstructionsTest.ErrorWithMultipleObservables ....................................................   Passed    0.01 sec
+        Start 293: Mwpm.BlossomCreatedThenShattered
+306/356 Test   #7: UnstructuredPredecode.WideObservablesNegativeEdgesAndEdgeExtraction .....................................   Passed    0.01 sec
+        Start 171: StaticGrid.FailedStencilConstructionPreservesAdjacencyForRetry
+307/356 Test #293: Mwpm.BlossomCreatedThenShattered ........................................................................   Passed    0.01 sec
+        Start 340: IterDemInstructionsTest.ZeroProbabilityError
+308/356 Test #171: StaticGrid.FailedStencilConstructionPreservesAdjacencyForRetry ..........................................   Passed    0.01 sec
+        Start 278: MatchTest.equality
+309/356 Test #340: IterDemInstructionsTest.ZeroProbabilityError ............................................................   Passed    0.01 sec
+        Start 336: IterDemInstructionsTest.TwoDetectorError
+310/356 Test #278: MatchTest.equality ......................................................................................   Passed    0.01 sec
+        Start  89: TimePartitionCuts.Ty2x2RejectsInvalidDimensionsConfigurationAndVolume
+311/356 Test #336: IterDemInstructionsTest.TwoDetectorError ................................................................   Passed    0.01 sec
+        Start 217: OneHopPredecoder.LiveOwnedSeedAllocationTransfersWithoutMovedFromCleanup
+312/356 Test  #89: TimePartitionCuts.Ty2x2RejectsInvalidDimensionsConfigurationAndVolume ...................................   Passed    0.01 sec
+        Start  12: UnstructuredPredecode.RebuildsCapsAfterPublicGraphWeightChanges
+313/356 Test #217: OneHopPredecoder.LiveOwnedSeedAllocationTransfersWithoutMovedFromCleanup ................................   Passed    0.01 sec
+        Start 347: IterDemInstructionsTest.MultipleErrorsOnSameEdgeCombine
+314/356 Test  #12: UnstructuredPredecode.RebuildsCapsAfterPublicGraphWeightChanges .........................................   Passed    0.01 sec
+        Start 254: Varying.AdditionAndSubtraction
+315/356 Test #347: IterDemInstructionsTest.MultipleErrorsOnSameEdgeCombine .................................................   Passed    0.01 sec
+        Start 211: OneHopPredecoder.BulkImportBuildsMateEndpointsBeforeTheirPartnerObjects
+316/356 Test #254: Varying.AdditionAndSubtraction ..........................................................................   Passed    0.01 sec
+        Start 241: MwpmDecoding.BitVectorToObsMask
+317/356 Test #211: OneHopPredecoder.BulkImportBuildsMateEndpointsBeforeTheirPartnerObjects .................................   Passed    0.01 sec
+        Start 284: AlternatingTree.FindRoot
+318/356 Test #241: MwpmDecoding.BitVectorToObsMask .........................................................................   Passed    0.01 sec
+        Start   5: UnstructuredPredecode.ProvisionalPairIsRevisedByFullMatching
+319/356 Test #284: AlternatingTree.FindRoot ................................................................................   Passed    0.01 sec
+        Start 321: SearchFlooder.RepCodeDetectorSearch
+320/356 Test   #5: UnstructuredPredecode.ProvisionalPairIsRevisedByFullMatching ............................................   Passed    0.01 sec
+        Start 281: GraphFlooder.RegionGrowingToBoundary
+321/356 Test #321: SearchFlooder.RepCodeDetectorSearch .....................................................................   Passed    0.00 sec
+        Start 280: GraphFlooder.CreateRegion
+322/356 Test #281: GraphFlooder.RegionGrowingToBoundary ....................................................................   Passed    0.01 sec
+        Start  33: SharedComponents.WholePrefixRejectsSpatialParallelImportAndSignedConfigurations
+323/356 Test #280: GraphFlooder.CreateRegion ...............................................................................   Passed    0.01 sec
+        Start 342: IterDemInstructionsTest.DecomposedError
+324/356 Test  #33: SharedComponents.WholePrefixRejectsSpatialParallelImportAndSignedConfigurations .........................   Passed    0.01 sec
+        Start 322: SearchFlooder.RepCodeBoundarySearch
+325/356 Test #342: IterDemInstructionsTest.DecomposedError .................................................................   Passed    0.01 sec
+        Start 261: Varying.TimeToXIntercept
+326/356 Test #322: SearchFlooder.RepCodeBoundarySearch .....................................................................   Passed    0.01 sec
+        Start 161: StaticGrid.RadiusStoreOwnershipAndZeroState
+327/356 Test #261: Varying.TimeToXIntercept ................................................................................   Passed    0.01 sec
+        Start 131: StructuredRegionPool.LazySeedsStayRawAcrossExtractionResetAndOrdinaryReuse
+328/356 Test #161: StaticGrid.RadiusStoreOwnershipAndZeroState .............................................................   Passed    0.01 sec
+        Start 304: Mwpm.TwoRegionsGrowingThenMatching
+329/356 Test #131: StructuredRegionPool.LazySeedsStayRawAcrossExtractionResetAndOrdinaryReuse ..............................   Passed    0.01 sec
+        Start 298: Mwpm.ObsMaskToSetBits
+330/356 Test #304: Mwpm.TwoRegionsGrowingThenMatching ......................................................................   Passed    0.01 sec
+        Start 346: IterDemInstructionsTest.MoreThanEightComponents
+331/356 Test #298: Mwpm.ObsMaskToSetBits ...................................................................................   Passed    0.01 sec
+        Start 314: mwpm_event.basic_usage
+332/356 Test #346: IterDemInstructionsTest.MoreThanEightComponents .........................................................   Passed    0.01 sec
+        Start 268: DetectorNode.compute_wrapped_radius_within_layer_at_time
+333/356 Test #314: mwpm_event.basic_usage ..................................................................................   Passed    0.01 sec
+        Start 337: IterDemInstructionsTest.TwoDetectorErrorNotSorted
+334/356 Test #268: DetectorNode.compute_wrapped_radius_within_layer_at_time ................................................   Passed    0.01 sec
+        Start 272: CompressedEdge.MergedWith
+335/356 Test #337: IterDemInstructionsTest.TwoDetectorErrorNotSorted .......................................................   Passed    0.01 sec
+        Start 273: GraphFillRegion.BlossomBuilder
+336/356 Test #272: CompressedEdge.MergedWith ...............................................................................   Passed    0.01 sec
+        Start 122: StructuredRegionPool.ActualStaleShrinkPopsConserveDiagnosticCounts
+337/356 Test #273: GraphFillRegion.BlossomBuilder ..........................................................................   Passed    0.01 sec
+        Start 326: UserGraph.AddNoise
+338/356 Test #122: StructuredRegionPool.ActualStaleShrinkPopsConserveDiagnosticCounts ......................................   Passed    0.01 sec
+        Start 256: Varying.from_base_and_growth
+339/356 Test #326: UserGraph.AddNoise ......................................................................................   Passed    0.01 sec
+        Start 315: QueuedEventTracker.basic_usage
+340/356 Test #256: Varying.from_base_and_growth ............................................................................   Passed    0.01 sec
+        Start 209: OneHopPredecoder.CachedSeedIsFreshAfterActiveSetAndNegativeNormalizationChange
+341/356 Test #315: QueuedEventTracker.basic_usage ..........................................................................   Passed    0.01 sec
+        Start 333: UserGraph.GetEdgeOrBoundaryEdgeWeight
+342/356 Test #209: OneHopPredecoder.CachedSeedIsFreshAfterActiveSetAndNegativeNormalizationChange ..........................   Passed    0.01 sec
+        Start 188: StaticGrid.ShotSeedNegativeParityAndDeferredIndexRebuild
+343/356 Test #333: UserGraph.GetEdgeOrBoundaryEdgeWeight ...................................................................   Passed    0.01 sec
+        Start 355: profile.profile_stats.summarize_reports_basic_sample_statistics
+344/356 Test #188: StaticGrid.ShotSeedNegativeParityAndDeferredIndexRebuild ................................................   Passed    0.01 sec
+        Start 251: Varying.GetDistanceAtTime
+345/356 Test #355: profile.profile_stats.summarize_reports_basic_sample_statistics .........................................   Passed    0.00 sec
+        Start 287: AlternatingTree.AllNodesInTree
+346/356 Test #251: Varying.GetDistanceAtTime ...............................................................................   Passed    0.01 sec
+        Start 352: profile.profile_schema.merge_from_uses_counter_and_histogram_descriptors
+347/356 Test #287: AlternatingTree.AllNodesInTree ..........................................................................   Passed    0.01 sec
+        Start 228: Main.predict
+348/356 Test #352: profile.profile_schema.merge_from_uses_counter_and_histogram_descriptors ................................   Passed    0.01 sec
+        Start 353: profile.profile_schema.writes_counter_and_histogram_tables_from_descriptors
+349/356 Test #353: profile.profile_schema.writes_counter_and_histogram_tables_from_descriptors .............................   Passed    0.01 sec
+        Start 356: profile.profile_stats.summarize_histogram_reports_weighted_quantiles
+350/356 Test #228: Main.predict ............................................................................................   Passed    0.01 sec
+        Start 351: profile.profile_schema.descriptor_counts_match_shot_stats_schema
+351/356 Test #356: profile.profile_stats.summarize_histogram_reports_weighted_quantiles ....................................   Passed    0.01 sec
+        Start 354: profile.profile_schema.region_lifecycle_helpers_sample_active_and_shell_area_histograms
+352/356 Test #351: profile.profile_schema.descriptor_counts_match_shot_stats_schema ........................................   Passed    0.01 sec
+        Start 350: profile.profile_schema.range_guards_preserve_statistics_without_trace
+353/356 Test #354: profile.profile_schema.region_lifecycle_helpers_sample_active_and_shell_area_histograms .................   Passed    0.01 sec
+        Start  14: UnstructuredPredecode.SparseHighDegreeFallbackPreservesDenseComponentsAndGraphChanges
+354/356 Test #350: profile.profile_schema.range_guards_preserve_statistics_without_trace ...................................   Passed    0.01 sec
+        Start  15: UnstructuredPredecode.SparseFallbackNormalizesNegativeWeightsAndRecoversFromErrors
+355/356 Test  #15: UnstructuredPredecode.SparseFallbackNormalizesNegativeWeightsAndRecoversFromErrors ......................   Passed    0.02 sec
+356/356 Test  #14: UnstructuredPredecode.SparseHighDegreeFallbackPreservesDenseComponentsAndGraphChanges ...................   Passed    0.04 sec
+
+100% tests passed, 0 tests failed out of 356
+
+Total Test time (real) =  20.06 sec

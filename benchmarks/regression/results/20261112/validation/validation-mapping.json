@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "complete": true,
+  "groups": {
+    "package": {
+      "mapping": "package/mapping.json",
+      "sha256": "a99e7e8805151ce2e312fbde5becadc9107c124388cd84512ad8e5a170998ad3"
+    },
+    "ae": {
+      "mapping": "ae/mapping.json",
+      "sha256": "5e027359de3aae56088c82b0ad31c5b9262c61aa2e783d507b04357c923439b2"
+    },
+    "external": {
+      "mapping": "external/mapping.json",
+      "sha256": "ea2ce50024c4056dd418dfb22a201d901663475b054af89a05cde2e3d8514b76"
+    }
+  },
+  "archive_script_sha256": "4993dd2121e7b576af5cad630194a10ecde82599b3e669d36a8ebd073f243f6e",
+  "finish_script_sha256": "ac587dec69377f27c3b3935c79eb244d2eb9b2f74488ac0fabd09d4f26ab977b"
+}

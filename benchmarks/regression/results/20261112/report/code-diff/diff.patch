@@ -1,0 +1,266 @@
+# Labelled snapshot comparison; this is not a Git commit diff.
+diff --snapshot null "density_gate.cc"
+base: absent
+candidate: {"bytes": 2440, "git_object": null, "kind": "file", "mode": "100644", "sha256": "b54b5ffd8a847347ff3bc6d2492d8363b657089ca0380c892e892300ece7a17e"}
+--- /dev/null
++++ density_gate.cc
+@@ -0,0 +1,49 @@
++bool OneHopPredecoder::should_skip_sparse_high_degree() const noexcept {
++    // In a sparse high-degree neighborhood the cap/candidate scan duplicates
++    // substantial flooder work, while few local pairs become available. Bound
++    // the dispatch cost before that scan: inspect seed degrees, then at most
++    // 8 * 32 evenly spaced adjacency entries. This is a performance heuristic;
++    // the fallback is the full solver on the same normalized syndrome.
++    if (seeds.empty())
++        return false;
++    size_t degree_sum = 0;
++    for (const auto& seed : seeds) {
++        const auto& neighbors = seed.node->neighbors;
++        // A direct boundary can finish a seed even without an active neighbor.
++        if (!neighbors.empty() && !neighbors[0])
++            return false;
++        degree_sum += neighbors.size();
++    }
++    if (degree_sum / seeds.size() < 32)
++        return false;
++    size_t sampled = 0, active_neighbors = 0;
++    // Short shots should not pay the maximum fixed probe cost. Inspect at
++    // most one neighborhood per four seeds, with a nonzero rounded-up count.
++    const size_t seed_samples = std::min(size_t{8}, (seeds.size() - 1) / 4 + 1);
++    const size_t seed_step = seeds.size() / seed_samples;
++    const size_t seed_remainder = seeds.size() % seed_samples;
++    size_t seed_position = 0, seed_error = 0;
++    for (size_t sample = 0; sample < seed_samples; ++sample) {
++        const auto& neighbors = seeds[seed_position].node->neighbors;
++        if (neighbors.size() >= 32) {
++            for (size_t position = 0; position < 32; ++position)
++                active_neighbors += seed_index(neighbors[(position * neighbors.size()) >> 5]) != 0;
++            sampled += 32;
++        } else {
++            for (const auto* neighbor : neighbors)
++                active_neighbors += seed_index(neighbor) != 0;
++            sampled += neighbors.size();
++        }
++        // Exactly floor((sample + 1) * seeds.size() / seed_samples), without
++        // a variable integer division on each sampled neighborhood.
++        seed_position += seed_step;
++        seed_error += seed_remainder;
++        if (seed_error >= seed_samples) {
++            ++seed_position;
++            seed_error -= seed_samples;
++        }
++    }
++    // Local density preserves dense active components even when the graph has
++    // many disconnected or irrelevant vertices. No graph-level cache is used.
++    return sampled && active_neighbors * 8 < sampled;
++}
+diff --snapshot null "generic_completion.cc"
+base: absent
+candidate: {"bytes": 144, "git_object": null, "kind": "file", "mode": "100644", "sha256": "38a30addc1e9857b8c67e3784d54087adb6a357f4b90707ec70bee93aa95f4c7"}
+--- /dev/null
++++ generic_completion.cc
+@@ -0,0 +1,2 @@
++    complete = std::all_of(seeds.begin(), seeds.end(), [](const Seed& seed) { return seed.mate != UNMATCHED; });
++    result_pending = complete;
+diff --snapshot "generic_dispatch.cc" "generic_dispatch.cc"
+base: {"bytes": 921, "git_object": null, "kind": "file", "mode": "100644", "sha256": "fc9263ac837e82e17ee2246032d1c5533d27e14e0ef0f42ee513db691a9cb366"}
+candidate: {"bytes": 367, "git_object": null, "kind": "file", "mode": "100644", "sha256": "bacc7a61736d659019e6968c7922ec42bd6f803a51321591d9ba0024bef7921f"}
+--- generic_dispatch.cc
++++ generic_dispatch.cc
+@@ -1,14 +1,7 @@
+-    if (mwpm.flooder.negative_weight_detection_events.empty()) {
+-        // Just add detection events if graph has no negative weights
+-#if PYMATCHING_ENABLE_PROFILE
+-        pm::profile::ScopedRange create_range(pm::profile::RangeId::CreateDetectionEvents);
+-#endif
+-        for (auto& detection : detection_events) {
+-            if (detection >= mwpm.flooder.graph.nodes.size())
+-                throw std::invalid_argument(
+-                    "The detection event with index " + std::to_string(detection) +
+-                    " does not correspond to a node in the graph, which only has " +
+-                    std::to_string(mwpm.flooder.graph.nodes.size()) + " nodes.");
+-            if (detection + 1 > mwpm.flooder.graph.is_user_graph_boundary_node.size() ||
+-                !mwpm.flooder.graph.is_user_graph_boundary_node[detection])
+-                mwpm.create_detection_event(&mwpm.flooder.graph.nodes[detection]);
++        if (mwpm.predecode_enabled) {
++            mwpm.predecoder.prepare(graph, detection_events, mwpm.flooder.negative_weight_detection_events);
++            mwpm.predecoder.run();
++            if (mwpm.predecoder.complete)
++                return;
++            mwpm.import_predecode_state();
++        } else if (mwpm.flooder.negative_weight_detection_events.empty()) {
+diff --snapshot null "generic_grow.cc"
+base: absent
+candidate: {"bytes": 921, "git_object": null, "kind": "file", "mode": "100644", "sha256": "4c1e430c254fece0603f8debf787f9ac8671b9ed537f38f53f54281b78269b78"}
+--- /dev/null
++++ generic_grow.cc
+@@ -0,0 +1,20 @@
++void OneHopPredecoder::grow(size_t index) {
++    auto& seed = seeds[index];
++    if (seed.saturated)
++        return;
++    const auto& node = *seed.node;
++    weight_int limit = seed.base_cap;
++    const size_t end = index + 1 < seeds.size() ? seeds[index + 1].candidate_begin : candidates.size();
++    for (size_t position = seed.candidate_begin; position < end; ++position) {
++        const auto& candidate = candidates[position];
++        const auto other_radius = seeds[candidate.seed].radius;
++        assert(other_radius <= node.neighbor_weights[candidate.slot]);
++        limit = std::min(limit, node.neighbor_weights[candidate.slot] - other_radius);
++    }
++    if (!node.neighbors.empty()) {
++        // The full solver's two-growing-front collision times use an even
++        // radius lattice. UserGraph quantizes all edge weights onto it.
++        seed.radius = limit & ~weight_int{1};
++        seed.saturated = true;
++    }
++}
+diff --snapshot null "generic_import.cc"
+base: absent
+candidate: {"bytes": 2031, "git_object": null, "kind": "file", "mode": "100644", "sha256": "810bdedadebba05a603cacad975fbf670b2a35360dadd19a7dba9d3ec7986e09"}
+--- /dev/null
++++ generic_import.cc
+@@ -0,0 +1,44 @@
++void Mwpm::import_predecode_state() {
++    if (predecoder.skipped) {
++        // prepare() already validated and normalized these events. A dispatch
++        // fallback needs no radius/matching import or second syndrome pass.
++        for (const auto& seed : predecoder.seeds)
++            create_detection_event(seed.node);
++        return;
++    }
++    // Publish every singleton before scheduling any event: a provisional
++    // match must remain visible to later alternating trees and blossoms.
++    for (const auto& seed : predecoder.seeds) {
++        auto* region = flooder.region_arena.alloc_default_constructed();
++        auto* node = seed.node;
++        region->radius = VaryingCT::from_base_and_growth(
++            seed.radius, seed.mate == OneHopPredecoder::UNMATCHED ? +1 : 0);
++        region->shell_area.push_back(node);
++        node->reached_from_source = node;
++        node->radius_of_arrival = 0;
++        node->region_that_arrived = region;
++        node->region_that_arrived_top = region;
++        node->wrapped_radius_cached = 0;
++#if BB_ENABLE_PROFILE
++        beyond_blossom::profile::record_counter(&beyond_blossom::profile::ShotStats::detection_regions_created);
++        beyond_blossom::profile::record_region_created();
++        beyond_blossom::profile::record_region_shell_area(1);
++#endif
++    }
++    for (const auto& seed : predecoder.seeds) {
++        auto* region = seed.node->region_that_arrived;
++        if (seed.mate == OneHopPredecoder::UNMATCHED) {
++            auto* root = node_arena.alloc_unconstructed();
++            new (root) AltTreeNode(region);
++            region->alt_tree_node = root;
++            flooder.reschedule_events_at_detector_node(*seed.node);
++        } else {
++            auto* mate = seed.mate == OneHopPredecoder::BOUNDARY ? nullptr : predecoder.seeds[seed.mate].node;
++            region->match = {mate ? mate->region_that_arrived : nullptr,
++                             {seed.node, mate, seed.match_observables}};
++        }
++    }
++#if BB_ENABLE_PROFILE
++    record_primal_tree_snapshot();
++#endif
++}
+diff --snapshot null "generic_match.cc"
+base: absent
+candidate: {"bytes": 1622, "git_object": null, "kind": "file", "mode": "100644", "sha256": "bb23a0955949b043e3e8ab83b28f3f8bc41b6624640a6b424f851d7512db6da5"}
+--- /dev/null
++++ generic_match.cc
+@@ -0,0 +1,33 @@
++void OneHopPredecoder::run_one(size_t index) {
++    auto& seed = seeds[index];
++    const auto& node = *seed.node;
++    grow(index);
++    // Try detector partners first, preserving the structured decoder's local
++    // preference without relying on a fixed stencil or a degree limit.
++    const size_t end = index + 1 < seeds.size() ? seeds[index + 1].candidate_begin : candidates.size();
++    for (size_t position = seed.candidate_begin; position < end; ++position) {
++        const auto& candidate = candidates[position];
++        const auto slot = candidate.slot;
++        if (seeds[candidate.seed].mate != UNMATCHED)
++            continue;
++        auto& mate = seeds[candidate.seed];
++        if (uint64_t(seed.radius) + mate.radius < node.neighbor_weights[slot])
++            grow(candidate.seed);
++        if (uint64_t(seed.radius) + mate.radius != node.neighbor_weights[slot])
++            continue;
++        seed.mate = candidate.seed;
++        mate.mate = index;
++        seed.match_observables = mate.match_observables = node.neighbor_observables[slot];
++        // Both endpoints retain the selected edge summary, avoiding a reverse
++        // adjacency lookup when importing or extracting the provisional pair.
++        obs_mask ^= node.neighbor_observables[slot];
++        weight += node.neighbor_weights[slot];
++        return;
++    }
++    if (!node.neighbors.empty() && !node.neighbors[0] && seed.radius == node.neighbor_weights[0]) {
++        seed.mate = BOUNDARY;
++        seed.match_observables = node.neighbor_observables[0];
++        obs_mask ^= node.neighbor_observables[0];
++        weight += node.neighbor_weights[0];
++    }
++}
+diff --snapshot null "seed_index.cc"
+base: absent
+candidate: {"bytes": 127, "git_object": null, "kind": "file", "mode": "100644", "sha256": "bccd838d46b527e6a70e5e60bf171d7c2b5f2483e8bab3f33d1157931a6978a9"}
+--- /dev/null
++++ seed_index.cc
+@@ -0,0 +1,3 @@
++    size_t seed_index(const DetectorNode* node) const noexcept {
++        return node ? active[size_t(node - nodes)] : 0;
++    }
+diff --snapshot "structured_boundary.cc" "structured_boundary.cc"
+base: {"bytes": 690, "git_object": null, "kind": "file", "mode": "100644", "sha256": "3d7cc8165e152fdef6c5e09d91c71148020d03c9db2947182b28847feb134da0"}
+candidate: {"bytes": 733, "git_object": null, "kind": "file", "mode": "100644", "sha256": "1aa808030a99e20de2bc561f7f75f7e2e7f5344a54fd878f7063a311f666be9a"}
+--- structured_boundary.cc
++++ structured_boundary.cc
+@@ -1,6 +1,6 @@
+-void Mwpm::handle_tree_hitting_boundary(const RegionHitBoundaryEventData &event) {
+-    auto range = pm::profile::counted_range(
+-        pm::profile::RangeId::MatchBoundary, &pm::profile::ShotStats::matcher_tree_hit_boundary);
++inline void Mwpm::handle_tree_hitting_boundary(const RegionHitBoundaryEventData &event) {
++    auto range = beyond_blossom::profile::counted_range(
++        beyond_blossom::profile::RangeId::MatchBoundary, &beyond_blossom::profile::ShotStats::matcher_tree_hit_boundary);
+     auto node = region_for(event.region)->alt_tree_node;
+     node->become_root();
+     // Match descendents, deleting AltTreeNodes and freezing GraphFillRegions
+diff --snapshot "structured_dispatch.cc" "structured_dispatch.cc"
+base: {"bytes": 798, "git_object": null, "kind": "file", "mode": "100644", "sha256": "d49ed3c1d5485e0ce97fd0456e27ffdce4b527c3a8f52c1e71b3d65930a4dd71"}
+candidate: {"bytes": 841, "git_object": null, "kind": "file", "mode": "100644", "sha256": "bf71482ef7f639b4087402b52120abbad32965ff7c75069b57c0eb2c21f3d989"}
+--- structured_dispatch.cc
++++ structured_dispatch.cc
+@@ -1,6 +1,6 @@
+-void Mwpm::process_event(const MwpmEvent &event) {
++inline void Mwpm::process_event(const MwpmEvent &event) {
+     auto range =
+-        pm::profile::counted_range(pm::profile::RangeId::PrimalPhase, &pm::profile::ShotStats::primal_phase_runs);
++        beyond_blossom::profile::counted_range(beyond_blossom::profile::RangeId::PrimalPhase, &beyond_blossom::profile::ShotStats::primal_phase_runs);
+     record_primal_tree_snapshot();
+     switch (event.event_type) {
+         case REGION_HIT_REGION:
+diff --snapshot "structured_root.cc" "structured_root.cc"
+base: {"bytes": 671, "git_object": null, "kind": "file", "mode": "100644", "sha256": "9411acc61ae6395e28ff5e5bf2751e75c36de16f324d91a46d1b820dcdd891ad"}
+candidate: {"bytes": 678, "git_object": null, "kind": "file", "mode": "100644", "sha256": "06c4702ec305cf7663d645d1dcc18435b30c490a7efb576a0ac9b7c7c798325b"}
+--- structured_root.cc
++++ structured_root.cc
+@@ -1,4 +1,4 @@
+-void AltTreeNode::become_root() {
++inline void AltTreeNode::become_root() {
+     // Performs a tree rotation turning this node into the root of the tree/
+     if (!parent.alt_tree_node)
+         return;
+diff --snapshot "structured_shatter.cc" "structured_shatter.cc"
+base: {"bytes": 783, "git_object": null, "kind": "file", "mode": "100644", "sha256": "0560346af6e4ed3cb30ffe984f1256d31a41286ca6e277dfdd2e70ecff175847"}
+candidate: {"bytes": 790, "git_object": null, "kind": "file", "mode": "100644", "sha256": "f3a5acac8dcc1867546cbccd18eaa1a6a2ca9c52318c5e9c74bc3c43c8f62cf7"}
+--- structured_shatter.cc
++++ structured_shatter.cc
+@@ -1,4 +1,4 @@
+-void Mwpm::shatter_descendants_into_matches_and_freeze(AltTreeNode &alt_tree_node) {
++inline void Mwpm::shatter_descendants_into_matches_and_freeze(AltTreeNode &alt_tree_node) {
+     for (auto &child_edge : alt_tree_node.children) {
+         shatter_descendants_into_matches_and_freeze(*child_edge.alt_tree_node);
+     }

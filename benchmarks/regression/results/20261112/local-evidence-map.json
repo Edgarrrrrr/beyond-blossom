@@ -1,0 +1,145 @@
+{
+  "policy": "Original receipts and raw files are copied byte for byte. Large inputs and binaries are retained separately in the workspace validation/20261112 archive.",
+  "files": [
+    {
+      "original": "/tmp/beyond-build/generic-final-fast/raw.csv",
+      "relative": "generic-final-fast/raw.csv",
+      "sha256": "5af034fea15bfae335166d4b42de11d93f6f7d653145824865fbc71fc60448f1"
+    },
+    {
+      "original": "/tmp/beyond-build/generic-final-fast/summary.json",
+      "relative": "generic-final-fast/summary.json",
+      "sha256": "a38eaa289f831a2e68888a0f68987aee7e678cf936a45e06035b0ca70c12141e"
+    },
+    {
+      "original": "/tmp/beyond-build/generic-final-fast/manifest.json",
+      "relative": "generic-final-fast/manifest.json",
+      "sha256": "23e9a0f105e268b28011f8c278896142b598685045f28a0fe96fb15a3e309c50"
+    },
+    {
+      "original": "/tmp/beyond-build/generic-final-fast/validation-audit.json",
+      "relative": "generic-final-fast/validation-audit.json",
+      "sha256": "61028e3243e00b11716f29e26b89911f2d3a0969f64a229f92fdc93ad3ce2dfd"
+    },
+    {
+      "original": "/tmp/beyond-build/generic-final-dense/raw.csv",
+      "relative": "generic-final-dense/raw.csv",
+      "sha256": "05c180e51b89c111e35ea6f4d2cbae4599b01363f779153f36ad558cc64ea337"
+    },
+    {
+      "original": "/tmp/beyond-build/generic-final-dense/summary.json",
+      "relative": "generic-final-dense/summary.json",
+      "sha256": "f0000cc78c90bf1ef915a64a680f1a2b12d21fbfbea5e67fd834ea94ac8e6302"
+    },
+    {
+      "original": "/tmp/beyond-build/generic-final-dense/manifest.json",
+      "relative": "generic-final-dense/manifest.json",
+      "sha256": "207ad4906b5ab512564681149f627d9095e4e1ddecb65f8497895b331480246f"
+    },
+    {
+      "original": "/tmp/beyond-build/generic-final-dense/validation-audit.json",
+      "relative": "generic-final-dense/validation-audit.json",
+      "sha256": "227c67cbd52ce9f066274f9b8e4684f6aa894822891f17d36419e7a39f8c7fa4"
+    },
+    {
+      "original": "/tmp/beyond-build/structured-final-run/raw.csv",
+      "relative": "structured/raw.csv",
+      "sha256": "5ca69db78382cda364b3db944e268d87084028ff9bfa4d8096a1fd6beee4cce0"
+    },
+    {
+      "original": "/tmp/beyond-build/structured-final-run/summary.csv",
+      "relative": "structured/summary.csv",
+      "sha256": "aa331f41cba8885f6280d7cdc4313b7a569bb355f057fb3ad558331b0007ee1a"
+    },
+    {
+      "original": "/tmp/beyond-build/structured-final-run/summary.json",
+      "relative": "structured/summary.json",
+      "sha256": "04d99727354f0e43233e24ed4ffa46db6e2dd74d5aac5d977d701fe43fa920df"
+    },
+    {
+      "original": "/tmp/beyond-build/structured-final-run/plan.json",
+      "relative": "structured/plan.json",
+      "sha256": "a5f6e9619e8b69fc2912cb727939e93bba498f6d751af47789cd7604bf6e083a"
+    },
+    {
+      "original": "/tmp/beyond-build/structured-final-run/complete.json",
+      "relative": "structured/complete.json",
+      "sha256": "8f7620da5df4cde8183f66602f022b19d263e52cdd4c1234e0b741ae00a4fdee"
+    },
+    {
+      "original": "/tmp/beyond-build/generic-final-summary.json",
+      "relative": "generic-final-summary.json",
+      "sha256": "48a620559ebad197d755fec0c2c3de7dec6dd67ebc7f3b07889f6973896ea193"
+    },
+    {
+      "original": "/tmp/beyond-build/generic-final-summary.csv",
+      "relative": "generic-final-summary.csv",
+      "sha256": "5f00dd21ff26ef42cde212f88540463455dabd70a023731bbf717d901d95b2b0"
+    },
+    {
+      "original": "/tmp/beyond-build/generic-final-protocol.json",
+      "relative": "generic-final-protocol.json",
+      "sha256": "d6f4e9a417607d6c6e948325872810fd3b2b745d191cb9bfe4e40b561445e5a9"
+    },
+    {
+      "original": "/tmp/beyond-build/generic-final-commands.sh",
+      "relative": "generic-final-commands.sh",
+      "sha256": "5f154b1a9d4d8ac863f38d14c63475be0f90ff44dc5fb7d7018d13458a90a4e7"
+    },
+    {
+      "original": "/tmp/beyond-build/final-hardware.json",
+      "relative": "final-hardware.json",
+      "sha256": "b9aa9f80d1f61f058704f270253827cb24fda80ff95230183bc3b0dc8899bc20"
+    },
+    {
+      "original": "/tmp/beyond-build/asan-final-validation.json",
+      "relative": "validation/native/asan-final-validation.json",
+      "sha256": "07042f275d214b2e1aec9a9eec61a69478cd0c1df820e8fe6b1339de139d63ea"
+    },
+    {
+      "original": "/tmp/beyond-build/asan-final-ctest.log",
+      "relative": "validation/native/asan-final-ctest.log",
+      "sha256": "53600c63dca6cc78ad21e4543c57663d618ecff153940b8eaf57a92be4d0ae34"
+    },
+    {
+      "original": "/tmp/beyond-build/asan-final-build.log",
+      "relative": "validation/native/asan-final-build.log",
+      "sha256": "58461de9e5b87ebb7b12b4e306dd142a3c4d74c64508a7fe228463430d3fcfea"
+    },
+    {
+      "original": "/tmp/beyond-build/final-release-ctest.log",
+      "relative": "validation/native/final-release-ctest.log",
+      "sha256": "bb59ec0a54c61fde01fd5b112d8575ea56b554dffc601a77daed5a73dc97b880"
+    },
+    {
+      "original": "/tmp/archive-beyond-validation.py",
+      "relative": "archive-tools/archive-beyond-validation.py",
+      "sha256": "46007f335aa6ee3ff79a10913067d557bbbe8246b3db8c22865826307279640b"
+    },
+    {
+      "original": "/tmp/seal-beyond-native-validation.py",
+      "relative": "archive-tools/seal-beyond-native-validation.py",
+      "sha256": "bcb3252ed0a41758392e8b1efc1b9bfeb74c28919b6086f920b2ed3d73400026"
+    },
+    {
+      "original": "/tmp/beyond-build/generic-final-bin/build.json",
+      "relative": "generic-final-bin/build.json",
+      "sha256": "c74b8439c9a348d1dda4fbb62b74f8032091cbfc48f2df463d4e6de1f159d0fe"
+    },
+    {
+      "original": "/tmp/beyond-build/generic-final-bin/source-identity.json",
+      "relative": "generic-final-bin/source-identity.json",
+      "sha256": "e0fce625e6ee9d2181c26995030dccd946edfe12e833d55928d936002c54277e"
+    },
+    {
+      "original": "/tmp/beyond-build/structured-final-bin/build.json",
+      "relative": "structured-final-bin/build.json",
+      "sha256": "d5484db8aba35d6108dd9e20844f6da1fe9dfac9d7e5a2aeec8d39d2d23b4c42"
+    },
+    {
+      "original": "/tmp/beyond-build/structured-final-bin/source-identity.json",
+      "relative": "structured-final-bin/source-identity.json",
+      "sha256": "aaf3076580e822d3a7d53d39f069c4dea90a8bf1ac4c51e41ff88aab24f321b3"
+    }
+  ]
+}

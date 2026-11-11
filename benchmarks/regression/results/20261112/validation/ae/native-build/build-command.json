@@ -1,0 +1,9 @@
+[
+  "cmake",
+  "--build",
+  "/tmp/beyond-ae-native-final01",
+  "--target",
+  "bb_benchmark",
+  "-j",
+  "2"
+]

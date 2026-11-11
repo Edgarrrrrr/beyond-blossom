@@ -1,0 +1,10 @@
+{
+  "status": "verified",
+  "run": "/tmp/beyond-build/generic-final-fast",
+  "records": 3780,
+  "raw_sha256": "5af034fea15bfae335166d4b42de11d93f6f7d653145824865fbc71fc60448f1",
+  "archived_binaries_match_manifest": true,
+  "archived_inputs_match_manifest": true,
+  "weight_vectors_match_each_row_sum_and_ordered_hash": true,
+  "native_per_shot_comparison": "Every candidate/source repeat compared each warmup weight to the fixed source vector before timing."
+}

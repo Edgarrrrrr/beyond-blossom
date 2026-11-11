@@ -1,0 +1,47 @@
+{
+  "package": "/tmp/beyond-package-final/artifacts-r2/installed/beyond_blossom/__init__.py",
+  "extension": "/tmp/beyond-package-final/artifacts-r2/installed/beyond_blossom/_cpp_beyond_blossom.cpython-311-x86_64-linux-gnu.so",
+  "version": "0.1.0",
+  "python_version": "3.11.14 (main, Oct 21 2025, 18:31:21) [GCC 11.2.0]",
+  "matching_result": [
+    1,
+    0
+  ],
+  "structured_predictions": [
+    100,
+    1
+  ],
+  "native_sparse_cases": 8,
+  "metadata": {
+    "strategy": "predecoded",
+    "backend": "structured",
+    "num_detectors": 120,
+    "num_observables": 1,
+    "predecode_enabled": true,
+    "requested_threads": 1,
+    "actual_threads": 1,
+    "partitions": 1,
+    "same_algorithm_single_thread": false,
+    "pipeline_schedule": "none",
+    "supports_extended_observables": true,
+    "supports_edges": true,
+    "supports_match_edges": true,
+    "normalising_constant": 4077594.0517170443,
+    "distance": 5,
+    "rounds": 5,
+    "geometry": "rotated",
+    "selected_simd": [
+      "scalar",
+      "scalar"
+    ]
+  },
+  "dependency_versions": {
+    "numpy": "2.4.1",
+    "scipy": "1.17.0",
+    "networkx": "3.6.1",
+    "matplotlib": "3.10.8",
+    "stim": "1.15.0",
+    "rustworkx": "0.18.1",
+    "pytest": "9.0.2"
+  }
+}

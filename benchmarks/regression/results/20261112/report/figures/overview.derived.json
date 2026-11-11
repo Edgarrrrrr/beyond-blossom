@@ -1,0 +1,1169 @@
+{
+  "case_count": 126,
+  "display_case_ids": [
+    "d33-p0.003-unstructured",
+    "d09-p0.0005-structured",
+    "d17-p0.003-predecoded",
+    "d09-p0.003-component-parallel",
+    "d09-p0.0005-pipelined",
+    "d09-p0.0005-parallel-predecode",
+    "d33-p0.001-parallel-predecode",
+    "d17-p0.003-component-parallel"
+  ],
+  "display_case_count": 8,
+  "cases": [
+    {
+      "case_id": "d09-p0.0005-unstructured",
+      "label": "d9 0.05% generic",
+      "baseline": 1.3058331,
+      "candidate": 0.5685644,
+      "unit": "µs/shot",
+      "speedup": 2.2967197735208185,
+      "time_delta_pct": -56.45964250714736
+    },
+    {
+      "case_id": "d09-p0.0005-structured",
+      "label": "d9 0.05% structured",
+      "baseline": 1.3058331,
+      "candidate": 1.2667447,
+      "unit": "µs/shot",
+      "speedup": 1.0308573621819772,
+      "time_delta_pct": -2.9933687543990173
+    },
+    {
+      "case_id": "d09-p0.0005-predecoded",
+      "label": "d9 0.05% predecode",
+      "baseline": 1.3058331,
+      "candidate": 0.34337,
+      "unit": "µs/shot",
+      "speedup": 3.8029912339458893,
+      "time_delta_pct": -73.70490914956896
+    },
+    {
+      "case_id": "d09-p0.0005-component-parallel",
+      "label": "d9 0.05% component",
+      "baseline": 1.3058331,
+      "candidate": 0.4177165,
+      "unit": "µs/shot",
+      "speedup": 3.1261228608398284,
+      "time_delta_pct": -68.0114939650404
+    },
+    {
+      "case_id": "d09-p0.0005-pipelined",
+      "label": "d9 0.05% pipeline",
+      "baseline": 1.3058331,
+      "candidate": 0.5452482,
+      "unit": "µs/shot",
+      "speedup": 2.394933353287549,
+      "time_delta_pct": -58.24518462581474
+    },
+    {
+      "case_id": "d09-p0.0005-parallel-predecode",
+      "label": "d9 0.05% parallel-pre",
+      "baseline": 1.3058331,
+      "candidate": 0.584551,
+      "unit": "µs/shot",
+      "speedup": 2.2339079053837905,
+      "time_delta_pct": -55.235397234148834
+    },
+    {
+      "case_id": "d13-p0.0005-unstructured",
+      "label": "d13 0.05% generic",
+      "baseline": 4.4467974,
+      "candidate": 1.8915756,
+      "unit": "µs/shot",
+      "speedup": 2.350843074947679,
+      "time_delta_pct": -57.46206921862462
+    },
+    {
+      "case_id": "d13-p0.0005-structured",
+      "label": "d13 0.05% structured",
+      "baseline": 4.4467974,
+      "candidate": 3.7407505000000003,
+      "unit": "µs/shot",
+      "speedup": 1.1887447184729374,
+      "time_delta_pct": -15.877649384251235
+    },
+    {
+      "case_id": "d13-p0.0005-predecoded",
+      "label": "d13 0.05% predecode",
+      "baseline": 4.4467974,
+      "candidate": 0.8674832,
+      "unit": "µs/shot",
+      "speedup": 5.126090511032375,
+      "time_delta_pct": -80.49195585119304
+    },
+    {
+      "case_id": "d13-p0.0005-component-parallel",
+      "label": "d13 0.05% component",
+      "baseline": 4.4467974,
+      "candidate": 1.1350443000000001,
+      "unit": "µs/shot",
+      "speedup": 3.9177302595149808,
+      "time_delta_pct": -74.47501655910835
+    },
+    {
+      "case_id": "d13-p0.0005-pipelined",
+      "label": "d13 0.05% pipeline",
+      "baseline": 4.4467974,
+      "candidate": 1.2426361,
+      "unit": "µs/shot",
+      "speedup": 3.578519407250442,
+      "time_delta_pct": -72.05548199699857
+    },
+    {
+      "case_id": "d13-p0.0005-parallel-predecode",
+      "label": "d13 0.05% parallel-pre",
+      "baseline": 4.4467974,
+      "candidate": 1.4132706000000002,
+      "unit": "µs/shot",
+      "speedup": 3.146458576298127,
+      "time_delta_pct": -68.21823724193057
+    },
+    {
+      "case_id": "d17-p0.0005-unstructured",
+      "label": "d17 0.05% generic",
+      "baseline": 10.7055628,
+      "candidate": 5.3047718,
+      "unit": "µs/shot",
+      "speedup": 2.018100533561123,
+      "time_delta_pct": -50.448454704315026
+    },
+    {
+      "case_id": "d17-p0.0005-structured",
+      "label": "d17 0.05% structured",
+      "baseline": 10.7055628,
+      "candidate": 9.0999232,
+      "unit": "µs/shot",
+      "speedup": 1.17644540120954,
+      "time_delta_pct": -14.998180198429178
+    },
+    {
+      "case_id": "d17-p0.0005-predecoded",
+      "label": "d17 0.05% predecode",
+      "baseline": 10.7055628,
+      "candidate": 1.9536768999999998,
+      "unit": "µs/shot",
+      "speedup": 5.4796997395014495,
+      "time_delta_pct": -81.75082490758916
+    },
+    {
+      "case_id": "d17-p0.0005-component-parallel",
+      "label": "d17 0.05% component",
+      "baseline": 10.7055628,
+      "candidate": 3.1002116,
+      "unit": "µs/shot",
+      "speedup": 3.453171648025573,
+      "time_delta_pct": -71.04111518546226
+    },
+    {
+      "case_id": "d17-p0.0005-pipelined",
+      "label": "d17 0.05% pipeline",
+      "baseline": 10.7055628,
+      "candidate": 2.7819251,
+      "unit": "µs/shot",
+      "speedup": 3.848257021729305,
+      "time_delta_pct": -74.01420969666349
+    },
+    {
+      "case_id": "d17-p0.0005-parallel-predecode",
+      "label": "d17 0.05% parallel-pre",
+      "baseline": 10.7055628,
+      "candidate": 2.9814311,
+      "unit": "µs/shot",
+      "speedup": 3.590746336549585,
+      "time_delta_pct": -72.1506364896575
+    },
+    {
+      "case_id": "d21-p0.0005-unstructured",
+      "label": "d21 0.05% generic",
+      "baseline": 21.4922186,
+      "candidate": 11.744531199999999,
+      "unit": "µs/shot",
+      "speedup": 1.829976712906174,
+      "time_delta_pct": -45.354495882523736
+    },
+    {
+      "case_id": "d21-p0.0005-structured",
+      "label": "d21 0.05% structured",
+      "baseline": 21.4922186,
+      "candidate": 18.391501799999997,
+      "unit": "µs/shot",
+      "speedup": 1.1685950844971238,
+      "time_delta_pct": -14.427160162981057
+    },
+    {
+      "case_id": "d21-p0.0005-predecoded",
+      "label": "d21 0.05% predecode",
+      "baseline": 21.4922186,
+      "candidate": 3.827229,
+      "unit": "µs/shot",
+      "speedup": 5.615608211580755,
+      "time_delta_pct": -82.19248989027126
+    },
+    {
+      "case_id": "d21-p0.0005-component-parallel",
+      "label": "d21 0.05% component",
+      "baseline": 21.4922186,
+      "candidate": 4.6681922,
+      "unit": "µs/shot",
+      "speedup": 4.603970376369679,
+      "time_delta_pct": -78.27961697728125
+    },
+    {
+      "case_id": "d21-p0.0005-pipelined",
+      "label": "d21 0.05% pipeline",
+      "baseline": 21.4922186,
+      "candidate": 4.3274170000000005,
+      "unit": "µs/shot",
+      "speedup": 4.966523586703107,
+      "time_delta_pct": -79.86519176759164
+    },
+    {
+      "case_id": "d21-p0.0005-parallel-predecode",
+      "label": "d21 0.05% parallel-pre",
+      "baseline": 21.4922186,
+      "candidate": 3.9565289,
+      "unit": "µs/shot",
+      "speedup": 5.432089375108571,
+      "time_delta_pct": -81.59087726755207
+    },
+    {
+      "case_id": "d25-p0.0005-unstructured",
+      "label": "d25 0.05% generic",
+      "baseline": 37.517758199999996,
+      "candidate": 22.411896499999997,
+      "unit": "µs/shot",
+      "speedup": 1.6740108629361197,
+      "time_delta_pct": -40.26323113303716
+    },
+    {
+      "case_id": "d25-p0.0005-structured",
+      "label": "d25 0.05% structured",
+      "baseline": 37.517758199999996,
+      "candidate": 33.3679104,
+      "unit": "µs/shot",
+      "speedup": 1.124366427212655,
+      "time_delta_pct": -11.061022830516553
+    },
+    {
+      "case_id": "d25-p0.0005-predecoded",
+      "label": "d25 0.05% predecode",
+      "baseline": 37.517758199999996,
+      "candidate": 6.8794283,
+      "unit": "µs/shot",
+      "speedup": 5.453615702339683,
+      "time_delta_pct": -81.66354113343584
+    },
+    {
+      "case_id": "d25-p0.0005-component-parallel",
+      "label": "d25 0.05% component",
+      "baseline": 37.517758199999996,
+      "candidate": 7.353016899999999,
+      "unit": "µs/shot",
+      "speedup": 5.102362569029319,
+      "time_delta_pct": -80.40123596723858
+    },
+    {
+      "case_id": "d25-p0.0005-pipelined",
+      "label": "d25 0.05% pipeline",
+      "baseline": 37.517758199999996,
+      "candidate": 6.6377486,
+      "unit": "µs/shot",
+      "speedup": 5.6521812531435724,
+      "time_delta_pct": -82.30771528347874
+    },
+    {
+      "case_id": "d25-p0.0005-parallel-predecode",
+      "label": "d25 0.05% parallel-pre",
+      "baseline": 37.517758199999996,
+      "candidate": 5.531576,
+      "unit": "µs/shot",
+      "speedup": 6.782471794656711,
+      "time_delta_pct": -85.2561126640024
+    },
+    {
+      "case_id": "d29-p0.0005-unstructured",
+      "label": "d29 0.05% generic",
+      "baseline": 59.6369406,
+      "candidate": 38.576269,
+      "unit": "µs/shot",
+      "speedup": 1.5459488993090544,
+      "time_delta_pct": -35.314808888771196
+    },
+    {
+      "case_id": "d29-p0.0005-structured",
+      "label": "d29 0.05% structured",
+      "baseline": 59.6369406,
+      "candidate": 55.1511121,
+      "unit": "µs/shot",
+      "speedup": 1.0813370452415592,
+      "time_delta_pct": -7.521895749293361
+    },
+    {
+      "case_id": "d29-p0.0005-predecoded",
+      "label": "d29 0.05% predecode",
+      "baseline": 59.6369406,
+      "candidate": 11.6035362,
+      "unit": "µs/shot",
+      "speedup": 5.139548804096462,
+      "time_delta_pct": -80.54303912431081
+    },
+    {
+      "case_id": "d29-p0.0005-component-parallel",
+      "label": "d29 0.05% component",
+      "baseline": 59.6369406,
+      "candidate": 10.983009099999999,
+      "unit": "µs/shot",
+      "speedup": 5.429927268292986,
+      "time_delta_pct": -81.58354706076254
+    },
+    {
+      "case_id": "d29-p0.0005-pipelined",
+      "label": "d29 0.05% pipeline",
+      "baseline": 59.6369406,
+      "candidate": 10.105315899999999,
+      "unit": "µs/shot",
+      "speedup": 5.901541445131865,
+      "time_delta_pct": -83.05527446859003
+    },
+    {
+      "case_id": "d29-p0.0005-parallel-predecode",
+      "label": "d29 0.05% parallel-pre",
+      "baseline": 59.6369406,
+      "candidate": 7.9329098,
+      "unit": "µs/shot",
+      "speedup": 7.517662762281755,
+      "time_delta_pct": -86.69799335749292
+    },
+    {
+      "case_id": "d33-p0.0005-unstructured",
+      "label": "d33 0.05% generic",
+      "baseline": 96.6001827,
+      "candidate": 61.0613886,
+      "unit": "µs/shot",
+      "speedup": 1.5820174567730025,
+      "time_delta_pct": -36.78957234518771
+    },
+    {
+      "case_id": "d33-p0.0005-structured",
+      "label": "d33 0.05% structured",
+      "baseline": 96.6001827,
+      "candidate": 87.1750686,
+      "unit": "µs/shot",
+      "speedup": 1.1081170826861844,
+      "time_delta_pct": -9.756828441277888
+    },
+    {
+      "case_id": "d33-p0.0005-predecoded",
+      "label": "d33 0.05% predecode",
+      "baseline": 96.6001827,
+      "candidate": 19.177522,
+      "unit": "µs/shot",
+      "speedup": 5.037156661846093,
+      "time_delta_pct": -80.14753030068545
+    },
+    {
+      "case_id": "d33-p0.0005-component-parallel",
+      "label": "d33 0.05% component",
+      "baseline": 96.6001827,
+      "candidate": 16.2546359,
+      "unit": "µs/shot",
+      "speedup": 5.942931191710053,
+      "time_delta_pct": -83.17328658634099
+    },
+    {
+      "case_id": "d33-p0.0005-pipelined",
+      "label": "d33 0.05% pipeline",
+      "baseline": 96.6001827,
+      "candidate": 15.0788982,
+      "unit": "µs/shot",
+      "speedup": 6.406315728028458,
+      "time_delta_pct": -84.39040405665817
+    },
+    {
+      "case_id": "d33-p0.0005-parallel-predecode",
+      "label": "d33 0.05% parallel-pre",
+      "baseline": 96.6001827,
+      "candidate": 10.7603938,
+      "unit": "µs/shot",
+      "speedup": 8.9773835879501,
+      "time_delta_pct": -88.86089705087069
+    },
+    {
+      "case_id": "d09-p0.001-unstructured",
+      "label": "d9 0.1% generic",
+      "baseline": 2.7848964,
+      "candidate": 1.3837636,
+      "unit": "µs/shot",
+      "speedup": 2.012552144022288,
+      "time_delta_pct": -50.311846429906694
+    },
+    {
+      "case_id": "d09-p0.001-structured",
+      "label": "d9 0.1% structured",
+      "baseline": 2.7848964,
+      "candidate": 2.5352770000000002,
+      "unit": "µs/shot",
+      "speedup": 1.098458432747191,
+      "time_delta_pct": -8.963328043369934
+    },
+    {
+      "case_id": "d09-p0.001-predecoded",
+      "label": "d9 0.1% predecode",
+      "baseline": 2.7848964,
+      "candidate": 0.72911,
+      "unit": "µs/shot",
+      "speedup": 3.8195833276186035,
+      "time_delta_pct": -73.81913381050728
+    },
+    {
+      "case_id": "d09-p0.001-component-parallel",
+      "label": "d9 0.1% component",
+      "baseline": 2.7848964,
+      "candidate": 0.8032522,
+      "unit": "µs/shot",
+      "speedup": 3.4670261718548674,
+      "time_delta_pct": -71.15683728845353
+    },
+    {
+      "case_id": "d09-p0.001-pipelined",
+      "label": "d9 0.1% pipeline",
+      "baseline": 2.7848964,
+      "candidate": 0.96476,
+      "unit": "µs/shot",
+      "speedup": 2.8866209212653926,
+      "time_delta_pct": -65.35741868171469
+    },
+    {
+      "case_id": "d09-p0.001-parallel-predecode",
+      "label": "d9 0.1% parallel-pre",
+      "baseline": 2.7848964,
+      "candidate": 1.0260335,
+      "unit": "µs/shot",
+      "speedup": 2.714235353913883,
+      "time_delta_pct": -63.15721116232547
+    },
+    {
+      "case_id": "d13-p0.001-unstructured",
+      "label": "d13 0.1% generic",
+      "baseline": 9.3914707,
+      "candidate": 4.9999857,
+      "unit": "µs/shot",
+      "speedup": 1.878299511936604,
+      "time_delta_pct": -46.760354584293175
+    },
+    {
+      "case_id": "d13-p0.001-structured",
+      "label": "d13 0.1% structured",
+      "baseline": 9.3914707,
+      "candidate": 7.7455533999999995,
+      "unit": "µs/shot",
+      "speedup": 1.2124983477616977,
+      "time_delta_pct": -17.52566081050543
+    },
+    {
+      "case_id": "d13-p0.001-predecoded",
+      "label": "d13 0.1% predecode",
+      "baseline": 9.3914707,
+      "candidate": 1.9968968999999999,
+      "unit": "µs/shot",
+      "speedup": 4.7030323398268585,
+      "time_delta_pct": -78.73712261062583
+    },
+    {
+      "case_id": "d13-p0.001-component-parallel",
+      "label": "d13 0.1% component",
+      "baseline": 9.3914707,
+      "candidate": 2.9949872999999996,
+      "unit": "µs/shot",
+      "speedup": 3.1357297241293813,
+      "time_delta_pct": -68.10949641785072
+    },
+    {
+      "case_id": "d13-p0.001-pipelined",
+      "label": "d13 0.1% pipeline",
+      "baseline": 9.3914707,
+      "candidate": 2.7765809,
+      "unit": "µs/shot",
+      "speedup": 3.3823868413126372,
+      "time_delta_pct": -70.4350789275209
+    },
+    {
+      "case_id": "d13-p0.001-parallel-predecode",
+      "label": "d13 0.1% parallel-pre",
+      "baseline": 9.3914707,
+      "candidate": 3.3448609,
+      "unit": "µs/shot",
+      "speedup": 2.8077313170182947,
+      "time_delta_pct": -64.38405648222914
+    },
+    {
+      "case_id": "d17-p0.001-unstructured",
+      "label": "d17 0.1% generic",
+      "baseline": 22.697673299999998,
+      "candidate": 14.0696131,
+      "unit": "µs/shot",
+      "speedup": 1.613240757842872,
+      "time_delta_pct": -38.01297201682782
+    },
+    {
+      "case_id": "d17-p0.001-structured",
+      "label": "d17 0.1% structured",
+      "baseline": 22.697673299999998,
+      "candidate": 18.9327388,
+      "unit": "µs/shot",
+      "speedup": 1.198858418730205,
+      "time_delta_pct": -16.58731470066581
+    },
+    {
+      "case_id": "d17-p0.001-predecoded",
+      "label": "d17 0.1% predecode",
+      "baseline": 22.697673299999998,
+      "candidate": 4.7962611,
+      "unit": "µs/shot",
+      "speedup": 4.73236815652092,
+      "time_delta_pct": -78.86893058770038
+    },
+    {
+      "case_id": "d17-p0.001-component-parallel",
+      "label": "d17 0.1% component",
+      "baseline": 22.697673299999998,
+      "candidate": 5.3006099,
+      "unit": "µs/shot",
+      "speedup": 4.282087104731098,
+      "time_delta_pct": -76.64690195360244
+    },
+    {
+      "case_id": "d17-p0.001-pipelined",
+      "label": "d17 0.1% pipeline",
+      "baseline": 22.697673299999998,
+      "candidate": 4.9184583,
+      "unit": "µs/shot",
+      "speedup": 4.614794294382855,
+      "time_delta_pct": -78.33056174969263
+    },
+    {
+      "case_id": "d17-p0.001-parallel-predecode",
+      "label": "d17 0.1% parallel-pre",
+      "baseline": 22.697673299999998,
+      "candidate": 4.8306681,
+      "unit": "µs/shot",
+      "speedup": 4.698661309395278,
+      "time_delta_pct": -78.71734236301656
+    },
+    {
+      "case_id": "d21-p0.001-unstructured",
+      "label": "d21 0.1% generic",
+      "baseline": 45.7638002,
+      "candidate": 30.6812055,
+      "unit": "µs/shot",
+      "speedup": 1.4915906808159802,
+      "time_delta_pct": -32.957478692951724
+    },
+    {
+      "case_id": "d21-p0.001-structured",
+      "label": "d21 0.1% structured",
+      "baseline": 45.7638002,
+      "candidate": 39.2588903,
+      "unit": "µs/shot",
+      "speedup": 1.1656926584091452,
+      "time_delta_pct": -14.214094702738434
+    },
+    {
+      "case_id": "d21-p0.001-predecoded",
+      "label": "d21 0.1% predecode",
+      "baseline": 45.7638002,
+      "candidate": 9.6041676,
+      "unit": "µs/shot",
+      "speedup": 4.764993917848747,
+      "time_delta_pct": -79.01361434577716
+    },
+    {
+      "case_id": "d21-p0.001-component-parallel",
+      "label": "d21 0.1% component",
+      "baseline": 45.7638002,
+      "candidate": 9.1342598,
+      "unit": "µs/shot",
+      "speedup": 5.010126841367047,
+      "time_delta_pct": -80.0404254889654
+    },
+    {
+      "case_id": "d21-p0.001-pipelined",
+      "label": "d21 0.1% pipeline",
+      "baseline": 45.7638002,
+      "candidate": 8.378161400000002,
+      "unit": "µs/shot",
+      "speedup": 5.46227245037318,
+      "time_delta_pct": -81.69260121889965
+    },
+    {
+      "case_id": "d21-p0.001-parallel-predecode",
+      "label": "d21 0.1% parallel-pre",
+      "baseline": 45.7638002,
+      "candidate": 7.392934100000001,
+      "unit": "µs/shot",
+      "speedup": 6.190208052848733,
+      "time_delta_pct": -83.84545411943303
+    },
+    {
+      "case_id": "d25-p0.001-unstructured",
+      "label": "d25 0.1% generic",
+      "baseline": 82.0019762,
+      "candidate": 56.5134118,
+      "unit": "µs/shot",
+      "speedup": 1.45101797233909,
+      "time_delta_pct": -31.08286602488002
+    },
+    {
+      "case_id": "d25-p0.001-structured",
+      "label": "d25 0.1% structured",
+      "baseline": 82.0019762,
+      "candidate": 70.54293080000001,
+      "unit": "µs/shot",
+      "speedup": 1.16244073318258,
+      "time_delta_pct": -13.974108833733201
+    },
+    {
+      "case_id": "d25-p0.001-predecoded",
+      "label": "d25 0.1% predecode",
+      "baseline": 82.0019762,
+      "candidate": 17.7887257,
+      "unit": "µs/shot",
+      "speedup": 4.609772368349016,
+      "time_delta_pct": -78.30695487555823
+    },
+    {
+      "case_id": "d25-p0.001-component-parallel",
+      "label": "d25 0.1% component",
+      "baseline": 82.0019762,
+      "candidate": 14.8913161,
+      "unit": "µs/shot",
+      "speedup": 5.5066977055171105,
+      "time_delta_pct": -81.84029606349903
+    },
+    {
+      "case_id": "d25-p0.001-pipelined",
+      "label": "d25 0.1% pipeline",
+      "baseline": 82.0019762,
+      "candidate": 13.91276,
+      "unit": "µs/shot",
+      "speedup": 5.894012129872146,
+      "time_delta_pct": -83.03362840175063
+    },
+    {
+      "case_id": "d25-p0.001-parallel-predecode",
+      "label": "d25 0.1% parallel-pre",
+      "baseline": 82.0019762,
+      "candidate": 11.2013428,
+      "unit": "µs/shot",
+      "speedup": 7.320727314942991,
+      "time_delta_pct": -86.34015505592168
+    },
+    {
+      "case_id": "d29-p0.001-unstructured",
+      "label": "d29 0.1% generic",
+      "baseline": 135.6456448,
+      "candidate": 90.7921542,
+      "unit": "µs/shot",
+      "speedup": 1.4940238613701713,
+      "time_delta_pct": -33.06666473968504
+    },
+    {
+      "case_id": "d29-p0.001-structured",
+      "label": "d29 0.1% structured",
+      "baseline": 135.6456448,
+      "candidate": 117.0181824,
+      "unit": "µs/shot",
+      "speedup": 1.1591843422787604,
+      "time_delta_pct": -13.73244413962933
+    },
+    {
+      "case_id": "d29-p0.001-predecoded",
+      "label": "d29 0.1% predecode",
+      "baseline": 135.6456448,
+      "candidate": 30.8547377,
+      "unit": "µs/shot",
+      "speedup": 4.3962663406469344,
+      "time_delta_pct": -77.2534254634617
+    },
+    {
+      "case_id": "d29-p0.001-component-parallel",
+      "label": "d29 0.1% component",
+      "baseline": 135.6456448,
+      "candidate": 23.1310347,
+      "unit": "µs/shot",
+      "speedup": 5.864227284220883,
+      "time_delta_pct": -82.94745494106715
+    },
+    {
+      "case_id": "d29-p0.001-pipelined",
+      "label": "d29 0.1% pipeline",
+      "baseline": 135.6456448,
+      "candidate": 21.700869299999997,
+      "unit": "µs/shot",
+      "speedup": 6.250700970767103,
+      "time_delta_pct": -84.00179428392529
+    },
+    {
+      "case_id": "d29-p0.001-parallel-predecode",
+      "label": "d29 0.1% parallel-pre",
+      "baseline": 135.6456448,
+      "candidate": 16.4584814,
+      "unit": "µs/shot",
+      "speedup": 8.241686550740946,
+      "time_delta_pct": -87.86656112382607
+    },
+    {
+      "case_id": "d33-p0.001-unstructured",
+      "label": "d33 0.1% generic",
+      "baseline": 235.9384685,
+      "candidate": 155.3807586,
+      "unit": "µs/shot",
+      "speedup": 1.5184535757569664,
+      "time_delta_pct": -34.14352496740055
+    },
+    {
+      "case_id": "d33-p0.001-structured",
+      "label": "d33 0.1% structured",
+      "baseline": 235.9384685,
+      "candidate": 189.7992759,
+      "unit": "µs/shot",
+      "speedup": 1.243094671363812,
+      "time_delta_pct": -19.55560400698286
+    },
+    {
+      "case_id": "d33-p0.001-predecoded",
+      "label": "d33 0.1% predecode",
+      "baseline": 235.9384685,
+      "candidate": 51.1918384,
+      "unit": "µs/shot",
+      "speedup": 4.608907901615817,
+      "time_delta_pct": -78.30288603403392
+    },
+    {
+      "case_id": "d33-p0.001-component-parallel",
+      "label": "d33 0.1% component",
+      "baseline": 235.9384685,
+      "candidate": 34.656451999999994,
+      "unit": "µs/shot",
+      "speedup": 6.8079233413737805,
+      "time_delta_pct": -85.31123295818122
+    },
+    {
+      "case_id": "d33-p0.001-pipelined",
+      "label": "d33 0.1% pipeline",
+      "baseline": 235.9384685,
+      "candidate": 32.786839,
+      "unit": "µs/shot",
+      "speedup": 7.196133439396216,
+      "time_delta_pct": -86.10364846036119
+    },
+    {
+      "case_id": "d33-p0.001-parallel-predecode",
+      "label": "d33 0.1% parallel-pre",
+      "baseline": 235.9384685,
+      "candidate": 23.3680426,
+      "unit": "µs/shot",
+      "speedup": 10.096629509739083,
+      "time_delta_pct": -90.09570471972441
+    },
+    {
+      "case_id": "d09-p0.003-unstructured",
+      "label": "d9 0.3% generic",
+      "baseline": 11.1355331,
+      "candidate": 7.3690265,
+      "unit": "µs/shot",
+      "speedup": 1.5111267546669833,
+      "time_delta_pct": -33.82421448686637
+    },
+    {
+      "case_id": "d09-p0.003-structured",
+      "label": "d9 0.3% structured",
+      "baseline": 11.1355331,
+      "candidate": 8.6660274,
+      "unit": "µs/shot",
+      "speedup": 1.2849639847665377,
+      "time_delta_pct": -22.17680714361129
+    },
+    {
+      "case_id": "d09-p0.003-predecoded",
+      "label": "d9 0.3% predecode",
+      "baseline": 11.1355331,
+      "candidate": 3.4792548,
+      "unit": "µs/shot",
+      "speedup": 3.200551192743917,
+      "time_delta_pct": -68.75538181463445
+    },
+    {
+      "case_id": "d09-p0.003-component-parallel",
+      "label": "d9 0.3% component",
+      "baseline": 11.1355331,
+      "candidate": 3.9568296,
+      "unit": "µs/shot",
+      "speedup": 2.8142564188258197,
+      "time_delta_pct": -64.46663518965248
+    },
+    {
+      "case_id": "d09-p0.003-pipelined",
+      "label": "d9 0.3% pipeline",
+      "baseline": 11.1355331,
+      "candidate": 3.9047862,
+      "unit": "µs/shot",
+      "speedup": 2.8517651235296824,
+      "time_delta_pct": -64.9339985348344
+    },
+    {
+      "case_id": "d09-p0.003-parallel-predecode",
+      "label": "d9 0.3% parallel-pre",
+      "baseline": 11.1355331,
+      "candidate": 4.5545639,
+      "unit": "µs/shot",
+      "speedup": 2.444917525473734,
+      "time_delta_pct": -59.09882482411193
+    },
+    {
+      "case_id": "d13-p0.003-unstructured",
+      "label": "d13 0.3% generic",
+      "baseline": 36.7930244,
+      "candidate": 27.491472,
+      "unit": "µs/shot",
+      "speedup": 1.3383431923907165,
+      "time_delta_pct": -25.28074968471469
+    },
+    {
+      "case_id": "d13-p0.003-structured",
+      "label": "d13 0.3% structured",
+      "baseline": 36.7930244,
+      "candidate": 28.479358700000002,
+      "unit": "µs/shot",
+      "speedup": 1.2919189925438874,
+      "time_delta_pct": -22.595766006123696
+    },
+    {
+      "case_id": "d13-p0.003-predecoded",
+      "label": "d13 0.3% predecode",
+      "baseline": 36.7930244,
+      "candidate": 11.3965482,
+      "unit": "µs/shot",
+      "speedup": 3.2284358170836325,
+      "time_delta_pct": -69.0252476227532
+    },
+    {
+      "case_id": "d13-p0.003-component-parallel",
+      "label": "d13 0.3% component",
+      "baseline": 36.7930244,
+      "candidate": 9.6169656,
+      "unit": "µs/shot",
+      "speedup": 3.825845482903672,
+      "time_delta_pct": -73.861986730289
+    },
+    {
+      "case_id": "d13-p0.003-pipelined",
+      "label": "d13 0.3% pipeline",
+      "baseline": 36.7930244,
+      "candidate": 9.241749100000002,
+      "unit": "µs/shot",
+      "speedup": 3.9811754248987343,
+      "time_delta_pct": -74.88179009279813
+    },
+    {
+      "case_id": "d13-p0.003-parallel-predecode",
+      "label": "d13 0.3% parallel-pre",
+      "baseline": 36.7930244,
+      "candidate": 9.6954569,
+      "unit": "µs/shot",
+      "speedup": 3.7948726686619585,
+      "time_delta_pct": -73.64865471619126
+    },
+    {
+      "case_id": "d17-p0.003-unstructured",
+      "label": "d17 0.3% generic",
+      "baseline": 89.91109940000001,
+      "candidate": 69.4339292,
+      "unit": "µs/shot",
+      "speedup": 1.2949159069050642,
+      "time_delta_pct": -22.774908033212206
+    },
+    {
+      "case_id": "d17-p0.003-structured",
+      "label": "d17 0.3% structured",
+      "baseline": 89.91109940000001,
+      "candidate": 69.12744980000001,
+      "unit": "µs/shot",
+      "speedup": 1.3006569699899446,
+      "time_delta_pct": -23.115777405342243
+    },
+    {
+      "case_id": "d17-p0.003-predecoded",
+      "label": "d17 0.3% predecode",
+      "baseline": 89.91109940000001,
+      "candidate": 29.5876528,
+      "unit": "µs/shot",
+      "speedup": 3.0388047341153066,
+      "time_delta_pct": -67.0923245322924
+    },
+    {
+      "case_id": "d17-p0.003-component-parallel",
+      "label": "d17 0.3% component",
+      "baseline": 89.91109940000001,
+      "candidate": 21.033244800000002,
+      "unit": "µs/shot",
+      "speedup": 4.274713685641124,
+      "time_delta_pct": -76.60662038351185
+    },
+    {
+      "case_id": "d17-p0.003-pipelined",
+      "label": "d17 0.3% pipeline",
+      "baseline": 89.91109940000001,
+      "candidate": 19.406800999999998,
+      "unit": "µs/shot",
+      "speedup": 4.632968586631049,
+      "time_delta_pct": -78.41556701062873
+    },
+    {
+      "case_id": "d17-p0.003-parallel-predecode",
+      "label": "d17 0.3% parallel-pre",
+      "baseline": 89.91109940000001,
+      "candidate": 19.5964159,
+      "unit": "µs/shot",
+      "speedup": 4.588139987373916,
+      "time_delta_pct": -78.2046754730262
+    },
+    {
+      "case_id": "d21-p0.003-unstructured",
+      "label": "d21 0.3% generic",
+      "baseline": 189.0726061,
+      "candidate": 143.17845250000002,
+      "unit": "µs/shot",
+      "speedup": 1.3205381312526756,
+      "time_delta_pct": -24.27329614091567
+    },
+    {
+      "case_id": "d21-p0.003-structured",
+      "label": "d21 0.3% structured",
+      "baseline": 189.0726061,
+      "candidate": 143.6572579,
+      "unit": "µs/shot",
+      "speedup": 1.3161368166418275,
+      "time_delta_pct": -24.020057234510194
+    },
+    {
+      "case_id": "d21-p0.003-predecoded",
+      "label": "d21 0.3% predecode",
+      "baseline": 189.0726061,
+      "candidate": 56.8305484,
+      "unit": "µs/shot",
+      "speedup": 3.326953749754771,
+      "time_delta_pct": -69.94247364954474
+    },
+    {
+      "case_id": "d21-p0.003-component-parallel",
+      "label": "d21 0.3% component",
+      "baseline": 189.0726061,
+      "candidate": 37.8481674,
+      "unit": "µs/shot",
+      "speedup": 4.995555111077849,
+      "time_delta_pct": -79.98220462461802
+    },
+    {
+      "case_id": "d21-p0.003-pipelined",
+      "label": "d21 0.3% pipeline",
+      "baseline": 189.0726061,
+      "candidate": 37.325819300000006,
+      "unit": "µs/shot",
+      "speedup": 5.065464325923047,
+      "time_delta_pct": -80.25847314959076
+    },
+    {
+      "case_id": "d21-p0.003-parallel-predecode",
+      "label": "d21 0.3% parallel-pre",
+      "baseline": 189.0726061,
+      "candidate": 34.6262368,
+      "unit": "µs/shot",
+      "speedup": 5.460385637401983,
+      "time_delta_pct": -81.68627517532272
+    },
+    {
+      "case_id": "d25-p0.003-unstructured",
+      "label": "d25 0.3% generic",
+      "baseline": 365.3096041,
+      "candidate": 271.1017716,
+      "unit": "µs/shot",
+      "speedup": 1.3474998777912819,
+      "time_delta_pct": -25.788490486609682
+    },
+    {
+      "case_id": "d25-p0.003-structured",
+      "label": "d25 0.3% structured",
+      "baseline": 365.3096041,
+      "candidate": 268.4351078,
+      "unit": "µs/shot",
+      "speedup": 1.3608860893567514,
+      "time_delta_pct": -26.518464122690165
+    },
+    {
+      "case_id": "d25-p0.003-predecoded",
+      "label": "d25 0.3% predecode",
+      "baseline": 365.3096041,
+      "candidate": 106.5749778,
+      "unit": "µs/shot",
+      "speedup": 3.4277239521038867,
+      "time_delta_pct": -70.8261221156326
+    },
+    {
+      "case_id": "d25-p0.003-component-parallel",
+      "label": "d25 0.3% component",
+      "baseline": 365.3096041,
+      "candidate": 66.8473548,
+      "unit": "µs/shot",
+      "speedup": 5.464832605463096,
+      "time_delta_pct": -81.70117783662178
+    },
+    {
+      "case_id": "d25-p0.003-pipelined",
+      "label": "d25 0.3% pipeline",
+      "baseline": 365.3096041,
+      "candidate": 64.4416167,
+      "unit": "µs/shot",
+      "speedup": 5.6688460471228375,
+      "time_delta_pct": -82.35972556517848
+    },
+    {
+      "case_id": "d25-p0.003-parallel-predecode",
+      "label": "d25 0.3% parallel-pre",
+      "baseline": 365.3096041,
+      "candidate": 57.6669666,
+      "unit": "µs/shot",
+      "speedup": 6.33481567764655,
+      "time_delta_pct": -84.21422104626238
+    },
+    {
+      "case_id": "d29-p0.003-unstructured",
+      "label": "d29 0.3% generic",
+      "baseline": 645.7090782,
+      "candidate": 477.73304690000003,
+      "unit": "µs/shot",
+      "speedup": 1.3516106586931613,
+      "time_delta_pct": -26.014196945822032
+    },
+    {
+      "case_id": "d29-p0.003-structured",
+      "label": "d29 0.3% structured",
+      "baseline": 645.7090782,
+      "candidate": 457.73644540000004,
+      "unit": "µs/shot",
+      "speedup": 1.4106569068052626,
+      "time_delta_pct": -29.111040737416715
+    },
+    {
+      "case_id": "d29-p0.003-predecoded",
+      "label": "d29 0.3% predecode",
+      "baseline": 645.7090782,
+      "candidate": 185.9766128,
+      "unit": "µs/shot",
+      "speedup": 3.4719907437737785,
+      "time_delta_pct": -71.19807989715206
+    },
+    {
+      "case_id": "d29-p0.003-component-parallel",
+      "label": "d29 0.3% component",
+      "baseline": 645.7090782,
+      "candidate": 109.4234789,
+      "unit": "µs/shot",
+      "speedup": 5.901010319641738,
+      "time_delta_pct": -83.05374934404941
+    },
+    {
+      "case_id": "d29-p0.003-pipelined",
+      "label": "d29 0.3% pipeline",
+      "baseline": 645.7090782,
+      "candidate": 104.4085054,
+      "unit": "µs/shot",
+      "speedup": 6.184449013288912,
+      "time_delta_pct": -83.83041079567093
+    },
+    {
+      "case_id": "d29-p0.003-parallel-predecode",
+      "label": "d29 0.3% parallel-pre",
+      "baseline": 645.7090782,
+      "candidate": 91.1629791,
+      "unit": "µs/shot",
+      "speedup": 7.08301861758706,
+      "time_delta_pct": -85.88172565977716
+    },
+    {
+      "case_id": "d33-p0.003-unstructured",
+      "label": "d33 0.3% generic",
+      "baseline": 1032.2311752,
+      "candidate": 798.914321,
+      "unit": "µs/shot",
+      "speedup": 1.2920423981234403,
+      "time_delta_pct": -22.603159040879937
+    },
+    {
+      "case_id": "d33-p0.003-structured",
+      "label": "d33 0.3% structured",
+      "baseline": 1032.2311752,
+      "candidate": 702.3067265,
+      "unit": "µs/shot",
+      "speedup": 1.4697725883165098,
+      "time_delta_pct": -31.962263553614868
+    },
+    {
+      "case_id": "d33-p0.003-predecoded",
+      "label": "d33 0.3% predecode",
+      "baseline": 1032.2311752,
+      "candidate": 300.2693655,
+      "unit": "µs/shot",
+      "speedup": 3.437683939156291,
+      "time_delta_pct": -70.91064746791615
+    },
+    {
+      "case_id": "d33-p0.003-component-parallel",
+      "label": "d33 0.3% component",
+      "baseline": 1032.2311752,
+      "candidate": 168.07171350000002,
+      "unit": "µs/shot",
+      "speedup": 6.141611540123912,
+      "time_delta_pct": -83.71762861478823
+    },
+    {
+      "case_id": "d33-p0.003-pipelined",
+      "label": "d33 0.3% pipeline",
+      "baseline": 1032.2311752,
+      "candidate": 167.7453878,
+      "unit": "µs/shot",
+      "speedup": 6.153559205041821,
+      "time_delta_pct": -83.74924224047986
+    },
+    {
+      "case_id": "d33-p0.003-parallel-predecode",
+      "label": "d33 0.3% parallel-pre",
+      "baseline": 1032.2311752,
+      "candidate": 141.004149,
+      "unit": "µs/shot",
+      "speedup": 7.320573064839389,
+      "time_delta_pct": -86.33986723248503
+    }
+  ],
+  "source_refs": [
+    {
+      "label": "Canonical verified summary.json",
+      "path": "summary.json",
+      "sha256": "9e96e381b6ab1b29bce81205b7b9cc1a5e8188a3c3b4615c7fb97a0425e461d9",
+      "verified_local": true
+    }
+  ],
+  "geometric_mean_speedup": 3.1045896340846943,
+  "wins": 126,
+  "ties": 0,
+  "losses": 0,
+  "min_speedup": 1.0308573621819772,
+  "max_speedup": 10.096629509739083,
+  "formula": "speedup = baseline latency / candidate latency (>1 is better)",
+  "aggregation": "equal-weight geometric mean of case speedups; descriptive, not significance",
+  "experiment_id": "BB-MIGRATION-20261112 / r1",
+  "status": "final",
+  "input_sha256": "4c9e8f6dcda7817bf25799af8d58769088ac2f2da5c9b33a97f85d77e78936a0"
+}

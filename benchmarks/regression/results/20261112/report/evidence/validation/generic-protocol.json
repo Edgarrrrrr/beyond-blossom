@@ -1,0 +1,67 @@
+{
+  "candidate_revision": "edd29b6780713dc78f6a99d67c4c4d192e9c52b5",
+  "source_revision": "241160314087e5ae698c6e76c3c055a11c3ad422",
+  "cpu": 2,
+  "correctness": "Every warmup shot compared to the source signed int64 little-endian weight vector before timing.",
+  "summary": "Median per process, then median and range across seven balanced process launches. Repeated timing passes reuse fixed inputs.",
+  "runs": [
+    {
+      "name": "fast",
+      "workloads": 9,
+      "outer_processes_per_variant": 7,
+      "native_batches_per_process": 20,
+      "command": [
+        "python3",
+        "/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/run_generic.py",
+        "--baseline-bin",
+        "/tmp/beyond-build/generic-final-bin/baseline",
+        "--candidate-bin",
+        "/tmp/beyond-build/generic-final-bin/candidate",
+        "--cpu",
+        "2",
+        "--candidate-identity",
+        "commit:edd29b6780713dc78f6a99d67c4c4d192e9c52b5",
+        "--repeats",
+        "7",
+        "--corpora",
+        "/tmp/beyond-build/generic-tuning-cases",
+        "--surface-dem",
+        "/home/fujy/dev/beyond_blossom/repo/data/surface_code_rotated_memory_x_13_0.01.dem",
+        "--surface-shots",
+        "/home/fujy/dev/beyond_blossom/repo/data/surface_code_rotated_memory_x_13_0.01_1000_shots.b8",
+        "--batches-per-process",
+        "20",
+        "--output",
+        "/tmp/beyond-build/generic-final-fast"
+      ]
+    },
+    {
+      "name": "dense",
+      "workloads": 1,
+      "outer_processes_per_variant": 7,
+      "native_batches_per_process": 1,
+      "command": [
+        "python3",
+        "/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/run_generic.py",
+        "--baseline-bin",
+        "/tmp/beyond-build/generic-final-bin/baseline",
+        "--candidate-bin",
+        "/tmp/beyond-build/generic-final-bin/candidate",
+        "--cpu",
+        "2",
+        "--candidate-identity",
+        "commit:edd29b6780713dc78f6a99d67c4c4d192e9c52b5",
+        "--repeats",
+        "7",
+        "--corpora",
+        "/tmp/beyond-build/generic-heavy-case",
+        "--batches-per-process",
+        "1",
+        "--output",
+        "/tmp/beyond-build/generic-final-dense"
+      ]
+    }
+  ],
+  "reason_for_split": "The high-degree dense corpus takes seconds per timing batch; short corpora use repeated native batches to avoid very short process timing windows.",
+  "hardware_observation": "/tmp/beyond-build/final-hardware.json"
+}

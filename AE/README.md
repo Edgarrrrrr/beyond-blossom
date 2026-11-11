@@ -280,7 +280,8 @@ python AE/export_results.py --profile paper \
 Outputs include `canonical.json`, per-method CSVs, selected configurations,
 `performance-macros.tex`, `predecoder_numbers.tex`, a calculation audit and a sealed
 completion receipt. Numeric macros use raw integer timing/count operands and final
-decimal rounding. The fixed official reference is the speedup denominator. The
+decimal rounding. Speedup is the fixed official reference time divided by the
+candidate time; values above one mean the candidate is faster. The
 selection pool is explicitly `structured`, `predecoded`, `component-parallel`,
 `pipelined`, and `parallel-predecode`; the additional `unstructured` regression
 column is not substituted for the reference or a structured variant.

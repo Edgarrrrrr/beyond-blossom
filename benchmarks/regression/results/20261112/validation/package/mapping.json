@@ -1,0 +1,2476 @@
+{
+  "archive_root": "/home/fujy/dev/beyond_blossom/validation/20261112",
+  "complete": true,
+  "created_utc": "2026-11-11T19:33:22.489826+00:00",
+  "excluded": [
+    "CMake intermediate objects",
+    "Rust compilation targets and duplicate vendor tree",
+    "pytest and Matplotlib caches"
+  ],
+  "files": [
+    {
+      "archive_path": "package/audit-controller/README.md",
+      "bytes": 2442,
+      "original_path": "/tmp/beyond-package-final/README.md",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit-controller/README.md",
+      "sha256": "1b975e0c80b1314e88f0ae7ea5a0ac0627fea23183bd3413843373971632a91a"
+    },
+    {
+      "archive_path": "package/audit-controller/resume_sdk.py",
+      "bytes": 6352,
+      "original_path": "/tmp/beyond-package-final/resume_sdk.py",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit-controller/resume_sdk.py",
+      "sha256": "5b99f67b5c6c674831d42d7f87bd5a691e78dcc9feefe815ea8d7fe95da1b800"
+    },
+    {
+      "archive_path": "package/audit-controller/run_audit.py",
+      "bytes": 21525,
+      "original_path": "/tmp/beyond-package-final/run_audit.py",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit-controller/run_audit.py",
+      "sha256": "a4cd8a6311a17f8c3020090f7b2fe4db89c90581c3c2ed7dc9fdf1c5c7e7f82b"
+    },
+    {
+      "archive_path": "package/audit/CMakeCache.txt",
+      "bytes": 28723,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/CMakeCache.txt",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/CMakeCache.txt",
+      "sha256": "fc9e064e61fe5503d679dd5a4a49a75a8ecd2416452637b9ad9ed34126648b72"
+    },
+    {
+      "archive_path": "package/audit/audit.json",
+      "bytes": 12566,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/audit.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/audit.json",
+      "sha256": "f94fc7ee70d062f4a56fe9bda355e8ad0774341fdaaa5f6e65481556024c0629"
+    },
+    {
+      "archive_path": "package/audit/compile_commands.json",
+      "bytes": 578449,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/compile_commands.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/compile_commands.json",
+      "sha256": "f8e3b9c642d7955a59179aef4b3b748f725cc3d4e43fd81f324a029079ef6fe4"
+    },
+    {
+      "archive_path": "package/audit/dependencies.json",
+      "bytes": 52972,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/dependencies.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/dependencies.json",
+      "sha256": "b4093337d68f1c2681ff0e438b5773611eaf6f419c156b873edffd45eba2195e"
+    },
+    {
+      "archive_path": "package/audit/logs/cli-help.command.json",
+      "bytes": 217,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/cli-help.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/cli-help.command.json",
+      "sha256": "8e65e9db7aa09d95e4e272e188d6bee2069b656cee0612e0d7a9d1c08f48d289"
+    },
+    {
+      "archive_path": "package/audit/logs/cli-help.log",
+      "bytes": 1130,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/cli-help.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/cli-help.log",
+      "sha256": "9d2839dd78b584877a5325fafd9b5516b96ebc4f9ce487ad2e1873fa8bdbdedf"
+    },
+    {
+      "archive_path": "package/audit/logs/cli-missing-input.command.json",
+      "bytes": 309,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/cli-missing-input.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/cli-missing-input.command.json",
+      "sha256": "6d86990cdab9e043fb2e8f16aaf0653bad28c4ceba8124030eaa6217ff75ff8e"
+    },
+    {
+      "archive_path": "package/audit/logs/cli-missing-input.log",
+      "bytes": 76,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/cli-missing-input.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/cli-missing-input.log",
+      "sha256": "3df41f9695a6fe0feb08f12f64b6a2e572cab6959d61f550b6b20233d5ce1230"
+    },
+    {
+      "archive_path": "package/audit/logs/cli-predict-b8.command.json",
+      "bytes": 592,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/cli-predict-b8.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/cli-predict-b8.command.json",
+      "sha256": "e0a2954a36607e363e0f88065c447d023972e647c3142fcdccde8068386c59f5"
+    },
+    {
+      "archive_path": "package/audit/logs/cli-predict-b8.log",
+      "bytes": 0,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/cli-predict-b8.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/cli-predict-b8.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_path": "package/audit/logs/cli-predict-dets.command.json",
+      "bytes": 600,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/cli-predict-dets.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/cli-predict-dets.command.json",
+      "sha256": "3149a38a37e47dc55b667d9a7cb285e7ee5ca9baa4fd6f3a17073fd1761b0e5b"
+    },
+    {
+      "archive_path": "package/audit/logs/cli-predict-dets.log",
+      "bytes": 0,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/cli-predict-dets.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/cli-predict-dets.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_path": "package/audit/logs/cli-unknown.command.json",
+      "bytes": 229,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/cli-unknown.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/cli-unknown.command.json",
+      "sha256": "edf32460cbe558b6daadb33206fe386d17cfb3acc85f3f051cce825fbc7e8ed0"
+    },
+    {
+      "archive_path": "package/audit/logs/cli-unknown.log",
+      "bytes": 1151,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/cli-unknown.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/cli-unknown.log",
+      "sha256": "423743d76d8bc5b291c0ecb90d403aaf7497157f06aa9f82c29dec41cd3ccbd6"
+    },
+    {
+      "archive_path": "package/audit/logs/install.command.json",
+      "bytes": 428,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/install.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/install.command.json",
+      "sha256": "1f7c4d92514ab2f453546314594443397e16d9600b3c9c944b1488d448f94d9d"
+    },
+    {
+      "archive_path": "package/audit/logs/install.log",
+      "bytes": 197,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/install.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/install.log",
+      "sha256": "2b33cfd15de0ed83f5b56e08d5862b46fae472ea7934f7072b99ba21db345bd0"
+    },
+    {
+      "archive_path": "package/audit/logs/local-dependencies.command.json",
+      "bytes": 463,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/local-dependencies.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/local-dependencies.command.json",
+      "sha256": "7ad5fff7dbe0adac854dcf28abccdee849f06dd32dbba84946e25a06693e2d96"
+    },
+    {
+      "archive_path": "package/audit/logs/local-dependencies.log",
+      "bytes": 248,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/local-dependencies.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/local-dependencies.log",
+      "sha256": "e2bee2e56c2bc2acce9f16508edf33989c3f6a1e1ce1278dfc3cbf64d5625238"
+    },
+    {
+      "archive_path": "package/audit/logs/pytest.command.json",
+      "bytes": 448,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/pytest.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/pytest.command.json",
+      "sha256": "82068865367ca50ff97d093c6a78d339dc2702e7e5ecbd5437bfb690d94a812e"
+    },
+    {
+      "archive_path": "package/audit/logs/pytest.log",
+      "bytes": 341,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/pytest.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/pytest.log",
+      "sha256": "5f73b302257eef320b572afe51e12b9a746b641c0c70a613d60622b4560b53a2"
+    },
+    {
+      "archive_path": "package/audit/logs/quickstart.command.json",
+      "bytes": 309,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/quickstart.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/quickstart.command.json",
+      "sha256": "3969ae7827655448b8bd76cade0e4d0755a5e86b87a4a90b4db92f8f0a5cf4ac"
+    },
+    {
+      "archive_path": "package/audit/logs/quickstart.log",
+      "bytes": 1234,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/quickstart.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/quickstart.log",
+      "sha256": "beda5b60c89103cec08253327e6028da48598b1384c5526b0de1966b17dec023"
+    },
+    {
+      "archive_path": "package/audit/logs/sdist.command.json",
+      "bytes": 277,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdist.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdist.command.json",
+      "sha256": "09da4f039851782a75c1c5c4688bc94ac800bc4ee73b955fb9ad85c8c74f46bf"
+    },
+    {
+      "archive_path": "package/audit/logs/sdist.log",
+      "bytes": 32473,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdist.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdist.log",
+      "sha256": "6fa137d85cf62e9963b06c55efc62b1830f9bb668a0f83b84989133985d97022"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-build-r2.command.json",
+      "bytes": 260,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-build-r2.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-build-r2.command.json",
+      "sha256": "09e2aaf04bcd88059d70beeb8d508d40ea15c452efcb15e4e22512ce31a9920b"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-build-r2.log",
+      "bytes": 129,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-build-r2.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-build-r2.log",
+      "sha256": "ac455cb98467ec8b526476221ecd93234299c8ba098f00780189f7cbfbfd492a"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-build.command.json",
+      "bytes": 257,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-build.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-build.command.json",
+      "sha256": "7fe3627e64e2ac75a47456759bd1fc2cd5d5b15d133c0fe25e1ce5616f50a68a"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-build.log",
+      "bytes": 626,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-build.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-build.log",
+      "sha256": "328eccc598b5ed937540c99379bdec7238be090ca11e321fba71920e36baba35"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-cli-build.command.json",
+      "bytes": 382,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-cli-build.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-cli-build.command.json",
+      "sha256": "7078020b7355f1875cac0bbfb4cfa1cd2cffa8c62144f83ac629277b57d85cdf"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-cli-build.log",
+      "bytes": 217,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-cli-build.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-cli-build.log",
+      "sha256": "c0dfe538f45c408b8c8f5547238ea4052004ee14441de92491e6207839672a52"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-cli-help-r2.command.json",
+      "bytes": 218,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-cli-help-r2.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-cli-help-r2.command.json",
+      "sha256": "c4d702c251b76a83d819e0e96f28b37c97eac6d813b966ccb1038f3683acbfef"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-cli-help-r2.log",
+      "bytes": 1130,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-cli-help-r2.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-cli-help-r2.log",
+      "sha256": "9d2839dd78b584877a5325fafd9b5516b96ebc4f9ce487ad2e1873fa8bdbdedf"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-cli-help.command.json",
+      "bytes": 215,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-cli-help.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-cli-help.command.json",
+      "sha256": "6a15f356f85d6a353fc5e902158407c8a3407cb1dde23dc629c9de442a85072a"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-cli-help.log",
+      "bytes": 1130,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-cli-help.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-cli-help.log",
+      "sha256": "9d2839dd78b584877a5325fafd9b5516b96ebc4f9ce487ad2e1873fa8bdbdedf"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-configure-r2.command.json",
+      "bytes": 461,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-configure-r2.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-configure-r2.command.json",
+      "sha256": "11a84b67b54075d712fb7914f988887624ed5fc20e6e0f5ce2f0f7b72a47261e"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-configure-r2.log",
+      "bytes": 156,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-configure-r2.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-configure-r2.log",
+      "sha256": "9a062031133c7f588bc3638cc78ae796f5fe5e9e4ae660232fe89ea25001f08d"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-configure.command.json",
+      "bytes": 458,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-configure.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-configure.command.json",
+      "sha256": "3a3b60e60fdaafcde6bb4e4600937d9a7a28014dd7927551255e741c58254ef8"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-configure.log",
+      "bytes": 533,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-configure.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-configure.log",
+      "sha256": "a0ef1f3e09592747502245b2f4879326185d7e7e84ac832294a60f98ff552fa7"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-consumer-r2.command.json",
+      "bytes": 217,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-consumer-r2.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-consumer-r2.command.json",
+      "sha256": "fae139b8c9e2908542cf613d5df7283835c8cc48d5ff8ed7ad72225f77ec322a"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-consumer-r2.log",
+      "bytes": 42,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-consumer-r2.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-consumer-r2.log",
+      "sha256": "4b0c6a0611558b8829bd233ee9b997ddb51ef9aec08c9acc83557ba4c3de1039"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-install-retry-r2.command.json",
+      "bytes": 390,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-install-retry-r2.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-install-retry-r2.command.json",
+      "sha256": "8bc323dbe2f29091a503d548de2a60f5fe8bb3132ce644c2cb3e9bcd415fd7dc"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-install-retry-r2.log",
+      "bytes": 32777,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-install-retry-r2.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-install-retry-r2.log",
+      "sha256": "65a453102304952d81eceabca10a72b545cc1020730b94db4e6e5d6ca0e8205d"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-install-retry.command.json",
+      "bytes": 387,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-install-retry.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-install-retry.command.json",
+      "sha256": "e50d7bb0c5027ed9811d204a0272745fa69210251ec46324e720924dc21eac83"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-install-retry.log",
+      "bytes": 32777,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-install-retry.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-install-retry.log",
+      "sha256": "7c403e8193a8b50af8334c58c40977915684c323c38757d78b8951bc127ca376"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-install.command.json",
+      "bytes": 381,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-install.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-install.command.json",
+      "sha256": "df48b349119fc34e07e8bdf694d9e00b34c55698be643492095fc090ecb55d20"
+    },
+    {
+      "archive_path": "package/audit/logs/sdk-install.log",
+      "bytes": 33119,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/sdk-install.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/sdk-install.log",
+      "sha256": "23da5917d936548e23ae10d1978ab827a380e2b6eeae5f65ba9d7c34294e5448"
+    },
+    {
+      "archive_path": "package/audit/logs/wheel.command.json",
+      "bytes": 380,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/wheel.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/wheel.command.json",
+      "sha256": "eb7cdd4f7f9faf5485d88b7fa9b1be47f7cf349523bc360cf8d6a6faa1d58757"
+    },
+    {
+      "archive_path": "package/audit/logs/wheel.log",
+      "bytes": 946,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/logs/wheel.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/logs/wheel.log",
+      "sha256": "ca0a1e48930f7c2a1f8297fd203a0f357c910e6001f271615ba8f0c032b2dd81"
+    },
+    {
+      "archive_path": "package/audit/no-lto-link-check.json",
+      "bytes": 562,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/no-lto-link-check.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/no-lto-link-check.json",
+      "sha256": "892b063b4db5f88395fe53ff587ddd26ea12270699058fc057a62dde0f8145b4"
+    },
+    {
+      "archive_path": "package/audit/pytest.xml",
+      "bytes": 32817,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/pytest.xml",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/pytest.xml",
+      "sha256": "356db945590bc18f88a355eb8e387620a435c593fd39423de37d6e4b60045782"
+    },
+    {
+      "archive_path": "package/audit/resolved-sdk-setup-failure.json",
+      "bytes": 5793,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/resolved-sdk-setup-failure.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/resolved-sdk-setup-failure.json",
+      "sha256": "3a1e5fd3218fe94c109a71476dea9ce1a190e541cb0a9a1ebd3b89c28b7b0f00"
+    },
+    {
+      "archive_path": "package/audit/resume_sdk.first-attempt.py",
+      "bytes": 5882,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/resume_sdk.first-attempt.py",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/resume_sdk.first-attempt.py",
+      "sha256": "8616a18dcf1d589e840f2960152940ed26ae47f34c9bbaeeb2a7436848dc051b"
+    },
+    {
+      "archive_path": "package/audit/run_audit.executed.py",
+      "bytes": 21304,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/run_audit.executed.py",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/run_audit.executed.py",
+      "sha256": "00fea24350374348c84ce03979c0f907e9429db068659e18a18d146863cf5534"
+    },
+    {
+      "archive_path": "package/audit/source-files.json",
+      "bytes": 32671,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/source-files.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/audit/source-files.json",
+      "sha256": "b7a23eb2956fdeaabfb461812d5572b4101828a86e9625b5f19e7e5237eeaf94"
+    },
+    {
+      "archive_path": "package/dependencies/pybind11-2.13.6-py3-none-any.whl",
+      "bytes": 243282,
+      "original_path": "/tmp/pybind11-2.13.6-py3-none-any.whl",
+      "repo_receipt": null,
+      "sha256": "237c41e29157b962835d356b370ededd57594a26d5894a795960f0047cb5caf5"
+    },
+    {
+      "archive_path": "package/dependencies/rustworkx-0.18.1-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "bytes": 2366881,
+      "original_path": "/tmp/rustworkx-0.18.1-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "repo_receipt": null,
+      "sha256": "1ebd2441a51c68a784df8c62dc2e6f1a9f58c0eb1c2e21fd59776e08f55c0c0b"
+    },
+    {
+      "archive_path": "package/distributions/beyond_blossom-0.1.0-cp311-cp311-linux_x86_64.whl",
+      "bytes": 1177118,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/wheels/beyond_blossom-0.1.0-cp311-cp311-linux_x86_64.whl",
+      "repo_receipt": null,
+      "sha256": "66ddff57149c87ac5fed776e091b753849a955631ed55a384d58d8a3cbef33dc"
+    },
+    {
+      "archive_path": "package/distributions/beyond_blossom-0.1.0.tar.gz",
+      "bytes": 1072211,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/dist/beyond_blossom-0.1.0.tar.gz",
+      "repo_receipt": null,
+      "sha256": "6c9be1b5313eb2e976f0c7c8c1ad4ceb186ab50eccacf5a64f9380d24280eca7"
+    },
+    {
+      "archive_path": "package/installed/beyond_blossom/_cpp_beyond_blossom.cpython-311-x86_64-linux-gnu.so",
+      "bytes": 4663200,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/installed/beyond_blossom/_cpp_beyond_blossom.cpython-311-x86_64-linux-gnu.so",
+      "repo_receipt": null,
+      "sha256": "9d66d97233e2aa34be26a60d8bda9d7031b0ccf3501d78948f9a119921479d5a"
+    },
+    {
+      "archive_path": "package/outside/cpp-consumer/CMakeLists.txt",
+      "bytes": 216,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/outside/cpp-consumer/CMakeLists.txt",
+      "repo_receipt": null,
+      "sha256": "fb2b57451eaddc1f102d8feb497b729330bef80576812804791f15b0b5820ada"
+    },
+    {
+      "archive_path": "package/outside/cpp-consumer/build/CMakeCache.txt",
+      "bytes": 14943,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/outside/cpp-consumer/build/CMakeCache.txt",
+      "repo_receipt": null,
+      "sha256": "0d93eb80c16954003f66c5dfc794447dd8087990f69feb4264f2b80694205d4d"
+    },
+    {
+      "archive_path": "package/outside/cpp-consumer/build/CMakeFiles/consumer.dir/flags.make",
+      "bytes": 803,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/outside/cpp-consumer/build/CMakeFiles/consumer.dir/flags.make",
+      "repo_receipt": null,
+      "sha256": "629ca5c88928d07ee6032ae5e99d233fee54546d26eac75d2749990cead8c56f"
+    },
+    {
+      "archive_path": "package/outside/cpp-consumer/build/CMakeFiles/consumer.dir/link.txt",
+      "bytes": 289,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/outside/cpp-consumer/build/CMakeFiles/consumer.dir/link.txt",
+      "repo_receipt": null,
+      "sha256": "467778e3cbc6bebdd85117e25c766659a85ce3feb3a614b21e0a385228fd16de"
+    },
+    {
+      "archive_path": "package/outside/cpp-consumer/build/consumer",
+      "bytes": 3314960,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/outside/cpp-consumer/build/consumer",
+      "repo_receipt": null,
+      "sha256": "08c9c472556982ba1f556492dea0f10241c82ce1897911e81739b21b7a689501"
+    },
+    {
+      "archive_path": "package/outside/cpp-consumer/main.cc",
+      "bytes": 1165,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/outside/cpp-consumer/main.cc",
+      "repo_receipt": null,
+      "sha256": "b1aa09a717330e9d1346d3086c93657b8e9ab5fa3f64f4e20eef50e51186d3a1"
+    },
+    {
+      "archive_path": "package/outside/predictions-b8.dets",
+      "bytes": 29,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/outside/predictions-b8.dets",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/outside/predictions-b8.dets",
+      "sha256": "f54a9d3087cb87193b36c0bd8fbf059e848c17de63bc7c3ebeb9c17ae31481e0"
+    },
+    {
+      "archive_path": "package/outside/predictions-dets.dets",
+      "bytes": 29,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/outside/predictions-dets.dets",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/outside/predictions-dets.dets",
+      "sha256": "f54a9d3087cb87193b36c0bd8fbf059e848c17de63bc7c3ebeb9c17ae31481e0"
+    },
+    {
+      "archive_path": "package/outside/quickstart-result.json",
+      "bytes": 1234,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/outside/quickstart-result.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/outside/quickstart-result.json",
+      "sha256": "beda5b60c89103cec08253327e6028da48598b1384c5526b0de1966b17dec023"
+    },
+    {
+      "archive_path": "package/outside/quickstart.py",
+      "bytes": 2863,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/outside/quickstart.py",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/outside/quickstart.py",
+      "sha256": "812f73305f551f28a84d05467b3cdfa25523b6474ea260455d0da574aae9a757"
+    },
+    {
+      "archive_path": "package/sdk/bin/beyond_blossom",
+      "bytes": 3469392,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/bin/beyond_blossom",
+      "repo_receipt": null,
+      "sha256": "edd27f0b784960989f01cb262c6c8e4f4f275f1f0ac0fa7fdbdf0ec3ca79ee11"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/bindings/structured.pybind.h",
+      "bytes": 297,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/bindings/structured.pybind.h",
+      "repo_receipt": null,
+      "sha256": "935cb72c831aa3af451b9078adcbd536eca0dc4ae978b8b5887f66393cf42492"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/core/arena.h",
+      "bytes": 2454,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/core/arena.h",
+      "repo_receipt": null,
+      "sha256": "8c66615748d63d62852dc81357722e0e0354dcd596ae9eb7123c2243780de551"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/core/grid/grid_collision_state.h",
+      "bytes": 924,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/core/grid/grid_collision_state.h",
+      "repo_receipt": null,
+      "sha256": "0e240226e3041a2d0ea1a06d27cbcce04ef3399160032a4e5c075c417e5fc58f"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/core/grid/grid_spec.h",
+      "bytes": 3091,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/core/grid/grid_spec.h",
+      "repo_receipt": null,
+      "sha256": "e26757cb906a744b684e80a6a641ba7ffb10d7f2acc6eef9a76d7bb420a066fd"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/core/implied_weights.h",
+      "bytes": 1330,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/core/implied_weights.h",
+      "repo_receipt": null,
+      "sha256": "b3ed2d24fad228d1f60f054646cbf7e679de63454978401f252ab287fc84d02c"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/core/interop/varying.h",
+      "bytes": 2900,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/core/interop/varying.h",
+      "repo_receipt": null,
+      "sha256": "f3f5670e2d4f55461498674881c9477ec290aca21ccce6f40345302d2ba4971b"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/core/interop/varying.inl",
+      "bytes": 5748,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/core/interop/varying.inl",
+      "repo_receipt": null,
+      "sha256": "4398924978e19649f01a1adaf5e1073c06956423d1a873892b62bbc54f6fb27f"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/core/ints.h",
+      "bytes": 2817,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/core/ints.h",
+      "repo_receipt": null,
+      "sha256": "94745f395a77541871e02f3318c978e75501d110045767cdd0db98ac19f353d0"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/core/matching_result.h",
+      "bytes": 2710,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/core/matching_result.h",
+      "repo_receipt": null,
+      "sha256": "52e6d4ecd0ae9146f5d9bbd59e74deecaca7b90005096efc7d1ec32cbd2977bf"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/core/observable_bits.h",
+      "bytes": 1487,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/core/observable_bits.h",
+      "repo_receipt": null,
+      "sha256": "f31a83f94d1d4a652b3f7655b865409d78daefa8c3f789f7fb1a94e469c0dfe4"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/core/tracker/cyclic.h",
+      "bytes": 3967,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/core/tracker/cyclic.h",
+      "repo_receipt": null,
+      "sha256": "112220c1cdad6eb946c8ccbbcdd4a1f24b1d55d30cb1ffee248b826acb048963"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/driver/backend.h",
+      "bytes": 6536,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/driver/backend.h",
+      "repo_receipt": null,
+      "sha256": "6bf1553416d3245ed94a9ab73e017af4aab825a5d0befe503626448f5df2a405"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/driver/backend_user_graph.h",
+      "bytes": 9506,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/driver/backend_user_graph.h",
+      "repo_receipt": null,
+      "sha256": "d6fff0e8077b1e78da199a9779fd7815ef6a6f629da3fbfcdb89b8fb361f73ad"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/driver/decoder_strategy.h",
+      "bytes": 6563,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/driver/decoder_strategy.h",
+      "repo_receipt": null,
+      "sha256": "7669c065b577f008e04c1ae70955349dcaff7c64fe9c572accaacddc6ffec1c3"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/driver/mwpm_decoding.h",
+      "bytes": 3033,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/driver/mwpm_decoding.h",
+      "repo_receipt": null,
+      "sha256": "b88cea4762326e1d6910a863e6c0a9a3ae87054bc2c9d882ae500b224a793e31"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/driver/namespaced_main.h",
+      "bytes": 802,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/driver/namespaced_main.h",
+      "repo_receipt": null,
+      "sha256": "15aa522f9140f3a7e8022be3d5972de5f8765b6f19aef2c78676206a796b55d7"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/driver/user_graph.h",
+      "bytes": 16111,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/driver/user_graph.h",
+      "repo_receipt": null,
+      "sha256": "f6bb17a5f8a2e26c3000a05c2825ee0f6209179e75b83c106966f523a548b744"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/driver/user_graph.pybind.h",
+      "bytes": 1882,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/driver/user_graph.pybind.h",
+      "repo_receipt": null,
+      "sha256": "edfaaaf68997dbdfac5f57bf7f9f538084d166e22c41509ea0d42149defcfb55"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/fill_match.h",
+      "bytes": 1531,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/fill_match.h",
+      "repo_receipt": null,
+      "sha256": "8f6b6034794c04daa43674274335741711d9b5a95e4b97d3b9611f01eeff7e21"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/perf/util.perf.h",
+      "bytes": 3959,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/perf/util.perf.h",
+      "repo_receipt": null,
+      "sha256": "8ab6c5fd71e475c041e34e20507e30bdd6547fede81e7d515491e9f1206089c4"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/profile/profile.h",
+      "bytes": 39122,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/profile/profile.h",
+      "repo_receipt": null,
+      "sha256": "c14d27dda008ed1e2c1571b120b8c08b9de46adfed418ebf0baa6988cb62e5ca"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/profile/profile_io.h",
+      "bytes": 1203,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/profile/profile_io.h",
+      "repo_receipt": null,
+      "sha256": "67245bc10a8a2d1ac05635532c7dcdd417ae6451da4db40a73095eafcb52651d"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/profile/profile_runner.h",
+      "bytes": 915,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/profile/profile_runner.h",
+      "repo_receipt": null,
+      "sha256": "d52085fa30573bc2d5a414f9dfff892818e9b2cddfaa68a1aa7d10c223503ad1"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/profile/profile_schema.h",
+      "bytes": 8122,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/profile/profile_schema.h",
+      "repo_receipt": null,
+      "sha256": "7015925bde561c3bfad7137acd45c434a71bf0ebfaebcfabeb80835cea71f5ee"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/profile/profile_stats.h",
+      "bytes": 1455,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/profile/profile_stats.h",
+      "repo_receipt": null,
+      "sha256": "7f496e6e012c850644450e42139900de9d7a0c27fab812fec43f9e3357d26ced"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/rand/rand_gen.h",
+      "bytes": 1170,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/rand/rand_gen.h",
+      "repo_receipt": null,
+      "sha256": "9c2251ca323ba7794ea39c69187b3b1e05ecfbd30aa9f798c450dae6411aaf52"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/rand/rand_gen.pybind.h",
+      "bytes": 1010,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/rand/rand_gen.pybind.h",
+      "repo_receipt": null,
+      "sha256": "74df76aa52e041bef421be389c6de58b2a4ca24c827ff132a36ab5b421877edf"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/arena.h",
+      "bytes": 1479,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/arena.h",
+      "repo_receipt": null,
+      "sha256": "2e302d6cb6ff5337b12e933465bd557de99f5308324294a06004287b9d9b9338"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/decoder.h",
+      "bytes": 2102,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/decoder.h",
+      "repo_receipt": null,
+      "sha256": "4d5caee68ca91ba287813da5dc2ca8a1447e71fb3d52da5177b096d08c1c1613"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/diagram/mwpm_diagram.h",
+      "bytes": 4751,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/diagram/mwpm_diagram.h",
+      "repo_receipt": null,
+      "sha256": "520fc272fe7eac9f0c6c2d4cd0ad8d21a40fefe22d811de9d71db24f0c810155"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/driver/component_decoder.h",
+      "bytes": 14540,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/driver/component_decoder.h",
+      "repo_receipt": null,
+      "sha256": "bca49d7f5418e26d052c5d633059e6f191f1bf9c6bb5a4c4225e6ebc2d0ab24a"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/driver/import_pmu.h",
+      "bytes": 16322,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/driver/import_pmu.h",
+      "repo_receipt": null,
+      "sha256": "d3235568a1cfab2af1b8ecdc0725827710e9594b7102c95a95b3cb7016b6dee7"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/driver/mwpm_decoding.h",
+      "bytes": 4667,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/driver/mwpm_decoding.h",
+      "repo_receipt": null,
+      "sha256": "8753a55756bdf0be8422ab7d6b9411bcc969e2ec8ffdfc02edd141d81c479244"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/driver/shared_component_decoder.h",
+      "bytes": 21564,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/driver/shared_component_decoder.h",
+      "repo_receipt": null,
+      "sha256": "90c3c84e6d7d613e95fcb1f89a5e06b1cb6124ca24aa540b15c81343ac8c277e"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/driver/time_partition_cuts.h",
+      "bytes": 5000,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/driver/time_partition_cuts.h",
+      "repo_receipt": null,
+      "sha256": "93adc448740ede0b8b3a8b3bca1bcabb9d150968ae64483656b8222d4ee182b3"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/flooder/detector_node.h",
+      "bytes": 8510,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/flooder/detector_node.h",
+      "repo_receipt": null,
+      "sha256": "98e93a5c3692eebaabb211da48f7c44471df46ea45377ed55003927a16a2ca51"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/flooder/graph.h",
+      "bytes": 6076,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/flooder/graph.h",
+      "repo_receipt": null,
+      "sha256": "be51b15f0e2c3e57b414d1a957d4984d4566fd9109e2e34330cc6580d5bcf662"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/flooder/graph_fill_region.h",
+      "bytes": 10175,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/flooder/graph_fill_region.h",
+      "repo_receipt": null,
+      "sha256": "f71c9ca1d06e01beff3a6acec4f12e96ae4b2ad5fd3e5f6c8e74fe18073d301f"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/flooder/graph_flooder.h",
+      "bytes": 5600,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/flooder/graph_flooder.h",
+      "repo_receipt": null,
+      "sha256": "95a2de96bfbab45a47cc2c677e8668b83c036c4cd438314aba23f98247db4d56"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/flooder/match.h",
+      "bytes": 1823,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/flooder/match.h",
+      "repo_receipt": null,
+      "sha256": "9a0e3a5304e216ecf97697511527c261c44a9752f082dffbd555f3fee4cd63b1"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/flooder/matching_graph_construction_node.h",
+      "bytes": 932,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/flooder/matching_graph_construction_node.h",
+      "repo_receipt": null,
+      "sha256": "308f44c73a64c99107347701f683777e1014ad74da9dc7f1568f1a47435d353f"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/flooder/region_id.h",
+      "bytes": 410,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/flooder/region_id.h",
+      "repo_receipt": null,
+      "sha256": "f99e59856cbe22c6a9ee674d96980e2c0f4f9da5ec3ea1669cef595a8b243edb"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/flooder/region_pool.h",
+      "bytes": 11161,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/flooder/region_pool.h",
+      "repo_receipt": null,
+      "sha256": "0b1a522aa7890372c17278ca490e0ed6687364adf2379c8fd098e1eff9142473"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/flooder/region_radius_store.h",
+      "bytes": 1379,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/flooder/region_radius_store.h",
+      "repo_receipt": null,
+      "sha256": "b8897d98e18352c617a85b0f61483425a579a73e4b94404b5a2ef2168b90f277"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/flooder/region_shell.h",
+      "bytes": 3676,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/flooder/region_shell.h",
+      "repo_receipt": null,
+      "sha256": "2321a1d497620fa84d46b96e9197321f42c4c0c1c303e6b851e874e1a16a6cd8"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/flooder_matcher_interop/compressed_edge.h",
+      "bytes": 2676,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/flooder_matcher_interop/compressed_edge.h",
+      "repo_receipt": null,
+      "sha256": "cabcb22677a7341329c6433eba60186490d4ae01fffbf6730fc8d9f7c313de45"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/flooder_matcher_interop/mwpm_event.h",
+      "bytes": 4474,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/flooder_matcher_interop/mwpm_event.h",
+      "repo_receipt": null,
+      "sha256": "fdd83ff645f162d67a3c4501560324fbb49310040b23736e7964483852cc2e3b"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/flooder_matcher_interop/region_edge.h",
+      "bytes": 1186,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/flooder_matcher_interop/region_edge.h",
+      "repo_receipt": null,
+      "sha256": "cfbdaba49a10a1bff8806886c7bdc7458d7eb08068e2e3db6e396a3e850b1baa"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/grid/circuit_stencil.h",
+      "bytes": 5009,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/grid/circuit_stencil.h",
+      "repo_receipt": null,
+      "sha256": "408a40c7715dcbf04f0af35fbf224e83e7c4471e75e759cf7dba8bb800a7f052"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/grid/static_grid.h",
+      "bytes": 4968,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/grid/static_grid.h",
+      "repo_receipt": null,
+      "sha256": "afc9675c0620d7a12235ee8732a6da0e7def3b331b7c2f41e5880945b26bf8a9"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/grid/static_grid_kernels.h",
+      "bytes": 7252,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/grid/static_grid_kernels.h",
+      "repo_receipt": null,
+      "sha256": "e8e1ffa3f3c422c159916b26559470e0af2914f0d8b5500534ada75084b5ebd6"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/grid/static_grid_simd_kernels.h",
+      "bytes": 22338,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/grid/static_grid_simd_kernels.h",
+      "repo_receipt": null,
+      "sha256": "eada1651a4c95fb0774c5f653c1b24978446dc3686b482ccc37bb47ff8b12ac3"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/matcher/alternating_tree.h",
+      "bytes": 6302,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/matcher/alternating_tree.h",
+      "repo_receipt": null,
+      "sha256": "d923219c5cd96b373b12c16938ef086a7a07a87e896ef1903dbe6b151d613713"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/matcher/alternating_tree.inl",
+      "bytes": 7349,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/matcher/alternating_tree.inl",
+      "repo_receipt": null,
+      "sha256": "b84a37ec11a03afab17318dedda2559e9c657786583cc9284346ce3f61199270"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/matcher/mwpm.h",
+      "bytes": 13193,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/matcher/mwpm.h",
+      "repo_receipt": null,
+      "sha256": "7f1d5cad88f05455434139c11f7e189f48b304586e1d44c52c9f601f4c1df0fb"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/matcher/mwpm.inl",
+      "bytes": 15124,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/matcher/mwpm.inl",
+      "repo_receipt": null,
+      "sha256": "f36cd6eee0ba163d9904be40c741fca535b7f47639ee9ea296d8c12fb1f80801"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/predecode/one_hop_arm_kernels.h",
+      "bytes": 2925,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/predecode/one_hop_arm_kernels.h",
+      "repo_receipt": null,
+      "sha256": "daf8e1eaff470e829c879a2071e1a9ae52b70cffa62dbcaf75c9ed5ab8fe3198"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/predecode/one_hop_bound_kernel.h",
+      "bytes": 10483,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/predecode/one_hop_bound_kernel.h",
+      "repo_receipt": null,
+      "sha256": "8163ba3be092eb06c407f1d76ccab65ee9a0ef3428924c958bc8785b9411ba37"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "bytes": 4871,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "repo_receipt": null,
+      "sha256": "19f1bee83fae28fdc3af541d2149798bc74c14cfbbe88678e50cc0ad12742c4b"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/predecode/one_hop_neighborhood_simd.h",
+      "bytes": 3336,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/predecode/one_hop_neighborhood_simd.h",
+      "repo_receipt": null,
+      "sha256": "f5bf775ef8d8f7c56b3a7521cad0d2676fe1fa5ef29bb9def5c7295ebff98d68"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/predecode/one_hop_predecoder.h",
+      "bytes": 7259,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/predecode/one_hop_predecoder.h",
+      "repo_receipt": null,
+      "sha256": "2841a0eb06a2aff086383306b04012c9272442ad25869a240ad6bfb4d3916752"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/predecode/one_hop_simd_kernels.h",
+      "bytes": 6052,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/predecode/one_hop_simd_kernels.h",
+      "repo_receipt": null,
+      "sha256": "b72ba07e963ce71b873b3a10be48fe22d3499fef8e415ddbee57f0a4ac0c8c16"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/predecode/predecode_diagnostics.h",
+      "bytes": 9965,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/predecode/predecode_diagnostics.h",
+      "repo_receipt": null,
+      "sha256": "8b516804aa07f39735f7ba63596e5789499b507533fd1d189c9a08ced2599e68"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/predecode/predecode_state.h",
+      "bytes": 1365,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/predecode/predecode_state.h",
+      "repo_receipt": null,
+      "sha256": "ce57bfc353535c7fbd5817a1b260f09c5c058275cc2804a7babb0a85e06d1abf"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/predecode/seed_view.h",
+      "bytes": 4042,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/predecode/seed_view.h",
+      "repo_receipt": null,
+      "sha256": "de915bbfa08c2bc5f876500a972854578cf62ed708d7a871ef3863424bd531b6"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/search/search_detector_node.h",
+      "bytes": 3579,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/search/search_detector_node.h",
+      "repo_receipt": null,
+      "sha256": "c7a9415e9cbcc5221c5b4fce5cbc8e4ca48ab0cda8c43c96b6cc9a47b265a1b0"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/search/search_flooder.h",
+      "bytes": 6730,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/search/search_flooder.h",
+      "repo_receipt": null,
+      "sha256": "b3b316e7658538ee9b351e0cf9d844b35e1d5fbbf4385c670bbb39ade016329c"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/search/search_graph.h",
+      "bytes": 2984,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/search/search_graph.h",
+      "repo_receipt": null,
+      "sha256": "eb77acc8acc7708a5bbdc1343e6170791ac0d76a9722ce0a7a09ab9d5c2b297e"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/tracker/flood_check_event.h",
+      "bytes": 3996,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/tracker/flood_check_event.h",
+      "repo_receipt": null,
+      "sha256": "7a8e34c1648dfcac52a578e9c568977ec9ca766770573dc89d51a95478646eae"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/tracker/queued_event_tracker.h",
+      "bytes": 5566,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/tracker/queued_event_tracker.h",
+      "repo_receipt": null,
+      "sha256": "595901cbbf74048bd5eea1c6bb633edb53870d4f5c5b8fa837eadcaf53c27e9c"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/structured/tracker/radix_heap_queue.h",
+      "bytes": 11826,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/structured/tracker/radix_heap_queue.h",
+      "repo_receipt": null,
+      "sha256": "b6049e0121d8eba5f748e985e0a00fd7b13f8684182cac83e53be6c996aa01a4"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/diagram/animation_main.h",
+      "bytes": 2004,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/diagram/animation_main.h",
+      "repo_receipt": null,
+      "sha256": "a5d78ee2438a320ac6631d8ea12c33c9a47d9abd093ae24536352c32ee9c49d1"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/diagram/mwpm_diagram.h",
+      "bytes": 4697,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/diagram/mwpm_diagram.h",
+      "repo_receipt": null,
+      "sha256": "65eff8f82f3f9dc2411ce484fe45dfb55901b41e7e8a7555966467cb9d8f1443"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/flooder/detector_node.h",
+      "bytes": 6492,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/flooder/detector_node.h",
+      "repo_receipt": null,
+      "sha256": "fe7cc57573161bafd567d4c91bcadf499783df2d310430c3493ce863d2b075e6"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/flooder/graph.h",
+      "bytes": 5291,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/flooder/graph.h",
+      "repo_receipt": null,
+      "sha256": "7b3e83ccbce3b3359a68b5355f5d1fa22a97909c0bfd358ecea099622255435a"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/flooder/graph_fill_region.h",
+      "bytes": 5119,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/flooder/graph_fill_region.h",
+      "repo_receipt": null,
+      "sha256": "dd68feb0188e75ad4ccc1699c5998fd3deaabead79c5c192fa8c3ee28eec823c"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/flooder/graph_flooder.h",
+      "bytes": 4695,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/flooder/graph_flooder.h",
+      "repo_receipt": null,
+      "sha256": "d6ace4720d22e5a8e34f9fdc5393af9217b507d69bf366cc2961067e374b4914"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/flooder/match.h",
+      "bytes": 1741,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/flooder/match.h",
+      "repo_receipt": null,
+      "sha256": "7cb19bacda76a2238e981b72ff318acbb5bd6e7802e541b27aeecedb111aad21"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/interop/compressed_edge.h",
+      "bytes": 2646,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/interop/compressed_edge.h",
+      "repo_receipt": null,
+      "sha256": "3da42df5094a475e52fb815e50b336310fc898f4c41e90046e7f7119e1f6838c"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/interop/mwpm_event.h",
+      "bytes": 4427,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/interop/mwpm_event.h",
+      "repo_receipt": null,
+      "sha256": "d4e75b72e581810d9ca0d9584458f940c645b8275af1dd6bb3315c9f3df0da95"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/interop/region_edge.h",
+      "bytes": 1105,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/interop/region_edge.h",
+      "repo_receipt": null,
+      "sha256": "31f8cf92333c1fabf561b8a44ada4464eb1e719e94ec77c3f307d42ef5e39677"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/matcher/alternating_tree.h",
+      "bytes": 5954,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/matcher/alternating_tree.h",
+      "repo_receipt": null,
+      "sha256": "e748ab2945a071b760a00e4104e0b0b9f72c3a62768ab0304eac9acfe10eebd2"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/matcher/mwpm.h",
+      "bytes": 3520,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/matcher/mwpm.h",
+      "repo_receipt": null,
+      "sha256": "adb992b1a064bfb94268c6ec2ec7d298a2408958be9f965c3ddcca5e61a259ad"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/predecode/one_hop_predecoder.h",
+      "bytes": 1933,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/predecode/one_hop_predecoder.h",
+      "repo_receipt": null,
+      "sha256": "e78966be471240a1985d400720466e588f85eab9c6758518d6fa5e9d5464f088"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/search/search_detector_node.h",
+      "bytes": 2425,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/search/search_detector_node.h",
+      "repo_receipt": null,
+      "sha256": "96117e10b95d8ac703eda95894fa76dbf9822dd3cf1a94cbd1ff9652198a14ac"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/search/search_flooder.h",
+      "bytes": 6735,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/search/search_flooder.h",
+      "repo_receipt": null,
+      "sha256": "136523dd2fbd985ea231867785520169387c0badde4566c719aa0ce3c46411ae"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/search/search_graph.h",
+      "bytes": 2451,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/search/search_graph.h",
+      "repo_receipt": null,
+      "sha256": "44ae91bf99df53b30872e2d3f2c8c5a66c048e43dbbd72924d8243a7b9aeaf5b"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/tracker/flood_check_event.h",
+      "bytes": 3706,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/tracker/flood_check_event.h",
+      "repo_receipt": null,
+      "sha256": "7e09d151428c186661ba2e86e556592968856a7de5cc8bfbcbefd2654fa3ae80"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/tracker/queued_event_tracker.h",
+      "bytes": 5410,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/tracker/queued_event_tracker.h",
+      "repo_receipt": null,
+      "sha256": "de8f9e8c7e3636628ce02ed75a2bbd8b6c340c1396ee38a5bd072285ee5d44dc"
+    },
+    {
+      "archive_path": "package/sdk/include/beyond_blossom/unstructured/tracker/radix_heap_queue.h",
+      "bytes": 12176,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/beyond_blossom/unstructured/tracker/radix_heap_queue.h",
+      "repo_receipt": null,
+      "sha256": "25643895dce94d2a6317f8075a95ddfcfdaa354ef3638fa6c40cea58db39bc64"
+    },
+    {
+      "archive_path": "package/sdk/include/stim.h",
+      "bytes": 5203,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim.h",
+      "repo_receipt": null,
+      "sha256": "1663754cf440fc56c5d18432c22e8a8c23d795b84648ab6099bd1302438367e0"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/circuit/circuit.h",
+      "bytes": 17100,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/circuit/circuit.h",
+      "repo_receipt": null,
+      "sha256": "0e4f628547fb0a2e58aabb9aef9e76ea921d2a7b1bdaf7a8a3498fbc1271631d"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/circuit/circuit.pybind.h",
+      "bytes": 1233,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/circuit/circuit.pybind.h",
+      "repo_receipt": null,
+      "sha256": "e54e8039849763d4b899f145cf72e859569a4bd29f305a388cb1136b51df72ec"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/circuit/circuit_instruction.h",
+      "bytes": 6066,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/circuit/circuit_instruction.h",
+      "repo_receipt": null,
+      "sha256": "8d824cdc91edd929941b3524a2440c665f7e379017e3784490c632cadb561d49"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/circuit/circuit_instruction.pybind.h",
+      "bytes": 2305,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/circuit/circuit_instruction.pybind.h",
+      "repo_receipt": null,
+      "sha256": "5b123d3c1709dd43e412291b03ddb19d0385533c7501260862ccdb1b95c3d076"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/circuit/circuit_repeat_block.pybind.h",
+      "bytes": 1387,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/circuit/circuit_repeat_block.pybind.h",
+      "repo_receipt": null,
+      "sha256": "546d313928937fecc65be69e8e4f1ef6ec6c87f03d177108a3c4394b1c4217c6"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/circuit/gate_decomposition.h",
+      "bytes": 3739,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/circuit/gate_decomposition.h",
+      "repo_receipt": null,
+      "sha256": "b51b441ed76186d8894b67a530ec66d8a91bd69bc8c70f19485273e3ff884eab"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/circuit/gate_target.h",
+      "bytes": 6754,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/circuit/gate_target.h",
+      "repo_receipt": null,
+      "sha256": "e0bb7567017253fe37dad96ee7bf6a3fc2a5c27783981b430cc55c475a42c35a"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/circuit/gate_target.pybind.h",
+      "bytes": 1183,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/circuit/gate_target.pybind.h",
+      "repo_receipt": null,
+      "sha256": "2877950810954af53e699388ea42c4411436c17247456150de85e13e2d8d51a5"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/cmd/command_analyze_errors.h",
+      "bytes": 872,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/cmd/command_analyze_errors.h",
+      "repo_receipt": null,
+      "sha256": "c31a2caf88624d42b371287fa905aaaf9d5879627df7f9385a9001d7b73f95d9"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/cmd/command_convert.h",
+      "bytes": 844,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/cmd/command_convert.h",
+      "repo_receipt": null,
+      "sha256": "3383dea2c799b06d64a715bb5a54c17cc100f7b33a34cec4e4ebf43339012b7f"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/cmd/command_detect.h",
+      "bytes": 840,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/cmd/command_detect.h",
+      "repo_receipt": null,
+      "sha256": "594de1d4fde77dbc0cabbaff37a74db170d9f5b3a61c832d094c78d581a57d0d"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/cmd/command_diagram.h",
+      "bytes": 844,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/cmd/command_diagram.h",
+      "repo_receipt": null,
+      "sha256": "12c6c28f63d85b5957a1a849f46333ab94a8796de9b5b3b110cffe52498de8fb"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/cmd/command_diagram.pybind.h",
+      "bytes": 1519,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/cmd/command_diagram.pybind.h",
+      "repo_receipt": null,
+      "sha256": "5de5fc3793f25f5f6cb03bd783422d472405b845584dddf5e46ba7603cd24b49"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/cmd/command_explain_errors.h",
+      "bytes": 872,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/cmd/command_explain_errors.h",
+      "repo_receipt": null,
+      "sha256": "fcc2871980bf5fe0c9e514b629486732b2a09671b7f444ff3181b0c601b2bd66"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/cmd/command_gen.h",
+      "bytes": 828,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/cmd/command_gen.h",
+      "repo_receipt": null,
+      "sha256": "e707d407d4abce8dd4517028e1a60b012f106aef498ade521ea38fb7bd3288c9"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/cmd/command_help.h",
+      "bytes": 1086,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/cmd/command_help.h",
+      "repo_receipt": null,
+      "sha256": "a1f3405ce871494c7bc62d5a918e144cacbcaf5eba47036c3476dbf9895276d0"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/cmd/command_m2d.h",
+      "bytes": 828,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/cmd/command_m2d.h",
+      "repo_receipt": null,
+      "sha256": "76ff6742eb3693d689e0e7a72d9489d4f1973dab01366461c752542ec6160959"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/cmd/command_repl.h",
+      "bytes": 832,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/cmd/command_repl.h",
+      "repo_receipt": null,
+      "sha256": "1645fecfbe0cc45fd56347e195dd426df4a8d7bd342dd976674889c5a88432d7"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/cmd/command_sample.h",
+      "bytes": 840,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/cmd/command_sample.h",
+      "repo_receipt": null,
+      "sha256": "1cfb8703cd50e278d1d48896bd17d8551df830fbe1ef646154e095936f228169"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/cmd/command_sample_dem.h",
+      "bytes": 856,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/cmd/command_sample_dem.h",
+      "repo_receipt": null,
+      "sha256": "02fc9023e64cae89cd7b93e8312d66d9374a6fa86c113492d455caa6546fd033"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/dem/dem_instruction.h",
+      "bytes": 2564,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/dem/dem_instruction.h",
+      "repo_receipt": null,
+      "sha256": "e101055574bee5ce45d1a2251a1f9ba900c65ba09c0eca4e57cc49f9b9e68aae"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/dem/dem_instruction.pybind.h",
+      "bytes": 1273,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/dem/dem_instruction.pybind.h",
+      "repo_receipt": null,
+      "sha256": "a467955bd7639ec1c6201edb69da8eae31a1eb290c966e22f94b0999faed286f"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/dem/detector_error_model.h",
+      "bytes": 6668,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/dem/detector_error_model.h",
+      "repo_receipt": null,
+      "sha256": "e4f7f61a5f45f4f6000f5763773b5065a168c2aa0d8e9f7c04acfc9dc6cccacf"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/dem/detector_error_model.pybind.h",
+      "bytes": 1104,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/dem/detector_error_model.pybind.h",
+      "repo_receipt": null,
+      "sha256": "ec7d06d01ac136939ea77d43bca4d15476dab3a4ea908bcf531e8188e16a2451"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/dem/detector_error_model_repeat_block.pybind.h",
+      "bytes": 1390,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/dem/detector_error_model_repeat_block.pybind.h",
+      "repo_receipt": null,
+      "sha256": "fca17f39078418e4a7e74f97e18c5145dc6435927145e04b5a4d4f16cf1fdfea"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/dem/detector_error_model_target.pybind.h",
+      "bytes": 1361,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/dem/detector_error_model_target.pybind.h",
+      "repo_receipt": null,
+      "sha256": "bbc39476434536dd0b6214cbd259809048c404b591839bb3ffefb912b5aa70a5"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/ascii_diagram.h",
+      "bytes": 2469,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/ascii_diagram.h",
+      "repo_receipt": null,
+      "sha256": "4b90a0bdd46f82db65f5f8ab7b9e0fa6fda14a4998f59807ef1b16e5ce265f34"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/base64.h",
+      "bytes": 847,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/base64.h",
+      "repo_receipt": null,
+      "sha256": "c118f6649ef89b817009a141c162d3ae1e3cf4865a39c36a1d62a1300a8103ca"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/basic_3d_diagram.h",
+      "bytes": 1144,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/basic_3d_diagram.h",
+      "repo_receipt": null,
+      "sha256": "59367716bfe681eb8ac4eba0a16ef964decaca7613ad2df560aa9df777e0d9dd"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/circuit_timeline_helper.h",
+      "bytes": 3821,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/circuit_timeline_helper.h",
+      "repo_receipt": null,
+      "sha256": "73616b02b9a3a648080bbcb1c9d2348b2be2ff7cff079cde23a0fd8b136a6fcf"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/coord.h",
+      "bytes": 3062,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/coord.h",
+      "repo_receipt": null,
+      "sha256": "7cef2ea6f8ddd7f6f8e252c7e8a66347c5b9fe6c558a8be5b1891a1c8431a6ab"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/crumble.h",
+      "bytes": 294,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/crumble.h",
+      "repo_receipt": null,
+      "sha256": "a950aec1e166006acaba64db92e1b4038798f1efd8730d841689d54face88876"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/crumble_data.h",
+      "bytes": 170,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/crumble_data.h",
+      "repo_receipt": null,
+      "sha256": "031dab1ab3971292ddf687a74026bfa1765da63ffe62ec3eac3f0ad0831963bf"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/detector_slice/detector_slice_set.h",
+      "bytes": 3488,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/detector_slice/detector_slice_set.h",
+      "repo_receipt": null,
+      "sha256": "4f0578b1557f51f68a31e3668a1d8723b3f95162f99fad09aaaa6b3782d7ee1f"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/diagram_util.h",
+      "bytes": 1536,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/diagram_util.h",
+      "repo_receipt": null,
+      "sha256": "8d9ccb1f6beb6bef0c509c8fdfed50372a3ad3387e532e928dfbbc6a8022fbb4"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/gate_data_3d.h",
+      "bytes": 228,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/gate_data_3d.h",
+      "repo_receipt": null,
+      "sha256": "a25909accfeccdbe31c9481726697362b89f872028e2e2abcb89895b8757c854"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/gate_data_3d_texture_data.h",
+      "bytes": 208,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/gate_data_3d_texture_data.h",
+      "repo_receipt": null,
+      "sha256": "bcf043beae5677bec507bd97307ed05aec00d60bf28feb5aef65470f9e397d9e"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/gate_data_svg.h",
+      "bytes": 1116,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/gate_data_svg.h",
+      "repo_receipt": null,
+      "sha256": "292e7ba32bf21d8d233c29682b68c0557be98448393c041d0c43bdbec9d3ed3c"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/gltf.h",
+      "bytes": 5677,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/gltf.h",
+      "repo_receipt": null,
+      "sha256": "60c65c32cc5861fb6760031ffc211c9e2b36a859a0b3220120cbd03a25fb58c2"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/graph/match_graph_3d_drawer.h",
+      "bytes": 422,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/graph/match_graph_3d_drawer.h",
+      "repo_receipt": null,
+      "sha256": "e808f2b2e90ae789422199c13969b892505be57b6876b9d4a6afcf88100381b4"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/graph/match_graph_svg_drawer.h",
+      "bytes": 1043,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/graph/match_graph_svg_drawer.h",
+      "repo_receipt": null,
+      "sha256": "7d20e9c74b41210964b41ce1997a79549b0bb2d393fe61a06a5a4c2083aee101"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/json_obj.h",
+      "bytes": 1821,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/json_obj.h",
+      "repo_receipt": null,
+      "sha256": "c61b35121ccd67f6341e8f27dde1701ce098603d25ccf0b8e6ea87e7ade61583"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/lattice_map.h",
+      "bytes": 1316,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/lattice_map.h",
+      "repo_receipt": null,
+      "sha256": "d5a536752538a9a40911d7c78825143939d4d0467344c8393a77f7e4635b3d89"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/timeline/timeline_3d_drawer.h",
+      "bytes": 2918,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/timeline/timeline_3d_drawer.h",
+      "repo_receipt": null,
+      "sha256": "baabc5c7d8098bae5bc0168f97d708e28785172602b38e94252c0392c722d2a2"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/timeline/timeline_ascii_drawer.h",
+      "bytes": 2987,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/timeline/timeline_ascii_drawer.h",
+      "repo_receipt": null,
+      "sha256": "826bc4f55e37bb71e41178701937ba83c9ec34fa84eda72339ed7a20d361a2e4"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/diagram/timeline/timeline_svg_drawer.h",
+      "bytes": 4750,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/diagram/timeline/timeline_svg_drawer.h",
+      "repo_receipt": null,
+      "sha256": "7bfd84ccaa843c3f1dd47fe7b41ecef5c817673d03784ddf921acf192bf06115"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/gates/gates.h",
+      "bytes": 13607,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/gates/gates.h",
+      "repo_receipt": null,
+      "sha256": "6ddd0771518b5484685ada4163e960224ba1ef75a8443716eb6a44a1155d39bf"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/gates/gates.pybind.h",
+      "bytes": 946,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/gates/gates.pybind.h",
+      "repo_receipt": null,
+      "sha256": "ccec99b6c4b96abb14078c807835d9b0533bfa846c278c94340f04040d2f4f51"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/gen/circuit_gen_params.h",
+      "bytes": 1449,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/gen/circuit_gen_params.h",
+      "repo_receipt": null,
+      "sha256": "e29542bd650146df81c7a5473763102991cbac82da0518bf59ee4541bc3d4e54"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/gen/gen_color_code.h",
+      "bytes": 256,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/gen/gen_color_code.h",
+      "repo_receipt": null,
+      "sha256": "7d5881cdcae75fdee1f64e3e7c0d06b2bf6c4d04ce784d474afe42d456ee3193"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/gen/gen_rep_code.h",
+      "bytes": 250,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/gen/gen_rep_code.h",
+      "repo_receipt": null,
+      "sha256": "e7f8a08638cdb1a99065368942a608da9cf7189b7aa26cae68eec0072d4487dc"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/gen/gen_surface_code.h",
+      "bytes": 262,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/gen/gen_surface_code.h",
+      "repo_receipt": null,
+      "sha256": "c73bf73d3c0ad8b2b3158b5b3c47b2f71d4baab52e6a94ef9a9c196536e4489d"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/io/measure_record.h",
+      "bytes": 2365,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/io/measure_record.h",
+      "repo_receipt": null,
+      "sha256": "189750715d00817fc3ba77ec2ad854110729124ada6488189507fc959c5616a4"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/io/measure_record_batch.h",
+      "bytes": 4292,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/io/measure_record_batch.h",
+      "repo_receipt": null,
+      "sha256": "3ae47325d97adcd814a3f02a8deb1522e01c76e04155c3a5c559df455af31e63"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/io/measure_record_batch.inl",
+      "bytes": 5348,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/io/measure_record_batch.inl",
+      "repo_receipt": null,
+      "sha256": "524404449428908a3b460c2835c2385a27489120c073dfe4ab150e6aa8fea27f"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/io/measure_record_batch_writer.h",
+      "bytes": 3971,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/io/measure_record_batch_writer.h",
+      "repo_receipt": null,
+      "sha256": "c3eb6646c6fd8f0f21e673fc094fc1f14a50982eb146938738850b5cd7ec686d"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/io/measure_record_reader.h",
+      "bytes": 11888,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/io/measure_record_reader.h",
+      "repo_receipt": null,
+      "sha256": "288f9f41bf6946de2c4031a6918267aa5c9a88e472703a9dea8c23749c5a4b9e"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/io/measure_record_reader.inl",
+      "bytes": 26915,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/io/measure_record_reader.inl",
+      "repo_receipt": null,
+      "sha256": "1e67dc3f4ebb44ddd35a0268321bc67821f246efd86daee3e6d14b47ea6f7941"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/io/measure_record_writer.h",
+      "bytes": 5907,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/io/measure_record_writer.h",
+      "repo_receipt": null,
+      "sha256": "87733249ccdfcbc2a6309b37dff9d09d73ea7eb89a1c8bdec212395c9419154e"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/io/raii_file.h",
+      "bytes": 1208,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/io/raii_file.h",
+      "repo_receipt": null,
+      "sha256": "6d57bb6c90b0b141a5155d1d59e86ca38696ad55ea1ec656938fccc6123453eb"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/io/read_write.pybind.h",
+      "bytes": 859,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/io/read_write.pybind.h",
+      "repo_receipt": null,
+      "sha256": "29a2c59b45ba1b00ea07557a74eb25e572c521accba41e0751db4f97d2bb14a0"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/io/sparse_shot.h",
+      "bytes": 1813,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/io/sparse_shot.h",
+      "repo_receipt": null,
+      "sha256": "1bcf84ff1b1ea52ad502522b8fc998768422e4b6d7d8d7cb735ce2acf3ca82a1"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/io/stim_data_formats.h",
+      "bytes": 565,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/io/stim_data_formats.h",
+      "repo_receipt": null,
+      "sha256": "4681120baa9261bab82df2cd4ff4e0038d347bb7a493702cd69d231a65fba6da"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/main_namespaced.h",
+      "bytes": 822,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/main_namespaced.h",
+      "repo_receipt": null,
+      "sha256": "88f7f575aae915b40a6560a560edeecbd42676073c1904743005ca3759e78127"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/bit_ref.h",
+      "bytes": 2520,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/bit_ref.h",
+      "repo_receipt": null,
+      "sha256": "1b51bcb053186c9a0fcec6ffb9d1a2497e7ce616a00789d80dcbbb11b1dbbb32"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/bitword.h",
+      "bytes": 5384,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/bitword.h",
+      "repo_receipt": null,
+      "sha256": "2bd49bc7e8c0270af529f4ecaef89b19b28e4fadca6708b49ce8d874b824e500"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/bitword_128_sse.h",
+      "bytes": 7236,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/bitword_128_sse.h",
+      "repo_receipt": null,
+      "sha256": "88ee54220de963ca598c39e80200f263aa8b399069ead6b81868632d119bdd55"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/bitword_256_avx.h",
+      "bytes": 8865,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/bitword_256_avx.h",
+      "repo_receipt": null,
+      "sha256": "29ea02cd4087f133c45369f6878d05b89c2de805939482bdaa2f41892644faf4"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/bitword_64.h",
+      "bytes": 3848,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/bitword_64.h",
+      "repo_receipt": null,
+      "sha256": "a46349a84fa1f1cba9e11a8a6b6a9cbf1aa89a3d9ab4f0bd80af396a2207f3f4"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/fixed_cap_vector.h",
+      "bytes": 4112,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/fixed_cap_vector.h",
+      "repo_receipt": null,
+      "sha256": "eabe8ed8af5c72bbd58bf031ace4a30e08cf0582df25f8a826b03b214cb99705"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/monotonic_buffer.h",
+      "bytes": 6652,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/monotonic_buffer.h",
+      "repo_receipt": null,
+      "sha256": "1a10a62da64595a9b02a222dbc6508fbd87533e5f09d4a0f5b75adbdb1865143"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/simd_bit_table.h",
+      "bytes": 9302,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/simd_bit_table.h",
+      "repo_receipt": null,
+      "sha256": "58251d2463a7f9623daf9b87b76fb9d5ab385f6d0d372e8e7813dd9ff9d7222a"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/simd_bit_table.inl",
+      "bytes": 12665,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/simd_bit_table.inl",
+      "repo_receipt": null,
+      "sha256": "1c5229c16ce6d86001b1f159e401ef56d6cd02d17c56159f3ea6f60cb71c2ba9"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/simd_bits.h",
+      "bytes": 8119,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/simd_bits.h",
+      "repo_receipt": null,
+      "sha256": "a6f8b73c2b36377c44f5d099756c8cdff872b6a8ccddc37325df1337cccc6a65"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/simd_bits.inl",
+      "bytes": 9914,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/simd_bits.inl",
+      "repo_receipt": null,
+      "sha256": "9590e8cfd99ced8d669f13aa3f176a27e0f8fa23e3240df6e189bc7d184304e7"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/simd_bits_range_ref.h",
+      "bytes": 13599,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/simd_bits_range_ref.h",
+      "repo_receipt": null,
+      "sha256": "2e1d091aee057d95c2b97414db481e55448fee111c21c964da7c50aafc96c611"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/simd_bits_range_ref.inl",
+      "bytes": 7283,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/simd_bits_range_ref.inl",
+      "repo_receipt": null,
+      "sha256": "7c5536393838797145422f28aca8df634c0c4f012ae295924d539c33a5f134b3"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/simd_util.h",
+      "bytes": 1236,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/simd_util.h",
+      "repo_receipt": null,
+      "sha256": "c4a88d66523b15e89860a4e5cc39756f3662460fbfec6e1175a9fd014ad2dbf8"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/simd_word.h",
+      "bytes": 1070,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/simd_word.h",
+      "repo_receipt": null,
+      "sha256": "fc37afb1ee00e5333feb3afd6a11dcaccf69fe7e675115ae4f4cfbd3e936ff7c"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/span_ref.h",
+      "bytes": 5497,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/span_ref.h",
+      "repo_receipt": null,
+      "sha256": "e9af202ccea544baa14eab4d9d66a741b78adb3f6e8f553b216d0f6ac7bcbf43"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/mem/sparse_xor_vec.h",
+      "bytes": 8292,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/mem/sparse_xor_vec.h",
+      "repo_receipt": null,
+      "sha256": "8f33794e4746acf24595fefb60c1b3e1b8a4d60f29913a7fdb90d9ca2cf62bb5"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/perf.perf.h",
+      "bytes": 4253,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/perf.perf.h",
+      "repo_receipt": null,
+      "sha256": "0f4b94173538f56ddc4555a25ce10e2664d8e7f21a6ef8c3acc85deb9b0f4f3b"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/py/base.pybind.h",
+      "bytes": 1721,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/py/base.pybind.h",
+      "repo_receipt": null,
+      "sha256": "96cf411292c44f7d14efd68731a281bf9be6c623684059ee819ba381b7397969"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/py/compiled_detector_sampler.pybind.h",
+      "bytes": 2271,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/py/compiled_detector_sampler.pybind.h",
+      "repo_receipt": null,
+      "sha256": "8f4d57a8262304ed6022a1e2fea6fa87816914c7d910eebe4a5bf88b0a80501b"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/py/compiled_measurement_sampler.pybind.h",
+      "bytes": 2120,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/py/compiled_measurement_sampler.pybind.h",
+      "repo_receipt": null,
+      "sha256": "483d906262b4404902e351df7654bbb01ae631daed81474524fa1a9be4b160e2"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/py/march.pybind.h",
+      "bytes": 210,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/py/march.pybind.h",
+      "repo_receipt": null,
+      "sha256": "20e6cf25c5b9ba41b180270b646efa7bf7c860c84131bfc95478832304e15604"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/py/numpy.pybind.h",
+      "bytes": 1063,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/py/numpy.pybind.h",
+      "repo_receipt": null,
+      "sha256": "5aa3a53668b553ac8e8cb08deebdedb0b23a8bee80add34b9fc975e0615de41d"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/search/graphlike/algo.h",
+      "bytes": 1883,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/search/graphlike/algo.h",
+      "repo_receipt": null,
+      "sha256": "370f9167ccc7f171afa3b02557e7eac71891e19c7db19b9d03f8cf25fc30195b"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/search/graphlike/edge.h",
+      "bytes": 1211,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/search/graphlike/edge.h",
+      "repo_receipt": null,
+      "sha256": "6739d39a1ac69748f4b75e8b526d670f0f7aa2aa893ff219a29451dca52fbf05"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/search/graphlike/graph.h",
+      "bytes": 1745,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/search/graphlike/graph.h",
+      "repo_receipt": null,
+      "sha256": "3f645e5124bded04c7db752d0942226db3c6fa4cc2f64be2fa3dc9a20520d683"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/search/graphlike/node.h",
+      "bytes": 1241,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/search/graphlike/node.h",
+      "repo_receipt": null,
+      "sha256": "a936c61aa70fb952bf22127d8dbbfacab798688306a3f8b03894045e769269ef"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/search/graphlike/search_state.h",
+      "bytes": 1813,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/search/graphlike/search_state.h",
+      "repo_receipt": null,
+      "sha256": "1c918e4b6ae62f5564d6b6072a7d2e6eb1addb0abb208b1e7f1d7ee885f2cb61"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/search/hyper/algo.h",
+      "bytes": 3746,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/search/hyper/algo.h",
+      "repo_receipt": null,
+      "sha256": "0750300e00597eabc124f35e3a9e65aa9d4bda03abb7b130d5f92e6c83c78de7"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/search/hyper/edge.h",
+      "bytes": 1182,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/search/hyper/edge.h",
+      "repo_receipt": null,
+      "sha256": "844a10c5493f4563d4b41295aea7711fbfac882912432be8407a332aec2be166"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/search/hyper/graph.h",
+      "bytes": 1542,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/search/hyper/graph.h",
+      "repo_receipt": null,
+      "sha256": "2435c25c0c7a86167d69be2f31cc4ea35b171a4446c389d6f5fab91f799a11b4"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/search/hyper/node.h",
+      "bytes": 1061,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/search/hyper/node.h",
+      "repo_receipt": null,
+      "sha256": "8fd2e3319bfa89515f8a670b222b3bc9ffb006533fe4c9a4a8041c09f7723470"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/search/hyper/search_state.h",
+      "bytes": 1356,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/search/hyper/search_state.h",
+      "repo_receipt": null,
+      "sha256": "642fdd1aed51994d21cf3a3a152851950f65bb54eed1609e387782bb9d5bf1c5"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/search/sat/wcnf.h",
+      "bytes": 2417,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/search/sat/wcnf.h",
+      "repo_receipt": null,
+      "sha256": "623e813370484128b844d5640ba5ecb975ba41b28a0289ee142e4d2516d345fa"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/search/search.h",
+      "bytes": 775,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/search/search.h",
+      "repo_receipt": null,
+      "sha256": "e0c4680c14a6c855014690aef27ae3928f917af8d2b070f868475085c077d104"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/dem_sampler.h",
+      "bytes": 3032,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/dem_sampler.h",
+      "repo_receipt": null,
+      "sha256": "31e8ce743db8e0b787b7e908c49d3f323ce7fea3647e95994e97a23363f2bb32"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/dem_sampler.inl",
+      "bytes": 4317,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/dem_sampler.inl",
+      "repo_receipt": null,
+      "sha256": "330ebeb41ee90cf78737dce00fc2bf9f8e755686cb447128ac3c9aa3db3f039a"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/dem_sampler.pybind.h",
+      "bytes": 1037,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/dem_sampler.pybind.h",
+      "repo_receipt": null,
+      "sha256": "b2a4c6b22a5e55f1ed9ea39d87a27a7af3432e9154cd552deed26cc504c1baec"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/error_analyzer.h",
+      "bytes": 19417,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/error_analyzer.h",
+      "repo_receipt": null,
+      "sha256": "b5609f2aba129c435f11608c5f3d9b142376321dc9e369b3b3a070b9baf44d32"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/error_matcher.h",
+      "bytes": 4363,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/error_matcher.h",
+      "repo_receipt": null,
+      "sha256": "4ca719701d7c1cd9f2f4877ca569c66436d6d3c9076524ca60d0981101374310"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/force_streaming.h",
+      "bytes": 469,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/force_streaming.h",
+      "repo_receipt": null,
+      "sha256": "372d2610d0b4bef541454be0cd1635c946bb256d2fa36b31304fffbf886fb1ec"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/frame_simulator.h",
+      "bytes": 7904,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/frame_simulator.h",
+      "repo_receipt": null,
+      "sha256": "b3d8d21e4d25d5cc0cef447c7495d76c33e1e28c00cb5eedaca6841c7182e812"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/frame_simulator.inl",
+      "bytes": 38161,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/frame_simulator.inl",
+      "repo_receipt": null,
+      "sha256": "d9fff06c4b40f9fddb9c4009516d909acb9b87975f048d37ab345d5117417f40"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/frame_simulator.pybind.h",
+      "bytes": 482,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/frame_simulator.pybind.h",
+      "repo_receipt": null,
+      "sha256": "6292c9ecf812cd304ae85dbeafc06ca8be266f4186f86d53dd01d03344554d53"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/frame_simulator_util.h",
+      "bytes": 5114,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/frame_simulator_util.h",
+      "repo_receipt": null,
+      "sha256": "5ee7a97ea5c4ec7e714cbf890ec833fdb611164216a0b823970e70c32ac3e692"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/frame_simulator_util.inl",
+      "bytes": 12760,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/frame_simulator_util.inl",
+      "repo_receipt": null,
+      "sha256": "d1887caf9694333ac0a17e3a61568939678b7b0d58e8177328059b805480a12d"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/graph_simulator.h",
+      "bytes": 2785,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/graph_simulator.h",
+      "repo_receipt": null,
+      "sha256": "4571a4221213bc20567f2061aa9bad4beea9009cc5cb7418ddbc2795a0e65629"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/matched_error.h",
+      "bytes": 7105,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/matched_error.h",
+      "repo_receipt": null,
+      "sha256": "b6e728938a03b0368663b7707d526e6eb5797ce01aa8c1032f9ef9aef356c8a9"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/matched_error.pybind.h",
+      "bytes": 2369,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/matched_error.pybind.h",
+      "repo_receipt": null,
+      "sha256": "d0fd09f7f4ad34c41ccc316cb738c411264106a3767aabd0d844a126a576d04d"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/measurements_to_detection_events.h",
+      "bytes": 5752,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/measurements_to_detection_events.h",
+      "repo_receipt": null,
+      "sha256": "4872ab852d3e3137c75e242c1f6a1353414e04024673604acf58a024308978d4"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/measurements_to_detection_events.inl",
+      "bytes": 13300,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/measurements_to_detection_events.inl",
+      "repo_receipt": null,
+      "sha256": "939a1831530e5294cc1eb7d55195697cc5cbde0bd02c447914333f504ced46ac"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/measurements_to_detection_events.pybind.h",
+      "bytes": 2875,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/measurements_to_detection_events.pybind.h",
+      "repo_receipt": null,
+      "sha256": "5cd54120edaa605483a9012e4df98a6cf090c822c093b44ce682507da585b201"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/sparse_rev_frame_tracker.h",
+      "bytes": 7974,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/sparse_rev_frame_tracker.h",
+      "repo_receipt": null,
+      "sha256": "084f96a7d1a9877778d6ebc80a21a1edec2e0c9d91cbaf06739264b75f1e2768"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/tableau_simulator.h",
+      "bytes": 15401,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/tableau_simulator.h",
+      "repo_receipt": null,
+      "sha256": "c4182c9184298c35d8b21635faae9a012a19b45fdd5a0aa85a5dde49ee5c6325"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/tableau_simulator.inl",
+      "bytes": 61024,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/tableau_simulator.inl",
+      "repo_receipt": null,
+      "sha256": "9169517635904fd587b1463430faecfd98646af1bf612b1b0e91a76e47a980ab"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/tableau_simulator.pybind.h",
+      "bytes": 1084,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/tableau_simulator.pybind.h",
+      "repo_receipt": null,
+      "sha256": "ed3ed4113f57add0b834c86ce99549695999a3e25fae39ab2e616a3f8b7e2b1f"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/simulators/vector_simulator.h",
+      "bytes": 6452,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/simulators/vector_simulator.h",
+      "repo_receipt": null,
+      "sha256": "62cf12829a2ff37bc25c0de7c95b6b7519a7fc805cf813e65c0d28ee2044a35d"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/flex_pauli_string.h",
+      "bytes": 2257,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/flex_pauli_string.h",
+      "repo_receipt": null,
+      "sha256": "fd9fb7d5e7fcc0cb3209e2c7aeb52b305b7a9376449d462701f8d604a0b5fdfc"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/flow.h",
+      "bytes": 1378,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/flow.h",
+      "repo_receipt": null,
+      "sha256": "7ee31c1f9c87a4dfe9a7cc2608d0b5cbbc2c41272de66a8bcb22632bb398d907"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/flow.inl",
+      "bytes": 6892,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/flow.inl",
+      "repo_receipt": null,
+      "sha256": "a392cff61a115ab6f650579d09739f91d9d3dd86d8104a037ce991d54dfc8f7d"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/flow.pybind.h",
+      "bytes": 993,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/flow.pybind.h",
+      "repo_receipt": null,
+      "sha256": "c6824db47e65e2a4b42935637bfe4038aed911df79742bbe1aab9c419cd29443"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/pauli_string.h",
+      "bytes": 5729,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/pauli_string.h",
+      "repo_receipt": null,
+      "sha256": "7899577fc94843f4ae07adbdb4f50e4b09675275429408c250a6ac90464dd009"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/pauli_string.inl",
+      "bytes": 8079,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/pauli_string.inl",
+      "repo_receipt": null,
+      "sha256": "4ef3fd59dd8fe7915f1d31c7a0940303ac3485e2a5dbcd8e9bbe221e35c68c2b"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/pauli_string.pybind.h",
+      "bytes": 1029,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/pauli_string.pybind.h",
+      "repo_receipt": null,
+      "sha256": "7b622dc9465e4020342e21a49ed9a96b8755ba43cabcda7a467337e186301805"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/pauli_string_iter.h",
+      "bytes": 5010,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/pauli_string_iter.h",
+      "repo_receipt": null,
+      "sha256": "9d03c9c4b421873b20227d7a8a3029f95a710af2ccf2b8a4e7d39e64a9c88e5c"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/pauli_string_iter.inl",
+      "bytes": 2763,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/pauli_string_iter.inl",
+      "repo_receipt": null,
+      "sha256": "fc0bb46c07df460fd36fe6a534fa1c527235e06eefaed90cd618514b2a08a20b"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/pauli_string_iter.pybind.h",
+      "bytes": 1091,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/pauli_string_iter.pybind.h",
+      "repo_receipt": null,
+      "sha256": "1e69edce61901b2d9c70d486ad376b9f97b1dc7ab8faf8b214ba15a65deb7b94"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/pauli_string_ref.h",
+      "bytes": 10346,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/pauli_string_ref.h",
+      "repo_receipt": null,
+      "sha256": "b71e1c76c45519bfc073497f6d6390419ebdbdc7b75b105243ba98d70f584eea"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/pauli_string_ref.inl",
+      "bytes": 42887,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/pauli_string_ref.inl",
+      "repo_receipt": null,
+      "sha256": "c2fc7775a185349fc62f1fa6090c278552e997f5ecfa86b2518a4d026498cca0"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/tableau.h",
+      "bytes": 11113,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/tableau.h",
+      "repo_receipt": null,
+      "sha256": "b1770f27231b793518fba3520894a0603206a05c85ab1424c0d852ec8cef5b00"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/tableau.inl",
+      "bytes": 26516,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/tableau.inl",
+      "repo_receipt": null,
+      "sha256": "ad67e1eabc54c47b01deae917566532646fd1a0edd07199764869fd53f09d2a0"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/tableau.pybind.h",
+      "bytes": 1014,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/tableau.pybind.h",
+      "repo_receipt": null,
+      "sha256": "0303f8a3e8df3294db46aaade68cc3294b8bac144a2f991d542045fd72bb0f13"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/tableau_iter.h",
+      "bytes": 4067,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/tableau_iter.h",
+      "repo_receipt": null,
+      "sha256": "642060c0f85b7a210e4e48f2f19d40f96a7e83da8606a79f9e6761bc1b4284dc"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/tableau_iter.inl",
+      "bytes": 8724,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/tableau_iter.inl",
+      "repo_receipt": null,
+      "sha256": "a94d86ac5974f337987101afcd0ca130566a6bf8926eca307bbaa39328ec3810"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/tableau_iter.pybind.h",
+      "bytes": 1058,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/tableau_iter.pybind.h",
+      "repo_receipt": null,
+      "sha256": "915f8e9fa5a78e7640250deb84422eea78d8529cb3f209dab57a8ccda22d11bc"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/tableau_specialized_prepend.inl",
+      "bytes": 7874,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/tableau_specialized_prepend.inl",
+      "repo_receipt": null,
+      "sha256": "2b7590765d9f59e75a9769d0756ace39656ee5a74e68dba2f85806daaef3cc75"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/tableau_transposed_raii.h",
+      "bytes": 2073,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/tableau_transposed_raii.h",
+      "repo_receipt": null,
+      "sha256": "4dc8c0928ac70fb4f79a1e24c997efcfa054c8637a36425c221d5fdd10d88333"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/stabilizers/tableau_transposed_raii.inl",
+      "bytes": 4989,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/stabilizers/tableau_transposed_raii.inl",
+      "repo_receipt": null,
+      "sha256": "3ef9afc0d18ec54e418ccdbf663ab7d15888d05c25a0f46ed9804960b65aa6a9"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_bot/arg_parse.h",
+      "bytes": 10000,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_bot/arg_parse.h",
+      "repo_receipt": null,
+      "sha256": "a65bb663b4f7671bd9664c450b1bc88f1843387ed989bacd3483695fa934e49c"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_bot/error_decomp.h",
+      "bytes": 738,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_bot/error_decomp.h",
+      "repo_receipt": null,
+      "sha256": "9f15c2f6494a8e1cdab10ce72a5e2561d11763ab9e436a785c8ea01fb909050b"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_bot/probability_util.h",
+      "bytes": 3017,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_bot/probability_util.h",
+      "repo_receipt": null,
+      "sha256": "e18eb683794275cdff35beb0e14bb90f2c4c89dcafadd36d257c2b15bfa884a7"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_bot/str_util.h",
+      "bytes": 1601,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_bot/str_util.h",
+      "repo_receipt": null,
+      "sha256": "1775b74e2cce4b7ff5371d3b42661f34f6fa2296705d2b7c128d9226e20ed8ae"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_bot/twiddle.h",
+      "bytes": 1332,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_bot/twiddle.h",
+      "repo_receipt": null,
+      "sha256": "37388152f71545f87024ac3dae0db41c70aefeabffa3d49224fad3aff66a3ec8"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/circuit_flow_generators.h",
+      "bytes": 2037,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/circuit_flow_generators.h",
+      "repo_receipt": null,
+      "sha256": "b847a8873fd8789959d4cf259815569b5ceb23d400969924df7fc752d75934cb"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/circuit_flow_generators.inl",
+      "bytes": 17578,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/circuit_flow_generators.inl",
+      "repo_receipt": null,
+      "sha256": "649db8bc8d8a69468f7e8361a94567ffbe284aed5e8792edbd9e1c880d9abe95"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/circuit_inverse_qec.h",
+      "bytes": 2351,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/circuit_inverse_qec.h",
+      "repo_receipt": null,
+      "sha256": "dc347fc9bd54bb6235da9e2d9e0b4728d81997e29e003ad40c32960263f98d39"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/circuit_inverse_qec.inl",
+      "bytes": 6301,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/circuit_inverse_qec.inl",
+      "repo_receipt": null,
+      "sha256": "2bb3596c1669df5096ce9402fa174b75f0928321f85011ba29a6732203175a70"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/circuit_inverse_unitary.h",
+      "bytes": 326,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/circuit_inverse_unitary.h",
+      "repo_receipt": null,
+      "sha256": "3ab3af3d511689310c6173e5edafa11190a0b47c97dba634bbb7dbf01b30f7bc"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/circuit_to_dem.h",
+      "bytes": 921,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/circuit_to_dem.h",
+      "repo_receipt": null,
+      "sha256": "1e2573bbde400ce37254632cbe96f3002b13633472ff264735154ba7bd64c238"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/circuit_to_detecting_regions.h",
+      "bytes": 517,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/circuit_to_detecting_regions.h",
+      "repo_receipt": null,
+      "sha256": "7c179a673e350abf470e312b988f8d32a1aa96e544e2e9ab2fb4b458c4b0df26"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/circuit_vs_amplitudes.h",
+      "bytes": 1475,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/circuit_vs_amplitudes.h",
+      "repo_receipt": null,
+      "sha256": "2c476d69f6f86d5e27b7fa7acf8c035df12805cfb1331616a777b8fa3a1681bb"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/circuit_vs_tableau.h",
+      "bytes": 2936,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/circuit_vs_tableau.h",
+      "repo_receipt": null,
+      "sha256": "103edaf90be0e66e9e82c6602f8d5c86fac7546fa91c2bee18fbf67a2b436a83"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/circuit_vs_tableau.inl",
+      "bytes": 9257,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/circuit_vs_tableau.inl",
+      "repo_receipt": null,
+      "sha256": "07132755dc374f0aa7dced42228626b9692743b60f6ab4dc1dc017bd6e81de33"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/count_determined_measurements.h",
+      "bytes": 934,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/count_determined_measurements.h",
+      "repo_receipt": null,
+      "sha256": "078cafe38bffa110c50d94b221c14a9a548119548e5ca3200366f768e10b1d23"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/count_determined_measurements.inl",
+      "bytes": 4049,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/count_determined_measurements.inl",
+      "repo_receipt": null,
+      "sha256": "93de5212478670638d51a17cdd90363cd77edf222e9e57b32343601741a97717"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/export_crumble_url.h",
+      "bytes": 366,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/export_crumble_url.h",
+      "repo_receipt": null,
+      "sha256": "cdef0285d47807588d2cb027819f89c6b8ddc435d5ad204be5600be295ae7977"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/export_qasm.h",
+      "bytes": 871,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/export_qasm.h",
+      "repo_receipt": null,
+      "sha256": "fc6da0e343082edd8ed9f62a6507cf890da7876678d1a586e5b659d469208bb3"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/export_quirk_url.h",
+      "bytes": 222,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/export_quirk_url.h",
+      "repo_receipt": null,
+      "sha256": "48562fed2d69ab90ec349461dd72460510618b9d6e2877b8a72f705717204036"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/has_flow.h",
+      "bytes": 1827,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/has_flow.h",
+      "repo_receipt": null,
+      "sha256": "2d8ec1daf1d929f0186d1880d60f070142e8b5a9a01c945dcbc80acb80805239"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/has_flow.inl",
+      "bytes": 6093,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/has_flow.inl",
+      "repo_receipt": null,
+      "sha256": "03154e860b3dc3dcb3b4b354c7f2d1041b83addfc64d495e15be4732478a43ce"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/reference_sample_tree.h",
+      "bytes": 3344,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/reference_sample_tree.h",
+      "repo_receipt": null,
+      "sha256": "8f845b6c34a92e847994e5522c37d0b1114451c708503858aa6a9a20b2b664f6"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/reference_sample_tree.inl",
+      "bytes": 5356,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/reference_sample_tree.inl",
+      "repo_receipt": null,
+      "sha256": "7028966f67374db2bcc20a189b00a32d32dcedb35f64ca573109e8702fbba17d"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/simplified_circuit.h",
+      "bytes": 224,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/simplified_circuit.h",
+      "repo_receipt": null,
+      "sha256": "bcb60c568002caa222976e45bbf69ace63bec1176573fe431159ad3f1a9e3a79"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/stabilizers_to_tableau.h",
+      "bytes": 1443,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/stabilizers_to_tableau.h",
+      "repo_receipt": null,
+      "sha256": "6c73e1ed9c8d5c796a4ec32fcf8201863aca8e7b81e1c0680ee0b28f585c7d7b"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/stabilizers_to_tableau.inl",
+      "bytes": 9788,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/stabilizers_to_tableau.inl",
+      "repo_receipt": null,
+      "sha256": "a2ab1fbb9e1aecca52d865396afe975e775afde43a40e3c460e3661f8bc90831"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/stabilizers_vs_amplitudes.h",
+      "bytes": 1038,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/stabilizers_vs_amplitudes.h",
+      "repo_receipt": null,
+      "sha256": "0c170239bcb87f437049a2bf0782e2afb6c4461badc2f3f9cae626c9bcb2f3aa"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/stabilizers_vs_amplitudes.inl",
+      "bytes": 5744,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/stabilizers_vs_amplitudes.inl",
+      "repo_receipt": null,
+      "sha256": "afd5e40fa572d41d8928eea4a128e03b1aeed5ec20ddab1404b9c0d7c2814ddc"
+    },
+    {
+      "archive_path": "package/sdk/include/stim/util_top/transform_without_feedback.h",
+      "bytes": 973,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/include/stim/util_top/transform_without_feedback.h",
+      "repo_receipt": null,
+      "sha256": "8f4e94c12f04250570cea00c0d2bdfd48b9d35816d9a048664963455e2af4c98"
+    },
+    {
+      "archive_path": "package/sdk/lib/cmake/BeyondBlossom/BeyondBlossomConfig.cmake",
+      "bytes": 1083,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/lib/cmake/BeyondBlossom/BeyondBlossomConfig.cmake",
+      "repo_receipt": null,
+      "sha256": "cddef47a28009c6611c062c639cb6d220f3e142590d0fbc563c7888a03a291a1"
+    },
+    {
+      "archive_path": "package/sdk/lib/cmake/BeyondBlossom/BeyondBlossomConfigVersion.cmake",
+      "bytes": 2762,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/lib/cmake/BeyondBlossom/BeyondBlossomConfigVersion.cmake",
+      "repo_receipt": null,
+      "sha256": "4440cdfab7c7e4e4fffcf0d81d698fcd80290c4f2a8d32c4f8242993b0af951d"
+    },
+    {
+      "archive_path": "package/sdk/lib/cmake/BeyondBlossom/BeyondBlossomTargets-release.cmake",
+      "bytes": 1385,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/lib/cmake/BeyondBlossom/BeyondBlossomTargets-release.cmake",
+      "repo_receipt": null,
+      "sha256": "1cc7bef2eb79b42413d1aefefb21a16bdb058a1e6bfd2784998239c95be9d4ff"
+    },
+    {
+      "archive_path": "package/sdk/lib/cmake/BeyondBlossom/BeyondBlossomTargets.cmake",
+      "bytes": 5558,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/lib/cmake/BeyondBlossom/BeyondBlossomTargets.cmake",
+      "repo_receipt": null,
+      "sha256": "7a2f1662e54d186076b09b586c357ed7ac60afd5f746b72ec0b561a67501aab2"
+    },
+    {
+      "archive_path": "package/sdk/lib/libbeyond_blossom.a",
+      "bytes": 5310098,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/lib/libbeyond_blossom.a",
+      "repo_receipt": null,
+      "sha256": "b3f84f05588766cfe38e0ad9e47e65b84d6a2350ca176b192b9e80b1fb586a7a"
+    },
+    {
+      "archive_path": "package/sdk/lib/libstim.a",
+      "bytes": 6524666,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/lib/libstim.a",
+      "repo_receipt": null,
+      "sha256": "c068eebb611b66d2094d392eb222c05e57ecbcd99df4102b44f4a157aebabbc6"
+    },
+    {
+      "archive_path": "package/sdk/share/licenses/BeyondBlossom/LICENSE",
+      "bytes": 11357,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/share/licenses/BeyondBlossom/LICENSE",
+      "repo_receipt": null,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "archive_path": "package/sdk/share/licenses/BeyondBlossom/NOTICE",
+      "bytes": 864,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/share/licenses/BeyondBlossom/NOTICE",
+      "repo_receipt": null,
+      "sha256": "1fcbdd6bf2ebd8100cf2a56091709d5a386a7517308ff788f30b27adc0307796"
+    },
+    {
+      "archive_path": "package/sdk/share/licenses/BeyondBlossom/Stim.txt",
+      "bytes": 11357,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/sdk/share/licenses/BeyondBlossom/Stim.txt",
+      "repo_receipt": null,
+      "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
+    },
+    {
+      "archive_path": "package/setup-history/initial-failure.json",
+      "bytes": 1098,
+      "original_path": "/tmp/beyond-package-final/artifacts/failure.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/setup-history/initial-failure.json",
+      "sha256": "c0941b8f0dd9db11b15472c3110d8846e13c2f4c771578ee1af32826dce4c16a"
+    },
+    {
+      "archive_path": "package/setup-history/logs/local-dependencies.command.json",
+      "bytes": 457,
+      "original_path": "/tmp/beyond-package-final/artifacts/logs/local-dependencies.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/setup-history/logs/local-dependencies.command.json",
+      "sha256": "b6578ed81a4942f85565b6a0e27b21dfe70039ebac9ecff4f79ec7e4cdf598ee"
+    },
+    {
+      "archive_path": "package/setup-history/logs/local-dependencies.log",
+      "bytes": 248,
+      "original_path": "/tmp/beyond-package-final/artifacts/logs/local-dependencies.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/setup-history/logs/local-dependencies.log",
+      "sha256": "e2bee2e56c2bc2acce9f16508edf33989c3f6a1e1ce1278dfc3cbf64d5625238"
+    },
+    {
+      "archive_path": "package/setup-history/logs/sdist.command.json",
+      "bytes": 271,
+      "original_path": "/tmp/beyond-package-final/artifacts/logs/sdist.command.json",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/setup-history/logs/sdist.command.json",
+      "sha256": "e3e13a6866b17bf2c21f8eb2c24dacc801c5ac0eb21b22e27df36d13f4d72a77"
+    },
+    {
+      "archive_path": "package/setup-history/logs/sdist.log",
+      "bytes": 32473,
+      "original_path": "/tmp/beyond-package-final/artifacts/logs/sdist.log",
+      "repo_receipt": "benchmarks/regression/results/20261112/validation/package/setup-history/logs/sdist.log",
+      "sha256": "6fa137d85cf62e9963b06c55efc62b1830f9bb668a0f83b84989133985d97022"
+    },
+    {
+      "archive_path": "package/source/source.tar",
+      "bytes": 5222400,
+      "original_path": "/tmp/beyond-package-final/artifacts-r2/source.tar",
+      "repo_receipt": null,
+      "sha256": "3f2af386d2db812ea3af9ee7f6af6c31c2edaa38a4f5d35ce9171b156bad6742"
+    }
+  ],
+  "group": "package",
+  "implementation_commit": "edd29b6780713dc78f6a99d67c4c4d192e9c52b5",
+  "receipts_preserved_verbatim": true,
+  "schema": 1,
+  "script_sha256": "4993dd2121e7b576af5cad630194a10ecde82599b3e669d36a8ebd073f243f6e",
+  "source_snapshot_note": "Runtime source hashes checked against their original build receipts; original absolute paths are provenance, not rewritten relocation paths.",
+  "structured_collector_commit": "0ad4fde55adaae41e337a6ee89974703c07bb8cd"
+}

@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/tmp/beyond-package-final/artifacts-r2/installed/bin/beyond-blossom",
+    "predict",
+    "--dem",
+    "/tmp/beyond-package-final/artifacts-r2/unpacked/beyond_blossom-0.1.0/data/three_errors.dem",
+    "--in",
+    "/tmp/beyond-package-final/artifacts-r2/unpacked/beyond_blossom-0.1.0/data/three_errors.b8",
+    "--in_format",
+    "b8",
+    "--out",
+    "/tmp/beyond-package-final/artifacts-r2/outside/predictions-b8.dets",
+    "--out_format",
+    "dets"
+  ],
+  "cwd": "/tmp/beyond-package-final/artifacts-r2/outside",
+  "expected_returncode": 0,
+  "name": "cli-predict-b8"
+}

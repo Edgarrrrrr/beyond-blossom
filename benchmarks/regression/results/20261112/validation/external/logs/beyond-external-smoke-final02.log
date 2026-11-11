@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/fujy/dev/beyond_blossom/repo/AE/external/collect.py", line 176, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/fujy/dev/beyond_blossom/repo/AE/external/collect.py", line 141, in main
+    subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, check=True)
+  File "/home/fujy/dev/PyMatching/.conda-env/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/fujy/dev/PyMatching/.conda-env/bin/python', '/home/fujy/dev/beyond_blossom/repo/AE/external/run.py', '--input', '/tmp/beyond-external-smoke-final02/d09-p0.003/n64/input', '--build', '/tmp/beyond-external-build-final01', '--output', '/tmp/beyond-external-smoke-final02/d09-p0.003/n64/run', '--profile', 'smoke', '--timeout', '0', '--methods', 'parity', 'fusion', 'parity-uf', 'unionfind', 'ldpc-uf', '--cpus', '2,3,4,5']' returned non-zero exit status 1.

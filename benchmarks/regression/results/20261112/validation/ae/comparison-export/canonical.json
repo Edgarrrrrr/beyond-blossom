@@ -1,0 +1,361 @@
+{
+  "schema": 1,
+  "complete": true,
+  "profile": "smoke",
+  "groups": [
+    "ablation",
+    "comparison"
+  ],
+  "sources": {
+    "native": {
+      "plan": {
+        "path": "/tmp/beyond-ae-native-smoke-final01/plan.json",
+        "sha256": "5fda58f94d1d4402ff56f2cbb26cde8686b2a54583f1e23d4f7517a8b204e89f"
+      },
+      "completion": {
+        "path": "/tmp/beyond-ae-native-smoke-final01/complete.json",
+        "sha256": "13da69987ff5a3016adadfaedc28c19e491aa07ee39fec342a2cdafbd3caaae8"
+      }
+    },
+    "external": {
+      "plan": {
+        "path": "/tmp/beyond-external-smoke-final03/plan.json",
+        "sha256": "bc1f67e8d5f70212936055b664d8599e268591db32f089f62898fb40127efa5f"
+      },
+      "completion": {
+        "path": "/tmp/beyond-external-smoke-final03/complete.json",
+        "sha256": "2098027b3f4213e87cfa70d9e14c42e867a7b8e374e47ee5849ac5c6cd13012d"
+      }
+    }
+  },
+  "method_labels": {
+    "reference": "Official upstream reference",
+    "unstructured": "Current unstructured",
+    "structured": "Structured",
+    "predecoded": "Predecoded",
+    "component-parallel": "Component parallel",
+    "pipelined": "Pipelined",
+    "parallel-predecode": "Parallel predecode",
+    "best": "Beyond Blossom (best configuration)",
+    "parity": "Parity Blossom",
+    "fusion": "Fusion Blossom",
+    "parity-uf": "Parity UF",
+    "unionfind": "UnionFind C++",
+    "ldpc-uf": "LDPC UF"
+  },
+  "ablation_stages": [
+    "reference",
+    "structured",
+    "predecoded",
+    "component-parallel",
+    "pipelined",
+    "parallel-predecode"
+  ],
+  "best_configuration_pool": [
+    "structured",
+    "predecoded",
+    "component-parallel",
+    "pipelined",
+    "parallel-predecode"
+  ],
+  "macro_aliases": {
+    "pymatching": "reference",
+    "structured-simd": "structured",
+    "predecoding": "predecoded",
+    "component-parallel": "component-parallel",
+    "tail-reset": "pipelined",
+    "parallel-predecoding": "parallel-predecode",
+    "tail-reset-reference": "component-parallel"
+  },
+  "baseline_policy": "reference always means the independently built official e27b8c6a revision",
+  "native": [
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "method": "reference",
+      "shots": 1025,
+      "repeats": 1,
+      "repeat_elapsed_ns": [
+        11777666
+      ],
+      "repeat_mean_us": [
+        11.490405853658537
+      ],
+      "mean_us": 11.490405853658537,
+      "median_batch_us": 11.490405853658537,
+      "input_sha256": "4b1c262643ef07530297c9a408429ab994bd81110903aef460466404608ca5fd",
+      "threads": 1,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "sources": [
+        {
+          "path": "/tmp/beyond-ae-native-smoke-final01/calls/d09-p0.003/reference/01/native/measurement.csv",
+          "sha256": "feb2a66ae21e9d398810debc6976f43f9d6740ec0c1c9202d6ce79b9f6b6e930"
+        }
+      ]
+    },
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "method": "unstructured",
+      "shots": 1025,
+      "repeats": 1,
+      "repeat_elapsed_ns": [
+        7556193
+      ],
+      "repeat_mean_us": [
+        7.3718956097560975
+      ],
+      "mean_us": 7.3718956097560975,
+      "median_batch_us": 7.3718956097560975,
+      "input_sha256": "4b1c262643ef07530297c9a408429ab994bd81110903aef460466404608ca5fd",
+      "threads": 1,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "sources": [
+        {
+          "path": "/tmp/beyond-ae-native-smoke-final01/calls/d09-p0.003/unstructured/01/native/measurement.csv",
+          "sha256": "abf0506b58d2f2da6027e4caee4fcf6e3aaad8b0ce714d0bc6a60e6fb667e4f8"
+        }
+      ]
+    },
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "method": "structured",
+      "shots": 1025,
+      "repeats": 1,
+      "repeat_elapsed_ns": [
+        9348647
+      ],
+      "repeat_mean_us": [
+        9.120631219512195
+      ],
+      "mean_us": 9.120631219512195,
+      "median_batch_us": 9.120631219512195,
+      "input_sha256": "4b1c262643ef07530297c9a408429ab994bd81110903aef460466404608ca5fd",
+      "threads": 1,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "sources": [
+        {
+          "path": "/tmp/beyond-ae-native-smoke-final01/calls/d09-p0.003/structured/01/native/measurement.csv",
+          "sha256": "f8e653dfd69fb35e8ba88b84bdfe7161cf552e5837156ef87ee525063ba852e8"
+        }
+      ]
+    },
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "method": "predecoded",
+      "shots": 1025,
+      "repeats": 1,
+      "repeat_elapsed_ns": [
+        3726424
+      ],
+      "repeat_mean_us": [
+        3.6355356097560976
+      ],
+      "mean_us": 3.6355356097560976,
+      "median_batch_us": 3.6355356097560976,
+      "input_sha256": "4b1c262643ef07530297c9a408429ab994bd81110903aef460466404608ca5fd",
+      "threads": 1,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "sources": [
+        {
+          "path": "/tmp/beyond-ae-native-smoke-final01/calls/d09-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "e8b641f17c8ca97fd045ad3e094e97a79928bf1a505c85ae9998b95da55e3125"
+        }
+      ]
+    },
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "method": "component-parallel",
+      "shots": 1025,
+      "repeats": 1,
+      "repeat_elapsed_ns": [
+        4176884
+      ],
+      "repeat_mean_us": [
+        4.075008780487805
+      ],
+      "mean_us": 4.075008780487805,
+      "median_batch_us": 4.075008780487805,
+      "input_sha256": "4b1c262643ef07530297c9a408429ab994bd81110903aef460466404608ca5fd",
+      "threads": 2,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "sources": [
+        {
+          "path": "/tmp/beyond-ae-native-smoke-final01/calls/d09-p0.003/component-parallel/01/native/measurement.csv",
+          "sha256": "452181aebb2a57dd43cb67fdfac496f63bb7ed3603c259c8adbe577eba19fdde"
+        }
+      ]
+    },
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "method": "pipelined",
+      "shots": 1025,
+      "repeats": 1,
+      "repeat_elapsed_ns": [
+        4120573
+      ],
+      "repeat_mean_us": [
+        4.020071219512195
+      ],
+      "mean_us": 4.020071219512195,
+      "median_batch_us": 4.020071219512195,
+      "input_sha256": "4b1c262643ef07530297c9a408429ab994bd81110903aef460466404608ca5fd",
+      "threads": 4,
+      "timing_scope": "caller submission through synchronous decode return and result store; ready, dispatch, reuse and result waits included; final batch block drains both buffers",
+      "sources": [
+        {
+          "path": "/tmp/beyond-ae-native-smoke-final01/calls/d09-p0.003/pipelined/01/native/measurement.csv",
+          "sha256": "9f1050ba45904a86b8e09f16bfdcb32c63c9bf9d44717f49fa57166f45e9cb42"
+        }
+      ]
+    },
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "method": "parallel-predecode",
+      "shots": 1025,
+      "repeats": 1,
+      "repeat_elapsed_ns": [
+        4855431
+      ],
+      "repeat_mean_us": [
+        4.737005853658537
+      ],
+      "mean_us": 4.737005853658537,
+      "median_batch_us": 4.737005853658537,
+      "input_sha256": "4b1c262643ef07530297c9a408429ab994bd81110903aef460466404608ca5fd",
+      "threads": 8,
+      "timing_scope": "caller submission through synchronous decode return and result store; ready, dispatch, reuse and result waits included; final batch block drains both buffers",
+      "sources": [
+        {
+          "path": "/tmp/beyond-ae-native-smoke-final01/calls/d09-p0.003/parallel-predecode/01/native/measurement.csv",
+          "sha256": "01e1fe9ec05ce7179c2ee0a59606c97d934a0937cf14f293b72c0a24ece5536c"
+        }
+      ]
+    }
+  ],
+  "external": [
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "method": "parity",
+      "shots": 64,
+      "repeats": 1,
+      "repeat_elapsed_ns": [
+        14141212
+      ],
+      "repeat_mean_us": [
+        220.9564375
+      ],
+      "mean_us": 220.9564375,
+      "input_sha256": "4b1c262643ef07530297c9a408429ab994bd81110903aef460466404608ca5fd",
+      "timing_scope": "Rust SolverSerial.solve + subgraph; clear, input, validation and output excluded",
+      "physical_observable_truth_available": false,
+      "source": {
+        "path": "/tmp/beyond-external-smoke-final03/d09-p0.003/n64/run/summary.json",
+        "sha256": "690cd91e0e1281f465c1e788c1be191efce3759aa757b9272e67146dd27f82e1"
+      },
+      "quantization": "Original external even-integer graph, maximum q=20000"
+    },
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "method": "fusion",
+      "shots": 64,
+      "repeats": 1,
+      "repeat_elapsed_ns": [
+        27812091
+      ],
+      "repeat_mean_us": [
+        434.563921875
+      ],
+      "mean_us": 434.563921875,
+      "input_sha256": "4b1c262643ef07530297c9a408429ab994bd81110903aef460466404608ca5fd",
+      "timing_scope": "Rust SolverParallel.solve + subgraph; clear, input, validation and output excluded",
+      "physical_observable_truth_available": false,
+      "source": {
+        "path": "/tmp/beyond-external-smoke-final03/d09-p0.003/n64/run/summary.json",
+        "sha256": "690cd91e0e1281f465c1e788c1be191efce3759aa757b9272e67146dd27f82e1"
+      },
+      "quantization": "Original external even-integer graph, maximum q=20000"
+    },
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "method": "parity-uf",
+      "shots": 64,
+      "repeats": 1,
+      "repeat_elapsed_ns": [
+        13773057
+      ],
+      "repeat_mean_us": [
+        215.204015625
+      ],
+      "mean_us": 215.204015625,
+      "input_sha256": "4b1c262643ef07530297c9a408429ab994bd81110903aef460466404608ca5fd",
+      "timing_scope": "Rust SolverSerial.solve + subgraph with max_tree_size=0; clear, input, validation and output excluded",
+      "physical_observable_truth_available": false,
+      "source": {
+        "path": "/tmp/beyond-external-smoke-final03/d09-p0.003/n64/run/summary.json",
+        "sha256": "690cd91e0e1281f465c1e788c1be191efce3759aa757b9272e67146dd27f82e1"
+      },
+      "quantization": "Original external even-integer graph, maximum q=20000"
+    },
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "method": "unionfind",
+      "shots": 64,
+      "repeats": 1,
+      "repeat_elapsed_ns": [
+        1713725
+      ],
+      "repeat_mean_us": [
+        26.776953125
+      ],
+      "mean_us": 26.776953125,
+      "input_sha256": "4b1c262643ef07530297c9a408429ab994bd81110903aef460466404608ca5fd",
+      "timing_scope": "C++ Decoder.decode including returned correction copy; syndrome preparation, edge projection and clear excluded",
+      "physical_observable_truth_available": false,
+      "source": {
+        "path": "/tmp/beyond-external-smoke-final03/d09-p0.003/n64/run/summary.json",
+        "sha256": "690cd91e0e1281f465c1e788c1be191efce3759aa757b9272e67146dd27f82e1"
+      },
+      "quantization": "Original external even-integer graph, maximum q=20000"
+    },
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "method": "ldpc-uf",
+      "shots": 64,
+      "repeats": 1,
+      "repeat_elapsed_ns": [
+        9686169
+      ],
+      "repeat_mean_us": [
+        151.346390625
+      ],
+      "mean_us": 151.346390625,
+      "input_sha256": "4b1c262643ef07530297c9a408429ab994bd81110903aef460466404608ca5fd",
+      "timing_scope": "C++ PreparedUfDecoder.decode_prepared; cluster initialization, correction extraction and cleanup excluded",
+      "physical_observable_truth_available": false,
+      "source": {
+        "path": "/tmp/beyond-external-smoke-final03/d09-p0.003/n64/run/summary.json",
+        "sha256": "690cd91e0e1281f465c1e788c1be191efce3759aa757b9272e67146dd27f82e1"
+      },
+      "quantization": "Original external even-integer graph, maximum q=20000"
+    }
+  ],
+  "predecoder": [],
+  "m4": [],
+  "scope": "Current article only; historical grid diagnostics and mixed-LTO plots remain archived supplemental material",
+  "aggregation": {
+    "xeon": "sum integer elapsed_ns / sum measured shots",
+    "m4": "median of three complete-batch means",
+    "selection": "minimum across explicitly listed configurations; descriptive envelope, not measured adaptive switching"
+  }
+}

@@ -1,0 +1,22 @@
+[
+  "/home/fujy/dev/PyMatching/.conda-env/bin/python",
+  "/home/fujy/dev/beyond_blossom/repo/AE/external/run.py",
+  "--input",
+  "/tmp/beyond-external-smoke-final02/d09-p0.003/n64/input",
+  "--build",
+  "/tmp/beyond-external-build-final01",
+  "--output",
+  "/tmp/beyond-external-smoke-final02/d09-p0.003/n64/run",
+  "--profile",
+  "smoke",
+  "--timeout",
+  "0",
+  "--methods",
+  "parity",
+  "fusion",
+  "parity-uf",
+  "unionfind",
+  "ldpc-uf",
+  "--cpus",
+  "2,3,4,5"
+]

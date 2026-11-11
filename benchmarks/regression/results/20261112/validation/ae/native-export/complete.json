@@ -1,0 +1,45 @@
+{
+  "complete": true,
+  "profile": "smoke",
+  "groups": [
+    "ablation"
+  ],
+  "sources": {
+    "native": {
+      "plan": {
+        "path": "/tmp/beyond-ae-native-smoke-final01/plan.json",
+        "sha256": "5fda58f94d1d4402ff56f2cbb26cde8686b2a54583f1e23d4f7517a8b204e89f"
+      },
+      "completion": {
+        "path": "/tmp/beyond-ae-native-smoke-final01/complete.json",
+        "sha256": "13da69987ff5a3016adadfaedc28c19e491aa07ee39fec342a2cdafbd3caaae8"
+      }
+    }
+  },
+  "exporter": {
+    "path": "/home/fujy/dev/beyond_blossom/repo/AE/export_results.py",
+    "sha256": "f394463e926be6726cfa8e5bc33057ddbe1b23e9240c3f1966b7fb243196bc4c"
+  },
+  "figures": [
+    {
+      "path": "/tmp/beyond-ae-native-export-final01/figures/incremental_ablation_1107_v1.pdf",
+      "sha256": "ec4f800397b737b4a4794dc9ba5c0b3dd9631ad728c273451b281508a887691f"
+    },
+    {
+      "path": "/tmp/beyond-ae-native-export-final01/figures/incremental_ablation_1107_v1.svg",
+      "sha256": "4aff6539867fec6e90d1190efc27c55c24c65cc123f7304f9c8989db7a3c65f7"
+    },
+    {
+      "path": "/tmp/beyond-ae-native-export-final01/figures/incremental_ablation_1107_v1.png",
+      "sha256": "1fa31ce8c6698b80ea1f71a0a4c62f36c61bf6c6ed05c1fce0ccf195770a9e45"
+    }
+  ],
+  "files": {
+    "canonical.json": "3b8bc825cee240e6aaaa011409fd91b5ae995b473a9ac0d3e74e7e5f85979e6c",
+    "selected-configurations.csv": "78ba74d01ba6717977955ca7b50ae981bf6dbed9a4d5f4af7269ba72318880ac",
+    "native.csv": "668382588252b20c0bbff9d896323588cc09a87a14d3734168eed32774bc4333",
+    "figures/incremental_ablation_1107_v1.png": "1fa31ce8c6698b80ea1f71a0a4c62f36c61bf6c6ed05c1fce0ccf195770a9e45",
+    "figures/incremental_ablation_1107_v1.svg": "4aff6539867fec6e90d1190efc27c55c24c65cc123f7304f9c8989db7a3c65f7",
+    "figures/incremental_ablation_1107_v1.pdf": "ec4f800397b737b4a4794dc9ba5c0b3dd9631ad728c273451b281508a887691f"
+  }
+}

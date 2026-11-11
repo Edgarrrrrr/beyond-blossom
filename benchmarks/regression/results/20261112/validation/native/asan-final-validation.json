@@ -1,0 +1,871 @@
+{
+  "schema": 1,
+  "kind": "Post-validation observation of frozen source, executed artifacts, and completed logs",
+  "observed_utc": "2026-11-11T19:29:30.617016+00:00",
+  "implementation_commit": "edd29b6780713dc78f6a99d67c4c4d192e9c52b5",
+  "source_directory": "/tmp/beyond-asan-source-o1",
+  "source_matches_commit": true,
+  "source_scope": "All tracked src, cmake, licenses files and CMakeLists.txt",
+  "source_files": [
+    {
+      "path": "CMakeLists.txt",
+      "sha256": "0b280017b4fcf5e67386ab598a99c3f425270ec5df14adf4381d7e63bdcedaef"
+    },
+    {
+      "path": "cmake/BeyondBlossomConfig.cmake.in",
+      "sha256": "9cd13a8c2df4186cd48e7d34de23b727bfa2ccfce9cb42f91b92947b3f81000c"
+    },
+    {
+      "path": "licenses/Stim.txt",
+      "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
+    },
+    {
+      "path": "licenses/pybind11.txt",
+      "sha256": "83965b843b98f670d3a85bd041ed4b372c8ec50d7b4a5995a83ac697ba675dcb"
+    },
+    {
+      "path": "src/beyond_blossom/bindings/module.cc",
+      "sha256": "782f9b222188e9af647d969840dc09ff4452f1e6299122a8d85f706fc7333fb4"
+    },
+    {
+      "path": "src/beyond_blossom/bindings/structured.pybind.cc",
+      "sha256": "99984996c755808fd6ef837b5ef9acad6ea87746b7ef5263c109992f70dd6ed0"
+    },
+    {
+      "path": "src/beyond_blossom/bindings/structured.pybind.h",
+      "sha256": "935cb72c831aa3af451b9078adcbd536eca0dc4ae978b8b5887f66393cf42492"
+    },
+    {
+      "path": "src/beyond_blossom/core/arena.h",
+      "sha256": "8c66615748d63d62852dc81357722e0e0354dcd596ae9eb7123c2243780de551"
+    },
+    {
+      "path": "src/beyond_blossom/core/grid/grid_collision_state.h",
+      "sha256": "0e240226e3041a2d0ea1a06d27cbcce04ef3399160032a4e5c075c417e5fc58f"
+    },
+    {
+      "path": "src/beyond_blossom/core/grid/grid_spec.h",
+      "sha256": "e26757cb906a744b684e80a6a641ba7ffb10d7f2acc6eef9a76d7bb420a066fd"
+    },
+    {
+      "path": "src/beyond_blossom/core/header_odr_a.test.cc",
+      "sha256": "ac5b68b8eb34278500e2eb5ebd8a7dfa1f6f6a551370ef1c9033c2abc9a0ca02"
+    },
+    {
+      "path": "src/beyond_blossom/core/header_odr_b.test.cc",
+      "sha256": "0489925b8119f5d1e100e746b6a4b39c6e9d341453b50a9a0d982b5209373ecf"
+    },
+    {
+      "path": "src/beyond_blossom/core/implied_weights.h",
+      "sha256": "b3ed2d24fad228d1f60f054646cbf7e679de63454978401f252ab287fc84d02c"
+    },
+    {
+      "path": "src/beyond_blossom/core/interop/varying.h",
+      "sha256": "f3f5670e2d4f55461498674881c9477ec290aca21ccce6f40345302d2ba4971b"
+    },
+    {
+      "path": "src/beyond_blossom/core/interop/varying.inl",
+      "sha256": "4398924978e19649f01a1adaf5e1073c06956423d1a873892b62bbc54f6fb27f"
+    },
+    {
+      "path": "src/beyond_blossom/core/interop/varying.perf.cc",
+      "sha256": "aa8db0c0e7d78d5206fb3b09518f2e465033df061831a117915a15f76a181192"
+    },
+    {
+      "path": "src/beyond_blossom/core/interop/varying.test.cc",
+      "sha256": "1365758875bcab48df3461414dd6f1f27dc0858c05ae4a61b9f43c8da6d39ef9"
+    },
+    {
+      "path": "src/beyond_blossom/core/ints.h",
+      "sha256": "94745f395a77541871e02f3318c978e75501d110045767cdd0db98ac19f353d0"
+    },
+    {
+      "path": "src/beyond_blossom/core/matching_result.h",
+      "sha256": "52e6d4ecd0ae9146f5d9bbd59e74deecaca7b90005096efc7d1ec32cbd2977bf"
+    },
+    {
+      "path": "src/beyond_blossom/core/matching_result.test.cc",
+      "sha256": "70a228c04b9a94d1420ef18798a35df1749aa0326212e69387ce68eaf08a72bc"
+    },
+    {
+      "path": "src/beyond_blossom/core/observable_bits.h",
+      "sha256": "f31a83f94d1d4a652b3f7655b865409d78daefa8c3f789f7fb1a94e469c0dfe4"
+    },
+    {
+      "path": "src/beyond_blossom/core/tracker/cyclic.h",
+      "sha256": "112220c1cdad6eb946c8ccbbcdd4a1f24b1d55d30cb1ffee248b826acb048963"
+    },
+    {
+      "path": "src/beyond_blossom/core/tracker/cyclic.test.cc",
+      "sha256": "1606ed5b15ff82dc94b6bc1d8c664bf2f8e0ceb164a135a623acd81339f792f9"
+    },
+    {
+      "path": "src/beyond_blossom/driver/backend.h",
+      "sha256": "6bf1553416d3245ed94a9ab73e017af4aab825a5d0befe503626448f5df2a405"
+    },
+    {
+      "path": "src/beyond_blossom/driver/backend_user_graph.cc",
+      "sha256": "6c0565c9d73ab9c340a4e067ee175d46640d3033a45cfbc686f3a0c1dce38116"
+    },
+    {
+      "path": "src/beyond_blossom/driver/backend_user_graph.h",
+      "sha256": "d6fff0e8077b1e78da199a9779fd7815ef6a6f629da3fbfcdb89b8fb361f73ad"
+    },
+    {
+      "path": "src/beyond_blossom/driver/decoder_strategy.cc",
+      "sha256": "3b49c3eda9168e491f692823bce63103b3254b6268b14ed8ccaecd4a874cc575"
+    },
+    {
+      "path": "src/beyond_blossom/driver/decoder_strategy.h",
+      "sha256": "7669c065b577f008e04c1ae70955349dcaff7c64fe9c572accaacddc6ffec1c3"
+    },
+    {
+      "path": "src/beyond_blossom/driver/decoder_strategy.test.cc",
+      "sha256": "9386b85172673db1f317766555fb8a0c82c73ea14d6e6de7a07b7ccb5a75eca0"
+    },
+    {
+      "path": "src/beyond_blossom/driver/mwpm_decoding.cc",
+      "sha256": "681ad3d69448321ec4f1fb7921b6ec852b8158941c0e63ecfc7e5e510bb53c47"
+    },
+    {
+      "path": "src/beyond_blossom/driver/mwpm_decoding.h",
+      "sha256": "b88cea4762326e1d6910a863e6c0a9a3ae87054bc2c9d882ae500b224a793e31"
+    },
+    {
+      "path": "src/beyond_blossom/driver/mwpm_decoding.perf.cc",
+      "sha256": "701ecc874441f68bc1142baf6f935bde07cfcdb112a5ba339c00d9850859b5f1"
+    },
+    {
+      "path": "src/beyond_blossom/driver/mwpm_decoding.test.cc",
+      "sha256": "c2453356ce07d72a6be464ea76585a2d0c4a8742fab7c72b8fffe5b3f5798c1d"
+    },
+    {
+      "path": "src/beyond_blossom/driver/namespaced_main.cc",
+      "sha256": "66c2a8b02622f3c9183b3bf44630f36c0868103e92e754bb123cd7c7d321e941"
+    },
+    {
+      "path": "src/beyond_blossom/driver/namespaced_main.h",
+      "sha256": "15aa522f9140f3a7e8022be3d5972de5f8765b6f19aef2c78676206a796b55d7"
+    },
+    {
+      "path": "src/beyond_blossom/driver/namespaced_main.test.cc",
+      "sha256": "e126eedf45884d6038c0270b69f77575b1731e445d9c1b00bc3af9f4ab17f6b7"
+    },
+    {
+      "path": "src/beyond_blossom/driver/user_graph.cc",
+      "sha256": "5e6434f36b5befe9d6eebfac402e0da5f9939b771e2c266e1c41e83e2b043d0f"
+    },
+    {
+      "path": "src/beyond_blossom/driver/user_graph.h",
+      "sha256": "f6bb17a5f8a2e26c3000a05c2825ee0f6209179e75b83c106966f523a548b744"
+    },
+    {
+      "path": "src/beyond_blossom/driver/user_graph.perf.cc",
+      "sha256": "a1b655ab54efb9812bdd8248606f2e767c4a2f66938c397e9677e0856b18767c"
+    },
+    {
+      "path": "src/beyond_blossom/driver/user_graph.pybind.cc",
+      "sha256": "a58847a6f869b0dc39908df88fd9fdf44b8e33ef993240bbfda589512c6e11f8"
+    },
+    {
+      "path": "src/beyond_blossom/driver/user_graph.pybind.h",
+      "sha256": "edfaaaf68997dbdfac5f57bf7f9f538084d166e22c41509ea0d42149defcfb55"
+    },
+    {
+      "path": "src/beyond_blossom/driver/user_graph.test.cc",
+      "sha256": "9b7e6992f3463d5091eac00e791d15ef912f993f297c74f8b578a3029e6c4298"
+    },
+    {
+      "path": "src/beyond_blossom/fill_match.h",
+      "sha256": "8f6b6034794c04daa43674274335741711d9b5a95e4b97d3b9611f01eeff7e21"
+    },
+    {
+      "path": "src/beyond_blossom/perf/main.perf.cc",
+      "sha256": "15c1693669a76d7ff23681185cfd4a1672b53418ee69f6a3514e09f56cf2c086"
+    },
+    {
+      "path": "src/beyond_blossom/perf/util.perf.cc",
+      "sha256": "672a118f1ee47634a370fdf64193a4d90e780a4e25f03fdfa5246eeb114d9dd9"
+    },
+    {
+      "path": "src/beyond_blossom/perf/util.perf.h",
+      "sha256": "8ab6c5fd71e475c041e34e20507e30bdd6547fede81e7d515491e9f1206089c4"
+    },
+    {
+      "path": "src/beyond_blossom/profile/profile.h",
+      "sha256": "c14d27dda008ed1e2c1571b120b8c08b9de46adfed418ebf0baa6988cb62e5ca"
+    },
+    {
+      "path": "src/beyond_blossom/profile/profile_io.cc",
+      "sha256": "64f8eaef030fa234bbe1b6ca01021343e30c419465f2c6c2e594e7af409a5e97"
+    },
+    {
+      "path": "src/beyond_blossom/profile/profile_io.h",
+      "sha256": "67245bc10a8a2d1ac05635532c7dcdd417ae6451da4db40a73095eafcb52651d"
+    },
+    {
+      "path": "src/beyond_blossom/profile/profile_main.cc",
+      "sha256": "f5b3316895d719c159fccaaeaba19d037d6f832d57482ef436f46246d060b9aa"
+    },
+    {
+      "path": "src/beyond_blossom/profile/profile_runner.cc",
+      "sha256": "e5592e681db36f11397f2380193569b79be75628d6d123998ff19cbd2fbd354a"
+    },
+    {
+      "path": "src/beyond_blossom/profile/profile_runner.h",
+      "sha256": "d52085fa30573bc2d5a414f9dfff892818e9b2cddfaa68a1aa7d10c223503ad1"
+    },
+    {
+      "path": "src/beyond_blossom/profile/profile_schema.cc",
+      "sha256": "31d1b0c129ef93876508fb3c15d5099dea728c898c02f35c5d3f27c15e964cc2"
+    },
+    {
+      "path": "src/beyond_blossom/profile/profile_schema.h",
+      "sha256": "7015925bde561c3bfad7137acd45c434a71bf0ebfaebcfabeb80835cea71f5ee"
+    },
+    {
+      "path": "src/beyond_blossom/profile/profile_schema.test.cc",
+      "sha256": "b31ec1f6a1e03bec18532ac1ea978e5e2c3b0667c5e283e1d8724a709ac3cec2"
+    },
+    {
+      "path": "src/beyond_blossom/profile/profile_stats.cc",
+      "sha256": "3f77487eaebcbb195e41a3c08ab62c3ed0a0c1bbadaf68dc3de14441e22cd7f8"
+    },
+    {
+      "path": "src/beyond_blossom/profile/profile_stats.h",
+      "sha256": "7f496e6e012c850644450e42139900de9d7a0c27fab812fec43f9e3357d26ced"
+    },
+    {
+      "path": "src/beyond_blossom/profile/profile_stats.test.cc",
+      "sha256": "1ae6e1143264509a6bf6a60e2eebeb17b1c4d15938f0a4a91fc1c9b81d828abe"
+    },
+    {
+      "path": "src/beyond_blossom/rand/rand_gen.cc",
+      "sha256": "94fa2607dae1acbe4dc21a2f19135dbdf5668776c1feb6d8e780c8ccea3e1279"
+    },
+    {
+      "path": "src/beyond_blossom/rand/rand_gen.h",
+      "sha256": "9c2251ca323ba7794ea39c69187b3b1e05ecfbd30aa9f798c450dae6411aaf52"
+    },
+    {
+      "path": "src/beyond_blossom/rand/rand_gen.pybind.cc",
+      "sha256": "dc51deb89dc07423a0b0c882f9239d75367101315949872f554b8ee1ac3486a2"
+    },
+    {
+      "path": "src/beyond_blossom/rand/rand_gen.pybind.h",
+      "sha256": "74df76aa52e041bef421be389c6de58b2a4ca24c827ff132a36ab5b421877edf"
+    },
+    {
+      "path": "src/beyond_blossom/structured/arena.h",
+      "sha256": "2e302d6cb6ff5337b12e933465bd557de99f5308324294a06004287b9d9b9338"
+    },
+    {
+      "path": "src/beyond_blossom/structured/decoder.cc",
+      "sha256": "f2c17d2344f762cd764b48ee06d564a4ab180e6c004794bfb85a175d2c9fe21b"
+    },
+    {
+      "path": "src/beyond_blossom/structured/decoder.h",
+      "sha256": "4d5caee68ca91ba287813da5dc2ca8a1447e71fb3d52da5177b096d08c1c1613"
+    },
+    {
+      "path": "src/beyond_blossom/structured/diagram/mwpm_diagram.cc",
+      "sha256": "e2d72fd44578836def0b27d3a3316c68599019e850e909e395e4253a41adac7f"
+    },
+    {
+      "path": "src/beyond_blossom/structured/diagram/mwpm_diagram.h",
+      "sha256": "520fc272fe7eac9f0c6c2d4cd0ad8d21a40fefe22d811de9d71db24f0c810155"
+    },
+    {
+      "path": "src/beyond_blossom/structured/driver/component_decoder.cc",
+      "sha256": "1ce0cb408bc2698daf58e9801135ca32d6248f94044dcf0ed7c318b6d00c8c29"
+    },
+    {
+      "path": "src/beyond_blossom/structured/driver/component_decoder.h",
+      "sha256": "bca49d7f5418e26d052c5d633059e6f191f1bf9c6bb5a4c4225e6ebc2d0ab24a"
+    },
+    {
+      "path": "src/beyond_blossom/structured/driver/import_pmu.h",
+      "sha256": "d3235568a1cfab2af1b8ecdc0725827710e9594b7102c95a95b3cb7016b6dee7"
+    },
+    {
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "sha256": "56b2db661d94ae9cf9d32566834d3508b3173fde7d302add6f29d75132843289"
+    },
+    {
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.h",
+      "sha256": "8753a55756bdf0be8422ab7d6b9411bcc969e2ec8ffdfc02edd141d81c479244"
+    },
+    {
+      "path": "src/beyond_blossom/structured/driver/predecode_binding.test.cc",
+      "sha256": "ad0ac9de1efb0f5e8ae9e1d87a46786b5de7be6cfc6c70db7a2026f6125171e2"
+    },
+    {
+      "path": "src/beyond_blossom/structured/driver/serial_seed_storage.test.cc",
+      "sha256": "d9c914ed0e87d674f6323f24a838a601ae0b1714b0dfc28823fdab6ad03d6369"
+    },
+    {
+      "path": "src/beyond_blossom/structured/driver/shared_component_decoder.cc",
+      "sha256": "fa2e046268e2bceefb5cd7bcc1d7df8956df6ea7a3855675f09079801d4dfec7"
+    },
+    {
+      "path": "src/beyond_blossom/structured/driver/shared_component_decoder.h",
+      "sha256": "90c3c84e6d7d613e95fcb1f89a5e06b1cb6124ca24aa540b15c81343ac8c277e"
+    },
+    {
+      "path": "src/beyond_blossom/structured/driver/shared_component_decoder.test.cc",
+      "sha256": "6bea00c46f405e7c0ce4b1490336a94d04746ee819e679977c9f87e07e4baac5"
+    },
+    {
+      "path": "src/beyond_blossom/structured/driver/time_partition_cuts.h",
+      "sha256": "93adc448740ede0b8b3a8b3bca1bcabb9d150968ae64483656b8222d4ee182b3"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/detector_node.cc",
+      "sha256": "e84855d5d6a5f9236e481c33b3a3d3c0d16893afa8379987db9e6c18985da1ab"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/detector_node.h",
+      "sha256": "98e93a5c3692eebaabb211da48f7c44471df46ea45377ed55003927a16a2ca51"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/graph.cc",
+      "sha256": "d8a33e200214a60eb2709453345b987a9c337e7a6d6b346e0e93e92b1fbb6c56"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/graph.h",
+      "sha256": "be51b15f0e2c3e57b414d1a957d4984d4566fd9109e2e34330cc6580d5bcf662"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/graph_fill_region.cc",
+      "sha256": "7550429a8b170815ca4f7d7ed5983055507c79faac7e80bbf9452b789e8e1ed1"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/graph_fill_region.h",
+      "sha256": "f71c9ca1d06e01beff3a6acec4f12e96ae4b2ad5fd3e5f6c8e74fe18073d301f"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/graph_flooder.cc",
+      "sha256": "89806c98a678c182d1acb6de075584f0927a01ca34650dd4da7cb13f5892adba"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/graph_flooder.h",
+      "sha256": "95a2de96bfbab45a47cc2c677e8668b83c036c4cd438314aba23f98247db4d56"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/match.cc",
+      "sha256": "5f3762a2de71114242390ce041b6a03adefddf04ca676547ae4135c90bc45d29"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/match.h",
+      "sha256": "9a0e3a5304e216ecf97697511527c261c44a9752f082dffbd555f3fee4cd63b1"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/matching_graph_construction_node.h",
+      "sha256": "308f44c73a64c99107347701f683777e1014ad74da9dc7f1568f1a47435d353f"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/region_id.h",
+      "sha256": "f99e59856cbe22c6a9ee674d96980e2c0f4f9da5ec3ea1669cef595a8b243edb"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/region_pool.h",
+      "sha256": "0b1a522aa7890372c17278ca490e0ed6687364adf2379c8fd098e1eff9142473"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/region_pool.test.cc",
+      "sha256": "08c1453963df9f28773bea34df15ffe52a5183956c7110e95738ac00d6693db4"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/region_pool.test.h",
+      "sha256": "9bec92bdf74ba14d891d572446d3b6125373e8c83c26df9daad6134f782c0219"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/region_radius_store.h",
+      "sha256": "b8897d98e18352c617a85b0f61483425a579a73e4b94404b5a2ef2168b90f277"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder/region_shell.h",
+      "sha256": "2321a1d497620fa84d46b96e9197321f42c4c0c1c303e6b851e874e1a16a6cd8"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder_matcher_interop/compressed_edge.cc",
+      "sha256": "c8ce13d9735af6d4cd8c9bbf7cdc698ba21b382f587b5d6519cd73a78af9ce01"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder_matcher_interop/compressed_edge.h",
+      "sha256": "cabcb22677a7341329c6433eba60186490d4ae01fffbf6730fc8d9f7c313de45"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder_matcher_interop/mwpm_event.cc",
+      "sha256": "d7347559556f9c8941b74fb5f56b996fb261554a20ff463e5507bb240e943f09"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder_matcher_interop/mwpm_event.h",
+      "sha256": "fdd83ff645f162d67a3c4501560324fbb49310040b23736e7964483852cc2e3b"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder_matcher_interop/region_edge.cc",
+      "sha256": "d0e97b0e1bc0d5c320a037daffbb27d443ce8f393b5c4b1e2aa8e387bc257a08"
+    },
+    {
+      "path": "src/beyond_blossom/structured/flooder_matcher_interop/region_edge.h",
+      "sha256": "cfbdaba49a10a1bff8806886c7bdc7458d7eb08068e2e3db6e396a3e850b1baa"
+    },
+    {
+      "path": "src/beyond_blossom/structured/grid/circuit_stencil.h",
+      "sha256": "408a40c7715dcbf04f0af35fbf224e83e7c4471e75e759cf7dba8bb800a7f052"
+    },
+    {
+      "path": "src/beyond_blossom/structured/grid/static_grid.cc",
+      "sha256": "d46c5eca0270f55d4059ccb8d0f5bcc5a5a25afebfa51db32d59579a5fd64e63"
+    },
+    {
+      "path": "src/beyond_blossom/structured/grid/static_grid.h",
+      "sha256": "afc9675c0620d7a12235ee8732a6da0e7def3b331b7c2f41e5880945b26bf8a9"
+    },
+    {
+      "path": "src/beyond_blossom/structured/grid/static_grid.test.cc",
+      "sha256": "a74d5b501fae9d83df6721f49c754e2b13c3d8384d90b1676f8fb55d9d437d70"
+    },
+    {
+      "path": "src/beyond_blossom/structured/grid/static_grid_kernels.h",
+      "sha256": "e8e1ffa3f3c422c159916b26559470e0af2914f0d8b5500534ada75084b5ebd6"
+    },
+    {
+      "path": "src/beyond_blossom/structured/grid/static_grid_simd_kernels.h",
+      "sha256": "eada1651a4c95fb0774c5f653c1b24978446dc3686b482ccc37bb47ff8b12ac3"
+    },
+    {
+      "path": "src/beyond_blossom/structured/matcher/active_trees.test.cc",
+      "sha256": "2c706eee4fb55bf3e1666713f784c914d10dea4efc915cad6eeb4b043bfa691e"
+    },
+    {
+      "path": "src/beyond_blossom/structured/matcher/alternating_tree.cc",
+      "sha256": "2efc350238d7c69a991f0a704cff227bb139044b0844c7d9f78ec7027a58d71f"
+    },
+    {
+      "path": "src/beyond_blossom/structured/matcher/alternating_tree.h",
+      "sha256": "d923219c5cd96b373b12c16938ef086a7a07a87e896ef1903dbe6b151d613713"
+    },
+    {
+      "path": "src/beyond_blossom/structured/matcher/alternating_tree.inl",
+      "sha256": "b84a37ec11a03afab17318dedda2559e9c657786583cc9284346ce3f61199270"
+    },
+    {
+      "path": "src/beyond_blossom/structured/matcher/mwpm.cc",
+      "sha256": "7e254fe75bc46675bdba6ca5ff299d7aa6e94719d438b29bb4719f39d00b0628"
+    },
+    {
+      "path": "src/beyond_blossom/structured/matcher/mwpm.h",
+      "sha256": "7f1d5cad88f05455434139c11f7e189f48b304586e1d44c52c9f601f4c1df0fb"
+    },
+    {
+      "path": "src/beyond_blossom/structured/matcher/mwpm.inl",
+      "sha256": "f36cd6eee0ba163d9904be40c741fca535b7f47639ee9ea296d8c12fb1f80801"
+    },
+    {
+      "path": "src/beyond_blossom/structured/matcher/serial_import.test.cc",
+      "sha256": "8d725adf0441185873a8631fd3385d1917f8ca2514e9da2dbc59fc568a647a7f"
+    },
+    {
+      "path": "src/beyond_blossom/structured/matcher/serial_import.test.h",
+      "sha256": "ffd0cc67c0e0908e698b2ca47524dc66034885f3aefc9a4af2a085f1eba2a29d"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/neighborhood_kernels.test.cc",
+      "sha256": "3c48b9b587d7a55fc31fa7859399e3ab81710894fd1e3d4654bb8179f61f8e80"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/one_hop_arm_kernels.h",
+      "sha256": "daf8e1eaff470e829c879a2071e1a9ae52b70cffa62dbcaf75c9ed5ab8fe3198"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/one_hop_bound_kernel.h",
+      "sha256": "8163ba3be092eb06c407f1d76ccab65ee9a0ef3428924c958bc8785b9411ba37"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/one_hop_cap.test.cc",
+      "sha256": "5eb94819256a11a6d653878eec046fbdd8e686f9c03240e102f60e2ff026a899"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "sha256": "19f1bee83fae28fdc3af541d2149798bc74c14cfbbe88678e50cc0ad12742c4b"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/one_hop_neighborhood_simd.h",
+      "sha256": "f5bf775ef8d8f7c56b3a7521cad0d2676fe1fa5ef29bb9def5c7295ebff98d68"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "sha256": "7bd0191ba20a91e968b75240e48962d18c8e829b76d7c6e57a67cb62c30a17b2"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.h",
+      "sha256": "2841a0eb06a2aff086383306b04012c9272442ad25869a240ad6bfb4d3916752"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.test.cc",
+      "sha256": "fd5b5e44165460970c9222abf4439088170b805eb6fbe30086bba41299aefe89"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/one_hop_simd_kernels.h",
+      "sha256": "b72ba07e963ce71b873b3a10be48fe22d3499fef8e415ddbee57f0a4ac0c8c16"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/one_hop_sparse_cap.test.cc",
+      "sha256": "42f8688c18362feefcfeb8b179ef5f7a9941017a7728cea8a24839e0170eed27"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/predecode_diagnostics.h",
+      "sha256": "8b516804aa07f39735f7ba63596e5789499b507533fd1d189c9a08ced2599e68"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/predecode_state.h",
+      "sha256": "ce57bfc353535c7fbd5817a1b260f09c5c058275cc2804a7babb0a85e06d1abf"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/seed_view.h",
+      "sha256": "de915bbfa08c2bc5f876500a972854578cf62ed708d7a871ef3863424bd531b6"
+    },
+    {
+      "path": "src/beyond_blossom/structured/predecode/structured_profile.test.cc",
+      "sha256": "ae10813e0ae2ef5f1de52567bd7e1e631011354d10c55171bfcead841879b855"
+    },
+    {
+      "path": "src/beyond_blossom/structured/search/search_detector_node.cc",
+      "sha256": "43497f72a472cd80cd42f6a1b88a8bed1f71769f94bfe802dbaa287b23e9787f"
+    },
+    {
+      "path": "src/beyond_blossom/structured/search/search_detector_node.h",
+      "sha256": "c7a9415e9cbcc5221c5b4fce5cbc8e4ca48ab0cda8c43c96b6cc9a47b265a1b0"
+    },
+    {
+      "path": "src/beyond_blossom/structured/search/search_flooder.cc",
+      "sha256": "41f3db717ea060a347bbeb4c57001bc424a185dc27fb2ae62f20232b9d25d8ef"
+    },
+    {
+      "path": "src/beyond_blossom/structured/search/search_flooder.h",
+      "sha256": "b3b316e7658538ee9b351e0cf9d844b35e1d5fbbf4385c670bbb39ade016329c"
+    },
+    {
+      "path": "src/beyond_blossom/structured/search/search_graph.cc",
+      "sha256": "6aa4a0b2e5d497c51db37ecf5e86e146b733e089ee8aacabc46f17b1327513ab"
+    },
+    {
+      "path": "src/beyond_blossom/structured/search/search_graph.h",
+      "sha256": "eb77acc8acc7708a5bbdc1343e6170791ac0d76a9722ce0a7a09ab9d5c2b297e"
+    },
+    {
+      "path": "src/beyond_blossom/structured/tracker/flood_check_event.cc",
+      "sha256": "8a653dcdeec4de3493bfae4cba1fc08b3f96001317d8b6334f7d525dcdcbfc52"
+    },
+    {
+      "path": "src/beyond_blossom/structured/tracker/flood_check_event.h",
+      "sha256": "7a8e34c1648dfcac52a578e9c568977ec9ca766770573dc89d51a95478646eae"
+    },
+    {
+      "path": "src/beyond_blossom/structured/tracker/queued_event_tracker.h",
+      "sha256": "595901cbbf74048bd5eea1c6bb633edb53870d4f5c5b8fa837eadcaf53c27e9c"
+    },
+    {
+      "path": "src/beyond_blossom/structured/tracker/radix_heap_queue.h",
+      "sha256": "b6049e0121d8eba5f748e985e0a00fd7b13f8684182cac83e53be6c996aa01a4"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/diagram/animation_main.cc",
+      "sha256": "e48cc5ce48fcac850367ae4a60112be7fd23049df8aaa098145e5317f77a93f9"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/diagram/animation_main.h",
+      "sha256": "a5d78ee2438a320ac6631d8ea12c33c9a47d9abd093ae24536352c32ee9c49d1"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/diagram/mwpm_diagram.cc",
+      "sha256": "a5e690eb36055bd4defbfee90fb4ee4bcfa9f0338f0bbb57458848446995aace"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/diagram/mwpm_diagram.h",
+      "sha256": "65eff8f82f3f9dc2411ce484fe45dfb55901b41e7e8a7555966467cb9d8f1443"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/diagram/mwpm_diagram.test.cc",
+      "sha256": "fb3165e16aec4d8d8fe443b6628f8015907b794682d8d38c98aadfb89cfd2fe6"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/detector_node.cc",
+      "sha256": "f25d3035674eed7e78ed85fd71d83e998bc9cd76f3c148cb768858bcb5f51cf9"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/detector_node.h",
+      "sha256": "fe7cc57573161bafd567d4c91bcadf499783df2d310430c3493ce863d2b075e6"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/detector_node.test.cc",
+      "sha256": "66c27d208bca4627dde0871638ff257f36a889163d9b941c584b16edd754d5a1"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/graph.cc",
+      "sha256": "1b750aa6eb9d65fde5c135a59aa26fad6610561fbe845217156da1f54e1e6c6e"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/graph.h",
+      "sha256": "7b3e83ccbce3b3359a68b5355f5d1fa22a97909c0bfd358ecea099622255435a"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/graph.test.cc",
+      "sha256": "7a259e26cd5332754864f371533eaea2f027be6379dc3b1a144c47fefd494296"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/graph_fill_region.cc",
+      "sha256": "4f433038c060fd072f45bd0b1847f5ca406b5b5e6226e138fe678fa560edaf14"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/graph_fill_region.h",
+      "sha256": "dd68feb0188e75ad4ccc1699c5998fd3deaabead79c5c192fa8c3ee28eec823c"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/graph_fill_region.test.cc",
+      "sha256": "005b55799579a5f98d8aae28935cee017b7535eeafec87ff017008f89f2820cb"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/graph_fill_region.test.h",
+      "sha256": "7f78df447bf198ab2e0cc53ff1ff23ce2ab64bdd5344ebe065072a8ead8dc3fb"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/graph_flooder.cc",
+      "sha256": "0d473eb344a817dbca48638e0a13063bf35d34fb322aedd110a18414d69144e9"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/graph_flooder.h",
+      "sha256": "d6ace4720d22e5a8e34f9fdc5393af9217b507d69bf366cc2961067e374b4914"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/graph_flooder.test.cc",
+      "sha256": "d4856f2db84b4153a1280e03fa7f7dfab022424b2af476324440d515b27c6c8d"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/match.cc",
+      "sha256": "3f50dc9224ac83a3245e6ef109ef9a068d84b991ebac2f1fa4d7dcf46a55a0f1"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/match.h",
+      "sha256": "7cb19bacda76a2238e981b72ff318acbb5bd6e7802e541b27aeecedb111aad21"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/flooder/match.test.cc",
+      "sha256": "8eafc76d0959979fa8fd4c09df5f9a945ac23e8a14912e4901ab2c4d92ac4419"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/interop/compressed_edge.cc",
+      "sha256": "81016c3df3b67c6099f0bb3af49b3178e3c5a974f1b17ce062fe215879b525b5"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/interop/compressed_edge.h",
+      "sha256": "3da42df5094a475e52fb815e50b336310fc898f4c41e90046e7f7119e1f6838c"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/interop/compressed_edge.test.cc",
+      "sha256": "aedf5eea3959005420ca3d025ca3e057cd6350c67cb593b0cf631430f5bea5c3"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/interop/mwpm_event.cc",
+      "sha256": "2ae26d7db704b8d23e9e5c464182d52287f88a629ccd0d3459c4c84dc5c80911"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/interop/mwpm_event.h",
+      "sha256": "d4e75b72e581810d9ca0d9584458f940c645b8275af1dd6bb3315c9f3df0da95"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/interop/mwpm_event.test.cc",
+      "sha256": "3a9559cabe9b43851d03397361acad888382eaa8ef2e2a2dc2142de443bd895f"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/interop/region_edge.cc",
+      "sha256": "90dbf2d0a4ef92381f5ae79b450cd98236064f992eafc83283d98ee3d31e55eb"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/interop/region_edge.h",
+      "sha256": "31f8cf92333c1fabf561b8a44ada4464eb1e719e94ec77c3f307d42ef5e39677"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/matcher/alternating_tree.cc",
+      "sha256": "302594ad87433f953de8efa6238cb9db301efdd73b7c93cffd19812954e6ff7b"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/matcher/alternating_tree.h",
+      "sha256": "e748ab2945a071b760a00e4104e0b0b9f72c3a62768ab0304eac9acfe10eebd2"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/matcher/alternating_tree.test.cc",
+      "sha256": "b0c65071148d95714e1643064fd3942a6b162bb13cd622efd73ffb4e50c90f71"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/matcher/mwpm.cc",
+      "sha256": "11ac2b3949b73331679b2398be67955f08775672cd571f8176a919a100152e4b"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/matcher/mwpm.h",
+      "sha256": "adb992b1a064bfb94268c6ec2ec7d298a2408958be9f965c3ddcca5e61a259ad"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/matcher/mwpm.test.cc",
+      "sha256": "d6c1755a776336fdd79bdbbbd9e235fd1f3a609c25b29c76dd16558a27c9f446"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/predecode/one_hop_predecoder.cc",
+      "sha256": "b128df5b75ac0ea4f5c1369df0724006ed32e3441f8bfa23e83a5489dec51cf0"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/predecode/one_hop_predecoder.h",
+      "sha256": "e78966be471240a1985d400720466e588f85eab9c6758518d6fa5e9d5464f088"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/predecode/one_hop_predecoder.test.cc",
+      "sha256": "0680f841b1c52173c4e0762444d03ab2f616d20c84ad3f5cd033e12c6664abbd"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/search/search_detector_node.cc",
+      "sha256": "517ba3b3933f3033d0658665b103fb3f598d8d42a221b285d71aa424f48299ef"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/search/search_detector_node.h",
+      "sha256": "96117e10b95d8ac703eda95894fa76dbf9822dd3cf1a94cbd1ff9652198a14ac"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/search/search_flooder.cc",
+      "sha256": "32c5600c3a9193de19ec46e329c506ae648f1f46e42cc10a87b7758a1304eba0"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/search/search_flooder.h",
+      "sha256": "136523dd2fbd985ea231867785520169387c0badde4566c719aa0ce3c46411ae"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/search/search_flooder.test.cc",
+      "sha256": "4d03db22e4b6991bdcefa9b9b59a1c3ba8bca039f6adf40310492a14ebffc7f5"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/search/search_graph.cc",
+      "sha256": "345d988d83b4fbe95684338530be0c037743d44a0331e8e2859065caeb25e3e0"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/search/search_graph.h",
+      "sha256": "44ae91bf99df53b30872e2d3f2c8c5a66c048e43dbbd72924d8243a7b9aeaf5b"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/search/search_graph.test.cc",
+      "sha256": "748a0ffcc76d29388814fde2fcd0b4385105cf11904b2f7a9f9260877018ae26"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/tracker/flood_check_event.cc",
+      "sha256": "d81d6a424645e44009b4904c57722b5bf1a6dbb3840ab7a6372ba55e26eb20be"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/tracker/flood_check_event.h",
+      "sha256": "7e09d151428c186661ba2e86e556592968856a7de5cc8bfbcbefd2654fa3ae80"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/tracker/flood_check_event.test.cc",
+      "sha256": "a719bc19f9df3cf4997252d5b975231c5df1287895d05216145470b6bd6cba7c"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/tracker/queued_event_tracker.h",
+      "sha256": "de8f9e8c7e3636628ce02ed75a2bbd8b6c340c1396ee38a5bd072285ee5d44dc"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/tracker/queued_event_tracker.test.cc",
+      "sha256": "54ea44c9798ae09582212a7f0b883a547aba20a450de64e0ebcbe2b972c3a8e7"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/tracker/radix_heap_queue.h",
+      "sha256": "25643895dce94d2a6317f8075a95ddfcfdaa354ef3638fa6c40cea58db39bc64"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/tracker/radix_heap_queue.perf.cc",
+      "sha256": "8138ccd46a41bad6d232a6a69236e02e57fb25a6cad94a4356ecfc1365a69f6e"
+    },
+    {
+      "path": "src/beyond_blossom/unstructured/tracker/radix_heap_queue.test.cc",
+      "sha256": "42e0f44db621d3ff2298d1713ec8308951d5b5c36fd202444cb8f7021caaa1f8"
+    },
+    {
+      "path": "src/main.cc",
+      "sha256": "9f5febead811388990d07fe8d003ee0180852e6a4b38d155b195ffc65cc731b3"
+    }
+  ],
+  "release_tests": {
+    "passed": 356,
+    "failed": 0,
+    "elapsed_seconds": 20.06
+  },
+  "asan_ubsan_tests": {
+    "passed": 356,
+    "failed": 0,
+    "elapsed_seconds": 68.06,
+    "optimization": "-O1",
+    "environment": {
+      "ASAN_OPTIONS": "detect_leaks=0:abort_on_error=1",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+      "OMP_WAIT_POLICY": "PASSIVE",
+      "GOMP_SPINCOUNT": "0"
+    },
+    "leak_sanitizer": "Disabled because ptrace is unsupported in the sandbox; no leak-check claim"
+  },
+  "artifacts": [
+    {
+      "path": "/tmp/beyond-build/asan-final-ctest.log",
+      "sha256": "53600c63dca6cc78ad21e4543c57663d618ecff153940b8eaf57a92be4d0ae34",
+      "bytes": 79671
+    },
+    {
+      "path": "/tmp/beyond-build/asan-final-build.log",
+      "sha256": "58461de9e5b87ebb7b12b4e306dd142a3c4d74c64508a7fe228463430d3fcfea",
+      "bytes": 4300
+    },
+    {
+      "path": "/tmp/beyond-build/final-release-ctest.log",
+      "sha256": "bb59ec0a54c61fde01fd5b112d8575ea56b554dffc601a77daed5a73dc97b880",
+      "bytes": 79675
+    },
+    {
+      "path": "/tmp/beyond-build/asan-o1/CMakeCache.txt",
+      "sha256": "fef06673f9e8aaae35c58aa3b9685a5dd7ddaa0b46c4a25ef0260b42d056e31b",
+      "bytes": 27387
+    },
+    {
+      "path": "/tmp/beyond-build/asan-o1/compile_commands.json",
+      "sha256": "92a1f45e768a4f96f41c59481b9acd714ef3077773a1af46e4aa9fb7ea812d52",
+      "bytes": 399388
+    },
+    {
+      "path": "/tmp/beyond-build/asan-o1/beyond_blossom_tests",
+      "sha256": "a7b6cdf62ef62c32e66905438e99816bb74cac637ab911e0bb7302bdd3c5a4de",
+      "bytes": 513400200
+    },
+    {
+      "path": "/tmp/beyond-build/asan-o1/decoder_strategy_differential",
+      "sha256": "a95da18bc7ee8af9e7c7697797329c16cb26c6904f7344e10c89e15e0c4a1088",
+      "bytes": 241071848
+    },
+    {
+      "path": "/tmp/beyond-build/asan-o1/beyond_blossom_profile_tests",
+      "sha256": "af318770ed72d6392340d76fd447c470859cded2149bdd640cded3e2f4da5224",
+      "bytes": 23390960
+    },
+    {
+      "path": "/tmp/beyond-build/candidate/beyond_blossom_tests",
+      "sha256": "292e9d6587cc439dc0dfc328e5f59f29e08c383a18d80f24c3f87fa55bbdc29f",
+      "bytes": 9358008
+    },
+    {
+      "path": "/tmp/beyond-build/candidate/CMakeCache.txt",
+      "sha256": "8d70bb58e96e2b78018121f1537d0405ba73fde45a8354f28bd9568b5132bf67",
+      "bytes": 29182
+    },
+    {
+      "path": "/tmp/beyond-build/candidate/compile_commands.json",
+      "sha256": "cea6e2e3cfbb098be72b0f2802e2e966dea677f33c275f97561c52d0b640b35e",
+      "bytes": 396319
+    }
+  ],
+  "supersedes_for_final_validation": "/tmp/beyond-build/asan-o1-validation.json (354-test pre-gate build)"
+}

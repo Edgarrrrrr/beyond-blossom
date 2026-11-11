@@ -1,0 +1,16 @@
+[
+  {
+    "workload": "high_degree_dense",
+    "field": "graph",
+    "original_path": "/tmp/beyond-build/generic-corpora-v2/high_degree_dense.graph",
+    "archived_path": "artifacts/inputs/high_degree_dense.graph.graph",
+    "sha256": "7e11930ddc645dfd6024dc373c2872a403693aadb3610b3fee0aad10cf0dcdaf"
+  },
+  {
+    "workload": "high_degree_dense",
+    "field": "shots",
+    "original_path": "/tmp/beyond-build/generic-corpora-v2/high_degree_dense.shots",
+    "archived_path": "artifacts/inputs/high_degree_dense.shots.shots",
+    "sha256": "c4de5535ec2cdd9ec6ea7884b4cd80036f80a501d2ce5401fbafef55597a9dde"
+  }
+]

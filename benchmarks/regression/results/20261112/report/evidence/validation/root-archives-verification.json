@@ -1,0 +1,20 @@
+[
+  {
+    "archive": "performance.tar.gz",
+    "sha256": "6f26671b50299d4a9a320099a1f4c6ab0fd629e66f47e7fec6bbcadae498a644",
+    "verified_files": 15948,
+    "status": "all archived member contents match source file hashes"
+  },
+  {
+    "archive": "native-validation.tar.gz",
+    "sha256": "c3423118b06f240b8e2f40991e689392a2e549ba1eaeaadbf49557df4dd1bea3",
+    "verified_files": 284,
+    "status": "all archived member contents match source file hashes"
+  },
+  {
+    "archive": "exploratory-history.tar.gz",
+    "sha256": "9bd96bbc566f01ecb322027250cd99f3787d9f0c75b89e34807abc74af94e897",
+    "verified_files": 722,
+    "status": "all archived member contents match source file hashes"
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "complete": true,
+  "profile": "smoke",
+  "groups": [
+    "ablation",
+    "comparison"
+  ],
+  "sources": {
+    "native": {
+      "plan": {
+        "path": "/tmp/beyond-ae-native-smoke-final01/plan.json",
+        "sha256": "5fda58f94d1d4402ff56f2cbb26cde8686b2a54583f1e23d4f7517a8b204e89f"
+      },
+      "completion": {
+        "path": "/tmp/beyond-ae-native-smoke-final01/complete.json",
+        "sha256": "13da69987ff5a3016adadfaedc28c19e491aa07ee39fec342a2cdafbd3caaae8"
+      }
+    },
+    "external": {
+      "plan": {
+        "path": "/tmp/beyond-external-smoke-final03/plan.json",
+        "sha256": "bc1f67e8d5f70212936055b664d8599e268591db32f089f62898fb40127efa5f"
+      },
+      "completion": {
+        "path": "/tmp/beyond-external-smoke-final03/complete.json",
+        "sha256": "2098027b3f4213e87cfa70d9e14c42e867a7b8e374e47ee5849ac5c6cd13012d"
+      }
+    }
+  },
+  "exporter": {
+    "path": "/home/fujy/dev/beyond_blossom/repo/AE/export_results.py",
+    "sha256": "f394463e926be6726cfa8e5bc33057ddbe1b23e9240c3f1966b7fb243196bc4c"
+  },
+  "figures": [
+    {
+      "path": "/tmp/beyond-ae-comparison-export-final01/figures/incremental_ablation_1107_v1.pdf",
+      "sha256": "9ef6d78d89cbf4b8b576db7fe161f9d9b540d5d7b32f7e9320ed451139fe7635"
+    },
+    {
+      "path": "/tmp/beyond-ae-comparison-export-final01/figures/incremental_ablation_1107_v1.svg",
+      "sha256": "b090037b79538c8b9eb8871f359ff27050a224f9e3d7eba20e92dde12d2414ef"
+    },
+    {
+      "path": "/tmp/beyond-ae-comparison-export-final01/figures/incremental_ablation_1107_v1.png",
+      "sha256": "1fa31ce8c6698b80ea1f71a0a4c62f36c61bf6c6ed05c1fce0ccf195770a9e45"
+    },
+    {
+      "path": "/tmp/beyond-ae-comparison-export-final01/figures/decoder_comparison_shows_speedup_v3.pdf",
+      "sha256": "0bd071c88394ae20008a92b9677698acd6f456f3109a0c69e0355dc997535336"
+    },
+    {
+      "path": "/tmp/beyond-ae-comparison-export-final01/figures/decoder_comparison_shows_speedup_v3.svg",
+      "sha256": "ef5e2aad493f43c3f2dfff78e79599748c2ef9a03aae04e3c22a6b2d76586edf"
+    },
+    {
+      "path": "/tmp/beyond-ae-comparison-export-final01/figures/decoder_comparison_shows_speedup_v3.png",
+      "sha256": "6b4849d6ab273a3336e2a808ce1f13e8a9d03d352b1db9f63934a59a69b7ab11"
+    }
+  ],
+  "files": {
+    "canonical.json": "b60edaa388de0cfec73a0ee10f98d46f6c66ca60648728291d5145e93d309ee6",
+    "external.csv": "30ccb0de22c046f6be8ebddaf4b3c03ae557c122f4fdc4961efc5d0473dc3f2d",
+    "selected-configurations.csv": "78ba74d01ba6717977955ca7b50ae981bf6dbed9a4d5f4af7269ba72318880ac",
+    "native.csv": "668382588252b20c0bbff9d896323588cc09a87a14d3734168eed32774bc4333",
+    "figures/incremental_ablation_1107_v1.png": "1fa31ce8c6698b80ea1f71a0a4c62f36c61bf6c6ed05c1fce0ccf195770a9e45",
+    "figures/decoder_comparison_shows_speedup_v3.pdf": "0bd071c88394ae20008a92b9677698acd6f456f3109a0c69e0355dc997535336",
+    "figures/decoder_comparison_shows_speedup_v3.svg": "ef5e2aad493f43c3f2dfff78e79599748c2ef9a03aae04e3c22a6b2d76586edf",
+    "figures/incremental_ablation_1107_v1.svg": "b090037b79538c8b9eb8871f359ff27050a224f9e3d7eba20e92dde12d2414ef",
+    "figures/decoder_comparison_shows_speedup_v3.png": "6b4849d6ab273a3336e2a808ce1f13e8a9d03d352b1db9f63934a59a69b7ab11",
+    "figures/incremental_ablation_1107_v1.pdf": "9ef6d78d89cbf4b8b576db7fe161f9d9b540d5d7b32f7e9320ed451139fe7635"
+  }
+}

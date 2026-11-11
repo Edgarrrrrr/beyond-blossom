@@ -1,0 +1,186 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/home/fujy/dev/PyMatching/.conda-env/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "--target",
+        "/tmp/beyond-package-final/artifacts-r2/deps",
+        "/tmp/pybind11-2.13.6-py3-none-any.whl",
+        "/tmp/rustworkx-0.18.1-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+      ],
+      "cwd": "/tmp/beyond-package-final/artifacts-r2/outside",
+      "expected_returncode": 0,
+      "name": "local-dependencies",
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/home/fujy/dev/PyMatching/.conda-env/bin/python",
+        "setup.py",
+        "sdist",
+        "--dist-dir",
+        "/tmp/beyond-package-final/artifacts-r2/dist"
+      ],
+      "cwd": "/tmp/beyond-package-final/artifacts-r2/source",
+      "expected_returncode": 0,
+      "name": "sdist",
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/home/fujy/dev/PyMatching/.conda-env/bin/python",
+        "-m",
+        "pip",
+        "wheel",
+        "--no-index",
+        "--no-deps",
+        "--no-build-isolation",
+        "--wheel-dir",
+        "/tmp/beyond-package-final/artifacts-r2/wheels",
+        "."
+      ],
+      "cwd": "/tmp/beyond-package-final/artifacts-r2/unpacked/beyond_blossom-0.1.0",
+      "expected_returncode": 0,
+      "name": "wheel",
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/home/fujy/dev/PyMatching/.conda-env/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "--target",
+        "/tmp/beyond-package-final/artifacts-r2/installed",
+        "/tmp/beyond-package-final/artifacts-r2/wheels/beyond_blossom-0.1.0-cp311-cp311-linux_x86_64.whl"
+      ],
+      "cwd": "/tmp/beyond-package-final/artifacts-r2/outside",
+      "expected_returncode": 0,
+      "name": "install",
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/home/fujy/dev/PyMatching/.conda-env/bin/python",
+        "/tmp/beyond-package-final/artifacts-r2/outside/quickstart.py",
+        "/tmp/beyond-package-final/artifacts-r2/installed"
+      ],
+      "cwd": "/tmp/beyond-package-final/artifacts-r2/outside",
+      "expected_returncode": 0,
+      "name": "quickstart",
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/home/fujy/dev/PyMatching/.conda-env/bin/python",
+        "-m",
+        "pytest",
+        "/tmp/beyond-package-final/artifacts-r2/unpacked/beyond_blossom-0.1.0/tests",
+        "-q",
+        "--basetemp",
+        "/tmp/beyond-package-final/artifacts-r2/pytest-temp",
+        "--junitxml",
+        "/tmp/beyond-package-final/artifacts-r2/pytest.xml"
+      ],
+      "cwd": "/tmp/beyond-package-final/artifacts-r2/outside",
+      "expected_returncode": 0,
+      "name": "pytest",
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/tmp/beyond-package-final/artifacts-r2/installed/bin/beyond-blossom",
+        "--help"
+      ],
+      "cwd": "/tmp/beyond-package-final/artifacts-r2/outside",
+      "expected_returncode": 0,
+      "name": "cli-help",
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/tmp/beyond-package-final/artifacts-r2/installed/bin/beyond-blossom",
+        "unknown-command"
+      ],
+      "cwd": "/tmp/beyond-package-final/artifacts-r2/outside",
+      "expected_returncode": 2,
+      "name": "cli-unknown",
+      "returncode": 2
+    },
+    {
+      "argv": [
+        "/tmp/beyond-package-final/artifacts-r2/installed/bin/beyond-blossom",
+        "predict",
+        "--dem",
+        "/tmp/beyond-package-final/artifacts-r2/outside/missing.dem"
+      ],
+      "cwd": "/tmp/beyond-package-final/artifacts-r2/outside",
+      "expected_returncode": null,
+      "name": "cli-missing-input",
+      "returncode": 1
+    },
+    {
+      "argv": [
+        "/tmp/beyond-package-final/artifacts-r2/installed/bin/beyond-blossom",
+        "predict",
+        "--dem",
+        "/tmp/beyond-package-final/artifacts-r2/unpacked/beyond_blossom-0.1.0/data/three_errors.dem",
+        "--in",
+        "/tmp/beyond-package-final/artifacts-r2/unpacked/beyond_blossom-0.1.0/data/three_errors.dets",
+        "--in_format",
+        "dets",
+        "--out",
+        "/tmp/beyond-package-final/artifacts-r2/outside/predictions-dets.dets",
+        "--out_format",
+        "dets"
+      ],
+      "cwd": "/tmp/beyond-package-final/artifacts-r2/outside",
+      "expected_returncode": 0,
+      "name": "cli-predict-dets",
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/tmp/beyond-package-final/artifacts-r2/installed/bin/beyond-blossom",
+        "predict",
+        "--dem",
+        "/tmp/beyond-package-final/artifacts-r2/unpacked/beyond_blossom-0.1.0/data/three_errors.dem",
+        "--in",
+        "/tmp/beyond-package-final/artifacts-r2/unpacked/beyond_blossom-0.1.0/data/three_errors.b8",
+        "--in_format",
+        "b8",
+        "--out",
+        "/tmp/beyond-package-final/artifacts-r2/outside/predictions-b8.dets",
+        "--out_format",
+        "dets"
+      ],
+      "cwd": "/tmp/beyond-package-final/artifacts-r2/outside",
+      "expected_returncode": 0,
+      "name": "cli-predict-b8",
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "cmake",
+        "--install",
+        "/tmp/beyond-package-final/artifacts-r2/unpacked/beyond_blossom-0.1.0/build/python/temp.linux-x86_64-cpython-311/beyond_blossom._cpp_beyond_blossom",
+        "--prefix",
+        "/tmp/beyond-package-final/artifacts-r2/sdk"
+      ],
+      "cwd": "/tmp/beyond-package-final/artifacts-r2/outside",
+      "expected_returncode": 0,
+      "name": "sdk-install",
+      "returncode": 1
+    }
+  ],
+  "commit": "edd29b6780713dc78f6a99d67c4c4d192e9c52b5",
+  "complete": false,
+  "error": "sdk-install exited 1; inspect /tmp/beyond-package-final/artifacts-r2/logs/sdk-install.log"
+}

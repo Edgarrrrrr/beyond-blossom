@@ -25,6 +25,10 @@ print(matching.decode([1, 1]))
 
 `Matching` accepts check matrices, NetworkX graphs, and Stim detector error models. A decoder instance owns mutable state; use a separate instance for each concurrent caller.
 
+The installed Python console command is `beyond-blossom`; run `beyond-blossom --help`
+for decoding options. The native CMake build provides `beyond_blossom` with the
+same command interface.
+
 ## Structured decoding
 
 ```python
@@ -93,5 +97,8 @@ Structured primal hot paths are inline definitions shared by callers. Backend se
 ## Reproduction and contributions
 
 [AE/README.md](AE/README.md) describes smoke runs, full collection, and replay of archived paper data. Archived measurements describe their original binaries; a new build requires new measurements before a performance claim is made.
+
+[Migration validation, 2026-11-12](benchmarks/regression/results/20261112/README.md)
+records this migration's correctness checks, paired measurements, and artifacts.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development and [SECURITY.md](SECURITY.md) for reporting vulnerabilities. The project uses the [Apache License 2.0](LICENSE); attribution is recorded in [NOTICE](NOTICE).
