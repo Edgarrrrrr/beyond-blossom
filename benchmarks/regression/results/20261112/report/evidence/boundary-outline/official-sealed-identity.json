@@ -1,0 +1,11 @@
+{
+  "kind": "sealed_official_baseline",
+  "upstream_revision": "e27b8c6a5f5ba10fb74d4ebb29822f2df5e12bcd",
+  "binary_sha256": "b2b42e4fd401fe3db39a405bd4d119edfc9ee03b2b9d029a558afa8d52b4e7e4",
+  "original_binary": "/tmp/beyond-build/structured-final-run/bin/reference",
+  "original_run_plan": "/tmp/beyond-build/structured-final-run/plan.json",
+  "original_run_plan_sha256": "a5f6e9619e8b69fc2912cb727939e93bba498f6d751af47789cd7604bf6e083a",
+  "original_reference_record": "/tmp/beyond-boundary-outline-20261112/arms/official-sealed/original-reference.json",
+  "original_reference_record_sha256": "467bf0fad2bb64e12ffd0c6e203db56d1bf20103d7d530f62d0ea199af353ae3",
+  "lto": false
+}

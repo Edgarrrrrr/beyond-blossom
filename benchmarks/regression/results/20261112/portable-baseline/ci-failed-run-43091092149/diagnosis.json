@@ -1,0 +1,120 @@
+{
+  "run_id": 43091092149,
+  "head_sha": "c5da46e12b3865e20d5a8c38157959ffefe8f417",
+  "conclusion": "failure",
+  "url": "https://github.com/Edgarrrrrr/beyond-blossom/actions/runs/43091092149",
+  "failed_step": "cmake --build build --parallel 2",
+  "passed_steps": [
+    "pip install .[test]",
+    "pytest tests",
+    "CMake configure"
+  ],
+  "not_run": "CTest skipped because native test compilation failed",
+  "compiler_from_ci_log": "GNU 15.2.0",
+  "runner_from_ci_log": "Ubuntu 26.04.1",
+  "failure_file": "src/beyond_blossom/structured/predecode/one_hop_neighborhood_simd.h:22",
+  "failure_function": "one_hop_active_batch4",
+  "failure": "_mm_setr_epi32 always_inline target specific option mismatch inside target(avx2,no-popcnt)",
+  "confirmed_mechanism": "A translation unit with global POPCNT enabled gives the intrinsic wrapper a target feature set that is not a subset of the no-popcnt caller. The same diagnostic reproduces with GCC12, so the failure does not require GCC15.",
+  "ci_default_isa_qualification": "The exact default feature set of the hosted compiler was not recorded. x86-64-v3 is a reproducible hypothesis, not a proven property of all Ubuntu26.04 images.",
+  "minimal_reproduction": {
+    "compiler": "c++ (Debian 12.2.0-14+deb12u1) 12.2.0",
+    "results": [
+      {
+        "case": "baseline",
+        "command": [
+          "/usr/bin/c++",
+          "-O3",
+          "-std=c++20",
+          "-mno-avx2",
+          "-c",
+          "/tmp/beyond-github-ci-final/target-repro/target_mismatch.cc",
+          "-o",
+          "/tmp/beyond-github-ci-final/target-repro/baseline.o"
+        ],
+        "exit_code": 0,
+        "target_mismatch": false
+      },
+      {
+        "case": "popcnt",
+        "command": [
+          "/usr/bin/c++",
+          "-O3",
+          "-std=c++20",
+          "-mpopcnt",
+          "-mno-avx2",
+          "-c",
+          "/tmp/beyond-github-ci-final/target-repro/target_mismatch.cc",
+          "-o",
+          "/tmp/beyond-github-ci-final/target-repro/popcnt.o"
+        ],
+        "exit_code": 1,
+        "target_mismatch": true
+      },
+      {
+        "case": "v3",
+        "command": [
+          "/usr/bin/c++",
+          "-O3",
+          "-std=c++20",
+          "-march=x86-64-v3",
+          "-mno-avx2",
+          "-c",
+          "/tmp/beyond-github-ci-final/target-repro/target_mismatch.cc",
+          "-o",
+          "/tmp/beyond-github-ci-final/target-repro/v3.o"
+        ],
+        "exit_code": 1,
+        "target_mismatch": true
+      },
+      {
+        "case": "v3_then_portable",
+        "command": [
+          "/usr/bin/c++",
+          "-O3",
+          "-std=c++20",
+          "-march=x86-64-v3",
+          "-march=x86-64",
+          "-mno-avx2",
+          "-c",
+          "/tmp/beyond-github-ci-final/target-repro/target_mismatch.cc",
+          "-o",
+          "/tmp/beyond-github-ci-final/target-repro/v3_then_portable.o"
+        ],
+        "exit_code": 0,
+        "target_mismatch": false
+      }
+    ]
+  },
+  "preprocessor_features": [
+    {
+      "case": "baseline",
+      "global_POPCNT_macro": false,
+      "global_AVX2_macro": false
+    },
+    {
+      "case": "popcnt",
+      "global_POPCNT_macro": true,
+      "global_AVX2_macro": false
+    },
+    {
+      "case": "v3",
+      "global_POPCNT_macro": true,
+      "global_AVX2_macro": false
+    },
+    {
+      "case": "v3_then_portable",
+      "global_POPCNT_macro": false,
+      "global_AVX2_macro": false
+    }
+  ],
+  "minimal_baseline_and_explicit_portable_objects_identical": true,
+  "recommended_fix": "In the x86_64 CMake ARCH_OPT branch, explicitly use -O3 -march=x86-64 -mno-avx2. Preserve target(avx2,no-popcnt), ISA-specific callbacks, and matching algorithms.",
+  "source_modified": false,
+  "sources": [
+    "https://gcc.gnu.org/onlinedocs/gcc/x86-Attributes.html",
+    "https://ubuntu.com/architecture"
+  ],
+  "evidence_log": "job-130768034792.log",
+  "evidence_reproduction": "target-repro/results.json"
+}

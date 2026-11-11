@@ -1,0 +1,33 @@
+{
+  "completed_utc": "2026-11-11T20:21:34.798190+00:00",
+  "commit": "d2506bde8ee9a2eba7ad97523fbc948a97142676",
+  "git_status_porcelain": "",
+  "runtime_diff_from_measured_edd29b6": [],
+  "compiler": "GCC 12.2.0",
+  "library_byte_equal": true,
+  "linked_objects_equal": "44/44",
+  "original_artifacts_unchanged": {
+    "library": true,
+    "flags": true,
+    "cache": true
+  },
+  "core_library_sha256": "b3f84f05588766cfe38e0ad9e47e65b84d6a2350ca176b192b9e80b1fb586a7a",
+  "ctest_discovered_count": 356,
+  "complete_ctest_exit_code": 0,
+  "neighborhood_test_count": 2,
+  "strong_feature_fixed_exit_code": 0,
+  "strong_feature_original_negative_control_exit_code": 1,
+  "strong_feature_original_target_mismatch": true,
+  "strong_feature_object_equal": true,
+  "all_local_processes_terminal": true,
+  "timing_performed": false,
+  "limitations": [
+    "Local compiler is GCC 12.2; real GCC 15 confirmation is separate GitHub CI run 43094516453.",
+    "Initial CTest invocation had 349 passing tests and one NOT_BUILT placeholder because profile test target was not yet built; after building it all 356 tests passed."
+  ],
+  "configuration_files_sha256": {
+    "CMakeLists.txt": "c9d417edb1d83332c6cab12ca962c5cbb1e740b85f414ccef6429bebc7a09cb0",
+    ".github/workflows/ci.yml": "2b3a449bd43d8e32dd540008c09431078c6de3f823ebe3533114a232a5dbeb96",
+    "README.md": "2c885ff224a6b94d3e242827525136419b734b523d3208b19d30ef0c028168f6"
+  }
+}

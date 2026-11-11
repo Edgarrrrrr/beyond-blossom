@@ -1,0 +1,33 @@
+[
+  {
+    "label": "strong-feature-driver",
+    "command": [
+      "python3",
+      "/tmp/beyond-portable-baseline-validation/compile_strong_feature.py"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 12.424278259277344
+  },
+  {
+    "label": "neighborhood-tests",
+    "command": [
+      "/tmp/beyond-portable-baseline-validation/build/beyond_blossom_tests",
+      "--gtest_filter=PredecodeNeighborhood.*"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.2598724365234375
+  },
+  {
+    "label": "release-ctest",
+    "command": [
+      "ctest",
+      "--test-dir",
+      "/tmp/beyond-portable-baseline-validation/build",
+      "--output-on-failure",
+      "-j",
+      "2"
+    ],
+    "exit_code": 8,
+    "wall_seconds": 18.425049304962158
+  }
+]

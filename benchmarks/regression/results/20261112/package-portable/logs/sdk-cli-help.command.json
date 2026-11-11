@@ -1,0 +1,9 @@
+{
+  "argv": [
+    "/tmp/beyond-package-portable-final/artifacts/sdk/bin/beyond_blossom",
+    "--help"
+  ],
+  "cwd": "/tmp/beyond-package-portable-final/artifacts/outside",
+  "expected_returncode": 0,
+  "name": "sdk-cli-help"
+}

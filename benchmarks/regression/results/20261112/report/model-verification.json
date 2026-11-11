@@ -2,7 +2,8 @@
   "complete": true,
   "scope": "Light Node VM execution of semantic models; not browser/UI or native runtime verification",
   "model_sha256": "312999d2d008475a1885fc9fa575d7c3235225df7fd404ae159a32d407fa55c4",
-  "scenarios": 15,
+  "outline_model_sha256": "0ab9729c9408ecf74b3e8f1eaec33eacffcb5cfe9d8200bb354f1af425ac7ce6",
+  "scenarios": 18,
   "records": [
     {
       "model": "primal",
@@ -1326,6 +1327,80 @@
         "returned": true,
         "skip": false,
         "output": "保留：候选扫描 → tight 预解码"
+      }
+    },
+    {
+      "model": "outline",
+      "scene": "leaf",
+      "frames": 16,
+      "source_targets": "verified",
+      "final_state": {
+        "event": "REGION_HIT_BOUNDARY",
+        "num_active_trees": 0,
+        "regions": {
+          "A": {
+            "tree": null,
+            "match": "边界",
+            "frozen": true
+          }
+        },
+        "arena": [],
+        "returned": true,
+        "verified": true,
+        "call_stack": []
+      }
+    },
+    {
+      "model": "outline",
+      "scene": "child",
+      "frames": 26,
+      "source_targets": "verified",
+      "final_state": {
+        "event": "REGION_HIT_BOUNDARY",
+        "num_active_trees": 0,
+        "regions": {
+          "A": {
+            "tree": null,
+            "match": "边界",
+            "frozen": true
+          },
+          "B": {
+            "tree": null,
+            "match": "C",
+            "frozen": true
+          },
+          "C": {
+            "tree": null,
+            "match": "B",
+            "frozen": true
+          }
+        },
+        "arena": [],
+        "returned": true,
+        "verified": true,
+        "call_stack": []
+      }
+    },
+    {
+      "model": "outline",
+      "scene": "none",
+      "frames": 4,
+      "source_targets": "verified",
+      "final_state": {
+        "event": "NO_EVENT",
+        "num_active_trees": 1,
+        "regions": {
+          "A": {
+            "tree": "root",
+            "match": null,
+            "frozen": false
+          }
+        },
+        "arena": [
+          "root"
+        ],
+        "returned": true,
+        "call_stack": []
       }
     }
   ]

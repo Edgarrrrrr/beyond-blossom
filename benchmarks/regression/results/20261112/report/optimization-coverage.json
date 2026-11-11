@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": 1,
+  "revision": 2,
   "optimizations": [
     {
       "optimization_id": "structured-primal-inlining",
@@ -8,7 +8,7 @@
       "decision": "adopted",
       "html": {
         "path": "mechanisms/structured-primal-inlining.html",
-        "sha256": "eccf0d436f94e32db3d35d14dd596a81003960862061308664e930a8717eb5db"
+        "sha256": "ba00169c837f1a1b17802af8025d0b60f0a185dcd0092534eacd6c987bb8733f"
       },
       "publication": {
         "kind": "offline",
@@ -45,9 +45,9 @@
       },
       "summary": {
         "path": "summary.json",
-        "sha256": "9e96e381b6ab1b29bce81205b7b9cc1a5e8188a3c3b4615c7fb97a0425e461d9"
+        "sha256": "c5249460adb8a44ebe7bad2586f51c134700cb8edbca512b9f746fc0107767ef"
       },
-      "evidence_scope": "无单独内联消融。最终 structured 迁移比较检验整个新实现；源码可见性是机制事实，不能把组合收益单独归给内联。",
+      "evidence_scope": "原819-call矩阵没有独立内联消融。后续只禁止一个边界处理函数内联，见报告中的未采纳变体；它没有隔离全部11个Mwpm与16个交替树函数的内联效果。源码可见性是机制事实，组合收益不能单独归给内联。",
       "verification": {
         "source_and_line_mapping": "passed",
         "browser": "passed: browser-verification.json",
@@ -102,7 +102,7 @@
       },
       "summary": {
         "path": "summary.json",
-        "sha256": "9e96e381b6ab1b29bce81205b7b9cc1a5e8188a3c3b4615c7fb97a0425e461d9"
+        "sha256": "c5249460adb8a44ebe7bad2586f51c134700cb8edbca512b9f746fc0107767ef"
       },
       "evidence_scope": "负权端点先异或规范化，最终补回负权摘要；correlation 两遍重加权在整个 scope 中关闭此预解码器。大于64个 observable 使用路径提取。对任意 T-join，w(T)≥Σ_seed y_s；完整 tight 匹配让每个 seed 恰使用一条匹配边，达到同一下界。部分匹配尚无此完成证书，必须交给完整求解器。证明不依赖固定 stencil。",
       "verification": {
@@ -173,9 +173,54 @@
       },
       "summary": {
         "path": "summary.json",
-        "sha256": "9e96e381b6ab1b29bce81205b7b9cc1a5e8188a3c3b4615c7fb97a0425e461d9"
+        "sha256": "c5249460adb8a44ebe7bad2586f51c134700cb8edbca512b9f746fc0107767ef"
       },
       "evidence_scope": "这是路径选择的性能启发式。回退复用已验证的规范化 syndrome，保持完整求解器语义。循环外仍有可变除法；只说明源级递推消除了逐样本除法，机器码证据另附与最终源码一致的 Release 库对象反汇编，范围和来源见报告。",
+      "verification": {
+        "source_and_line_mapping": "passed",
+        "browser": "passed: browser-verification.json",
+        "semantic_models": "passed: model-verification.json"
+      }
+    },
+    {
+      "optimization_id": "boundary-outline",
+      "title": "未采纳的单函数noinline变体",
+      "decision": "rejected",
+      "html": {
+        "path": "mechanisms/boundary-outline.html",
+        "sha256": "092d7225918c4ad5f59137159813c46ad6b8221b1dffdd93ba4959748882efa5"
+      },
+      "line_explanations": {
+        "path": "evidence/boundary-outline/line-explanations.json",
+        "sha256": "055c8f421c25d9b584a94b45f890e4a04c267ab4c2d5eae4c246a5edd5ed5884"
+      },
+      "summary": {
+        "path": "summary.json",
+        "sha256": "c5249460adb8a44ebe7bad2586f51c134700cb8edbca512b9f746fc0107767ef"
+      },
+      "source_scopes": [
+        "structured_dispatch",
+        "structured_boundary",
+        "structured_shatter",
+        "structured_root"
+      ],
+      "comparison": {
+        "baseline": "rebuilt-current",
+        "candidate": "outlined-boundary",
+        "official": "official-sealed"
+      },
+      "interaction": {
+        "entry": "Mwpm::process_event(const MwpmEvent&) → void",
+        "model": "outline",
+        "scenarios": [
+          "leaf",
+          "child",
+          "none"
+        ]
+      },
+      "publication": {
+        "kind": "offline"
+      },
       "verification": {
         "source_and_line_mapping": "passed",
         "browser": "passed: browser-verification.json",

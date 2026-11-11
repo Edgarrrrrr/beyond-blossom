@@ -4,10 +4,11 @@
   "source_scopes": 11,
   "explained_nonempty_lines": 308,
   "unique_source_lines": 308,
-  "standalone_html_pages": 5,
-  "verified_local_links": 78,
+  "standalone_html_pages": 7,
+  "followup_explained_nonempty_lines": 136,
+  "verified_local_links": 115,
   "browser_execution": "separate verification",
-  "summary_sha256": "9e96e381b6ab1b29bce81205b7b9cc1a5e8188a3c3b4615c7fb97a0425e461d9",
+  "summary_sha256": "c5249460adb8a44ebe7bad2586f51c134700cb8edbca512b9f746fc0107767ef",
   "source_manifest_sha256": "c8531c8ab6ee8753949c42ea08aed3e4b043f4f50303cff2944d2a39b5cf70c1",
-  "coverage_sha256": "8d6e738d566b6433610afd2794f67a29d5d6523d1c564cdd77bb1d4570c3851f"
+  "coverage_sha256": "61bc37b24adc2c6f57d159a60b4f110c28d915d41936834143d4ed22ac142745"
 }

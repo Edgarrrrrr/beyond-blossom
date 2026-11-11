@@ -1,0 +1,15 @@
+{
+  "command": [
+    "python3",
+    "/home/fujy/dev/beyond_blossom/validation/20261112/boundary-outline/payload/prepared-run/controller/run_confirmatory.py",
+    "--summarize-only",
+    "--output",
+    "/home/fujy/dev/beyond_blossom/validation/20261112/boundary-outline/payload/prepared-run"
+  ],
+  "complete": true,
+  "exit_code": 0,
+  "native_execution": false,
+  "original_summary_sha256": "f853ee210efced855817e0088333b2e3becec77914fe652a479e82d2e508eff4",
+  "relocated_summary_sha256": "f853ee210efced855817e0088333b2e3becec77914fe652a479e82d2e508eff4",
+  "same_summary": true
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "experiment_id": "BB-MIGRATION-20261112 / r1",
+  "experiment_id": "BB-MIGRATION-20261112 / r2",
   "title": "迁移后的代码路径与性能复核",
   "status": "final",
   "baseline_label": "Official e27 · 单线程正常解码",
@@ -18,7 +18,7 @@
     {
       "before": "结构化 primal 定义位于 .cc",
       "after": "头文件包含 .inl 实现",
-      "mechanism": "调用点可见事件分派与交替树函数体；没有独立内联收益消融。"
+      "mechanism": "调用点可见事件分派与交替树函数体；原矩阵未分离全部内联效果。"
     },
     {
       "before": "通用图直接创建 blossom roots",
@@ -938,18 +938,18 @@
       "scope": "Source241 / candidate；hubs耗时+1.097%，观察范围重叠不等于统计等价"
     }
   ],
-  "decision": "采用独立后端与证书预解码实现，保留全部迁移退化点；主速度比为官方耗时 / 候选耗时。",
+  "decision": "保留发布实现及全部迁移退化点；后续120-call隔离验证未采纳单函数noinline变体。",
   "limitations": [
     "这是10,000-shot结构化回归与固定通用图语料验证，不是重新采集论文百万-shot或M4矩阵。",
     "统计单位是重复批次/进程；相同保存输入重复运行不会增加独立样本。没有从批均值推导逐shot尾延迟。",
     "主官方串行参考与并行候选的核数不同；Source迁移比较按同名同线程配置配对。",
-    "通用图只有Source241/on/off同轮对照。机制组合的总效果没有分摊给单项内联或语句。"
+    "通用图只有Source241/on/off同轮对照。机制组合的总效果没有分摊给单项内联或语句。 后续三设置五臂结果单列，未与原819-call矩阵合并。"
   ],
   "source_refs": [
     {
       "label": "Canonical verified summary.json",
       "path": "summary.json",
-      "sha256": "9e96e381b6ab1b29bce81205b7b9cc1a5e8188a3c3b4615c7fb97a0425e461d9"
+      "sha256": "c5249460adb8a44ebe7bad2586f51c134700cb8edbca512b9f746fc0107767ef"
     }
   ]
 }

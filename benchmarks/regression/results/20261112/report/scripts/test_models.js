@@ -26,5 +26,17 @@ for(const [model,scenes] of Object.entries({primal:['leaf','child','none'],gener
   records.push({model,scene,frames:frames.length,source_targets:'verified',final_state:end});
  }
 }
-const receipt={complete:true,scope:'Light Node VM execution of semantic models; not browser/UI or native runtime verification',model_sha256:crypto.createHash('sha256').update(text).digest('hex'),scenarios:records.length,records};
+const outlineText=fs.readFileSync(path.join(__dirname,'boundary_outline.js'),'utf8');
+vm.runInContext(outlineText+'\nwindow.models.outline=outline;',context);
+const outlineSources=JSON.parse(fs.readFileSync(path.join(root,'evidence/boundary-outline/line-explanations.json')));
+for(const scene of ['leaf','child','none']){
+ const frames=models.outline(scene),original=models.primal(scene);
+ for(const f of frames){const lines=outlineSources.sources[f.code].after.filter(r=>r.source.includes(f.line));need(lines.length>(f.occurrence||0),'outline source target '+f.line);}
+ const end=frames.at(-1).state,expected=original.at(-1).state;const stripped=JSON.parse(JSON.stringify(end));delete stripped.call_stack;
+ need(JSON.stringify(stripped)===JSON.stringify(expected),'outline must preserve complete state transition');
+ need(end.call_stack.length===0,'outline did not return');
+ need(frames.some(f=>f.line==='[[gnu::noinline]]')===(scene!=='none'),'outline call branch');
+ records.push({model:'outline',scene,frames:frames.length,source_targets:'verified',final_state:end});
+}
+const receipt={complete:true,scope:'Light Node VM execution of semantic models; not browser/UI or native runtime verification',model_sha256:crypto.createHash('sha256').update(text).digest('hex'),outline_model_sha256:crypto.createHash('sha256').update(outlineText).digest('hex'),scenarios:records.length,records};
 fs.writeFileSync(path.join(root,'model-verification.json'),JSON.stringify(receipt,null,2)+'\n');console.log(`${records.length} semantic model scenarios passed; no browser/native timing executed`);

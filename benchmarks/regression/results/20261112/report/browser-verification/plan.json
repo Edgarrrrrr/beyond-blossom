@@ -4,28 +4,28 @@
     "width": 1440,
     "dump": "report-1440.dom.html",
     "screenshot": "report-1440.png",
-    "source_sha256": "7f764417f29193e0ff0d35a811ceeb5fdb7b29b90f145e8141949de70a2fa494"
+    "source_sha256": "82c24bd794b1bb76a851083bd0a98ef30ead14f120cc93eb3518480ddddec54f"
   },
   {
     "page": "index.html",
     "width": 760,
     "dump": "report-760.dom.html",
     "screenshot": "report-760.png",
-    "source_sha256": "7f764417f29193e0ff0d35a811ceeb5fdb7b29b90f145e8141949de70a2fa494"
+    "source_sha256": "82c24bd794b1bb76a851083bd0a98ef30ead14f120cc93eb3518480ddddec54f"
   },
   {
     "page": "mechanisms/structured-primal-inlining.html",
     "width": 1440,
     "dump": "structured-primal-inlining-1440.dom.html",
     "screenshot": "structured-primal-inlining-1440.png",
-    "source_sha256": "eccf0d436f94e32db3d35d14dd596a81003960862061308664e930a8717eb5db"
+    "source_sha256": "ba00169c837f1a1b17802af8025d0b60f0a185dcd0092534eacd6c987bb8733f"
   },
   {
     "page": "mechanisms/structured-primal-inlining.html",
     "width": 760,
     "dump": "structured-primal-inlining-760.dom.html",
     "screenshot": "structured-primal-inlining-760.png",
-    "source_sha256": "eccf0d436f94e32db3d35d14dd596a81003960862061308664e930a8717eb5db"
+    "source_sha256": "ba00169c837f1a1b17802af8025d0b60f0a185dcd0092534eacd6c987bb8733f"
   },
   {
     "page": "mechanisms/certified-generic-predecode.html",
@@ -56,6 +56,20 @@
     "source_sha256": "fecb848c0bb0413b804d8725ca44d213e44d21f1d16f97559f40355b5b3f7222"
   },
   {
+    "page": "mechanisms/boundary-outline.html",
+    "width": 1440,
+    "dump": "boundary-outline-1440.dom.html",
+    "screenshot": "boundary-outline-1440.png",
+    "source_sha256": "092d7225918c4ad5f59137159813c46ad6b8221b1dffdd93ba4959748882efa5"
+  },
+  {
+    "page": "mechanisms/boundary-outline.html",
+    "width": 760,
+    "dump": "boundary-outline-760.dom.html",
+    "screenshot": "boundary-outline-760.png",
+    "source_sha256": "092d7225918c4ad5f59137159813c46ad6b8221b1dffdd93ba4959748882efa5"
+  },
+  {
     "page": "code-diff/index.html",
     "width": 1440,
     "dump": "code-diff-1440.dom.html",
@@ -68,5 +82,19 @@
     "dump": "code-diff-760.dom.html",
     "screenshot": "code-diff-760.png",
     "source_sha256": "6f95f138cf64016e4b8353427340e67e6d8c37b51717025284d1aff2c0079cab"
+  },
+  {
+    "page": "boundary-diff/index.html",
+    "width": 1440,
+    "dump": "boundary-diff-1440.dom.html",
+    "screenshot": "boundary-diff-1440.png",
+    "source_sha256": "4a4e87325adb9359ccb8c9c945b661c4b0d68516906d4d3cf5b5948945cb3838"
+  },
+  {
+    "page": "boundary-diff/index.html",
+    "width": 760,
+    "dump": "boundary-diff-760.dom.html",
+    "screenshot": "boundary-diff-760.png",
+    "source_sha256": "4a4e87325adb9359ccb8c9c945b661c4b0d68516906d4d3cf5b5948945cb3838"
   }
 ]

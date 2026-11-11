@@ -19,6 +19,8 @@ def main():
     assert summary["status"] == "complete"
     assert browser["status"] == static["status"] == "passed"
     assert models["complete"] and models["model_sha256"] == sha(ROOT / "scripts/mechanisms.js")
+    assert models['outline_model_sha256'] == sha(ROOT / 'scripts/boundary_outline.js')
+    assert browser['scenarios_per_viewport'] == models['scenarios'] == 18
     assert static["summary_sha256"] == sha(ROOT / "summary.json")
     for path, expected in browser["page_sha256"].items():
         assert sha(ROOT / path) == expected, path
@@ -39,11 +41,14 @@ def main():
         assert path.name != "previous-patch.sha256", "Remove draft patch comparison before sealing"
         files.append({"path": str(path.relative_to(ROOT)), "bytes": path.stat().st_size, "sha256": sha(path)})
     manifest = {
-        "schema": 1, "complete": True, "kind": "standalone offline migration and optimization report",
+        "schema": 1, "report_revision": 2, "complete": True, "kind": "standalone offline migration and optimization report",
         "runtime_commit": summary["implementation_commit"],
         "collector_commits": summary["collector_commits"],
         "migration_source_revision": summary["migration_source_revision"],
         "official_revision": summary["official_revision"],
+        "followup": {"decision": summary['boundary_outline']['decision'], "native_calls":120,
+                     "source_snapshot":summary['boundary_outline']['base_commit'],
+                     "distinct_saved_records":30000,"process_repeats":8},
         "summary_sha256": sha(ROOT / "summary.json"),
         "files": files, "total_bytes": sum(item["bytes"] for item in files),
         "publication": "Offline files only; no external deployment or document publication",

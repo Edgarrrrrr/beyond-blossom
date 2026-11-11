@@ -1,0 +1,9 @@
+{
+  "argv": [
+    "/tmp/beyond-package-portable-final/artifacts/installed/bin/beyond-blossom",
+    "unknown-command"
+  ],
+  "cwd": "/tmp/beyond-package-portable-final/artifacts/outside",
+  "expected_returncode": 2,
+  "name": "cli-unknown"
+}

@@ -1,0 +1,12 @@
+[  0%] Built target gtest
+[  0%] Built target gmock
+[  3%] Built target gtest_main
+[  7%] Built target gmock_main
+[ 96%] Built target libstim
+[ 96%] Building CXX object CMakeFiles/beyond_blossom_profile_tests.dir/src/beyond_blossom/profile/profile_io.cc.o
+[ 96%] Building CXX object CMakeFiles/beyond_blossom_profile_tests.dir/src/beyond_blossom/profile/profile_schema.cc.o
+[100%] Building CXX object CMakeFiles/beyond_blossom_profile_tests.dir/src/beyond_blossom/profile/profile_stats.cc.o
+[100%] Building CXX object CMakeFiles/beyond_blossom_profile_tests.dir/src/beyond_blossom/profile/profile_schema.test.cc.o
+[100%] Building CXX object CMakeFiles/beyond_blossom_profile_tests.dir/src/beyond_blossom/profile/profile_stats.test.cc.o
+[100%] Linking CXX executable beyond_blossom_profile_tests
+[100%] Built target beyond_blossom_profile_tests

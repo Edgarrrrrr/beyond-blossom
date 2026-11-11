@@ -1,0 +1,12 @@
+Processing /tmp/beyond-package-portable-final/artifacts/unpacked/beyond_blossom-0.1.0
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: beyond-blossom
+  Building wheel for beyond-blossom (pyproject.toml): started
+  Building wheel for beyond-blossom (pyproject.toml): still running...
+  Building wheel for beyond-blossom (pyproject.toml): still running...
+  Building wheel for beyond-blossom (pyproject.toml): still running...
+  Building wheel for beyond-blossom (pyproject.toml): finished with status 'done'
+  Created wheel for beyond-blossom: filename=beyond_blossom-0.1.0-cp311-cp311-linux_x86_64.whl size=1177325 sha256=51e22ffedee53ceed71dbe175e39311c4ff003ccba1935962330721081cb4898
+  Stored in directory: /tmp/pip-ephem-wheel-cache-zhrf5igd/wheels/ba/3e/83/82c1bdf0ffd88ec99e6c39d4dc03e288d928e7c558fe2d8d9d
+Successfully built beyond-blossom

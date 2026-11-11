@@ -1,0 +1,325 @@
+running sdist
+running egg_info
+creating python/beyond_blossom.egg-info
+writing python/beyond_blossom.egg-info/PKG-INFO
+writing dependency_links to python/beyond_blossom.egg-info/dependency_links.txt
+writing entry points to python/beyond_blossom.egg-info/entry_points.txt
+writing requirements to python/beyond_blossom.egg-info/requires.txt
+writing top-level names to python/beyond_blossom.egg-info/top_level.txt
+writing manifest file 'python/beyond_blossom.egg-info/SOURCES.txt'
+reading manifest file 'python/beyond_blossom.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+no previously-included directories found matching 'build'
+no previously-included directories found matching '.local'
+adding license file 'LICENSE'
+adding license file 'NOTICE'
+adding license file 'licenses/Stim.txt'
+adding license file 'licenses/pybind11.txt'
+writing manifest file 'python/beyond_blossom.egg-info/SOURCES.txt'
+running check
+creating beyond_blossom-0.1.0
+creating beyond_blossom-0.1.0/cmake
+creating beyond_blossom-0.1.0/data
+creating beyond_blossom-0.1.0/licenses
+creating beyond_blossom-0.1.0/python/beyond_blossom
+creating beyond_blossom-0.1.0/python/beyond_blossom.egg-info
+creating beyond_blossom-0.1.0/src
+creating beyond_blossom-0.1.0/src/beyond_blossom
+creating beyond_blossom-0.1.0/src/beyond_blossom/bindings
+creating beyond_blossom-0.1.0/src/beyond_blossom/core
+creating beyond_blossom-0.1.0/src/beyond_blossom/core/grid
+creating beyond_blossom-0.1.0/src/beyond_blossom/core/interop
+creating beyond_blossom-0.1.0/src/beyond_blossom/core/tracker
+creating beyond_blossom-0.1.0/src/beyond_blossom/driver
+creating beyond_blossom-0.1.0/src/beyond_blossom/perf
+creating beyond_blossom-0.1.0/src/beyond_blossom/profile
+creating beyond_blossom-0.1.0/src/beyond_blossom/rand
+creating beyond_blossom-0.1.0/src/beyond_blossom/structured
+creating beyond_blossom-0.1.0/src/beyond_blossom/structured/diagram
+creating beyond_blossom-0.1.0/src/beyond_blossom/structured/driver
+creating beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+creating beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder_matcher_interop
+creating beyond_blossom-0.1.0/src/beyond_blossom/structured/grid
+creating beyond_blossom-0.1.0/src/beyond_blossom/structured/matcher
+creating beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+creating beyond_blossom-0.1.0/src/beyond_blossom/structured/search
+creating beyond_blossom-0.1.0/src/beyond_blossom/structured/tracker
+creating beyond_blossom-0.1.0/src/beyond_blossom/unstructured/diagram
+creating beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+creating beyond_blossom-0.1.0/src/beyond_blossom/unstructured/interop
+creating beyond_blossom-0.1.0/src/beyond_blossom/unstructured/matcher
+creating beyond_blossom-0.1.0/src/beyond_blossom/unstructured/predecode
+creating beyond_blossom-0.1.0/src/beyond_blossom/unstructured/search
+creating beyond_blossom-0.1.0/src/beyond_blossom/unstructured/tracker
+creating beyond_blossom-0.1.0/tests
+creating beyond_blossom-0.1.0/tests/matching
+creating beyond_blossom-0.1.0/tests/matching/fixtures
+creating beyond_blossom-0.1.0/tests/rand
+copying files to beyond_blossom-0.1.0...
+copying CITATION.cff -> beyond_blossom-0.1.0
+copying CMakeLists.txt -> beyond_blossom-0.1.0
+copying CONTRIBUTING.md -> beyond_blossom-0.1.0
+copying LICENSE -> beyond_blossom-0.1.0
+copying MANIFEST.in -> beyond_blossom-0.1.0
+copying NOTICE -> beyond_blossom-0.1.0
+copying README.md -> beyond_blossom-0.1.0
+copying SECURITY.md -> beyond_blossom-0.1.0
+copying SOURCE.json -> beyond_blossom-0.1.0
+copying pyproject.toml -> beyond_blossom-0.1.0
+copying setup.py -> beyond_blossom-0.1.0
+copying cmake/BeyondBlossomConfig.cmake.in -> beyond_blossom-0.1.0/cmake
+copying data/negative_weight_circuit.dem -> beyond_blossom-0.1.0/data
+copying data/negative_weight_circuit.stim -> beyond_blossom-0.1.0/data
+copying data/negative_weight_circuit_1000.b8 -> beyond_blossom-0.1.0/data
+copying data/surface_code_rotated_memory_x_13_0.01.dem -> beyond_blossom-0.1.0/data
+copying data/surface_code_rotated_memory_x_13_0.01_1000_shots.b8 -> beyond_blossom-0.1.0/data
+copying data/surface_code_rotated_memory_x_13_0.01_1000_shots_10000_buckets_predictions_reference_v0_7_exact.txt -> beyond_blossom-0.1.0/data
+copying data/surface_code_rotated_memory_x_13_0.01_1000_shots_10000_buckets_solution_weights_reference_v0_7_exact.txt -> beyond_blossom-0.1.0/data
+copying data/surface_code_rotated_memory_x_13_0.01_1000_shots_no_buckets_predictions_reference_correlated.txt -> beyond_blossom-0.1.0/data
+copying data/surface_code_rotated_memory_x_13_0.01_1000_shots_no_buckets_predictions_reference_v0_7_exact.txt -> beyond_blossom-0.1.0/data
+copying data/surface_code_rotated_memory_x_13_0.01_1000_shots_no_buckets_weights_reference_correlated.txt -> beyond_blossom-0.1.0/data
+copying data/surface_code_rotated_memory_x_13_0.01_1000_shots_no_buckets_weights_reference_v0_7_exact.txt -> beyond_blossom-0.1.0/data
+copying data/surface_code_rotated_memory_x_13_0.01_prob_0.2_negative.dem -> beyond_blossom-0.1.0/data
+copying data/surface_code_rotated_memory_x_13_0.01_prob_0.2_negative_1000_shots.b8 -> beyond_blossom-0.1.0/data
+copying data/surface_code_rotated_memory_x_13_0.01_prob_0.2_negative_1000_shots_10000_buckets_predictions_reference_v0_7_exact.txt -> beyond_blossom-0.1.0/data
+copying data/surface_code_rotated_memory_x_13_0.01_prob_0.2_negative_1000_shots_10000_buckets_solution_weights_reference_v0_7_exact.txt -> beyond_blossom-0.1.0/data
+copying data/tagged_circuit.stim -> beyond_blossom-0.1.0/data
+copying data/tagged_dem.dem -> beyond_blossom-0.1.0/data
+copying data/three_errors.b8 -> beyond_blossom-0.1.0/data
+copying data/three_errors.dem -> beyond_blossom-0.1.0/data
+copying data/three_errors.dets -> beyond_blossom-0.1.0/data
+copying data/toric_code_unrotated_memory_x_5_0.005.dem -> beyond_blossom-0.1.0/data
+copying data/toric_code_unrotated_memory_x_5_0.005_1000.b8 -> beyond_blossom-0.1.0/data
+copying licenses/Stim.txt -> beyond_blossom-0.1.0/licenses
+copying licenses/pybind11.txt -> beyond_blossom-0.1.0/licenses
+copying python/beyond_blossom/__init__.py -> beyond_blossom-0.1.0/python/beyond_blossom
+copying python/beyond_blossom/_cli_argv.py -> beyond_blossom-0.1.0/python/beyond_blossom
+copying python/beyond_blossom/_version.py -> beyond_blossom-0.1.0/python/beyond_blossom
+copying python/beyond_blossom/matching.py -> beyond_blossom-0.1.0/python/beyond_blossom
+copying python/beyond_blossom/structured.py -> beyond_blossom-0.1.0/python/beyond_blossom
+copying python/beyond_blossom.egg-info/PKG-INFO -> beyond_blossom-0.1.0/python/beyond_blossom.egg-info
+copying python/beyond_blossom.egg-info/SOURCES.txt -> beyond_blossom-0.1.0/python/beyond_blossom.egg-info
+copying python/beyond_blossom.egg-info/dependency_links.txt -> beyond_blossom-0.1.0/python/beyond_blossom.egg-info
+copying python/beyond_blossom.egg-info/entry_points.txt -> beyond_blossom-0.1.0/python/beyond_blossom.egg-info
+copying python/beyond_blossom.egg-info/not-zip-safe -> beyond_blossom-0.1.0/python/beyond_blossom.egg-info
+copying python/beyond_blossom.egg-info/requires.txt -> beyond_blossom-0.1.0/python/beyond_blossom.egg-info
+copying python/beyond_blossom.egg-info/top_level.txt -> beyond_blossom-0.1.0/python/beyond_blossom.egg-info
+copying src/main.cc -> beyond_blossom-0.1.0/src
+copying src/beyond_blossom/fill_match.h -> beyond_blossom-0.1.0/src/beyond_blossom
+copying src/beyond_blossom/bindings/module.cc -> beyond_blossom-0.1.0/src/beyond_blossom/bindings
+copying src/beyond_blossom/bindings/structured.pybind.cc -> beyond_blossom-0.1.0/src/beyond_blossom/bindings
+copying src/beyond_blossom/bindings/structured.pybind.h -> beyond_blossom-0.1.0/src/beyond_blossom/bindings
+copying src/beyond_blossom/core/arena.h -> beyond_blossom-0.1.0/src/beyond_blossom/core
+copying src/beyond_blossom/core/header_odr_a.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/core
+copying src/beyond_blossom/core/header_odr_b.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/core
+copying src/beyond_blossom/core/implied_weights.h -> beyond_blossom-0.1.0/src/beyond_blossom/core
+copying src/beyond_blossom/core/ints.h -> beyond_blossom-0.1.0/src/beyond_blossom/core
+copying src/beyond_blossom/core/matching_result.h -> beyond_blossom-0.1.0/src/beyond_blossom/core
+copying src/beyond_blossom/core/matching_result.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/core
+copying src/beyond_blossom/core/observable_bits.h -> beyond_blossom-0.1.0/src/beyond_blossom/core
+copying src/beyond_blossom/core/grid/grid_collision_state.h -> beyond_blossom-0.1.0/src/beyond_blossom/core/grid
+copying src/beyond_blossom/core/grid/grid_spec.h -> beyond_blossom-0.1.0/src/beyond_blossom/core/grid
+copying src/beyond_blossom/core/interop/varying.h -> beyond_blossom-0.1.0/src/beyond_blossom/core/interop
+copying src/beyond_blossom/core/interop/varying.inl -> beyond_blossom-0.1.0/src/beyond_blossom/core/interop
+copying src/beyond_blossom/core/interop/varying.perf.cc -> beyond_blossom-0.1.0/src/beyond_blossom/core/interop
+copying src/beyond_blossom/core/interop/varying.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/core/interop
+copying src/beyond_blossom/core/tracker/cyclic.h -> beyond_blossom-0.1.0/src/beyond_blossom/core/tracker
+copying src/beyond_blossom/core/tracker/cyclic.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/core/tracker
+copying src/beyond_blossom/driver/backend.h -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/backend_user_graph.cc -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/backend_user_graph.h -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/decoder_strategy.cc -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/decoder_strategy.h -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/decoder_strategy.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/mwpm_decoding.cc -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/mwpm_decoding.h -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/mwpm_decoding.perf.cc -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/mwpm_decoding.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/namespaced_main.cc -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/namespaced_main.h -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/namespaced_main.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/user_graph.cc -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/user_graph.h -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/user_graph.perf.cc -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/user_graph.pybind.cc -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/user_graph.pybind.h -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/driver/user_graph.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/driver
+copying src/beyond_blossom/perf/main.perf.cc -> beyond_blossom-0.1.0/src/beyond_blossom/perf
+copying src/beyond_blossom/perf/util.perf.cc -> beyond_blossom-0.1.0/src/beyond_blossom/perf
+copying src/beyond_blossom/perf/util.perf.h -> beyond_blossom-0.1.0/src/beyond_blossom/perf
+copying src/beyond_blossom/profile/profile.h -> beyond_blossom-0.1.0/src/beyond_blossom/profile
+copying src/beyond_blossom/profile/profile_io.cc -> beyond_blossom-0.1.0/src/beyond_blossom/profile
+copying src/beyond_blossom/profile/profile_io.h -> beyond_blossom-0.1.0/src/beyond_blossom/profile
+copying src/beyond_blossom/profile/profile_main.cc -> beyond_blossom-0.1.0/src/beyond_blossom/profile
+copying src/beyond_blossom/profile/profile_runner.cc -> beyond_blossom-0.1.0/src/beyond_blossom/profile
+copying src/beyond_blossom/profile/profile_runner.h -> beyond_blossom-0.1.0/src/beyond_blossom/profile
+copying src/beyond_blossom/profile/profile_schema.cc -> beyond_blossom-0.1.0/src/beyond_blossom/profile
+copying src/beyond_blossom/profile/profile_schema.h -> beyond_blossom-0.1.0/src/beyond_blossom/profile
+copying src/beyond_blossom/profile/profile_schema.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/profile
+copying src/beyond_blossom/profile/profile_stats.cc -> beyond_blossom-0.1.0/src/beyond_blossom/profile
+copying src/beyond_blossom/profile/profile_stats.h -> beyond_blossom-0.1.0/src/beyond_blossom/profile
+copying src/beyond_blossom/profile/profile_stats.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/profile
+copying src/beyond_blossom/rand/rand_gen.cc -> beyond_blossom-0.1.0/src/beyond_blossom/rand
+copying src/beyond_blossom/rand/rand_gen.h -> beyond_blossom-0.1.0/src/beyond_blossom/rand
+copying src/beyond_blossom/rand/rand_gen.pybind.cc -> beyond_blossom-0.1.0/src/beyond_blossom/rand
+copying src/beyond_blossom/rand/rand_gen.pybind.h -> beyond_blossom-0.1.0/src/beyond_blossom/rand
+copying src/beyond_blossom/structured/arena.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured
+copying src/beyond_blossom/structured/decoder.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured
+copying src/beyond_blossom/structured/decoder.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured
+copying src/beyond_blossom/structured/diagram/mwpm_diagram.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/diagram
+copying src/beyond_blossom/structured/diagram/mwpm_diagram.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/diagram
+copying src/beyond_blossom/structured/driver/component_decoder.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/driver
+copying src/beyond_blossom/structured/driver/component_decoder.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/driver
+copying src/beyond_blossom/structured/driver/import_pmu.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/driver
+copying src/beyond_blossom/structured/driver/mwpm_decoding.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/driver
+copying src/beyond_blossom/structured/driver/mwpm_decoding.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/driver
+copying src/beyond_blossom/structured/driver/predecode_binding.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/driver
+copying src/beyond_blossom/structured/driver/serial_seed_storage.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/driver
+copying src/beyond_blossom/structured/driver/shared_component_decoder.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/driver
+copying src/beyond_blossom/structured/driver/shared_component_decoder.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/driver
+copying src/beyond_blossom/structured/driver/shared_component_decoder.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/driver
+copying src/beyond_blossom/structured/driver/time_partition_cuts.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/driver
+copying src/beyond_blossom/structured/flooder/detector_node.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/detector_node.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/graph.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/graph.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/graph_fill_region.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/graph_fill_region.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/graph_flooder.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/graph_flooder.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/match.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/match.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/matching_graph_construction_node.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/region_id.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/region_pool.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/region_pool.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/region_pool.test.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/region_radius_store.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder/region_shell.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder
+copying src/beyond_blossom/structured/flooder_matcher_interop/compressed_edge.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder_matcher_interop
+copying src/beyond_blossom/structured/flooder_matcher_interop/compressed_edge.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder_matcher_interop
+copying src/beyond_blossom/structured/flooder_matcher_interop/mwpm_event.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder_matcher_interop
+copying src/beyond_blossom/structured/flooder_matcher_interop/mwpm_event.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder_matcher_interop
+copying src/beyond_blossom/structured/flooder_matcher_interop/region_edge.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder_matcher_interop
+copying src/beyond_blossom/structured/flooder_matcher_interop/region_edge.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/flooder_matcher_interop
+copying src/beyond_blossom/structured/grid/circuit_stencil.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/grid
+copying src/beyond_blossom/structured/grid/static_grid.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/grid
+copying src/beyond_blossom/structured/grid/static_grid.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/grid
+copying src/beyond_blossom/structured/grid/static_grid.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/grid
+copying src/beyond_blossom/structured/grid/static_grid_kernels.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/grid
+copying src/beyond_blossom/structured/grid/static_grid_simd_kernels.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/grid
+copying src/beyond_blossom/structured/matcher/active_trees.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/matcher
+copying src/beyond_blossom/structured/matcher/alternating_tree.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/matcher
+copying src/beyond_blossom/structured/matcher/alternating_tree.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/matcher
+copying src/beyond_blossom/structured/matcher/alternating_tree.inl -> beyond_blossom-0.1.0/src/beyond_blossom/structured/matcher
+copying src/beyond_blossom/structured/matcher/mwpm.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/matcher
+copying src/beyond_blossom/structured/matcher/mwpm.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/matcher
+copying src/beyond_blossom/structured/matcher/mwpm.inl -> beyond_blossom-0.1.0/src/beyond_blossom/structured/matcher
+copying src/beyond_blossom/structured/matcher/serial_import.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/matcher
+copying src/beyond_blossom/structured/matcher/serial_import.test.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/matcher
+copying src/beyond_blossom/structured/predecode/neighborhood_kernels.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/predecode/one_hop_arm_kernels.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/predecode/one_hop_bound_kernel.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/predecode/one_hop_cap.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/predecode/one_hop_kernels.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/predecode/one_hop_neighborhood_simd.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/predecode/one_hop_predecoder.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/predecode/one_hop_predecoder.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/predecode/one_hop_predecoder.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/predecode/one_hop_simd_kernels.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/predecode/one_hop_sparse_cap.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/predecode/predecode_diagnostics.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/predecode/predecode_state.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/predecode/seed_view.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/predecode/structured_profile.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/predecode
+copying src/beyond_blossom/structured/search/search_detector_node.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/search
+copying src/beyond_blossom/structured/search/search_detector_node.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/search
+copying src/beyond_blossom/structured/search/search_flooder.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/search
+copying src/beyond_blossom/structured/search/search_flooder.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/search
+copying src/beyond_blossom/structured/search/search_graph.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/search
+copying src/beyond_blossom/structured/search/search_graph.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/search
+copying src/beyond_blossom/structured/tracker/flood_check_event.cc -> beyond_blossom-0.1.0/src/beyond_blossom/structured/tracker
+copying src/beyond_blossom/structured/tracker/flood_check_event.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/tracker
+copying src/beyond_blossom/structured/tracker/queued_event_tracker.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/tracker
+copying src/beyond_blossom/structured/tracker/radix_heap_queue.h -> beyond_blossom-0.1.0/src/beyond_blossom/structured/tracker
+copying src/beyond_blossom/unstructured/diagram/animation_main.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/diagram
+copying src/beyond_blossom/unstructured/diagram/animation_main.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/diagram
+copying src/beyond_blossom/unstructured/diagram/mwpm_diagram.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/diagram
+copying src/beyond_blossom/unstructured/diagram/mwpm_diagram.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/diagram
+copying src/beyond_blossom/unstructured/diagram/mwpm_diagram.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/diagram
+copying src/beyond_blossom/unstructured/flooder/detector_node.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/detector_node.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/detector_node.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/graph.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/graph.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/graph.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/graph_fill_region.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/graph_fill_region.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/graph_fill_region.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/graph_fill_region.test.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/graph_flooder.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/graph_flooder.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/graph_flooder.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/match.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/match.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/flooder/match.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/flooder
+copying src/beyond_blossom/unstructured/interop/compressed_edge.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/interop
+copying src/beyond_blossom/unstructured/interop/compressed_edge.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/interop
+copying src/beyond_blossom/unstructured/interop/compressed_edge.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/interop
+copying src/beyond_blossom/unstructured/interop/mwpm_event.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/interop
+copying src/beyond_blossom/unstructured/interop/mwpm_event.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/interop
+copying src/beyond_blossom/unstructured/interop/mwpm_event.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/interop
+copying src/beyond_blossom/unstructured/interop/region_edge.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/interop
+copying src/beyond_blossom/unstructured/interop/region_edge.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/interop
+copying src/beyond_blossom/unstructured/matcher/alternating_tree.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/matcher
+copying src/beyond_blossom/unstructured/matcher/alternating_tree.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/matcher
+copying src/beyond_blossom/unstructured/matcher/alternating_tree.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/matcher
+copying src/beyond_blossom/unstructured/matcher/mwpm.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/matcher
+copying src/beyond_blossom/unstructured/matcher/mwpm.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/matcher
+copying src/beyond_blossom/unstructured/matcher/mwpm.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/matcher
+copying src/beyond_blossom/unstructured/predecode/one_hop_predecoder.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/predecode
+copying src/beyond_blossom/unstructured/predecode/one_hop_predecoder.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/predecode
+copying src/beyond_blossom/unstructured/predecode/one_hop_predecoder.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/predecode
+copying src/beyond_blossom/unstructured/search/search_detector_node.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/search
+copying src/beyond_blossom/unstructured/search/search_detector_node.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/search
+copying src/beyond_blossom/unstructured/search/search_flooder.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/search
+copying src/beyond_blossom/unstructured/search/search_flooder.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/search
+copying src/beyond_blossom/unstructured/search/search_flooder.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/search
+copying src/beyond_blossom/unstructured/search/search_graph.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/search
+copying src/beyond_blossom/unstructured/search/search_graph.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/search
+copying src/beyond_blossom/unstructured/search/search_graph.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/search
+copying src/beyond_blossom/unstructured/tracker/flood_check_event.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/tracker
+copying src/beyond_blossom/unstructured/tracker/flood_check_event.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/tracker
+copying src/beyond_blossom/unstructured/tracker/flood_check_event.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/tracker
+copying src/beyond_blossom/unstructured/tracker/queued_event_tracker.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/tracker
+copying src/beyond_blossom/unstructured/tracker/queued_event_tracker.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/tracker
+copying src/beyond_blossom/unstructured/tracker/radix_heap_queue.h -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/tracker
+copying src/beyond_blossom/unstructured/tracker/radix_heap_queue.perf.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/tracker
+copying src/beyond_blossom/unstructured/tracker/radix_heap_queue.test.cc -> beyond_blossom-0.1.0/src/beyond_blossom/unstructured/tracker
+copying tests/cli_test.py -> beyond_blossom-0.1.0/tests
+copying tests/conftest.py -> beyond_blossom-0.1.0/tests
+copying tests/decoder_strategy_differential.cc -> beyond_blossom-0.1.0/tests
+copying tests/decoder_strategy_differential.py -> beyond_blossom-0.1.0/tests
+copying tests/decoder_strategy_validation.py -> beyond_blossom-0.1.0/tests
+copying tests/structured_decoder_test.py -> beyond_blossom-0.1.0/tests
+copying tests/matching/add_noise_test.py -> beyond_blossom-0.1.0/tests/matching
+copying tests/matching/decode_test.py -> beyond_blossom-0.1.0/tests/matching
+copying tests/matching/docstrings_test.py -> beyond_blossom-0.1.0/tests/matching
+copying tests/matching/draw_test.py -> beyond_blossom-0.1.0/tests/matching
+copying tests/matching/edges_test.py -> beyond_blossom-0.1.0/tests/matching
+copying tests/matching/load_from_check_matrix_test.py -> beyond_blossom-0.1.0/tests/matching
+copying tests/matching/load_from_networkx_test.py -> beyond_blossom-0.1.0/tests/matching
+copying tests/matching/load_from_rustworkx_test.py -> beyond_blossom-0.1.0/tests/matching
+copying tests/matching/load_from_stim_test.py -> beyond_blossom-0.1.0/tests/matching
+copying tests/matching/output_graph_test.py -> beyond_blossom-0.1.0/tests/matching
+copying tests/matching/properties_test.py -> beyond_blossom-0.1.0/tests/matching
+copying tests/matching/repr_test.py -> beyond_blossom-0.1.0/tests/matching
+copying tests/matching/retworkx_test.py -> beyond_blossom-0.1.0/tests/matching
+copying tests/matching/static_grid_test.py -> beyond_blossom-0.1.0/tests/matching
+copying tests/matching/fixtures/unrotated_d3_r9_ties.dem -> beyond_blossom-0.1.0/tests/matching/fixtures
+copying tests/matching/fixtures/unrotated_d3_r9_ties.json -> beyond_blossom-0.1.0/tests/matching/fixtures
+copying tests/rand/rand_gen_test.py -> beyond_blossom-0.1.0/tests/rand
+copying python/beyond_blossom.egg-info/SOURCES.txt -> beyond_blossom-0.1.0/python/beyond_blossom.egg-info
+Writing beyond_blossom-0.1.0/setup.cfg
+Creating tar archive
+removing 'beyond_blossom-0.1.0' (and everything under it)

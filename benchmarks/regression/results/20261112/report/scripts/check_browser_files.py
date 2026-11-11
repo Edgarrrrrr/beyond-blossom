@@ -12,7 +12,7 @@ import argparse, hashlib, html, json, shlex
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "browser-verification"
 HARNESS = Path("/tmp/beyond-report-browser-harness")
-PAGES = ["index.html", "mechanisms/structured-primal-inlining.html", "mechanisms/certified-generic-predecode.html", "mechanisms/bounded-density-gate.html", "code-diff/index.html"]
+PAGES = ["index.html", "mechanisms/structured-primal-inlining.html", "mechanisms/certified-generic-predecode.html", "mechanisms/bounded-density-gate.html", "mechanisms/boundary-outline.html", "code-diff/index.html", "boundary-diff/index.html"]
 TEST = r"""
 <script>
 (async()=>{
@@ -44,6 +44,13 @@ try {
   }
   assert(getComputedStyle(by('#code')).resize==='vertical','resizable source pane');
   click('#reset');
+ }else if(PAGE.startsWith('boundary-diff/')){
+  assert(document.querySelectorAll('.line').length===28,'complete function on both sides');
+  assert(document.querySelectorAll('.line p').length===28,'default line explanations');
+  select('#view','unified');assert(document.body.classList.contains('unified'),'stacked view');
+  select('#view','side');assert(!document.body.classList.contains('unified'),'side view');
+  click('#up');assert(getComputedStyle(document.documentElement).getPropertyValue('--size').trim()==='16px','font larger');click('#down');
+  assert([...document.querySelectorAll('.code')].every(x=>getComputedStyle(x).resize==='vertical'),'resizable code panes');
  }else if(PAGE.startsWith('code-diff/')){
   assert(document.querySelectorAll('details.file').length===11,'all source scopes');
   select('#view','side');assert(!document.body.classList.contains('unified-mode'),'side view');
@@ -80,14 +87,14 @@ def prepare():
     records = []
     for page in PAGES:
         source = ROOT / page
-        stem = "report" if page == "index.html" else "code-diff" if page.startswith("code-diff") else source.stem
+        stem = "report" if page == "index.html" else "code-diff" if page.startswith("code-diff") else "boundary-diff" if page.startswith("boundary-diff") else source.stem
         # The base element only resolves original relative resources in this temporary copy.
         document = source.read_text()
         document = document.replace('<meta charset="utf-8">', '<meta charset="utf-8"><base href="' + html.escape(source.as_uri()) + '">', 1)
         document += TEST.replace('PAGE', json.dumps(page)).replace('SHA', json.dumps(sha(source)))
         target = HARNESS / (stem + ".html");target.write_text(document)
         for width in (1440, 760):
-            flags = "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --hide-scrollbars"
+            flags = "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars"
             dump = OUT / f"{stem}-{width}.dom.html"
             screenshot = OUT / f"{stem}-{width}.png"
             # Keep output out of the terminal; the collector extracts one small JSON result.

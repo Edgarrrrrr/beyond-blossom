@@ -1,0 +1,252 @@
+{
+  "commands": [
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=1440,960 --virtual-time-budget=2500 --dump-dom file:///tmp/beyond-report-browser-harness/report.html > /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/report-1440.dom.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=1440,960 --virtual-time-budget=400 --screenshot=/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/report-1440.png file:///home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/index.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=760,960 --virtual-time-budget=2500 --dump-dom file:///tmp/beyond-report-browser-harness/report.html > /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/report-760.dom.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=760,960 --virtual-time-budget=400 --screenshot=/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/report-760.png file:///home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/index.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=1440,960 --virtual-time-budget=2500 --dump-dom file:///tmp/beyond-report-browser-harness/structured-primal-inlining.html > /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/structured-primal-inlining-1440.dom.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=1440,960 --virtual-time-budget=400 --screenshot=/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/structured-primal-inlining-1440.png file:///home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/mechanisms/structured-primal-inlining.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=760,960 --virtual-time-budget=2500 --dump-dom file:///tmp/beyond-report-browser-harness/structured-primal-inlining.html > /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/structured-primal-inlining-760.dom.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=760,960 --virtual-time-budget=400 --screenshot=/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/structured-primal-inlining-760.png file:///home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/mechanisms/structured-primal-inlining.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=1440,960 --virtual-time-budget=2500 --dump-dom file:///tmp/beyond-report-browser-harness/certified-generic-predecode.html > /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/certified-generic-predecode-1440.dom.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=1440,960 --virtual-time-budget=400 --screenshot=/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/certified-generic-predecode-1440.png file:///home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/mechanisms/certified-generic-predecode.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=760,960 --virtual-time-budget=2500 --dump-dom file:///tmp/beyond-report-browser-harness/certified-generic-predecode.html > /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/certified-generic-predecode-760.dom.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=760,960 --virtual-time-budget=400 --screenshot=/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/certified-generic-predecode-760.png file:///home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/mechanisms/certified-generic-predecode.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=1440,960 --virtual-time-budget=2500 --dump-dom file:///tmp/beyond-report-browser-harness/bounded-density-gate.html > /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/bounded-density-gate-1440.dom.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=1440,960 --virtual-time-budget=400 --screenshot=/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/bounded-density-gate-1440.png file:///home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/mechanisms/bounded-density-gate.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=760,960 --virtual-time-budget=2500 --dump-dom file:///tmp/beyond-report-browser-harness/bounded-density-gate.html > /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/bounded-density-gate-760.dom.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=760,960 --virtual-time-budget=400 --screenshot=/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/bounded-density-gate-760.png file:///home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/mechanisms/bounded-density-gate.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=1440,960 --virtual-time-budget=2500 --dump-dom file:///tmp/beyond-report-browser-harness/boundary-outline.html > /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/boundary-outline-1440.dom.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=1440,960 --virtual-time-budget=400 --screenshot=/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/boundary-outline-1440.png file:///home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/mechanisms/boundary-outline.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=760,960 --virtual-time-budget=2500 --dump-dom file:///tmp/beyond-report-browser-harness/boundary-outline.html > /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/boundary-outline-760.dom.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=760,960 --virtual-time-budget=400 --screenshot=/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/boundary-outline-760.png file:///home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/mechanisms/boundary-outline.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=1440,960 --virtual-time-budget=2500 --dump-dom file:///tmp/beyond-report-browser-harness/code-diff.html > /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/code-diff-1440.dom.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=1440,960 --virtual-time-budget=400 --screenshot=/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/code-diff-1440.png file:///home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/code-diff/index.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=760,960 --virtual-time-budget=2500 --dump-dom file:///tmp/beyond-report-browser-harness/code-diff.html > /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/code-diff-760.dom.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=760,960 --virtual-time-budget=400 --screenshot=/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/code-diff-760.png file:///home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/code-diff/index.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=1440,960 --virtual-time-budget=2500 --dump-dom file:///tmp/beyond-report-browser-harness/boundary-diff.html > /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/boundary-diff-1440.dom.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=1440,960 --virtual-time-budget=400 --screenshot=/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/boundary-diff-1440.png file:///home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/boundary-diff/index.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=760,960 --virtual-time-budget=2500 --dump-dom file:///tmp/beyond-report-browser-harness/boundary-diff.html > /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/boundary-diff-760.dom.html",
+    "chromium --headless --no-sandbox --no-zygote --disable-gpu --disable-dev-shm-usage --disable-background-networking --no-first-run --user-data-dir=/tmp/beyond-report-r2-profile --hide-scrollbars --window-size=760,960 --virtual-time-budget=400 --screenshot=/home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/boundary-diff-760.png file:///home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/boundary-diff/index.html"
+  ],
+  "results": [
+    {
+      "index": 0,
+      "exit_code": 0
+    },
+    {
+      "index": 1,
+      "exit_code": 0
+    },
+    {
+      "index": 2,
+      "chunk_id": "3dd4fa",
+      "wall_time_seconds": 0.934928187,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "index": 3,
+      "chunk_id": "b8f51a",
+      "wall_time_seconds": 1.108825867,
+      "exit_code": 0,
+      "original_token_count": 37,
+      "output": "171929 bytes written to file /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/report-760.png\n"
+    },
+    {
+      "index": 4,
+      "chunk_id": "b8ea0f",
+      "wall_time_seconds": 1.041080574,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "index": 5,
+      "chunk_id": "44cc80",
+      "wall_time_seconds": 0.924064243,
+      "exit_code": 0,
+      "original_token_count": 42,
+      "output": "177525 bytes written to file /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/structured-primal-inlining-1440.png\n"
+    },
+    {
+      "index": 6,
+      "chunk_id": "0e80e9",
+      "wall_time_seconds": 0.845077303,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "index": 7,
+      "chunk_id": "e7d02a",
+      "wall_time_seconds": 0.969883813,
+      "exit_code": 0,
+      "original_token_count": 42,
+      "output": "83640 bytes written to file /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/structured-primal-inlining-760.png\n"
+    },
+    {
+      "index": 8,
+      "chunk_id": "8d881b",
+      "wall_time_seconds": 0.860080771,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "index": 9,
+      "chunk_id": "9a89e5",
+      "wall_time_seconds": 0.923346201,
+      "exit_code": 0,
+      "original_token_count": 42,
+      "output": "167876 bytes written to file /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/certified-generic-predecode-1440.png\n"
+    },
+    {
+      "index": 10,
+      "chunk_id": "0c022b",
+      "wall_time_seconds": 0.76556598,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "index": 11,
+      "chunk_id": "aad205",
+      "wall_time_seconds": 0.86715786,
+      "exit_code": 0,
+      "original_token_count": 42,
+      "output": "81797 bytes written to file /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/certified-generic-predecode-760.png\n"
+    },
+    {
+      "index": 12,
+      "chunk_id": "d54352",
+      "wall_time_seconds": 0.877617889,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "index": 13,
+      "chunk_id": "784780",
+      "wall_time_seconds": 0.88843524,
+      "exit_code": 0,
+      "original_token_count": 41,
+      "output": "205292 bytes written to file /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/bounded-density-gate-1440.png\n"
+    },
+    {
+      "index": 14,
+      "chunk_id": "cf50bf",
+      "wall_time_seconds": 0.781556386,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "index": 15,
+      "chunk_id": "70b6a2",
+      "wall_time_seconds": 0.831881476,
+      "exit_code": 0,
+      "original_token_count": 40,
+      "output": "97941 bytes written to file /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/bounded-density-gate-760.png\n"
+    },
+    {
+      "index": 16,
+      "chunk_id": "e273be",
+      "wall_time_seconds": 0.810889385,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "index": 17,
+      "chunk_id": "b48b8c",
+      "wall_time_seconds": 0.869178685,
+      "exit_code": 0,
+      "original_token_count": 40,
+      "output": "182344 bytes written to file /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/boundary-outline-1440.png\n"
+    },
+    {
+      "index": 18,
+      "chunk_id": "698b1f",
+      "wall_time_seconds": 0.798494413,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "index": 19,
+      "chunk_id": "362802",
+      "wall_time_seconds": 0.851050594,
+      "exit_code": 0,
+      "original_token_count": 39,
+      "output": "86148 bytes written to file /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/boundary-outline-760.png\n"
+    },
+    {
+      "index": 20,
+      "chunk_id": "5d5cf6",
+      "wall_time_seconds": 1.05635938,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "index": 21,
+      "chunk_id": "c747e0",
+      "wall_time_seconds": 0.915260808,
+      "exit_code": 0,
+      "original_token_count": 38,
+      "output": "170648 bytes written to file /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/code-diff-1440.png\n"
+    },
+    {
+      "index": 22,
+      "chunk_id": "d937da",
+      "wall_time_seconds": 1.085921148,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "index": 23,
+      "chunk_id": "ca26ea",
+      "wall_time_seconds": 1.252173621,
+      "exit_code": 0,
+      "original_token_count": 38,
+      "output": "146698 bytes written to file /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/code-diff-760.png\n"
+    },
+    {
+      "index": 24,
+      "chunk_id": "5a3a72",
+      "wall_time_seconds": 0.591854683,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "index": 25,
+      "chunk_id": "5eb945",
+      "wall_time_seconds": 0.880428161,
+      "exit_code": 0,
+      "original_token_count": 39,
+      "output": "206785 bytes written to file /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/boundary-diff-1440.png\n"
+    },
+    {
+      "index": 26,
+      "chunk_id": "154b49",
+      "wall_time_seconds": 0.906398717,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "index": 27,
+      "chunk_id": "fe1cb7",
+      "wall_time_seconds": 0.76956219,
+      "exit_code": 0,
+      "original_token_count": 39,
+      "output": "116058 bytes written to file /home/fujy/dev/beyond_blossom/repo/benchmarks/regression/results/20261112/report/browser-verification/boundary-diff-760.png\n"
+    }
+  ],
+  "review": "Root automatic approval accepted local-only Chromium commands under the current permission policy. A fresh /tmp profile was used.",
+  "all_succeeded": true
+}

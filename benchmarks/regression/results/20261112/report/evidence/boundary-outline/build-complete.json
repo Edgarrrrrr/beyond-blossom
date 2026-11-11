@@ -1,0 +1,12 @@
+{
+  "complete": true,
+  "base_commit": "c5da46e12b3865e20d5a8c38157959ffefe8f417",
+  "source_delta_files": [
+    "src/beyond_blossom/structured/matcher/mwpm.inl"
+  ],
+  "original_source_snapshot_sha256": "3af17fa3a4caeb8b1c64c4db2c64e108df2be5821180a252cd624d37d8407a1f",
+  "control_identity_sha256": "370f9374f0859bc9d89d53ce49a9666b89ddf21c7a707edf23ebc7a28f115753",
+  "variant_identity_sha256": "09cc66545623f4991f3749828019f5f3f4d0849365b4bd61d2cb61eba0b760de",
+  "static_assembly_sha256": "f6171624f110dcb74dfd222d8a7c5cef6bad67b39fdebf2c529406c70a2b68df",
+  "timing_started": false
+}

@@ -1,0 +1,17 @@
+{
+  "original_controller": "/tmp/beyond-package-final/run_audit.py",
+  "original_controller_sha256": "a4cd8a6311a17f8c3020090f7b2fe4db89c90581c3c2ed7dc9fdf1c5c7e7f82b",
+  "executed_controller": "/tmp/beyond-package-portable-final/run_audit.py",
+  "executed_controller_sha256": "ed9c99fb4590f015aeb32b253345ca14f6e20685a686e9a954b5fdbd254cc32c",
+  "changes": [
+    "Fresh default output directory",
+    "Require clean selected package paths; retain unrelated repo status in source and final receipt",
+    "Copy actual executed controller into artifact directory",
+    "Installed native SDK CLI help check",
+    "Explicit no_lto receipt after existing compile-command verification"
+  ],
+  "existing_confirmed_setup_fixes": [
+    "Build native CLI target before SDK install",
+    "Include stim/dem/detector_error_model.h in C++ consumer"
+  ]
+}

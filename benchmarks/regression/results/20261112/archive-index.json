@@ -52,12 +52,79 @@
       "file_manifest": "package/mapping.json",
       "file_manifest_sha256": "a99e7e8805151ce2e312fbde5becadc9107c124388cd84512ad8e5a170998ad3",
       "verified_members": true
+    },
+    {
+      "archive": "boundary-outline/archive.tar.gz",
+      "sha256": "9447d2785b38d7706a9c9ddff87220057965ef56755fc9b13afd3f38398fa5d4",
+      "bytes": 63442708,
+      "files": 2495,
+      "file_manifest": "boundary-outline/path-map.json",
+      "file_manifest_sha256": "e06c6fa52465ff68c12cd8daf2728a0d8835c1b1c357f00dcd377a37776bff29",
+      "archive_receipt": "boundary-outline/manifest.json",
+      "archive_receipt_sha256": "016e1cdc5ea5f4a424dc138035852b995744743b60947797f1c6ee1f4ca342ed",
+      "repository_receipt": "boundary-outline/archive.json",
+      "repository_receipt_sha256": "016e1cdc5ea5f4a424dc138035852b995744743b60947797f1c6ee1f4ca342ed",
+      "verified_members": true,
+      "variant_adopted": false,
+      "summary": "Separate 120-call, five-arm boundary-outlining follow-up on three selected cases; all exact checks pass; variant not adopted; original 819-call matrix unchanged.",
+      "relocated_summary_replay": "boundary-outline/relocated-analysis-replay.json"
     }
   ],
   "receipt_policy": "Original bytes and paths are preserved. Full member manifests map original paths to archive members. Large archived files are intentionally outside Git.",
   "replay_verification": "replay-verification.json",
   "member_verification": "root-archives-verification.json",
-  "verified_members_total": 18457,
+  "verified_members_total": 20952,
   "additional_verification": "validation/archives.json",
-  "total_compressed_bytes": 561272916
+  "total_compressed_bytes": 624715624,
+  "evidence_directories": [
+    {
+      "directory": "portable-baseline",
+      "bytes": 956092,
+      "files": 56,
+      "file_manifest": "portable-baseline/manifest.json",
+      "file_manifest_sha256": "d1b042d3a5ebcab60dfb89198896372f1502917ed8605b578b084d79e6a07970",
+      "repository_directory": "benchmarks/regression/results/20261112/portable-baseline",
+      "repository_file_manifest": "portable-baseline/manifest.json",
+      "repository_file_manifest_sha256": "4dfd6cf1ca1c7db4a8be85ebc6258339a10b22a50b607c72a62ed72cf5c992db",
+      "repository_files": 44,
+      "repository_bytes": 433658,
+      "verified_files": true,
+      "manifest_excludes_its_own_bytes": true,
+      "summary": "GCC 12.2: 44 linked objects and full core archive byte-identical; 356 native and 2 Neighborhood tests pass; v3 compile positive/negative controls retained.",
+      "validation_receipt": "portable-baseline/local/validation-receipt.json",
+      "ci_observation": "portable-baseline/ci-fixed-run-43094516453/observation-pending.json",
+      "ci_boundary": "Archived snapshot: 12 steps passed; overall run/job conclusion pending. Original failed CI retained."
+    },
+    {
+      "directory": "package-portable",
+      "bytes": 8359597,
+      "files": 57,
+      "file_manifest": "package-portable/manifest.json",
+      "file_manifest_sha256": "c396a3e3ab471c9562cb55323e471a7d64f57f1c85b51de69f9436a4a6d317bd",
+      "repository_directory": "benchmarks/regression/results/20261112/package-portable",
+      "repository_file_manifest": "package-portable/manifest.json",
+      "repository_file_manifest_sha256": "a6b06fea9333f2293d3e77818084aaf256cbc95d8b0b63610b4748cf4dbcd8dd",
+      "repository_files": 53,
+      "repository_bytes": 858186,
+      "verified_files": true,
+      "manifest_excludes_its_own_bytes": true,
+      "summary": "Fresh d2506bde sdist-to-wheel installation: 250 Python tests, APIs, CLIs and independent installed CMake SDK consumer pass.",
+      "implementation_commit": "d2506bde8ee9a2eba7ad97523fbc948a97142676",
+      "audit_receipt": "package-portable/audit.json",
+      "sdist": {
+        "path": "package-portable/dist/beyond_blossom-0.1.0.tar.gz",
+        "sha256": "73bd440484b87f5991b02597cb4176c790d566fc4476614582d3eb0b7d440feb",
+        "bytes": 1072891
+      },
+      "wheel": {
+        "path": "package-portable/wheels/beyond_blossom-0.1.0-cp311-cp311-linux_x86_64.whl",
+        "sha256": "51e22ffedee53ceed71dbe175e39311c4ff003ccba1935962330721081cb4898",
+        "bytes": 1177325
+      }
+    }
+  ],
+  "evidence_collection_count": 9,
+  "verified_directory_files_total": 113,
+  "total_directory_payload_bytes": 9315689,
+  "supplemental_verification": "supplemental-index-verification.json"
 }

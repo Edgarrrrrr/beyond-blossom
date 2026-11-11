@@ -1,0 +1,510 @@
+{
+  "scope": "Read-only analysis of existing three-repeat 819-call run; not new timing",
+  "original_run": "/tmp/beyond-build/structured-final-run",
+  "records": [
+    {
+      "case": "d17-p0.003",
+      "method": "component-parallel",
+      "repeat": 1,
+      "block_elapsed_ns": {
+        "source": [
+          20704146,
+          21933371,
+          21650572,
+          21652491,
+          21358050,
+          21061792,
+          21060662,
+          21529000,
+          21001537,
+          17005302
+        ],
+        "candidate": [
+          20721762,
+          21252661,
+          21454311,
+          21352550,
+          21480885,
+          21108464,
+          21269265,
+          21882893,
+          21957276,
+          16871216
+        ]
+      },
+      "block_delta_percent": [
+        0.08508440773167258,
+        -3.103535703654492,
+        -0.9064933711682044,
+        -1.3852493923216525,
+        0.5751227289008121,
+        0.22159557933152385,
+        0.9904864339022268,
+        1.6437967392818997,
+        4.55080501965166,
+        -0.788495258714017
+      ],
+      "excluding_last_block_delta_percent": 0.2753016605157921,
+      "raw_blocks": [
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d17-p0.003/01/component-parallel/source/native/native_blocks.csv",
+          "sha256": "0b26c99cc757711f7c3561fdcfb8f64734dd281cb27ebc2ac48a814c5ce969cb"
+        },
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d17-p0.003/01/component-parallel/candidate/native/native_blocks.csv",
+          "sha256": "1949bca4661e1e2b7844dd87ff6f6db3a9b05ad1a429282db6ed9c7ac3bc68c3"
+        }
+      ],
+      "scope_equal": true,
+      "kernel_equal": true
+    },
+    {
+      "case": "d17-p0.003",
+      "method": "component-parallel",
+      "repeat": 2,
+      "block_elapsed_ns": {
+        "source": [
+          20419208,
+          20978047,
+          20694109,
+          20894185,
+          20764170,
+          20635624,
+          20835289,
+          20915524,
+          20942144,
+          16285940
+        ],
+        "candidate": [
+          20805150,
+          21460276,
+          22212627,
+          21955448,
+          21957191,
+          22522507,
+          21906363,
+          21775921,
+          22028429,
+          17449766
+        ]
+      },
+      "block_delta_percent": [
+        1.8900928968449637,
+        2.2987316216805054,
+        7.337924043987587,
+        5.079226588641772,
+        5.745575190339891,
+        9.143813630254161,
+        5.14067263477842,
+        4.113676520846421,
+        5.187076356651921,
+        7.146200956162185
+      ],
+      "excluding_last_block_delta_percent": 5.102468859295817,
+      "raw_blocks": [
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d17-p0.003/02/component-parallel/source/native/native_blocks.csv",
+          "sha256": "2afb66902f2bda69b8020662b2b123dcdefdc0cf2bb3d12284c0e578c25281c3"
+        },
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d17-p0.003/02/component-parallel/candidate/native/native_blocks.csv",
+          "sha256": "055cf39b1079e1919ae0d46b944734d52f03b8f1ec30354e9c6b8c6ca5e0db58"
+        }
+      ],
+      "scope_equal": true,
+      "kernel_equal": true
+    },
+    {
+      "case": "d17-p0.003",
+      "method": "component-parallel",
+      "repeat": 3,
+      "block_elapsed_ns": {
+        "source": [
+          19362996,
+          20691174,
+          21348722,
+          21222491,
+          20837576,
+          20778519,
+          20420839,
+          20575719,
+          20197659,
+          16140035
+        ],
+        "candidate": [
+          21662285,
+          21705609,
+          21940344,
+          21449580,
+          21523422,
+          20888657,
+          21539424,
+          21724128,
+          21207352,
+          16691647
+        ]
+      },
+      "block_delta_percent": [
+        11.874655141177538,
+        4.902742589666498,
+        2.7712291161972047,
+        1.0700393276171116,
+        3.291390514904413,
+        0.5300570266822291,
+        5.4776642624722705,
+        5.581379683499765,
+        4.999059544474926,
+        3.417662972849822
+      ],
+      "excluding_last_block_delta_percent": 4.424771616920897,
+      "raw_blocks": [
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d17-p0.003/03/component-parallel/source/native/native_blocks.csv",
+          "sha256": "8f5561d5a76e242410f4f157819d5fbcaa8644671a3d2e2ce87c8076b4240092"
+        },
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d17-p0.003/03/component-parallel/candidate/native/native_blocks.csv",
+          "sha256": "8d596775320041a940e1a257f41e734d68811d869558d4f4d10082e36ef19076"
+        }
+      ],
+      "scope_equal": true,
+      "kernel_equal": true
+    },
+    {
+      "case": "d17-p0.001",
+      "method": "pipelined",
+      "repeat": 1,
+      "block_elapsed_ns": {
+        "source": [
+          4747530,
+          5045052,
+          5034156,
+          5078355,
+          5113877,
+          5009509,
+          4885269,
+          4840173,
+          5042036,
+          3691181
+        ],
+        "candidate": [
+          4856023,
+          5182224,
+          5099009,
+          5184477,
+          5157614,
+          5142071,
+          5178146,
+          5200740,
+          5121693,
+          3810322
+        ]
+      },
+      "block_delta_percent": [
+        2.285251488668849,
+        2.718941251745277,
+        1.2882596407421731,
+        2.0896924299305564,
+        0.8552610866471744,
+        2.646207442685511,
+        5.995104875494062,
+        7.449465132754551,
+        1.5798578193412238,
+        3.227720342080209
+      ],
+      "excluding_last_block_delta_percent": 2.960177857122237,
+      "raw_blocks": [
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d17-p0.001/01/pipelined/source/native/native_blocks.csv",
+          "sha256": "1283f27a137ae6eb6a7018852df84acf63501a6dda83a00f02e9bcad97016ec4"
+        },
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d17-p0.001/01/pipelined/candidate/native/native_blocks.csv",
+          "sha256": "91369eed034b1ff4b622bdbac3bcf0e78d862045f8ae5fc42b00d1ba60589dc4"
+        }
+      ],
+      "scope_equal": true,
+      "kernel_equal": true
+    },
+    {
+      "case": "d17-p0.001",
+      "method": "pipelined",
+      "repeat": 2,
+      "block_elapsed_ns": {
+        "source": [
+          4764571,
+          4963191,
+          4968147,
+          5115890,
+          5051176,
+          5017816,
+          4909197,
+          4887796,
+          5090178,
+          3785112
+        ],
+        "candidate": [
+          4733180,
+          5008404,
+          5146257,
+          5236573,
+          5020921,
+          5011560,
+          4988943,
+          4844173,
+          4932154,
+          3724747
+        ]
+      },
+      "block_delta_percent": [
+        -0.6588421077154738,
+        0.9109663520908251,
+        3.5850388484881757,
+        2.35898348088015,
+        -0.5989694281094193,
+        -0.12467575534854669,
+        1.6244204500247106,
+        -0.8924881480323665,
+        -3.104488683892781,
+        -1.5948008936063185
+      ],
+      "excluding_last_block_delta_percent": 0.3444494524901476,
+      "raw_blocks": [
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d17-p0.001/02/pipelined/source/native/native_blocks.csv",
+          "sha256": "b5a9fad75208f15e3c48a1418a00013fc097c4e7b48816b4bf5111d54655191d"
+        },
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d17-p0.001/02/pipelined/candidate/native/native_blocks.csv",
+          "sha256": "e1b32241b4027d5ba09798d9c14d6d3c7b1597c6bde4fa743f23732ccf9321fb"
+        }
+      ],
+      "scope_equal": true,
+      "kernel_equal": true
+    },
+    {
+      "case": "d17-p0.001",
+      "method": "pipelined",
+      "repeat": 3,
+      "block_elapsed_ns": {
+        "source": [
+          4795210,
+          5036166,
+          4997302,
+          5093767,
+          4972712,
+          4923743,
+          4856471,
+          4897916,
+          5028637,
+          3732053
+        ],
+        "candidate": [
+          4822442,
+          5057938,
+          5060438,
+          5158557,
+          5062063,
+          5058738,
+          4987990,
+          4940292,
+          5179606,
+          3856519
+        ]
+      },
+      "block_delta_percent": [
+        0.5679000502584852,
+        0.43231299365429354,
+        1.263401731574354,
+        1.271946675220903,
+        1.796826359539816,
+        2.7417149920294426,
+        2.708118714185681,
+        0.8651842947081878,
+        3.0021852840043994,
+        3.335054459301623
+      ],
+      "excluding_last_block_delta_percent": 1.6280463596144434,
+      "raw_blocks": [
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d17-p0.001/03/pipelined/source/native/native_blocks.csv",
+          "sha256": "66d64bca6ae0fa15429f9f9ebac6d9526fcbec1c34c55493c853e4d81975d3ea"
+        },
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d17-p0.001/03/pipelined/candidate/native/native_blocks.csv",
+          "sha256": "52b419bc22e86b54cf6f25f65b586472db04781f8e068795e0759af434c76165"
+        }
+      ],
+      "scope_equal": true,
+      "kernel_equal": true
+    },
+    {
+      "case": "d33-p0.0005",
+      "method": "parallel-predecode",
+      "repeat": 1,
+      "block_elapsed_ns": {
+        "source": [
+          9688338,
+          11251893,
+          11096144,
+          11098117,
+          10757789,
+          10830891,
+          11052101,
+          10782425,
+          10489575,
+          8173521
+        ],
+        "candidate": [
+          9917240,
+          11574009,
+          11516327,
+          10937299,
+          11023558,
+          11332368,
+          11542057,
+          11297271,
+          11273548,
+          9010157
+        ]
+      },
+      "block_delta_percent": [
+        2.3626549775616734,
+        2.862771624294691,
+        3.7867479008924176,
+        -1.449056628255041,
+        2.4704797612223217,
+        4.630062291274095,
+        4.433148050311875,
+        4.774862797561763,
+        7.473829969279033,
+        10.235931369112539
+      ],
+      "excluding_last_block_delta_percent": 3.46882905200232,
+      "raw_blocks": [
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d33-p0.0005/01/parallel-predecode/source/native/native_blocks.csv",
+          "sha256": "a5ea8424c37ca927a0a439ef210a948e812ce92f3ce6c2e991137bd864a8f99a"
+        },
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d33-p0.0005/01/parallel-predecode/candidate/native/native_blocks.csv",
+          "sha256": "e8ea937ea7b5a660904a4d796ce7ccc4342badb36845deec8440eca9df796a66"
+        }
+      ],
+      "scope_equal": true,
+      "kernel_equal": true
+    },
+    {
+      "case": "d33-p0.0005",
+      "method": "parallel-predecode",
+      "repeat": 2,
+      "block_elapsed_ns": {
+        "source": [
+          10052689,
+          11558347,
+          11452694,
+          11661782,
+          10962823,
+          10913122,
+          10716150,
+          10834969,
+          10876453,
+          8239483
+        ],
+        "candidate": [
+          9895259,
+          11720233,
+          11501716,
+          11112513,
+          11185414,
+          10900024,
+          11136471,
+          10871377,
+          11015700,
+          8265231
+        ]
+      },
+      "block_delta_percent": [
+        -1.5660486462875767,
+        1.400598199725267,
+        0.4280390273240453,
+        -4.70999200636747,
+        2.0304168004901646,
+        -0.12002065036934573,
+        3.9223135174479618,
+        0.33602311183353883,
+        1.280261129248661,
+        0.31249533496215953
+      ],
+      "excluding_last_block_delta_percent": 0.3127143658048004,
+      "raw_blocks": [
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d33-p0.0005/02/parallel-predecode/source/native/native_blocks.csv",
+          "sha256": "338229f74e002c57484b519d362c8fb9ce93c65031731346c48f712c77945476"
+        },
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d33-p0.0005/02/parallel-predecode/candidate/native/native_blocks.csv",
+          "sha256": "4a9336c2e2bbc0c5dc7b1f4af67f98a719f56d1675725ef48e4cea96aace84c7"
+        }
+      ],
+      "scope_equal": true,
+      "kernel_equal": true
+    },
+    {
+      "case": "d33-p0.0005",
+      "method": "parallel-predecode",
+      "repeat": 3,
+      "block_elapsed_ns": {
+        "source": [
+          9490496,
+          11087117,
+          11319199,
+          10975294,
+          10832571,
+          10834050,
+          11298431,
+          11079192,
+          10770160,
+          8379184
+        ],
+        "candidate": [
+          9880364,
+          11882698,
+          11532246,
+          11249572,
+          10757496,
+          10793468,
+          11053087,
+          11178091,
+          10676745,
+          8326131
+        ]
+      },
+      "block_delta_percent": [
+        4.107983397285042,
+        7.175724762352553,
+        1.8821738181297176,
+        2.4990492282028987,
+        -0.6930487693087795,
+        -0.3745782971280365,
+        -2.1714873507657884,
+        0.8926553488738165,
+        -0.8673501600719002,
+        -0.6331523451448273
+      ],
+      "excluding_last_block_delta_percent": 1.3484533330139437,
+      "raw_blocks": [
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d33-p0.0005/03/parallel-predecode/source/native/native_blocks.csv",
+          "sha256": "4f6182129ac49523d3f0097530294eeb456e88bf05bf903862d30b4fad15c056"
+        },
+        {
+          "path": "/tmp/beyond-build/structured-final-run/calls/d33-p0.0005/03/parallel-predecode/candidate/native/native_blocks.csv",
+          "sha256": "02bc6793d49e65173a88b68e7111f889410fb4bfe3374c66c3504335c9dfcf4d"
+        }
+      ],
+      "scope_equal": true,
+      "kernel_equal": true
+    }
+  ]
+}

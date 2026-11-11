@@ -1,0 +1,121 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 130768034792,
+      "run_id": 43091092149,
+      "workflow_name": "tests",
+      "head_branch": "beyond-blossom",
+      "run_url": "https://api.github.com/repos/Edgarrrrrr/beyond-blossom/actions/runs/43091092149",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVrDQm88AAAAecmHb6A",
+      "head_sha": "c5da46e12b3865e20d5a8c38157959ffefe8f417",
+      "url": "https://api.github.com/repos/Edgarrrrrr/beyond-blossom/actions/jobs/130768034792",
+      "html_url": "https://github.com/Edgarrrrrr/beyond-blossom/actions/runs/43091092149/job/130768034792",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-11-11T19:51:37Z",
+      "started_at": "2026-11-11T19:51:39Z",
+      "completed_at": "2026-11-11T20:05:07Z",
+      "name": "linux",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-11T19:51:41Z",
+          "completed_at": "2026-11-11T19:51:41Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-11T19:51:41Z",
+          "completed_at": "2026-11-11T19:51:44Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-11T19:51:44Z",
+          "completed_at": "2026-11-11T19:51:44Z"
+        },
+        {
+          "name": "Run python -m pip install '.[test]'",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-11T19:51:44Z",
+          "completed_at": "2026-11-11T19:58:16Z"
+        },
+        {
+          "name": "Run python -m pytest tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-11T19:58:16Z",
+          "completed_at": "2026-11-11T19:58:27Z"
+        },
+        {
+          "name": "Run cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBB_BUILD_PYTHON=OFF",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-11T19:58:27Z",
+          "completed_at": "2026-11-11T19:58:37Z"
+        },
+        {
+          "name": "Run cmake --build build --parallel 2",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 7,
+          "started_at": "2026-11-11T19:58:37Z",
+          "completed_at": "2026-11-11T20:05:04Z"
+        },
+        {
+          "name": "Run ctest --test-dir build --output-on-failure",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 8,
+          "started_at": "2026-11-11T20:05:04Z",
+          "completed_at": "2026-11-11T20:05:04Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15,
+          "started_at": "2026-11-11T20:05:04Z",
+          "completed_at": "2026-11-11T20:05:04Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-11T20:05:04Z",
+          "completed_at": "2026-11-11T20:05:04Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-11T20:05:04Z",
+          "completed_at": "2026-11-11T20:05:05Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/Edgarrrrrr/beyond-blossom/check-runs/130768034792",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000000,
+      "runner_name": "GitHub Actions 1000000000",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

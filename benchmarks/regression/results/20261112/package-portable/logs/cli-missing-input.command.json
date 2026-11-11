@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "/tmp/beyond-package-portable-final/artifacts/installed/bin/beyond-blossom",
+    "predict",
+    "--dem",
+    "/tmp/beyond-package-portable-final/artifacts/outside/missing.dem"
+  ],
+  "cwd": "/tmp/beyond-package-portable-final/artifacts/outside",
+  "expected_returncode": null,
+  "name": "cli-missing-input"
+}

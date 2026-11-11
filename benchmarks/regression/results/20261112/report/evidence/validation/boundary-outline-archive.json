@@ -1,0 +1,35 @@
+{
+  "archive": "/home/fujy/dev/beyond_blossom/validation/20261112/boundary-outline/archive.tar.gz",
+  "archive_bytes": 63442708,
+  "archive_script_sha256": "81e4bfd771cfcb8770a9eb5affac61515f32d62d383f0d4bb3299c84bbfbe615",
+  "archive_sha256": "9447d2785b38d7706a9c9ddff87220057965ef56755fc9b13afd3f38398fa5d4",
+  "complete": true,
+  "created_utc": "2026-11-11T20:46:52.273082+00:00",
+  "finalize_script_sha256": "9d0053493a59f6e6b38d9d6fa475a680c5b58ee9fae109261a1e4323e6ae11e6",
+  "finalized_utc": "2026-11-11T20:48:30.872906+00:00",
+  "formal_819_records_modified": false,
+  "manifest": "/home/fujy/dev/beyond_blossom/validation/20261112/boundary-outline/manifest.json",
+  "path_map": "/home/fujy/dev/beyond_blossom/validation/20261112/boundary-outline/path-map.json",
+  "path_map_sha256": "e06c6fa52465ff68c12cd8daf2728a0d8835c1b1c357f00dcd377a37776bff29",
+  "receipts_preserved_verbatim": true,
+  "relocated_summary_replay": {
+    "command": [
+      "python3",
+      "/home/fujy/dev/beyond_blossom/validation/20261112/boundary-outline/payload/prepared-run/controller/run_confirmatory.py",
+      "--summarize-only",
+      "--output",
+      "/home/fujy/dev/beyond_blossom/validation/20261112/boundary-outline/payload/prepared-run"
+    ],
+    "complete": true,
+    "exit_code": 0,
+    "native_execution": false,
+    "original_summary_sha256": "f853ee210efced855817e0088333b2e3becec77914fe652a479e82d2e508eff4",
+    "relocated_summary_sha256": "f853ee210efced855817e0088333b2e3becec77914fe652a479e82d2e508eff4",
+    "same_summary": true
+  },
+  "schema": 1,
+  "source_files": 2494,
+  "uncompressed_bytes": 252259848,
+  "variant_adopted": false,
+  "verified_regular_members": 2495
+}

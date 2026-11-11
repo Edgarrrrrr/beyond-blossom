@@ -1,0 +1,2 @@
+v3_with_portable_baseline: exit 0
+v3_without_portable_baseline: exit 1

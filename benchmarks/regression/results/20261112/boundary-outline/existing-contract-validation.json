@@ -1,0 +1,41 @@
+{
+  "native_executions": 0,
+  "checks": [
+    {
+      "case": "d17-p0.003",
+      "arm": "source-sealed",
+      "existing_native_contract_passed": true,
+      "elapsed_ns": 208956923
+    },
+    {
+      "case": "d17-p0.003",
+      "arm": "official-sealed",
+      "existing_native_contract_passed": true,
+      "elapsed_ns": 899110994
+    },
+    {
+      "case": "d17-p0.001",
+      "arm": "source-sealed",
+      "existing_native_contract_passed": true,
+      "elapsed_ns": 48487138
+    },
+    {
+      "case": "d17-p0.001",
+      "arm": "official-sealed",
+      "existing_native_contract_passed": true,
+      "elapsed_ns": 226457198
+    },
+    {
+      "case": "d33-p0.0005",
+      "arm": "source-sealed",
+      "existing_native_contract_passed": true,
+      "elapsed_ns": 105220794
+    },
+    {
+      "case": "d33-p0.0005",
+      "arm": "official-sealed",
+      "existing_native_contract_passed": true,
+      "elapsed_ns": 966001827
+    }
+  ]
+}

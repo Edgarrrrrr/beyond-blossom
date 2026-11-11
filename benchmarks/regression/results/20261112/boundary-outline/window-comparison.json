@@ -1,0 +1,150 @@
+{
+  "pool_windows": false,
+  "records": [
+    {
+      "case": "d17-p0.003",
+      "followup_window": {
+        "candidate_change_percent": -1.3897431610468636,
+        "current_median_ns": 19959.537949999998,
+        "current_ns_per_shot": [
+          19976.636,
+          19933.0843,
+          20100.896,
+          20156.695,
+          19942.4399,
+          19940.7458,
+          20018.5934,
+          19815.2194
+        ],
+        "process_repeats": 8,
+        "raw_sha256": "f56adbc5b7af1354afc7aa37d4dd62df68aef7e733b8c13eeacf0c219834f5d6",
+        "source_median_ns": 20240.833550000003,
+        "source_ns_per_shot": [
+          20253.669,
+          20292.4981,
+          20250.6991,
+          20020.9899,
+          19921.538,
+          20230.968,
+          20055.8398,
+          20384.8173
+        ]
+      },
+      "method": "component-parallel",
+      "original_window": {
+        "candidate_change_percent": 3.4264667180424757,
+        "candidate_median_ns": 21033.2448,
+        "candidate_ns_per_shot": [
+          20935.1283,
+          21407.3678,
+          21033.2448
+        ],
+        "process_repeats": 3,
+        "raw_sha256": "5ca69db78382cda364b3db944e268d87084028ff9bfa4d8096a1fd6beee4cce0",
+        "source_median_ns": 20336.424,
+        "source_ns_per_shot": [
+          20895.6923,
+          20336.424,
+          20157.573
+        ]
+      }
+    },
+    {
+      "case": "d17-p0.001",
+      "followup_window": {
+        "candidate_change_percent": 0.8875973650158908,
+        "current_median_ns": 4835.588949999999,
+        "current_ns_per_shot": [
+          4837.9983,
+          4761.1245,
+          4842.0826,
+          4925.2071,
+          4834.6137,
+          4836.5642,
+          4772.7108,
+          4788.4502
+        ],
+        "process_repeats": 8,
+        "raw_sha256": "f56adbc5b7af1354afc7aa37d4dd62df68aef7e733b8c13eeacf0c219834f5d6",
+        "source_median_ns": 4793.046,
+        "source_ns_per_shot": [
+          4829.5139,
+          4797.3422,
+          4788.7498,
+          4846.5966,
+          4872.1708,
+          4786.9424,
+          4762.787,
+          4755.113
+        ]
+      },
+      "method": "pipelined",
+      "original_window": {
+        "candidate_change_percent": 1.4384123888689704,
+        "candidate_median_ns": 4918.4583,
+        "candidate_ns_per_shot": [
+          4993.2319,
+          4864.6912,
+          4918.4583
+        ],
+        "process_repeats": 3,
+        "raw_sha256": "5ca69db78382cda364b3db944e268d87084028ff9bfa4d8096a1fd6beee4cce0",
+        "source_median_ns": 4848.7138,
+        "source_ns_per_shot": [
+          4848.7138,
+          4855.3074,
+          4833.3977
+        ]
+      }
+    },
+    {
+      "case": "d33-p0.0005",
+      "followup_window": {
+        "candidate_change_percent": -0.5122883243807719,
+        "current_median_ns": 10516.08885,
+        "current_ns_per_shot": [
+          10567.4958,
+          10560.7159,
+          10461.2744,
+          10574.8725,
+          10338.3104,
+          10372.0231,
+          10561.8233,
+          10471.4618
+        ],
+        "process_repeats": 8,
+        "raw_sha256": "f56adbc5b7af1354afc7aa37d4dd62df68aef7e733b8c13eeacf0c219834f5d6",
+        "source_median_ns": 10570.238949999999,
+        "source_ns_per_shot": [
+          10791.7509,
+          10678.85,
+          10534.7173,
+          10340.2925,
+          10605.7606,
+          10530.2456,
+          10471.2257,
+          10665.5025
+        ]
+      },
+      "method": "parallel-predecode",
+      "original_window": {
+        "candidate_change_percent": 1.4502747702758612,
+        "candidate_median_ns": 10760.3938,
+        "candidate_ns_per_shot": [
+          10942.3834,
+          10760.3938,
+          10732.9898
+        ],
+        "process_repeats": 3,
+        "raw_sha256": "5ca69db78382cda364b3db944e268d87084028ff9bfa4d8096a1fd6beee4cce0",
+        "source_median_ns": 10606.5694,
+        "source_ns_per_shot": [
+          10522.0794,
+          10726.8512,
+          10606.5694
+        ]
+      }
+    }
+  ],
+  "schema": 1
+}

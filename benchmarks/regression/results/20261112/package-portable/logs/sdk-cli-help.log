@@ -1,0 +1,5 @@
+Beyond Blossom commands:
+    beyond_blossom predict --dem file [--in file] [--out file] [--in_format 01|b8|...] [--out_format 01|b8|...] [--in_includes_appended_observables]
+    beyond_blossom count_mistakes --dem file [--in file] [--out file] [--in_format 01|b8|...] [--out_format 01|B8|...] [--in_includes_appended_observables] [--obs_in] [--obs_in_format]
+    Decoder options for predict/count_mistakes: [--decoder-strategy unstructured|structured|predecoded|component-parallel|pipelined|parallel-predecode] [--decoder-info]. Structured strategies require --grid-distance N --grid-rounds N --grid-geometry rotated|unrotated [--grid-simd auto|scalar|avx2|avx512|avx512vl]. Parallel strategies require --decoder-cpus CPU,CPU,... (2/4/8 CPUs); one persistent team covers the complete input stream and its final drain.
+    beyond_blossom animate --dets_in <file> --dets_in_format 01|b8|... --out_dir <directory> --dem_in <file> --held_frames_per_event # --held_frames_at_start # --held_frames_at_end # --max_growth_between_frames # --max_edge_weight # --pixels_per_unit_length # [--dets_in_includes_appended_observables] [--quiet]

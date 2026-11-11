@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/tmp/beyond-package-portable-final/artifacts/outside/cpp-consumer/build",
+    "--parallel",
+    "2"
+  ],
+  "cwd": "/tmp/beyond-package-portable-final/artifacts/outside",
+  "expected_returncode": 0,
+  "name": "sdk-build"
+}

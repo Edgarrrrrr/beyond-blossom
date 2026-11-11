@@ -1,0 +1,10 @@
+In file included from /usr/lib/gcc/x86_64-linux-gnu/12/include/xmmintrin.h:1316,
+                 from /usr/lib/gcc/x86_64-linux-gnu/12/include/immintrin.h:31,
+                 from /tmp/beyond-github-ci-final/target-repro/target_mismatch.cc:1:
+/usr/lib/gcc/x86_64-linux-gnu/12/include/emmintrin.h: In function ‘__m128i active_batch4(int, int, int, int)’:
+/usr/lib/gcc/x86_64-linux-gnu/12/include/emmintrin.h:670:1: error: inlining failed in call to ‘always_inline’ ‘__m128i _mm_setr_epi32(int, int, int, int)’: target specific option mismatch
+  670 | _mm_setr_epi32 (int __q0, int __q1, int __q2, int __q3)
+      | ^~~~~~~~~~~~~~
+/tmp/beyond-github-ci-final/target-repro/target_mismatch.cc:4:26: note: called from here
+    4 |     return _mm_setr_epi32(a, b, c, d);
+      |            ~~~~~~~~~~~~~~^~~~~~~~~~~~

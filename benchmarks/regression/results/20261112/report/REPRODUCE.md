@@ -1,6 +1,6 @@
 # 离线阅读与复现
 
-直接打开 `index.html`。三个 `mechanisms/*.html` 和 `code-diff/index.html` 均内嵌脚本与样式，不需要网络、CDN或本地服务器。`summary.json` 是图、正文表和机制效果区唯一的数值来源。原始源码与中文解释分别保存在 `sources/`；patch只覆盖清单声明的函数与片段。
+直接打开 `index.html`。四个 `mechanisms/*.html`、`code-diff/index.html` 和 `boundary-diff/index.html` 均内嵌脚本与样式，不需要网络、CDN或本地服务器。三个采用机制与一个未采纳变体分别提供独立页面。`summary.json` 是图、正文表和机制效果区唯一的数值来源。原始源码与中文解释分别保存在 `sources/`；原迁移patch覆盖清单声明的函数与片段，后续变体patch完整覆盖唯一变化的文件。
 
 本报告的来源角色为：
 
@@ -27,6 +27,7 @@ STRUCTURED=/absolute/path/structured-final-run
 python3 "$REPORT/scripts/summarize_results.py" \
   --generic-fast "$FAST" --generic-dense "$DENSE" --structured "$STRUCTURED"
 python3 "$REPORT/scripts/build_pages.py"
+python3 "$REPORT/scripts/build_followup.py"
 python3 "$REPORT/scripts/prepare_overview.py"
 python3 "$REPORT/scripts/render_summary.py" "$REPORT/overview.json" \
   --output "$REPORT/figures/overview" --require-local-sources --pdf \
@@ -38,7 +39,21 @@ python3 "$REPORT/scripts/verify_artifacts.py"
 
 汇总器验证完成状态、raw哈希、完整矩阵键、整数计时、输入身份和小型构建凭据，并重算批次中位数和比值。它保留大输入与二进制的采集哈希，不把轻量分析描述为重新执行native正确性或重哈希全部大文件。绘图需要 matplotlib 和中文字体；本机字体为 `/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc`。布局与 diff 生成器随报告封存，来源是本轮使用的 performance-experiment 工具，其源码哈希见最终 manifest。
 
-只查看或重算数值不需要浏览器。修改交互页后，用 `python3 "$REPORT/scripts/check_browser_files.py" --prepare` 生成直接 Chromium 命令，执行生成的 `browser-verification/run.sh`，再运行同一脚本的 `--collect`。此方式不需要调试端口，实际检查15个场景及1440/760像素布局；临时测试页追加DOM事件检查，截图打开未修改的交付页面。输出包括截图和 `browser-verification.json`，页面改变后旧回执失效。`seal_report.py` 在数值、静态和浏览器回执一致时生成完整文件清单。
+只查看或重算数值不需要浏览器。修改交互页后，用 `python3 "$REPORT/scripts/check_browser_files.py" --prepare` 生成直接 Chromium 命令，执行生成的 `browser-verification/run.sh`，再运行同一脚本的 `--collect`。此方式不需要调试端口，实际检查18个场景及1440/760像素布局；临时测试页追加DOM事件检查，截图打开未修改的交付页面。输出包括截图和 `browser-verification.json`，页面改变后旧回执失效。`seal_report.py` 在数值、静态和浏览器回执一致时生成完整文件清单。
+
+## 未采纳的边界函数变体
+
+后续120次调用是独立测量窗口，使用原矩阵中三个设置的30,000条保存记录。每个设置五臂、八次进程重复，重复执行不会新增独立记录。`evidence/boundary-outline/` 包含原始CSV、完成收据、冻结协议、完整控制器、各臂身份、完整原/变体头文件和实际ELF静态分析。变体身份为c5da快照加单行 `[[gnu::noinline]]` 补丁，没有对应已合入运行时提交。
+
+`build_followup.py` 默认从随包小数据重算120行，核验完成哈希、执行顺序、输入身份、八次配对数值和唯一源码变化，然后更新同一 `summary.json` 的 `boundary_outline` 字段。原 `generic` 和 `structured` 字段保持不变。该操作不重新验证大二进制或执行解码器。
+
+```sh
+python3 "$REPORT/scripts/build_followup.py"
+python3 "$REPORT/scripts/build_report.py"
+node "$REPORT/scripts/test_models.js"
+```
+
+完整运行目录与源快照由工作区的boundary-outline归档保存，位置、SHA256、2495成员校验及异路径重算结果见[持久归档清单](evidence/validation/boundary-outline-archive.json)。归档中的冻结控制器支持 `--prepare-only` 和显式 `--execute`，并拒绝再次执行已开始的目录。新采集需要重建或恢复各臂及其收据、原主机CPU放置和同输入，再创建新输出；本报告没有把它扩展为完整21设置的新矩阵。原819-call与后续120-call结果不合并，观察范围也不作为统计等价证明。
 
 固定代码节选已包含在 `sources/`。如需从 Git 再导出，运行 `extract_sources.py --repo /path/to/repo`、`annotate_sources.py`，然后把已有 `code-diff/` 移到另一处，再运行 `build_diff.py`。源文件是精确字节副本，中文说明保存在独立清单。代码导出不会重新构建或执行解码器。
 

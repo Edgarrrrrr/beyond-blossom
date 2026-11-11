@@ -1151,7 +1151,7 @@
     {
       "label": "Canonical verified summary.json",
       "path": "summary.json",
-      "sha256": "9e96e381b6ab1b29bce81205b7b9cc1a5e8188a3c3b4615c7fb97a0425e461d9",
+      "sha256": "c5249460adb8a44ebe7bad2586f51c134700cb8edbca512b9f746fc0107767ef",
       "verified_local": true
     }
   ],
@@ -1163,7 +1163,7 @@
   "max_speedup": 10.096629509739083,
   "formula": "speedup = baseline latency / candidate latency (>1 is better)",
   "aggregation": "equal-weight geometric mean of case speedups; descriptive, not significance",
-  "experiment_id": "BB-MIGRATION-20261112 / r1",
+  "experiment_id": "BB-MIGRATION-20261112 / r2",
   "status": "final",
-  "input_sha256": "4c9e8f6dcda7817bf25799af8d58769088ac2f2da5c9b33a97f85d77e78936a0"
+  "input_sha256": "76e02926bf9f47097bb0fe8349470adb47ed6d2ab2ae8536c75396f35cf8d146"
 }

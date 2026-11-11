@@ -52,6 +52,24 @@ def main():
                     unique.add((source["commit"], source["path"], number))
                     count += 1
     assert count == annotations["nonempty_lines"]
+    followup=json.loads((ROOT/'evidence/boundary-outline/line-explanations.json').read_text())
+    followup_lines=0
+    for name,sides in followup['origin']['excerpts'].items():
+        for side,source in sides.items():
+            full=ROOT/source['full_source']
+            assert sha(full)==source['source_sha256']
+            body=''.join(full.read_text().splitlines(True)[source['start']-1:source['end']])
+            assert body==source['text']
+            assert hashlib.sha256(body.encode()).hexdigest()==source['excerpt_sha256']
+            notes=followup['sources'][name][side]
+            for number,(line,note) in enumerate(zip(body.splitlines(),notes),source['start']):
+                assert note['source']==line and note['line']==number
+                if line.strip():assert note['explanation'].strip();followup_lines+=1
+    summary=json.loads((ROOT/'summary.json').read_text())
+    for item in summary['boundary_outline']['references']:assert sha(ROOT/item['path'])==item['sha256']
+    boundary_diff=json.loads((ROOT/'boundary-diff/manifest.json').read_text())
+    assert boundary_diff['patch_sha256']==sha(ROOT/'boundary-diff/diff.patch')
+    assert boundary_diff['line_explanations_sha256']==sha(ROOT/'evidence/boundary-outline/line-explanations.json')
     coverage = json.loads((ROOT / "optimization-coverage.json").read_text())
     for item in coverage["optimizations"]:
         for name in ("html", "line_explanations", "summary"):
@@ -81,6 +99,7 @@ def main():
         "status": "passed", "kind": "static report verification",
         "source_scopes": len(sources["excerpts"]), "explained_nonempty_lines": count,
         "unique_source_lines": len(unique), "standalone_html_pages": len(documents),
+        "followup_explained_nonempty_lines":followup_lines,
         "verified_local_links": links, "browser_execution": "separate verification",
         "summary_sha256": sha(ROOT / "summary.json"),
         "source_manifest_sha256": sha(ROOT / "sources/manifest.json"),

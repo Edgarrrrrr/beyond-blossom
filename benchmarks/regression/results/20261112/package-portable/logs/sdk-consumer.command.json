@@ -1,0 +1,8 @@
+{
+  "argv": [
+    "/tmp/beyond-package-portable-final/artifacts/outside/cpp-consumer/build/consumer"
+  ],
+  "cwd": "/tmp/beyond-package-portable-final/artifacts/outside",
+  "expected_returncode": 0,
+  "name": "sdk-consumer"
+}
