@@ -10,5 +10,9 @@ commit 241160314087e5ae698c6e76c3c055a11c3ad422.
 The project changes package names, backend organization, primal inlining,
 public interfaces, predecoding, and artifact-evaluation workflows.
 
-Stim, pybind11, and GoogleTest are separately licensed dependencies;
-their licenses remain with their source distributions.
+The native extension includes code from Stim (Apache-2.0) and pybind11
+(BSD-3-Clause). Their license texts accompany this distribution in licenses/.
+GoogleTest is a separately supplied test dependency.
+
+The external benchmark adapters and their bundled dependencies retain their
+own licenses; see AE/external/THIRD_PARTY_NOTICES.md in the source repository.

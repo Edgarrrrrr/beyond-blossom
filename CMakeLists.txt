@@ -293,6 +293,9 @@ install(TARGETS libbeyond_blossom libstim beyond_blossom_build_options
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(FILES LICENSE NOTICE DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/BeyondBlossom)
+install(FILES "${stim_SOURCE_DIR}/LICENSE"
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/BeyondBlossom RENAME Stim.txt)
 install(DIRECTORY "${stim_SOURCE_DIR}/src/" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
     FILES_MATCHING PATTERN "*.h" PATTERN "*.inl" PATTERN "*.test.h" EXCLUDE)
 install(EXPORT BeyondBlossomTargets NAMESPACE BeyondBlossom::
@@ -377,6 +380,6 @@ if(BB_BUILD_PYTHON)
         pybind11_add_module(_cpp_beyond_blossom NO_EXTRAS ${PYTHON_API_FILES})
         target_link_libraries(_cpp_beyond_blossom PRIVATE libbeyond_blossom)
     else()
-        message(FATAL_ERROR "Cannot build _cpp_beyond_blossom: provide BB_PYBIND11_SOURCE_DIR, pybind11_DIR, or initialize the pybind11 submodule")
+        message(FATAL_ERROR "Cannot build _cpp_beyond_blossom: install pybind11 or provide BB_PYBIND11_SOURCE_DIR or pybind11_DIR")
     endif()
 endif()

@@ -146,6 +146,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     license="Apache 2",
+    license_files=["LICENSE", "NOTICE", "licenses/*.txt"],
     ext_modules=[CMakeExtension("beyond_blossom._cpp_beyond_blossom")],
     packages=find_packages("python"),
     package_dir={'': 'python'},

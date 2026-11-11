@@ -1,4 +1,5 @@
 include CMakeLists.txt LICENSE NOTICE README.md
+recursive-include licenses *.txt
 recursive-include cmake *.cmake.in
 recursive-include src *.h *.inl *.cc
 recursive-include python *.py

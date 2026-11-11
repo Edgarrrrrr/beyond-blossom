@@ -1,0 +1,6 @@
+# Preserve byte-identical upstream sources, patches and archived evidence.
+AE/external/sources/** -whitespace
+AE/external/patches/** -whitespace
+AE/data/** -whitespace
+AE/figures/** -whitespace
+AE/m4_pro/figures/** -whitespace
