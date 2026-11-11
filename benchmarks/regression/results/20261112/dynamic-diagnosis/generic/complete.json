@@ -1,0 +1,10 @@
+{
+  "accepted_calls": 72,
+  "all_planned_calls_attempted": true,
+  "collector_sha256": "773eafaac45699f88cd6d3e28a1059308b49fa3b14a4e475f191de215f549914",
+  "complete": true,
+  "finished_utc": "2026-11-11T22:02:20.659169+00:00",
+  "kind": "full",
+  "output_manifest_sha256": "4ce3a7ff45f0a38dabaf9be5f491f69148604424b48b97d3647be4e899cf2b72",
+  "planned_calls": 72
+}

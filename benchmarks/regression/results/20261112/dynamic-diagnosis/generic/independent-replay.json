@@ -1,0 +1,15 @@
+{
+  "returncode": 0,
+  "before_sha256": {
+    "summary.json": "3a0f110bf6028b1c3aef1fd78cb94d4acadb6fc1a6e55aeae2f21456e09b1aa0",
+    "process-medians.json": "3f0e2c611cc9a9e51dca755f75eff39d4768e1873130b99bb90c2914b482c896",
+    "raw.csv": "3f50302c693b8a613570200d61cfe52d318633657bb3026882725f19dd837bf3"
+  },
+  "after_sha256": {
+    "summary.json": "3a0f110bf6028b1c3aef1fd78cb94d4acadb6fc1a6e55aeae2f21456e09b1aa0",
+    "process-medians.json": "3f0e2c611cc9a9e51dca755f75eff39d4768e1873130b99bb90c2914b482c896",
+    "raw.csv": "3f50302c693b8a613570200d61cfe52d318633657bb3026882725f19dd837bf3"
+  },
+  "byte_identical": true,
+  "native_execution": false
+}

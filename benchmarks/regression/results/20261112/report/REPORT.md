@@ -13,3 +13,5 @@
 实现：edd29b6780713dc78f6a99d67c4c4d192e9c52b5。官方基线：e27b8c6a5f5ba10fb74d4ebb29822f2df5e12bcd。迁移来源：241160314087e5ae698c6e76c3c055a11c3ad422。
 
 后续五臂隔离验证保留为独立测量窗口：120次调用、8次进程重复、30,000条保存记录。单函数noinline变体未采纳；原819-call矩阵不变。见[后续结果](index.html#boundary-followup)、[交互机制](mechanisms/boundary-outline.html)与[完整变体差异](boundary-diff/index.html)。
+
+[后续动态诊断](evidence/dynamic-diagnosis/README.md)与[最终 CI 结果](evidence/ci-final/README.md)保留新增证据，原性能表不变。

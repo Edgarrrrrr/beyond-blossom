@@ -1,0 +1,106 @@
+{
+  "scope": "Three windows kept separate; 17 paired pure source/candidate observations; no native_shots scans, no pooling or new confidence tolerance",
+  "windows": [
+    {
+      "window": "original-819",
+      "repeats": 3,
+      "source_median_ns": 4848.7138,
+      "candidate_median_ns": 4918.4583,
+      "official_median_ns": 22697.6733,
+      "ratio_of_medians_change_percent": 1.4384123888689704,
+      "median_paired_change_percent": 1.7598510463974426,
+      "mean_paired_change_percent": 1.6445550100787854,
+      "paired_change_range_percent": [
+        0.19326891640270016,
+        2.9805450674362133
+      ],
+      "source_range_ns": [
+        4833.3977,
+        4855.3074
+      ],
+      "candidate_range_ns": [
+        4864.6912,
+        4993.2319
+      ],
+      "candidate_slower_pairs": 3,
+      "source_candidate_ranges_overlap": false,
+      "all_paired_changes_percent": [
+        2.9805450674362133,
+        0.19326891640270016,
+        1.7598510463974426
+      ],
+      "raw_path": "/tmp/beyond-build/structured-final-run/raw.csv",
+      "raw_sha256": "5ca69db78382cda364b3db944e268d87084028ff9bfa4d8096a1fd6beee4cce0"
+    },
+    {
+      "window": "followup-120",
+      "repeats": 8,
+      "source_median_ns": 4793.046,
+      "candidate_median_ns": 4835.588949999999,
+      "official_median_ns": 22638.922850000003,
+      "ratio_of_medians_change_percent": 0.8875973650158908,
+      "median_paired_change_percent": 0.45472116395286477,
+      "mean_paired_change_percent": 0.4164510718977235,
+      "paired_change_range_percent": [
+        -0.7708494127504739,
+        1.6219732420065691
+      ],
+      "source_range_ns": [
+        4755.113,
+        4872.1708
+      ],
+      "candidate_range_ns": [
+        4761.1245,
+        4925.2071
+      ],
+      "candidate_slower_pairs": 6,
+      "source_candidate_ranges_overlap": true,
+      "all_paired_changes_percent": [
+        0.17567813605423588,
+        -0.7549534406780523,
+        1.113710304931792,
+        1.6219732420065691,
+        -0.7708494127504739,
+        1.0366074177119877,
+        0.2083611969210475,
+        0.701081130984682
+      ],
+      "raw_path": "/tmp/beyond-boundary-outline-20261112/prepared-run/raw.csv",
+      "raw_sha256": "f56adbc5b7af1354afc7aa37d4dd62df68aef7e733b8c13eeacf0c219834f5d6"
+    },
+    {
+      "window": "diagnosis-54-sealed",
+      "repeats": 6,
+      "source_median_ns": 4845.47135,
+      "candidate_median_ns": 4852.4619,
+      "official_median_ns": 22658.84345,
+      "ratio_of_medians_change_percent": 0.1442697623214917,
+      "median_paired_change_percent": 0.2757869573757066,
+      "mean_paired_change_percent": -0.021907683561213826,
+      "paired_change_range_percent": [
+        -3.1047309962762837,
+        2.3548447288419982
+      ],
+      "source_range_ns": [
+        4785.789,
+        4977.8902
+      ],
+      "candidate_range_ns": [
+        4819.0253,
+        4898.4869
+      ],
+      "candidate_slower_pairs": 3,
+      "source_candidate_ranges_overlap": true,
+      "all_paired_changes_percent": [
+        -0.015871333094252815,
+        -0.552072397050829,
+        0.6189386483664183,
+        0.567445247845666,
+        -3.1047309962762837,
+        2.3548447288419982
+      ],
+      "raw_path": "/tmp/beyond-dynamic-diagnosis/prepared-54-r4/raw.csv",
+      "raw_sha256": "6976b6893c489f6951811c7954e4fb951316c7f3fbfa03266499a1427b23521b"
+    }
+  ]
+}

@@ -1,0 +1,479 @@
+{
+  "schema": 1,
+  "complete": true,
+  "scope": "One selected d17/p0.001 cell, six process repeats, 10000 reused saved records; exploratory diagnosis",
+  "plan_sha256": "e2dd940c6dfec208a4b4f91cbc8d37ece187c79f78e0daeedcb800e816737b24",
+  "raw_sha256": "6976b6893c489f6951811c7954e4fb951316c7f3fbfa03266499a1427b23521b",
+  "distinct_saved_records": 10000,
+  "official_revision": "e27b8c6a5f5ba10fb74d4ebb29822f2df5e12bcd",
+  "series": {
+    "source/sealed": {
+      "ns_per_shot": [
+        4850.2542,
+        4845.7775,
+        4845.1652,
+        4828.0429,
+        4977.8902,
+        4785.789
+      ],
+      "median_ns": 4845.47135,
+      "observed_range_ns": [
+        4785.789,
+        4977.8902
+      ]
+    },
+    "candidate/sealed": {
+      "ns_per_shot": [
+        4849.4844,
+        4819.0253,
+        4875.1538,
+        4855.4394,
+        4823.3401,
+        4898.4869
+      ],
+      "median_ns": 4852.4619,
+      "observed_range_ns": [
+        4819.0253,
+        4898.4869
+      ]
+    },
+    "official/sealed": {
+      "ns_per_shot": [
+        22593.3982,
+        22533.0144,
+        23085.1245,
+        22691.352,
+        22626.3349,
+        22696.2052
+      ],
+      "median_ns": 22658.84345,
+      "observed_range_ns": [
+        22533.0144,
+        23085.1245
+      ]
+    },
+    "source/off": {
+      "ns_per_shot": [
+        4871.1732,
+        4879.0251,
+        4883.8785,
+        4911.9222,
+        4872.1937,
+        4827.5749
+      ],
+      "median_ns": 4875.609399999999,
+      "observed_range_ns": [
+        4827.5749,
+        4911.9222
+      ]
+    },
+    "candidate/off": {
+      "ns_per_shot": [
+        4783.4141,
+        4829.5588,
+        4880.5984,
+        4763.8015,
+        4791.9477,
+        4792.0338
+      ],
+      "median_ns": 4791.99075,
+      "observed_range_ns": [
+        4763.8015,
+        4880.5984
+      ]
+    },
+    "official/off": {
+      "ns_per_shot": [
+        22974.4462,
+        22467.5712,
+        22750.6873,
+        22515.5516,
+        22607.438,
+        22608.2676
+      ],
+      "median_ns": 22607.8528,
+      "observed_range_ns": [
+        22467.5712,
+        22974.4462
+      ]
+    },
+    "source/on": {
+      "ns_per_shot": [
+        4826.6612,
+        4970.6898,
+        4890.9358,
+        4880.255,
+        4837.4112,
+        4817.3355
+      ],
+      "median_ns": 4858.8331,
+      "observed_range_ns": [
+        4817.3355,
+        4970.6898
+      ],
+      "pmu_per_process": [
+        {
+          "task_cpu_ns": 193170821.0,
+          "user_cycles": 700837934.0,
+          "user_instructions": 381230216.0,
+          "reference_cycles": 399620676.0,
+          "extra_envelope_ns": 68180.0,
+          "extra_envelope_ratio": 0.0014125122481261528
+        },
+        {
+          "task_cpu_ns": 198894844.0,
+          "user_cycles": 697820524.0,
+          "user_instructions": 381078143.0,
+          "reference_cycles": 409551828.0,
+          "extra_envelope_ns": 69138.0,
+          "extra_envelope_ratio": 0.0013908655191687493
+        },
+        {
+          "task_cpu_ns": 195741029.0,
+          "user_cycles": 700225667.0,
+          "user_instructions": 381058362.0,
+          "reference_cycles": 404204136.0,
+          "extra_envelope_ns": 51178.0,
+          "extra_envelope_ratio": 0.001046345470079361
+        },
+        {
+          "task_cpu_ns": 195294510.0,
+          "user_cycles": 697415774.0,
+          "user_instructions": 380755497.0,
+          "reference_cycles": 401677584.0,
+          "extra_envelope_ns": 49361.0,
+          "extra_envelope_ratio": 0.001011407341320298
+        },
+        {
+          "task_cpu_ns": 193598028.0,
+          "user_cycles": 702157143.0,
+          "user_instructions": 381355189.0,
+          "reference_cycles": 400527792.0,
+          "extra_envelope_ns": 48521.0,
+          "extra_envelope_ratio": 0.0010029844166058383
+        },
+        {
+          "task_cpu_ns": 192789622.0,
+          "user_cycles": 697968445.0,
+          "user_instructions": 380850128.0,
+          "reference_cycles": 399124824.0,
+          "extra_envelope_ns": 47978.0,
+          "extra_envelope_ratio": 0.0009959091916307344
+        }
+      ]
+    },
+    "candidate/on": {
+      "ns_per_shot": [
+        4852.0752,
+        4829.4169,
+        4876.1236,
+        4841.5054,
+        4755.5279,
+        4790.6425
+      ],
+      "median_ns": 4835.46115,
+      "observed_range_ns": [
+        4755.5279,
+        4876.1236
+      ],
+      "pmu_per_process": [
+        {
+          "task_cpu_ns": 194178508.0,
+          "user_cycles": 694844844.0,
+          "user_instructions": 381477956.0,
+          "reference_cycles": 402135888.0,
+          "extra_envelope_ns": 67773.0,
+          "extra_envelope_ratio": 0.0013967256158257896
+        },
+        {
+          "task_cpu_ns": 193269096.0,
+          "user_cycles": 700478258.0,
+          "user_instructions": 382358584.0,
+          "reference_cycles": 398892564.0,
+          "extra_envelope_ns": 64402.0,
+          "extra_envelope_ratio": 0.0013334877149426406
+        },
+        {
+          "task_cpu_ns": 195127200.0,
+          "user_cycles": 698877401.0,
+          "user_instructions": 381922470.0,
+          "reference_cycles": 402260964.0,
+          "extra_envelope_ns": 68306.0,
+          "extra_envelope_ratio": 0.0014007678527612646
+        },
+        {
+          "task_cpu_ns": 193760278.0,
+          "user_cycles": 697910203.0,
+          "user_instructions": 381752118.0,
+          "reference_cycles": 398687436.0,
+          "extra_envelope_ns": 50502.0,
+          "extra_envelope_ratio": 0.0010430528091594008
+        },
+        {
+          "task_cpu_ns": 190315790.0,
+          "user_cycles": 699089137.0,
+          "user_instructions": 381842851.0,
+          "reference_cycles": 394588656.0,
+          "extra_envelope_ns": 46035.0,
+          "extra_envelope_ratio": 0.0009679889105710087
+        },
+        {
+          "task_cpu_ns": 191718402.0,
+          "user_cycles": 693188413.0,
+          "user_instructions": 381105601.0,
+          "reference_cycles": 397028100.0,
+          "extra_envelope_ns": 46972.0,
+          "extra_envelope_ratio": 0.0009804541215016687
+        }
+      ]
+    },
+    "official/on": {
+      "ns_per_shot": [
+        22822.7446,
+        22590.7598,
+        22792.6859,
+        22597.4145,
+        22508.7635,
+        22634.1799
+      ],
+      "median_ns": 22615.7972,
+      "observed_range_ns": [
+        22508.7635,
+        22822.7446
+      ],
+      "pmu_per_process": [
+        {
+          "task_cpu_ns": 228221245.0,
+          "user_cycles": 835977848.0,
+          "user_instructions": 1386292646.0,
+          "reference_cycles": 471009168.0,
+          "extra_envelope_ns": 17613.0,
+          "extra_envelope_ratio": 7.717253637423418e-05
+        },
+        {
+          "task_cpu_ns": 225918037.0,
+          "user_cycles": 836246313.0,
+          "user_instructions": 1386292646.0,
+          "reference_cycles": 466436040.0,
+          "extra_envelope_ns": 36381.0,
+          "extra_envelope_ratio": 0.00016104310640266905
+        },
+        {
+          "task_cpu_ns": 227859676.0,
+          "user_cycles": 834910183.0,
+          "user_instructions": 1386292646.0,
+          "reference_cycles": 470999592.0,
+          "extra_envelope_ns": 15074.0,
+          "extra_envelope_ratio": 6.613499756142004e-05
+        },
+        {
+          "task_cpu_ns": 225915668.0,
+          "user_cycles": 839309883.0,
+          "user_instructions": 1386292646.0,
+          "reference_cycles": 466152456.0,
+          "extra_envelope_ns": 14601.0,
+          "extra_envelope_ratio": 6.4613352477401e-05
+        },
+        {
+          "task_cpu_ns": 225046761.0,
+          "user_cycles": 838181778.0,
+          "user_instructions": 1386292658.0,
+          "reference_cycles": 465718008.0,
+          "extra_envelope_ns": 15721.0,
+          "extra_envelope_ratio": 6.984365913849079e-05
+        },
+        {
+          "task_cpu_ns": 226320662.0,
+          "user_cycles": 842260696.0,
+          "user_instructions": 1386292646.0,
+          "reference_cycles": 468086052.0,
+          "extra_envelope_ns": 14694.0,
+          "extra_envelope_ratio": 6.49192327251817e-05
+        }
+      ]
+    }
+  },
+  "comparisons": [
+    {
+      "baseline": "source/sealed",
+      "candidate": "candidate/sealed",
+      "speedup_ratio_of_medians": 0.9985593807547463,
+      "candidate_change_percent": 0.1442697623214917,
+      "paired_speedups": [
+        1.0001587385248625,
+        1.005551371560552,
+        0.993848686373751,
+        0.9943575652493984,
+        1.032042131965772,
+        0.9769933242038475
+      ],
+      "paired_speedup_median": 0.9972581518871304
+    },
+    {
+      "baseline": "source/off",
+      "candidate": "candidate/off",
+      "speedup_ratio_of_medians": 1.0174496684911172,
+      "candidate_change_percent": -1.7150399701829966,
+      "paired_speedups": [
+        1.018346540392562,
+        1.0102424055795738,
+        1.0006720692282323,
+        1.0310929622067586,
+        1.0167460091436307,
+        1.007416704782007
+      ],
+      "paired_speedup_median": 1.0134942073616022
+    },
+    {
+      "baseline": "source/on",
+      "candidate": "candidate/on",
+      "speedup_ratio_of_medians": 1.004833447994924,
+      "candidate_change_percent": -0.48101981523094306,
+      "paired_speedups": [
+        0.9947622411128334,
+        1.0292525791260638,
+        1.0030376998647041,
+        1.0080036263101142,
+        1.0172185510676952,
+        1.0055719039773894
+      ],
+      "paired_speedup_median": 1.0067877651437518
+    },
+    {
+      "baseline": "source/sealed",
+      "candidate": "source/off",
+      "speedup_ratio_of_medians": 0.99381860860306,
+      "candidate_change_percent": 0.6219838654086596,
+      "paired_speedups": [
+        0.9957055520013126,
+        0.9931856058703203,
+        0.9920732467034142,
+        0.9829233248034752,
+        1.0216938214094402,
+        0.9913443290128964
+      ],
+      "paired_speedup_median": 0.9926294262868673
+    },
+    {
+      "baseline": "candidate/sealed",
+      "candidate": "candidate/off",
+      "speedup_ratio_of_medians": 1.0126192125892564,
+      "candidate_change_percent": -1.2461952560616774,
+      "paired_speedups": [
+        1.0138123730496176,
+        0.9978189519092304,
+        0.9988844400719388,
+        1.0192362968944026,
+        1.006551073168015,
+        1.0222145970673244
+      ],
+      "paired_speedup_median": 1.0101817231088162
+    },
+    {
+      "baseline": "official/sealed",
+      "candidate": "official/off",
+      "speedup_ratio_of_medians": 1.002255439755871,
+      "candidate_change_percent": -0.2250364195000465,
+      "paired_speedups": [
+        0.9834142683273907,
+        1.0029127848051507,
+        1.0147000921594136,
+        1.0078079543918435,
+        1.0008358709200045,
+        1.0038896213348076
+      ],
+      "paired_speedup_median": 1.0034012030699793
+    },
+    {
+      "baseline": "source/off",
+      "candidate": "source/on",
+      "speedup_ratio_of_medians": 1.0034527425936897,
+      "candidate_change_percent": -0.3440862182274018,
+      "paired_speedups": [
+        1.009222109892445,
+        0.9815589578734122,
+        0.9985570655006348,
+        1.0064888412593194,
+        1.0071903128681723,
+        1.0021255318422393
+      ],
+      "paired_speedup_median": 1.0043071865507793
+    },
+    {
+      "baseline": "candidate/off",
+      "candidate": "candidate/on",
+      "speedup_ratio_of_medians": 0.9910100818409016,
+      "candidate_change_percent": 0.9071469931364096,
+      "paired_speedups": [
+        0.9858491269879741,
+        1.0000293824291706,
+        1.0009176961798096,
+        0.9839504671418934,
+        1.007658413695775,
+        1.0002904203350595
+      ],
+      "paired_speedup_median": 1.0001599013821152
+    },
+    {
+      "baseline": "official/off",
+      "candidate": "official/on",
+      "speedup_ratio_of_medians": 0.9996487234153302,
+      "candidate_change_percent": 0.03514000232698322,
+      "paired_speedups": [
+        1.0066469481501361,
+        0.9945469474647771,
+        0.9981573650343684,
+        0.9963773333449276,
+        1.0043838258818614,
+        0.9988551694775564
+      ],
+      "paired_speedup_median": 0.9985062672559624
+    },
+    {
+      "baseline": "official/sealed",
+      "candidate": "candidate/sealed",
+      "speedup_ratio_of_medians": 4.669556179307662,
+      "candidate_change_percent": -78.58468853139986,
+      "paired_speedups": [
+        4.6589279058202555,
+        4.675844802059869,
+        4.735260762439946,
+        4.673387953312732,
+        4.691009638735614,
+        4.633309359263572
+      ],
+      "paired_speedup_median": 4.6746163776863
+    },
+    {
+      "baseline": "official/off",
+      "candidate": "candidate/off",
+      "speedup_ratio_of_medians": 4.717841494163986,
+      "candidate_change_percent": -78.80386610620536,
+      "paired_speedups": [
+        4.802939013789334,
+        4.6520960051257685,
+        4.661454484761541,
+        4.726383246657108,
+        4.717797316527474,
+        4.717885671006744
+      ],
+      "paired_speedup_median": 4.717841493767109
+    },
+    {
+      "baseline": "official/on",
+      "candidate": "candidate/on",
+      "speedup_ratio_of_medians": 4.677071430922364,
+      "candidate_change_percent": -78.61909926394281,
+      "paired_speedups": [
+        4.7037079309900225,
+        4.6777406605754,
+        4.6743453960026775,
+        4.667435566631816,
+        4.733178728695925,
+        4.724664781394145
+      ],
+      "paired_speedup_median": 4.6907242957827116
+    }
+  ],
+  "interpretation": "Assess sealed/off adapter disturbance and off/on counter disturbance before attributing counts. Counts include spin; no useful-work/wait decomposition. RUSAGE is asynchronous context. Do not pool earlier windows or infer statistical equivalence."
+}

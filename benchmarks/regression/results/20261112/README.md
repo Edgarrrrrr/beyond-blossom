@@ -29,6 +29,8 @@ Every measured decoder invocation passed its exact-weight checks. The structured
 
 The separate [boundary-outlining follow-up](boundary-outline/README.md) retains 120 calls across five arms and three selected cases, using 30,000 distinct saved records and eight process repeats. All exact checks passed. The experimental variant was not adopted: the results did not establish that the changed code layout caused the original regressions. The original 819-call matrix remains unchanged, and the two measurement windows are not pooled. These selected cases do not replace coverage of all 126 comparisons.
 
+The separate [dynamic diagnosis](dynamic-diagnosis/README.md) adds 54 structured and 72 arbitrary-graph calls, all passing their correctness and counter-quality checks. It retains the original timing increases and the three pipeline windows separately. The controls show that adapter layout and instrumentation affect differences of this size; generic predecode adds measurable fallback preparation work. The review did not identify an evidence-supported runtime change required before delivery. The implementation remains unchanged, and the diagnosis does not establish statistical equivalence.
+
 ## Validation
 
 | Check | Recorded result |
@@ -52,13 +54,13 @@ The new [final CI observation](ci-final/README.md) records run `43094516453` and
 
 The [new package audit](package-portable/README.md) validates all 256 selected source files against the committed `d2506bde` snapshot, builds the wheel from the extracted sdist, and tests the installation outside the source tree. Its [summary](package-portable/summary.json) identifies the new source package and wheel hashes. The original package audit remains preserved. Validation covers the recorded Linux x86-64 environment; neither byte identity on GCC 12.2 nor the selected follow-up measurements establish universal compiler or performance equivalence.
 
-The current M4 build, full million-shot paper cohorts, and new hardware PMU collection have not been executed. Their reproduction commands are in [AE](../../../../AE/README.md). Archived paper results retain their original provenance and documented limitations.
+The current M4 build, full million-shot paper cohorts, and complete paper PMU matrix have not been executed. The separate migration diagnosis above includes new hardware PMU collection on the Xeon host. Their reproduction commands are in [AE](../../../../AE/README.md). Archived paper results retain their original provenance and documented limitations.
 
 ## Archived inputs and binaries
 
 [archive-index.json](archive-index.json) identifies the durable workspace archives, hashes, and relocation checks. Large binaries, inputs, and dependency snapshots are outside Git; small raw tables and receipts are committed here. Original receipts retain their original absolute paths. The archive manifests map those paths to preserved files without rewriting the evidence.
 
-The index preserves the six original archives and adds the final [boundary archive receipt](boundary-outline/archive.json), the [portable-baseline manifest](portable-baseline/manifest.json), the [rebuilt-package manifest](package-portable/manifest.json), and the new [final-CI manifest](ci-final/manifest.json). The last three are evidence directories rather than compressed archives; the workspace package directory also contains the new sdist and wheel. The earlier [supplemental verification](supplemental-index-verification.json) retains its checks of 2,495 boundary archive members, 113 workspace directory files, and 97 repository evidence files. The final CI evidence adds eight identically preserved files in each location, under a new manifest; earlier entries, pending observations, and manifests remain unchanged. The final boundary archive SHA256 is `9447d2785b38d7706a9c9ddff87220057965ef56755fc9b13afd3f38398fa5d4`.
+The index preserves the six original archives and the final [boundary archive receipt](boundary-outline/archive.json), the [portable-baseline manifest](portable-baseline/manifest.json), the [rebuilt-package manifest](package-portable/manifest.json), and the new [final-CI manifest](ci-final/manifest.json). The last three are evidence directories rather than compressed archives; the workspace package directory also contains the new sdist and wheel. The earlier [supplemental verification](supplemental-index-verification.json) retains its checks of 2,495 boundary archive members, 113 workspace directory files, and 97 repository evidence files. The final CI evidence adds eight identically preserved files in each location, under a new manifest; earlier entries, pending observations, and manifests remain unchanged. The final boundary archive SHA256 is `9447d2785b38d7706a9c9ddff87220057965ef56755fc9b13afd3f38398fa5d4`.
 
 The performance archive was extracted into a different directory, and all three summaries were recomputed successfully with byte-identical outputs. From the repository root:
 
@@ -74,3 +76,5 @@ python3 benchmarks/regression/run_generic.py \
 ```
 
 Fresh collection and smoke commands are in the [regression guide](../../README.md) and [report reproduction guide](report/REPRODUCE.md). Fresh runs use new output directories and retain the original records.
+
+The two additional dynamic-diagnosis archives preserve 6,443 source files, including early collector revisions, capability failures, the completed 54-call and 72-call runs, and their analyses. Both archives passed member hashing and summary-only replay after extraction to a different path; all four recomputed output files were byte-identical. The index now lists nine compressed archives and three evidence directories.

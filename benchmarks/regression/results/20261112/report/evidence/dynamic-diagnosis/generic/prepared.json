@@ -1,0 +1,14 @@
+{
+  "calls": 72,
+  "complete": true,
+  "controller_command": [
+    "/usr/bin/python3",
+    "/tmp/beyond-generic-dynamic-20261112/full-r2-frozen-01/controller/run_diagnostics.py",
+    "--execute",
+    "--output",
+    "/tmp/beyond-generic-dynamic-20261112/full-r2-frozen-01"
+  ],
+  "execution_authorized": false,
+  "kind": "full",
+  "seal_sha256": "819fa5d2ed031530b8e4ef777e4fa7303478b9d7e2d8cc2eaa9c3a8095dcc481"
+}

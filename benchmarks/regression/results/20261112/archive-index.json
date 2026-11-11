@@ -68,14 +68,44 @@
       "variant_adopted": false,
       "summary": "Separate 120-call, five-arm boundary-outlining follow-up on three selected cases; all exact checks pass; variant not adopted; original 819-call matrix unchanged.",
       "relocated_summary_replay": "boundary-outline/relocated-analysis-replay.json"
+    },
+    {
+      "archive": "dynamic-diagnosis/archive.tar.gz",
+      "sha256": "04fc4589d48687f4aa83edd9172da20915dbed4c55cd745cdceff988fd00a47e",
+      "bytes": 31833617,
+      "files": 3661,
+      "tar_members": 4138,
+      "file_manifest": "dynamic-diagnosis/manifest.json",
+      "file_manifest_sha256": "af5f29eadb5bd7a36905abc302a1da4b228bb98024273051fae0982d06307d2a",
+      "path_map": "dynamic-diagnosis/path-map.json",
+      "path_map_sha256": "f0eddb6c5a5dd74d595fd184976f6e605dd82d398aa8d9bd2e08cbe3c7895444",
+      "verified_members": true,
+      "relocated_summary_replay": "dynamic-diagnosis/replay-verification.json",
+      "relocated_summary_replay_sha256": "0a612354efe67e6613edcd904c56a5bba2655920e5015b54b9f4dc9bd297a302",
+      "repository_receipt": "dynamic-diagnosis/structured/archive.json"
+    },
+    {
+      "archive": "generic-dynamic-diagnosis/archive.tar.gz",
+      "sha256": "7bdfc4a893ce3949a2091d92f539c2afddf8bc776c639d8c964ecd4761912f3a",
+      "bytes": 18761989,
+      "files": 2782,
+      "tar_members": 3162,
+      "file_manifest": "generic-dynamic-diagnosis/manifest.json",
+      "file_manifest_sha256": "6dedfdc745448aa85ab25da3bea93659e1088137c2da9a980e3902391a55c24a",
+      "path_map": "generic-dynamic-diagnosis/path-map.json",
+      "path_map_sha256": "cea8748de0c0520b8fd698c48430d63aa5cb16438522d9029c6060045124a97e",
+      "verified_members": true,
+      "relocated_summary_replay": "generic-dynamic-diagnosis/replay-verification.json",
+      "relocated_summary_replay_sha256": "8bbd8918239876356fd833bdbfbe6328042c76c72dd32419fbd772a05d8deac2",
+      "repository_receipt": "dynamic-diagnosis/generic/archive.json"
     }
   ],
   "receipt_policy": "Original bytes and paths are preserved. Full member manifests map original paths to archive members. Large archived files are intentionally outside Git.",
   "replay_verification": "replay-verification.json",
   "member_verification": "root-archives-verification.json",
-  "verified_members_total": 20952,
+  "verified_members_total": 27395,
   "additional_verification": "validation/archives.json",
-  "total_compressed_bytes": 624715624,
+  "total_compressed_bytes": 675311230,
   "evidence_directories": [
     {
       "directory": "portable-baseline",
@@ -154,7 +184,7 @@
       }
     }
   ],
-  "evidence_collection_count": 10,
+  "evidence_collection_count": 12,
   "verified_directory_files_total": 121,
   "total_directory_payload_bytes": 9555870,
   "supplemental_verification": "supplemental-index-verification.json"

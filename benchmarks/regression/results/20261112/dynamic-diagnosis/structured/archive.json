@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "structured",
+  "complete": true,
+  "created_utc": "2026-11-11T22:05:48.897072+00:00",
+  "archive": "/home/fujy/dev/beyond_blossom/validation/20261112/dynamic-diagnosis/archive.tar.gz",
+  "archive_bytes": 31833617,
+  "archive_sha256": "04fc4589d48687f4aa83edd9172da20915dbed4c55cd745cdceff988fd00a47e",
+  "path_map_sha256": "f0eddb6c5a5dd74d595fd184976f6e605dd82d398aa8d9bd2e08cbe3c7895444",
+  "source_regular_files": 3661,
+  "archive_members": 4138,
+  "uncompressed_file_bytes": 137174830,
+  "source_membership_unchanged": true,
+  "all_members_verified": true,
+  "source_bytes_rechecked": true,
+  "summary_path": "prepared-54-r4/summary.json",
+  "summary_sha256": "925d9ea5e26cdb40fc4cd7467c94195a64c4d2384b56135cdec58f3742867a8f",
+  "acquisition_complete": true,
+  "runtime_changes": false,
+  "native_executions_by_archiver": 0,
+  "archive_script_sha256": "a065f7f9beb339bafca64700afea30e7f584955372f320597da43c103ccbd8c6",
+  "preserved": [
+    "r3 CPU-accounting gate failure",
+    "kernel and independent capability probes",
+    "r4 adapter builds and six capability smokes",
+    "sealed 54-call run and analysis"
+  ]
+}

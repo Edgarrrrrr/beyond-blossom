@@ -1,0 +1,1187 @@
+{
+  "accepted_calls": 72,
+  "arms": {
+    "candidate-normal-predecode_off-pmu_off": {
+      "common_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "extract_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "gate_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "latency_ns_per_shot": {
+        "maximum": 76126.855,
+        "median": 75818.0825,
+        "minimum": 75012.12
+      },
+      "prefix_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "prepare_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "roots_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "solve_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "tail_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      }
+    },
+    "candidate-normal-predecode_off-pmu_on": {
+      "common_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "cycles_per_shot": {
+        "maximum": 281086.2475,
+        "median": 280168.8,
+        "minimum": 278811.45
+      },
+      "extract_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "gate_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "instructions_per_shot": {
+        "maximum": 438725.555,
+        "median": 438725.555,
+        "minimum": 438725.555
+      },
+      "latency_ns_per_shot": {
+        "maximum": 76526.485,
+        "median": 76131.845,
+        "minimum": 75802.87
+      },
+      "prefix_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "prepare_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "roots_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "solve_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "tail_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      }
+    },
+    "candidate-normal-predecode_on-pmu_off": {
+      "common_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "extract_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "gate_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "latency_ns_per_shot": {
+        "maximum": 78382.39249999999,
+        "median": 76379.15375,
+        "minimum": 73984.8575
+      },
+      "prefix_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "prepare_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "roots_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "solve_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "tail_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      }
+    },
+    "candidate-normal-predecode_on-pmu_on": {
+      "common_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "cycles_per_shot": {
+        "maximum": 282305.0475,
+        "median": 281427.34125,
+        "minimum": 280553.2875
+      },
+      "extract_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "gate_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "instructions_per_shot": {
+        "maximum": 441548.555,
+        "median": 441548.555,
+        "minimum": 441548.555
+      },
+      "latency_ns_per_shot": {
+        "maximum": 78007.3575,
+        "median": 77049.83875,
+        "minimum": 75913.98250000001
+      },
+      "prefix_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "prepare_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "roots_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "solve_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "tail_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      }
+    },
+    "candidate-split-predecode_off-pmu_on": {
+      "common_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "cycles_per_shot": {
+        "maximum": 280882.2875,
+        "median": 279758.42500000005,
+        "minimum": 279244.255
+      },
+      "extract_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "gate_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "instructions_per_shot": {
+        "maximum": 438664.555,
+        "median": 438664.555,
+        "minimum": 438664.555
+      },
+      "latency_ns_per_shot": {
+        "maximum": 76873.5,
+        "median": 76785.22875,
+        "minimum": 75978.98000000001
+      },
+      "prefix_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "prepare_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "roots_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "solve_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "tail_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      }
+    },
+    "candidate-split-predecode_on-pmu_on": {
+      "common_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "cycles_per_shot": {
+        "maximum": 281927.86,
+        "median": 281286.745,
+        "minimum": 280321.3825
+      },
+      "extract_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "gate_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "instructions_per_shot": {
+        "maximum": 441500.575,
+        "median": 441500.575,
+        "minimum": 441500.575
+      },
+      "latency_ns_per_shot": {
+        "maximum": 77665.4375,
+        "median": 76597.28125,
+        "minimum": 75754.765
+      },
+      "prefix_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "prepare_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "roots_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "solve_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "tail_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      }
+    },
+    "candidate-stages-predecode_off-pmu_on": {
+      "common_ns_per_shot": {
+        "maximum": 17.0775,
+        "median": 16.935,
+        "minimum": 16.697499999999998
+      },
+      "cycles_per_shot": {
+        "maximum": 281859.7925,
+        "median": 280237.73250000004,
+        "minimum": 279232.0575
+      },
+      "extract_ns_per_shot": {
+        "maximum": 1282.1075,
+        "median": 1268.185,
+        "minimum": 1249.33
+      },
+      "gate_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "instructions_per_shot": {
+        "maximum": 439165.555,
+        "median": 439165.555,
+        "minimum": 439165.555
+      },
+      "latency_ns_per_shot": {
+        "maximum": 76883.4025,
+        "median": 76295.31,
+        "minimum": 75992.23499999999
+      },
+      "prefix_ns_per_shot": {
+        "maximum": 3300.8325,
+        "median": 3241.09,
+        "minimum": 3190.5550000000003
+      },
+      "prepare_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "roots_ns_per_shot": {
+        "maximum": 3300.8325,
+        "median": 3241.09,
+        "minimum": 3190.5550000000003
+      },
+      "solve_ns_per_shot": {
+        "maximum": 72247.5275,
+        "median": 71687.7,
+        "minimum": 71465.07250000001
+      },
+      "tail_ns_per_shot": {
+        "maximum": 73551.61499999999,
+        "median": 72939.26874999999,
+        "minimum": 72712.6275
+      }
+    },
+    "candidate-stages-predecode_on-pmu_on": {
+      "common_ns_per_shot": {
+        "maximum": 17.165,
+        "median": 16.94,
+        "minimum": 16.6575
+      },
+      "cycles_per_shot": {
+        "maximum": 282122.52749999997,
+        "median": 281692.81625000003,
+        "minimum": 280971.2425
+      },
+      "extract_ns_per_shot": {
+        "maximum": 1295.6,
+        "median": 1265.1525000000001,
+        "minimum": 1250.62
+      },
+      "gate_ns_per_shot": {
+        "maximum": 256.81500000000005,
+        "median": 249.06625,
+        "minimum": 240.94
+      },
+      "instructions_per_shot": {
+        "maximum": 442163.555,
+        "median": 442163.555,
+        "minimum": 442163.555
+      },
+      "latency_ns_per_shot": {
+        "maximum": 77761.17,
+        "median": 76734.26000000001,
+        "minimum": 75554.82250000001
+      },
+      "prefix_ns_per_shot": {
+        "maximum": 3702.4175,
+        "median": 3569.20375,
+        "minimum": 3523.475
+      },
+      "prepare_ns_per_shot": {
+        "maximum": 133.03,
+        "median": 127.3625,
+        "minimum": 123.64
+      },
+      "roots_ns_per_shot": {
+        "maximum": 3317.0074999999997,
+        "median": 3184.535,
+        "minimum": 3157.3599999999997
+      },
+      "solve_ns_per_shot": {
+        "maximum": 72622.58,
+        "median": 71763.69375,
+        "minimum": 70723.6875
+      },
+      "tail_ns_per_shot": {
+        "maximum": 73931.725,
+        "median": 73068.29000000001,
+        "minimum": 71964.5625
+      }
+    },
+    "official-normal-predecode_reference-pmu_off": {
+      "common_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "extract_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "gate_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "latency_ns_per_shot": {
+        "maximum": 88830.08499999999,
+        "median": 85640.9275,
+        "minimum": 85031.01
+      },
+      "prefix_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "prepare_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "roots_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "solve_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "tail_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      }
+    },
+    "official-normal-predecode_reference-pmu_on": {
+      "common_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "cycles_per_shot": {
+        "maximum": 317167.70499999996,
+        "median": 316006.6875,
+        "minimum": 315390.79
+      },
+      "extract_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "gate_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "instructions_per_shot": {
+        "maximum": 436221.305,
+        "median": 436221.3,
+        "minimum": 436221.3
+      },
+      "latency_ns_per_shot": {
+        "maximum": 88992.305,
+        "median": 86445.5025,
+        "minimum": 86043.7875
+      },
+      "prefix_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "prepare_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "roots_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "solve_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "tail_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      }
+    },
+    "source241-normal-predecode_reference-pmu_off": {
+      "common_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "extract_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "gate_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "latency_ns_per_shot": {
+        "maximum": 86648.1775,
+        "median": 85942.8825,
+        "minimum": 84995.70749999999
+      },
+      "prefix_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "prepare_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "roots_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "solve_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "tail_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      }
+    },
+    "source241-normal-predecode_reference-pmu_on": {
+      "common_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "cycles_per_shot": {
+        "maximum": 317438.45499999996,
+        "median": 315998.60875,
+        "minimum": 315524.155
+      },
+      "extract_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "gate_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "instructions_per_shot": {
+        "maximum": 436221.3,
+        "median": 436221.3,
+        "minimum": 436221.3
+      },
+      "latency_ns_per_shot": {
+        "maximum": 87124.04000000001,
+        "median": 86496.13125,
+        "minimum": 85811.3375
+      },
+      "prefix_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "prepare_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "roots_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "solve_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      },
+      "tail_ns_per_shot": {
+        "maximum": 0.0,
+        "median": 0.0,
+        "minimum": 0.0
+      }
+    }
+  },
+  "batch_repeats_are_not_independent_inputs": true,
+  "collector_sha256": "773eafaac45699f88cd6d3e28a1059308b49fa3b14a4e475f191de215f549914",
+  "comparisons": [
+    {
+      "baseline_arm": "candidate-normal-predecode_off-pmu_off",
+      "label": "PMU boundary disturbance",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        847.2675000000017,
+        1015.3300000000017,
+        109.38499999999476,
+        -50.01000000000931,
+        653.7749999999942,
+        141.8524999999936
+      ],
+      "paired_changes_percent": [
+        1.119551084153314,
+        1.353554598910156,
+        0.14368779585074432,
+        -0.06593025867971392,
+        0.8626902357162125,
+        0.18699985054115853
+      ],
+      "paired_median_percent": 0.5248450431286855,
+      "ratio_of_medians_change_percent": 0.4138359737599462,
+      "test_arm": "candidate-normal-predecode_off-pmu_on"
+    },
+    {
+      "baseline_arm": "candidate-normal-predecode_on-pmu_off",
+      "label": "PMU boundary disturbance",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        2106.4225000000006,
+        60.38000000000466,
+        -375.03499999998894,
+        643.1600000000035,
+        766.5399999999936,
+        698.2099999999919
+      ],
+      "paired_changes_percent": [
+        2.8470994892434653,
+        0.07960070189152457,
+        -0.4784684264389938,
+        0.8442314759687486,
+        1.0004247831245427,
+        0.9117940080242359
+      ],
+      "paired_median_percent": 0.8780127419964923,
+      "ratio_of_medians_change_percent": 0.8780995429659377,
+      "test_arm": "candidate-normal-predecode_on-pmu_on"
+    },
+    {
+      "baseline_arm": "source241-normal-predecode_reference-pmu_off",
+      "label": "PMU boundary disturbance",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        699.4174999999959,
+        1449.520000000004,
+        -656.9850000000006,
+        1200.1600000000035,
+        1179.9199999999983,
+        -611.570000000007
+      ],
+      "paired_changes_percent": [
+        0.8123601086925447,
+        1.691891591572392,
+        -0.758221371707446,
+        1.4120242484010115,
+        1.3753778720791532,
+        -0.7076480272316776
+      ],
+      "paired_median_percent": 1.093868990385849,
+      "ratio_of_medians_change_percent": 0.6437400444417207,
+      "test_arm": "source241-normal-predecode_reference-pmu_on"
+    },
+    {
+      "baseline_arm": "official-normal-predecode_reference-pmu_off",
+      "label": "PMU boundary disturbance",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        706.3800000000047,
+        1706.7900000000081,
+        -2371.609999999986,
+        354.3775000000023,
+        3399.859999999986,
+        1046.0099999999802
+      ],
+      "paired_changes_percent": [
+        0.8239959452279288,
+        2.0072559410972746,
+        -2.6698274576681835,
+        0.4135604387986769,
+        3.9721496447495896,
+        1.2263001228896675
+      ],
+      "paired_median_percent": 1.0251480340587982,
+      "ratio_of_medians_change_percent": 0.9394748789940399,
+      "test_arm": "official-normal-predecode_reference-pmu_on"
+    },
+    {
+      "baseline_arm": "candidate-normal-predecode_off-pmu_on",
+      "label": "Copied driver/control difference",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        -547.5049999999901,
+        791.9650000000111,
+        548.9400000000023,
+        982.4075000000012,
+        -11.707500000004075,
+        874.6350000000093
+      ],
+      "paired_changes_percent": [
+        -0.7154451168115084,
+        1.0416829710848008,
+        0.7200512512159696,
+        1.2960030405181344,
+        -0.01531652316298926,
+        1.1508527133925028
+      ],
+      "paired_median_percent": 0.8808671111503852,
+      "ratio_of_medians_change_percent": 0.858226606750434,
+      "test_arm": "candidate-split-predecode_off-pmu_on"
+    },
+    {
+      "baseline_arm": "candidate-split-predecode_off-pmu_on",
+      "label": "Phase clock/record disturbance",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        225.09999999997672,
+        63.98749999998836,
+        -356.20999999999185,
+        -625.1549999999988,
+        -433.11750000000757,
+        -486.95999999999185
+      ],
+      "paired_changes_percent": [
+        0.29626615150661895,
+        0.08329600010621441,
+        -0.4639046232619237,
+        -0.8141599800821187,
+        -0.5667196628239446,
+        -0.633456262561205
+      ],
+      "paired_median_percent": -0.5153121430429342,
+      "ratio_of_medians_change_percent": -0.6380377554061734,
+      "test_arm": "candidate-stages-predecode_off-pmu_on"
+    },
+    {
+      "baseline_arm": "candidate-normal-predecode_on-pmu_on",
+      "label": "Copied driver/control difference",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        290.38750000001164,
+        859.977499999979,
+        -1586.75499999999,
+        702.4475000000093,
+        277.445000000007,
+        -1518.854999999996
+      ],
+      "paired_changes_percent": [
+        0.3816304575241958,
+        1.1328314912209647,
+        -2.034109410769347,
+        0.9143349572506843,
+        0.358511690298724,
+        -1.965554350889731
+      ],
+      "paired_median_percent": 0.3700710739114599,
+      "ratio_of_medians_change_percent": -0.587356842456721,
+      "test_arm": "candidate-split-predecode_on-pmu_on"
+    },
+    {
+      "baseline_arm": "candidate-split-predecode_on-pmu_on",
+      "label": "Phase clock/record disturbance",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        1379.5024999999878,
+        -164.51999999998952,
+        469.32749999998487,
+        -1973.6824999999953,
+        -806.3574999999983,
+        671.5074999999924
+      ],
+      "paired_changes_percent": [
+        1.8060649173441856,
+        -0.214291408180578,
+        0.6141373983540532,
+        -2.545750753222953,
+        -1.0382449722246112,
+        0.8864227880582831
+      ],
+      "paired_median_percent": 0.1999229950867376,
+      "ratio_of_medians_change_percent": 0.17882978059355903,
+      "test_arm": "candidate-stages-predecode_on-pmu_on"
+    },
+    {
+      "baseline_arm": "candidate-normal-predecode_off-pmu_on",
+      "label": "Predecode flag difference",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        -435.20500000000175,
+        -113.46749999998428,
+        1771.1175000000076,
+        1023.1875,
+        950.9324999999953,
+        1274.7550000000047
+      ],
+      "paired_changes_percent": [
+        -0.5686985361995966,
+        -0.1492454370099039,
+        2.3231962908978776,
+        1.3498004758922821,
+        1.2440725742198788,
+        1.6773342601892782
+      ],
+      "paired_median_percent": 1.2969365250560805,
+      "ratio_of_medians_change_percent": 1.2057946973437872,
+      "test_arm": "candidate-normal-predecode_on-pmu_on"
+    },
+    {
+      "baseline_arm": "candidate-split-predecode_off-pmu_on",
+      "label": "Predecode flag difference",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        402.6875,
+        -45.4550000000163,
+        -364.57749999998487,
+        743.2275000000081,
+        1240.0850000000064,
+        -1118.7350000000006
+      ],
+      "paired_changes_percent": [
+        0.5299985601280754,
+        -0.05917123945816671,
+        -0.47480190838907754,
+        0.9679296919907765,
+        1.6226094606498709,
+        -1.4552934366198977
+      ],
+      "paired_median_percent": 0.23541366033495437,
+      "ratio_of_medians_change_percent": -0.24477038495505088,
+      "test_arm": "candidate-split-predecode_on-pmu_on"
+    },
+    {
+      "baseline_arm": "candidate-stages-predecode_off-pmu_on",
+      "label": "Predecode flag difference",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        1557.090000000011,
+        -273.9624999999942,
+        460.95999999999185,
+        -605.2999999999884,
+        866.8450000000157,
+        39.7324999999837
+      ],
+      "paired_changes_percent": [
+        2.0433157909655275,
+        -0.35633503603068606,
+        0.6031220883913502,
+        -0.7947728813067378,
+        1.1407020730473505,
+        0.052015053961063096
+      ],
+      "paired_median_percent": 0.32756857117620664,
+      "ratio_of_medians_change_percent": 0.575330252934303,
+      "test_arm": "candidate-stages-predecode_on-pmu_on"
+    },
+    {
+      "baseline_arm": "candidate-normal-predecode_off-pmu_off",
+      "label": "Predecode flag difference without PMU",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        -1694.3600000000006,
+        841.4825000000128,
+        2255.5374999999913,
+        330.0174999999872,
+        838.1674999999959,
+        718.3975000000064
+      ],
+      "paired_changes_percent": [
+        -2.2388709291292552,
+        1.1217953845325424,
+        2.962867046064077,
+        0.43507576772296996,
+        1.1060057636720133,
+        0.9470416462815656
+      ],
+      "paired_median_percent": 1.0265237049767895,
+      "ratio_of_medians_change_percent": 0.7400230017687415,
+      "test_arm": "candidate-normal-predecode_on-pmu_off"
+    },
+    {
+      "baseline_arm": "official-normal-predecode_reference-pmu_off",
+      "label": "Normal reference comparison",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        -10046.932499999995,
+        -10018.89,
+        -12703.229999999996,
+        -9836.529999999999,
+        -9809.160000000003,
+        -9441.030000000013
+      ],
+      "paired_changes_percent": [
+        -11.719799034483636,
+        -11.782630830799256,
+        -14.300594218726681,
+        -11.479283145957009,
+        -11.460310544931861,
+        -11.068284480268131
+      ],
+      "paired_median_percent": -11.599541090220322,
+      "ratio_of_medians_change_percent": -11.469802215768855,
+      "test_arm": "candidate-normal-predecode_off-pmu_off"
+    },
+    {
+      "baseline_arm": "official-normal-predecode_reference-pmu_off",
+      "label": "Normal reference comparison",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        -11741.292499999996,
+        -9177.407499999987,
+        -10447.692500000005,
+        -9506.512500000012,
+        -8970.992500000008,
+        -8722.632500000007
+      ],
+      "paired_changes_percent": [
+        -13.696278790077464,
+        -10.793012455103124,
+        -11.761434766160594,
+        -11.094150957510395,
+        -10.481056476421491,
+        -10.226064097543631
+      ],
+      "paired_median_percent": -10.943581706306759,
+      "ratio_of_medians_change_percent": -10.814658388654196,
+      "test_arm": "candidate-normal-predecode_on-pmu_off"
+    },
+    {
+      "baseline_arm": "official-normal-predecode_reference-pmu_on",
+      "label": "Normal reference comparison",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        -9906.044999999998,
+        -10710.350000000006,
+        -10222.235000000015,
+        -10240.91750000001,
+        -12555.244999999995,
+        -10345.1875
+      ],
+      "paired_changes_percent": [
+        -11.46101473600275,
+        -12.347961327126121,
+        -11.823288578707892,
+        -11.90198362665057,
+        -14.108236661585515,
+        -11.98135505627328
+      ],
+      "paired_median_percent": -11.941669341461925,
+      "ratio_of_medians_change_percent": -11.930820229774241,
+      "test_arm": "candidate-normal-predecode_off-pmu_on"
+    },
+    {
+      "baseline_arm": "official-normal-predecode_reference-pmu_on",
+      "label": "Normal reference comparison",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        -10341.25,
+        -10823.81749999999,
+        -8451.117500000008,
+        -9217.73000000001,
+        -11604.3125,
+        -9070.432499999995
+      ],
+      "paired_changes_percent": [
+        -11.964534649165081,
+        -12.478777995291546,
+        -9.774770489532703,
+        -10.712836182391449,
+        -13.03968079037845,
+        -10.504988169277784
+      ],
+      "paired_median_percent": -11.338685415778265,
+      "ratio_of_medians_change_percent": -10.868886730110694,
+      "test_arm": "candidate-normal-predecode_on-pmu_on"
+    },
+    {
+      "baseline_arm": "source241-normal-predecode_reference-pmu_off",
+      "label": "Normal reference comparison",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        -10417.76000000001,
+        -10662.400000000009,
+        -10521.32250000001,
+        -9142.827499999985,
+        -10005.502500000002,
+        -10565.895000000004
+      ],
+      "paired_changes_percent": [
+        -12.100029876193974,
+        -12.445240428542824,
+        -12.14257795554905,
+        -10.756810866007537,
+        -11.662948960550356,
+        -12.22580367363827
+      ],
+      "paired_median_percent": -12.121303915871511,
+      "ratio_of_medians_change_percent": -11.780847587931442,
+      "test_arm": "candidate-normal-predecode_off-pmu_off"
+    },
+    {
+      "baseline_arm": "source241-normal-predecode_reference-pmu_off",
+      "label": "Normal reference comparison",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        -12112.12000000001,
+        -9820.917499999996,
+        -8265.785000000018,
+        -8812.809999999998,
+        -9167.335000000006,
+        -9847.497499999998
+      ],
+      "paired_changes_percent": [
+        -14.06799675400917,
+        -11.46305517673165,
+        -9.539479350272561,
+        -10.368535375742361,
+        -10.685936084596149,
+        -11.394545479738682
+      ],
+      "paired_median_percent": -11.040240782167416,
+      "ratio_of_medians_change_percent": -11.128005568116716,
+      "test_arm": "candidate-normal-predecode_on-pmu_off"
+    },
+    {
+      "baseline_arm": "source241-normal-predecode_reference-pmu_on",
+      "label": "Normal reference comparison",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        -10269.910000000003,
+        -11096.590000000011,
+        -9754.952500000014,
+        -10392.997499999998,
+        -10531.647500000006,
+        -9812.472500000003
+      ],
+      "paired_changes_percent": [
+        -11.832184965746562,
+        -12.736542061180833,
+        -11.344129807247427,
+        -12.057419690102888,
+        -12.109697617387273,
+        -11.43493713753151
+      ],
+      "paired_median_percent": -11.944802327924725,
+      "ratio_of_medians_change_percent": -11.98236973170983,
+      "test_arm": "candidate-normal-predecode_off-pmu_on"
+    },
+    {
+      "baseline_arm": "source241-normal-predecode_reference-pmu_on",
+      "label": "Normal reference comparison",
+      "metric": "latency_ns_per_shot",
+      "paired_absolute_differences": [
+        -10705.115000000005,
+        -11210.057499999995,
+        -7983.835000000006,
+        -9369.809999999998,
+        -9580.715000000011,
+        -8537.717499999999
+      ],
+      "paired_changes_percent": [
+        -12.333594039245533,
+        -12.866778790331567,
+        -9.284479919266154,
+        -10.870370322567958,
+        -11.01627847004626,
+        -9.949404995581146
+      ],
+      "paired_median_percent": -10.943324396307109,
+      "ratio_of_medians_change_percent": -10.921057813207124,
+      "test_arm": "candidate-normal-predecode_on-pmu_on"
+    },
+    {
+      "baseline_arm": "candidate-stages-predecode_off-pmu_on",
+      "label": "Clocked prefix difference",
+      "metric": "prefix_ns_per_shot",
+      "paired_absolute_differences": [
+        401.58500000000004,
+        258.96749999999975,
+        383.59249999999975,
+        311.18749999999955,
+        409.4899999999998,
+        276.4525000000003
+      ],
+      "paired_changes_percent": [
+        12.166173230541077,
+        7.913390969809986,
+        11.955620591746218,
+        9.687411229536579,
+        12.83444416410311,
+        8.45448283085759
+      ],
+      "paired_median_percent": 10.821515910641399,
+      "ratio_of_medians_change_percent": 10.1235618264226,
+      "test_arm": "candidate-stages-predecode_on-pmu_on"
+    },
+    {
+      "baseline_arm": "candidate-stages-predecode_off-pmu_on",
+      "label": "Clocked tail difference",
+      "metric": "tail_ns_per_shot",
+      "paired_absolute_differences": [
+        1094.9375,
+        -552.1674999999814,
+        64.8125,
+        -877.3625000000029,
+        477.6100000000006,
+        -278.0649999999878
+      ],
+      "paired_changes_percent": [
+        1.5032753881409233,
+        -0.7507211092509403,
+        0.08869637641175654,
+        -1.2044746208999868,
+        0.6568460203147053,
+        -0.3807200121719645
+      ],
+      "paired_median_percent": -0.14601181788010398,
+      "ratio_of_medians_change_percent": 0.17688859815998548,
+      "test_arm": "candidate-stages-predecode_on-pmu_on"
+    }
+  ],
+  "complete": true,
+  "failures": [],
+  "kind": "full",
+  "no_trimming": true,
+  "planned_calls": 72,
+  "scope": "Exploratory dynamic diagnosis; not replacement formal performance evidence"
+}
