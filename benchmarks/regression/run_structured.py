@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compare source and candidate native adapters on one saved, independently checked matrix."""
+"""Compare fixed official, migration-source and candidate decoders on one saved matrix."""
 from __future__ import annotations
 
 import argparse
@@ -92,6 +92,17 @@ def artifact_files(root, directory):
     return {str(p.relative_to(root)): ae.digest(p) for p in sorted(directory.rglob('*')) if p.is_file()}
 
 
+def measurement_schedule(methods, repeat, repeats):
+    order = methods[repeat % len(methods):] + methods[:repeat % len(methods)]
+    variants = ('source', 'candidate') if repeat % 2 == 0 else ('candidate', 'source')
+    blocks = [(method, variants) for method in order]
+    # Move the official call from first through the pair boundaries to last.
+    # A source/candidate pair is never split by another native invocation.
+    position = repeat * len(methods) // max(1, repeats - 1)
+    blocks.insert(position, ('reference', ('reference',)))
+    return blocks
+
+
 def measurement(directory, *, shots, options, header):
     correct = json.loads((directory / 'correctness.json').read_text())
     if correct.get('status') != 'passed' or correct.get('weight_differences') != 0 or correct.get('shots') != shots:
@@ -127,6 +138,8 @@ def summarize(root):
     if not complete.get('complete') or complete['plan_sha256'] != ae.digest(root / 'plan.json') or complete['raw_sha256'] != ae.digest(root / 'raw.csv'):
         raise ValueError('Incomplete run or changed raw measurements')
     plan = json.loads((root / 'plan.json').read_text())
+    if plan.get('schema') != 2 or plan['reference'].get('upstream_revision') != REFERENCE_REVISION:
+        raise ValueError('This summary requires a measured fixed official baseline (plan schema 2)')
     ae.verify_relative_files(root, plan['build_artifacts'])
     for item in complete['inputs'] + complete['calls']:
         ae.verify_relative_files(root, item['files'])
@@ -137,6 +150,8 @@ def summarize(root):
         raw = list(csv.DictReader(stream))
     expected = {(case['case'], method, repeat, variant) for case in plan['cases'] for method in plan['methods']
                 for repeat in range(1, plan['repeats'] + 1) for variant in ('source', 'candidate')}
+    expected |= {(case['case'], 'reference', repeat, 'reference') for case in plan['cases']
+                 for repeat in range(1, plan['repeats'] + 1)}
     actual = {(r['case'], r['method'], int(r['repeat']), r['variant']) for r in raw}
     if actual != expected or len(raw) != len(expected):
         raise ValueError('Missing or repeated structured regression measurement')
@@ -147,24 +162,37 @@ def summarize(root):
         groups.setdefault((row['case'], row['method']), {}).setdefault(row['variant'], {})[int(row['repeat'])] = int(row['elapsed_ns']) / int(row['shots'])
     results = []
     for case in plan['cases']:
+        official_by_repeat = groups[case['case'], 'reference']['reference']
+        official = list(official_by_repeat.values())
+        om = statistics.median(official)
         for method in plan['methods']:
             group = groups[case['case'], method]
             source, candidate = list(group['source'].values()), list(group['candidate'].values())
             sm, cm = statistics.median(source), statistics.median(candidate)
             paired = [group['source'][r] / group['candidate'][r] for r in range(1, plan['repeats'] + 1)]
+            official_paired = [official_by_repeat[r] / group['candidate'][r] for r in range(1, plan['repeats'] + 1)]
             results.append(dict(case=case['case'], distance=case['distance'], error_rate=case['error_rate'], method=method,
                 independent_shots=plan['shots'], repeats=plan['repeats'], source_median_ns=sm, source_min_ns=min(source), source_max_ns=max(source),
                 candidate_median_ns=cm, candidate_min_ns=min(candidate), candidate_max_ns=max(candidate),
+                official_median_ns=om, official_min_ns=min(official), official_max_ns=max(official),
+                speedup_official_over_candidate=om / cm,
                 speedup_source_over_candidate=sm / cm, candidate_change_percent=(cm / sm - 1) * 100,
-                paired_speedup_median=statistics.median(paired), paired_speedup_min=min(paired), paired_speedup_max=max(paired)))
+                paired_speedup_median=statistics.median(paired), paired_speedup_min=min(paired), paired_speedup_max=max(paired),
+                official_paired_speedup_median=statistics.median(official_paired),
+                official_paired_speedup_min=min(official_paired), official_paired_speedup_max=max(official_paired)))
     aggregates = []
     for method in plan['methods']:
         speedups = [row['speedup_source_over_candidate'] for row in results if row['method'] == method]
+        official_speedups = [row['speedup_official_over_candidate'] for row in results if row['method'] == method]
         aggregates.append(dict(method=method, cases=len(speedups), geometric_mean_speedup=math.exp(statistics.mean(math.log(v) for v in speedups)),
-                               minimum_speedup=min(speedups), maximum_speedup=max(speedups), slower_cases=sum(v < 1 for v in speedups)))
-    result = dict(schema=1, scope=plan['scope'], source_revision=SOURCE_REVISION, candidate_identity=plan['candidate_identity'],
+                               minimum_speedup=min(speedups), maximum_speedup=max(speedups), slower_cases=sum(v < 1 for v in speedups),
+                               geometric_mean_official_speedup=math.exp(statistics.mean(math.log(v) for v in official_speedups)),
+                               minimum_official_speedup=min(official_speedups), maximum_official_speedup=max(official_speedups),
+                               slower_than_official_cases=sum(v < 1 for v in official_speedups)))
+    result = dict(schema=2, scope=plan['scope'], source_revision=SOURCE_REVISION, official_revision=REFERENCE_REVISION,
+                  candidate_identity=plan['candidate_identity'],
                   units='Nanoseconds per shot; repetition distributions are batch means, not shot latency percentiles',
-                  comparison='speedup = median(source batch means) / median(candidate batch means); values below one expose a slowdown',
+                  comparison='Primary speedup = median(fixed official batch means) / median(candidate batch means); additional migration comparison = median(source batch means) / median(candidate batch means); values below one expose a slowdown against the named baseline',
                   raw_sha256=complete['raw_sha256'], rows=results, by_method=aggregates)
     if (root / 'summary.json').exists():
         if json.loads((root / 'summary.json').read_text()) != result:
@@ -207,7 +235,7 @@ def collect(args):
             raise ValueError(f'Changed executable or enabled LTO: {variant}')
     reference = json.loads(args.reference_record.read_text())
     if not reference.get('complete') or reference.get('upstream_revision') != REFERENCE_REVISION or ae.digest(args.reference_binary) != reference['binary']['sha256']:
-        raise ValueError('The preparation executable must match the fixed official reference receipt')
+        raise ValueError('The official executable must match the fixed reference receipt for preparation and timing')
     if len({builds[v]['binary_sha256'] for v in builds} | {reference['binary']['sha256']}) != 3:
         raise ValueError('Source, candidate and independent reference executables must be distinct')
     cases = [dict(case=f'd{d:02d}-p{p:g}', distance=d, error_rate=p, stream=stream)
@@ -241,7 +269,7 @@ def collect(args):
             shutil.copyfile(receipt['path'], root / 'build' / (variant + '-identity.json'))
     build_artifacts = artifact_files(root, root / 'build')
     controller = {str(Path(__file__).relative_to(REPO)): ae.digest(__file__), 'AE/reproduce.py': ae.digest(REPO / 'AE/reproduce.py')}
-    plan = dict(schema=1, scope='Development performance-preservation comparison; dirty snapshots are labeled and no formal paper cohort is claimed',
+    plan = dict(schema=2, scope='Fixed official baseline and migration performance-preservation comparison; dirty snapshots are labeled and no formal paper cohort is claimed',
                 created_utc=datetime.now(timezone.utc).isoformat(), host=platform.node(), platform=platform.platform(),
                 python_version=platform.python_version(), controller_identity=identity, controller_sha256=controller,
                 source_revision=SOURCE_REVISION, source_identity=source_receipt,
@@ -250,8 +278,9 @@ def collect(args):
                 build=build, build_artifacts=build_artifacts, reference=reference,
                 binaries={v: dict(path=str(root / 'bin' / v), sha256=ae.digest(root / 'bin' / v)) for v in ('source', 'candidate', 'reference')},
                 cases=cases, methods={m: ae.METHODS[m] for m in methods}, backend=args.backend, shots=args.shots,
+                official_method=dict(ae.METHODS['reference']),
                 repeats=args.repeats, seed=args.seed, cpus=cpus, warmup_seconds=2,
-                scheduling='All native calls serialized; rotate methods each repeat; reverse adjacent source/candidate pairs on alternate repeats',
+                scheduling='All native calls serialized; rotate methods each repeat; reverse adjacent source/candidate pairs on alternate repeats; one official call per case/repeat moves from first through pair boundaries to last',
                 timing='Normal decode and result store for serial/shared; pipeline caller completion and final drain inside batch; input preparation, warmup and correctness checks excluded',
                 correctness='Fixed official saved integer weights; native untimed validation; equal-weight observable differences require candidate correction witnesses')
     ae.write(root / 'plan.json', plan)
@@ -276,9 +305,7 @@ def collect(args):
                 inputs.append(dict(case=name, header=list(header), files=corpus_files,
                                    preparation_files=artifact_files(root, prepared)))
                 for repeat in range(args.repeats):
-                    order = methods[repeat % len(methods):] + methods[:repeat % len(methods)]
-                    variants = ('source', 'candidate') if repeat % 2 == 0 else ('candidate', 'source')
-                    for method in order:
+                    for method, variants in measurement_schedule(methods, repeat, args.repeats):
                         options = dict(ae.METHODS[method])
                         options.setdefault('backend', args.backend)
                         threads = options['threads']
@@ -300,7 +327,7 @@ def collect(args):
                             raw.flush()
                             calls.append(dict(case=name, method=method, repeat=repeat + 1, variant=variant,
                                               directory=str(native.relative_to(root)), files=artifact_files(root, directory)))
-                        print(f'{name} {method} repeat {repeat + 1}: both variants passed', flush=True)
+                        print(f'{name} {method} repeat {repeat + 1}: {", ".join(variants)} passed', flush=True)
                 ae.verify_relative_files(root, corpus_files)
         ae.verify_relative_files(REPO, controller)
         ae.verify_relative_files(root, build_artifacts)

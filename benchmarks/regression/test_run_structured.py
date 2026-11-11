@@ -37,11 +37,12 @@ def setup_case(tmp_path, *, repeats=2, distances='3,5'):
 
 
 class FakeNative:
-    def __init__(self, fail_weight=False, change_corpus=False, change_binary=False):
+    def __init__(self, fail_weight=False, change_corpus=False, change_binary=False, fail_variant=None):
         self.commands = []
         self.fail_weight = fail_weight
         self.change_corpus = change_corpus
         self.change_binary = change_binary
+        self.fail_variant = fail_variant
 
     def __call__(self, command, directory):
         self.commands.append(command)
@@ -62,9 +63,10 @@ class FakeNative:
             (native / 'circuit.stim').write_text('R 0\n')
             return native
         variant = Path(command[0]).name
-        elapsed = shots * (1000 if variant == 'source' else 800)
+        elapsed = shots * {'reference': 1200, 'source': 1000, 'candidate': 800}[variant]
         (native / 'correctness.json').write_text(json.dumps(dict(status='passed', shots=shots,
-            weight_differences=int(self.fail_weight), observable_differences=0, actual_candidate_witnesses=0)))
+            weight_differences=int(self.fail_weight or self.fail_variant == variant),
+            observable_differences=0, actual_candidate_witnesses=0)))
         row = dict(mode=options['--mode'], shots=shots, elapsed_ns=elapsed, execution=options['--execution'],
                    total_threads=len(options['--cpus'].split(',')), weight_diff=0, observable_diff=0,
                    syndrome_hash=11, reference_result_hash=22)
@@ -88,22 +90,40 @@ def execute(args, fake):
 
 
 def test_saved_once_and_adjacent_variant_rotation(tmp_path):
-    args = setup_case(tmp_path)
+    args = setup_case(tmp_path, repeats=3)
     fake = FakeNative()
     result = execute(args, fake)
     commands = [dict(zip(c[1::2], c[2::2])) for c in fake.commands]
     assert sum(c['--mode'] == 'prepare' for c in commands) == 2
-    assert len(commands) == 2 + 2 * 2 * 2 * 2
-    for offset in (0, 9):
-        selected = fake.commands[offset + 1:offset + 9]
-        assert [Path(c[0]).name for c in selected] == ['source', 'candidate', 'source', 'candidate', 'candidate', 'source', 'candidate', 'source']
-        modes = [dict(zip(c[1::2], c[2::2]))['--mode'] for c in selected]
-        assert modes == ['batch', 'batch', 'pipe-batch', 'pipe-batch', 'pipe-batch', 'pipe-batch', 'batch', 'batch']
+    assert len(commands) == 2 + 2 * 3 * (2 * 2 + 1)
+    for offset in (0, 16):
+        selected = fake.commands[offset + 1:offset + 16]
+        expected = [
+            ['reference', 'source', 'candidate', 'source', 'candidate'],
+            ['candidate', 'source', 'reference', 'candidate', 'source'],
+            ['source', 'candidate', 'source', 'candidate', 'reference'],
+        ]
+        for repeat in range(3):
+            batch = selected[repeat * 5:(repeat + 1) * 5]
+            assert [Path(c[0]).name for c in batch] == expected[repeat]
+            paired = [dict(zip(c[1::2], c[2::2])) for c in batch if Path(c[0]).name != 'reference']
+            assert [c['--mode'] for c in paired] == (['pipe-batch'] * 2 + ['batch'] * 2 if repeat == 1 else ['batch'] * 2 + ['pipe-batch'] * 2)
+            official, = [dict(zip(c[1::2], c[2::2])) for c in batch if Path(c[0]).name == 'reference']
+            assert {name: official[name] for name in ['--backend', '--execution', '--predecode', '--mode', '--cpus']} == {
+                '--backend': 'generic', '--execution': 'serial', '--predecode': '0', '--mode': 'batch', '--cpus': '0'}
         assert len({dict(zip(c[1::2], c[2::2]))['--dataset'] for c in selected}) == 1
         assert all(dict(zip(c[1::2], c[2::2]))['--warmup-seconds'] == '2' for c in selected)
+        assert all(dict(zip(c[1::2], c[2::2]))['--block-size'] == '1024' for c in selected)
+        assert all(dict(zip(c[1::2], c[2::2]))['--repeats'] == '1' for c in selected)
     assert len(result['rows']) == 4
     assert all(row['speedup_source_over_candidate'] == 1.25 for row in result['rows'])
-    assert all(row['independent_shots'] == 8 and row['repeats'] == 2 for row in result['rows'])
+    assert all(row['speedup_official_over_candidate'] == 1.5 for row in result['rows'])
+    assert all(row['official_median_ns'] == 1200 and row['official_paired_speedup_min'] == 1.5 for row in result['rows'])
+    assert all(row['independent_shots'] == 8 and row['repeats'] == 3 for row in result['rows'])
+    assert result['official_revision'] == runner.REFERENCE_REVISION
+    plan = json.loads((args.output / 'plan.json').read_text())
+    assert plan['reference']['binary']['sha256'] == runner.ae.digest(args.reference_binary)
+    assert plan['official_method'] == runner.ae.METHODS['reference']
     assert runner.summarize(args.output) == result
 
 
@@ -114,6 +134,40 @@ def test_correctness_failure_prevents_successful_summary(tmp_path):
     assert (args.output / 'failure.json').is_file()
     assert not (args.output / 'complete.json').exists()
     assert not (args.output / 'summary.json').exists()
+
+
+def test_official_correctness_failure_prevents_summary(tmp_path):
+    args = setup_case(tmp_path, repeats=1, distances='3')
+    with pytest.raises(ValueError, match='correctness failed'):
+        execute(args, FakeNative(fail_variant='reference'))
+    assert (args.output / 'failure.json').is_file()
+    assert not (args.output / 'summary.json').exists()
+
+
+@pytest.mark.parametrize('mutation', ['revision', 'binary'])
+def test_wrong_official_source_or_binary_is_rejected_before_preparation(tmp_path, mutation):
+    args = setup_case(tmp_path)
+    if mutation == 'revision':
+        receipt = json.loads(args.reference_record.read_text())
+        receipt['upstream_revision'] = runner.SOURCE_REVISION
+        args.reference_record.write_text(json.dumps(receipt))
+    else:
+        args.reference_binary.write_text('modified official executable')
+    fake = FakeNative()
+    with pytest.raises(ValueError, match='official executable'):
+        execute(args, fake)
+    assert not fake.commands
+
+
+def test_full_method_schedule_keeps_pairs_adjacent():
+    methods = list(runner.METHODS)
+    for repeat in range(3):
+        schedule = runner.measurement_schedule(methods, repeat, 3)
+        assert len(schedule) == 7
+        assert sum(len(variants) for _, variants in schedule) == 13
+        assert [method for method, _ in schedule].index('reference') == repeat * 3
+        assert all(variants == ('reference',) if method == 'reference' else set(variants) == {'source', 'candidate'}
+                   for method, variants in schedule)
 
 
 @pytest.mark.parametrize('mutation', ['change_corpus', 'change_binary'])
