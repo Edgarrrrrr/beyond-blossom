@@ -1,0 +1,207 @@
+{
+  "complete": true,
+  "original_analysis": {
+    "summary.json": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/analysis-r02/summary.json",
+        "sha256": "5f6568b4e24445ac11f0d1208e00e3a02312fbede49997f3c7e6bdeefa5d5751"
+      },
+      "bundled": {
+        "path": "originals/summary.json",
+        "sha256": "5f6568b4e24445ac11f0d1208e00e3a02312fbede49997f3c7e6bdeefa5d5751"
+      }
+    },
+    "complete.json": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/analysis-r02/complete.json",
+        "sha256": "71261bf2833d81cc4f8ef5f0c0193318a119ff2e01abb80867013bec52b056ef"
+      },
+      "bundled": {
+        "path": "originals/complete.json",
+        "sha256": "71261bf2833d81cc4f8ef5f0c0193318a119ff2e01abb80867013bec52b056ef"
+      }
+    },
+    "measurements.csv": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/analysis-r02/measurements.csv",
+        "sha256": "fd7ba266e9ff90455875b1053d3b112db2e48c4745c1a3a0ea85294f8bff4137"
+      },
+      "bundled": {
+        "path": "originals/measurements.csv",
+        "sha256": "fd7ba266e9ff90455875b1053d3b112db2e48c4745c1a3a0ea85294f8bff4137"
+      }
+    },
+    "rounds.csv": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/analysis-r02/rounds.csv",
+        "sha256": "fd848b1fde931e5f7da4e60ed79b9fb3bf6ad8660ca68782045b5bf566ecd70d"
+      },
+      "bundled": {
+        "path": "originals/rounds.csv",
+        "sha256": "fd848b1fde931e5f7da4e60ed79b9fb3bf6ad8660ca68782045b5bf566ecd70d"
+      }
+    },
+    "REPORT.md": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/analysis-r02/REPORT.md",
+        "sha256": "8ca908c46d05e550eb9610aedb4caf94ee324f12a9922b81987a4b90ffbc4474"
+      },
+      "bundled": {
+        "path": "originals/REPORT.md",
+        "sha256": "8ca908c46d05e550eb9610aedb4caf94ee324f12a9922b81987a4b90ffbc4474"
+      }
+    },
+    "plan.json": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/plan.json",
+        "sha256": "6d90f914d7e8220de2a8284551503ada3be52cc226462f14ccfd8b7799f5e832"
+      },
+      "bundled": {
+        "path": "run/plan.json",
+        "sha256": "6d90f914d7e8220de2a8284551503ada3be52cc226462f14ccfd8b7799f5e832"
+      }
+    },
+    "lanes/ares1/complete.json": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/lanes/ares1/complete.json",
+        "sha256": "00e1f05c18bfa9fc2fa4a6969c7986a6ba8ce6482de0bda5ea4d6c9d2042b184"
+      },
+      "bundled": {
+        "path": "originals/lanes/ares1/complete.json",
+        "sha256": "00e1f05c18bfa9fc2fa4a6969c7986a6ba8ce6482de0bda5ea4d6c9d2042b184"
+      }
+    },
+    "exit-201059_0.txt": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/exit-201059_0.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "bundled": {
+        "path": "originals/exit-201059_0.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    "lanes/ares2/complete.json": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/lanes/ares2/complete.json",
+        "sha256": "7baec7dfbc3572f0960ffe3bbff6b89b6f9ac75c9af9356bbab3440e55557256"
+      },
+      "bundled": {
+        "path": "originals/lanes/ares2/complete.json",
+        "sha256": "7baec7dfbc3572f0960ffe3bbff6b89b6f9ac75c9af9356bbab3440e55557256"
+      }
+    },
+    "exit-201060_0.txt": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/exit-201060_0.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "bundled": {
+        "path": "originals/exit-201060_0.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    "lanes/ares3/complete.json": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/lanes/ares3/complete.json",
+        "sha256": "65c102df7d888daee59be9f2beebe24c3a50b47861507e200cbe9eb1cca4ae23"
+      },
+      "bundled": {
+        "path": "originals/lanes/ares3/complete.json",
+        "sha256": "65c102df7d888daee59be9f2beebe24c3a50b47861507e200cbe9eb1cca4ae23"
+      }
+    },
+    "exit-201061_0.txt": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/exit-201061_0.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "bundled": {
+        "path": "originals/exit-201061_0.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    "lanes/ares4/complete.json": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/lanes/ares4/complete.json",
+        "sha256": "26fd2ccf2a6d00bcf89eb4fe251e70f2d06557d81a20223c981620949b7373b3"
+      },
+      "bundled": {
+        "path": "originals/lanes/ares4/complete.json",
+        "sha256": "26fd2ccf2a6d00bcf89eb4fe251e70f2d06557d81a20223c981620949b7373b3"
+      }
+    },
+    "exit-201062_0.txt": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/exit-201062_0.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "bundled": {
+        "path": "originals/exit-201062_0.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    "lanes/ares5/complete.json": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/lanes/ares5/complete.json",
+        "sha256": "ff85cd8a33a9dd1a3c366457dae610d5a8edd28a0fadca9b5edf9763af3f8143"
+      },
+      "bundled": {
+        "path": "originals/lanes/ares5/complete.json",
+        "sha256": "ff85cd8a33a9dd1a3c366457dae610d5a8edd28a0fadca9b5edf9763af3f8143"
+      }
+    },
+    "exit-201063_0.txt": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/exit-201063_0.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "bundled": {
+        "path": "originals/exit-201063_0.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    "lanes/ares6/complete.json": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/lanes/ares6/complete.json",
+        "sha256": "efa35059d824aac3e262b82b6303f410eea217eb7fc522fb9c455866843367c6"
+      },
+      "bundled": {
+        "path": "originals/lanes/ares6/complete.json",
+        "sha256": "efa35059d824aac3e262b82b6303f410eea217eb7fc522fb9c455866843367c6"
+      }
+    },
+    "exit-201064_0.txt": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/exit-201064_0.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "bundled": {
+        "path": "originals/exit-201064_0.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    "analysis-exit.txt": {
+      "original": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/exit-201066_0.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "bundled": {
+        "path": "originals/analysis-exit.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    }
+  },
+  "packager": {
+    "original": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/worktrees/AE-PAPER-MACROS-20261107/integration/AE/bundle_paper_source.py",
+      "sha256": "f293c319f4d7b5633309bd87f91d5af76a27f5cf2692d986c7c7d64108efed6b"
+    },
+    "bundled": {
+      "path": "source/bundle_paper_source.py",
+      "sha256": "f293c319f4d7b5633309bd87f91d5af76a27f5cf2692d986c7c7d64108efed6b"
+    },
+    "note": "Exact executed source snapshot; the maintained exporter only removes its unused copy import."
+  },
+  "notes": "Portable Batch3 view of the completed full analysis. Original metadata is bundled byte-exact. Raw shot/block arrays, input files, binaries and distribution NPZs remain external; offline macro/figure reproduction does not repeat acquisition or correctness validation."
+}

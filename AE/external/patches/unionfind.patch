@@ -1,0 +1,121 @@
+--- a/sources/unionfind/upstream/UnionFindPy/cpp/include/Decoder.hpp
++++ b/sources/unionfind/patched_include/Decoder.hpp
+@@ -134,6 +134,10 @@
+ 			{
+ 				++mgr_.size(root1);
+ 				border_vertices_[root1].emplace(root2);
++				if constexpr(requires { lattice_.boundary_vertices(); })
++				{
++					if(lattice_.is_boundary(root2)) { mgr_.touch_boundary(root1); }
++				}
+ 			}
+ 			else
+ 			{
+@@ -146,6 +150,20 @@
+ 	auto peeling(std::vector<uint32_t>& syndromes) -> std::vector<Edge>
+ 	{
+ 		std::vector<Edge> corrections;
++        // Keep one boundary vertex per grown tree until last. This roots
++        // peeling at an unconstrained vertex; real detectors are all satisfied.
++        tsl::robin_set<Vertex> protected_boundaries;
++        if constexpr(requires { lattice_.boundary_vertices(); })
++        {
++            tsl::robin_set<Vertex> seen_clusters;
++            for(auto v : lattice_.boundary_vertices())
++            {
++                if(connection_counts_[v] && seen_clusters.insert(find_root(v)).second)
++                {
++                    protected_boundaries.insert(v);
++                }
++            }
++        }
+ 
+ 		// vs vector?
+ 		tsl::robin_map<Vertex, int> vertex_count;
+@@ -162,12 +180,12 @@
+ 			peeling_edges_.pop_back();
+ 			auto u = Vertex{};
+ 			auto v = Vertex{};
+-			if(vertex_count[leaf_edge.u] == 1)
++			if(vertex_count[leaf_edge.u] == 1 && !protected_boundaries.count(leaf_edge.u))
+ 			{
+ 				u = leaf_edge.u;
+ 				v = leaf_edge.v;
+ 			}
+-			else if(vertex_count[leaf_edge.v] == 1)
++			else if(vertex_count[leaf_edge.v] == 1 && !protected_boundaries.count(leaf_edge.v))
+ 			{
+ 				u = leaf_edge.v;
+ 				v = leaf_edge.u;
+--- a/sources/unionfind/upstream/UnionFindPy/cpp/include/RootManager.hpp
++++ b/sources/unionfind/patched_include/RootManager.hpp
+@@ -15,7 +15,9 @@
+ 	/* set of roots */
+ 	tsl::robin_set<Vertex> roots_;
+ 	/* set of roots with odd parity */
+-	tsl::robin_set<Vertex> odd_roots_; // root size comb
++	tsl::robin_set<Vertex> odd_roots_;
++	// Open boundaries absorb either syndrome parity.
++	tsl::robin_set<Vertex> boundary_roots_; // root size comb
+ 	/* key: root, value: size of the cluster */
+ 	tsl::robin_map<Vertex, uint32_t> size_;
+ 	/* key: root, value: parity of the cluster */
+@@ -97,12 +99,21 @@
+ 		return odd_roots_.count(v) == 1;
+ 	}
+ 
++	void touch_boundary(Vertex root)
++	{
++		boundary_roots_.insert(root);
++		odd_roots_.erase(root);
++	}
++
+ 	// size of the cluster of root1 is larger than that of root2
+ 	void merge(Vertex root1, Vertex root2)
+ 	{
+ 		const auto new_parity = parity(root1) + parity(root2);
+ 
+-		if((new_parity % 2) == 1) { odd_roots_.emplace(root1); }
++		const bool boundary = boundary_roots_.count(root1) || boundary_roots_.count(root2);
++		if(boundary) { boundary_roots_.insert(root1); }
++		boundary_roots_.erase(root2);
++		if((new_parity % 2) == 1 && !boundary) { odd_roots_.emplace(root1); }
+ 		else
+ 		{
+ 			odd_roots_.erase(root1);
+@@ -120,6 +131,7 @@
+ 
+ 	void remove(Vertex root)
+ 	{
++		boundary_roots_.erase(root);
+ 		odd_roots_.erase(root);
+ 		roots_.erase(root);
+ 		size_.erase(root);
+@@ -130,6 +142,7 @@
+ 
+ 	void clear()
+ 	{
++		tsl::robin_set<Vertex>().swap(boundary_roots_);
+ 		tsl::robin_set<Vertex>().swap(roots_);
+ 		tsl::robin_set<Vertex>().swap(odd_roots_);
+ 		tsl::robin_map<Vertex, uint32_t>().swap(size_);
+--- a/sources/unionfind/upstream/UnionFindPy/cpp/include/utility.hpp
++++ b/sources/unionfind/patched_include/utility.hpp
+@@ -47,8 +47,14 @@
+ {
+ 	auto operator()(const UnionFindCPP::Edge& e) const noexcept -> std::size_t
+ 	{
+-		auto h1 = std::hash<uint32_t>()(e.u);
+-		auto h2 = std::hash<uint32_t>()(e.v);
+-		return h1 ^ (h2 << 1U);
++        // Sequential detector IDs make the original XOR hash occupy only
++        // a small contiguous range. robin-map repeatedly grows when probe
++        // distance exceeds 4096, even though growth cannot disperse that range.
++        // Mix both full endpoint IDs before robin-map selects its bucket.
++        uint64_t x = (static_cast<uint64_t>(e.u) << 32U) | e.v;
++        x += 0x9e3779b97f4a7c15ULL;
++        x = (x ^ (x >> 30U)) * 0xbf58476d1ce4e5b9ULL;
++        x = (x ^ (x >> 27U)) * 0x94d049bb133111ebULL;
++        return static_cast<std::size_t>(x ^ (x >> 31U));
+ 	}
+ };

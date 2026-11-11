@@ -101,7 +101,7 @@ if(BB_SANITIZERS)
         message(FATAL_ERROR "The ASan/UBSan configuration requires GCC or Clang")
     endif()
     target_compile_options(beyond_blossom_build_options INTERFACE
-        -fsanitize=address,undefined -fno-omit-frame-pointer -g)
+        -O1 -fsanitize=address,undefined -fno-omit-frame-pointer -g)
     target_link_options(beyond_blossom_build_options INTERFACE -fsanitize=address,undefined)
 endif()
 if(BB_TEST_COVERAGE)

@@ -1,0 +1,208 @@
+{
+  "complete": true,
+  "experiment_id": "AE-TAILRESET-20261110",
+  "completed_date": "2026-11-11",
+  "implementation_commit": "d7e2f25144cb9a97a5b66f0eb2418a0e847ae9bc",
+  "acquisition_commit": "79889da06534ee63d63b6a965c3f056e3bfa5732",
+  "data_commit": "eeb90f3720dc21e996990e1f9d207419883604f7",
+  "original_data_commit": "7a377f791a9af9fd3f05d600d38a730dd9680431",
+  "run": ".local/artifacts/AE-TAILRESET-20261110/formal-r04",
+  "formal_summary": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/analysis-r01/summary.json",
+    "sha256": "5ca716ffd9bff017e53cc1e2f6c29cc13deb62ebae7d17ced81f401a293b199d"
+  },
+  "protocol": {
+    "shots": 1000000,
+    "batch_repeats": 3,
+    "latency_repeats": 1,
+    "statistics_repeats": 1,
+    "lto": "OFF",
+    "backend": "avx512vl",
+    "timing_statistics_macro": 0,
+    "statistics_macro": 1,
+    "warmup_seconds": 2,
+    "warmup_prefix": 1024,
+    "block_size": 1024,
+    "measurement_cpus": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "controller_cpu": 8,
+    "numa_node": 0,
+    "exclusive": true,
+    "allowed_nodes": [
+      "ares1",
+      "ares2",
+      "ares3",
+      "ares4",
+      "ares5",
+      "ares6"
+    ],
+    "timing_scope": "synchronous full decode, dispatch/waits/result stores and reset; final drain inside last batch block; latency final drain separately included in complete total; one resident OpenMP team; setup/warmup/checking/CSV excluded",
+    "remaining_scope": "normalized unmatched seeds in both X/Z components after actual pipeline joined prefix, before MWPM; separate instrumented full replay; summed and averaged per independent shot",
+    "ordering": "same unit pairs all methods on one host; cyclic first method by distance and repeat; one job per node",
+    "correctness": "all shot IDs/events/weights checked; equal optimum observable ties require actual candidate parity/weight/observable witness; all differences retained",
+    "latency_summary": "nearest-rank p50/p90/p99/p99.9/max, raw per-shot CSV retained; one latency pass, no Min3 claim",
+    "stopping": "all seven settings; all three policies; no performance-dependent stopping or outlier removal"
+  },
+  "formal_calls": 133,
+  "timing_calls": 112,
+  "statistics_calls": 21,
+  "independent_inputs": 7000000,
+  "optimum_weight_differences": 0,
+  "witnessed_equal_weight_observable_differences": 5,
+  "distinct_tied_inputs": [
+    {
+      "case": "d09-p0.0030-s0.00",
+      "shot_index": 516332
+    }
+  ],
+  "core_regression_tests": 327,
+  "policy_exhaustive_cases": 288,
+  "policy_builds": 6,
+  "endpoint_calls": 18,
+  "endpoint_shots": 1025,
+  "python_tests": 26,
+  "dataset_checksums": 11,
+  "default_mode": 0,
+  "default_statistics": false,
+  "disabled_instrumentation_proof": {
+    "complete": true,
+    "comparisons": [
+      {
+        "file": "one_hop_predecoder.cc",
+        "token_stream_equal": true
+      },
+      {
+        "file": "shared_component_decoder.cc",
+        "token_stream_equal": true
+      }
+    ],
+    "statistics_symbols_absent": true
+  },
+  "build_jobs": [
+    "202076",
+    "202077",
+    "202078"
+  ],
+  "formal_jobs": [
+    "202079",
+    "202080",
+    "202081",
+    "202082",
+    "202083"
+  ],
+  "analysis_job": "202084",
+  "offline_verification": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/verification-r02/validation.json",
+    "sha256": "1e9f20032795b28af541ee224817eae1df8d03a71655c17d97c43ba51567fa73"
+  },
+  "offline_job": "202181",
+  "offline_host": "ares6",
+  "clean_git_export": true,
+  "archive": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/ae-source-r02.tar",
+    "sha256": "4a376a17b86d2c2d1e83f495919d4c3fcd1573dfbd6c3ff8b688a114f92af0d8"
+  },
+  "rendered_figures": 2,
+  "rendered_rows": 21,
+  "plot_values_match_summary": true,
+  "changed_evidence_checksum_rejected": true,
+  "overwrite_protection": true,
+  "bundled_manifest": {
+    "path": "data/tailreset/SOURCE.json",
+    "sha256": "f8395c7ffe0e5183c14694f12e7cb5b06fc70915dfd3dac4f544be581d7faa66"
+  },
+  "renderer_data": {
+    "path": "data/predecode.csv",
+    "sha256": "212eab348e8b648eb0035bf585c4bd4ca705896c2839e23128e004f33a829d9f"
+  },
+  "historical_predecode": {
+    "path": "data/predecode-20261025.csv",
+    "sha256": "8112aa38161e8e5838e8e9e5a2f10a2c6d4ffad0643927a0e075c8f3d346ae73",
+    "byte_identical_to_previous": true
+  },
+  "paper_macros_unchanged": true,
+  "paper_template_sha256": "c3d3a3db0d6eb85e2f55d7d5888eda426da548240b419799416f82ee6c17fabb",
+  "d33_p0p3": [
+    {
+      "distance": 33,
+      "physical_error_rate": 0.003,
+      "rounds": 33,
+      "shots": 1000000,
+      "strategy": "skip",
+      "threads": 4,
+      "mean_decoding_us_per_shot": 382.49052342966667,
+      "batch1_us": 382.84206026,
+      "batch2_us": 390.423080457,
+      "batch3_us": 374.206429572,
+      "official_speedup": 2.4833535957072215,
+      "normalized_syndromes_per_shot": 1929.856873,
+      "remaining_syndromes_per_shot": 1929.856873,
+      "remaining_syndromes_total": 1929856873,
+      "completed_shots": 0,
+      "batch_observable_ties": 0,
+      "statistics_observable_ties": 0
+    },
+    {
+      "distance": 33,
+      "physical_error_rate": 0.003,
+      "rounds": 33,
+      "shots": 1000000,
+      "strategy": "coordinate",
+      "threads": 4,
+      "mean_decoding_us_per_shot": 223.65006601266666,
+      "batch1_us": 223.910791563,
+      "batch2_us": 224.03350304,
+      "batch3_us": 223.005903435,
+      "official_speedup": 4.2470777389764045,
+      "normalized_syndromes_per_shot": 1929.856873,
+      "remaining_syndromes_per_shot": 161.613366,
+      "remaining_syndromes_total": 161613366,
+      "completed_shots": 0,
+      "batch_observable_ties": 0,
+      "statistics_observable_ties": 0
+    },
+    {
+      "distance": 33,
+      "physical_error_rate": 0.003,
+      "rounds": 33,
+      "shots": 1000000,
+      "strategy": "degree",
+      "threads": 4,
+      "mean_decoding_us_per_shot": 156.50516754766667,
+      "batch1_us": 157.08392228900001,
+      "batch2_us": 157.192666804,
+      "batch3_us": 155.23891355,
+      "official_speedup": 6.069187564645123,
+      "normalized_syndromes_per_shot": 1929.856873,
+      "remaining_syndromes_per_shot": 100.453438,
+      "remaining_syndromes_total": 100453438,
+      "completed_shots": 0,
+      "batch_observable_ties": 0,
+      "statistics_observable_ties": 0
+    },
+    {
+      "distance": 33,
+      "physical_error_rate": 0.003,
+      "rounds": 33,
+      "shots": 1000000,
+      "strategy": "Official",
+      "threads": 1,
+      "mean_decoding_us_per_shot": 949.859216683,
+      "batch1_us": 948.0322818080001,
+      "batch2_us": 949.594014494,
+      "batch3_us": 951.951353747,
+      "official_speedup": 1.0,
+      "normalized_syndromes_per_shot": "",
+      "remaining_syndromes_per_shot": "",
+      "remaining_syndromes_total": "",
+      "completed_shots": "",
+      "batch_observable_ties": 0,
+      "statistics_observable_ties": ""
+    }
+  ],
+  "scope": "Complete current TailReset three-policy campaign with fixed stock official comparator. Statistics are a separate compiled replay; their durations are excluded from decoding time. Offline verification checks bundled metadata/count chains, macros, regression tests and plots without re-decoding or reading excluded million-row CSVs."
+}

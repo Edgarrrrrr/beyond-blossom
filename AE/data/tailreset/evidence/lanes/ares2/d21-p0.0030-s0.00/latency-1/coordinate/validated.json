@@ -1,0 +1,113 @@
+{
+  "complete": true,
+  "shots": 1000000,
+  "method": "coordinate",
+  "phase": "latency",
+  "observable_ties": 0,
+  "weight_differences": 0,
+  "reference": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-paper-full-retest-20261031-r01/internal/formal/d21-p0.0030-s0.00/input-original/reference_shots.csv",
+    "sha256": "0857f0838b2c8f260ad8113a4725cad2d6e1e72e19b173b215e05d4b623e753d"
+  },
+  "latency_ns": {
+    "p50": 47565,
+    "p90": 61997,
+    "p99": 80814,
+    "p99_9": 108991,
+    "max": 903415,
+    "mean": 49003.843988
+  },
+  "tail_cases": [
+    {
+      "elapsed_ns": 903415,
+      "shot_index": 289440,
+      "input_events": 512
+    },
+    {
+      "elapsed_ns": 644584,
+      "shot_index": 443580,
+      "input_events": 492
+    },
+    {
+      "elapsed_ns": 629220,
+      "shot_index": 314475,
+      "input_events": 552
+    },
+    {
+      "elapsed_ns": 439064,
+      "shot_index": 190836,
+      "input_events": 486
+    },
+    {
+      "elapsed_ns": 401081,
+      "shot_index": 239214,
+      "input_events": 488
+    }
+  ],
+  "elapsed_ns": 49003843988,
+  "complete_elapsed_ns": 49003846793,
+  "final_drain_ns": 2805,
+  "mean_us": 49.003843988,
+  "files": {
+    "clock.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/clock.json",
+      "sha256": "2cb9919077eae4ea15cf5de7c50acbf508e7723c6abefa0b77267184b74dfb4f"
+    },
+    "completion.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/completion.json",
+      "sha256": "7f6f0fec7d1448a9d771fd1e14dd72a8c9f07bf424fd9973678c4e9599ad2b6f"
+    },
+    "correctness.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/correctness.json",
+      "sha256": "1943443f6f3f3f410d90545fb065cdf0fed4bd3aaf4b572fe914197357b0fa20"
+    },
+    "differences.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/differences.csv",
+      "sha256": "7a6c0d1060dc3da4db28e8ca36cfc9e5550603a54d178f4ffcd2a0da2688508d"
+    },
+    "execution.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/execution.csv",
+      "sha256": "0579aeb69cbdb29ef670b1537f5338169fe2b2abd95a1ca89d8efecbaad322a1"
+    },
+    "execution_threads.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/execution_threads.csv",
+      "sha256": "863f5b60138e8f89fcae4ad00ec28b79f6766451500e204294731a4c5a1612fa"
+    },
+    "input_features.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/input_features.csv",
+      "sha256": "5d298c8477d125873157dbc0063f7d5ddfdd3979676e57c523ca9f873d12b7f4"
+    },
+    "kernel_selection.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/kernel_selection.csv",
+      "sha256": "f11d0d308b18249983793c05d0b286b419df7fa66105cb272efcb0f64d5260c3"
+    },
+    "measurement.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/measurement.csv",
+      "sha256": "90d8ebd25520033e2272d637a6c26ca8c0ded841e8475195aee7eeb820505c42"
+    },
+    "measurement_scope.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/measurement_scope.json",
+      "sha256": "dd0282d6ec736c520477ead3b3de1980d8ed1d539f04cf8ba2ed1cf2c4d71e2e"
+    },
+    "native_shots.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/native_shots.csv",
+      "sha256": "dc38faa3a69a45f3fe306872411e5cd6a86620c5f452a73267420e950a6b15f2"
+    },
+    "process_usage.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/process_usage.json",
+      "sha256": "d9267cc90dbe72681040519c0fb3ee0043ece1cf0c4547aff1b961cef0272e15"
+    },
+    "setup.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/setup.json",
+      "sha256": "3a086169d6e1119bfdf38fa21c5f93bf13f43ebda7abd2420365c53b49b99a3c"
+    },
+    "storage.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/storage.json",
+      "sha256": "92d1b9778a92bbd2843231b34cd34c135beb025c8b5a5e14c6cc98cedae6a240"
+    },
+    "warmup.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d21-p0.0030-s0.00/latency-1/coordinate/warmup.json",
+      "sha256": "d65b718168ca9ee5a6fb06c4a59249d73f5ae5ffc750ab0fb0b8bb82f3ec31aa"
+    }
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "status": "complete",
+  "node": "ares3",
+  "job_id": "202044",
+  "started_utc": "2026-11-10T03:11:10.678191+00:00",
+  "passes": [
+    {
+      "case": "d29-p0.0030-s0.00",
+      "d": 29,
+      "p": 0.003,
+      "method": "GridSIMD",
+      "node": "ares3",
+      "shots": 1000000,
+      "pmu": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/lanes/ares3/measurements/d29-p0.0030-s0.00/GridSIMD/pmu.json",
+        "sha256": "7a89ec9e3138c5f98112170c23f713c4d1ba23bcbc0014b5d424013b9a264037"
+      },
+      "validation": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/lanes/ares3/measurements/d29-p0.0030-s0.00/GridSIMD/validation.json",
+        "sha256": "e22e2cbedfb3553670f453c0dcfb4926a48f9695516c6962777314a3e52caac4"
+      },
+      "binary": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/build/structured",
+        "sha256": "a3ae09b97da8e2ece46a77d54547444f57558e7b65b523f2927ea033312d174e"
+      },
+      "llc_loads": 12906116528,
+      "llc_load_misses": 3028870,
+      "l3_load_miss_percent": 0.023468484833751687
+    },
+    {
+      "case": "d29-p0.0030-s0.00",
+      "d": 29,
+      "p": 0.003,
+      "method": "Upstream",
+      "node": "ares3",
+      "shots": 1000000,
+      "pmu": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/lanes/ares3/measurements/d29-p0.0030-s0.00/Upstream/pmu.json",
+        "sha256": "5c936e5cd96feb2cbc1af308180300dbaea9e41bf4063abafc51672ef024f24b"
+      },
+      "validation": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/lanes/ares3/measurements/d29-p0.0030-s0.00/Upstream/validation.json",
+        "sha256": "d332e38d29fa8ddf9721ba8a31844be0a9648608e21e170666bd0ae5f8f54e1b"
+      },
+      "binary": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/build/direct",
+        "sha256": "ee23544d27f2f32ef5d5764c4203295a119ba558d832932e886634e3e8b81acb"
+      },
+      "llc_loads": 41528967845,
+      "llc_load_misses": 11471202,
+      "l3_load_miss_percent": 0.027622169765486017
+    }
+  ],
+  "smoke": [
+    {
+      "case": "d09-p0.0005-s0.00",
+      "d": 9,
+      "p": 0.0005,
+      "method": "Upstream",
+      "node": "ares3",
+      "shots": 1025,
+      "pmu": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/lanes/ares3/smoke/d09-p0.0005-s0.00/Upstream/pmu.json",
+        "sha256": "6e9d1e93228a1e568beb310865f0a9353bed2d619839442d9ed7396cd1b9c388"
+      },
+      "validation": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/lanes/ares3/smoke/d09-p0.0005-s0.00/Upstream/validation.json",
+        "sha256": "00c363537c16531ee22adcd54e881a8e38ca3f5ea291f980ec76decc5a011334"
+      },
+      "binary": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/build/direct",
+        "sha256": "ee23544d27f2f32ef5d5764c4203295a119ba558d832932e886634e3e8b81acb"
+      },
+      "llc_loads": 85,
+      "llc_load_misses": 0,
+      "l3_load_miss_percent": 0
+    },
+    {
+      "case": "d09-p0.0005-s0.00",
+      "d": 9,
+      "p": 0.0005,
+      "method": "GridSIMD",
+      "node": "ares3",
+      "shots": 1025,
+      "pmu": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/lanes/ares3/smoke/d09-p0.0005-s0.00/GridSIMD/pmu.json",
+        "sha256": "5e270afd6af459446ff0c676e8bfa8a8d0c24e7ad285c69231cb193ed592c837"
+      },
+      "validation": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/lanes/ares3/smoke/d09-p0.0005-s0.00/GridSIMD/validation.json",
+        "sha256": "8b465ac226462b20bf60072a26d874423c2e25d0d5194b1d4ab447b7eaa5e176"
+      },
+      "binary": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/build/structured",
+        "sha256": "a3ae09b97da8e2ece46a77d54547444f57558e7b65b523f2927ea033312d174e"
+      },
+      "llc_loads": 25,
+      "llc_load_misses": 0,
+      "l3_load_miss_percent": 0
+    },
+    {
+      "case": "d33-p0.0030-s0.00",
+      "d": 33,
+      "p": 0.003,
+      "method": "Upstream",
+      "node": "ares3",
+      "shots": 1025,
+      "pmu": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/lanes/ares3/smoke/d33-p0.0030-s0.00/Upstream/pmu.json",
+        "sha256": "0b2968158b73cbb7ed7b0984d1f2dc07e05e103642304eedc28f82f4a810eb39"
+      },
+      "validation": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/lanes/ares3/smoke/d33-p0.0030-s0.00/Upstream/validation.json",
+        "sha256": "d9f07716d5c59d06edb423767b014334bff2d94091e441c6a679d9ef51aa07e8"
+      },
+      "binary": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/build/direct",
+        "sha256": "ee23544d27f2f32ef5d5764c4203295a119ba558d832932e886634e3e8b81acb"
+      },
+      "llc_loads": 74959514,
+      "llc_load_misses": 126677,
+      "l3_load_miss_percent": 0.16899389182272445
+    },
+    {
+      "case": "d33-p0.0030-s0.00",
+      "d": 33,
+      "p": 0.003,
+      "method": "GridSIMD",
+      "node": "ares3",
+      "shots": 1025,
+      "pmu": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/lanes/ares3/smoke/d33-p0.0030-s0.00/GridSIMD/pmu.json",
+        "sha256": "d84560b789488aa5235af26e338428f137001313316c8d17b590f25361743e1d"
+      },
+      "validation": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/lanes/ares3/smoke/d33-p0.0030-s0.00/GridSIMD/validation.json",
+        "sha256": "6a4260ce09dd75516c2345a13cbe00a350c3beb7947e791818880aa8a743c696"
+      },
+      "binary": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-L3-CACHE-20261110/formal-r04/build/structured",
+        "sha256": "a3ae09b97da8e2ece46a77d54547444f57558e7b65b523f2927ea033312d174e"
+      },
+      "llc_loads": 23628058,
+      "llc_load_misses": 1427,
+      "l3_load_miss_percent": 0.006039429901517933
+    }
+  ],
+  "current": {
+    "case": "d29-p0.0030-s0.00",
+    "method": "Upstream"
+  },
+  "complete": true,
+  "finished_utc": "2026-11-10T03:34:52.059301+00:00"
+}

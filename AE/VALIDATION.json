@@ -1,0 +1,33 @@
+{
+  "complete": true,
+  "job_id": "200647",
+  "host": "ares1",
+  "exit_code": 0,
+  "package_commit": "18ce89de1560d512cad6102f104f51ab65183d60",
+  "independent_package_redraw": true,
+  "source_package": "AE/",
+  "files_byte_identical_to_r05": [
+    "incremental_ablation.png",
+    "incremental_ablation_preview.png",
+    "plot-data.csv",
+    "fastest-cells.csv"
+  ],
+  "colorbar_max": 12,
+  "outer_padding_inches": 0,
+  "completion_receipt": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-M4-MILLION-MIXED-LTO-20261105/formal-r01/ae-package-r01/output/ablation/complete.json",
+  "package_files_sha256": {
+    "AE/README.md": "8b613b4b1dc3fbda63f137baa3a1e9370b1487c1aad15992682eb8fc50438c32",
+    "AE/requirements.txt": "5cfdad7a2e7757da88126c923b2e0b07237c93f85e493261c17c8bfa0d4b0b7b",
+    "AE/.gitignore": "fe8ef30b5e207886a8015c9987a2e230ccdece2100d575212f21a1619f0294a4",
+    "AE/plot.py": "d26a0f7a895ddd5f0d6383cf6861d43d45e624418eb760f56937010f186c66de",
+    "AE/ablation.py": "7e48ce9aeeb72b35330817cf1226477ace03d2e1cd633f2bb4765208653a6ce0",
+    "AE/plot_fonts.py": "aab19eec81b0094fae4b0354a810fcde02da3188c7c29efc08d6890220409b98",
+    "AE/.gitattributes": "330fa7edfdfea8390dd6ac4e9a5a786684317ac475fa9b26897fcba58f54096e",
+    "AE/SOURCE.json": "481310525e6a446957ef9d74155ac04f0afb7dec6a97d95ce6aa7dc41ecdd250",
+    "AE/data/ablation.json": "525d1018e9694e2f7b9b5120e85512ba45aa675a1fe4d096f35486674102fef6",
+    "AE/reference/fastest-cells.csv": "69ee7ce69565eb622b164bc921afb8c052e814c9aa93103d8258def8756f51e9",
+    "AE/reference/plot-data.csv": "8f6a3a1e0e6491a7bac75ea278f9fd0c41252a934be75ae5fafb7d9ba5bba68c",
+    "AE/fonts/Times_New_Roman.ttf": "4e98adeff8ccc8ef4e3ece8d4547e288ff85fdc9c7ca711a4599c234874bbe86",
+    "AE/fonts/Times_New_Roman_Bold.ttf": "4357b63cef20c01661a53c5dae70ffd20cb4765503aaed6d38b17a57c5a90bff"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "complete": true,
+  "shots": 1000000,
+  "method": "skip",
+  "phase": "statistics",
+  "observable_ties": 0,
+  "weight_differences": 0,
+  "reference": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-paper-full-retest-20261031-r01/internal/formal/d13-p0.0030-s0.00/input-original/reference_shots.csv",
+    "sha256": "b3330aa732ded75298877238ab5187115eeff6c987b8719574a2f191b904ab02"
+  },
+  "components": [
+    {
+      "normalized": 62198417,
+      "residual": 62198417,
+      "pairs": 0,
+      "boundaries": 0
+    },
+    {
+      "normalized": 48426824,
+      "residual": 48426824,
+      "pairs": 0,
+      "boundaries": 0
+    }
+  ],
+  "completed_shots": 0,
+  "normalized": 110625241,
+  "residual": 110625241,
+  "files": {
+    "correctness.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/skip/correctness.json",
+      "sha256": "1943443f6f3f3f410d90545fb065cdf0fed4bd3aaf4b572fe914197357b0fa20"
+    },
+    "differences.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/skip/differences.csv",
+      "sha256": "7a6c0d1060dc3da4db28e8ca36cfc9e5550603a54d178f4ffcd2a0da2688508d"
+    },
+    "execution.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/skip/execution.csv",
+      "sha256": "19d608b44d614f628dd595f6ee79fdc8f9f8da297563eee74b6cdaf1af90c9eb"
+    },
+    "execution_threads.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/skip/execution_threads.csv",
+      "sha256": "012f4d30fb60f8151ea6f30657c33f5ad3a85bd366deca00eaf45206539a34af"
+    },
+    "input_features.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/skip/input_features.csv",
+      "sha256": "f2ffed80acf0cd66b0b76aa310a9198be541a6294b2ec5d9be524a3df3a91876"
+    },
+    "kernel_selection.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/skip/kernel_selection.csv",
+      "sha256": "cf62d29bcc0a174710bffe27e11d429f70461badfae6df7f2571e3010971c7da"
+    },
+    "setup.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/skip/setup.json",
+      "sha256": "05d63e127a3d15dff0a671bbe30f474fdef1eafec0d223f06ffb293b007bec7e"
+    },
+    "storage.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/skip/storage.json",
+      "sha256": "92d1b9778a92bbd2843231b34cd34c135beb025c8b5a5e14c6cc98cedae6a240"
+    },
+    "syndromes.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/skip/syndromes.csv",
+      "sha256": "bb8f825255189d5e8887b12e5cbef15e90562e4fe55d96df6462b7dcfbd7bfb7"
+    },
+    "syndromes.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/skip/syndromes.json",
+      "sha256": "fc9375f75ae66d33cc0ea90f7a4450f287b2b589d16244eda3eff7507cc0df73"
+    },
+    "warmup.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/skip/warmup.json",
+      "sha256": "a2fc87296a76afe138ffc4606a588ba56c77cd70f73aa1116b488e1417eb0bbd"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "experiment_id": "DECODER-DOCUMENT-MATRIX-20261106",
+  "baseline": "Official",
+  "summary": {
+    "path": "../../run/analysis-batch/summary.json",
+    "sha256": "19f86a29d4f6ffb625dd1db219107ac92dc3023c02adecd00be2d17212b07200"
+  },
+  "measurement": "sum of three complete million-shot batch elapsed_ns / 3000000 / 1000, us/shot"
+}

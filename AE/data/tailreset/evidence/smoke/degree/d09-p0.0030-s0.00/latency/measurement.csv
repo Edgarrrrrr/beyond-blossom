@@ -1,0 +1,2 @@
+mode,shots,elapsed_ns,ns_per_shot,outer_wall_ns,warmup_shots,block_size,syndrome_hash,result_hash,reference_result_hash,observable_diff,weight_diff,total_threads,execution
+pipe-latency,1025,3962035,3865.4000000000001,3979950,514048,1024,2233456893139795165,8687670639177487005,8687670639177487005,0,0,4,pipeline

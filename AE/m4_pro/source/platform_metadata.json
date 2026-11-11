@@ -1,0 +1,75 @@
+{
+  "experiment_id": "EXP-20261105-01",
+  "artifact_root": "/Users/fujiayu/Developer/PyMatching-experiments/.local/artifacts/EXP-20261105-01",
+  "machine": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "sysctl": {
+      "hw.model": "Mac16,8",
+      "machdep.cpu.brand_string": "Apple M4 Pro",
+      "hw.physicalcpu": "14",
+      "hw.logicalcpu": "14",
+      "hw.perflevel0.physicalcpu": "10",
+      "hw.perflevel1.physicalcpu": "4",
+      "hw.memsize": "25769803776"
+    },
+    "physical_affinity_verified": false,
+    "scheduling": "USER_INITIATED QoS; CPU placement unavailable"
+  },
+  "builds": {
+    "official-final-r01": {
+      "build_id": "official-final-r01",
+      "implementation_commit": "e27b8c6a5f5ba10fb74d4ebb29822f2df5e12bcd",
+      "acquisition_commit": "7a8c52a17b14d76ffd20ef7dea2c5f3c08d77947",
+      "cxx_flags": "-mcpu=apple-m4",
+      "binary_sha256": "7be9706a869c5fa8992b43de6edbf8b66c2cafc09602492174b0625767b870a3",
+      "compiler_version": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+      "configuration": "Release, no LTO, unchanged official upstream, normal generic decoding; no structured or predecode path",
+      "observed_optimization_flags": [
+        "-mcpu=apple-m4",
+        "-O3",
+        "-std=gnu++20",
+        "-O3"
+      ]
+    },
+    "selected-final-r01": {
+      "build_id": "selected-final-r01",
+      "implementation_commit": "e18618a53c5493154d307bf46684599e3bbab9bc",
+      "acquisition_commit": "7a8c52a17b14d76ffd20ef7dea2c5f3c08d77947",
+      "cxx_flags": "-mcpu=apple-m4",
+      "binary_sha256": "abea65ee804cb3697f2035a3e7ffb5673e7bb4dbdbb0fc91464bd02294f9ab79",
+      "compiler_version": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+      "configuration": "Release, no LTO, unified six-strategy core, 12 slots, scalar matching; NEON128 cap",
+      "observed_optimization_flags": [
+        "-mcpu=apple-m4",
+        "-O3",
+        "-std=gnu++20",
+        "-O3"
+      ]
+    },
+    "chain-candidate-r01": {
+      "build_id": "chain-candidate-r01",
+      "implementation_commit": "631202519ea2805368774442c9cd03eb93b9e6ed",
+      "acquisition_commit": "7a8c52a17b14d76ffd20ef7dea2c5f3c08d77947",
+      "cxx_flags": "-mcpu=apple-m4",
+      "binary_sha256": "cbbbc5656a424ef9db44379dc20993aa04782fe7eb5c7311bc3651da9f1f9485",
+      "compiler_version": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+      "configuration": "Release, no LTO, unified six-strategy core, 12 slots, scalar matching; NEON128 cap",
+      "observed_optimization_flags": [
+        "-mcpu=apple-m4",
+        "-O3",
+        "-std=gnu++20",
+        "-O3"
+      ]
+    }
+  },
+  "source_files": {
+    "runs/formal-main-batch-r01/plan.json": "962558d84f801ba737c713ff9e97d58b4d4c51018f1e5142ade6796be0f22156",
+    "runs/component-chain-formal-batch-r01/plan.json": "33c3f9ff44451c963769eceac224305442590c4e743861c30c952feee8b99fcf",
+    "builds/official-final-r01/build.json": "25d3a18e1627a0b89e58859a14b98e90bb509b3c43da3982349afdef919e6615",
+    "builds/official-final-r01/compile_commands.json": "7c5b1f0c0ef16e9e2cc20b6659f1f2af57e8cf9e07624b430d9f97fc4cfb43d1",
+    "builds/selected-final-r01/build.json": "f624f1cacbe34224985129a485f88d31743df266cdbb0a740242a8210a30bdbb",
+    "builds/selected-final-r01/compile_commands.json": "0824bad64adde381af139e61d11a68262ab16fa00aff6fe26391cfa05102d990",
+    "builds/chain-candidate-r01/build.json": "244d4eec8a4467e1aa550027f69b5f0ef73608d0f5926e76ae59278b07045080",
+    "builds/chain-candidate-r01/compile_commands.json": "556a4020861f98c12f3a3625d1e5e3abd733fb43de38ddcaf7e04dbe44a08147"
+  }
+}

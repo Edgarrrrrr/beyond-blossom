@@ -1,0 +1,113 @@
+{
+  "complete": true,
+  "shots": 1000000,
+  "method": "coordinate",
+  "phase": "latency",
+  "observable_ties": 0,
+  "weight_differences": 0,
+  "reference": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-paper-full-retest-20261031-r01/internal/formal/d29-p0.0030-s0.00/input-original/reference_shots.csv",
+    "sha256": "1e7fb4caef1e5eecc0b65f13f8e740543d7c2b53fc14fda2ca9472d161d5812d"
+  },
+  "latency_ns": {
+    "p50": 139771,
+    "p90": 166321,
+    "p99": 196335,
+    "p99_9": 236223,
+    "max": 1339459,
+    "mean": 141774.791642
+  },
+  "tail_cases": [
+    {
+      "elapsed_ns": 1339459,
+      "shot_index": 103628,
+      "input_events": 1341
+    },
+    {
+      "elapsed_ns": 1056321,
+      "shot_index": 69077,
+      "input_events": 1341
+    },
+    {
+      "elapsed_ns": 838303,
+      "shot_index": 751820,
+      "input_events": 1367
+    },
+    {
+      "elapsed_ns": 793741,
+      "shot_index": 923960,
+      "input_events": 1347
+    },
+    {
+      "elapsed_ns": 574210,
+      "shot_index": 911455,
+      "input_events": 1415
+    }
+  ],
+  "elapsed_ns": 141774791642,
+  "complete_elapsed_ns": 141774800872,
+  "final_drain_ns": 9230,
+  "mean_us": 141.774791642,
+  "files": {
+    "clock.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/clock.json",
+      "sha256": "2cb9919077eae4ea15cf5de7c50acbf508e7723c6abefa0b77267184b74dfb4f"
+    },
+    "completion.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/completion.json",
+      "sha256": "21a2c5cd11c3ee5c6ecb3a4e19a53e06ac6a0c72047be6906464b6979315f797"
+    },
+    "correctness.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/correctness.json",
+      "sha256": "1943443f6f3f3f410d90545fb065cdf0fed4bd3aaf4b572fe914197357b0fa20"
+    },
+    "differences.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/differences.csv",
+      "sha256": "7a6c0d1060dc3da4db28e8ca36cfc9e5550603a54d178f4ffcd2a0da2688508d"
+    },
+    "execution.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/execution.csv",
+      "sha256": "5c98aab21c63cb08b8b5927d8d4aca56b207a3b8986c956501fb435d9f6e9282"
+    },
+    "execution_threads.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/execution_threads.csv",
+      "sha256": "fd2fcc75e324b4e2c7384ead6ea92c783e3e0fe3ebd1b3ae101525521a4488bd"
+    },
+    "input_features.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/input_features.csv",
+      "sha256": "efa209bf9e859ce8f5a853d0d94a63f3b563c2bdbd71b74f99da80a9657e84b7"
+    },
+    "kernel_selection.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/kernel_selection.csv",
+      "sha256": "cf4d5abe12d4db42f5dc4629f874c2cda994d66bf810b2b1feea48a6f8f38da6"
+    },
+    "measurement.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/measurement.csv",
+      "sha256": "c6f3fbe8810db5cf862837a5fcdab408d37ae8a8185678f1f080cbbaa6fe7aee"
+    },
+    "measurement_scope.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/measurement_scope.json",
+      "sha256": "dd0282d6ec736c520477ead3b3de1980d8ed1d539f04cf8ba2ed1cf2c4d71e2e"
+    },
+    "native_shots.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/native_shots.csv",
+      "sha256": "ea737bb89c30f5650b51f75111ded4a803eef8629b40fae36078d35a257d7c75"
+    },
+    "process_usage.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/process_usage.json",
+      "sha256": "efb045ef9c47eefb45c99e2db31f63d92728d95283348d9bba80329e54a3a3a6"
+    },
+    "setup.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/setup.json",
+      "sha256": "314d3fa2a4f5748b148f96a3d7d200fc64089870fbbb734869d45152bc928515"
+    },
+    "storage.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/storage.json",
+      "sha256": "92d1b9778a92bbd2843231b34cd34c135beb025c8b5a5e14c6cc98cedae6a240"
+    },
+    "warmup.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d29-p0.0030-s0.00/latency-1/coordinate/warmup.json",
+      "sha256": "1ba5f9076cbcda0c4a7fb2189ef7ff93e7112e29a6035f2259e1f00e4829d8ad"
+    }
+  }
+}

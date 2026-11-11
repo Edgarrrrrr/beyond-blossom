@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "source": {
+    "run": "data/latest-matrix/run",
+    "analysis": "analysis-batch",
+    "experiment_id": "DECODER-DOCUMENT-MATRIX-20261106",
+    "implementation_commit": "eb66e671947d066adafab1b2a504d45b2f0530d7",
+    "lto": "OFF",
+    "distances": [
+      9,
+      13,
+      17,
+      21,
+      25,
+      29,
+      33
+    ],
+    "probabilities": [
+      "0.0005",
+      "0.001",
+      "0.003"
+    ]
+  },
+  "metric": "batch3_us",
+  "aliases": {
+    "pymatching": "Upstream",
+    "structured-simd": "GridSIMD",
+    "predecoding": "Predecode",
+    "component-parallel": "Component",
+    "tail-reset": "TailReset",
+    "parallel-predecoding": "Spatial",
+    "tail-reset-reference": "Component"
+  },
+  "best_methods": [
+    "structured-simd",
+    "predecoding",
+    "component-parallel",
+    "tail-reset",
+    "parallel-predecoding"
+  ],
+  "preserve": {},
+  "rules": {
+    "xeon.decoder-comparison.p0p05.best.vs-pymatching.max-speedup": {
+      "op": "best_max_speedup",
+      "reference": "pymatching",
+      "p": "0.0005"
+    },
+    "xeon.decoder-comparison.p0p1.best.vs-pymatching.max-speedup": {
+      "op": "best_max_speedup",
+      "reference": "pymatching",
+      "p": "0.001"
+    },
+    "xeon.decoder-comparison.p0p3.best.vs-pymatching.max-speedup": {
+      "op": "best_max_speedup",
+      "reference": "pymatching",
+      "p": "0.003"
+    },
+    "xeon.ablation.d33.p0p3.pymatching.mean-time-us": {
+      "op": "time",
+      "method": "pymatching",
+      "d": 33,
+      "p": "0.003"
+    },
+    "xeon.ablation.d33.p0p3.structured-simd.mean-time-us": {
+      "op": "time",
+      "method": "structured-simd",
+      "d": 33,
+      "p": "0.003"
+    },
+    "xeon.ablation.d33.p0p3.structured-simd.vs-pymatching.speedup": {
+      "op": "speedup",
+      "method": "structured-simd",
+      "reference": "pymatching",
+      "d": 33,
+      "p": "0.003"
+    },
+    "xeon.ablation.d9.p0p05.pymatching.mean-time-us": {
+      "op": "time",
+      "method": "pymatching",
+      "d": 9,
+      "p": "0.0005"
+    },
+    "xeon.ablation.d9.p0p05.structured-simd.mean-time-us": {
+      "op": "time",
+      "method": "structured-simd",
+      "d": 9,
+      "p": "0.0005"
+    },
+    "xeon.ablation.predecoding.vs-structured-simd.min-speedup": {
+      "op": "min_speedup",
+      "method": "predecoding",
+      "reference": "structured-simd"
+    },
+    "xeon.ablation.predecoding.vs-structured-simd.max-speedup": {
+      "op": "max_speedup",
+      "method": "predecoding",
+      "reference": "structured-simd"
+    },
+    "xeon.ablation.d13.p0p1.predecoding.mean-time-us": {
+      "op": "time",
+      "method": "predecoding",
+      "d": 13,
+      "p": "0.001"
+    },
+    "xeon.ablation.d13.p0p1.component-parallel.mean-time-us": {
+      "op": "time",
+      "method": "component-parallel",
+      "d": 13,
+      "p": "0.001"
+    },
+    "xeon.ablation.d33.p0p1.predecoding.mean-time-us": {
+      "op": "time",
+      "method": "predecoding",
+      "d": 33,
+      "p": "0.001"
+    },
+    "xeon.ablation.d33.p0p1.component-parallel.mean-time-us": {
+      "op": "time",
+      "method": "component-parallel",
+      "d": 33,
+      "p": "0.001"
+    },
+    "xeon.ablation.d33.p0p1.component-parallel.vs-predecoding.speedup": {
+      "op": "speedup",
+      "method": "component-parallel",
+      "reference": "predecoding",
+      "d": 33,
+      "p": "0.001"
+    },
+    "xeon.ablation.d33.p0p3.tail-reset.mean-time-us": {
+      "op": "time",
+      "method": "tail-reset",
+      "d": 33,
+      "p": "0.003"
+    },
+    "xeon.ablation.d33.p0p3.parallel-predecoding.mean-time-us": {
+      "op": "time",
+      "method": "parallel-predecoding",
+      "d": 33,
+      "p": "0.003"
+    },
+    "xeon.ablation.d33.p0p3.parallel-predecoding.vs-pymatching.speedup": {
+      "op": "speedup",
+      "method": "parallel-predecoding",
+      "reference": "pymatching",
+      "d": 33,
+      "p": "0.003"
+    },
+    "xeon.ablation.tail-reset.num-improved-settings": {
+      "op": "count_faster",
+      "method": "tail-reset",
+      "reference": "tail-reset-reference"
+    },
+    "legacy.single-core.vs-pymatching.geomean-speedup": {
+      "op": "geomean_speedup",
+      "method": "predecoding",
+      "reference": "pymatching"
+    },
+    "legacy.single-core.vs-pymatching.max-speedup": {
+      "op": "max_speedup",
+      "method": "predecoding",
+      "reference": "pymatching"
+    },
+    "legacy.eight-core.vs-pymatching.max-speedup": {
+      "op": "max_speedup",
+      "method": "parallel-predecoding",
+      "reference": "pymatching"
+    },
+    "legacy.d33.p0p1.beyond-blossom.mean-block-time-us": {
+      "op": "time",
+      "method": "parallel-predecoding",
+      "d": 33,
+      "p": "0.001"
+    },
+    "legacy.d33.p0p1.beyond-blossom.mean-round-time-us": {
+      "op": "time_per_round",
+      "method": "parallel-predecoding",
+      "d": 33,
+      "p": "0.001",
+      "expected_rounds": 33
+    },
+    "xeon.ablation.d33.p0p3.pymatching.L3miss": {
+      "op": "pmu_miss_percent",
+      "method": "pymatching",
+      "level": "L3",
+      "unit": "percent",
+      "d": 33,
+      "p": "0.003"
+    },
+    "xeon.ablation.d33.p0p3.structured-simd.L3miss": {
+      "op": "pmu_miss_percent",
+      "method": "structured-simd",
+      "level": "L3",
+      "unit": "percent",
+      "d": 33,
+      "p": "0.003"
+    },
+    "xeon.ablation.d33.p0p3.pymatching.L2miss": {
+      "op": "pmu_miss_percent",
+      "method": "pymatching",
+      "level": "L2",
+      "unit": "percent",
+      "d": 33,
+      "p": "0.003"
+    },
+    "xeon.ablation.d33.p0p3.structured-simd.L2miss": {
+      "op": "pmu_miss_percent",
+      "method": "structured-simd",
+      "level": "L2",
+      "unit": "percent",
+      "d": 33,
+      "p": "0.003"
+    }
+  },
+  "pending_confirmation": [],
+  "m4_policy": "所有首段含 m4 的键由脚本强制保留，不需要提供 M4 数据，也禁止配置更新规则",
+  "confirmed_policy": {
+    "baseline": "用户确认：仓库Upstream",
+    "metric": "用户要求与热力图一致；当前analyze.py heatmaps与repository_speedup实际使用batch3_us",
+    "aliases": "用户确认五种版本依次对应GridSIMD/Predecode/Component/TailReset/Spatial",
+    "best_methods": "用户确认逐设置从五个候选选最快，再按每个p对各d取最大加速比",
+    "tail_reset_reference": "用户确认TailReset与Component比较；按未舍入的Batch3严格更快计数",
+    "m4": "用户要求所有M4相关字段原样保留",
+    "summary": "用户确认：Predecode单核几何平均/最大，Spatial八核最大，均统计当前21设置；legacy命名空间保留已有论文调用兼容",
+    "block_round_example": "用户确认改为d33、p0.1%、Spatial八核；宏名d23改d33，每轮值用未舍入Batch3除以冻结rounds=33"
+  },
+  "pmu_source": {
+    "manifest": "data/pmu/SOURCE.json",
+    "sha256": "9a20afe56dfe5f041e225b2ecd8d58a4aab66104947c471d20f1a1afa4feea5e"
+  }
+}

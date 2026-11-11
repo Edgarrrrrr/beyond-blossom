@@ -1,0 +1,2 @@
+mode,shots,elapsed_ns,ns_per_shot,outer_wall_ns,warmup_shots,block_size,syndrome_hash,result_hash,reference_result_hash,observable_diff,weight_diff,total_threads,execution
+latency,1000000,174916033194,174916.03319399999,174951262296,12288,1024,12813515730899014582,17613432746229735946,17613432746229735946,0,0,1,serial

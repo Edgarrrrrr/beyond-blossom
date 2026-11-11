@@ -1,0 +1,127 @@
+p,d,source_method,display_name,speedup,batch_us_per_shot,fastest
+0.0005,9,Official,PyMatching,1.00,1.202,False
+0.0005,9,GridSIMD,+ SIMD-Enabled Structured Grid,0.93,1.286,False
+0.0005,9,Predecode,+ Degree-ordered predecoder,3.62,0.332,True
+0.0005,9,Component,+ Component,3.10,0.388,False
+0.0005,9,TailReset,+ TailReset,2.15,0.560,False
+0.0005,9,Spatial,+ Spatial,2.13,0.565,False
+0.0005,13,Official,PyMatching,1.00,3.994,False
+0.0005,13,GridSIMD,+ SIMD-Enabled Structured Grid,1.04,3.828,False
+0.0005,13,Predecode,+ Degree-ordered predecoder,4.95,0.807,True
+0.0005,13,Component,+ Component,3.88,1.029,False
+0.0005,13,TailReset,+ TailReset,3.42,1.167,False
+0.0005,13,Spatial,+ Spatial,3.01,1.327,False
+0.0005,17,Official,PyMatching,1.00,9.896,False
+0.0005,17,GridSIMD,+ SIMD-Enabled Structured Grid,1.08,9.128,False
+0.0005,17,Predecode,+ Degree-ordered predecoder,5.58,1.773,True
+0.0005,17,Component,+ Component,3.52,2.810,False
+0.0005,17,TailReset,+ TailReset,3.79,2.609,False
+0.0005,17,Spatial,+ Spatial,3.21,3.081,False
+0.0005,21,Official,PyMatching,1.00,19.756,False
+0.0005,21,GridSIMD,+ SIMD-Enabled Structured Grid,1.07,18.419,False
+0.0005,21,Predecode,+ Degree-ordered predecoder,5.57,3.548,True
+0.0005,21,Component,+ Component,4.50,4.389,False
+0.0005,21,TailReset,+ TailReset,4.90,4.035,False
+0.0005,21,Spatial,+ Spatial,5.08,3.887,False
+0.0005,25,Official,PyMatching,1.00,34.977,False
+0.0005,25,GridSIMD,+ SIMD-Enabled Structured Grid,1.06,33.033,False
+0.0005,25,Predecode,+ Degree-ordered predecoder,5.48,6.380,False
+0.0005,25,Component,+ Component,4.98,7.017,False
+0.0005,25,TailReset,+ TailReset,5.64,6.205,False
+0.0005,25,Spatial,+ Spatial,6.74,5.193,True
+0.0005,29,Official,PyMatching,1.00,55.501,False
+0.0005,29,GridSIMD,+ SIMD-Enabled Structured Grid,1.03,54.060,False
+0.0005,29,Predecode,+ Degree-ordered predecoder,5.15,10.769,False
+0.0005,29,Component,+ Component,5.34,10.403,False
+0.0005,29,TailReset,+ TailReset,5.88,9.440,False
+0.0005,29,Spatial,+ Spatial,8.08,6.872,True
+0.0005,33,Official,PyMatching,1.00,86.989,False
+0.0005,33,GridSIMD,+ SIMD-Enabled Structured Grid,1.02,85.596,False
+0.0005,33,Predecode,+ Degree-ordered predecoder,4.99,17.442,False
+0.0005,33,Component,+ Component,5.78,15.049,False
+0.0005,33,TailReset,+ TailReset,6.32,13.770,False
+0.0005,33,Spatial,+ Spatial,9.25,9.407,True
+0.001,9,Official,PyMatching,1.00,2.613,False
+0.001,9,GridSIMD,+ SIMD-Enabled Structured Grid,1.03,2.538,False
+0.001,9,Predecode,+ Degree-ordered predecoder,3.86,0.677,True
+0.001,9,Component,+ Component,3.45,0.758,False
+0.001,9,TailReset,+ TailReset,2.84,0.920,False
+0.001,9,Spatial,+ Spatial,2.71,0.963,False
+0.001,13,Official,PyMatching,1.00,8.517,False
+0.001,13,GridSIMD,+ SIMD-Enabled Structured Grid,1.09,7.814,False
+0.001,13,Predecode,+ Degree-ordered predecoder,4.65,1.831,True
+0.001,13,Component,+ Component,3.04,2.798,False
+0.001,13,TailReset,+ TailReset,3.14,2.711,False
+0.001,13,Spatial,+ Spatial,2.49,3.418,False
+0.001,17,Official,PyMatching,1.00,20.886,False
+0.001,17,GridSIMD,+ SIMD-Enabled Structured Grid,1.10,18.947,False
+0.001,17,Predecode,+ Degree-ordered predecoder,4.79,4.357,True
+0.001,17,Component,+ Component,4.30,4.860,False
+0.001,17,TailReset,+ TailReset,4.50,4.644,False
+0.001,17,Spatial,+ Spatial,4.28,4.880,False
+0.001,21,Official,PyMatching,1.00,42.618,False
+0.001,21,GridSIMD,+ SIMD-Enabled Structured Grid,1.12,38.218,False
+0.001,21,Predecode,+ Degree-ordered predecoder,4.76,8.951,False
+0.001,21,Component,+ Component,5.20,8.201,False
+0.001,21,TailReset,+ TailReset,5.41,7.871,False
+0.001,21,Spatial,+ Spatial,5.91,7.211,True
+0.001,25,Official,PyMatching,1.00,75.184,False
+0.001,25,GridSIMD,+ SIMD-Enabled Structured Grid,1.08,69.636,False
+0.001,25,Predecode,+ Degree-ordered predecoder,4.55,16.518,False
+0.001,25,Component,+ Component,5.47,13.747,False
+0.001,25,TailReset,+ TailReset,5.83,12.898,False
+0.001,25,Spatial,+ Spatial,7.19,10.452,True
+0.001,29,Official,PyMatching,1.00,127.808,False
+0.001,29,GridSIMD,+ SIMD-Enabled Structured Grid,1.10,116.514,False
+0.001,29,Predecode,+ Degree-ordered predecoder,4.50,28.428,False
+0.001,29,Component,+ Component,5.91,21.633,False
+0.001,29,TailReset,+ TailReset,6.31,20.268,False
+0.001,29,Spatial,+ Spatial,8.53,14.977,True
+0.001,33,Official,PyMatching,1.00,219.409,False
+0.001,33,GridSIMD,+ SIMD-Enabled Structured Grid,1.18,185.594,False
+0.001,33,Predecode,+ Degree-ordered predecoder,4.71,46.568,False
+0.001,33,Component,+ Component,6.78,32.371,False
+0.001,33,TailReset,+ TailReset,7.22,30.399,False
+0.001,33,Spatial,+ Spatial,10.25,21.405,True
+0.003,9,Official,PyMatching,1.00,10.129,False
+0.003,9,GridSIMD,+ SIMD-Enabled Structured Grid,1.17,8.654,False
+0.003,9,Predecode,+ Degree-ordered predecoder,3.11,3.256,True
+0.003,9,Component,+ Component,2.66,3.803,False
+0.003,9,TailReset,+ TailReset,2.72,3.721,False
+0.003,9,Spatial,+ Spatial,2.14,4.738,False
+0.003,13,Official,PyMatching,1.00,33.897,False
+0.003,13,GridSIMD,+ SIMD-Enabled Structured Grid,1.24,27.274,False
+0.003,13,Predecode,+ Degree-ordered predecoder,3.23,10.482,False
+0.003,13,Component,+ Component,3.81,8.886,False
+0.003,13,TailReset,+ TailReset,3.87,8.759,True
+0.003,13,Spatial,+ Spatial,3.52,9.634,False
+0.003,17,Official,PyMatching,1.00,83.325,False
+0.003,17,GridSIMD,+ SIMD-Enabled Structured Grid,1.24,67.056,False
+0.003,17,Predecode,+ Degree-ordered predecoder,3.22,25.840,False
+0.003,17,Component,+ Component,4.48,18.585,False
+0.003,17,TailReset,+ TailReset,4.50,18.514,False
+0.003,17,Spatial,+ Spatial,4.55,18.320,True
+0.003,21,Official,PyMatching,1.00,175.905,False
+0.003,21,GridSIMD,+ SIMD-Enabled Structured Grid,1.26,139.387,False
+0.003,21,Predecode,+ Degree-ordered predecoder,3.31,53.109,False
+0.003,21,Component,+ Component,5.02,35.062,False
+0.003,21,TailReset,+ TailReset,5.05,34.826,False
+0.003,21,Spatial,+ Spatial,5.44,32.328,True
+0.003,25,Official,PyMatching,1.00,344.307,False
+0.003,25,GridSIMD,+ SIMD-Enabled Structured Grid,1.32,261.069,False
+0.003,25,Predecode,+ Degree-ordered predecoder,3.48,99.061,False
+0.003,25,Component,+ Component,5.60,61.449,False
+0.003,25,TailReset,+ TailReset,5.65,60.920,False
+0.003,25,Spatial,+ Spatial,6.37,54.073,True
+0.003,29,Official,PyMatching,1.00,602.815,False
+0.003,29,GridSIMD,+ SIMD-Enabled Structured Grid,1.37,438.488,False
+0.003,29,Predecode,+ Degree-ordered predecoder,3.47,173.680,False
+0.003,29,Component,+ Component,6.02,100.147,False
+0.003,29,TailReset,+ TailReset,6.10,98.902,False
+0.003,29,Spatial,+ Spatial,7.09,85.019,True
+0.003,33,Official,PyMatching,1.00,954.733,False
+0.003,33,GridSIMD,+ SIMD-Enabled Structured Grid,1.40,684.383,False
+0.003,33,Predecode,+ Degree-ordered predecoder,3.47,274.973,False
+0.003,33,Component,+ Component,6.12,155.893,False
+0.003,33,TailReset,+ TailReset,6.12,156.040,False
+0.003,33,Spatial,+ Spatial,7.34,130.151,True

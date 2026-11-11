@@ -1,0 +1,14 @@
+{
+  "complete": true,
+  "comparisons": [
+    {
+      "file": "one_hop_predecoder.cc",
+      "token_stream_equal": true
+    },
+    {
+      "file": "shared_component_decoder.cc",
+      "token_stream_equal": true
+    }
+  ],
+  "statistics_symbols_absent": true
+}

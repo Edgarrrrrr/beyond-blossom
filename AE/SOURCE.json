@@ -1,0 +1,24 @@
+{
+  "experiment_id": "DECODER-M4-MILLION-MIXED-LTO-20261105",
+  "figure_revision": "r05-bottom-colorbar-12",
+  "renderer_commit": "e6492122179ff95a8fcfbe0e584718be8cfa3351",
+  "archive_commit": "89945a829140c4210981dc5fdfc4d83ba049a07c",
+  "renderer_original_path": "experiments/decoder-m4-million-mixed-lto-20261105/render_bottom_colorbar.py",
+  "renderer_original_sha256": "1e9e3fc2ca5a22a596c0da4a81c294953b439c71787eda50f5d63c71d4376719",
+  "protocol": {
+    "shots_per_repeat": 1000000,
+    "batch_repeats": 3,
+    "minimum_warmup_seconds": 2,
+    "per_shot_latency_enabled": false,
+    "upstream_lto": "OFF",
+    "candidate_lto": "ON"
+  },
+  "adaptation": "Local data/fonts/reference paths and portable CLI only; figure geometry, normalization and text unchanged.",
+  "bundled_files": {
+    "data/ablation.json": "525d1018e9694e2f7b9b5120e85512ba45aa675a1fe4d096f35486674102fef6",
+    "fonts/Times_New_Roman.ttf": "4e98adeff8ccc8ef4e3ece8d4547e288ff85fdc9c7ca711a4599c234874bbe86",
+    "fonts/Times_New_Roman_Bold.ttf": "4357b63cef20c01661a53c5dae70ffd20cb4765503aaed6d38b17a57c5a90bff",
+    "reference/fastest-cells.csv": "69ee7ce69565eb622b164bc921afb8c052e814c9aa93103d8258def8756f51e9",
+    "reference/plot-data.csv": "8f6a3a1e0e6491a7bac75ea278f9fd0c41252a934be75ae5fafb7d9ba5bba68c"
+  }
+}

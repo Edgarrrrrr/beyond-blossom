@@ -1,0 +1,113 @@
+{
+  "complete": true,
+  "shots": 1000000,
+  "method": "coordinate",
+  "phase": "latency",
+  "observable_ties": 0,
+  "weight_differences": 0,
+  "reference": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-paper-full-retest-20261031-r01/internal/formal/d33-p0.0030-s0.00/input-original/reference_shots.csv",
+    "sha256": "79aac890ca17dbdad5fc77d4fd08d1d66fe8f0ad2eed7f838ca184a12fda6ace"
+  },
+  "latency_ns": {
+    "p50": 223001,
+    "p90": 257967,
+    "p99": 295390,
+    "p99_9": 341683,
+    "max": 1315009,
+    "mean": 225310.835557
+  },
+  "tail_cases": [
+    {
+      "elapsed_ns": 1315009,
+      "shot_index": 445738,
+      "input_events": 1974
+    },
+    {
+      "elapsed_ns": 1085771,
+      "shot_index": 434055,
+      "input_events": 1921
+    },
+    {
+      "elapsed_ns": 1028455,
+      "shot_index": 685263,
+      "input_events": 1922
+    },
+    {
+      "elapsed_ns": 983570,
+      "shot_index": 892970,
+      "input_events": 1919
+    },
+    {
+      "elapsed_ns": 918347,
+      "shot_index": 593832,
+      "input_events": 1934
+    }
+  ],
+  "elapsed_ns": 225310835557,
+  "complete_elapsed_ns": 225310847210,
+  "final_drain_ns": 11653,
+  "mean_us": 225.31083555700002,
+  "files": {
+    "clock.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/clock.json",
+      "sha256": "2cb9919077eae4ea15cf5de7c50acbf508e7723c6abefa0b77267184b74dfb4f"
+    },
+    "completion.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/completion.json",
+      "sha256": "1c7a0b7681945a8462259de108abc42461f60eb3b27d20004608b804b303d7a6"
+    },
+    "correctness.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/correctness.json",
+      "sha256": "1943443f6f3f3f410d90545fb065cdf0fed4bd3aaf4b572fe914197357b0fa20"
+    },
+    "differences.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/differences.csv",
+      "sha256": "7a6c0d1060dc3da4db28e8ca36cfc9e5550603a54d178f4ffcd2a0da2688508d"
+    },
+    "execution.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/execution.csv",
+      "sha256": "e6537a743249fc940a8a14bb9e4d14cba77a61031d53dba37898cd6e0088d857"
+    },
+    "execution_threads.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/execution_threads.csv",
+      "sha256": "b30438fc084ffa14a3f8dabb24c9b76d057ccfa7a609c5eb6d7f31c523a783e6"
+    },
+    "input_features.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/input_features.csv",
+      "sha256": "367ac723cd43f67b388585f587c66f9bfb14a25294f69e9cd28b0110c4585be6"
+    },
+    "kernel_selection.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/kernel_selection.csv",
+      "sha256": "b32e0c13c67e7bc497d281fc2e40c803f5f2b3e32f88c3a2ab0253c5e6bb9522"
+    },
+    "measurement.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/measurement.csv",
+      "sha256": "2987e80465034d96e5e6bb2bf14f10cfc49fa4412d9a1c488de574c32d54cc1d"
+    },
+    "measurement_scope.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/measurement_scope.json",
+      "sha256": "dd0282d6ec736c520477ead3b3de1980d8ed1d539f04cf8ba2ed1cf2c4d71e2e"
+    },
+    "native_shots.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/native_shots.csv",
+      "sha256": "cf5d441a4ee7f8426d75afbc91c8da5205ad428ba60ebce50fecd2549599a7da"
+    },
+    "process_usage.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/process_usage.json",
+      "sha256": "8dadb766bb7cd1023a7a48aa17a5f51ae73af9e7dbc26d4be18ab0595286fa53"
+    },
+    "setup.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/setup.json",
+      "sha256": "3c2ecd8f5e715bed12884108e66dd96c03c0fa7db1eddb96ea994c0d6beb4b40"
+    },
+    "storage.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/storage.json",
+      "sha256": "92d1b9778a92bbd2843231b34cd34c135beb025c8b5a5e14c6cc98cedae6a240"
+    },
+    "warmup.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d33-p0.0030-s0.00/latency-1/coordinate/warmup.json",
+      "sha256": "8ad5365ce2e14a3329a5094d1e9ac779c8c2920285791b12dc7ad1fc0c5a0088"
+    }
+  }
+}

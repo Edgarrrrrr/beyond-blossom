@@ -1,0 +1,53 @@
+{
+  "complete": true,
+  "task": "AE-PMU-MACROS-20261110",
+  "implementation_commit": "eb66e671947d066adafab1b2a504d45b2f0530d7",
+  "source_commit": "9950cda618c55704bfbccc863bb40e1b09b41977",
+  "collector_commit": "41181c4ee001bde3c233492600cdb55a1ae071f2",
+  "data_commit": "8a1104a06907a655aeffb820896739f6474d2a33",
+  "unit_tests": 18,
+  "computed_macros": 28,
+  "preserved_m4": 5,
+  "unchanged_prior_values": 29,
+  "new_pmu_macros": 4,
+  "original_completed_pmu_calls": 84,
+  "new_hardware_smoke_calls": 8,
+  "new_full_matrix_acquisition": false,
+  "pmu_manifest": {
+    "path": "data/pmu/SOURCE.json",
+    "sha256": "9a20afe56dfe5f041e225b2ecd8d58a4aab66104947c471d20f1a1afa4feea5e"
+  },
+  "template": {
+    "path": "paper_num_template.tex",
+    "sha256": "c3d3a3db0d6eb85e2f55d7d5888eda426da548240b419799416f82ee6c17fabb"
+  },
+  "generated_values": {
+    "xeon.ablation.d33.p0p3.pymatching.L3miss": "0.094",
+    "xeon.ablation.d33.p0p3.structured-simd.L3miss": "0.017",
+    "xeon.ablation.d33.p0p3.pymatching.L2miss": "60.212",
+    "xeon.ablation.d33.p0p3.structured-simd.L2miss": "26.988"
+  },
+  "offline_copy": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-PMU-MACROS-20261110/offline-r01/validation.json",
+    "sha256": "4a92c491c3c9bdc082c14181084f2fe6daab299e9dafee8a32cc49148691a4b0"
+  },
+  "hardware": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-PMU-MACROS-20261110/hardware-smoke.json",
+    "sha256": "41f3fc3f782e1c281702a7aa2e8d2da080c7e3308937d7745e1c25ea993f554b"
+  },
+  "checks": [
+    {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-PMU-MACROS-20261110/main-macros.log",
+      "sha256": "3c48bb23f675e4f7ecd366fa646fa6125d77f1def3e2d588bb6670ebfbb982f0"
+    },
+    {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-PMU-MACROS-20261110/main-pmu.log",
+      "sha256": "66ae8cb573576a45e155ea2a4ef75abbb7d063eaa694a52e890f30d85de769e8"
+    },
+    {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-PMU-MACROS-20261110/main-tests.log",
+      "sha256": "c6f4e94d77be0447a73c8eeba156af44974360c45af4ffd025718cffc97f5e6e"
+    }
+  ],
+  "scope": "Current AE and standalone AE copy verified from bundled completed L2/L3 data. The new collector was freshly built and checked at both endpoints, both methods and both cache levels on ares2/3. No full million-shot campaign repeated; historical runs remain unchanged."
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "manifest": {
+    "path": "data/tailreset/SOURCE.json",
+    "sha256": "f8395c7ffe0e5183c14694f12e7cb5b06fc70915dfd3dac4f544be581d7faa66"
+  },
+  "experiment_id": "AE-TAILRESET-20261110",
+  "implementation_commit": "d7e2f25144cb9a97a5b66f0eb2418a0e847ae9bc",
+  "acquisition_commit": "79889da06534ee63d63b6a965c3f056e3bfa5732",
+  "distances": [9, 13, 17, 21, 25, 29, 33],
+  "physical_error_rate": "0.003",
+  "shots": 1000000,
+  "batch_repeats": 3,
+  "decimal_places": 2,
+  "namespace": "xeon.predecoder-comparison",
+  "variants": {
+    "none": "skip",
+    "coordinate": "coordinate",
+    "degree-ordered": "degree"
+  }
+}

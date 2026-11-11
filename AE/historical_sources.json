@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "repository": "https://github.com/Edgarrrrrr/PyMatching-experiments",
+  "revision": "241160314087e5ae698c6e76c3c055a11c3ad422",
+  "files": [
+    {
+      "path": "AE/pmu_collect.py",
+      "sha256": "98236bc419515e3d5bd640ea51cbd3ecb710f746ec07f5698816e2c3d4659d2f"
+    },
+    {
+      "path": "AE/tailreset_collect.py",
+      "sha256": "e6916ca634c35662fda10ddca7d52597585d9209f256c5fd4a1ef34577123c80"
+    },
+    {
+      "path": "AE/pmu.sbatch",
+      "sha256": "00897ffb39fa853cc06e8b5c115b763711b9912b4772c4a7604f22625f19be97"
+    },
+    {
+      "path": "AE/tailreset.sbatch",
+      "sha256": "aa08862081a8f057b9f7968bdca0b45a8202a75e97f2091e9ed073a900b7a52a"
+    },
+    {
+      "path": "AE/bundle_paper_source.py",
+      "sha256": "d4996643c84f32580c7eedae446a83b4305341367d00a8963cf935dfd21aef13"
+    },
+    {
+      "path": "AE/collect_paper_batch_source.py",
+      "sha256": "16eea69120358e9cada2fa32af7ca2101f49e6ba75baa1462de553a2d47a5683"
+    },
+    {
+      "path": "AE/paper_num_migration.md",
+      "sha256": "0238c6013e28ed5511113bcea6a7d585e4958f07350f92b50d0d196103849f04"
+    },
+    {
+      "path": "AE/predecoder_macros.md",
+      "sha256": "5f33f7ac9e53299901e855c66523b3f50754b3b76ec74dbe4e3d05b73e48bca5"
+    },
+    {
+      "path": "AE/tailreset.md",
+      "sha256": "63bec8a309e2772516c42516d009d54e6d6c0bc4158dbfd6c5fdda136c0c3110"
+    },
+    {
+      "path": "AE/pmu.md",
+      "sha256": "40eabb1cbf99c3ca516a732b95482aa1d07d3143bbf216bb999a2f9f55c46c30"
+    },
+    {
+      "path": "AE/captions.md",
+      "sha256": "84d5bb665d0b9ba9fbf2107b13b621a848ae2d608d40d9c482b7517b57ec6a1b"
+    },
+    {
+      "path": "AE/data/latest-matrix/source/bundle_paper_source.py",
+      "sha256": "f293c319f4d7b5633309bd87f91d5af76a27f5cf2692d986c7c7d64108efed6b"
+    },
+    {
+      "path": "AE/data/latest-matrix/originals/REPORT.md",
+      "sha256": "8ca908c46d05e550eb9610aedb4caf94ee324f12a9922b81987a4b90ffbc4474"
+    },
+    {
+      "path": "AE/test_tailreset.py",
+      "sha256": "5bb40b629a726619a1516b80beb3569b75d28da7f03e602da567a485b8391b8d"
+    },
+    {
+      "path": "AE/pmu_native/CMakeLists.txt",
+      "sha256": "c7ad0257b5711f956e59756666dfdaad6b4e1df8b468eda2d5f7a102c507bdb4"
+    },
+    {
+      "path": "AE/pmu_native/benchmark.cc",
+      "sha256": "e1b30fb7e6a4f5b14f1f3091a04e8ca3b1cec937f18c8bb887f4d087dd80497f"
+    },
+    {
+      "path": "AE/pmu_native/cache_counters.h",
+      "sha256": "06e408d80ceafaa34defd60f0b7ffc2858a48c5a730eed5d42aa38ba7f681ed8"
+    },
+    {
+      "path": "AE/pmu_native/diagnostic.h",
+      "sha256": "c58e94466bb5f6b13d9048dff5fe1690b0c28e9bd9e2a73660ab471d38c2ce32"
+    },
+    {
+      "path": "AE/pmu_native/full_cycle.h",
+      "sha256": "dea37b7172d78b0eaa54c259116160f9e09d1824728894acadedaa4c21045592"
+    },
+    {
+      "path": "AE/pmu_native/lifecycle.h",
+      "sha256": "92f3738a32056e8b623150d4b35ef09fea38bd6280ac4b280bdb96f7e088d20b"
+    },
+    {
+      "path": "AE/pmu_native/measurement.h",
+      "sha256": "5be76729eaec0d7080c283550ef09215787b71feaf1164ab25213bee91ffb3c0"
+    },
+    {
+      "path": "AE/pmu_native/pipeline_measurement.h",
+      "sha256": "0390572a844c32db88ee69223662e08d23a4294e2fba3be3755cb4c3d440899f"
+    },
+    {
+      "path": "AE/pmu_native/prepared_snapshot_v2.h",
+      "sha256": "928c3305dca3272588cba1eb16c1e41a6d2724d747473e3fb9767d6dd4406639"
+    },
+    {
+      "path": "AE/pmu_native/setup.h",
+      "sha256": "0c473a7468ef9f22f2cfc4fa18a68734cd09be629980712e88dcf077a4c1fbad"
+    },
+    {
+      "path": "AE/pmu_native/structured_adapter.h",
+      "sha256": "742ef7fe9b913fee2fc228788d1e0cbbb055ba16c25b5b13c2c46e7706656432"
+    },
+    {
+      "path": "AE/pmu_native/timeline.h",
+      "sha256": "486ba1576b65afd945b040b4d71e8b5a3497df6ff20cf7995470fba77bb9b8a0"
+    },
+    {
+      "path": "AE/pmu_native/timer_snapshot.h",
+      "sha256": "d708ff893545940ab806db53b7bc8651c018f82b44dcc92c1370b0dc6d9f2761"
+    },
+    {
+      "path": "AE/tailreset_native/CMakeLists.txt",
+      "sha256": "b889244e57aa82062a90831100f2c01e1054f2131248602e54dcce9d2f95d0b7"
+    },
+    {
+      "path": "AE/tailreset_native/policy_test.cc",
+      "sha256": "c0a6c6822c505ca7ff75da5cdf31f439339ab94078ecb9499523e3223607157f"
+    },
+    {
+      "path": "AE/pmu_runtime.py",
+      "sha256": "78e4d60a76454c3665bcdc3f60d7981e8c966f6dcea71a3f3a45579be8c1e484"
+    },
+    {
+      "path": "AE/tailreset_statistics.h",
+      "sha256": "30ea69d14a72b43fa6b08c97d6255864822416a5ebf91e9bd48c5da8e609870a"
+    }
+  ]
+}

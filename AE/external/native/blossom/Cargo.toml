@@ -1,0 +1,8 @@
+[package]
+name = "decoder-bench-blossom"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+fusion-blossom = { path = "../../sources/fusion-blossom", default-features = false, features = ["dangerous_pointer", "u32_index", "i32_weight"] }
+serde_json = "1"

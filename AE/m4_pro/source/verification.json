@@ -1,0 +1,36 @@
+{
+  "checks_passed": [
+    "126 source rows form a unique complete 7 x 3 x 6 matrix",
+    "Every time_us matches the median of its three repeat times divided by 1000",
+    "Each setting uses identical input hashes across all roles",
+    "42 selected chart rows use time_us / distance",
+    "Six decoding curves plus a one-microsecond reference",
+    "PDF rendered with Poppler and visually inspected",
+    "PNG, PDF render, grayscale and full deuteranopia simulation visually inspected",
+    "Both PDF fonts embedded as TrueType; SVG retains editable text",
+    "Fixed 3.5 x 2.1 inch canvas; no clipped legend or axis labels"
+  ],
+  "mean_rate_counts": {
+    "PyMatching": 11,
+    "Beyond Blossom": 18,
+    "settings": 21
+  },
+  "primary_y_axis": "logarithmic",
+  "source_data_modified": false,
+  "new_benchmark_executed": false,
+  "layout_revision": "compact-two-row-legend-20261105",
+  "previous_figure_inches": [
+    3.5,
+    3.0
+  ],
+  "figure_inches": [
+    3.5,
+    2.1
+  ],
+  "height_reduction_percent": 30,
+  "data_values_unchanged": true,
+  "manuscript_layout_checked": [
+    "main.tex",
+    "dac-review.tex"
+  ]
+}

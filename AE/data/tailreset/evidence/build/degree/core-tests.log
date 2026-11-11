@@ -1,0 +1,796 @@
+Running main() from /home/shzr/quantum/predecode_test/decoder_bench/sources/pymatching-report/source-snapshot/googletest/googletest/src/gtest_main.cc
+[==========] Running 327 tests from 37 test suites.
+[----------] Global test environment set-up.
+[----------] 5 tests from DecoderStrategy
+[ RUN      ] DecoderStrategy.SerialMethodsRetainLargeObservableNegativeWeightAndEdgeContracts
+[       OK ] DecoderStrategy.SerialMethodsRetainLargeObservableNegativeWeightAndEdgeContracts (10 ms)
+[ RUN      ] DecoderStrategy.ExplicitConfigurationAndMoveValidation
+[       OK ] DecoderStrategy.ExplicitConfigurationAndMoveValidation (0 ms)
+[ RUN      ] DecoderStrategy.ArrayOutputOverwritesWeightAndXorsObservablesAtBothObservableWidths
+[       OK ] DecoderStrategy.ArrayOutputOverwritesWeightAndXorsObservablesAtBothObservableWidths (0 ms)
+[ RUN      ] DecoderStrategy.UpstreamCorrelationPolicyIsBoundAtConstruction
+[       OK ] DecoderStrategy.UpstreamCorrelationPolicyIsBoundAtConstruction (0 ms)
+[ RUN      ] DecoderStrategy.ParallelSessionEmptyOddExceptionalStreamsAndCapabilityBoundaries
+[       OK ] DecoderStrategy.ParallelSessionEmptyOddExceptionalStreamsAndCapabilityBoundaries (3 ms)
+[----------] 5 tests from DecoderStrategy (15 ms total)
+
+[----------] 4 tests from StructuredPredecodeBinding
+[ RUN      ] StructuredPredecodeBinding.OppositePoliciesCoexistAndSurviveMoves
+[       OK ] StructuredPredecodeBinding.OppositePoliciesCoexistAndSurviveMoves (0 ms)
+[ RUN      ] StructuredPredecodeBinding.LargeObservableAndNegativeNormalizationKeepBothBindings
+[       OK ] StructuredPredecodeBinding.LargeObservableAndNegativeNormalizationKeepBothBindings (0 ms)
+[ RUN      ] StructuredPredecodeBinding.SharedRejectsAnExplicitNoPredecodeCore
+[       OK ] StructuredPredecodeBinding.SharedRejectsAnExplicitNoPredecodeCore (0 ms)
+[ RUN      ] StructuredPredecodeBinding.ExplicitSharedConfigurationDoesNotReadLegacyEnvironment
+[       OK ] StructuredPredecodeBinding.ExplicitSharedConfigurationDoesNotReadLegacyEnvironment (0 ms)
+[----------] 4 tests from StructuredPredecodeBinding (0 ms total)
+
+[----------] 53 tests from SharedComponents
+[ RUN      ] SharedComponents.OrderedValidationRetainsErrorPriorityIgnoredIdsAndEpochWrap
+[       OK ] SharedComponents.OrderedValidationRetainsErrorPriorityIgnoredIdsAndEpochWrap (0 ms)
+[ RUN      ] SharedComponents.CachedBucketSentinelsOrderedValidationAndEpochWrap
+[       OK ] SharedComponents.CachedBucketSentinelsOrderedValidationAndEpochWrap (0 ms)
+[ RUN      ] SharedComponents.GroupStaticSpansPreserveFullScanOrderStateAndIgnoredEvents
+[       OK ] SharedComponents.GroupStaticSpansPreserveFullScanOrderStateAndIgnoredEvents (176 ms)
+[ RUN      ] SharedComponents.GroupStaticSpansSupportArbitraryDetectorNumberingAndMoves
+[       OK ] SharedComponents.GroupStaticSpansSupportArbitraryDetectorNumberingAndMoves (2 ms)
+[ RUN      ] SharedComponents.CachedBucketMatchesDynamicLayoutsAndKeepsRebindingTransactional
+[       OK ] SharedComponents.CachedBucketMatchesDynamicLayoutsAndKeepsRebindingTransactional (73 ms)
+[ RUN      ] SharedComponents.RetainedSeedStorageResetsDefaultsAndCancelsInactiveStaging
+[       OK ] SharedComponents.RetainedSeedStorageResetsDefaultsAndCancelsInactiveStaging (0 ms)
+[ RUN      ] SharedComponents.WholePrefixRejectsSpatialParallelImportAndSignedConfigurations
+[       OK ] SharedComponents.WholePrefixRejectsSpatialParallelImportAndSignedConfigurations (0 ms)
+[ RUN      ] SharedComponents.ComponentTailRejectsIncompatibleSchedules
+[       OK ] SharedComponents.ComponentTailRejectsIncompatibleSchedules (0 ms)
+[ RUN      ] SharedComponents.TailOwnerRejectsIncompatiblePlacement
+[       OK ] SharedComponents.TailOwnerRejectsIncompatiblePlacement (0 ms)
+[ RUN      ] SharedComponents.NeutralRegionsResetOnlySuccessfulImportsAcrossVariableShots
+[       OK ] SharedComponents.NeutralRegionsResetOnlySuccessfulImportsAcrossVariableShots (12 ms)
+[ RUN      ] SharedComponents.DeferredSeedCleanupImplicitNextMoveAndRepeatedReset
+[       OK ] SharedComponents.DeferredSeedCleanupImplicitNextMoveAndRepeatedReset (10 ms)
+[ RUN      ] SharedComponents.DeferredSeedCleanupJoinsSuccessfulAndFailingComponents
+[       OK ] SharedComponents.DeferredSeedCleanupJoinsSuccessfulAndFailingComponents (0 ms)
+[ RUN      ] SharedComponents.OwnerCellRangesPublishFinalIndicesAndClearAfterShot
+[       OK ] SharedComponents.OwnerCellRangesPublishFinalIndicesAndClearAfterShot (64 ms)
+[ RUN      ] SharedComponents.SplitLifecycleFallbackAndNegativeNormalizationRemainExact
+[       OK ] SharedComponents.SplitLifecycleFallbackAndNegativeNormalizationRemainExact (0 ms)
+[ RUN      ] SharedComponents.SplitLifecyclePublishesBothComponentsBeforeMwpmAndPreservesResults
+[       OK ] SharedComponents.SplitLifecyclePublishesBothComponentsBeforeMwpmAndPreservesResults (9 ms)
+[ RUN      ] SharedComponents.FixedAlgorithmIsDeterministicAcrossThreadsAndMatchesGenericWeight
+[       OK ] SharedComponents.FixedAlgorithmIsDeterministicAcrossThreadsAndMatchesGenericWeight (1330 ms)
+[ RUN      ] SharedComponents.ReentrantFailureRecoveryAndMoveLifecycle
+[       OK ] SharedComponents.ReentrantFailureRecoveryAndMoveLifecycle (0 ms)
+[ RUN      ] SharedComponents.SerialFallbackPrecedesSpatialPreparation
+[       OK ] SharedComponents.SerialFallbackPrecedesSpatialPreparation (0 ms)
+[ RUN      ] SharedComponents.SignedGraphCorrectionMatchesExactSerialResult
+[       OK ] SharedComponents.SignedGraphCorrectionMatchesExactSerialResult (1 ms)
+[ RUN      ] SharedComponents.FourPartitionsExerciseWideGridInteriorsAndSimdFootprints
+[       OK ] SharedComponents.FourPartitionsExerciseWideGridInteriorsAndSimdFootprints (1082 ms)
+[ RUN      ] SharedComponents.BulkImportMatchesSerialImportAndPreservesQueueAccounting
+[       OK ] SharedComponents.BulkImportMatchesSerialImportAndPreservesQueueAccounting (60 ms)
+[ RUN      ] SharedComponents.ImportedContinuationFailureJoinsGroupsAndRecovers
+[       OK ] SharedComponents.ImportedContinuationFailureJoinsGroupsAndRecovers (0 ms)
+[ RUN      ] SharedComponents.GroupCacheGeometryRebindsAtomicallyAndSurvivesMoves
+[       OK ] SharedComponents.GroupCacheGeometryRebindsAtomicallyAndSurvivesMoves (27 ms)
+[ RUN      ] SharedComponents.OwnerClearPreservesShotDataAcrossRoutesErrorsAndMoves
+[       OK ] SharedComponents.OwnerClearPreservesShotDataAcrossRoutesErrorsAndMoves (0 ms)
+[ RUN      ] SharedComponents.GroupPreparedStateMatchesAcrossGeometriesThreadsAndImports
+[       OK ] SharedComponents.GroupPreparedStateMatchesAcrossGeometriesThreadsAndImports (245 ms)
+[ RUN      ] SharedComponents.GroupCanonicalPreparedStateForCrossBuildComparison
+[       OK ] SharedComponents.GroupCanonicalPreparedStateForCrossBuildComparison (8 ms)
+[ RUN      ] SharedComponents.GroupFourWorkersFillAndJoinAllFailuresBeforeOrderedRecovery
+[       OK ] SharedComponents.GroupFourWorkersFillAndJoinAllFailuresBeforeOrderedRecovery (373 ms)
+[ RUN      ] SharedComponents.GroupColdImportFailureJoinsPeerAndRecovers
+[       OK ] SharedComponents.GroupColdImportFailureJoinsPeerAndRecovers (84 ms)
+[ RUN      ] SharedComponents.GroupPreservesPriorOwnersAcrossNormalFallbackMoveAndReset
+[       OK ] SharedComponents.GroupPreservesPriorOwnersAcrossNormalFallbackMoveAndReset (9 ms)
+[ RUN      ] SharedComponents.GroupOriginalLowComponentP1SignedAndFormalFailureRoutes
+[       OK ] SharedComponents.GroupOriginalLowComponentP1SignedAndFormalFailureRoutes (0 ms)
+[ RUN      ] SharedComponents.GroupThreePlaneUnrestrictedTargetsKeepDualAndMatchingValid
+[       OK ] SharedComponents.GroupThreePlaneUnrestrictedTargetsKeepDualAndMatchingValid (1 ms)
+[ RUN      ] SharedComponents.GroupFixedComponentMoveKeepsBindingBackingAndScratch
+[       OK ] SharedComponents.GroupFixedComponentMoveKeepsBindingBackingAndScratch (0 ms)
+[ RUN      ] SharedComponents.GroupFixedConstructionRetiresUsedStandaloneShot
+[       OK ] SharedComponents.GroupFixedConstructionRetiresUsedStandaloneShot (0 ms)
+[ RUN      ] SharedComponents.GroupFixedStorageHolesAndDenseFallbackKeepObjectLifetimes
+[       OK ] SharedComponents.GroupFixedStorageHolesAndDenseFallbackKeepObjectLifetimes (40 ms)
+[ RUN      ] SharedComponents.FixedSeedConstructionFreezesModeAndRejectsInvalid
+[       OK ] SharedComponents.FixedSeedConstructionFreezesModeAndRejectsInvalid (0 ms)
+[ RUN      ] SharedComponents.FixedSeedConstructionKeepsPreparedStateAcrossYtAndThreads
+[       OK ] SharedComponents.FixedSeedConstructionKeepsPreparedStateAcrossYtAndThreads (567 ms)
+[ RUN      ] SharedComponents.FixedSeedConstructionPreservesFallbackAndSignedRoutes
+[       OK ] SharedComponents.FixedSeedConstructionPreservesFallbackAndSignedRoutes (0 ms)
+[ RUN      ] SharedComponents.FixedSeedConstructionJoinsInteriorAndConflictFailures
+[       OK ] SharedComponents.FixedSeedConstructionJoinsInteriorAndConflictFailures (132 ms)
+[ RUN      ] SharedComponents.IndexedSeedInputFreezesModeAndAllocatesOnlyForFixedRoute
+[       OK ] SharedComponents.IndexedSeedInputFreezesModeAndAllocatesOnlyForFixedRoute (0 ms)
+[ RUN      ] SharedComponents.IndexedSeedInputPreservesPreparedSeedsAcrossGeometryAndThreads
+[       OK ] SharedComponents.IndexedSeedInputPreservesPreparedSeedsAcrossGeometryAndThreads (533 ms)
+[ RUN      ] SharedComponents.IndexedSeedInputValidationAndReusePreserveErrorOrder
+[       OK ] SharedComponents.IndexedSeedInputValidationAndReusePreserveErrorOrder (0 ms)
+[ RUN      ] SharedComponents.IndexedSeedInputJoinsWorkerFailuresAndPreservesMoves
+[       OK ] SharedComponents.IndexedSeedInputJoinsWorkerFailuresAndPreservesMoves (86 ms)
+[ RUN      ] SharedComponents.ImportPreparationFreezesModeAndRetainsFallbacks
+[       OK ] SharedComponents.ImportPreparationFreezesModeAndRetainsFallbacks (0 ms)
+[ RUN      ] SharedComponents.ImportPreparationPreservesPreparedStateAcrossLayoutsAndWorkers
+[       OK ] SharedComponents.ImportPreparationPreservesPreparedStateAcrossLayoutsAndWorkers (752 ms)
+[ RUN      ] SharedComponents.ImportPreparationJoinsFailuresAndRecovers
+[       OK ] SharedComponents.ImportPreparationJoinsFailuresAndRecovers (182 ms)
+[ RUN      ] SharedComponents.ImportPreparationHandlesCrossLanePairsAndEmptyRootLanes
+[       OK ] SharedComponents.ImportPreparationHandlesCrossLanePairsAndEmptyRootLanes (0 ms)
+[ RUN      ] SharedComponents.ImportResetOwnerFreezesMode
+[       OK ] SharedComponents.ImportResetOwnerFreezesMode (0 ms)
+[ RUN      ] SharedComponents.ImportResetOwnerPreservesStateAndReuse
+[       OK ] SharedComponents.ImportResetOwnerPreservesStateAndReuse (503 ms)
+[ RUN      ] SharedComponents.CaptainedImportFreezesModeAndJoinsEventFailures
+[       OK ] SharedComponents.CaptainedImportFreezesModeAndJoinsEventFailures (110 ms)
+[ RUN      ] SharedComponents.SeedOnlyImportEventsMatchMwpmAcrossFixedHolesAndLanes
+[       OK ] SharedComponents.SeedOnlyImportEventsMatchMwpmAcrossFixedHolesAndLanes (119 ms)
+[ RUN      ] SharedComponents.CaptainedBorrowedEntriesMatchOwnedAndKeepRankHoles
+[       OK ] SharedComponents.CaptainedBorrowedEntriesMatchOwnedAndKeepRankHoles (311 ms)
+[ RUN      ] SharedComponents.P1FixedStorageAndLifecycleOwnersAcrossFallbacksAndErrors
+[       OK ] SharedComponents.P1FixedStorageAndLifecycleOwnersAcrossFallbacksAndErrors (8 ms)
+[ RUN      ] SharedComponents.P1BorrowedNormalAndSplitEntriesMatchOwnedAfterRecovery
+[       OK ] SharedComponents.P1BorrowedNormalAndSplitEntriesMatchOwnedAfterRecovery (40 ms)
+[----------] 53 tests from SharedComponents (6971 ms total)
+
+[----------] 8 tests from TimePartitionCuts
+[ RUN      ] TimePartitionCuts.MatchesOriginalTimeFormulaForEverySmallGridCell
+[       OK ] TimePartitionCuts.MatchesOriginalTimeFormulaForEverySmallGridCell (48 ms)
+[ RUN      ] TimePartitionCuts.GuardEndpointsUseWholePlanesAndHalfOpenUpperEdge
+[       OK ] TimePartitionCuts.GuardEndpointsUseWholePlanesAndHalfOpenUpperEdge (0 ms)
+[ RUN      ] TimePartitionCuts.SaturatesWideGuardsAndSupportsLargestValidVolume
+[       OK ] TimePartitionCuts.SaturatesWideGuardsAndSupportsLargestValidVolume (0 ms)
+[ RUN      ] TimePartitionCuts.RejectsInvalidGeometryBeforeMultiplyingCellCounts
+[       OK ] TimePartitionCuts.RejectsInvalidGeometryBeforeMultiplyingCellCounts (0 ms)
+[ RUN      ] TimePartitionCuts.ThreePlanesMatchClippedUnionAndSeparateReadWriteFootprints
+[       OK ] TimePartitionCuts.ThreePlanesMatchClippedUnionAndSeparateReadWriteFootprints (8 ms)
+[ RUN      ] TimePartitionCuts.GridConstructorPreservesLegacyTimeBuckets
+[       OK ] TimePartitionCuts.GridConstructorPreservesLegacyTimeBuckets (12 ms)
+[ RUN      ] TimePartitionCuts.Ty2x2UnionSeparatesReadWriteFootprintsIncludingShortAxes
+[       OK ] TimePartitionCuts.Ty2x2UnionSeparatesReadWriteFootprintsIncludingShortAxes (14 ms)
+[ RUN      ] TimePartitionCuts.Ty2x2RejectsInvalidDimensionsConfigurationAndVolume
+[       OK ] TimePartitionCuts.Ty2x2RejectsInvalidDimensionsConfigurationAndVolume (0 ms)
+[----------] 8 tests from TimePartitionCuts (83 ms total)
+
+[----------] 16 tests from DoubleBufferComponents
+[ RUN      ] DoubleBufferComponents.EmptyOddBatchesKeepParityAndReturnOwnedResults
+[       OK ] DoubleBufferComponents.EmptyOddBatchesKeepParityAndReturnOwnedResults (2 ms)
+[ RUN      ] DoubleBufferComponents.SurfaceShotsMatchParentAcrossGroupsAndFallbacks
+[       OK ] DoubleBufferComponents.SurfaceShotsMatchParentAcrossGroupsAndFallbacks (228 ms)
+[ RUN      ] DoubleBufferComponents.ExpandedPartitionsMatchGenericAcrossRegularAndFixedRoutes
+[       OK ] DoubleBufferComponents.ExpandedPartitionsMatchGenericAcrossRegularAndFixedRoutes (9125 ms)
+[ RUN      ] DoubleBufferComponents.Ty2x2MatchesGenericAcrossRegularAndFixedRoutes
+[       OK ] DoubleBufferComponents.Ty2x2MatchesGenericAcrossRegularAndFixedRoutes (9284 ms)
+[ RUN      ] DoubleBufferComponents.ExceptionsJoinBothGroupsAndPermitReuse
+[       OK ] DoubleBufferComponents.ExceptionsJoinBothGroupsAndPermitReuse (3 ms)
+[ RUN      ] DoubleBufferComponents.MovesAndCallerGuardsRetainOwnership
+[       OK ] DoubleBufferComponents.MovesAndCallerGuardsRetainOwnership (0 ms)
+[ RUN      ] DoubleBufferComponents.RejectsOverlappingExplicitCpuAndUnequalGroups
+[       OK ] DoubleBufferComponents.RejectsOverlappingExplicitCpuAndUnequalGroups (0 ms)
+[ RUN      ] DoubleBufferComponents.SingleThreadControlUsesOnePhysicalOwnerForBothBuffers
+[       OK ] DoubleBufferComponents.SingleThreadControlUsesOnePhysicalOwnerForBothBuffers (0 ms)
+[ RUN      ] DoubleBufferComponents.AffinityStartupFailureStopsEveryGroupBeforeRethrow
+[       OK ] DoubleBufferComponents.AffinityStartupFailureStopsEveryGroupBeforeRethrow (0 ms)
+[ RUN      ] DoubleBufferComponents.FixedSeedConstructionMatchesFusedAcrossBuffersAndThreads
+[       OK ] DoubleBufferComponents.FixedSeedConstructionMatchesFusedAcrossBuffersAndThreads (154 ms)
+[ RUN      ] DoubleBufferComponents.IndexedSeedInputPreservesBuffersAndRecovery
+[       OK ] DoubleBufferComponents.IndexedSeedInputPreservesBuffersAndRecovery (151 ms)
+[ RUN      ] DoubleBufferComponents.ImportPreparationPreservesBuffersAndRecovery
+[       OK ] DoubleBufferComponents.ImportPreparationPreservesBuffersAndRecovery (181 ms)
+[ RUN      ] DoubleBufferComponents.ImportResetOwnerPreservesBuffersAndRecovery
+[       OK ] DoubleBufferComponents.ImportResetOwnerPreservesBuffersAndRecovery (366 ms)
+[ RUN      ] DoubleBufferComponents.CaptainedBorrowedBuffersMatchOwnedAndRecover
+[       OK ] DoubleBufferComponents.CaptainedBorrowedBuffersMatchOwnedAndRecover (132 ms)
+[ RUN      ] DoubleBufferComponents.P1OwnersRetainLifecycleAndStorageAcrossBothBuffers
+[       OK ] DoubleBufferComponents.P1OwnersRetainLifecycleAndStorageAcrossBothBuffers (8 ms)
+[ RUN      ] DoubleBufferComponents.P1BorrowedExtractionRunsOnBothBuffersAndSurvivesErrorsAndMoves
+[       OK ] DoubleBufferComponents.P1BorrowedExtractionRunsOnBothBuffersAndSurvivesErrorsAndMoves (36 ms)
+[----------] 16 tests from DoubleBufferComponents (19675 ms total)
+
+[----------] 8 tests from SerialSeedStorage
+[ RUN      ] SerialSeedStorage.FixedComponentPrefixesAndAlignedScratchSurviveMoves
+[       OK ] SerialSeedStorage.FixedComponentPrefixesAndAlignedScratchSurviveMoves (0 ms)
+[ RUN      ] SerialSeedStorage.UnsortedValidationAndRecovery
+[       OK ] SerialSeedStorage.UnsortedValidationAndRecovery (0 ms)
+[ RUN      ] SerialSeedStorage.NegativeNormalizationFallsBack
+[       OK ] SerialSeedStorage.NegativeNormalizationFallsBack (0 ms)
+[ RUN      ] SerialSeedStorage.DecodeMatchesDynamicStorage
+[       OK ] SerialSeedStorage.DecodeMatchesDynamicStorage (1 ms)
+[ RUN      ] SerialSeedStorage.BuildIndexCanBeDeferred
+[       OK ] SerialSeedStorage.BuildIndexCanBeDeferred (0 ms)
+[ RUN      ] SerialSeedStorage.LateInitializationLeavesDynamicDecoderUsable
+[       OK ] SerialSeedStorage.LateInitializationLeavesDynamicDecoderUsable (0 ms)
+[ RUN      ] SerialSeedStorage.FirstEmptyComponentPublishesZeroLengthScratch
+[       OK ] SerialSeedStorage.FirstEmptyComponentPublishesZeroLengthScratch (0 ms)
+[ RUN      ] SerialSeedStorage.PartitionScratchFitsFixedAllocationThroughLastBucket
+[       OK ] SerialSeedStorage.PartitionScratchFitsFixedAllocationThroughLastBucket (0 ms)
+[----------] 8 tests from SerialSeedStorage (1 ms total)
+
+[----------] 23 tests from StructuredRegionPool
+[ RUN      ] StructuredRegionPool.DirectObjectAndRadiusIndices
+[       OK ] StructuredRegionPool.DirectObjectAndRadiusIndices (0 ms)
+[ RUN      ] StructuredRegionPool.ReuseReconstructsVectorsAndAdvancesGeneration
+[       OK ] StructuredRegionPool.ReuseReconstructsVectorsAndAdvancesGeneration (0 ms)
+[ RUN      ] StructuredRegionPool.ResetAndReservedRollbackPreserveLifetimeIdentity
+[       OK ] StructuredRegionPool.ResetAndReservedRollbackPreserveLifetimeIdentity (0 ms)
+[ RUN      ] StructuredRegionPool.SeededConstructionCanGrowAndReturnToGeneralAllocation
+[       OK ] StructuredRegionPool.SeededConstructionCanGrowAndReturnToGeneralAllocation (0 ms)
+[ RUN      ] StructuredRegionPool.StaleShrinkCannotConsumeReusedRegionsEvent
+[       OK ] StructuredRegionPool.StaleShrinkCannotConsumeReusedRegionsEvent (0 ms)
+[ RUN      ] StructuredRegionPool.ReleasedShrinkIsDiscardedWithoutObjectAccess
+[       OK ] StructuredRegionPool.ReleasedShrinkIsDiscardedWithoutObjectAccess (0 ms)
+[ RUN      ] StructuredRegionPool.ActualStaleShrinkPopsConserveDiagnosticCounts
+[       OK ] StructuredRegionPool.ActualStaleShrinkPopsConserveDiagnosticCounts (0 ms)
+[ RUN      ] StructuredRegionPool.ContiguousReservationAfterSmallerShotPreservesGeneration
+[       OK ] StructuredRegionPool.ContiguousReservationAfterSmallerShotPreservesGeneration (0 ms)
+[ RUN      ] StructuredRegionPool.ShellStoresSingletonInlineAndPreservesOrderThroughGrowth
+[       OK ] StructuredRegionPool.ShellStoresSingletonInlineAndPreservesOrderThroughGrowth (0 ms)
+[ RUN      ] StructuredRegionPool.ShellEqualityIgnoresInlineOrHeapStorage
+[       OK ] StructuredRegionPool.ShellEqualityIgnoresInlineOrHeapStorage (0 ms)
+[ RUN      ] StructuredRegionPool.NeutralSeedsSurviveSmallerShotsAndOrdinaryAllocation
+[       OK ] StructuredRegionPool.NeutralSeedsSurviveSmallerShotsAndOrdinaryAllocation (0 ms)
+[ RUN      ] StructuredRegionPool.NeutralMixedReservationRollbackAndHardReset
+[       OK ] StructuredRegionPool.NeutralMixedReservationRollbackAndHardReset (0 ms)
+[ RUN      ] StructuredRegionPool.NeutralGenerationExhaustionAndSuccessTokenAreTransactional
+[       OK ] StructuredRegionPool.NeutralGenerationExhaustionAndSuccessTokenAreTransactional (0 ms)
+[ RUN      ] StructuredRegionPool.StaleShrinkEventCannotEnterNeutralOrReusedLifetime
+[       OK ] StructuredRegionPool.StaleShrinkEventCannotEnterNeutralOrReusedLifetime (0 ms)
+[ RUN      ] StructuredRegionPool.UntouchedSeedRetirementReuseRollbackAndInvalidation
+[       OK ] StructuredRegionPool.UntouchedSeedRetirementReuseRollbackAndInvalidation (0 ms)
+[ RUN      ] StructuredRegionPool.LazySeedsStayRawAcrossExtractionResetAndOrdinaryReuse
+[       OK ] StructuredRegionPool.LazySeedsStayRawAcrossExtractionResetAndOrdinaryReuse (0 ms)
+[ RUN      ] StructuredRegionPool.LazyLookupMaterializesOnlyRequestedEndpointAcrossStorageKinds
+[       OK ] StructuredRegionPool.LazyLookupMaterializesOnlyRequestedEndpointAcrossStorageKinds (0 ms)
+[ RUN      ] StructuredRegionPool.LazyEndpointCanBeInspectedBeforePartnerImport
+[       OK ] StructuredRegionPool.LazyEndpointCanBeInspectedBeforePartnerImport (0 ms)
+[ RUN      ] StructuredRegionPool.LazyMixedLifetimesSurviveRollbackHardResetAndSmallerShots
+[       OK ] StructuredRegionPool.LazyMixedLifetimesSurviveRollbackHardResetAndSmallerShots (0 ms)
+[ RUN      ] StructuredRegionPool.DeferredSeedNodesRemainCleanAcrossRetirementAndResetOwners
+[       OK ] StructuredRegionPool.DeferredSeedNodesRemainCleanAcrossRetirementAndResetOwners (0 ms)
+[ RUN      ] StructuredRegionPool.DeferredSeedNodeConstLookupRestoresNodeAcrossStorageKinds
+[       OK ] StructuredRegionPool.DeferredSeedNodeConstLookupRestoresNodeAcrossStorageKinds (0 ms)
+[ RUN      ] StructuredRegionPool.DeferredSeedNodeInvalidationRestoresNodeBeforeMutation
+[       OK ] StructuredRegionPool.DeferredSeedNodeInvalidationRestoresNodeBeforeMutation (0 ms)
+[ RUN      ] StructuredRegionPool.CompactEndpointsMaterializeBeforeMatePublicationAndReuseAllStorageKinds
+[       OK ] StructuredRegionPool.CompactEndpointsMaterializeBeforeMatePublicationAndReuseAllStorageKinds (0 ms)
+[----------] 23 tests from StructuredRegionPool (0 ms total)
+
+[----------] 14 tests from StructuredSerialImport
+[ RUN      ] StructuredSerialImport.RootsAndResidualEventsPreserveLegacyOrderAndRollback
+[       OK ] StructuredSerialImport.RootsAndResidualEventsPreserveLegacyOrderAndRollback (0 ms)
+[ RUN      ] StructuredSerialImport.UntouchedSeedsStayCompactAcrossExtractionModesAndReuse
+[       OK ] StructuredSerialImport.UntouchedSeedsStayCompactAcrossExtractionModesAndReuse (0 ms)
+[ RUN      ] StructuredSerialImport.BoundaryAndPairCollisionsMaterializeBeforeReadingPaths
+[       OK ] StructuredSerialImport.BoundaryAndPairCollisionsMaterializeBeforeReadingPaths (0 ms)
+[ RUN      ] StructuredSerialImport.ExplicitNodeQueriesAndHardResetRespectDeferredOwnership
+[       OK ] StructuredSerialImport.ExplicitNodeQueriesAndHardResetRespectDeferredOwnership (0 ms)
+[ RUN      ] StructuredSerialImport.EmptyOddEvenFailureAndMovesPreserveCleanup
+[       OK ] StructuredSerialImport.EmptyOddEvenFailureAndMovesPreserveCleanup (0 ms)
+[ RUN      ] StructuredSerialImport.SpatialFixedRangesKeepEagerNodesAndRankIndexedExtraction
+[       OK ] StructuredSerialImport.SpatialFixedRangesKeepEagerNodesAndRankIndexedExtraction (0 ms)
+[ RUN      ] StructuredSerialImport.CompactAndPointerEndpointsSurviveMovesAndAlternatingImporters
+[       OK ] StructuredSerialImport.CompactAndPointerEndpointsSurviveMovesAndAlternatingImporters (0 ms)
+[ RUN      ] StructuredSerialImport.DirectBindingChecksEveryPublicIdAndFallsBackForPermutedNodes
+[       OK ] StructuredSerialImport.DirectBindingChecksEveryPublicIdAndFallsBackForPermutedNodes (0 ms)
+[ RUN      ] StructuredSerialImport.CaptainedCompactEndpointsKeepFixedRanksAcrossMovesAndFallbackMappings
+[       OK ] StructuredSerialImport.CaptainedCompactEndpointsKeepFixedRanksAcrossMovesAndFallbackMappings (0 ms)
+[ RUN      ] StructuredSerialImport.BorrowedNormalEntryMatchesOwnedAcrossTiesAndInputPermutations
+[       OK ] StructuredSerialImport.BorrowedNormalEntryMatchesOwnedAcrossTiesAndInputPermutations (2 ms)
+[ RUN      ] StructuredSerialImport.BorrowedPairAndBoundaryTouchesPreserveMovesAndDeferredCleanup
+[       OK ] StructuredSerialImport.BorrowedPairAndBoundaryTouchesPreserveMovesAndDeferredCleanup (0 ms)
+[ RUN      ] StructuredSerialImport.BorrowedSchedulingFailureRollsBackBeforeOrdinaryReuse
+[       OK ] StructuredSerialImport.BorrowedSchedulingFailureRollsBackBeforeOrdinaryReuse (0 ms)
+[ RUN      ] StructuredSerialImport.BorrowedFixedRanksSurviveSlotReuseAndPartialRollback
+[       OK ] StructuredSerialImport.BorrowedFixedRanksSurviveSlotReuseAndPartialRollback (0 ms)
+[ RUN      ] StructuredSerialImport.CaptainedBorrowedFixedRanksMoveAndRollback
+[       OK ] StructuredSerialImport.CaptainedBorrowedFixedRanksMoveAndRollback (1 ms)
+[----------] 14 tests from StructuredSerialImport (6 ms total)
+
+[----------] 8 tests from StructuredActiveTrees
+[ RUN      ] StructuredActiveTrees.BlossomAbsorptionAndShatteringPreserveRootsUntilAugmentation
+[       OK ] StructuredActiveTrees.BlossomAbsorptionAndShatteringPreserveRootsUntilAugmentation (0 ms)
+[ RUN      ] StructuredActiveTrees.ImportedBoundaryMatchConsumesOneRoot
+[       OK ] StructuredActiveTrees.ImportedBoundaryMatchConsumesOneRoot (0 ms)
+[ RUN      ] StructuredActiveTrees.VacatedShellNodeTrackersRetireBeforeTheNextShot
+[       OK ] StructuredActiveTrees.VacatedShellNodeTrackersRetireBeforeTheNextShot (0 ms)
+[ RUN      ] StructuredActiveTrees.JoinedImportCountsOnlyUnmatchedSeedsAndRollsBackReservations
+[       OK ] StructuredActiveTrees.JoinedImportCountsOnlyUnmatchedSeedsAndRollsBackReservations (0 ms)
+[ RUN      ] StructuredActiveTrees.FusedImportFinishKeepsEventOrderAndRecoversPartialForest
+[       OK ] StructuredActiveTrees.FusedImportFinishKeepsEventOrderAndRecoversPartialForest (0 ms)
+[ RUN      ] StructuredActiveTrees.UnchangedSeedsExtractWithoutRegionTeardownAcrossHolesAndReuse
+[       OK ] StructuredActiveTrees.UnchangedSeedsExtractWithoutRegionTeardownAcrossHolesAndReuse (0 ms)
+[ RUN      ] StructuredActiveTrees.LazyMatchedSeedsMaterializeOnlyOnBoundaryOrPairCollision
+[       OK ] StructuredActiveTrees.LazyMatchedSeedsMaterializeOnlyOnBoundaryOrPairCollision (0 ms)
+[ RUN      ] StructuredActiveTrees.ZeroOddEvenFailureAndMovesAcrossRepeatedShots
+[       OK ] StructuredActiveTrees.ZeroOddEvenFailureAndMovesAcrossRepeatedShots (0 ms)
+[----------] 8 tests from StructuredActiveTrees (1 ms total)
+
+[----------] 31 tests from StaticGrid
+[ RUN      ] StaticGrid.RadiusStoreOwnershipAndZeroState
+[       OK ] StaticGrid.RadiusStoreOwnershipAndZeroState (0 ms)
+[ RUN      ] StaticGrid.StorageMappingPreservesDirectionPairsAndRowSize
+[       OK ] StaticGrid.StorageMappingPreservesDirectionPairsAndRowSize (0 ms)
+[ RUN      ] StaticGrid.SimdSignedArithmeticMasksAndFirstMinimumAcrossBatches
+[       OK ] StaticGrid.SimdSignedArithmeticMasksAndFirstMinimumAcrossBatches (0 ms)
+[ RUN      ] StaticGrid.SingleWeightRowDoesNotReadPastTwelveSlotTail
+[       OK ] StaticGrid.SingleWeightRowDoesNotReadPastTwelveSlotTail (0 ms)
+[ RUN      ] StaticGrid.LastWeightBatchDoesNotTouchGuardPage
+[       OK ] StaticGrid.LastWeightBatchDoesNotTouchGuardPage (0 ms)
+[ RUN      ] StaticGrid.IndependentComponentsAndVirtualBoundaries
+[       OK ] StaticGrid.IndependentComponentsAndVirtualBoundaries (3 ms)
+[ RUN      ] StaticGrid.TwelveDirectionComponentsPreserveEveryOriginalEdge
+[       OK ] StaticGrid.TwelveDirectionComponentsPreserveEveryOriginalEdge (43 ms)
+[ RUN      ] StaticGrid.ReusedDecoderMatchesGenericSurfaceGraphs
+[       OK ] StaticGrid.ReusedDecoderMatchesGenericSurfaceGraphs (144 ms)
+[ RUN      ] StaticGrid.AllSimdKernelsMatchIndependentCollisionFormula
+[       OK ] StaticGrid.AllSimdKernelsMatchIndependentCollisionFormula (16 ms)
+[ RUN      ] StaticGrid.InvalidConfigurationPreservesDecoder
+[       OK ] StaticGrid.InvalidConfigurationPreservesDecoder (1 ms)
+[ RUN      ] StaticGrid.FailedStencilConstructionPreservesAdjacencyForRetry
+[       OK ] StaticGrid.FailedStencilConstructionPreservesAdjacencyForRetry (0 ms)
+[ RUN      ] StaticGrid.UniformEventsRespectSlopesAndDirectionOrder
+[       OK ] StaticGrid.UniformEventsRespectSlopesAndDirectionOrder (1 ms)
+[ RUN      ] StaticGrid.DiagramUsesOriginalDetectorIds
+[       OK ] StaticGrid.DiagramUsesOriginalDetectorIds (1 ms)
+[ RUN      ] StaticGrid.CollisionStateTracksRegionTransitions
+[       OK ] StaticGrid.CollisionStateTracksRegionTransitions (29 ms)
+[ RUN      ] StaticGrid.MaskedDirectionsAndSignedPackedState
+[       OK ] StaticGrid.MaskedDirectionsAndSignedPackedState (1 ms)
+[ RUN      ] StaticGrid.MoveWithActiveRegionsPreservesNodeAddresses
+[       OK ] StaticGrid.MoveWithActiveRegionsPreservesNodeAddresses (46 ms)
+[ RUN      ] StaticGrid.MovePreservesReweightedEdgeAddresses
+[       OK ] StaticGrid.MovePreservesReweightedEdgeAddresses (1 ms)
+[ RUN      ] StaticGrid.IndependentDecodersUseGlobalIdsAndIgnoreSharedBoundary
+[       OK ] StaticGrid.IndependentDecodersUseGlobalIdsAndIgnoreSharedBoundary (0 ms)
+[ RUN      ] StaticGrid.IndependentDecodersKeepGlobalQuantizationAndNegativeWeights
+[       OK ] StaticGrid.IndependentDecodersKeepGlobalQuantizationAndNegativeWeights (0 ms)
+[ RUN      ] StaticGrid.EqualExplicitLabelsDoNotMergeDisconnectedComponents
+[       OK ] StaticGrid.EqualExplicitLabelsDoNotMergeDisconnectedComponents (0 ms)
+[ RUN      ] StaticGrid.IndependentDecodersMergeManyObservablesAdditively
+[       OK ] StaticGrid.IndependentDecodersMergeManyObservablesAdditively (0 ms)
+[ RUN      ] StaticGrid.ComponentFailureDoesNotContaminateOtherDecoder
+[       OK ] StaticGrid.ComponentFailureDoesNotContaminateOtherDecoder (0 ms)
+[ RUN      ] StaticGrid.CorrelatedDecodeIsRejectedAtStructuredEntry
+[       OK ] StaticGrid.CorrelatedDecodeIsRejectedAtStructuredEntry (1 ms)
+[ RUN      ] StaticGrid.ShortestPathsUseGlobalIdsAndRejectUnreachableBoundary
+[       OK ] StaticGrid.ShortestPathsUseGlobalIdsAndRejectUnreachableBoundary (0 ms)
+[ RUN      ] StaticGrid.LargeDistanceRegistryIncludesThreeDistanceRounds
+[       OK ] StaticGrid.LargeDistanceRegistryIncludesThreeDistanceRounds (103 ms)
+[ RUN      ] StaticGrid.ConstructedCellAccessKeepsInactiveCellsAndFirstMinimumMasked
+[       OK ] StaticGrid.ConstructedCellAccessKeepsInactiveCellsAndFirstMinimumMasked (1 ms)
+[ RUN      ] StaticGrid.OneShotSeedOwnerPreservesComponentOrderAndMoveLifetime
+[       OK ] StaticGrid.OneShotSeedOwnerPreservesComponentOrderAndMoveLifetime (0 ms)
+[ RUN      ] StaticGrid.ShotSeedNegativeParityAndDeferredIndexRebuild
+[       OK ] StaticGrid.ShotSeedNegativeParityAndDeferredIndexRebuild (0 ms)
+[ RUN      ] StaticGrid.ShotAddressEpochWrapResetAndFailedAttemptReuse
+[       OK ] StaticGrid.ShotAddressEpochWrapResetAndFailedAttemptReuse (0 ms)
+[ RUN      ] StaticGrid.ShotStaticAddressesAvoidMutableDetectorMetadata
+[       OK ] StaticGrid.ShotStaticAddressesAvoidMutableDetectorMetadata (0 ms)
+[ RUN      ] StaticGrid.ShotAddressEpochKeepsNegativeCycleCorrections
+[       OK ] StaticGrid.ShotAddressEpochKeepsNegativeCycleCorrections (0 ms)
+[----------] 31 tests from StaticGrid (434 ms total)
+
+[----------] 28 tests from OneHopPredecoder
+[ RUN      ] OneHopPredecoder.BoundKernelPreservesSeedStateAcrossTiesAndInputOrders
+[       OK ] OneHopPredecoder.BoundKernelPreservesSeedStateAcrossTiesAndInputOrders (1 ms)
+[ RUN      ] OneHopPredecoder.ExhaustiveSquareWeightsSyndromesAndBoundaries
+[       OK ] OneHopPredecoder.ExhaustiveSquareWeightsSyndromesAndBoundaries (28 ms)
+[ RUN      ] OneHopPredecoder.FusedSerialLeavesPreserveStableOrderAndRepeatedRuns
+[       OK ] OneHopPredecoder.FusedSerialLeavesPreserveStableOrderAndRepeatedRuns (53 ms)
+[ RUN      ] OneHopPredecoder.FusedPartitionPrefixesMatchExplicitSortWithoutTouchingHolesOrOtherScratch
+[       OK ] OneHopPredecoder.FusedPartitionPrefixesMatchExplicitSortWithoutTouchingHolesOrOtherScratch (339 ms)
+[ RUN      ] OneHopPredecoder.BoundPartitionPrefixesMatchExplicitSortWithoutTouchingHolesOrOtherScratch
+[       OK ] OneHopPredecoder.BoundPartitionPrefixesMatchExplicitSortWithoutTouchingHolesOrOtherScratch (326 ms)
+[ RUN      ] OneHopPredecoder.NonSyndromeNeighborsBoundGrowthAndEnableMultihopSolution
+[       OK ] OneHopPredecoder.NonSyndromeNeighborsBoundGrowthAndEnableMultihopSolution (0 ms)
+[ RUN      ] OneHopPredecoder.PartialTightPairRemainsReversible
+[       OK ] OneHopPredecoder.PartialTightPairRemainsReversible (0 ms)
+[ RUN      ] OneHopPredecoder.DeferredSeedCleanupShattersBlossomAndImmediatelyClearsGrownNodes
+[       OK ] OneHopPredecoder.DeferredSeedCleanupShattersBlossomAndImmediatelyClearsGrownNodes (0 ms)
+[ RUN      ] OneHopPredecoder.FrozenBoundaryMatchCanBeReplaced
+[       OK ] OneHopPredecoder.FrozenBoundaryMatchCanBeReplaced (0 ms)
+[ RUN      ] OneHopPredecoder.BoundaryPriorityAndZeroTightEdges
+[       OK ] OneHopPredecoder.BoundaryPriorityAndZeroTightEdges (0 ms)
+[ RUN      ] OneHopPredecoder.NegativeWeightsAndSelfLoopsUseOriginalSignedObjective
+[       OK ] OneHopPredecoder.NegativeWeightsAndSelfLoopsUseOriginalSignedObjective (0 ms)
+[ RUN      ] OneHopPredecoder.InvalidAndOddInputsDoNotContaminateNextShot
+[       OK ] OneHopPredecoder.InvalidAndOddInputsDoNotContaminateNextShot (0 ms)
+[ RUN      ] OneHopPredecoder.AllMasksScalarAndAvx2AgreeWithIndependentRadiusFormula
+[       OK ] OneHopPredecoder.AllMasksScalarAndAvx2AgreeWithIndependentRadiusFormula (18 ms)
+[ RUN      ] OneHopPredecoder.UnmatchedFrontCrossesEmptyNodeBeforeReachingFrozenPair
+[       OK ] OneHopPredecoder.UnmatchedFrontCrossesEmptyNodeBeforeReachingFrozenPair (0 ms)
+[ RUN      ] OneHopPredecoder.FiniteCapCacheIncludesZeroAndRebuildsEveryShot
+[       OK ] OneHopPredecoder.FiniteCapCacheIncludesZeroAndRebuildsEveryShot (0 ms)
+[ RUN      ] OneHopPredecoder.MaximumCapSentinelCanBecomeFiniteWithinShot
+[       OK ] OneHopPredecoder.MaximumCapSentinelCanBecomeFiniteWithinShot (0 ms)
+[ RUN      ] OneHopPredecoder.IsolatedInfiniteCapRemainsUncached
+[       OK ] OneHopPredecoder.IsolatedInfiniteCapRemainsUncached (0 ms)
+[ RUN      ] OneHopPredecoder.CachedSeedIsFreshAfterActiveSetAndNegativeNormalizationChange
+[       OK ] OneHopPredecoder.CachedSeedIsFreshAfterActiveSetAndNegativeNormalizationChange (0 ms)
+[ RUN      ] OneHopPredecoder.SharedRangesCanGrowAndPairTargetsOutsideTheSourceRange
+[       OK ] OneHopPredecoder.SharedRangesCanGrowAndPairTargetsOutsideTheSourceRange (0 ms)
+[ RUN      ] OneHopPredecoder.BulkImportBuildsMateEndpointsBeforeTheirPartnerObjects
+[       OK ] OneHopPredecoder.BulkImportBuildsMateEndpointsBeforeTheirPartnerObjects (0 ms)
+[ RUN      ] OneHopPredecoder.BulkImportResetRecoversConstructedAndReservedSlots
+[       OK ] OneHopPredecoder.BulkImportResetRecoversConstructedAndReservedSlots (0 ms)
+[ RUN      ] OneHopPredecoder.PartitionScratchSeparatesCacheLinesAndPreservesStableGlobalOrder
+[       OK ] OneHopPredecoder.PartitionScratchSeparatesCacheLinesAndPreservesStableGlobalOrder (0 ms)
+[ RUN      ] OneHopPredecoder.CellClearRetainsResultsAndSurvivesMoveAndRebind
+[       OK ] OneHopPredecoder.CellClearRetainsResultsAndSurvivesMoveAndRebind (0 ms)
+[ RUN      ] OneHopPredecoder.RetiredViewDoesNotClearNewOwnerCells
+[       OK ] OneHopPredecoder.RetiredViewDoesNotClearNewOwnerCells (0 ms)
+[ RUN      ] OneHopPredecoder.LiveExternalCellOwnershipTransfersOnMoveAndAssignment
+[       OK ] OneHopPredecoder.LiveExternalCellOwnershipTransfersOnMoveAndAssignment (0 ms)
+[ RUN      ] OneHopPredecoder.LiveOwnedSeedAllocationTransfersWithoutMovedFromCleanup
+[       OK ] OneHopPredecoder.LiveOwnedSeedAllocationTransfersWithoutMovedFromCleanup (0 ms)
+[ RUN      ] OneHopPredecoder.FixedSeedViewRankSlicesSkipEmptyCapacityAndHoles
+[       OK ] OneHopPredecoder.FixedSeedViewRankSlicesSkipEmptyCapacityAndHoles (0 ms)
+[ RUN      ] OneHopPredecoder.FixedSeedViewCompleteEdgesAndResetIgnoreHoleRecords
+[       OK ] OneHopPredecoder.FixedSeedViewCompleteEdgesAndResetIgnoreHoleRecords (0 ms)
+[----------] 28 tests from OneHopPredecoder (768 ms total)
+
+[----------] 2 tests from PredecodeNeighborhood
+[ RUN      ] PredecodeNeighborhood.PortableDegreeEnumeratesAllSixteenBitValues
+[       OK ] PredecodeNeighborhood.PortableDegreeEnumeratesAllSixteenBitValues (0 ms)
+[ RUN      ] PredecodeNeighborhood.EveryActiveMaskAndBoundaryUnionAcrossWidthsAndStencils
+[       OK ] PredecodeNeighborhood.EveryActiveMaskAndBoundaryUnionAcrossWidthsAndStencils (214 ms)
+[----------] 2 tests from PredecodeNeighborhood (214 ms total)
+
+[----------] 3 tests from StructuredProfile
+[ RUN      ] StructuredProfile.CorrectnessResetAndPartialHandoff
+[       OK ] StructuredProfile.CorrectnessResetAndPartialHandoff (0 ms)
+[ RUN      ] StructuredProfile.NegativeNormalizationAndReuse
+[       OK ] StructuredProfile.NegativeNormalizationAndReuse (0 ms)
+[ RUN      ] StructuredProfile.ComponentPartitionTimingAndExceptionReuse
+[       OK ] StructuredProfile.ComponentPartitionTimingAndExceptionReuse (0 ms)
+[----------] 3 tests from StructuredProfile (0 ms total)
+
+[----------] 2 tests from OneHopCap
+[ RUN      ] OneHopCap.BothSimdLayoutsMatchIndependentOracleAtAllRegisteredWidths
+[       OK ] OneHopCap.BothSimdLayoutsMatchIndependentOracleAtAllRegisteredWidths (234 ms)
+[ RUN      ] OneHopCap.ConstructionBindsConfiguredLayoutOrScalarFallback
+[       OK ] OneHopCap.ConstructionBindsConfiguredLayoutOrScalarFallback (0 ms)
+[----------] 2 tests from OneHopCap (234 ms total)
+
+[----------] 1 test from OneHopSparseCap
+[ RUN      ] OneHopSparseCap.DynamicWeightsAndAllMasksMatchFullRadiusOracle
+[       OK ] OneHopSparseCap.DynamicWeightsAndAllMasksMatchFullRadiusOracle (162 ms)
+[----------] 1 test from OneHopSparseCap (162 ms total)
+
+[----------] 7 tests from Main
+[ RUN      ] Main.predict
+[       OK ] Main.predict (0 ms)
+[ RUN      ] Main.count_mistakes
+[       OK ] Main.count_mistakes (0 ms)
+[ RUN      ] Main.predict_default_upstream_formats_and_empty_single_odd_streams
+[       OK ] Main.predict_default_upstream_formats_and_empty_single_odd_streams (0 ms)
+[ RUN      ] Main.predict_default_upstream_more_than_64_observables
+[       OK ] Main.predict_default_upstream_more_than_64_observables (0 ms)
+[ RUN      ] Main.count_mistakes_default_upstream_formats_and_stream_lengths
+[       OK ] Main.count_mistakes_default_upstream_formats_and_stream_lengths (0 ms)
+[ RUN      ] Main.upstream_correlation_option_changes_the_decoded_correction
+[       OK ] Main.upstream_correlation_option_changes_the_decoded_correction (0 ms)
+[ RUN      ] Main.decoder_options_reject_missing_or_invalid_geometry_and_cpu_maps
+Structured decoding requires --grid-distance.
+Upstream does not use grid parameters; select a structured strategy explicitly.
+Structured decoding requires --grid-geometry rotated|unrotated.
+--grid-rounds must be a positive integer.
+Strategy component requires exactly 2 explicitly selected CPUs.
+Strategy component requires exactly 2 explicitly selected CPUs.
+Parallel CPU IDs must be nonnegative and distinct.
+Unrecognized command line argument -1,2 for `stim predict`.
+Recognized command line arguments for `stim predict`:
+    --decoder-cpus
+    --decoder-info
+    --decoder-strategy
+    --dem
+    --enable_correlations
+    --grid-distance
+    --grid-geometry
+    --grid-rounds
+    --grid-simd
+    --in
+    --in_format
+    --in_includes_appended_observables
+    --out
+    --out_format
+
+--decoder-cpus must not end with a comma.
+[       OK ] Main.decoder_options_reject_missing_or_invalid_geometry_and_cpu_maps (20 ms)
+[----------] 7 tests from Main (22 ms total)
+
+[----------] 13 tests from MwpmDecoding
+[ RUN      ] MwpmDecoding.CompareSolutionWeights
+[       OK ] MwpmDecoding.CompareSolutionWeights (200 ms)
+[ RUN      ] MwpmDecoding.CompareSolutionWeightsWithNoLimitOnNumObservables
+[       OK ] MwpmDecoding.CompareSolutionWeightsWithNoLimitOnNumObservables (196 ms)
+[ RUN      ] MwpmDecoding.DecodeToMatchEdges
+[       OK ] MwpmDecoding.DecodeToMatchEdges (32 ms)
+[ RUN      ] MwpmDecoding.DecodeToEdges
+[       OK ] MwpmDecoding.DecodeToEdges (106 ms)
+[ RUN      ] MwpmDecoding.CompareSolutionObsWithMaxNumBuckets
+[       OK ] MwpmDecoding.CompareSolutionObsWithMaxNumBuckets (96 ms)
+[ RUN      ] MwpmDecoding.FillBitVectorFromObsMask
+[       OK ] MwpmDecoding.FillBitVectorFromObsMask (0 ms)
+[ RUN      ] MwpmDecoding.BitVectorToObsMask
+[       OK ] MwpmDecoding.BitVectorToObsMask (0 ms)
+[ RUN      ] MwpmDecoding.HandleAllNegativeWeights
+[       OK ] MwpmDecoding.HandleAllNegativeWeights (0 ms)
+[ RUN      ] MwpmDecoding.HandleSomeNegativeWeights
+[       OK ] MwpmDecoding.HandleSomeNegativeWeights (0 ms)
+[ RUN      ] MwpmDecoding.NegativeEdgeWeightFromStim
+[       OK ] MwpmDecoding.NegativeEdgeWeightFromStim (1 ms)
+[ RUN      ] MwpmDecoding.NegativeEdgeWeightFromStimDecodeToEdges
+[       OK ] MwpmDecoding.NegativeEdgeWeightFromStimDecodeToEdges (0 ms)
+[ RUN      ] MwpmDecoding.NoValidSolutionForLineGraph
+[       OK ] MwpmDecoding.NoValidSolutionForLineGraph (0 ms)
+[ RUN      ] MwpmDecoding.InvalidSyndromeForToricCode
+[       OK ] MwpmDecoding.InvalidSyndromeForToricCode (2 ms)
+[----------] 13 tests from MwpmDecoding (637 ms total)
+
+[----------] 2 tests from MwpmCorrelatedDecoding
+[ RUN      ] MwpmCorrelatedDecoding.NegativeEdgeWeightsThrowException
+[       OK ] MwpmCorrelatedDecoding.NegativeEdgeWeightsThrowException (16 ms)
+[ RUN      ] MwpmCorrelatedDecoding.BetterLogicalErrorRateThanUncorrelated
+[       OK ] MwpmCorrelatedDecoding.BetterLogicalErrorRateThanUncorrelated (517 ms)
+[----------] 2 tests from MwpmCorrelatedDecoding (533 ms total)
+
+[----------] 13 tests from Varying
+[ RUN      ] Varying.GrowingZeroRadiusAtTime
+[       OK ] Varying.GrowingZeroRadiusAtTime (0 ms)
+[ RUN      ] Varying.GetDistanceAtTime
+[       OK ] Varying.GetDistanceAtTime (0 ms)
+[ RUN      ] Varying.VaryingString
+[       OK ] Varying.VaryingString (0 ms)
+[ RUN      ] Varying.ThenSlopeAt
+[       OK ] Varying.ThenSlopeAt (0 ms)
+[ RUN      ] Varying.AdditionAndSubtraction
+[       OK ] Varying.AdditionAndSubtraction (0 ms)
+[ RUN      ] Varying.InplaceAdditionAndSubtraction
+[       OK ] Varying.InplaceAdditionAndSubtraction (0 ms)
+[ RUN      ] Varying.from_base_and_growth
+[       OK ] Varying.from_base_and_growth (0 ms)
+[ RUN      ] Varying.growing_value_at_time
+[       OK ] Varying.growing_value_at_time (0 ms)
+[ RUN      ] Varying.shrinking_value_at_time
+[       OK ] Varying.shrinking_value_at_time (0 ms)
+[ RUN      ] Varying.frozen
+[       OK ] Varying.frozen (0 ms)
+[ RUN      ] Varying.TimeToXInterceptWhenAddedTo
+[       OK ] Varying.TimeToXInterceptWhenAddedTo (0 ms)
+[ RUN      ] Varying.TimeToXIntercept
+[       OK ] Varying.TimeToXIntercept (0 ms)
+[ RUN      ] Varying.Equality
+[       OK ] Varying.Equality (0 ms)
+[----------] 13 tests from Varying (0 ms total)
+
+[----------] 4 tests from Graph
+[ RUN      ] Graph.AddEdge
+[       OK ] Graph.AddEdge (0 ms)
+[ RUN      ] Graph.AddBoundaryEdge
+[       OK ] Graph.AddBoundaryEdge (0 ms)
+[ RUN      ] Graph.AddEdgeWithImpliedWeights
+[       OK ] Graph.AddEdgeWithImpliedWeights (0 ms)
+[ RUN      ] Graph.AddBoundaryEdgeWithImpliedWeights
+[       OK ] Graph.AddBoundaryEdgeWithImpliedWeights (0 ms)
+[----------] 4 tests from Graph (0 ms total)
+
+[----------] 4 tests from DetectorNode
+[ RUN      ] DetectorNode.IndexOfNeighber
+[       OK ] DetectorNode.IndexOfNeighber (0 ms)
+[ RUN      ] DetectorNode.compute_wrapped_radius_within_layer_at_time
+[       OK ] DetectorNode.compute_wrapped_radius_within_layer_at_time (0 ms)
+[ RUN      ] DetectorNode.compute_stitch_radius_at_time_bounded_by_region_towards_neighbor_across_collision
+[       OK ] DetectorNode.compute_stitch_radius_at_time_bounded_by_region_towards_neighbor_across_collision (0 ms)
+[ RUN      ] DetectorNode.compute_stitch_radius_at_time_bounded_by_region_towards_neighbor_across_skewed_collision
+[       OK ] DetectorNode.compute_stitch_radius_at_time_bounded_by_region_towards_neighbor_across_skewed_collision (0 ms)
+[----------] 4 tests from DetectorNode (0 ms total)
+
+[----------] 2 tests from CompressedEdge
+[ RUN      ] CompressedEdge.Reversed
+[       OK ] CompressedEdge.Reversed (0 ms)
+[ RUN      ] CompressedEdge.MergedWith
+[       OK ] CompressedEdge.MergedWith (0 ms)
+[----------] 2 tests from CompressedEdge (0 ms total)
+
+[----------] 5 tests from GraphFillRegion
+[ RUN      ] GraphFillRegion.BlossomBuilder
+[       OK ] GraphFillRegion.BlossomBuilder (0 ms)
+[ RUN      ] GraphFillRegion.TopRegion
+[       OK ] GraphFillRegion.TopRegion (0 ms)
+[ RUN      ] GraphFillRegion.AddMatch
+[       OK ] GraphFillRegion.AddMatch (0 ms)
+[ RUN      ] GraphFillRegion.descendance_ordering_le
+[       OK ] GraphFillRegion.descendance_ordering_le (0 ms)
+[ RUN      ] GraphFillRegion.descendance_ordering_lt
+[       OK ] GraphFillRegion.descendance_ordering_lt (0 ms)
+[----------] 5 tests from GraphFillRegion (0 ms total)
+
+[----------] 1 test from MatchTest
+[ RUN      ] MatchTest.equality
+[       OK ] MatchTest.equality (0 ms)
+[----------] 1 test from MatchTest (0 ms total)
+
+[----------] 5 tests from GraphFlooder
+[ RUN      ] GraphFlooder.PriorityQueue
+[       OK ] GraphFlooder.PriorityQueue (0 ms)
+[ RUN      ] GraphFlooder.CreateRegion
+[       OK ] GraphFlooder.CreateRegion (0 ms)
+[ RUN      ] GraphFlooder.RegionGrowingToBoundary
+[       OK ] GraphFlooder.RegionGrowingToBoundary (0 ms)
+[ RUN      ] GraphFlooder.RegionHitRegion
+[       OK ] GraphFlooder.RegionHitRegion (0 ms)
+[ RUN      ] GraphFlooder.RegionGrowingThenFrozenThenStartShrinking
+[       OK ] GraphFlooder.RegionGrowingThenFrozenThenStartShrinking (0 ms)
+[----------] 5 tests from GraphFlooder (0 ms total)
+
+[----------] 9 tests from AlternatingTree
+[ RUN      ] AlternatingTree.FindRoot
+[       OK ] AlternatingTree.FindRoot (0 ms)
+[ RUN      ] AlternatingTree.UnstableEraseInt
+[       OK ] AlternatingTree.UnstableEraseInt (0 ms)
+[ RUN      ] AlternatingTree.UnstableEraseAltTreeEdge
+[       OK ] AlternatingTree.UnstableEraseAltTreeEdge (0 ms)
+[ RUN      ] AlternatingTree.AllNodesInTree
+[       OK ] AlternatingTree.AllNodesInTree (0 ms)
+[ RUN      ] AlternatingTree.TreeEqual
+[       OK ] AlternatingTree.TreeEqual (0 ms)
+[ RUN      ] AlternatingTree.BecomeRoot
+[       OK ] AlternatingTree.BecomeRoot (0 ms)
+[ RUN      ] AlternatingTree.CommonAncestor
+[       OK ] AlternatingTree.CommonAncestor (0 ms)
+[ RUN      ] AlternatingTree.PrunedUpwardPathStoppingBefore
+[       OK ] AlternatingTree.PrunedUpwardPathStoppingBefore (0 ms)
+[ RUN      ] AlternatingTree.PrunedUpwardBackEdgePathStoppingBefore
+[       OK ] AlternatingTree.PrunedUpwardBackEdgePathStoppingBefore (0 ms)
+[----------] 9 tests from AlternatingTree (0 ms total)
+
+[----------] 14 tests from Mwpm
+[ RUN      ] Mwpm.BlossomCreatedThenShattered
+[       OK ] Mwpm.BlossomCreatedThenShattered (0 ms)
+[ RUN      ] Mwpm.BlossomShatterDrivenWithoutFlooder
+[       OK ] Mwpm.BlossomShatterDrivenWithoutFlooder (0 ms)
+[ RUN      ] Mwpm.BranchingTreeFormsBlossomThenHitsBoundaryMatch
+[       OK ] Mwpm.BranchingTreeFormsBlossomThenHitsBoundaryMatch (0 ms)
+[ RUN      ] Mwpm.BoundaryMatchHitsTree
+[       OK ] Mwpm.BoundaryMatchHitsTree (0 ms)
+[ RUN      ] Mwpm.ShatterBlossomAndExtractMatchesForPair
+[       OK ] Mwpm.ShatterBlossomAndExtractMatchesForPair (0 ms)
+[ RUN      ] Mwpm.ObsMaskToSetBits
+[       OK ] Mwpm.ObsMaskToSetBits (0 ms)
+[ RUN      ] Mwpm.ShatterBlossomAndExtractMatches
+[       OK ] Mwpm.ShatterBlossomAndExtractMatches (0 ms)
+[ RUN      ] Mwpm.ShatterBlossomAndExtractMatchEdges
+[       OK ] Mwpm.ShatterBlossomAndExtractMatchEdges (0 ms)
+[ RUN      ] Mwpm.ShatterAndMatchBlossomMatchedToBoundaryMatch
+[       OK ] Mwpm.ShatterAndMatchBlossomMatchedToBoundaryMatch (0 ms)
+[ RUN      ] Mwpm.ShatterAndMatchBlossomMatchedToBoundaryMatchEdges
+[       OK ] Mwpm.ShatterAndMatchBlossomMatchedToBoundaryMatchEdges (0 ms)
+[ RUN      ] Mwpm.MatchingResult
+[       OK ] Mwpm.MatchingResult (0 ms)
+[ RUN      ] Mwpm.TwoRegionsGrowingThenMatching
+[       OK ] Mwpm.TwoRegionsGrowingThenMatching (0 ms)
+[ RUN      ] Mwpm.RegionHittingMatchThenMatchedToOtherRegion
+[       OK ] Mwpm.RegionHittingMatchThenMatchedToOtherRegion (0 ms)
+[ RUN      ] Mwpm.RegionHittingMatchFormingBlossomThenMatchingToBoundary
+[       OK ] Mwpm.RegionHittingMatchFormingBlossomThenMatchingToBoundary (0 ms)
+[----------] 14 tests from Mwpm (0 ms total)
+
+[----------] 1 test from flood_check_event
+[ RUN      ] flood_check_event.basic_usage
+[       OK ] flood_check_event.basic_usage (0 ms)
+[----------] 1 test from flood_check_event (0 ms total)
+
+[----------] 5 tests from radix_heap_queue
+[ RUN      ] radix_heap_queue.basic_usage
+[       OK ] radix_heap_queue.basic_usage (0 ms)
+[ RUN      ] radix_heap_queue.sorts_fuzz
+[       OK ] radix_heap_queue.sorts_fuzz (0 ms)
+[ RUN      ] radix_heap_queue.bucket_for
+[       OK ] radix_heap_queue.bucket_for (0 ms)
+[ RUN      ] radix_heap_queue.wraparound_all_the_way_around
+[       OK ] radix_heap_queue.wraparound_all_the_way_around (10 ms)
+[ RUN      ] radix_heap_queue.clear
+[       OK ] radix_heap_queue.clear (0 ms)
+[----------] 5 tests from radix_heap_queue (10 ms total)
+
+[----------] 1 test from mwpm_event
+[ RUN      ] mwpm_event.basic_usage
+[       OK ] mwpm_event.basic_usage (0 ms)
+[----------] 1 test from mwpm_event (0 ms total)
+
+[----------] 1 test from QueuedEventTracker
+[ RUN      ] QueuedEventTracker.basic_usage
+[       OK ] QueuedEventTracker.basic_usage (0 ms)
+[----------] 1 test from QueuedEventTracker (0 ms total)
+
+[----------] 3 tests from cyclic
+[ RUN      ] cyclic.comparison
+[       OK ] cyclic.comparison (0 ms)
+[ RUN      ] cyclic.arithmetic
+[       OK ] cyclic.arithmetic (0 ms)
+[ RUN      ] cyclic.widen_from_nearby_reference
+[       OK ] cyclic.widen_from_nearby_reference (0 ms)
+[----------] 3 tests from cyclic (0 ms total)
+
+[----------] 2 tests from SearchGraph
+[ RUN      ] SearchGraph.AddEdge
+[       OK ] SearchGraph.AddEdge (0 ms)
+[ RUN      ] SearchGraph.AddBoundaryEdge
+[       OK ] SearchGraph.AddBoundaryEdge (0 ms)
+[----------] 2 tests from SearchGraph (0 ms total)
+
+[----------] 3 tests from SearchFlooder
+[ RUN      ] SearchFlooder.RepCodeDetectorSearch
+[       OK ] SearchFlooder.RepCodeDetectorSearch (0 ms)
+[ RUN      ] SearchFlooder.RepCodeBoundarySearch
+[       OK ] SearchFlooder.RepCodeBoundarySearch (0 ms)
+[ RUN      ] SearchFlooder.RepCodeSourceToDestPath
+[       OK ] SearchFlooder.RepCodeSourceToDestPath (0 ms)
+[----------] 3 tests from SearchFlooder (0 ms total)
+
+[----------] 1 test from StimIO
+[ RUN      ] StimIO.MergeWeights
+[       OK ] StimIO.MergeWeights (0 ms)
+[----------] 1 test from StimIO (0 ms total)
+
+[----------] 9 tests from UserGraph
+[ RUN      ] UserGraph.ConstructGraph
+[       OK ] UserGraph.ConstructGraph (0 ms)
+[ RUN      ] UserGraph.AddNoise
+[       OK ] UserGraph.AddNoise (0 ms)
+[ RUN      ] UserGraph.NodesAlongShortestPath
+[       OK ] UserGraph.NodesAlongShortestPath (0 ms)
+[ RUN      ] UserGraph.DecodeUserGraphDetectionEventOnBoundaryNode
+[       OK ] UserGraph.DecodeUserGraphDetectionEventOnBoundaryNode (0 ms)
+[ RUN      ] UserGraph.PopulateImpliedEdgeWeights
+[       OK ] UserGraph.PopulateImpliedEdgeWeights (0 ms)
+[ RUN      ] UserGraph.ConvertImpliedWeights
+[       OK ] UserGraph.ConvertImpliedWeights (0 ms)
+[ RUN      ] UserGraph.ConvertImpliedWeights_NoRules
+[       OK ] UserGraph.ConvertImpliedWeights_NoRules (0 ms)
+[ RUN      ] UserGraph.ConvertImpliedWeights_EmptyRules
+[       OK ] UserGraph.ConvertImpliedWeights_EmptyRules (0 ms)
+[ RUN      ] UserGraph.GetEdgeOrBoundaryEdgeWeight
+[       OK ] UserGraph.GetEdgeOrBoundaryEdgeWeight (0 ms)
+[----------] 9 tests from UserGraph (0 ms total)
+
+[----------] 16 tests from IterDemInstructionsTest
+[ RUN      ] IterDemInstructionsTest.EmptyDem
+[       OK ] IterDemInstructionsTest.EmptyDem (0 ms)
+[ RUN      ] IterDemInstructionsTest.SingleDetectorErrorToBoundary
+[       OK ] IterDemInstructionsTest.SingleDetectorErrorToBoundary (0 ms)
+[ RUN      ] IterDemInstructionsTest.TwoDetectorError
+[       OK ] IterDemInstructionsTest.TwoDetectorError (0 ms)
+[ RUN      ] IterDemInstructionsTest.TwoDetectorErrorNotSorted
+[       OK ] IterDemInstructionsTest.TwoDetectorErrorNotSorted (0 ms)
+[ RUN      ] IterDemInstructionsTest.ErrorWithOneObservable
+[       OK ] IterDemInstructionsTest.ErrorWithOneObservable (0 ms)
+[ RUN      ] IterDemInstructionsTest.ErrorWithMultipleObservables
+[       OK ] IterDemInstructionsTest.ErrorWithMultipleObservables (0 ms)
+[ RUN      ] IterDemInstructionsTest.ZeroProbabilityError
+[       OK ] IterDemInstructionsTest.ZeroProbabilityError (0 ms)
+[ RUN      ] IterDemInstructionsTest.ThreeDetectorErrorThrowsInvalidArgument
+[       OK ] IterDemInstructionsTest.ThreeDetectorErrorThrowsInvalidArgument (0 ms)
+[ RUN      ] IterDemInstructionsTest.DecomposedError
+[       OK ] IterDemInstructionsTest.DecomposedError (0 ms)
+[ RUN      ] IterDemInstructionsTest.DecomposedErrorWithHyperedgeThrows
+[       OK ] IterDemInstructionsTest.DecomposedErrorWithHyperedgeThrows (0 ms)
+[ RUN      ] IterDemInstructionsTest.DecomposedErrorWithUndetectableErrorThrows
+[       OK ] IterDemInstructionsTest.DecomposedErrorWithUndetectableErrorThrows (0 ms)
+[ RUN      ] IterDemInstructionsTest.CombinedComplexDem
+[       OK ] IterDemInstructionsTest.CombinedComplexDem (0 ms)
+[ RUN      ] IterDemInstructionsTest.MoreThanEightComponents
+[       OK ] IterDemInstructionsTest.MoreThanEightComponents (0 ms)
+[ RUN      ] IterDemInstructionsTest.MultipleErrorsOnSameEdgeCombine
+[       OK ] IterDemInstructionsTest.MultipleErrorsOnSameEdgeCombine (0 ms)
+[ RUN      ] IterDemInstructionsTest.ComplexCombinationOfErrors
+[       OK ] IterDemInstructionsTest.ComplexCombinationOfErrors (0 ms)
+[ RUN      ] IterDemInstructionsTest.ProbabilityGreaterThanHalfThrows
+[       OK ] IterDemInstructionsTest.ProbabilityGreaterThanHalfThrows (0 ms)
+[----------] 16 tests from IterDemInstructionsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 327 tests from 37 test suites ran. (29777 ms total)
+[  PASSED  ] 327 tests.

@@ -1,0 +1,86 @@
+{
+  "complete": true,
+  "source_commit": "e62a5e53fdfd53ba88b070eb5d622d60e7e5e79f",
+  "bundle_checksum_files": 43,
+  "unit_tests": 10,
+  "offline_copy": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-PAPER-MACROS-20261107/offline-r01/AE",
+  "macro_count": 24,
+  "m4_preserved": 5,
+  "macro_tex_byte_identical": true,
+  "template_sha256": "eca3a3c18fe2e2a024dfd142e2cd26002545182287226f893b7d8884251e2d10",
+  "figure_groups": [
+    "latest-matrix",
+    "ablation"
+  ],
+  "figure_count": 3,
+  "compared": [
+    {
+      "file": "latest-six/incremental_ablation.png",
+      "sha256": "39b844f77d4bd4e073977ea64cc8c3e871c7acaefdf69cca3fc85bdf88cb5096",
+      "reference": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-AE-20261107/render-r01/latest-six/incremental_ablation.png"
+    },
+    {
+      "file": "latest-six/incremental_ablation_preview.png",
+      "sha256": "f5099d58fe07c57ba7ec27f02764f966cc5ff4e144b34e8ffbbc519553beba6a",
+      "reference": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-AE-20261107/render-r01/latest-six/incremental_ablation_preview.png"
+    },
+    {
+      "file": "latest-six/plot-data.csv",
+      "sha256": "61e0380261c0d5e45831adbc50f84ed65fa71a654669428834a333e1d37eea39",
+      "reference": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-AE-20261107/render-r01/latest-six/plot-data.csv"
+    },
+    {
+      "file": "latest-six/fastest-cells.csv",
+      "sha256": "ea8ee82954d31c9a4989ca9a1a1774d75fd04c9b4e4b9d74d805b2776bfd1eb0",
+      "reference": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-AE-20261107/render-r01/latest-six/fastest-cells.csv"
+    },
+    {
+      "file": "official-reference/incremental_ablation.png",
+      "sha256": "eaf27fb469a7d88405bf14c8fed9fc7dd5fb7d1acd4907865d4278c2d742e2ed",
+      "reference": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-AE-20261107/render-r01/official-reference/incremental_ablation.png"
+    },
+    {
+      "file": "official-reference/incremental_ablation_preview.png",
+      "sha256": "f6d2b5a2049f1172958c5d19a65f2c40a55a454856532556d072d4106927d5fc",
+      "reference": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-AE-20261107/render-r01/official-reference/incremental_ablation_preview.png"
+    },
+    {
+      "file": "official-reference/plot-data.csv",
+      "sha256": "0bd8aefa821aa98a533b9b8aefc9f8b7ea0f3975735745449034181911b933d1",
+      "reference": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-AE-20261107/render-r01/official-reference/plot-data.csv"
+    },
+    {
+      "file": "official-reference/fastest-cells.csv",
+      "sha256": "255ac8284d4b351ea73dd353bfce4192d264b9c223a247868d10eb3c754f7a02",
+      "reference": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-AE-20261107/render-r01/official-reference/fastest-cells.csv"
+    },
+    {
+      "file": "historical-ablation/incremental_ablation.png",
+      "sha256": "a1c0373b946cf0bdc6a3256e90c22506a51071018e47fe120d148cf9c86929c4",
+      "reference": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-M4-MILLION-MIXED-LTO-20261105/formal-r01/ae-package-r01/output/ablation/incremental_ablation.png"
+    },
+    {
+      "file": "historical-ablation/incremental_ablation_preview.png",
+      "sha256": "3a514cf23e0714abb43b34a135fe51e4992e11516548fabe5b8213680ab67ffe",
+      "reference": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-M4-MILLION-MIXED-LTO-20261105/formal-r01/ae-package-r01/output/ablation/incremental_ablation_preview.png"
+    },
+    {
+      "file": "historical-ablation/plot-data.csv",
+      "sha256": "8f6a3a1e0e6491a7bac75ea278f9fd0c41252a934be75ae5fafb7d9ba5bba68c",
+      "reference": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-M4-MILLION-MIXED-LTO-20261105/formal-r01/ae-package-r01/output/ablation/plot-data.csv"
+    },
+    {
+      "file": "historical-ablation/fastest-cells.csv",
+      "sha256": "69ee7ce69565eb622b164bc921afb8c052e814c9aa93103d8258def8756f51e9",
+      "reference": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-M4-MILLION-MIXED-LTO-20261105/formal-r01/ae-package-r01/output/ablation/fastest-cells.csv"
+    }
+  ],
+  "render_job": 201107,
+  "render_job_exit": 1,
+  "verification_note": "Render, macro and latest image checks passed in 201107; final legacy comparison used an absent archival PNG path. Rechecked existing outputs against the preserved original AE package without rerendering.",
+  "scope": "Offline macro/figure regeneration from bundled completed data; no new decoder timing acquisition.",
+  "final_validation_job": 201109,
+  "final_validation_exit": 0,
+  "overview_job": 201109,
+  "bundle_metadata_recheck": "43 files verified after preserving the byte-exact executed packager snapshot; measured summary, heatmap data and renderer unchanged."
+}

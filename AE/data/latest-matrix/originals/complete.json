@@ -1,0 +1,44 @@
+{
+  "complete": true,
+  "plan": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/plan.json",
+    "sha256": "6d90f914d7e8220de2a8284551503ada3be52cc226462f14ccfd8b7799f5e832"
+  },
+  "summary": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/analysis-r02/summary.json",
+    "sha256": "5f6568b4e24445ac11f0d1208e00e3a02312fbede49997f3c7e6bdeefa5d5751"
+  },
+  "measurements": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/analysis-r02/measurements.csv",
+    "sha256": "fd7ba266e9ff90455875b1053d3b112db2e48c4745c1a3a0ea85294f8bff4137"
+  },
+  "rounds": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/analysis-r02/rounds.csv",
+    "sha256": "fd848b1fde931e5f7da4e60ed79b9fb3bf6ad8660ca68782045b5bf566ecd70d"
+  },
+  "report": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/analysis-r02/REPORT.md",
+    "sha256": "8ca908c46d05e550eb9610aedb4caf94ee324f12a9922b81987a4b90ffbc4474"
+  },
+  "plots": [
+    {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/analysis-r02/official-speedup.png",
+      "sha256": "0b568de958e51d4772cd70ab20e8fe7c2edbfc64f20e5ed4842583496cceba9a"
+    },
+    {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/analysis-r02/official-speedup.pdf",
+      "sha256": "5626ba5578694fb7991a5a5713effe06d38725c1a75f118d9167f21db4d06154"
+    },
+    {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/analysis-r02/repository-speedup.png",
+      "sha256": "0c71ecf5281b1f2ae73f454a9d7af8c889e25c0c242bc470a8ad3415fff3ea13"
+    },
+    {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-MATRIX-20261106/formal-r01/analysis-r02/repository-speedup.pdf",
+      "sha256": "ae1451a91466c35cde792047fcdaf49911b09e8f62174cb3bcc1d24984b8c318"
+    }
+  ],
+  "validated_calls": 882,
+  "exact_differences": 0,
+  "minimum_warmup_seconds": 2.000000535
+}

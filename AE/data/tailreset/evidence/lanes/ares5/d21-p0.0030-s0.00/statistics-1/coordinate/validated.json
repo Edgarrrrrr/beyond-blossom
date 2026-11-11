@@ -1,0 +1,75 @@
+{
+  "complete": true,
+  "shots": 1000000,
+  "method": "coordinate",
+  "phase": "statistics",
+  "observable_ties": 0,
+  "weight_differences": 0,
+  "reference": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-paper-full-retest-20261031-r01/internal/formal/d21-p0.0030-s0.00/input-original/reference_shots.csv",
+    "sha256": "0857f0838b2c8f260ad8113a4725cad2d6e1e72e19b173b215e05d4b623e753d"
+  },
+  "components": [
+    {
+      "normalized": 267410860,
+      "residual": 21528807,
+      "pairs": 120389328,
+      "boundaries": 5103397
+    },
+    {
+      "normalized": 218312936,
+      "residual": 17702627,
+      "pairs": 95229337,
+      "boundaries": 10151635
+    }
+  ],
+  "completed_shots": 0,
+  "normalized": 485723796,
+  "residual": 39231434,
+  "files": {
+    "correctness.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/coordinate/correctness.json",
+      "sha256": "1943443f6f3f3f410d90545fb065cdf0fed4bd3aaf4b572fe914197357b0fa20"
+    },
+    "differences.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/coordinate/differences.csv",
+      "sha256": "7a6c0d1060dc3da4db28e8ca36cfc9e5550603a54d178f4ffcd2a0da2688508d"
+    },
+    "execution.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/coordinate/execution.csv",
+      "sha256": "effa0c65791c8ae925496acd6ff1183716e5fa7ce50b0e30574e9b4344f5067e"
+    },
+    "execution_threads.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/coordinate/execution_threads.csv",
+      "sha256": "fd89f9f23ab6411d0c842ce798d86a4711362b9999108c6bad51cc649f21188b"
+    },
+    "input_features.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/coordinate/input_features.csv",
+      "sha256": "5d298c8477d125873157dbc0063f7d5ddfdd3979676e57c523ca9f873d12b7f4"
+    },
+    "kernel_selection.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/coordinate/kernel_selection.csv",
+      "sha256": "f11d0d308b18249983793c05d0b286b419df7fa66105cb272efcb0f64d5260c3"
+    },
+    "setup.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/coordinate/setup.json",
+      "sha256": "e9ecb2d9f98a3fc9e62c0811d1e296e07ede65d1b0ab977f19f7df2566145b82"
+    },
+    "storage.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/coordinate/storage.json",
+      "sha256": "92d1b9778a92bbd2843231b34cd34c135beb025c8b5a5e14c6cc98cedae6a240"
+    },
+    "syndromes.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/coordinate/syndromes.csv",
+      "sha256": "7b1c121409baff55bb6c8b46297c0c25f8245a3bac121f8c5620fd2f2f51d821"
+    },
+    "syndromes.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/coordinate/syndromes.json",
+      "sha256": "653e43f7fdfbab542e732b43d008d5908d909de0b746266cbf6392f01b5acc16"
+    },
+    "warmup.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/coordinate/warmup.json",
+      "sha256": "0d4d4868b32798edd09e1d592858f93e2b5132c5c536e4ccf5944b7f57861560"
+    }
+  }
+}

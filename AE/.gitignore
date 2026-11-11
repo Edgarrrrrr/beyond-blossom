@@ -1,0 +1,8 @@
+output/
+.venv/
+__pycache__/
+*.pyc
+.matplotlib/
+# Small archived build receipts belong to the result bundle, not a build cache.
+!data/tailreset/evidence/build/
+!data/tailreset/evidence/build/**

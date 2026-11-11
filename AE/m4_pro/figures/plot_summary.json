@@ -1,0 +1,115 @@
+{
+  "source_url": "https://wcncbam07gf8.feishu.cn/wiki/McsNwrj64iyHVrkbSHlc4SkAn3d",
+  "source_csv_sha256": "af34760e881522d3228a15a73fc98aae2cd77f0a6cca2a234cfb2da8299b124f",
+  "palette_sha256": "a6b58045e97854f766c0f000e4e58c98df37de0cd143024b8e063f7ec1df51da",
+  "matplotlib_version": "3.11.2",
+  "source_rows": 126,
+  "plotted_points": 42,
+  "decoding_curves": 6,
+  "measurement_rounds": "d",
+  "aggregation": "median of three complete-batch mean times per shot",
+  "beyond_blossom_selection": "minimum measured time_us among scalar, predecode, component, tailreset, spatial for each (d,p)",
+  "formula": "time_us_per_round = source.time_us / distance",
+  "yscale": "log",
+  "figure_inches": [
+    3.5,
+    2.1
+  ],
+  "legend_layout": "two rows: method line/fill styles; error-rate colors/shapes",
+  "threshold_us_per_round": 1,
+  "threshold_counts": [
+    {
+      "method": "PyMatching",
+      "error_rate": "0.0005",
+      "distances_at_or_below_1_us_per_round": [
+        9,
+        13,
+        17,
+        21,
+        25,
+        29
+      ]
+    },
+    {
+      "method": "PyMatching",
+      "error_rate": "0.001",
+      "distances_at_or_below_1_us_per_round": [
+        9,
+        13,
+        17,
+        21
+      ]
+    },
+    {
+      "method": "PyMatching",
+      "error_rate": "0.003",
+      "distances_at_or_below_1_us_per_round": [
+        9
+      ]
+    },
+    {
+      "method": "Beyond Blossom",
+      "error_rate": "0.0005",
+      "distances_at_or_below_1_us_per_round": [
+        9,
+        13,
+        17,
+        21,
+        25,
+        29,
+        33
+      ]
+    },
+    {
+      "method": "Beyond Blossom",
+      "error_rate": "0.001",
+      "distances_at_or_below_1_us_per_round": [
+        9,
+        13,
+        17,
+        21,
+        25,
+        29,
+        33
+      ]
+    },
+    {
+      "method": "Beyond Blossom",
+      "error_rate": "0.003",
+      "distances_at_or_below_1_us_per_round": [
+        9,
+        13,
+        17,
+        21
+      ]
+    }
+  ],
+  "source_caveats": [
+    "TailReset/Spatial use new component-chain measurements; the first four roles retain the parent acquisition window.",
+    "Best-of-configurations points are a descriptive envelope, not a measured adaptive selector.",
+    "Block time divided by d is an average processing budget; it does not establish a per-shot latency bound."
+  ],
+  "paper_statistics": [
+    {
+      "error_rate": "0.0005",
+      "max_speedup_vs_pymatching": 6.355505556611046,
+      "distance_at_max_speedup": 33,
+      "d33_block_time_us": 5.617501250999999,
+      "d33_time_us_per_round": 0.1702273106363636
+    },
+    {
+      "error_rate": "0.001",
+      "max_speedup_vs_pymatching": 6.408935285059207,
+      "distance_at_max_speedup": 33,
+      "d33_block_time_us": 12.481239541999999,
+      "d33_time_us_per_round": 0.378219380060606
+    },
+    {
+      "error_rate": "0.003",
+      "max_speedup_vs_pymatching": 5.016897356116098,
+      "distance_at_max_speedup": 33,
+      "d33_block_time_us": 69.009220791,
+      "d33_time_us_per_round": 2.0911885088181816
+    }
+  ]
+}

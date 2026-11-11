@@ -1,0 +1,22 @@
+p,d,source_method,display_name,speedup,batch_us_per_shot,fastest
+0.0005,9,Predecode,+ Degree-ordered predecoder,3.62,0.332,True
+0.0005,13,Predecode,+ Degree-ordered predecoder,4.87,0.807,True
+0.0005,17,Predecode,+ Degree-ordered predecoder,5.56,1.773,True
+0.0005,21,Predecode,+ Degree-ordered predecoder,5.58,3.548,True
+0.0005,25,Spatial,+ Spatial,6.72,5.193,True
+0.0005,29,Spatial,+ Spatial,8.09,6.872,True
+0.0005,33,Spatial,+ Spatial,9.38,9.407,True
+0.001,9,Predecode,+ Degree-ordered predecoder,3.83,0.677,True
+0.001,13,Predecode,+ Degree-ordered predecoder,4.77,1.831,True
+0.001,17,Predecode,+ Degree-ordered predecoder,4.82,4.357,True
+0.001,21,Spatial,+ Spatial,5.91,7.211,True
+0.001,25,Spatial,+ Spatial,7.31,10.452,True
+0.001,29,Spatial,+ Spatial,8.50,14.977,True
+0.001,33,Spatial,+ Spatial,10.26,21.405,True
+0.003,9,Predecode,+ Degree-ordered predecoder,3.11,3.256,True
+0.003,13,TailReset,+ TailReset,3.87,8.759,True
+0.003,17,Spatial,+ Spatial,4.54,18.320,True
+0.003,21,Spatial,+ Spatial,5.42,32.328,True
+0.003,25,Spatial,+ Spatial,6.30,54.073,True
+0.003,29,Spatial,+ Spatial,7.20,85.019,True
+0.003,33,Spatial,+ Spatial,7.33,130.151,True

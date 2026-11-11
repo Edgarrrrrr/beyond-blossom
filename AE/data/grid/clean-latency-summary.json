@@ -1,0 +1,953 @@
+{
+  "source_sha256": "6afea48a841970715bd3236477efe754a37374cdc2e12b75879678814b00a6d6",
+  "source_experiment_id": "EXP-20261021-01",
+  "source_analysis_id": "loader-paired-r01",
+  "loader_condition": "Clean",
+  "settings": [
+    {
+      "case_id": "d09-p000500",
+      "stream_id": 1,
+      "distance": 9,
+      "error_rate": 0.0005,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 1198.072536,
+            "max_ns": 47370,
+            "quantiles_ns": {
+              "p50": 1025,
+              "p90": 2298,
+              "p95": 2852,
+              "p99": 4409,
+              "p99_9": 7286,
+              "p99_99": 11357
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 1270.543819,
+            "max_ns": 32300,
+            "quantiles_ns": {
+              "p50": 1141,
+              "p90": 2329,
+              "p95": 2811,
+              "p99": 3975,
+              "p99_9": 5892,
+              "p99_99": 8365
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d09-p001000",
+      "stream_id": 2,
+      "distance": 9,
+      "error_rate": 0.001,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 2595.553235,
+            "max_ns": 44175,
+            "quantiles_ns": {
+              "p50": 2269,
+              "p90": 4529,
+              "p95": 5542,
+              "p99": 8116,
+              "p99_9": 13103,
+              "p99_99": 20253
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 2530.880371,
+            "max_ns": 27324,
+            "quantiles_ns": {
+              "p50": 2306,
+              "p90": 4212,
+              "p95": 4964,
+              "p99": 6749,
+              "p99_9": 9973,
+              "p99_99": 14040
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d09-p003000",
+      "stream_id": 3,
+      "distance": 9,
+      "error_rate": 0.003,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 10136.301065,
+            "max_ns": 163089,
+            "quantiles_ns": {
+              "p50": 9092,
+              "p90": 16132,
+              "p95": 19240,
+              "p99": 27553,
+              "p99_9": 43653,
+              "p99_99": 64289
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 8586.949924,
+            "max_ns": 105021,
+            "quantiles_ns": {
+              "p50": 7977,
+              "p90": 12866,
+              "p95": 14859,
+              "p99": 19911,
+              "p99_9": 29218,
+              "p99_99": 41186
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d13-p000500",
+      "stream_id": 4,
+      "distance": 13,
+      "error_rate": 0.0005,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 3902.211468,
+            "max_ns": 37286,
+            "quantiles_ns": {
+              "p50": 3639,
+              "p90": 6129,
+              "p95": 7082,
+              "p99": 9404,
+              "p99_9": 13246,
+              "p99_99": 18369
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 3800.308499,
+            "max_ns": 24330,
+            "quantiles_ns": {
+              "p50": 3620,
+              "p90": 5744,
+              "p95": 6491,
+              "p99": 8161,
+              "p99_9": 10645,
+              "p99_99": 13677
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d13-p001000",
+      "stream_id": 5,
+      "distance": 13,
+      "error_rate": 0.001,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 8499.429112,
+            "max_ns": 71268,
+            "quantiles_ns": {
+              "p50": 8055,
+              "p90": 12350,
+              "p95": 13998,
+              "p99": 17902,
+              "p99_9": 24668,
+              "p99_99": 33866
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 7670.298486,
+            "max_ns": 41150,
+            "quantiles_ns": {
+              "p50": 7394,
+              "p90": 10710,
+              "p95": 11889,
+              "p99": 14523,
+              "p99_9": 18557,
+              "p99_99": 23918
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d13-p003000",
+      "stream_id": 6,
+      "distance": 13,
+      "error_rate": 0.003,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 33666.933077,
+            "max_ns": 376330,
+            "quantiles_ns": {
+              "p50": 31982,
+              "p90": 46210,
+              "p95": 51933,
+              "p99": 66471,
+              "p99_9": 95485,
+              "p99_99": 144921
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 26857.200896,
+            "max_ns": 250493,
+            "quantiles_ns": {
+              "p50": 25964,
+              "p90": 35186,
+              "p95": 38626,
+              "p99": 47052,
+              "p99_9": 62947,
+              "p99_99": 90197
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d17-p000500",
+      "stream_id": 7,
+      "distance": 17,
+      "error_rate": 0.0005,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 9780.183586,
+            "max_ns": 80299,
+            "quantiles_ns": {
+              "p50": 9479,
+              "p90": 13483,
+              "p95": 14892,
+              "p99": 18065,
+              "p99_9": 22899,
+              "p99_99": 28655
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 9125.080127,
+            "max_ns": 30793,
+            "quantiles_ns": {
+              "p50": 8926,
+              "p90": 12245,
+              "p95": 13347,
+              "p99": 15660,
+              "p99_9": 18839,
+              "p99_99": 22299
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d17-p001000",
+      "stream_id": 8,
+      "distance": 17,
+      "error_rate": 0.001,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 20954.522067,
+            "max_ns": 134760,
+            "quantiles_ns": {
+              "p50": 20428,
+              "p90": 27268,
+              "p95": 29686,
+              "p99": 35074,
+              "p99_9": 43578,
+              "p99_99": 55141
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 18503.585311,
+            "max_ns": 88645,
+            "quantiles_ns": {
+              "p50": 18200,
+              "p90": 23431,
+              "p95": 25150,
+              "p99": 28809,
+              "p99_9": 33964,
+              "p99_99": 40213
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d17-p003000",
+      "stream_id": 9,
+      "distance": 17,
+      "error_rate": 0.003,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 83500.231659,
+            "max_ns": 768146,
+            "quantiles_ns": {
+              "p50": 81265,
+              "p90": 104935,
+              "p95": 113681,
+              "p99": 134948,
+              "p99_9": 174634,
+              "p99_99": 250392
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 65674.776379,
+            "max_ns": 527338,
+            "quantiles_ns": {
+              "p50": 64543,
+              "p90": 79474,
+              "p95": 84706,
+              "p99": 96770,
+              "p99_9": 118374,
+              "p99_99": 160673
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d21-p000500",
+      "stream_id": 10,
+      "distance": 21,
+      "error_rate": 0.0005,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 19746.403711,
+            "max_ns": 130846,
+            "quantiles_ns": {
+              "p50": 19400,
+              "p90": 25180,
+              "p95": 27125,
+              "p99": 31224,
+              "p99_9": 37084,
+              "p99_99": 43642
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 18397.061969,
+            "max_ns": 47620,
+            "quantiles_ns": {
+              "p50": 18178,
+              "p90": 23003,
+              "p95": 24551,
+              "p99": 27669,
+              "p99_9": 31651,
+              "p99_99": 35833
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d21-p001000",
+      "stream_id": 11,
+      "distance": 21,
+      "error_rate": 0.001,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 42480.449317,
+            "max_ns": 148931,
+            "quantiles_ns": {
+              "p50": 41876,
+              "p90": 51835,
+              "p95": 55163,
+              "p99": 62296,
+              "p99_9": 72568,
+              "p99_99": 85204
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 37863.011735,
+            "max_ns": 100256,
+            "quantiles_ns": {
+              "p50": 37542,
+              "p90": 45104,
+              "p95": 47506,
+              "p99": 52447,
+              "p99_9": 58959,
+              "p99_99": 65628
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d21-p003000",
+      "stream_id": 12,
+      "distance": 21,
+      "error_rate": 0.003,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 175034.805319,
+            "max_ns": 1187346,
+            "quantiles_ns": {
+              "p50": 172316,
+              "p90": 208695,
+              "p95": 221370,
+              "p99": 250254,
+              "p99_9": 300322,
+              "p99_99": 388765
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 135132.832387,
+            "max_ns": 887941,
+            "quantiles_ns": {
+              "p50": 133819,
+              "p90": 155663,
+              "p95": 162969,
+              "p99": 179241,
+              "p99_9": 206254,
+              "p99_99": 254061
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d25-p000500",
+      "stream_id": 13,
+      "distance": 25,
+      "error_rate": 0.0005,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 33904.003005,
+            "max_ns": 244155,
+            "quantiles_ns": {
+              "p50": 33510,
+              "p90": 41178,
+              "p95": 43657,
+              "p99": 48814,
+              "p99_9": 55569,
+              "p99_99": 62629
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 32875.35009,
+            "max_ns": 76852,
+            "quantiles_ns": {
+              "p50": 32648,
+              "p90": 39165,
+              "p95": 41170,
+              "p99": 45211,
+              "p99_9": 50160,
+              "p99_99": 54586
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d25-p001000",
+      "stream_id": 14,
+      "distance": 25,
+      "error_rate": 0.001,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 75982.264243,
+            "max_ns": 227314,
+            "quantiles_ns": {
+              "p50": 75229,
+              "p90": 89386,
+              "p95": 93952,
+              "p99": 103357,
+              "p99_9": 115800,
+              "p99_99": 128131
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 67901.242721,
+            "max_ns": 121715,
+            "quantiles_ns": {
+              "p50": 67527,
+              "p90": 77850,
+              "p95": 81043,
+              "p99": 87449,
+              "p99_9": 95333,
+              "p99_99": 102781
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d25-p003000",
+      "stream_id": 15,
+      "distance": 25,
+      "error_rate": 0.003,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 336645.873756,
+            "max_ns": 1230941,
+            "quantiles_ns": {
+              "p50": 334008,
+              "p90": 385028,
+              "p95": 401677,
+              "p99": 437624,
+              "p99_9": 495952,
+              "p99_99": 596766
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 252871.104549,
+            "max_ns": 923417,
+            "quantiles_ns": {
+              "p50": 251475,
+              "p90": 281536,
+              "p95": 291175,
+              "p99": 311739,
+              "p99_9": 344726,
+              "p99_99": 405476
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d29-p000500",
+      "stream_id": 16,
+      "distance": 29,
+      "error_rate": 0.0005,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 55448.502283,
+            "max_ns": 368921,
+            "quantiles_ns": {
+              "p50": 54975,
+              "p90": 65244,
+              "p95": 68490,
+              "p99": 75067,
+              "p99_9": 83254,
+              "p99_99": 92111
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 53242.001321,
+            "max_ns": 104529,
+            "quantiles_ns": {
+              "p50": 53003,
+              "p90": 61332,
+              "p95": 63851,
+              "p99": 68800,
+              "p99_9": 74781,
+              "p99_99": 80648
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d29-p001000",
+      "stream_id": 17,
+      "distance": 29,
+      "error_rate": 0.001,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 126696.123607,
+            "max_ns": 611153,
+            "quantiles_ns": {
+              "p50": 125779,
+              "p90": 145933,
+              "p95": 152244,
+              "p99": 164941,
+              "p99_9": 180412,
+              "p99_99": 195384
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 113318.230031,
+            "max_ns": 216163,
+            "quantiles_ns": {
+              "p50": 112931,
+              "p90": 126487,
+              "p95": 130573,
+              "p99": 138649,
+              "p99_9": 148147,
+              "p99_99": 156927
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d29-p003000",
+      "stream_id": 18,
+      "distance": 29,
+      "error_rate": 0.003,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 602969.186249,
+            "max_ns": 1908161,
+            "quantiles_ns": {
+              "p50": 600042,
+              "p90": 667017,
+              "p95": 688308,
+              "p99": 733805,
+              "p99_9": 799190,
+              "p99_99": 907028
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 423192.993088,
+            "max_ns": 1444702,
+            "quantiles_ns": {
+              "p50": 421670,
+              "p90": 459637,
+              "p95": 471557,
+              "p99": 496787,
+              "p99_9": 533512,
+              "p99_99": 595577
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d33-p000500",
+      "stream_id": 19,
+      "distance": 33,
+      "error_rate": 0.0005,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 85894.95604,
+            "max_ns": 168698,
+            "quantiles_ns": {
+              "p50": 85297,
+              "p90": 99165,
+              "p95": 103496,
+              "p99": 112131,
+              "p99_9": 122567,
+              "p99_99": 131843
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 84754.417022,
+            "max_ns": 135833,
+            "quantiles_ns": {
+              "p50": 84511,
+              "p90": 95337,
+              "p95": 98551,
+              "p99": 104864,
+              "p99_9": 112178,
+              "p99_99": 118164
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d33-p001000",
+      "stream_id": 20,
+      "distance": 33,
+      "error_rate": 0.001,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 214567.455604,
+            "max_ns": 786106,
+            "quantiles_ns": {
+              "p50": 213843,
+              "p90": 242284,
+              "p95": 250727,
+              "p99": 267438,
+              "p99_9": 287227,
+              "p99_99": 306137
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 178755.687177,
+            "max_ns": 257388,
+            "quantiles_ns": {
+              "p50": 178367,
+              "p90": 195931,
+              "p95": 201131,
+              "p99": 211313,
+              "p99_9": 223292,
+              "p99_99": 233817
+            }
+          }
+        }
+      }
+    },
+    {
+      "case_id": "d33-p003000",
+      "stream_id": 21,
+      "distance": 33,
+      "error_rate": 0.003,
+      "shots": 1000000,
+      "variants": {
+        "Upstream": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 956742.062657,
+            "max_ns": 2312112,
+            "quantiles_ns": {
+              "p50": 953619,
+              "p90": 1037722,
+              "p95": 1064155,
+              "p99": 1118853,
+              "p99_9": 1195520,
+              "p99_99": 1319480
+            }
+          }
+        },
+        "GridSIMD": {
+          "threads": 1,
+          "execution": "serial",
+          "decode_entry": "normal",
+          "min3": {
+            "n": 1000000,
+            "mean_ns": 668473.305404,
+            "max_ns": 1638252,
+            "quantiles_ns": {
+              "p50": 666860,
+              "p90": 716980,
+              "p95": 732531,
+              "p99": 764248,
+              "p99_9": 808611,
+              "p99_99": 883338
+            }
+          }
+        }
+      }
+    }
+  ]
+}

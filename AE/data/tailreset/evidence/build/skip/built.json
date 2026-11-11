@@ -1,0 +1,90 @@
+{
+  "complete": true,
+  "policy": "skip",
+  "variants": {
+    "timing": {
+      "binary": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/build/skip/timing",
+        "sha256": "2ba1d124054a4db5ff44d9794e12cac6efbd2f9dc0857c39a8a190ed3219bc87"
+      },
+      "core": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/cache/AE-TAILRESET-20261110/formal-r04/skip/timing/pymatching/libpymatching.a",
+        "sha256": "4d079d986e3db275e6e3e51e94b42cd2650f329bee5e82102ee3992794c68fce"
+      },
+      "configure": [
+        "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/cache/DECODER-M4-MILLION-MIXED-LTO-20261105/tools-r02/bin/cmake",
+        "-S",
+        "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/source/AE/tailreset_native",
+        "-B",
+        "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/cache/AE-TAILRESET-20261110/formal-r04/skip/timing",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_CXX_COMPILER=/usr/bin/c++",
+        "-DPYMATCHING_SOURCE_DIR=/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/source/checkout",
+        "-DFETCHCONTENT_SOURCE_DIR_STIM=/home/shzr/quantum/predecode_test/decoder_bench/sources/pymatching-report/source-snapshot/stim",
+        "-DFETCHCONTENT_SOURCE_DIR_GOOGLETEST=/home/shzr/quantum/predecode_test/decoder_bench/sources/pymatching-report/source-snapshot/googletest",
+        "-DCACHED_STIM_ARCHIVE=/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-PROTOCOL-20261106/build-r02/stim.a",
+        "-DPYMATCHING_TAILRESET_PREDECODE_MODE=1",
+        "-DPYMATCHING_TAILRESET_SYNDROME_STATS=OFF",
+        "-DPYMATCHING_BUILD_TESTS=OFF"
+      ],
+      "build": [
+        "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/cache/DECODER-M4-MILLION-MIXED-LTO-20261105/tools-r02/bin/cmake",
+        "--build",
+        "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/cache/AE-TAILRESET-20261110/formal-r04/skip/timing",
+        "--parallel",
+        "10",
+        "--target",
+        "tailreset_benchmark",
+        "tailreset_policy_test"
+      ],
+      "compile_commands": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/cache/AE-TAILRESET-20261110/formal-r04/skip/timing/compile_commands.json",
+        "sha256": "7aa71570a05f780df1c8f61062a988151edd383eb57496c2873b9b7304790eec"
+      },
+      "statistics": false,
+      "policy_mode": 1
+    },
+    "statistics": {
+      "binary": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/build/skip/statistics",
+        "sha256": "a6eb54adf5b553f8383bf45a6e20943c7689761d00e393739969a89c6ef20b37"
+      },
+      "core": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/cache/AE-TAILRESET-20261110/formal-r04/skip/statistics/pymatching/libpymatching.a",
+        "sha256": "55d22a74bda7d66869feb2af87ba01b56a625053f78b0375441519c0087d4d04"
+      },
+      "configure": [
+        "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/cache/DECODER-M4-MILLION-MIXED-LTO-20261105/tools-r02/bin/cmake",
+        "-S",
+        "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/source/AE/tailreset_native",
+        "-B",
+        "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/cache/AE-TAILRESET-20261110/formal-r04/skip/statistics",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_CXX_COMPILER=/usr/bin/c++",
+        "-DPYMATCHING_SOURCE_DIR=/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/source/checkout",
+        "-DFETCHCONTENT_SOURCE_DIR_STIM=/home/shzr/quantum/predecode_test/decoder_bench/sources/pymatching-report/source-snapshot/stim",
+        "-DFETCHCONTENT_SOURCE_DIR_GOOGLETEST=/home/shzr/quantum/predecode_test/decoder_bench/sources/pymatching-report/source-snapshot/googletest",
+        "-DCACHED_STIM_ARCHIVE=/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/DECODER-DOCUMENT-PROTOCOL-20261106/build-r02/stim.a",
+        "-DPYMATCHING_TAILRESET_PREDECODE_MODE=1",
+        "-DPYMATCHING_TAILRESET_SYNDROME_STATS=ON",
+        "-DPYMATCHING_BUILD_TESTS=OFF"
+      ],
+      "build": [
+        "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/cache/DECODER-M4-MILLION-MIXED-LTO-20261105/tools-r02/bin/cmake",
+        "--build",
+        "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/cache/AE-TAILRESET-20261110/formal-r04/skip/statistics",
+        "--parallel",
+        "10",
+        "--target",
+        "tailreset_benchmark",
+        "tailreset_policy_test"
+      ],
+      "compile_commands": {
+        "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/cache/AE-TAILRESET-20261110/formal-r04/skip/statistics/compile_commands.json",
+        "sha256": "a6c945345c2962128e2486c531f260daa097a6ba57b7437bfe5808d6b2748684"
+      },
+      "statistics": true,
+      "policy_mode": 1
+    }
+  }
+}

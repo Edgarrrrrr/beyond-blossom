@@ -1,0 +1,1211 @@
+{
+  "complete": true,
+  "generator": "generate_predecoder_macros.py",
+  "script": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/worktrees/AE-TAILRESET-20261110/integration/AE/generate_predecoder_macros.py",
+    "sha256": "5251a9c03e69ce712c6a6ce95f78a32b6b1dc8f5e0090e8ba0392dd088ddf785"
+  },
+  "source": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/worktrees/AE-TAILRESET-20261110/integration/AE/data/tailreset/SOURCE.json",
+    "sha256": "f8395c7ffe0e5183c14694f12e7cb5b06fc70915dfd3dac4f544be581d7faa66"
+  },
+  "config": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/worktrees/AE-TAILRESET-20261110/integration/AE/predecoder_macro_source.json",
+    "sha256": "04c93d17dfefc6f4727a473bf0373ba6b363ffc971c5d33b152a8f6cdf8c0f5f"
+  },
+  "experiment_id": "AE-TAILRESET-20261110",
+  "implementation_commit": "d7e2f25144cb9a97a5b66f0eb2418a0e847ae9bc",
+  "rounding": "Decimal precision 60; final ROUND_HALF_UP to two decimal places",
+  "output": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/worktrees/AE-TAILRESET-20261110/integration/AE/predecoder_numbers.tex",
+    "sha256": "61834d2562c5860d9ac51136486da6b614313b22374fd8456416b9e0bffb94cc"
+  },
+  "values": {
+    "xeon.predecoder-comparison.d9.p0p3.none.mean-time-us": {
+      "value": "8.30608124366666666666666666666666666666666666666666666666667",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          8278640713,
+          8303818107,
+          8335784911
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d09-p0.0030-s0.00/batch-1/skip/validated.json",
+            "sha256": "802ad3b504805c598724adf0bf7484771b311eb8c4d0aa86b237a1e76e47b46d"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d09-p0.0030-s0.00/batch-2/skip/validated.json",
+            "sha256": "3d5932834ba14298e284187160109a5584880b2b128e619cfe95638545752890"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d09-p0.0030-s0.00/batch-3/skip/validated.json",
+            "sha256": "cb83f740297795d1bb34c2577c47eecb22a18f6ea9c3caf1459e45e4981db657"
+          }
+        ]
+      },
+      "formatted": "8.31"
+    },
+    "xeon.predecoder-comparison.d9.p0p3.none.mean-remaining-syndromes": {
+      "value": "34.930891",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 34930891,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d09-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "92b081d3818021b2013a6059357c3804004915eaa6d0619a0f541c4a76969f3b"
+        }
+      },
+      "formatted": "34.93"
+    },
+    "xeon.predecoder-comparison.d9.p0p3.coordinate.mean-time-us": {
+      "value": "4.71643481933333333333333333333333333333333333333333333333333",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          4723068512,
+          4701803998,
+          4724431948
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d09-p0.0030-s0.00/batch-1/coordinate/validated.json",
+            "sha256": "75cacbd4a9bcd1c00fd1e322a755227eadc055c91db3a13998c3731646e9d528"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d09-p0.0030-s0.00/batch-2/coordinate/validated.json",
+            "sha256": "a133bf843c910a7a06dac8b20c240975abc4d92a7651cc044e364e18bf949445"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d09-p0.0030-s0.00/batch-3/coordinate/validated.json",
+            "sha256": "dabf7a23d9170b34fa09f18ce49796220f74e4c321f51702ce84c7ab11b9fd7a"
+          }
+        ]
+      },
+      "formatted": "4.72"
+    },
+    "xeon.predecoder-comparison.d9.p0p3.coordinate.mean-remaining-syndromes": {
+      "value": "2.519247",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 2519247,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d09-p0.0030-s0.00/statistics-1/coordinate/validated.json",
+          "sha256": "c5652cc8155876bf14c7b2365c681075fc14a6c4511e6f3bd5d60e885fbedb8c"
+        }
+      },
+      "formatted": "2.52"
+    },
+    "xeon.predecoder-comparison.d9.p0p3.coordinate.matched-percent": {
+      "value": "92.7879108494541407489433922541512038728127490363758542546195",
+      "unit": "percent",
+      "formula": "100 * (initial total - residual total) / initial total",
+      "operands": {
+        "initial_total": 34930891,
+        "residual_total": 2519247,
+        "matched_total": 32411644,
+        "initial_validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d09-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "92b081d3818021b2013a6059357c3804004915eaa6d0619a0f541c4a76969f3b"
+        },
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d09-p0.0030-s0.00/statistics-1/coordinate/validated.json",
+          "sha256": "c5652cc8155876bf14c7b2365c681075fc14a6c4511e6f3bd5d60e885fbedb8c"
+        }
+      },
+      "formatted": "92.79"
+    },
+    "xeon.predecoder-comparison.d9.p0p3.degree-ordered.mean-time-us": {
+      "value": "3.99808437833333333333333333333333333333333333333333333333333",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          3995186558,
+          3976003552,
+          4023063025
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d09-p0.0030-s0.00/batch-1/degree/validated.json",
+            "sha256": "2ec36adc1761a2e76725899100777c5997e9555d6695f661cf6ca38d64618134"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d09-p0.0030-s0.00/batch-2/degree/validated.json",
+            "sha256": "eabdffd9b8acaaa6427c178d6421aa13ffd5046c36fa57f389519d43678eeaa8"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d09-p0.0030-s0.00/batch-3/degree/validated.json",
+            "sha256": "26c2ab1857a5b07a5fc7bfe9933adda6f98bee480b9b05d0c14079ad79661873"
+          }
+        ]
+      },
+      "formatted": "4.00"
+    },
+    "xeon.predecoder-comparison.d9.p0p3.degree-ordered.mean-remaining-syndromes": {
+      "value": "1.684828",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 1684828,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d09-p0.0030-s0.00/statistics-1/degree/validated.json",
+          "sha256": "d97bf2a3141b1225842343650a64963e81ca278b4143d655dcf0dcc4649134f0"
+        }
+      },
+      "formatted": "1.68"
+    },
+    "xeon.predecoder-comparison.d9.p0p3.degree-ordered.matched-percent": {
+      "value": "95.1766818659163317649126098730204162270009087371976855671961",
+      "unit": "percent",
+      "formula": "100 * (initial total - residual total) / initial total",
+      "operands": {
+        "initial_total": 34930891,
+        "residual_total": 1684828,
+        "matched_total": 33246063,
+        "initial_validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d09-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "92b081d3818021b2013a6059357c3804004915eaa6d0619a0f541c4a76969f3b"
+        },
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d09-p0.0030-s0.00/statistics-1/degree/validated.json",
+          "sha256": "d97bf2a3141b1225842343650a64963e81ca278b4143d655dcf0dcc4649134f0"
+        }
+      },
+      "formatted": "95.18"
+    },
+    "xeon.predecoder-comparison.d13.p0p3.none.mean-time-us": {
+      "value": "18.792340057",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          18742133881,
+          18789739816,
+          18845146474
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/batch-1/skip/validated.json",
+            "sha256": "36d7d820b10da0097102f00c9d2333454f0fe42c0e57ba2da25f5a836454b2f3"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/batch-2/skip/validated.json",
+            "sha256": "e40bdc2e30246b3b232536126eb2fb9d851dba0d9c878b55dbb5f2af1999e517"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d13-p0.0030-s0.00/batch-3/skip/validated.json",
+            "sha256": "d0c7acdc981a7701b82a94ed8c302def1c62e78a6695a6484e1e92c32e277b28"
+          }
+        ]
+      },
+      "formatted": "18.79"
+    },
+    "xeon.predecoder-comparison.d13.p0p3.none.mean-remaining-syndromes": {
+      "value": "110.625241",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 110625241,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "02061b92fd317d70c88ee6a3046e8e46ebcfa339c347ba49be37e0f812d0f3aa"
+        }
+      },
+      "formatted": "110.63"
+    },
+    "xeon.predecoder-comparison.d13.p0p3.coordinate.mean-time-us": {
+      "value": "11.3954089093333333333333333333333333333333333333333333333333",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          11391939065,
+          11406896352,
+          11387391311
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/batch-1/coordinate/validated.json",
+            "sha256": "03a13e14a03a6f500eccea1294c5b206c9eea0209c3d374559254b9d28b6e13f"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/batch-2/coordinate/validated.json",
+            "sha256": "b2a9fb660b2a94a86b4c54ecaf731c5f4566430a68194d22774cfcae72e1d62a"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d13-p0.0030-s0.00/batch-3/coordinate/validated.json",
+            "sha256": "e2f07640f79c4dcc0c3e790d1f060fee40cb6e85ac42abeb32c16d20ce3b8abe"
+          }
+        ]
+      },
+      "formatted": "11.40"
+    },
+    "xeon.predecoder-comparison.d13.p0p3.coordinate.mean-remaining-syndromes": {
+      "value": "8.439567",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 8439567,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/coordinate/validated.json",
+          "sha256": "e34486191d007da7d70152ec931ee41e4ea295deb2ee7a577a00fb7b8390c0e2"
+        }
+      },
+      "formatted": "8.44"
+    },
+    "xeon.predecoder-comparison.d13.p0p3.coordinate.matched-percent": {
+      "value": "92.3710295013052220152903440906402183566768455672788093632266",
+      "unit": "percent",
+      "formula": "100 * (initial total - residual total) / initial total",
+      "operands": {
+        "initial_total": 110625241,
+        "residual_total": 8439567,
+        "matched_total": 102185674,
+        "initial_validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "02061b92fd317d70c88ee6a3046e8e46ebcfa339c347ba49be37e0f812d0f3aa"
+        },
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/coordinate/validated.json",
+          "sha256": "e34486191d007da7d70152ec931ee41e4ea295deb2ee7a577a00fb7b8390c0e2"
+        }
+      },
+      "formatted": "92.37"
+    },
+    "xeon.predecoder-comparison.d13.p0p3.degree-ordered.mean-time-us": {
+      "value": "9.095879511",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          9094627887,
+          9091874541,
+          9101136105
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/batch-1/degree/validated.json",
+            "sha256": "e38df4ef01909df09812cbfc5ab8e242a237b4c93092ba82f0a35c3d65918fbf"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/batch-2/degree/validated.json",
+            "sha256": "e132280f12567bac91e231d3332719175ae0b9fd0f10747583247440ae3382af"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d13-p0.0030-s0.00/batch-3/degree/validated.json",
+            "sha256": "ecd52f1123ae12338566ee3ffc6ec1128b5dcd29b803f8f678f002cf4198221a"
+          }
+        ]
+      },
+      "formatted": "9.10"
+    },
+    "xeon.predecoder-comparison.d13.p0p3.degree-ordered.mean-remaining-syndromes": {
+      "value": "5.428578",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 5428578,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/degree/validated.json",
+          "sha256": "e02562f05db2bbb3fed624ff3b8f09ddd0ec8f2e220066b14f4a4f3362cfb176"
+        }
+      },
+      "formatted": "5.43"
+    },
+    "xeon.predecoder-comparison.d13.p0p3.degree-ordered.matched-percent": {
+      "value": "95.0928215378983897535644690708515609019102611491711914101050",
+      "unit": "percent",
+      "formula": "100 * (initial total - residual total) / initial total",
+      "operands": {
+        "initial_total": 110625241,
+        "residual_total": 5428578,
+        "matched_total": 105196663,
+        "initial_validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "02061b92fd317d70c88ee6a3046e8e46ebcfa339c347ba49be37e0f812d0f3aa"
+        },
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d13-p0.0030-s0.00/statistics-1/degree/validated.json",
+          "sha256": "e02562f05db2bbb3fed624ff3b8f09ddd0ec8f2e220066b14f4a4f3362cfb176"
+        }
+      },
+      "formatted": "95.09"
+    },
+    "xeon.predecoder-comparison.d17.p0p3.none.mean-time-us": {
+      "value": "41.9374909056666666666666666666666666666666666666666666666667",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          42172192783,
+          41840351644,
+          41799928290
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d17-p0.0030-s0.00/batch-1/skip/validated.json",
+            "sha256": "7813ebf96710d0c07f49a2ab114cc4c859ab57d30b21fbca3926a60eed0e35fc"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d17-p0.0030-s0.00/batch-2/skip/validated.json",
+            "sha256": "2b1af34b60d67f70ea2699e8f9a2428d6568e59bc1f99c983ff9534306419a6a"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d17-p0.0030-s0.00/batch-3/skip/validated.json",
+            "sha256": "0ca89a74c26bdd74512f963dd1754a3fb2072f159fc9ce9cb43445a2726a84e5"
+          }
+        ]
+      },
+      "formatted": "41.94"
+    },
+    "xeon.predecoder-comparison.d17.p0p3.none.mean-remaining-syndromes": {
+      "value": "253.734239",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 253734239,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d17-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "8b6b287f57f9db6978349490fccd82808ab6d94134c05b568c58229c717ef53d"
+        }
+      },
+      "formatted": "253.73"
+    },
+    "xeon.predecoder-comparison.d17.p0p3.coordinate.mean-time-us": {
+      "value": "25.1858756256666666666666666666666666666666666666666666666667",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          25175899514,
+          25180693987,
+          25201033376
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d17-p0.0030-s0.00/batch-1/coordinate/validated.json",
+            "sha256": "4957b74b65c5089805c1a40657281c872bdbe2aa3212e7958779b5e165f578ec"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d17-p0.0030-s0.00/batch-2/coordinate/validated.json",
+            "sha256": "806a6b60801f7afaccfd27dc59e293238679c0b7fe0c9f4403bbd47fa4af9152"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d17-p0.0030-s0.00/batch-3/coordinate/validated.json",
+            "sha256": "5ff48fdf9b6548fa5946cb620cb0c86dd07e20d6e59181735ff48997649292c2"
+          }
+        ]
+      },
+      "formatted": "25.19"
+    },
+    "xeon.predecoder-comparison.d17.p0p3.coordinate.mean-remaining-syndromes": {
+      "value": "20.035886",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 20035886,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d17-p0.0030-s0.00/statistics-1/coordinate/validated.json",
+          "sha256": "d6245171fa5adf45169ef90ed15bd04db3cfeb9714798ab7d97ec82454793659"
+        }
+      },
+      "formatted": "20.04"
+    },
+    "xeon.predecoder-comparison.d17.p0p3.coordinate.matched-percent": {
+      "value": "92.1035938709083719678840820532699175849105646321543542257220",
+      "unit": "percent",
+      "formula": "100 * (initial total - residual total) / initial total",
+      "operands": {
+        "initial_total": 253734239,
+        "residual_total": 20035886,
+        "matched_total": 233698353,
+        "initial_validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d17-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "8b6b287f57f9db6978349490fccd82808ab6d94134c05b568c58229c717ef53d"
+        },
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d17-p0.0030-s0.00/statistics-1/coordinate/validated.json",
+          "sha256": "d6245171fa5adf45169ef90ed15bd04db3cfeb9714798ab7d97ec82454793659"
+        }
+      },
+      "formatted": "92.10"
+    },
+    "xeon.predecoder-comparison.d17.p0p3.degree-ordered.mean-time-us": {
+      "value": "18.7963840453333333333333333333333333333333333333333333333333",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          18824449608,
+          18863833903,
+          18700868625
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d17-p0.0030-s0.00/batch-1/degree/validated.json",
+            "sha256": "de51dd88a2d18cf0b38fcf4c260cbab17e8e96112b78c40aca11eb286155c24d"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d17-p0.0030-s0.00/batch-2/degree/validated.json",
+            "sha256": "40f4d9f5498e3ba9fb61ee380b246dc980714eeb7d1ecc2372b30eee44357048"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d17-p0.0030-s0.00/batch-3/degree/validated.json",
+            "sha256": "c869761e1a95cc31129352c64f0e2ce44fbd4d0cd201b9869c2ad889e3e8fb27"
+          }
+        ]
+      },
+      "formatted": "18.80"
+    },
+    "xeon.predecoder-comparison.d17.p0p3.degree-ordered.mean-remaining-syndromes": {
+      "value": "12.689852",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 12689852,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d17-p0.0030-s0.00/statistics-1/degree/validated.json",
+          "sha256": "bd8783e05e4df3430a2f8c022525e1d6e59c8bd2bbabcdd291951c249094849f"
+        }
+      },
+      "formatted": "12.69"
+    },
+    "xeon.predecoder-comparison.d17.p0p3.degree-ordered.matched-percent": {
+      "value": "94.9987624650057574610575122264047305022953563630015261755825",
+      "unit": "percent",
+      "formula": "100 * (initial total - residual total) / initial total",
+      "operands": {
+        "initial_total": 253734239,
+        "residual_total": 12689852,
+        "matched_total": 241044387,
+        "initial_validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d17-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "8b6b287f57f9db6978349490fccd82808ab6d94134c05b568c58229c717ef53d"
+        },
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d17-p0.0030-s0.00/statistics-1/degree/validated.json",
+          "sha256": "bd8783e05e4df3430a2f8c022525e1d6e59c8bd2bbabcdd291951c249094849f"
+        }
+      },
+      "formatted": "95.00"
+    },
+    "xeon.predecoder-comparison.d21.p0p3.none.mean-time-us": {
+      "value": "81.374141035",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          81482280558,
+          81525127116,
+          81115015431
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d21-p0.0030-s0.00/batch-1/skip/validated.json",
+            "sha256": "4325fb254cde35aa2accba38aa5654e160f1e3adba0ce2e1662989e8bf750431"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/batch-2/skip/validated.json",
+            "sha256": "cbf23c59f7a54512c6988e788d6b2d49f5c878d9cd9b84aafd5ebc954d6f370f"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d21-p0.0030-s0.00/batch-3/skip/validated.json",
+            "sha256": "c73137bac6dfdd746f2005a301a57b5cecacd5b29aefd1ef965998b760615275"
+          }
+        ]
+      },
+      "formatted": "81.37"
+    },
+    "xeon.predecoder-comparison.d21.p0p3.none.mean-remaining-syndromes": {
+      "value": "485.723796",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 485723796,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "ec99a59116b3d19777acc8c0cc4982eb82def1bfc29b0fd6e05587caf698be27"
+        }
+      },
+      "formatted": "485.72"
+    },
+    "xeon.predecoder-comparison.d21.p0p3.coordinate.mean-time-us": {
+      "value": "48.9278085123333333333333333333333333333333333333333333333333",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          48863542157,
+          49021805004,
+          48898078376
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d21-p0.0030-s0.00/batch-1/coordinate/validated.json",
+            "sha256": "b07a1a9ae428d7cb2ab39cce08dc14afcb7183ba1ea6c5291208c4b151c21d54"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/batch-2/coordinate/validated.json",
+            "sha256": "700f41e5076a53c972681e11119ce00cbe393489179d2d6018937f92f25f28d3"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d21-p0.0030-s0.00/batch-3/coordinate/validated.json",
+            "sha256": "e104a37993dc502c48cb990405659960461c0de4ecb48a7dcf24a6795a05aae2"
+          }
+        ]
+      },
+      "formatted": "48.93"
+    },
+    "xeon.predecoder-comparison.d21.p0p3.coordinate.mean-remaining-syndromes": {
+      "value": "39.231434",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 39231434,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/coordinate/validated.json",
+          "sha256": "adf2e9eebab496ce483bb98d4a9beab452d04de00072ef819b3a555be1a6de72"
+        }
+      },
+      "formatted": "39.23"
+    },
+    "xeon.predecoder-comparison.d21.p0p3.coordinate.matched-percent": {
+      "value": "91.9230982045606841135697621864093312817640912943865735579486",
+      "unit": "percent",
+      "formula": "100 * (initial total - residual total) / initial total",
+      "operands": {
+        "initial_total": 485723796,
+        "residual_total": 39231434,
+        "matched_total": 446492362,
+        "initial_validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "ec99a59116b3d19777acc8c0cc4982eb82def1bfc29b0fd6e05587caf698be27"
+        },
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/coordinate/validated.json",
+          "sha256": "adf2e9eebab496ce483bb98d4a9beab452d04de00072ef819b3a555be1a6de72"
+        }
+      },
+      "formatted": "91.92"
+    },
+    "xeon.predecoder-comparison.d21.p0p3.degree-ordered.mean-time-us": {
+      "value": "35.7195110893333333333333333333333333333333333333333333333333",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          35567439727,
+          35864250718,
+          35726842823
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d21-p0.0030-s0.00/batch-1/degree/validated.json",
+            "sha256": "d7d6701a1af3e3b57d803f97ec6b654b3cd3f8ac3eb680f78e2f92bf5fff9a5a"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/batch-2/degree/validated.json",
+            "sha256": "d5652b64eaf7d8c54d5a0f34633d2c9d6cb1f097e287cce808e1abf113889ba2"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d21-p0.0030-s0.00/batch-3/degree/validated.json",
+            "sha256": "1d1f1f52f2ce4bfb6b7657cc805dad458c1a1ab889145f754b7d39d2c5525608"
+          }
+        ]
+      },
+      "formatted": "35.72"
+    },
+    "xeon.predecoder-comparison.d21.p0p3.degree-ordered.mean-remaining-syndromes": {
+      "value": "24.63531",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 24635310,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/degree/validated.json",
+          "sha256": "eae29cc17e4f66f8f972c99d3cbbb8b56f61bb039ae45f6db6fdc65441a0a181"
+        }
+      },
+      "formatted": "24.64"
+    },
+    "xeon.predecoder-comparison.d21.p0p3.degree-ordered.matched-percent": {
+      "value": "94.9281237191022858595958102905051001454332700636309776348697",
+      "unit": "percent",
+      "formula": "100 * (initial total - residual total) / initial total",
+      "operands": {
+        "initial_total": 485723796,
+        "residual_total": 24635310,
+        "matched_total": 461088486,
+        "initial_validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "ec99a59116b3d19777acc8c0cc4982eb82def1bfc29b0fd6e05587caf698be27"
+        },
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d21-p0.0030-s0.00/statistics-1/degree/validated.json",
+          "sha256": "eae29cc17e4f66f8f972c99d3cbbb8b56f61bb039ae45f6db6fdc65441a0a181"
+        }
+      },
+      "formatted": "94.93"
+    },
+    "xeon.predecoder-comparison.d25.p0p3.none.mean-time-us": {
+      "value": "143.456189907666666666666666666666666666666666666666666666667",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          143014681298,
+          143887002084,
+          143466886341
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d25-p0.0030-s0.00/batch-1/skip/validated.json",
+            "sha256": "943c49ea7a14cef5691211984143cdc8f50b6e0797728392ebf0a38c21d581a7"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d25-p0.0030-s0.00/batch-2/skip/validated.json",
+            "sha256": "2efc071fba16fbbdf594c06546962df2f91e81791d8028fd09878c48a23c19d7"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d25-p0.0030-s0.00/batch-3/skip/validated.json",
+            "sha256": "6cc8c840bfa9e48dd0f32c11aa8c703e446c77b9037a51d6be5283d3620c9c9e"
+          }
+        ]
+      },
+      "formatted": "143.46"
+    },
+    "xeon.predecoder-comparison.d25.p0p3.none.mean-remaining-syndromes": {
+      "value": "828.040884",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 828040884,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d25-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "165f0d9eb7a81ff1bdb3bba1276d8e4d9af607bf6425d810e39d3c0507fa92d1"
+        }
+      },
+      "formatted": "828.04"
+    },
+    "xeon.predecoder-comparison.d25.p0p3.coordinate.mean-time-us": {
+      "value": "86.6463724663333333333333333333333333333333333333333333333333",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          86692961537,
+          86780741722,
+          86465414140
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d25-p0.0030-s0.00/batch-1/coordinate/validated.json",
+            "sha256": "6880313e1291aa4c166cea65ab5f9a96d372026514e255fc2a2d5d97b155819f"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d25-p0.0030-s0.00/batch-2/coordinate/validated.json",
+            "sha256": "0915db63f44ab57a5cf2960ae4961d3ce7b9fd7676ed4241a1750b6a27341899"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d25-p0.0030-s0.00/batch-3/coordinate/validated.json",
+            "sha256": "4ccfe70be9ee6754c4f40e3c067eafca2cb78c953eb79b05e6955fd246e3bce0"
+          }
+        ]
+      },
+      "formatted": "86.65"
+    },
+    "xeon.predecoder-comparison.d25.p0p3.coordinate.mean-remaining-syndromes": {
+      "value": "67.926306",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 67926306,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d25-p0.0030-s0.00/statistics-1/coordinate/validated.json",
+          "sha256": "d0a46e16317b4028981295ef83caa53fd5ae8f50a3d6bff97f65aa4c629cc71e"
+        }
+      },
+      "formatted": "67.93"
+    },
+    "xeon.predecoder-comparison.d25.p0p3.coordinate.matched-percent": {
+      "value": "91.7967449056537164896799950761851512636180413526537899788050",
+      "unit": "percent",
+      "formula": "100 * (initial total - residual total) / initial total",
+      "operands": {
+        "initial_total": 828040884,
+        "residual_total": 67926306,
+        "matched_total": 760114578,
+        "initial_validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d25-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "165f0d9eb7a81ff1bdb3bba1276d8e4d9af607bf6425d810e39d3c0507fa92d1"
+        },
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d25-p0.0030-s0.00/statistics-1/coordinate/validated.json",
+          "sha256": "d0a46e16317b4028981295ef83caa53fd5ae8f50a3d6bff97f65aa4c629cc71e"
+        }
+      },
+      "formatted": "91.80"
+    },
+    "xeon.predecoder-comparison.d25.p0p3.degree-ordered.mean-time-us": {
+      "value": "62.430197989",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          62396124088,
+          62499960547,
+          62394509332
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d25-p0.0030-s0.00/batch-1/degree/validated.json",
+            "sha256": "f855685683b1a296dbabcc13cfcad6ede939d62dc4b1601de2c559e9ce0c61fc"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d25-p0.0030-s0.00/batch-2/degree/validated.json",
+            "sha256": "717d0ef0d11641eb69cb30c580b1e04067820c62de3a77ed58f0bc3d39798e54"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares5/d25-p0.0030-s0.00/batch-3/degree/validated.json",
+            "sha256": "d93d2f255783530dfecd0777b0cf43f9cc136129b237cc2556fc6c178adafa90"
+          }
+        ]
+      },
+      "formatted": "62.43"
+    },
+    "xeon.predecoder-comparison.d25.p0p3.degree-ordered.mean-remaining-syndromes": {
+      "value": "42.452276",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 42452276,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d25-p0.0030-s0.00/statistics-1/degree/validated.json",
+          "sha256": "537881d650b3c66e012a30c497ad71536ce150c46400d03326454eb1c65bac2f"
+        }
+      },
+      "formatted": "42.45"
+    },
+    "xeon.predecoder-comparison.d25.p0p3.degree-ordered.matched-percent": {
+      "value": "94.8731666732532979615533090030371012453534842610500860244963",
+      "unit": "percent",
+      "formula": "100 * (initial total - residual total) / initial total",
+      "operands": {
+        "initial_total": 828040884,
+        "residual_total": 42452276,
+        "matched_total": 785588608,
+        "initial_validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d25-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "165f0d9eb7a81ff1bdb3bba1276d8e4d9af607bf6425d810e39d3c0507fa92d1"
+        },
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d25-p0.0030-s0.00/statistics-1/degree/validated.json",
+          "sha256": "537881d650b3c66e012a30c497ad71536ce150c46400d03326454eb1c65bac2f"
+        }
+      },
+      "formatted": "94.87"
+    },
+    "xeon.predecoder-comparison.d29.p0p3.none.mean-time-us": {
+      "value": "236.326933162666666666666666666666666666666666666666666666667",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          236501257995,
+          235223528656,
+          237256012837
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d29-p0.0030-s0.00/batch-1/skip/validated.json",
+            "sha256": "c4a091f8bbaa4f9fc87967e2e9d27927406d980dcb32bd0d99314c5f93cbb1d6"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d29-p0.0030-s0.00/batch-2/skip/validated.json",
+            "sha256": "fa41dd937830b14a905b0b371c748012cbb5407446e46fd5ab381702db02c55c"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d29-p0.0030-s0.00/batch-3/skip/validated.json",
+            "sha256": "ce2de386f7b8683822c6447cd565b76479fd5c859bcc6adafef8168b69dbec34"
+          }
+        ]
+      },
+      "formatted": "236.33"
+    },
+    "xeon.predecoder-comparison.d29.p0p3.none.mean-remaining-syndromes": {
+      "value": "1302.479659",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 1302479659,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d29-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "6c1995f877a5ce45726ffa2955a97af5bfb31cf2f3871f8972c0c1a8fe4b0af4"
+        }
+      },
+      "formatted": "1302.48"
+    },
+    "xeon.predecoder-comparison.d29.p0p3.coordinate.mean-time-us": {
+      "value": "141.972519224",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          141948023784,
+          142668413618,
+          141301120270
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d29-p0.0030-s0.00/batch-1/coordinate/validated.json",
+            "sha256": "70ad920e52fc603091fefc138804b19167b93b86a7b474eb399ea1a6cc7b173d"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d29-p0.0030-s0.00/batch-2/coordinate/validated.json",
+            "sha256": "3f9c56bfdf500a67012097368b195c6a150902ae014a62a4a7c4d78a09329217"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d29-p0.0030-s0.00/batch-3/coordinate/validated.json",
+            "sha256": "f5cf88d307f383b38e51c8e92d89188aee84336f530b3461007115b4e4500bec"
+          }
+        ]
+      },
+      "formatted": "141.97"
+    },
+    "xeon.predecoder-comparison.d29.p0p3.coordinate.mean-remaining-syndromes": {
+      "value": "108.12408",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 108124080,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d29-p0.0030-s0.00/statistics-1/coordinate/validated.json",
+          "sha256": "2a16b37a8f23ba80f70df192fb20cac7af32c64d28ecdbbc055b587483e1b309"
+        }
+      },
+      "formatted": "108.12"
+    },
+    "xeon.predecoder-comparison.d29.p0p3.coordinate.matched-percent": {
+      "value": "91.6985974212438737210252279264193867921280143385333282966840",
+      "unit": "percent",
+      "formula": "100 * (initial total - residual total) / initial total",
+      "operands": {
+        "initial_total": 1302479659,
+        "residual_total": 108124080,
+        "matched_total": 1194355579,
+        "initial_validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d29-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "6c1995f877a5ce45726ffa2955a97af5bfb31cf2f3871f8972c0c1a8fe4b0af4"
+        },
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d29-p0.0030-s0.00/statistics-1/coordinate/validated.json",
+          "sha256": "2a16b37a8f23ba80f70df192fb20cac7af32c64d28ecdbbc055b587483e1b309"
+        }
+      },
+      "formatted": "91.70"
+    },
+    "xeon.predecoder-comparison.d29.p0p3.degree-ordered.mean-time-us": {
+      "value": "101.114387634333333333333333333333333333333333333333333333333",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          100976778821,
+          101907745585,
+          100458638497
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d29-p0.0030-s0.00/batch-1/degree/validated.json",
+            "sha256": "4c3ac550bc0958e46f731ead64073a83c8995ce230d1304ef95b7c8f40f901af"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d29-p0.0030-s0.00/batch-2/degree/validated.json",
+            "sha256": "25fe2809d2a093813b8bc9b3818f246636695bdaaa41197031efa7c270d5487f"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d29-p0.0030-s0.00/batch-3/degree/validated.json",
+            "sha256": "6cfdb78f9e5809486ffaf5ddaa5aa350914357b98a0ba17ebfa849e8bea29283"
+          }
+        ]
+      },
+      "formatted": "101.11"
+    },
+    "xeon.predecoder-comparison.d29.p0p3.degree-ordered.mean-remaining-syndromes": {
+      "value": "67.372062",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 67372062,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d29-p0.0030-s0.00/statistics-1/degree/validated.json",
+          "sha256": "d9989eb545d791c40133c48f8854371ad1fbddcbc8034a9bda7b8518799f2472"
+        }
+      },
+      "formatted": "67.37"
+    },
+    "xeon.predecoder-comparison.d29.p0p3.degree-ordered.matched-percent": {
+      "value": "94.8274000646024676228744083595703969454466543803429946693701",
+      "unit": "percent",
+      "formula": "100 * (initial total - residual total) / initial total",
+      "operands": {
+        "initial_total": 1302479659,
+        "residual_total": 67372062,
+        "matched_total": 1235107597,
+        "initial_validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d29-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "6c1995f877a5ce45726ffa2955a97af5bfb31cf2f3871f8972c0c1a8fe4b0af4"
+        },
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d29-p0.0030-s0.00/statistics-1/degree/validated.json",
+          "sha256": "d9989eb545d791c40133c48f8854371ad1fbddcbc8034a9bda7b8518799f2472"
+        }
+      },
+      "formatted": "94.83"
+    },
+    "xeon.predecoder-comparison.d33.p0p3.none.mean-time-us": {
+      "value": "382.490523429666666666666666666666666666666666666666666666667",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          382842060260,
+          390423080457,
+          374206429572
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d33-p0.0030-s0.00/batch-1/skip/validated.json",
+            "sha256": "0e2f161219a2890ee291d443412a27a4a85073d2420035aa5ad2bfe4e0e34629"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d33-p0.0030-s0.00/batch-2/skip/validated.json",
+            "sha256": "c01c384627e7113545a319638d2b0b799d4b12d1ed5d96ace49ed4c273105423"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d33-p0.0030-s0.00/batch-3/skip/validated.json",
+            "sha256": "e8e1bd78faf6d1f5fc46befc2d8b9aa0066b677cb1e0db11c99faf5c4957645b"
+          }
+        ]
+      },
+      "formatted": "382.49"
+    },
+    "xeon.predecoder-comparison.d33.p0p3.none.mean-remaining-syndromes": {
+      "value": "1929.856873",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 1929856873,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d33-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "02e19a328769fb348df3144cd5e3ff6b2c4c533931fc2e0b22355804a0eb0ee2"
+        }
+      },
+      "formatted": "1929.86"
+    },
+    "xeon.predecoder-comparison.d33.p0p3.coordinate.mean-time-us": {
+      "value": "223.650066012666666666666666666666666666666666666666666666667",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          223910791563,
+          224033503040,
+          223005903435
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d33-p0.0030-s0.00/batch-1/coordinate/validated.json",
+            "sha256": "30b4524e4abd3a45ff43e0c3a04ca0c92279135f97016a68d1b51b1f674ccd06"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d33-p0.0030-s0.00/batch-2/coordinate/validated.json",
+            "sha256": "93b8507e6ff933bc93430da504c9925cc3b03933e6a122c23cb9f612385827ea"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d33-p0.0030-s0.00/batch-3/coordinate/validated.json",
+            "sha256": "563a9ad2070f3801c266946afc5a9b434425a1a41a3f19bf1700337f08908f28"
+          }
+        ]
+      },
+      "formatted": "223.65"
+    },
+    "xeon.predecoder-comparison.d33.p0p3.coordinate.mean-remaining-syndromes": {
+      "value": "161.613366",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 161613366,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d33-p0.0030-s0.00/statistics-1/coordinate/validated.json",
+          "sha256": "22343222de36786a6eb1c096db6303aa8b9c441151cd192a816bad32837eb48a"
+        }
+      },
+      "formatted": "161.61"
+    },
+    "xeon.predecoder-comparison.d33.p0p3.coordinate.matched-percent": {
+      "value": "91.6256294308101261973742236168412474804290836131866863061404",
+      "unit": "percent",
+      "formula": "100 * (initial total - residual total) / initial total",
+      "operands": {
+        "initial_total": 1929856873,
+        "residual_total": 161613366,
+        "matched_total": 1768243507,
+        "initial_validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d33-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "02e19a328769fb348df3144cd5e3ff6b2c4c533931fc2e0b22355804a0eb0ee2"
+        },
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d33-p0.0030-s0.00/statistics-1/coordinate/validated.json",
+          "sha256": "22343222de36786a6eb1c096db6303aa8b9c441151cd192a816bad32837eb48a"
+        }
+      },
+      "formatted": "91.63"
+    },
+    "xeon.predecoder-comparison.d33.p0p3.degree-ordered.mean-time-us": {
+      "value": "156.505167547666666666666666666666666666666666666666666666667",
+      "unit": "us/shot",
+      "formula": "sum(batch elapsed_ns) / sum(batch shots) / 1000",
+      "operands": {
+        "elapsed_ns": [
+          157083922289,
+          157192666804,
+          155238913550
+        ],
+        "shots": 3000000,
+        "validations": [
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares2/d33-p0.0030-s0.00/batch-1/degree/validated.json",
+            "sha256": "76d1de23553ce27cb7f7fb539076cb861ea31f30a524c2cafaea3877d82bd3ad"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares3/d33-p0.0030-s0.00/batch-2/degree/validated.json",
+            "sha256": "fe350403c32650eb6f298cdfbeb6bda84671cabd73d9dbbce0b9f2f49288fdab"
+          },
+          {
+            "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d33-p0.0030-s0.00/batch-3/degree/validated.json",
+            "sha256": "cdba47d82636252b3016f070bf69bf1879e16aa99b0c135afdc1269eeb605552"
+          }
+        ]
+      },
+      "formatted": "156.51"
+    },
+    "xeon.predecoder-comparison.d33.p0p3.degree-ordered.mean-remaining-syndromes": {
+      "value": "100.453438",
+      "unit": "syndromes/shot",
+      "formula": "residual total / statistics shots",
+      "operands": {
+        "residual_total": 100453438,
+        "shots": 1000000,
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d33-p0.0030-s0.00/statistics-1/degree/validated.json",
+          "sha256": "cfeb849f8e4b5adca4bf2c54a4b1e87adec7559e82ac58955738f726cd92274d"
+        }
+      },
+      "formatted": "100.45"
+    },
+    "xeon.predecoder-comparison.d33.p0p3.degree-ordered.matched-percent": {
+      "value": "94.7947726380431944084383920008973639570005562790769717356133",
+      "unit": "percent",
+      "formula": "100 * (initial total - residual total) / initial total",
+      "operands": {
+        "initial_total": 1929856873,
+        "residual_total": 100453438,
+        "matched_total": 1829403435,
+        "initial_validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d33-p0.0030-s0.00/statistics-1/skip/validated.json",
+          "sha256": "02e19a328769fb348df3144cd5e3ff6b2c4c533931fc2e0b22355804a0eb0ee2"
+        },
+        "validation": {
+          "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares4/d33-p0.0030-s0.00/statistics-1/degree/validated.json",
+          "sha256": "cfeb849f8e4b5adca4bf2c54a4b1e87adec7559e82ac58955738f726cd92274d"
+        }
+      },
+      "formatted": "94.79"
+    },
+    "xeon.predecoder-comparison.p0p3.degree-ordered.matched-percent.min": {
+      "value": "94.7947726380431944084383920008973639570005562790769717356133",
+      "unit": "percent",
+      "formula": "min(unrounded degree-ordered matched percentages)",
+      "operands": {
+        "distance": 33,
+        "selected_key": "xeon.predecoder-comparison.d33.p0p3.degree-ordered.matched-percent",
+        "distances": [
+          9,
+          13,
+          17,
+          21,
+          25,
+          29,
+          33
+        ]
+      },
+      "formatted": "94.79"
+    },
+    "xeon.predecoder-comparison.p0p3.degree-ordered.matched-percent.max": {
+      "value": "95.1766818659163317649126098730204162270009087371976855671961",
+      "unit": "percent",
+      "formula": "max(unrounded degree-ordered matched percentages)",
+      "operands": {
+        "distance": 9,
+        "selected_key": "xeon.predecoder-comparison.d9.p0p3.degree-ordered.matched-percent",
+        "distances": [
+          9,
+          13,
+          17,
+          21,
+          25,
+          29,
+          33
+        ]
+      },
+      "formatted": "95.18"
+    }
+  }
+}

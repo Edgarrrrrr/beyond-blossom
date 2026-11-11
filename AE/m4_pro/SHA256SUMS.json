@@ -1,0 +1,16 @@
+{
+  "README.md": "56fe098eb85a36d8413cfb1ab672d360cf6bd3b021abe174f2baebce4f11bbeb",
+  "data/feishu_m4_six_roles.csv": "af34760e881522d3228a15a73fc98aae2cd77f0a6cca2a234cfb2da8299b124f",
+  "figures/m4_pro_per_round.csv": "b51f869134e42d716cf732ffbc5e1e3eda961cd6c5b25e74811e6bd91e41be18",
+  "figures/m4_pro_per_round.pdf": "49fa1edacffe519838a56a06ae21bc64ac2c575aebeaf167eb32b0ba819988dc",
+  "figures/m4_pro_per_round.png": "874707b97e963cd240e205f4f8b075f95cdec5c91ae8ec3c3e32a8b76cc7ebc9",
+  "figures/m4_pro_per_round.svg": "a510f998fbad65467dce12fd3b30aa087d0d95e5c8df88a5d0c0e1fa86a89ee2",
+  "figures/plot_summary.json": "2f2e1149a84f29dd8ca6b7ca31931c07a2fd10605cc2b848954475f47740c8f9",
+  "palette.json": "a6b58045e97854f766c0f000e4e58c98df37de0cd143024b8e063f7ec1df51da",
+  "plot_m4_per_round.py": "444716499a02f9a77bbb57fe0796b3fb4e169e94fad055cf9a6608a7c94a6211",
+  "requirements.txt": "be923c642695914a2c78b1fe8cd465496994e45d41c89ae86b5962883f01eb27",
+  "source/feishu_m4_report.json": "eeb8ae82019116be08e6714a53ee1483c25315ef19e8a074ca711e29d5d8df3a",
+  "source/platform_metadata.json": "aaa7ffbb763487aa8c08064906d60569288e2924198407d2c8bddfaa825ad682",
+  "source/provenance.json": "904166ef828df460f968d71b5b2f54cb0c5b33755b883e129a66ed7ddabf893b",
+  "source/verification.json": "5ecf336e4fee8034bdf5dabbdb87cc6610760dfdf17bccbb156142259038abed"
+}

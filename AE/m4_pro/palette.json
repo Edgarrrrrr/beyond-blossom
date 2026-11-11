@@ -1,0 +1,176 @@
+{
+  "name": "Whole-paper colour palette / 全文色调",
+  "version": "0.2-review",
+  "status": "review_candidate",
+  "purpose_zh": "只规定可用颜色、深浅范围与连续色带，统一论文基调。颜色的具体用途由作者自行决定。",
+  "color_tokens": {
+    "BLUE": "#356A95",
+    "TEAL": "#2D8079",
+    "VIOLET": "#8064A2",
+    "ORANGE": "#C47A44",
+    "GOLD": "#A68A37",
+    "GRAY": "#747B86"
+  },
+  "ranges": {
+    "BLUE": {
+      "name_zh": "墨蓝",
+      "light": "#E7EDF2",
+      "base": "#356A95",
+      "deep": "#2D5A7F",
+      "positions": [
+        0,
+        0.65,
+        1
+      ]
+    },
+    "TEAL": {
+      "name_zh": "青绿",
+      "light": "#E6F0EF",
+      "base": "#2D8079",
+      "deep": "#266D67",
+      "positions": [
+        0,
+        0.65,
+        1
+      ]
+    },
+    "VIOLET": {
+      "name_zh": "藤紫",
+      "light": "#F0ECF4",
+      "base": "#8064A2",
+      "deep": "#6D558A",
+      "positions": [
+        0,
+        0.65,
+        1
+      ]
+    },
+    "ORANGE": {
+      "name_zh": "陶橙",
+      "light": "#F8EFE9",
+      "base": "#C47A44",
+      "deep": "#A7683A",
+      "positions": [
+        0,
+        0.65,
+        1
+      ]
+    },
+    "GOLD": {
+      "name_zh": "赭金",
+      "light": "#F4F1E7",
+      "base": "#A68A37",
+      "deep": "#8D752F",
+      "positions": [
+        0,
+        0.65,
+        1
+      ]
+    },
+    "GRAY": {
+      "name_zh": "中性灰",
+      "light": "#EEEFF0",
+      "base": "#747B86",
+      "deep": "#636972",
+      "positions": [
+        0,
+        0.65,
+        1
+      ]
+    }
+  },
+  "neutrals": {
+    "text": "#252B33",
+    "secondary_text": "#626A73",
+    "grid": "#E3E7EB",
+    "structure": "#C7CDD3",
+    "background": "#FFFFFF"
+  },
+  "tone_range": {
+    "min": 0,
+    "max": 1,
+    "positions": {
+      "light": 0,
+      "base": 0.65,
+      "deep": 1
+    },
+    "interpolation": "piecewise linear in encoded sRGB; round to 8-bit channels",
+    "light_formula": "12% base + 88% white",
+    "deep_formula": "85% base + 15% black",
+    "semantics": "none; freely choose a tone within each range"
+  },
+  "colormaps": {
+    "RdYlGn": {
+      "matplotlib_name": "RdYlGn",
+      "colors": [
+        "#A50026",
+        "#D73027",
+        "#F46D43",
+        "#FDAE61",
+        "#FEE08B",
+        "#FFFFBF",
+        "#D9EF8B",
+        "#A6D96A",
+        "#66BD63",
+        "#1A9850",
+        "#006837"
+      ],
+      "positions": [
+        0.0,
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1.0
+      ],
+      "description_zh": "红—橙—浅黄—绿，沿用飞书参考图的色带。",
+      "reverse_allowed": true
+    },
+    "YlGn": {
+      "matplotlib_name": "YlGn",
+      "colors": [
+        "#FFFFE5",
+        "#F7FCB9",
+        "#D9F0A3",
+        "#ADDD8E",
+        "#78C679",
+        "#41AB5D",
+        "#238443",
+        "#006837",
+        "#004529"
+      ],
+      "positions": [
+        0.0,
+        0.125,
+        0.25,
+        0.375,
+        0.5,
+        0.625,
+        0.75,
+        0.875,
+        1.0
+      ],
+      "description_zh": "浅黄—黄绿—深绿，同一黄绿基调的顺序色带。",
+      "reverse_allowed": true
+    }
+  },
+  "freedom": {
+    "entity_color_bindings": null,
+    "method_color_bindings": null,
+    "marker_bindings": null,
+    "line_style_bindings": null,
+    "registration_required": false,
+    "normalization": "Chosen for the actual data; palette does not prescribe bounds, centre, direction or logarithmic transformation."
+  },
+  "source": {
+    "document_url": "https://wcncbam07gf8.feishu.cn/wiki/CyW1wPxSqiNVyzkTWtCc0Nr5nNe",
+    "reference_caption": "RdYlGn 和 TwoSlopeNorm[0,1,4.5803447048808925]",
+    "access": "Original document caption re-read in the user Chrome session. Direct image fetch unavailable.",
+    "scope": "Reference establishes visual preference; its data normalization is not a whole-paper rule."
+  }
+}

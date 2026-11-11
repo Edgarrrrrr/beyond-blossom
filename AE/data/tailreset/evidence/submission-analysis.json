@@ -1,0 +1,29 @@
+{
+  "complete": true,
+  "stage": "analysis",
+  "jobs": [
+    {
+      "job_id": "202084",
+      "node": "ares2",
+      "argv": [
+        "sbatch",
+        "--parsable",
+        "--nodelist=ares2",
+        "--exclude=ares7,ares8",
+        "--kill-on-invalid-dep=yes",
+        "--job-name=ae-tailreset-analysis",
+        "--chdir=/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04",
+        "--output=/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/slurm-%j.log",
+        "--dependency=afterok:202079:202080:202081:202082:202083",
+        "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/source/AE/tailreset.sbatch",
+        "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04",
+        "/usr/bin/python3",
+        "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/source/AE/tailreset_collect.py",
+        "analyze",
+        "--output",
+        "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04"
+      ]
+    }
+  ],
+  "created_utc": "2026-11-10T14:32:39.716709+00:00"
+}

@@ -1,0 +1,102 @@
+{
+  "complete": true,
+  "task": "AE-PREDECODER-MACROS-20261111",
+  "generator_commit": "7dd5f8ebd3ae02ec8e8e6848debfe155e5ca09c0",
+  "implementation_commit": "d7e2f25144cb9a97a5b66f0eb2418a0e847ae9bc",
+  "acquisition_commit": "79889da06534ee63d63b6a965c3f056e3bfa5732",
+  "source": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/worktrees/AE-TAILRESET-20261110/integration/AE/data/tailreset/SOURCE.json",
+    "sha256": "f8395c7ffe0e5183c14694f12e7cb5b06fc70915dfd3dac4f544be581d7faa66"
+  },
+  "generated_macros": 58,
+  "table_values": 56,
+  "narrative_bounds": 2,
+  "python_tests": 33,
+  "new_tests": 7,
+  "latex_passes": 2,
+  "latex_compiler": "pdfTeX 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian)",
+  "repeated_macro_load_passed": true,
+  "list_of_tables_passed": true,
+  "undefined_references": false,
+  "overfull_boxes": false,
+  "rendered_rows": 7,
+  "rendered_table_values_verified": 56,
+  "narrative_uses_table_keys": true,
+  "all_33_existing_numeric_values_unchanged": true,
+  "entire_m4_block_byte_identical": true,
+  "prior_shared_template_commit": "11fce7e1d795f3bd0e0243bafcaffc6c3a9380d2",
+  "rounding": "Raw integer operands, Decimal precision 60, final ROUND_HALF_UP to two decimal places",
+  "files": {
+    "generate_predecoder_macros.py": {
+      "path": "generate_predecoder_macros.py",
+      "sha256": "238ee73710fbf3b1c53df4c935f3da8d2e44532cedf87eae53fd8c6a0e0f38f7"
+    },
+    "predecoder_macro_source.json": {
+      "path": "predecoder_macro_source.json",
+      "sha256": "04c93d17dfefc6f4727a473bf0373ba6b363ffc971c5d33b152a8f6cdf8c0f5f"
+    },
+    "predecoder_numbers.tex": {
+      "path": "predecoder_numbers.tex",
+      "sha256": "61834d2562c5860d9ac51136486da6b614313b22374fd8456416b9e0bffb94cc"
+    },
+    "predecoder_numbers.tex.audit.json": {
+      "path": "predecoder_numbers.tex.audit.json",
+      "sha256": "1692ba7e759a65a8ea76709b2ec6b59633c4b6d4889e3c6f4b5c42116d51b8a1"
+    },
+    "predecoder_comparison.tex": {
+      "path": "predecoder_comparison.tex",
+      "sha256": "072a9db2ea26585c1b29989e7f1742b2683baaa6140f298a17f7726c7f518176"
+    },
+    "paper_num_template.tex": {
+      "path": "paper_num_template.tex",
+      "sha256": "5d79eb51f5dcbb2c1b5f85cef5df3d2e309f20c72c5ff6b764f920863d28c0d6"
+    }
+  },
+  "preview_pdf": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-PREDECODER-MACROS-20261111/latex-r01/preview.pdf",
+    "sha256": "1f6449c0247d23decbb9472fc52eedadd5203b4302ef9ccc47f4468e8b6dc39a"
+  },
+  "preview_text": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-PREDECODER-MACROS-20261111/latex-r01/preview.txt",
+    "sha256": "3d13b47ed75b0d5858d887abeb1dd2e16313d9b448d21b20b5ee1f0944452ae7"
+  },
+  "latex_log": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-PREDECODER-MACROS-20261111/latex-r01/pass2.log",
+    "sha256": "eb2e47eaf834f7c27b6df2b81b4f54aa0686a60d1a3aa08456f7bf6d0f51dbb1"
+  },
+  "new_decode_acquisition": false,
+  "files_commit": "7dd5f8ebd3ae02ec8e8e6848debfe155e5ca09c0",
+  "latex_source_at_validation": {
+    "commit": "7dd5f8ebd3ae02ec8e8e6848debfe155e5ca09c0",
+    "path": "AE/predecoder_comparison.tex",
+    "current_checkout": "Removed at user request; retained only in the historical commit and existing preview artifacts."
+  },
+  "layout_revision": {
+    "date": "2026-11-11",
+    "reason": "User requested deletion of the manuscript snippet and removal of the new paper directory.",
+    "manuscript_in_ae": false,
+    "paper_directory_created": false,
+    "numeric_macros_unchanged": true,
+    "macro_check_passed": true,
+    "generator_tests_passed": 7,
+    "latex_recompiled": false,
+    "files": {
+      "generate_predecoder_macros.py": {
+        "path": "generate_predecoder_macros.py",
+        "sha256": "5251a9c03e69ce712c6a6ce95f78a32b6b1dc8f5e0090e8ba0392dd088ddf785"
+      },
+      "test_predecoder_macros.py": {
+        "path": "test_predecoder_macros.py",
+        "sha256": "01c32d3c61f0ab241501a6b66d0e6dc8b6b12bc0a41db2c55e3c21a1337c34cc"
+      },
+      "predecoder_numbers.tex": {
+        "path": "predecoder_numbers.tex",
+        "sha256": "61834d2562c5860d9ac51136486da6b614313b22374fd8456416b9e0bffb94cc"
+      },
+      "predecoder_numbers.tex.audit.json": {
+        "path": "predecoder_numbers.tex.audit.json",
+        "sha256": "ddeaad2bc79cc6c71eca6a98889f8754f41eff98c27f3b382f9eba4b52bcf461"
+      }
+    }
+  }
+}

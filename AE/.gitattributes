@@ -1,0 +1,3 @@
+# Preserve measurement bytes and SHA256 checksums across checkouts.
+data/** -text whitespace=cr-at-eol
+reference/*.csv -text whitespace=cr-at-eol

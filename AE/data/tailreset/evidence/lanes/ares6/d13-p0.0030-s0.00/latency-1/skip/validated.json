@@ -1,0 +1,113 @@
+{
+  "complete": true,
+  "shots": 1000000,
+  "method": "skip",
+  "phase": "latency",
+  "observable_ties": 0,
+  "weight_differences": 0,
+  "reference": {
+    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-paper-full-retest-20261031-r01/internal/formal/d13-p0.0030-s0.00/input-original/reference_shots.csv",
+    "sha256": "b3330aa732ded75298877238ab5187115eeff6c987b8719574a2f191b904ab02"
+  },
+  "latency_ns": {
+    "p50": 18562,
+    "p90": 25318,
+    "p99": 35878,
+    "p99_9": 50919,
+    "max": 291353,
+    "mean": 19350.477232
+  },
+  "tail_cases": [
+    {
+      "elapsed_ns": 291353,
+      "shot_index": 584832,
+      "input_events": 102
+    },
+    {
+      "elapsed_ns": 287751,
+      "shot_index": 894738,
+      "input_events": 131
+    },
+    {
+      "elapsed_ns": 285414,
+      "shot_index": 275374,
+      "input_events": 99
+    },
+    {
+      "elapsed_ns": 283584,
+      "shot_index": 533298,
+      "input_events": 113
+    },
+    {
+      "elapsed_ns": 281986,
+      "shot_index": 481848,
+      "input_events": 123
+    }
+  ],
+  "elapsed_ns": 19350477232,
+  "complete_elapsed_ns": 19350478626,
+  "final_drain_ns": 1394,
+  "mean_us": 19.350477232,
+  "files": {
+    "clock.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/clock.json",
+      "sha256": "a5566f3c559e9766eaba8ee120105b544c6ff6188b3a7925ba1b422c91fa0695"
+    },
+    "completion.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/completion.json",
+      "sha256": "3d7b5d87269f50e4e02c4db30a35e0d527e765ed1eefb260d3c3c8d85392e3cc"
+    },
+    "correctness.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/correctness.json",
+      "sha256": "1943443f6f3f3f410d90545fb065cdf0fed4bd3aaf4b572fe914197357b0fa20"
+    },
+    "differences.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/differences.csv",
+      "sha256": "7a6c0d1060dc3da4db28e8ca36cfc9e5550603a54d178f4ffcd2a0da2688508d"
+    },
+    "execution.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/execution.csv",
+      "sha256": "2aa652f10b4e78a3c1764722d1c0998b6a34e89793a4eb99848e8b58a5dc7abf"
+    },
+    "execution_threads.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/execution_threads.csv",
+      "sha256": "09f4b70561a24c79bc36871ad87a7a2ef965846d5d9fb146ce6cdaac751a98b5"
+    },
+    "input_features.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/input_features.csv",
+      "sha256": "f2ffed80acf0cd66b0b76aa310a9198be541a6294b2ec5d9be524a3df3a91876"
+    },
+    "kernel_selection.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/kernel_selection.csv",
+      "sha256": "cf62d29bcc0a174710bffe27e11d429f70461badfae6df7f2571e3010971c7da"
+    },
+    "measurement.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/measurement.csv",
+      "sha256": "10b0bf0f65029cee471c5e2fbdb7d3723e7f73e01dc678f697222bda7515a514"
+    },
+    "measurement_scope.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/measurement_scope.json",
+      "sha256": "dd0282d6ec736c520477ead3b3de1980d8ed1d539f04cf8ba2ed1cf2c4d71e2e"
+    },
+    "native_shots.csv": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/native_shots.csv",
+      "sha256": "6ecb093d14b368e58f2bebd4f4f0ef352de92892bf6d41afe118736b4e99f703"
+    },
+    "process_usage.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/process_usage.json",
+      "sha256": "460e28e569ea85bee16dc09662890bdea05efeb8f050fd6afabe43c875633a82"
+    },
+    "setup.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/setup.json",
+      "sha256": "664313547981ebf08d9d209485bfe23122af248e1b52f5de2432b0521d75034b"
+    },
+    "storage.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/storage.json",
+      "sha256": "92d1b9778a92bbd2843231b34cd34c135beb025c8b5a5e14c6cc98cedae6a240"
+    },
+    "warmup.json": {
+      "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/artifacts/AE-TAILRESET-20261110/formal-r04/lanes/ares6/d13-p0.0030-s0.00/latency-1/skip/warmup.json",
+      "sha256": "15b2ac46de91fa66bf45bde29c9bceb46b4581e26047402332a50e85895568de"
+    }
+  }
+}

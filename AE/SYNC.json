@@ -1,0 +1,66 @@
+{
+  "remote_repository": "https://github.com/Edgarrrrrr/PyMatching-experiments",
+  "remote_branch": "test/ae-paper-figures-20261029",
+  "remote_commit": "0d4c3286ef8c5b3c284e2178d3643fa69ed765ea",
+  "previous_local_commit": "6c8b9a6f1fa65f1f696f8093ec74259a14ed5462",
+  "groups": [
+    "predecode",
+    "decoders",
+    "grid",
+    "ablation"
+  ],
+  "replacements": {
+    "ablation": {
+      "script": "AE/ablation.py",
+      "data": "AE/data/ablation.json",
+      "source": "AE/SOURCE.json",
+      "reason": "Same six-version timing and speedup heatmap; use the latest measured r05 renderer and full-precision million-shot data."
+    }
+  },
+  "imported_remote_files_sha256": {
+    "AE/.gitattributes": "9c113278b287c08387a3ee6f6842ceffc7843dddd774fc9353244cf779f64a88",
+    "AE/.gitignore": "9d91263fd3d143df41f8c607df23da9e41875c08bd48de7e18e950e4a28d6f16",
+    "AE/README.md": "1cc06a6ee6d3d662b9bf71a1c28fdf6d05873cca89f0ab837a24e3284e0a1d33",
+    "AE/ablation.py": "ec9e48601ca4f919bd05bba7fe991c41201a4c56b430de27dca46be1e35e4dd4",
+    "AE/captions.md": "61eca3578e0fd921afa1942da1e1ce51cc8d9a8a65e657e331f43e7012fd0870",
+    "AE/common.py": "bfd0f562d6cd0f51edce7f5e60968fb68ec752bafd46259bf50d53fce687b208",
+    "AE/data/SHA256SUMS": "a28af21d4f449391620553d3da1163f9fdaef2494da543ad3ef32f653f5edac7",
+    "AE/data/SOURCES.md": "e4c6628cfed413728dcfdadeb559f1cde290ee7924436d5dcfb91b69cfcdf802",
+    "AE/data/ablation.json": "43fc4c4d791470accb4ca8c8e7c5b18da6c99677ee0fff1617664d5ea99eba82",
+    "AE/data/decoders.csv": "627de664de766e6cb0fed4877d32488fb9351b210d2edc0a6f0d1c96160c5f30",
+    "AE/data/grid/GridSIMD-min3-ecdf.csv.gz": "93d7467f0cfe9a4b79b0d35f321040ea854d20b668748d707532b557ef102b3a",
+    "AE/data/grid/Upstream-min3-ecdf.csv.gz": "170eb8544419f0cdf7adcfe19ce1b59b5d2978c7ed495c6241de35b90faab4fd",
+    "AE/data/grid/clean-latency-summary.json": "bc4ccf4dc364091d8be76897a08c78991b945999544ad75d74a59ec13305de56",
+    "AE/data/grid/pmu-paper-compact-values.csv": "5ceeab8d7f5962b5c4b774be59215c0557b1bf5ed03cb7baaab4264cc51ef150",
+    "AE/data/grid/pmu-raw-counts.csv": "8864b828544576e8cefb292989bd514302b38a250a08c9bde9bd99a57bf06c8e",
+    "AE/data/predecode.csv": "8112aa38161e8e5838e8e9e5a2f10a2c6d4ffad0643927a0e075c8f3d346ae73",
+    "AE/decoders.py": "90351eb3a589f2055dee4e5b7c1e1a16e71e9cf3543682d605f1c231a451cf82",
+    "AE/grid.py": "800ff4d213d12df555bc46c62cdc64e591fada0f2e223a4bfd2c98b5564b028e",
+    "AE/plot.py": "2cc25bfe762dfa40e4d56bcb73329620e981a284f836e212cf3b83583704eb57",
+    "AE/predecode.py": "ed9feb914e7010a5abbfe7feb1fe493683740d3055cae426c8aaf75f3e51148a",
+    "AE/requirements.txt": "d7527607f93452dbc0cc3a6c5c4a63b57d395c54fb2da8f6c2ae9893bbfea065"
+  },
+  "retained_remote_files_sha256": {
+    "AE/common.py": "bfd0f562d6cd0f51edce7f5e60968fb68ec752bafd46259bf50d53fce687b208",
+    "AE/data/decoders.csv": "627de664de766e6cb0fed4877d32488fb9351b210d2edc0a6f0d1c96160c5f30",
+    "AE/data/grid/GridSIMD-min3-ecdf.csv.gz": "93d7467f0cfe9a4b79b0d35f321040ea854d20b668748d707532b557ef102b3a",
+    "AE/data/grid/Upstream-min3-ecdf.csv.gz": "170eb8544419f0cdf7adcfe19ce1b59b5d2978c7ed495c6241de35b90faab4fd",
+    "AE/data/grid/clean-latency-summary.json": "bc4ccf4dc364091d8be76897a08c78991b945999544ad75d74a59ec13305de56",
+    "AE/data/grid/pmu-paper-compact-values.csv": "5ceeab8d7f5962b5c4b774be59215c0557b1bf5ed03cb7baaab4264cc51ef150",
+    "AE/data/grid/pmu-raw-counts.csv": "8864b828544576e8cefb292989bd514302b38a250a08c9bde9bd99a57bf06c8e",
+    "AE/data/predecode.csv": "8112aa38161e8e5838e8e9e5a2f10a2c6d4ffad0643927a0e075c8f3d346ae73",
+    "AE/decoders.py": "90351eb3a589f2055dee4e5b7c1e1a16e71e9cf3543682d605f1c231a451cf82",
+    "AE/grid.py": "800ff4d213d12df555bc46c62cdc64e591fada0f2e223a4bfd2c98b5564b028e",
+    "AE/predecode.py": "ed9feb914e7010a5abbfe7feb1fe493683740d3055cae426c8aaf75f3e51148a"
+  },
+  "adaptations": {
+    "AE/plot.py": "Restore all/multiple-group selection and check existing outputs before rendering; let each renderer create its output folder.",
+    "AE/requirements.txt": "Retain the locally verified NumPy and Matplotlib versions.",
+    "AE/data/SHA256SUMS": "Update the ablation input digest; retain checksums for other measurement data.",
+    "AE/README.md": "Document four groups and current ablation protocol.",
+    "AE/data/SOURCES.md": "Replace ablation transcription provenance with measured data provenance.",
+    "AE/captions.md": "Update ablation caption for mixed LTO, measured data and the 0\u201312\u00d7 scale.",
+    "AE/.gitattributes": "Preserve reference CSV bytes in addition to remote data files.",
+    "AE/.gitignore": "Retain local matplotlib cache exclusion."
+  }
+}

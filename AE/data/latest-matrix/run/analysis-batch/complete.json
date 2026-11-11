@@ -1,0 +1,19 @@
+{
+  "complete": true,
+  "plan": {
+    "path": "../plan.json",
+    "sha256": "6d90f914d7e8220de2a8284551503ada3be52cc226462f14ccfd8b7799f5e832"
+  },
+  "summary": {
+    "path": "summary.json",
+    "sha256": "19f86a29d4f6ffb625dd1db219107ac92dc3023c02adecd00be2d17212b07200"
+  },
+  "validated_calls": 882,
+  "exact_differences": 0,
+  "minimum_warmup_seconds": 2.000000535,
+  "scope": "Portable Batch3 view of the completed full analysis. Original metadata is bundled byte-exact. Raw shot/block arrays, input files, binaries and distribution NPZs remain external; offline macro/figure reproduction does not repeat acquisition or correctness validation.",
+  "original_completion": {
+    "path": "../../originals/complete.json",
+    "sha256": "71261bf2833d81cc4f8ef5f0c0193318a119ff2e01abb80867013bec52b056ef"
+  }
+}

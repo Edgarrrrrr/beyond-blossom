@@ -1,0 +1,20 @@
+--- a/sources/ldpc-union-find/upstream/src_cpp/union_find.hpp
++++ b/sources/ldpc-union-find/diagnostic_include/union_find.hpp
+@@ -235,7 +235,7 @@
+             }
+             for (int check_index: this->check_nodes) {
+                 if (check_index == -1) {
+-                    this->spanning_tree_leaf_nodes.insert(check_index);
++                    // The unconstrained virtual boundary is the tree root, not a leaf.
+                 } else {
+                     int spanning_tree_connectivity = 0;
+                     for (auto &e: this->pcm.iterate_row(check_index)) {
+@@ -295,7 +295,7 @@
+                 }
+                 //check whether new check node is a leaf
+                 if (check2 == -1) {
+-                    this->spanning_tree_leaf_nodes.insert(check2);
++                    // Keep the virtual boundary as the root during peeling.
+                 } else {
+                     int spanning_tree_connectivity = 0;
+                     for (auto &e: this->pcm.iterate_row(check2)) {
