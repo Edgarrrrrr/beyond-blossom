@@ -121,10 +121,41 @@
         "sha256": "51e22ffedee53ceed71dbe175e39311c4ff003ccba1935962330721081cb4898",
         "bytes": 1177325
       }
+    },
+    {
+      "directory": "ci-final",
+      "bytes": 240181,
+      "files": 8,
+      "file_manifest": "ci-final/manifest.json",
+      "file_manifest_sha256": "378c4345bfdef5c3ec97f1aa69a256cd55b8665d6328e0cf497cd4df125b4f82",
+      "repository_directory": "benchmarks/regression/results/20261112/ci-final",
+      "repository_file_manifest": "ci-final/manifest.json",
+      "repository_file_manifest_sha256": "378c4345bfdef5c3ec97f1aa69a256cd55b8665d6328e0cf497cd4df125b4f82",
+      "repository_files": 8,
+      "repository_bytes": 240181,
+      "verified_files": true,
+      "manifest_excludes_its_own_bytes": true,
+      "summary": "Final GCC 15.2 hosted CI completed successfully: Python 248 passed/2 skipped; CTest 355 passed/1 skipped/0 failed, 356 scheduled. Skip reasons not inferred. Earlier pending snapshots retained.",
+      "implementation_commit": "d2506bde8ee9a2eba7ad97523fbc948a97142676",
+      "run_id": 43094516453,
+      "job_id": 130779786311,
+      "status": "completed",
+      "conclusion": "success",
+      "audit_receipt": "ci-final/audit.json",
+      "python": {
+        "passed": 248,
+        "skipped": 2
+      },
+      "ctest": {
+        "scheduled": 356,
+        "passed": 355,
+        "skipped": 1,
+        "failed": 0
+      }
     }
   ],
-  "evidence_collection_count": 9,
-  "verified_directory_files_total": 113,
-  "total_directory_payload_bytes": 9315689,
+  "evidence_collection_count": 10,
+  "verified_directory_files_total": 121,
+  "total_directory_payload_bytes": 9555870,
   "supplemental_verification": "supplemental-index-verification.json"
 }
