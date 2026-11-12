@@ -1,6 +1,6 @@
 # External native decoders
 
-This directory builds and runs the five external methods from the decoder comparison. The recovered C++ and Rust runner files are unchanged. `sources.lock.json` identifies every bundled source file and verifies all 60 source entries present in the original build receipts.
+This directory builds and runs the five external methods from the decoder comparison. The adapters retain the recovered decoder algorithms and timing boundaries while adding bounded-memory input loading. `sources.lock.json` records current bundled file hashes and the preserved original build identities.
 
 | Method | Native implementation | Fixed source |
 | --- | --- | --- |
@@ -27,7 +27,7 @@ python AE/external/build.py \
   --toolchain nightly-2026-03-10 --jobs 2
 ```
 
-Output directories must be new and outside the source repository. `build.json` is written only after all selected binaries build successfully. A supplemented reference receipt can be supplied with `--reference-record`; its provenance remains in the build record. To satisfy Clang's narrowing checks, the builder writes a generated UF source with an explicit checked 32-bit graph-size conversion before decoder construction. The original source remains unchanged; the generated file hash is recorded, and the timed function is unchanged.
+Output directories must be new and outside the source repository. `build.json` is written only after all selected binaries build successfully. A supplemented reference receipt can be supplied with `--reference-record`; its provenance remains in the build record. To satisfy Clang's narrowing checks, the builder writes a generated UF source with an explicit checked 32-bit graph-size conversion before decoder construction. The builder leaves the bundled source untouched; the generated file hash is recorded, and the timed function is unchanged.
 
 The repository includes the exact crate archives required by `Cargo.lock`, including packages for other target platforms. `--offline` uses these verified sources without a populated user Cargo cache or network access. The builder obtains fixed Stim paths from the reference receipt. `--crate-cache`, `--stim-source`, and `--stim-archive` remain optional overrides. Install the standard compiler and pinned Rust toolchain before building offline. See the [dependency manifest](../../vendor/README.md).
 

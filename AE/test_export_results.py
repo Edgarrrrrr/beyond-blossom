@@ -119,6 +119,18 @@ class FreshExportTest(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.root=Path(self.temp.name)
 
+    def test_single_panel_smoke_exports_real_figures_with_valid_text_bounds(self):
+        path = native_fixture(self.root/'native', policy=-1)
+        output = self.root/'export'
+        self.assertEqual(E.main(['--native-run', str(path), '--profile', 'smoke',
+                                 '--groups', 'ablation', '--output', str(output)]), 0)
+        self.assertTrue(E.read(output/'complete.json')['complete'])
+        rendering = E.read(output/'figures/rendering.json')
+        self.assertEqual(rendering['text_bounds'], 'passed')
+        self.assertEqual(rendering['numeric_cell_bounds'], 'passed')
+        for extension in ('pdf', 'svg', 'png'):
+            self.assertTrue((output/'figures'/f'incremental_ablation_1107_v1.{extension}').is_file())
+
     def test_raw_integer_aggregation_and_official_baseline_role(self):
         path=native_fixture(self.root/'native',policy=-1)
         run=E.native_run(path,'batch','smoke');rows=E.aggregate(run)

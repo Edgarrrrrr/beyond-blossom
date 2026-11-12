@@ -76,7 +76,10 @@ def render(output: Path, *, data_dir=None, data=None, stem='incremental_ablation
     assert minimum_contrast >= 4.5
     fig, axes = plt.subplots(1, panels, figsize=(18.5 * panels / 3, 6.6), dpi=170, squeeze=False)
     axes = axes[0]
-    fig.subplots_adjust(left=.055, right=.995, bottom=.37, top=.84, wspace=.08)
+    # Keep the paper's physical left margin when smoke has fewer panels.
+    # Scaling the canvas alone clips the fixed-size y-axis label.
+    left_margin = .055 if panels >= 3 else .055 * 3 / panels
+    fig.subplots_adjust(left=left_margin, right=.995, bottom=.37, top=.84, wspace=.08)
     plot_rows, cell_labels, cell_geometry = [], [], []
     for ax, panel in zip(axes, data["panels"]):
         speed, times = np.asarray(panel["speedups"]), np.asarray(panel["time_us"])
@@ -158,7 +161,8 @@ def render(output: Path, *, data_dir=None, data=None, stem='incremental_ablation
             if not label.get_visible() or not label.get_text():
                 continue
             box = label.get_window_extent(renderer)
-            assert 0 <= box.x0 < box.x1 <= width and 0 <= box.y0 < box.y1 <= height
+            assert 0 <= box.x0 < box.x1 <= width and 0 <= box.y0 < box.y1 <= height, (
+                label.get_text(), box.bounds, (width, height))
     for ax, label, i, j, half_width, half_height in cell_labels:
         box = label.get_window_extent(renderer)
         left, bottom = ax.transData.transform((j - half_width, i + half_height))

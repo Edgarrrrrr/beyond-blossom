@@ -46,11 +46,12 @@ the collection receipts. Comparing retained historical native scopes requires th
 qualification; claiming identical end-to-end latency would require different adapters
 and new measurements.
 
-The predecoder table and macros derive from four-thread pipelined execution,
+The archived predecoder table and macros derive from four-thread pipelined execution,
 whereas the evaluation prose and caption call the experiment serial. Retaining the
 archived values requires describing the four-thread pipeline. A serial experiment
 requires fresh timing and residual-count evidence with an explicitly serial protocol.
-The documented mode-0/1/2 commands preserve the recorded pipeline experiment.
+The current workflow collects serial timing and residual counts separately, using
+physical modes 0/1/3 for degree-ordered, no predecoding, and simple equal-rate policies.
 
 The M4 source data supports the archived median-of-three calculations, including
 18/21 configurations below one microsecond per round versus 11/21 for the fixed
