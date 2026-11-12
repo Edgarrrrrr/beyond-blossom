@@ -119,6 +119,7 @@ def main():
     start_identity = source_identity()
     builder_start = sha256(__file__)
     common_start = sha256(HERE / 'common.py')
+    sparse_header_start = sha256(HERE / 'native/sparse_samples.h')
     oracle_start = sha256(HERE / 'native/oracle.cpp') if 'oracle' in args.only else None
     root.mkdir(parents=True)
     vendored = None
@@ -143,7 +144,7 @@ def main():
             subprocess.run(command, stdout=stream, stderr=subprocess.STDOUT, env=environment, cwd=root, check=True)
 
     uf, ldpc = HERE / 'sources/unionfind', HERE / 'sources/ldpc-union-find'
-    common = [args.cxx, '-std=c++20', '-O3', '-DNDEBUG']
+    common = [args.cxx, '-std=c++20', '-O3', '-DNDEBUG', '-I' + str(HERE / 'native')]
     if 'unionfind' in args.only:
         adapted = portable_unionfind_source(root / 'uf-portable.cpp')
         generated_sources[adapted.name] = sha256(adapted)
@@ -202,7 +203,7 @@ def main():
         binaries['oracle'] = root / 'oracle'
     verify_sources()
     finish_identity = source_identity()
-    if sha256(__file__) != builder_start or sha256(HERE / 'common.py') != common_start or (oracle_start is not None and sha256(HERE / 'native/oracle.cpp') != oracle_start):
+    if sha256(__file__) != builder_start or sha256(HERE / 'common.py') != common_start or sha256(HERE / 'native/sparse_samples.h') != sparse_header_start or (oracle_start is not None and sha256(HERE / 'native/oracle.cpp') != oracle_start):
         raise ValueError('Build controller or oracle source changed during compilation')
     consistent_identity = dict(finish_identity)
     if finish_identity != start_identity:
@@ -212,6 +213,7 @@ def main():
                    build_environment=dict(cwd=str(root), cargo_home=str(cargo_home), rustup_home=environment.get('RUSTUP_HOME')),
                    commands=commands, generated_sources=generated_sources, sources_lock_sha256=sha256(HERE / 'sources.lock.json'),
                    builder_sha256=sha256(__file__), common_sha256=sha256(HERE / 'common.py'),
+                   sparse_samples_header_sha256=sparse_header_start,
                    oracle_source_sha256=sha256(HERE / 'native/oracle.cpp') if 'oracle' in binaries else None,
                    cargo_lock_sha256=sha256(HERE / 'native/blossom/Cargo.lock'), rust_toolchain=args.toolchain,
                    reference=reference, binaries={name: dict(path=str(path), sha256=sha256(path)) for name, path in binaries.items()},

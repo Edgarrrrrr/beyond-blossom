@@ -52,7 +52,15 @@ python AE/external/input_adapter.py \
 
 The separate warmup dataset must have the same companion `model.dem`. Without it, `--warmup-prefix 256` reuses the first measured inputs and records that policy. `--limit 10000` selects a prefix while still checking the complete source dataset. Repeating 10,000 inputs three times is recorded as 10,000 independent inputs and three timing repeats.
 
-`input-provenance.json` seals the sparse dataset, DEM, converter implementation and native JSON. `shot-reference.jsonl` preserves the original sparse file's oracle results for traceability. Those results use another integer scale and are not used as the external graph's optimum. The sparse format does not contain physical observable truth, so this path does not report logical failure rates.
+`input-provenance.json` seals the sparse dataset, DEM, converter implementation,
+small native JSON and indexed binary sidecars. The normal entry prepares these
+automatically. Runners read one shot at a time outside the decoding timer, keep
+one decoder instance, warm up once and traverse the full sequence three times.
+This avoids retaining both million-shot detector lists in memory. Legacy inline
+JSON remains supported; its loading and cache conditions differ, so its recorded
+timings retain their original provenance.
+
+`shot-reference.jsonl` preserves the original sparse file's oracle results for traceability. Those results use another integer scale and are not used as the external graph's optimum. The sparse format does not contain physical observable truth, so this path does not report logical failure rates.
 
 For the complete matrix, use a completed `AE/reproduce.py` run. The wrapper checks its plan, completion record, every input hash and every saved dataset's dimensions before launching the external methods:
 

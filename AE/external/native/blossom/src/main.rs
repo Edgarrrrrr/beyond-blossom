@@ -1,10 +1,12 @@
 use fusion_blossom::mwpm_solver::{PrimalDualSolver, SolverParallel, SolverSerial};
 use fusion_blossom::pointers::*;
-use fusion_blossom::util::{PartitionConfig, SolverInitializer, SyndromePattern, VertexIndex};
+use fusion_blossom::util::{PartitionConfig, SolverInitializer, SyndromePattern};
 use serde_json::{json, Value};
 use std::fs::File;
 use std::io::{BufReader, BufWriter, Write};
 use std::time::Instant;
+mod sparse_samples;
+use sparse_samples::Samples;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<String> = std::env::args().collect();
@@ -26,13 +28,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         },
         _ => panic!("unknown decoder")
     };
-    let load = |key:&str| -> Vec<SyndromePattern> {
-        j[key].as_array().unwrap().iter().map(|s| {
-            let v:Vec<VertexIndex>=serde_json::from_value(s.clone()).unwrap();
-            SyndromePattern::new_vertices(v)
-        }).collect()
-    };
-    let samples=load("blossom_samples"); let warm=load("blossom_warmup");
+    let mut samples=Samples::new(&j,std::path::Path::new(&args[1]),&initializer,false)?;
+    let mut warm=Samples::new(&j,std::path::Path::new(&args[1]),&initializer,true)?;
     let mut parity=vec![false;initializer.vertex_num as usize];
     let mut virtuals=vec![false;initializer.vertex_num as usize];
     for &v in &initializer.virtual_vertices {virtuals[v as usize]=true;}
@@ -51,21 +48,22 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         assert!(parity.iter().zip(&virtuals).all(|(&p,&v)|!p||v),"Hc != syndrome");
         (weight,iw,obs)
     };
-    assert!(!warm.is_empty()&&!samples.is_empty());
+    assert!(warm.len()>0&&samples.len()>0&&j["repeats"].as_u64().unwrap()>0);
     let start=Instant::now(); let mut warmed=0;
     loop {
-        for s in &warm {solver.solve(s); let c=solver.subgraph(); validate(s,&c); solver.clear(); warmed+=1;}
+        for i in 0..warm.len() {let s=warm.load(i)?; solver.solve(&s); let c=solver.subgraph(); validate(&s,&c); solver.clear(); warmed+=1;}
         if start.elapsed().as_secs_f64()>=j["warmup_seconds"].as_f64().unwrap() {break;}
     }
     let warm_seconds=start.elapsed().as_secs_f64();
     let mut output=BufWriter::new(File::create(format!("{}.csv",args[2]))?);
     let mut chains=BufWriter::new(File::create(format!("{}.corrections.jsonl",args[2]))?);
     writeln!(output,"repeat,shot,decode_ns,weight,integer_weight,observable")?;
-    for r in 0..j["repeats"].as_u64().unwrap() {for (i,s) in samples.iter().enumerate() {
-        // Input arrays/patterns and partitioning are ready before timing.
-        let start=Instant::now(); solver.solve(s); let c=solver.subgraph();
+    for r in 0..j["repeats"].as_u64().unwrap() {for i in 0..samples.len() {
+        // Sidecar I/O, detector remapping and pattern construction precede timing.
+        let s=samples.load(i)?;
+        let start=Instant::now(); solver.solve(&s); let c=solver.subgraph();
         let elapsed=start.elapsed().as_nanos();
-        let (weight,iw,obs)=validate(s,&c);
+        let (weight,iw,obs)=validate(&s,&c);
         solver.clear();
         writeln!(output,"{r},{i},{elapsed},{weight:.17},{iw},{obs}")?;
         if r==0 {let c:Vec<_>=c.iter().map(|&e|original[e as usize]).collect();

@@ -75,6 +75,33 @@ class LocalWorkflowTests(unittest.TestCase):
         self.assertEqual(path.name, 'matrix-attempt-2')
         self.assertEqual((self.workflow.root / 'runs/matrix/partial.csv').read_text(), 'evidence')
 
+    def test_build_then_collect_runs_external_measurements_after_external_build(self):
+        executed = []
+
+        def execute(argv, **kwargs):
+            executed.append(argv)
+            output = Path(argv[argv.index('--output') + 1])
+            output.mkdir(parents=True)
+            script = Path(argv[1]).name
+            marker = ('reference.json' if script == 'build_reference.py' else
+                      'build.json' if script in ('build_native.py', 'build.py') else 'complete.json')
+            R.save(output / marker, {'complete': True})
+
+        with patch.object(R.subprocess, 'run', side_effect=execute), \
+                patch.object(self.workflow, 'record_builds'), contextlib.redirect_stdout(io.StringIO()):
+            builds = self.workflow.builds()
+            self.workflow.collect(*builds)
+
+        external_calls = [argv for argv in executed
+                          if Path(argv[1]).name == 'reproduce.py' and argv[2] == 'external']
+        self.assertEqual(len(external_calls), 1)
+        measured = Path(R.read(self.workflow.root / 'complete.json')['bundle']['external_run'])
+        self.assertNotEqual(measured, builds[2])
+        self.assertTrue((measured / 'complete.json').is_file())
+        self.assertTrue((builds[2] / 'build.json').is_file())
+        with self.assertRaisesRegex(ValueError, 'different category'):
+            self.workflow.stage('external', 'runs', lambda output: [])
+
     def test_only_counter_capability_failure_is_optional(self):
         def fail(argv, **kwargs):
             kwargs['stdout'].write('perf_event_open cache-read counter: Operation not permitted\n')
@@ -126,7 +153,7 @@ class LocalWorkflowTests(unittest.TestCase):
                 self.assertEqual(command[command.index('--predecode-mode') + 1], str([0, 1, 3][p]))
         self.assertIn('xeon-macros', commands['figures'])
         self.assertNotIn('--m4-run', commands['figures'])
-        self.assertEqual(commands['external'][commands['external'].index('--limit') + 1], '10000')
+        self.assertEqual(commands['external-collection'][commands['external-collection'].index('--limit') + 1], '10000')
         for level in [2, 3]:
             command = commands[f'pmu-l{level}']
             self.assertEqual(command[command.index('--distances')+1], '33')
@@ -193,7 +220,7 @@ class LocalWorkflowTests(unittest.TestCase):
         native = {f'policy-{p}-{kind}': Path('/build') for p in range(3) for kind in ['l2','l3','statistics']}
         with patch.object(self.workflow, 'stage', side_effect=stage), contextlib.redirect_stdout(io.StringIO()):
             self.workflow.collect(native, {2: Path('/ref2'), 3: Path('/ref3')}, Path('/ext'))
-        self.assertEqual(set(stages), {'native-batch', 'external'})
+        self.assertEqual(set(stages), {'native-batch', 'external-collection'})
         command = stages['native-batch']
         self.assertEqual(command[command.index('--distances')+1], '33')
         self.assertEqual(command[command.index('--error-rates')+1], '0.0005')

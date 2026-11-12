@@ -1,10 +1,13 @@
 {
-  "description": "Recovered native baseline sources. File identities preserve the historical snapshots and correctness overlays. The frozen Fusion Blossom copy has no git identity.",
+  "description": "Recovered decoder sources and current native input adapters. Historical build identities remain unchanged; current adapters add bounded-memory sparse sidecar I/O outside decoder timing.",
   "files": {
     "native/blossom/Cargo.lock": "963b68b27b9a74bcae51422e0ceccb1de3407f352a1be95eb53cabcc387244a9",
     "native/blossom/Cargo.toml": "74db75bb82ab1d009a47fc0e705ce4a8c40ca81f19bd2ccefc45ff2ae67c9898",
-    "native/blossom/src/main.rs": "d515b0b74fbb6ee5506eefb7befdaff107be2aee7b444e64b8c9f3811fa931d8",
-    "native/uf.cpp": "a1286e6a17da68dfd46a3e1cc81927b8ba0c53df4dc7c7b8dca7201e5fd1e29d",
+    "native/blossom/src/main.rs": "c28ca2a7dfea423806e93562d34d42fc6c0eaf8c1c30d9bc13dbb1e4ab5fca5f",
+    "native/blossom/src/sparse_samples.rs": "d1ce785d3ffb76c31a95bab577f130b7eea0d9bc50f4238fdd4f1a560065062d",
+    "native/oracle.cpp": "115a7706e689b18b8dcffac80e7fd3f69fa5f279fac1d8c748f7d6affe887736",
+    "native/sparse_samples.h": "7fd473ff26bd18dc8bd7008c2c51f311537c9554df76c0a933ed374b18a1a5af",
+    "native/uf.cpp": "ab922c4c6529d6b103baf1dc6eb65eda95660e59a68e1093521e9581839946dd",
     "sources/fusion-blossom/Cargo.lock": "258848614718c19b6c7a77cab940bc2344e06467b94c567661495fdbde5a9eb4",
     "sources/fusion-blossom/Cargo.toml": "5eceae838a7f4e832221b2d607ee233facc3aadb09ffa176ac4875741949be5c",
     "sources/fusion-blossom/LICENSE": "ae8c2e2fd69d546ea82b6ef5e1b7022149c74836e95645c7fa40f9e151ff8c67",

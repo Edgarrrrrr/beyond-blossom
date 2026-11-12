@@ -5,6 +5,7 @@
 #include "boundary_lattice.hpp"
 #endif
 #include <nlohmann/json.hpp>
+#include "sparse_samples.h"
 #include <chrono>
 #include <fstream>
 #include <iomanip>
@@ -22,8 +23,8 @@ int main(int argc, char** argv) { try {
     if (argc != 3) throw std::runtime_error("usage: uf INPUT.json OUTPUT_PREFIX");
     std::ifstream input(argv[1]); Json j; input >> j;
     const size_t m=j.at("num_detectors"), repeats=j.at("repeats");
-    const auto samples=j.at("samples").get<std::vector<std::vector<int>>>();
-    const auto warm=j.at("warmup").get<std::vector<std::vector<int>>>();
+    external_input::Samples samples(j, argv[1], m);
+    external_input::Samples warm(j, argv[1], m, true);
     const double warm_seconds=j.at("warmup_seconds");
     std::vector<Edge> edges;
     std::vector<std::pair<int,int>> endpoints;
@@ -76,9 +77,10 @@ int main(int argc, char** argv) { try {
         for(auto p:parity) if(p) throw std::runtime_error("Hc != syndrome");
         return std::tuple<double,int64_t,uint64_t>(weight,integer_weight,observable);
     };
-    if(warm.empty()||samples.empty()||repeats==0) throw std::runtime_error("Empty workload");
+    if(warm.size()==0||samples.size()==0||repeats==0) throw std::runtime_error("Empty workload");
     auto start=Clock::now(); size_t warmed=0;
-    do { for(const auto& s:warm) { decode(s); check(s); ++warmed; } }
+    std::vector<int> sample;
+    do { for(size_t i=0;i<warm.size();++i) { warm.load(i,sample); decode(sample); check(sample); ++warmed; } }
     while(std::chrono::duration<double>(Clock::now()-start).count()<warm_seconds);
     const double warm_elapsed=std::chrono::duration<double>(Clock::now()-start).count();
     std::ofstream output(std::string(argv[2])+".csv");
@@ -87,8 +89,9 @@ int main(int argc, char** argv) { try {
     // All formatting, correction extraction, weight calculations, parity checks
     // and writes take place after the native function's timer has stopped.
     for(size_t r=0;r<repeats;++r) for(size_t i=0;i<samples.size();++i) {
-        auto elapsed=decode(samples[i]);
-        auto [weight,q,obs]=check(samples[i]);
+        samples.load(i, sample); // File I/O and conversion remain outside decode().
+        auto elapsed=decode(sample);
+        auto [weight,q,obs]=check(sample);
         output<<r<<','<<i<<','<<elapsed<<','<<weight<<','<<q<<','<<obs<<'\n';
         if(r==0) chains << Json(correction).dump() << '\n';
     }

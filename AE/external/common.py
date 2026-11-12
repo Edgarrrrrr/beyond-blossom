@@ -4,12 +4,140 @@ from __future__ import annotations
 from decimal import Decimal
 import hashlib
 import json
+import os
 from pathlib import Path
+import struct
 import subprocess
 
 HERE = Path(__file__).resolve().parent
 REFERENCE_REVISION = 'e27b8c6a5f5ba10fb74d4ebb29822f2df5e12bcd'
 METHODS = ('parity', 'fusion', 'parity-uf', 'unionfind', 'ldpc-uf')
+SPARSE_MAGIC = 0x4242535041525331
+SPARSE_HEADER = struct.Struct('<4Q')
+SPARSE_FORMAT = 'bb-sparse-u64-v1'
+
+
+class SparseSamples:
+    """A bounded-memory view of indexed sparse shots; no event array is retained."""
+    def __init__(self, directory, metadata, num_detectors):
+        self.fd = None
+        if not isinstance(metadata, dict):
+            raise ValueError('Invalid sparse sidecar metadata')
+        name = metadata.get('file')
+        if (metadata.get('format') != SPARSE_FORMAT or not isinstance(name, str) or
+                not name or name in ('.', '..') or Path(name).name != name or '/' in name or '\\' in name):
+            raise ValueError('Invalid sparse sidecar identity or filename')
+        path = Path(directory) / name
+        if path.is_symlink() or not path.is_file():
+            raise ValueError('Sparse sidecar must be a regular sibling file')
+        if type(num_detectors) is not int or not 0 < num_detectors < 1 << 31:
+            raise ValueError('Invalid sparse detector count')
+        self.num_detectors = num_detectors
+        self.fd = os.open(path, os.O_RDONLY | getattr(os, 'O_NOFOLLOW', 0))
+        try:
+            raw = os.pread(self.fd, SPARSE_HEADER.size, 0)
+            if len(raw) != SPARSE_HEADER.size:
+                raise ValueError('Truncated sparse sidecar header')
+            magic, version, self.shots, self.events = SPARSE_HEADER.unpack(raw)
+            if (magic != SPARSE_MAGIC or version != 1 or not self.shots or
+                    type(metadata.get('shots')) is not int or metadata['shots'] != self.shots or
+                    type(metadata.get('total_events')) is not int or metadata['total_events'] != self.events):
+                raise ValueError('Sparse sidecar header disagrees with metadata')
+            self.events_start = SPARSE_HEADER.size + 8 * (self.shots + 1)
+            if os.fstat(self.fd).st_size != self.events_start + 8 * self.events:
+                raise ValueError('Sparse sidecar size differs from header')
+            previous = None
+            for start in range(0, self.shots + 1, 65536):
+                count = min(65536, self.shots + 1 - start)
+                raw = os.pread(self.fd, 8 * count, SPARSE_HEADER.size + 8 * start)
+                if len(raw) != 8 * count:
+                    raise ValueError('Truncated sparse offsets')
+                for (offset,) in struct.iter_unpack('<Q', raw):
+                    if (previous is None and offset != 0 or previous is not None and
+                            not previous <= offset <= min(self.events, previous + num_detectors)):
+                        raise ValueError('Invalid sparse shot offsets')
+                    previous = offset
+            if previous != self.events:
+                raise ValueError('Sparse final offset disagrees with event count')
+        except BaseException:
+            self.close()
+            raise
+
+    def __len__(self):
+        return self.shots
+
+    def __getitem__(self, index):
+        if type(index) is not int or not 0 <= index < self.shots:
+            raise IndexError('Sparse shot index out of range')
+        raw = os.pread(self.fd, 16, SPARSE_HEADER.size + 8 * index)
+        if len(raw) != 16:
+            raise ValueError('Truncated sparse offsets')
+        begin, end = struct.unpack('<2Q', raw)
+        if not 0 <= begin <= end <= self.events or end - begin > self.num_detectors:
+            raise ValueError('Invalid sparse shot offsets')
+        raw = os.pread(self.fd, 8 * (end - begin), self.events_start + 8 * begin)
+        if len(raw) != 8 * (end - begin):
+            raise ValueError('Truncated sparse events')
+        sample = list(struct.unpack(f'<{end - begin}Q', raw))
+        if any(v >= self.num_detectors for v in sample) or any(a >= b for a, b in zip(sample, sample[1:])):
+            raise ValueError('Sparse detector IDs must be sorted, unique and bounded')
+        return sample
+
+    def __iter__(self):
+        for index in range(self.shots):
+            yield self[index]
+
+    def close(self):
+        if self.fd is not None:
+            os.close(self.fd)
+            self.fd = None
+
+    def __del__(self):
+        self.close()
+
+
+class MappedSamples:
+    """Apply the frozen vertex permutation without changing detector order."""
+    def __init__(self, samples, mapping):
+        self.samples, self.mapping = samples, mapping
+
+    def __len__(self):
+        return len(self.samples)
+
+    def __getitem__(self, index):
+        return [self.mapping[v] for v in self.samples[index]]
+
+    def __iter__(self):
+        for sample in self.samples:
+            yield [self.mapping[v] for v in sample]
+
+
+def attach_sparse_samples(payload, directory):
+    """Attach lazy views to the small JSON; old inline payloads stay unchanged."""
+    if not any(key in payload for key in ('sample_storage', 'warmup_storage')):
+        return payload
+    mapping = payload.get('blossom_vertex_map')
+    if (not isinstance(mapping, list) or len(mapping) != payload['num_detectors'] or
+            any(type(v) is not int or v < 0 for v in mapping) or len(set(mapping)) != len(mapping)):
+        raise ValueError('Invalid sparse Blossom vertex mapping')
+    try:
+        for storage, key in [('sample_storage', 'samples'), ('warmup_storage', 'warmup')]:
+            if storage not in payload:
+                continue
+            if key in payload or 'blossom_' + key in payload:
+                raise ValueError('Ambiguous inline and sidecar samples')
+            payload[key] = SparseSamples(directory, payload[storage], payload['num_detectors'])
+            payload['blossom_' + key] = MappedSamples(payload[key], mapping)
+    except BaseException:
+        close_sparse_samples(payload)
+        raise
+    return payload
+
+
+def close_sparse_samples(payload):
+    for key in ('samples', 'warmup'):
+        if isinstance(payload.get(key), SparseSamples):
+            payload[key].close()
 PAPER_COUNT_POLICY = 'manuscript-comparison-markers-v1'
 PAPER_DISTANCES = (9, 13, 17, 21, 25, 29, 33)
 PAPER_RATES = (Decimal('.0005'), Decimal('.001'), Decimal('.003'))

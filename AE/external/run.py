@@ -18,7 +18,8 @@ import time
 import numpy as np
 
 from common import (HERE, METHODS, REFERENCE_REVISION, TIMING_SCOPES, check_chain,
-                    sha256, source_identity, verify_files, verify_sources, write_json)
+                    sha256, source_identity, verify_files, verify_sources, write_json,
+                    SparseSamples, MappedSamples, attach_sparse_samples, close_sparse_samples)
 from input_adapter import partition_graph
 
 
@@ -106,10 +107,20 @@ def validate_prepared_graph(payload, graph, provenance):
     for key, value in expected.items():
         if payload[key] != value:
             raise ValueError(f'Prepared graph mapping changed: {key}')
+    if any(isinstance(payload[key], SparseSamples) for key in ('samples', 'warmup')):
+        if payload.get('blossom_vertex_map') != inverse[:payload['num_detectors']]:
+            raise ValueError('Sparse Blossom vertex mapping differs from the shared graph')
     for key in ('samples', 'warmup'):
         mapped = payload['blossom_' + key]
         if len(mapped) != len(payload[key]):
             raise ValueError('Blossom input sequence length mismatch')
+        if isinstance(payload[key], SparseSamples):
+            # The lazy mapped view uses this exact verified permutation; raw IDs
+            # were checked in validate_input without retaining the shot arrays.
+            if (not isinstance(mapped, MappedSamples) or mapped.samples is not payload[key] or
+                    mapped.mapping != inverse[:payload['num_detectors']]):
+                raise ValueError('Sparse Blossom sample view changed')
+            continue
         for sample, remapped in zip(payload[key], mapped):
             if remapped != [inverse[v] for v in sample]:
                 raise ValueError('Blossom input sequence does not match the shared samples')
@@ -216,70 +227,79 @@ def main():
         raise ValueError('Input preparation is incomplete')
     verify_files(args.input, provenance['files'])
     payload = json.loads((args.input / 'native-input.json').read_text())
-    validate_input(payload)
-    validate_prepared_graph(payload, json.loads((args.input / 'graph.json').read_text()), provenance)
-    cpus = physical_cpus(args.cpus)
-    if sys.platform == 'linux' and len(cpus) < (4 if 'fusion' in args.methods else 1):
-        raise ValueError('Fusion collection requires four available physical cores on one socket')
-    binary_names = {'oracle'} | {'blossom' if m in ('parity', 'fusion', 'parity-uf') else m for m in args.methods}
-    for name in binary_names:
-        binary = build['binaries'][name]
-        if sha256(binary['path']) != binary['sha256']:
-            raise ValueError(f'Binary changed after build: {name}')
-    root.mkdir(parents=True)
-    (root / 'bin').mkdir()
-    for name in binary_names:
-        shutil.copy2(build['binaries'][name]['path'], root / 'bin' / name)
-    controller = {p.name: sha256(p) for p in [Path(__file__), HERE / 'common.py', HERE / 'input_adapter.py']}
-    configuration = dict(schema=1, profile=args.profile, source=identity, build=build,
-                         input_provenance=provenance, input_path=str(args.input.resolve()),
-                         input_provenance_sha256=sha256(args.input / 'input-provenance.json'),
-                         methods=args.methods, platform=platform.platform(), machine=platform.machine(),
-                         host=platform.node(), placement='Linux inherited process affinity' if sys.platform == 'linux' else 'Darwin main-thread USER_INITIATED QoS; physical placement is not pinned',
-                         controller_sha256=controller)
-    write_json(root / 'run.json', configuration)
-
-    def execute(name, command, selected_cpus):
-        write_json(root / (name + '-command.json'), dict(argv=command, cpus=selected_cpus))
-        started = time.monotonic()
-        with (root / (name + '.log')).open('x') as log:
-            subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, check=True,
-                           timeout=args.timeout or None, preexec_fn=placement(selected_cpus))
-        return time.monotonic() - started
-
+    for storage in ('sample_storage', 'warmup_storage'):
+        if storage in payload:
+            if (not isinstance(payload[storage], dict) or payload[storage].get('file') not in provenance['files'] or
+                    payload[storage] != provenance.get(storage)):
+                raise ValueError('Sparse input sidecar is absent from its provenance seal')
+    payload = attach_sparse_samples(payload, args.input)
     try:
-        execute('oracle', [str(root / 'bin/oracle'), str((args.input / 'native-input.json').resolve()), str(root / 'oracle.jsonl')], cpus[:1])
-        optimum = load_oracle(root / 'oracle.jsonl', payload)
-        summary = []
-        for method in args.methods:
-            name = 'blossom' if method in ('parity', 'fusion', 'parity-uf') else method
-            prefix = root / method
-            command = [str(root / 'bin' / name), str((args.input / 'native-input.json').resolve()), str(prefix)]
-            if name == 'blossom':
-                command.append(method)
-            selected = cpus[:4 if method == 'fusion' else 1]
-            wall_seconds = execute(method, command, selected)
-            native_status = json.loads(prefix.with_suffix('.log').read_text().strip().splitlines()[-1])
-            if not native_status.get('completed'):
-                raise ValueError('Native runner did not report completion')
-            result = validate_result(prefix, payload, optimum, method)
-            result.update(method=method, timing_scope=TIMING_SCOPES[method], cpus=selected,
-                          wall_seconds=wall_seconds, native_status=native_status,
-                          files={p.name: sha256(p) for p in root.glob(method + '.*') if p.is_file()})
-            write_json(root / (method + '.result.json'), result)
-            summary.append(result)
-            print(f"{method}: {result['mean_us_per_shot']:.6f} us/shot", flush=True)
-        verify_files(args.input, provenance['files'])
-        verify_files(HERE, controller)
+        validate_input(payload)
+        validate_prepared_graph(payload, json.loads((args.input / 'graph.json').read_text()), provenance)
+        cpus = physical_cpus(args.cpus)
+        if sys.platform == 'linux' and len(cpus) < (4 if 'fusion' in args.methods else 1):
+            raise ValueError('Fusion collection requires four available physical cores on one socket')
+        binary_names = {'oracle'} | {'blossom' if m in ('parity', 'fusion', 'parity-uf') else m for m in args.methods}
         for name in binary_names:
-            if sha256(root / 'bin' / name) != build['binaries'][name]['sha256']:
-                raise ValueError('Executed binary changed during collection')
-        write_json(root / 'summary.json', dict(complete=True, configuration=configuration,
-                   oracle=dict(revision=REFERENCE_REVISION, records=len(optimum), sha256=sha256(root / 'oracle.jsonl')),
-                   results=summary))
-    except BaseException as error:
-        write_json(root / 'failure.json', dict(complete=False, error=str(error)))
-        raise
+            binary = build['binaries'][name]
+            if sha256(binary['path']) != binary['sha256']:
+                raise ValueError(f'Binary changed after build: {name}')
+        root.mkdir(parents=True)
+        (root / 'bin').mkdir()
+        for name in binary_names:
+            shutil.copy2(build['binaries'][name]['path'], root / 'bin' / name)
+        controller = {p.name: sha256(p) for p in [Path(__file__), HERE / 'common.py', HERE / 'input_adapter.py']}
+        configuration = dict(schema=1, profile=args.profile, source=identity, build=build,
+                             input_provenance=provenance, input_path=str(args.input.resolve()),
+                             input_provenance_sha256=sha256(args.input / 'input-provenance.json'),
+                             methods=args.methods, platform=platform.platform(), machine=platform.machine(),
+                             host=platform.node(), placement='Linux inherited process affinity' if sys.platform == 'linux' else 'Darwin main-thread USER_INITIATED QoS; physical placement is not pinned',
+                             controller_sha256=controller)
+        write_json(root / 'run.json', configuration)
+
+        def execute(name, command, selected_cpus):
+            write_json(root / (name + '-command.json'), dict(argv=command, cpus=selected_cpus))
+            started = time.monotonic()
+            with (root / (name + '.log')).open('x') as log:
+                subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, check=True,
+                               timeout=args.timeout or None, preexec_fn=placement(selected_cpus))
+            return time.monotonic() - started
+
+        try:
+            execute('oracle', [str(root / 'bin/oracle'), str((args.input / 'native-input.json').resolve()), str(root / 'oracle.jsonl')], cpus[:1])
+            optimum = load_oracle(root / 'oracle.jsonl', payload)
+            summary = []
+            for method in args.methods:
+                name = 'blossom' if method in ('parity', 'fusion', 'parity-uf') else method
+                prefix = root / method
+                command = [str(root / 'bin' / name), str((args.input / 'native-input.json').resolve()), str(prefix)]
+                if name == 'blossom':
+                    command.append(method)
+                selected = cpus[:4 if method == 'fusion' else 1]
+                wall_seconds = execute(method, command, selected)
+                native_status = json.loads(prefix.with_suffix('.log').read_text().strip().splitlines()[-1])
+                if not native_status.get('completed'):
+                    raise ValueError('Native runner did not report completion')
+                result = validate_result(prefix, payload, optimum, method)
+                result.update(method=method, timing_scope=TIMING_SCOPES[method], cpus=selected,
+                              wall_seconds=wall_seconds, native_status=native_status,
+                              files={p.name: sha256(p) for p in root.glob(method + '.*') if p.is_file()})
+                write_json(root / (method + '.result.json'), result)
+                summary.append(result)
+                print(f"{method}: {result['mean_us_per_shot']:.6f} us/shot", flush=True)
+            verify_files(args.input, provenance['files'])
+            verify_files(HERE, controller)
+            for name in binary_names:
+                if sha256(root / 'bin' / name) != build['binaries'][name]['sha256']:
+                    raise ValueError('Executed binary changed during collection')
+            write_json(root / 'summary.json', dict(complete=True, configuration=configuration,
+                       oracle=dict(revision=REFERENCE_REVISION, records=len(optimum), sha256=sha256(root / 'oracle.jsonl')),
+                       results=summary))
+        except BaseException as error:
+            write_json(root / 'failure.json', dict(complete=False, error=str(error)))
+            raise
+    finally:
+        close_sparse_samples(payload)
 
 
 if __name__ == '__main__':

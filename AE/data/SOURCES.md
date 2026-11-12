@@ -30,12 +30,13 @@ Original manifest entries referring to those snapshots remain unchanged.
 ## Manuscript reconciliation
 
 The archived external CSV contains 1000 shots per repeat. The comparison caption
-describes filled markers as one million shots and open markers as 10,000 shots,
-without supplying the method/setting assignment. The archived CSV cannot establish
-that larger experiment. Fresh `reproduce.py external --profile paper` collection
-defaults to one million distinct inputs and three timing repeats for all 21 cases;
-`--limit 10000` or an explicit `--shot-counts` policy records reduced prefixes.
-Those outputs are new measurements, not replacements for missing historical data.
+and plotted marker fills declare a mixed one-million / ten-thousand-shot policy;
+the [per-setting table](../REFERENCE.md#external-sample-counts) records that assignment.
+The archived CSV cannot establish the larger experiment or its missing timings.
+Fresh `reproduce.py external --profile paper` collection follows the declared
+mixed counts and three timing repeats. `--limit` or `--shot-counts` explicitly
+overrides that policy. Fresh outputs remain new measurements, not replacements
+for missing original data.
 
 The recovered native external timers also exclude operations included by the
 manuscript's blanket timing description: Parity/Fusion exclude `clear`, UnionFind

@@ -30,8 +30,9 @@ rustup toolchain install nightly-2026-03-10 --profile minimal
 
 On Debian/Ubuntu, the native prerequisites are `g++`, `cmake`, `git`,
 `python3-dev`, and `libgomp1`. The Linux workflow uses eight physical cores on one
-socket. Allow 32 GB RAM and about 100 GB disk space for the full matrix with
-hard-link input reuse. All decoder sources and locked Rust crates are included
+socket. For the full matrix, plan about 400 GB of working storage with hard-link
+input reuse and use a large-memory host; the authors' compute nodes have 128 GiB
+RAM. The smoke profile is much smaller. All decoder sources and locked Rust crates are included
 in [vendor/](../vendor/README.md); `--offline` disables build-time downloads.
 
 ## Collect and generate figures

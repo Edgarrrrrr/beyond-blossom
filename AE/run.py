@@ -245,6 +245,8 @@ class Workflow:
         attempts = self.state['stages'].setdefault(name, [])
         if attempts and attempts[-1]['status'] in ('complete', 'unavailable'):
             last = attempts[-1]
+            if Path(last['output']).parent != self.root / category or last.get('marker', marker) != marker:
+                raise ValueError(f'Stage name reused for a different category or receipt: {name}')
             if last['status'] == 'unavailable':
                 return None
             path = Path(last['output']) / marker
@@ -269,7 +271,7 @@ class Workflow:
             files += sorted(p for folder in ('src', 'file_lists') for p in (source / folder).rglob('*') if p.is_file())
             dependency_sources = {str(p): digest(p) for p in files}
         log_path = self.root / 'logs' / f'{name}{suffix}.log'
-        record = {'output': str(output), 'commands': argv_list, 'status': 'running',
+        record = {'output': str(output), 'commands': argv_list, 'status': 'running', 'marker': marker,
                   'started_utc': datetime.now(timezone.utc).isoformat(), 'log': str(log_path)}
         attempts.append(record)
         save(self.state_path, self.state)
@@ -454,7 +456,7 @@ class Workflow:
             if not policy_file.exists():
                 save(policy_file, c['external_shot_counts'])
             external_selection = ['--shot-counts', str(policy_file)]
-        external_run = self.stage('external', 'runs', lambda out: [[self.python, str(self.ae / 'reproduce.py'), 'external',
+        external_run = self.stage('external-collection', 'runs', lambda out: [[self.python, str(self.ae / 'reproduce.py'), 'external',
             '--profile', c['profile'], '--ae-run', str(batch), '--build', str(external), '--output', str(out),
             '--cpus', ','.join(map(str, c['cpus'][:4])), *external_selection]])
         timings, counts = {}, {}

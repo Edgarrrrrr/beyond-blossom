@@ -16,6 +16,11 @@ import struct
 import sys
 from typing import Iterator
 
+try:
+    from .common import SPARSE_MAGIC, SPARSE_HEADER, SPARSE_FORMAT
+except ImportError:
+    from common import SPARSE_MAGIC, SPARSE_HEADER, SPARSE_FORMAT
+
 MAGIC = 0x5354454E43494C31
 MASK64 = (1 << 64) - 1
 HEADER = struct.Struct('<12Q')
@@ -223,10 +228,60 @@ def partition_graph(graph: dict, distance: int) -> tuple[dict, dict, list[int]]:
     return initializer, partition, inverse
 
 
+def write_sparse_samples(saved, selected, path, references=None):
+    """Write an indexed sidecar in one verified pass with one-shot event memory."""
+    events = shots = 0
+    with Path(path).open('xb') as data:
+        data.write(SPARSE_HEADER.pack(SPARSE_MAGIC, 1, selected, 0))
+        data.flush()
+        data.seek(SPARSE_HEADER.size + 8 * (selected + 1))
+        with Path(path).open('r+b') as offsets:
+            offsets.seek(SPARSE_HEADER.size)
+            offsets.write(U64.pack(0))
+            for index, (shot_id, hits, observable, weight) in enumerate(saved.records(selected)):
+                data.write(struct.pack(f'<{len(hits)}Q', *hits))
+                events += len(hits)
+                offsets.write(U64.pack(events))
+                shots += 1
+                if references is not None:
+                    references.write(json.dumps(dict(execution_index=index, original_shot_id=shot_id,
+                        source_oracle_observable=observable, source_oracle_integer_weight=weight),
+                        separators=(',', ':')) + '\n')
+            if shots != selected:
+                raise ValueError('Sparse conversion emitted an incomplete shot sequence')
+            data.flush()
+            offsets.seek(0)
+            offsets.write(SPARSE_HEADER.pack(SPARSE_MAGIC, 1, selected, events))
+    return dict(format=SPARSE_FORMAT, file=Path(path).name, shots=shots, total_events=events)
+
+
+def copy_sparse_prefix(source, target, selected):
+    """Copy the verified measurement prefix as warmup with a fixed byte buffer."""
+    with Path(source).open('rb') as src, Path(target).open('xb') as dst:
+        magic, version, shots, events = SPARSE_HEADER.unpack(src.read(SPARSE_HEADER.size))
+        if magic != SPARSE_MAGIC or version != 1 or not 0 < selected <= shots:
+            raise ValueError('Invalid sparse warmup prefix')
+        src.seek(SPARSE_HEADER.size + 8 * selected)
+        selected_events = U64.unpack(src.read(8))[0]
+        if selected_events > events:
+            raise ValueError('Invalid sparse warmup prefix offset')
+        dst.write(SPARSE_HEADER.pack(magic, version, selected, selected_events))
+        for start, length in [(SPARSE_HEADER.size, 8 * (selected + 1)),
+                              (SPARSE_HEADER.size + 8 * (shots + 1), 8 * selected_events)]:
+            src.seek(start)
+            while length:
+                block = src.read(min(length, 1 << 20))
+                if not block:
+                    raise ValueError('Truncated sparse warmup prefix')
+                dst.write(block)
+                length -= len(block)
+    return dict(format=SPARSE_FORMAT, file=Path(target).name, shots=selected, total_events=selected_events)
+
+
 def convert(dataset: Path, dem: Path, output: Path, *, repeats: int = 3,
             warmup_seconds: float = 2, limit: int | None = None,
             warmup_dataset: Path | None = None, warmup_prefix: int = 256) -> dict:
-    """Stream native JSON plus provenance; refuse output reuse and partial inputs."""
+    """Write small native JSON and sparse sidecars; refuse reuse and partial inputs."""
     output, dem = Path(output).resolve(), Path(dem).resolve()
     if output.exists():
         raise FileExistsError('Use a new external input directory')
@@ -260,45 +315,18 @@ def convert(dataset: Path, dem: Path, output: Path, *, repeats: int = 3,
     payload_path = output / 'native-input.json'
     references = output / 'shot-reference.jsonl'
     try:
-        with payload_path.open('x') as stream, references.open('x') as reference_stream:
-            first_field = True
-            def field(name, value):
-                nonlocal first_field
-                if not first_field:
-                    stream.write(',')
-                first_field = False
-                stream.write(json.dumps(name) + ':')
-                json.dump(value, stream, separators=(',', ':'), allow_nan=False)
-            def records_field(name, saved, selected, *, remap=False, preserve_reference=False):
-                nonlocal first_field
-                if not first_field:
-                    stream.write(',')
-                first_field = False
-                stream.write(json.dumps(name) + ':[')
-                first_record = True
-                for index, (shot_id, hits, observable, weight) in enumerate(saved.records(selected)):
-                    if not first_record:
-                        stream.write(',')
-                    first_record = False
-                    json.dump([inverse[v] for v in hits] if remap else hits, stream, separators=(',', ':'))
-                    if preserve_reference:
-                        reference_stream.write(json.dumps(dict(execution_index=index, original_shot_id=shot_id,
-                            source_oracle_observable=observable, source_oracle_integer_weight=weight), separators=(',', ':')) + '\n')
-                stream.write(']')
-            stream.write('{')
-            field('num_detectors', graph['num_detectors'])
-            field('num_observables', graph['num_observables'])
-            field('edges', graph['edges'])
-            records_field('samples', source, count, preserve_reference=True)
-            records_field('warmup', warm, warm_count)
-            field('repeats', repeats)
-            field('warmup_seconds', warmup_seconds)
-            field('initializer', initializer)
-            field('partition', partition)
-            records_field('blossom_samples', source, count, remap=True)
-            records_field('blossom_warmup', warm, warm_count, remap=True)
-            field('blossom_edge_to_original', list(range(len(graph['edges']))))
-            stream.write('}\n')
+        sample_path, warm_path = output / 'samples.bin', output / 'warmup.bin'
+        with references.open('x') as reference_stream:
+            sample_storage = write_sparse_samples(source, count, sample_path, reference_stream)
+        warmup_storage = (write_sparse_samples(warm, warm_count, warm_path) if warmup_dataset else
+                          copy_sparse_prefix(sample_path, warm_path, warm_count))
+        payload = dict(num_detectors=graph['num_detectors'], num_observables=graph['num_observables'],
+            edges=graph['edges'], sample_storage=sample_storage, warmup_storage=warmup_storage,
+            repeats=repeats, warmup_seconds=warmup_seconds, initializer=initializer, partition=partition,
+            blossom_vertex_map=inverse[:graph['num_detectors']], blossom_edge_to_original=list(range(len(graph['edges']))))
+        with payload_path.open('x') as stream:
+            json.dump(payload, stream, separators=(',', ':'), allow_nan=False)
+            stream.write('\n')
         if warmup_dataset and warm.verified_sha256 == source.verified_sha256:
             raise ValueError('Independent warm-up dataset duplicates the measurement dataset')
         manifest = dict(schema=1, complete=True, source=source.identity(), dem=dict(path=str(dem),sha256=sha256(dem)),
@@ -312,8 +340,10 @@ def convert(dataset: Path, dem: Path, output: Path, *, repeats: int = 3,
                         source_oracle_scope='Original decoder quantization only; not an external integer-MWPM oracle',
                         external_integer_oracle_status='pending_native_validation',
                         physical_observable_truth_available=False,
+                        sample_storage=sample_storage, warmup_storage=warmup_storage,
+                        loading_scope='Indexed sparse sidecars; one-shot read/remapping/preparation outside decode timers; one decoder, complete ordered repeats, one warmup phase. Cache behavior may differ from historical resident inline arrays.',
                         partition_policy='Stable time order; private boundary per boundary edge; time distance//2 is the interface',
-                        files={p.name:sha256(p) for p in [graph_path,payload_path,references]})
+                        files={p.name:sha256(p) for p in [graph_path,payload_path,references,sample_path,warm_path]})
         (output/'input-provenance.json').write_text(json.dumps(manifest,indent=2,allow_nan=False)+'\n')
         return manifest
     except BaseException as error:

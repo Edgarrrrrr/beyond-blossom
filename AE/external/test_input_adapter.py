@@ -7,6 +7,7 @@ import struct
 import tempfile
 import unittest
 from unittest import mock
+from common import attach_sparse_samples, close_sparse_samples, SparseSamples, SPARSE_HEADER
 
 _spec = importlib.util.spec_from_file_location('external_input_adapter', Path(__file__).with_name('input_adapter.py'))
 adapter = importlib.util.module_from_spec(_spec)
@@ -136,11 +137,17 @@ class ConversionTest(unittest.TestCase):
 
     def test_common_input_mapping_and_oracle_scope_are_explicit(self):
         manifest = self.convert(limit=2, warmup_prefix=1)
-        payload = json.loads((self.output / 'native-input.json').read_text())
-        self.assertEqual(payload['samples'], [[0, 2], []])
-        self.assertEqual(payload['blossom_samples'], [[0, 3], []])
-        self.assertEqual(payload['warmup'], [[0, 2]])
-        self.assertEqual(payload['blossom_warmup'], [[0, 3]])
+        raw = json.loads((self.output / 'native-input.json').read_text())
+        self.assertNotIn('samples', raw); self.assertNotIn('blossom_samples', raw)
+        self.assertNotIn('warmup', raw); self.assertNotIn('blossom_warmup', raw)
+        payload = attach_sparse_samples(raw, self.output)
+        self.addCleanup(close_sparse_samples, payload)
+        self.assertIsInstance(payload['samples'], SparseSamples)
+        for _ in range(3):
+            self.assertEqual(list(payload['samples']), [[0, 2], []])
+            self.assertEqual(list(payload['blossom_samples']), [[0, 3], []])
+        self.assertEqual(list(payload['warmup']), [[0, 2]])
+        self.assertEqual(list(payload['blossom_warmup']), [[0, 3]])
         self.assertEqual(payload['blossom_edge_to_original'], list(range(5)))
         refs = [json.loads(line) for line in (self.output / 'shot-reference.jsonl').read_text().splitlines()]
         self.assertEqual(refs[0], dict(execution_index=0, original_shot_id=8,
@@ -169,7 +176,60 @@ class ConversionTest(unittest.TestCase):
         manifest = self.convert(warmup_dataset=warm)
         self.assertEqual(manifest['warmup']['policy'], 'separate_saved_sequence')
         payload = json.loads((self.output / 'native-input.json').read_text())
-        self.assertEqual(payload['warmup'], [[1]])
+        attach_sparse_samples(payload, self.output)
+        self.addCleanup(close_sparse_samples, payload)
+        self.assertEqual(list(payload['warmup']), [[1]])
+
+    def test_sidecar_rejects_corrupt_structure_and_events(self):
+        self.convert()
+        payload = json.loads((self.output / 'native-input.json').read_text())
+        path = self.output/'samples.bin'; original = path.read_bytes()
+        event_start = SPARSE_HEADER.size + 8 * (3 + 1)
+        mutations = {
+            'truncated': original[:-1], 'trailing': original+b'x',
+            'magic': b'wrong!!!'+original[8:],
+            'version': original[:8]+struct.pack('<Q',2)+original[16:],
+            'first_offset': original[:32]+struct.pack('<Q',1)+original[40:],
+            'decreasing_offset': original[:48]+struct.pack('<Q',1)+original[56:],
+            'offset_out_of_range': original[:40]+struct.pack('<Q',100)+original[48:],
+            'detector_out_of_range': original[:event_start]+struct.pack('<Q',4)+original[event_start+8:],
+            'duplicate_detector': original[:event_start+8]+struct.pack('<Q',0)+original[event_start+16:],
+        }
+        for label, changed in mutations.items():
+            with self.subTest(label=label):
+                path.write_bytes(changed)
+                with self.assertRaises(ValueError):
+                    view = SparseSamples(self.output, payload['sample_storage'], 4)
+                    try:
+                        list(view)
+                    finally:
+                        view.close()
+        path.write_bytes(original)
+
+    def test_sidecar_identity_and_ambiguous_inline_arrays_are_rejected(self):
+        self.convert()
+        payload = json.loads((self.output / 'native-input.json').read_text())
+        for updates in [{'file':'../samples.bin'}, {'file':str(self.output/'samples.bin')},
+                        {'shots':2}, {'shots':True}, {'total_events':100}, {'format':'unknown'}]:
+            with self.subTest(updates=updates):
+                changed = copy.deepcopy(payload['sample_storage']); changed.update(updates)
+                with self.assertRaises(ValueError): SparseSamples(self.output, changed, 4)
+        for name in ('samples', 'blossom_samples', 'warmup', 'blossom_warmup'):
+            changed = copy.deepcopy(payload); changed[name] = [[]]
+            with self.assertRaisesRegex(ValueError, 'Ambiguous'):
+                attach_sparse_samples(changed, self.output)
+        link = self.output/'link.bin'; link.symlink_to('samples.bin')
+        changed = dict(payload['sample_storage'], file='link.bin')
+        with self.assertRaisesRegex(ValueError, 'regular sibling'):
+            SparseSamples(self.output, changed, 4)
+
+    def test_zero_event_sidecar_retains_all_empty_shots(self):
+        write_dataset(self.dataset, [(8, [], 0, 0), (19, [], 0, 0)])
+        self.convert()
+        payload = attach_sparse_samples(json.loads((self.output/'native-input.json').read_text()), self.output)
+        self.addCleanup(close_sparse_samples, payload)
+        self.assertEqual(list(payload['samples']), [[], []])
+        self.assertEqual((self.output/'samples.bin').stat().st_size, 32+3*8)
 
     def test_bad_source_leaves_failure_without_completion_receipt(self):
         self.dataset.write_bytes(self.dataset.read_bytes()[:-1])

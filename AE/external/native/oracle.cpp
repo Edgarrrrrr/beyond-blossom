@@ -1,6 +1,7 @@
 // Independent integer-graph oracle, built only against the pinned official source.
 // Graph conversion, both decoder calls and all validation are outside timing.
 #include "pymatching/sparse_blossom/driver/mwpm_decoding.h"
+#include "sparse_samples.h"
 
 #include <nlohmann/json.hpp>
 
@@ -76,9 +77,9 @@ int main(int argc, char** argv) {
             throw std::invalid_argument("Invalid detector or observable count");
         const size_t m = static_cast<size_t>(detector_count);
         const auto& raw_edges = payload.at("edges");
-        const auto& samples = payload.at("samples");
-        if (!raw_edges.is_array() || raw_edges.empty() || !samples.is_array() || samples.empty())
-            throw std::invalid_argument("Edges and samples must be nonempty arrays");
+        external_input::Samples samples(payload, argv[1], detector_count);
+        if (!raw_edges.is_array() || raw_edges.empty())
+            throw std::invalid_argument("Edges must be a nonempty array");
 
         pm::MatchingGraph graph(m, static_cast<size_t>(observable_count), 1.0);
         pm::SearchGraph search(m);
@@ -122,18 +123,9 @@ int main(int argc, char** argv) {
         std::ofstream output(argv[2]);
         if (!output)
             throw std::runtime_error("Cannot create oracle output");
+        std::vector<uint64_t> syndrome;
         for (size_t shot = 0; shot < samples.size(); ++shot) {
-            const auto& raw_sample = samples[shot];
-            if (!raw_sample.is_array())
-                throw std::invalid_argument("Each sample must be an array of detector IDs");
-            std::vector<uint64_t> syndrome;
-            syndrome.reserve(raw_sample.size());
-            for (const auto& raw_detector : raw_sample) {
-                const auto detector = unsigned_integer(raw_detector, "detector ID");
-                if (detector >= detector_count || (!syndrome.empty() && detector <= syndrome.back()))
-                    throw std::invalid_argument("Sample detector IDs must be bounded, sorted and unique");
-                syndrome.push_back(detector);
-            }
+            samples.load(shot, syndrome);
 
             std::vector<int64_t> endpoints;
             pm::decode_detection_events_to_edges(decoder, syndrome, endpoints);
