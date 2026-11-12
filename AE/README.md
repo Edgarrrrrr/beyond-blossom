@@ -18,7 +18,7 @@ For fresh collection, install the pinned Rust toolchain once:
 rustup toolchain install nightly-2026-03-10 --profile minimal
 ```
 
-Use a work directory outside the checkout. Builds, inputs, logs, and results stay there.
+Use a work directory outside the checkout. Builds, inputs, logs, and results stay there. For the default full matrix, plan for 32 GB RAM and roughly 100 GB of free space with hard-link reuse; the saved inputs alone occupy about 61 GB. Filesystems that require input copies need more space.
 
 ```sh
 AE_WORK="$PWD/../beyond-blossom-ae"
@@ -65,11 +65,11 @@ Progress is printed as each stage starts. Per-stage output is in `logs/`; `state
 python AE/run.py resume --work "$AE_WORK/paper"
 ```
 
-Completed stages are reused; an incomplete stage restarts in a new attempt directory. Failed attempts remain available. `plan` prints the configuration; `build` and `collect` expose the two phases. `--source` selects a fixed checkout, `--jobs` controls compilation, and `--cpus` overrides placement. See `python AE/run.py --help` for all options.
+Completed stages are reused; an incomplete stage restarts in a new attempt directory. Failed attempts remain available. `plan` prints the configuration. For separate build and measurement phases, use `build --work BUILD_DIR`, then `run --work RUN_DIR --builds-manifest BUILD_DIR/builds.json` with a fresh run directory. `collect --work RUN_DIR` resumes an existing run without building. `--source` selects a fixed checkout, `--jobs` controls compilation, and `--cpus` overrides placement. See `python AE/run.py --help` for all options.
 
 ## Optional Slurm execution
 
-Place the checkout, Python environment, and work directory on storage shared by the compute nodes. Choose the partition and CPU allocation for the cluster; the allocation must contain at least eight physical cores on one socket. For example, on a cluster with a `cpu` partition:
+Place the checkout, Python environment, and work directory on storage shared by the compute nodes. Compute nodes need Git and the native runtime libraries; compilers are needed only on the build host. Choose the partition and CPU allocation for the cluster; the allocation must contain at least eight physical cores on one socket. For example, on a cluster with a `cpu` partition:
 
 ```sh
 python AE/slurm.py run --work "$AE_WORK/slurm-paper" \
@@ -81,6 +81,8 @@ python AE/slurm.py run --work "$AE_WORK/slurm-paper" \
 Add `--profile smoke` and use a new work directory for a one-setting check. `prepare` writes a plan without building or submitting; `submit --work ...` executes it. `resume --work ...` retries unfinished work. `submissions.json` records job IDs, and `logs/` contains scheduler output. [The acquisition reference](REFERENCE.md#slurm-configuration) includes the configuration used on the authors' cluster.
 
 ## Read the results
+
+The [2026-11-12 reproduction](results/20261112/README.md) includes the full 21-setting run, small measurement records, independent audits, figures, and a [repository-only redraw command](results/20261112/REPRODUCE.md).
 
 The final export contains the ablation and decoder-comparison figures, predecoder table, per-method CSVs, selected configurations, and paper-compatible LaTeX macros. `canonical.json` records the inputs, hardware, and SIMD backend; completion receipts identify the actual builds and runs. Missing hardware-specific values are listed, not filled from historical data.
 

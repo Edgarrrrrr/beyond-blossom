@@ -519,7 +519,7 @@ def render_figures(output, groups, native, external, policies, m4, profile):
             for i,mode in enumerate((1,2,0)):
                 values=[by[d,mode][metric] for d in policy_distances]
                 bars=ax.bar(x+(i-1)*.27,values,.25,label=by[policy_distances[0],mode]['strategy_label'],color=colors[i])
-                ax.bar_label(bars,fmt='%.2f',padding=3,fontsize=8)
+                ax.bar_label(bars,fmt='%.2f',padding=3,fontsize=7,rotation=90)
             ax.set_xticks(x,policy_distances); ax.set_xlabel('Code distance'); ax.set_ylabel(ylabel)
             ax.margins(y=.2); ax.set_title(('Serial' if policies[0]['execution']=='serial' else 'Four-thread pipeline')+', p = 0.3%')
             fig.legend(*ax.get_legend_handles_labels(),loc='upper center',bbox_to_anchor=(.54,.99),ncol=3,fontsize=9,frameon=False)

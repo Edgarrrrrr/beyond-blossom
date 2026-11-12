@@ -68,6 +68,9 @@ commit and file hashes before and after compilation, compiler/configuration,
 Stim inputs, commands and binary hash. A paper run requires this receipt and the
 fixed reference receipt. `--profile smoke` permits a development tree; omitting
 receipts then produces an integration check with explicitly weaker provenance.
+The explicit commands below use the Xeon `avx512vl` backend; select `avx2` on
+compatible x86 CPUs or `scalar` on other CPUs, including Arm. `AE/run.py` chooses
+the supported backend automatically. Exports label the actual platform and backend.
 
 ```sh
 python AE/build_native.py --offline --output "$AE_WORK/native" --jobs 2
@@ -81,7 +84,7 @@ python AE/reproduce.py run --profile paper --backend avx512vl --measurement late
   --binary "$AE_WORK/native/bin/bb_benchmark" --build-record "$AE_WORK/native/build.json" \
   --reference-binary "$AE_WORK/reference/build/bin/experiment_benchmark" \
   --reference-record "$AE_WORK/reference/reference.json" \
-  --input-run "$AE_WORK/native-batch" --output "$AE_WORK/native-latency"
+  --input-run "$AE_WORK/native-batch" --link-inputs --output "$AE_WORK/native-latency"
 ```
 
 The default paper matrix uses d=9,13,17,21,25,29,33, p=0.0005,0.001,0.003,
@@ -135,14 +138,15 @@ python AE/external/build.py --output "$AE_WORK/external-build" \
   --toolchain nightly-2026-03-10 --jobs 2
 python AE/reproduce.py external --profile paper \
   --ae-run "$AE_WORK/native-batch" --build "$AE_WORK/external-build" \
-  --output "$AE_WORK/external-million"
+  --limit 10000 --output "$AE_WORK/external-10000"
 BB_EXTERNAL_ORACLE="$AE_WORK/external-build/oracle" \
   python -m unittest discover -s AE/external -p 'test_*.py' -v
 ```
 
-The wrapper consumes all 21 sealed native input cases. Paper mode defaults to one
-million distinct inputs and three repeats for every method. `--limit 10000` selects
-the same 10,000-shot prefix for every external method. `--shot-counts counts.json`
+The wrapper consumes all 21 sealed native input cases. The command above selects
+the same 10,000-shot prefix and three repeats for every external method, matching
+`AE/run.py`'s default. The lower-level wrapper defaults to one million distinct
+inputs if `--limit` is omitted. `--shot-counts counts.json`
 can instead provide explicit method defaults and case-specific overrides:
 
 ```json
@@ -180,7 +184,7 @@ for level in 2 3; do
     --reference-binary "$AE_WORK/reference-l$level/build/bin/experiment_benchmark" \
     --reference-record "$AE_WORK/reference-l$level/reference.json" \
     --methods reference,structured --distances 33 --error-rates .003 --backend avx512vl \
-    --input-run "$AE_WORK/native-batch" --output "$AE_WORK/pmu-l$level"
+    --input-run "$AE_WORK/native-batch" --link-inputs --output "$AE_WORK/pmu-l$level"
 done
 ```
 
@@ -202,7 +206,7 @@ for variant in 0:0 1:1 2:3; do
     --binary "$AE_WORK/policy-$policy/bin/bb_benchmark" --build-record "$AE_WORK/policy-$policy/build.json" \
     --reference-binary "$AE_WORK/reference/build/bin/experiment_benchmark" \
     --reference-record "$AE_WORK/reference/reference.json" --backend avx512vl \
-    --input-run "$AE_WORK/native-batch" --output "$AE_WORK/policy-$policy-timing"
+    --input-run "$AE_WORK/native-batch" --link-inputs --output "$AE_WORK/policy-$policy-timing"
   python AE/build_native.py --predecode-mode "$mode" --statistics --jobs 2 \
     --output "$AE_WORK/policy-$policy-counts-build"
   python AE/reproduce.py run --profile paper --measurement statistics --repeats 1 \
@@ -211,7 +215,7 @@ for variant in 0:0 1:1 2:3; do
     --build-record "$AE_WORK/policy-$policy-counts-build/build.json" \
     --reference-binary "$AE_WORK/reference/build/bin/experiment_benchmark" \
     --reference-record "$AE_WORK/reference/reference.json" \
-    --input-run "$AE_WORK/native-batch" --output "$AE_WORK/policy-$policy-counts"
+    --input-run "$AE_WORK/native-batch" --link-inputs --output "$AE_WORK/policy-$policy-counts"
 done
 ```
 
@@ -289,12 +293,12 @@ was interrupted. Existing raw measurements and failed attempts remain unchanged.
 
 The fresh exporter reads completed runs, verifies their sealed artifacts, and writes
 the current article's figures and numeric macros. Missing settings are never filled
-from archives. Paired Xeon runs must share a source commit, saved inputs and host for each setting; M4 runs
+from archives. Paired local runs must share a source commit, saved inputs and host for each setting; M4 runs
 must identify Apple Silicon and the same source commit. Existing output is rejected.
 
 ```sh
 python AE/export_results.py --profile paper \
-  --native-run "$AE_WORK/native-batch" --external-run "$AE_WORK/external-million" \
+  --native-run "$AE_WORK/native-batch" --external-run "$AE_WORK/external-10000" \
   --l2-run "$AE_WORK/pmu-l2" --l3-run "$AE_WORK/pmu-l3" \
   --policy-timing "0=$AE_WORK/policy-0-timing" "1=$AE_WORK/policy-1-timing" "2=$AE_WORK/policy-2-timing" \
   --policy-counts "0=$AE_WORK/policy-0-counts" "1=$AE_WORK/policy-1-counts" "2=$AE_WORK/policy-2-counts" \
@@ -316,7 +320,7 @@ column is not substituted for the reference or a structured variant.
 | `comparison` | `decoder_comparison_shows_speedup_v3` PDF/SVG/PNG | Native and external matrices on the same saved inputs |
 | `predecoder` | `decoding_time`, `remaining_syndromes`, `predecoder.csv`, 58 table macros | All three serial policy timings and all three untimed statistics runs; historical pipeline runs must use a consistent recorded scope |
 | `m4` | `m4_pro_per_round` PDF/SVG/PNG | M4 batch matrix, median of three passes |
-| `xeon-macros` | Available Xeon performance and predecoder macros, omitted-key audit | Native and supplied local PMU/policy runs; no M4 requirement |
+| `xeon-macros` | Available local performance and predecoder macros using legacy `xeon` keys, omitted-key audit | Native and supplied local PMU/policy runs; no M4 requirement |
 | `macros` | Complete performance and 58 predecoder macros, audit | Native, both PMU levels, all policy timing/count runs and M4 |
 
 Groups can be exported separately before cross-platform collection finishes:
@@ -325,7 +329,7 @@ Groups can be exported separately before cross-platform collection finishes:
 python AE/export_results.py --native-run "$AE_WORK/native-batch" \
   --groups ablation --output "$AE_WORK/fresh-ablation"
 python AE/export_results.py --native-run "$AE_WORK/native-batch" \
-  --external-run "$AE_WORK/external-million" --groups comparison \
+  --external-run "$AE_WORK/external-10000" --groups comparison \
   --output "$AE_WORK/fresh-comparison"
 python AE/export_results.py --native-run "$AE_WORK/native-batch" \
   --policy-timing "0=$AE_WORK/policy-0-timing" "1=$AE_WORK/policy-1-timing" "2=$AE_WORK/policy-2-timing" \

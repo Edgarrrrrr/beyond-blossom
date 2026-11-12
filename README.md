@@ -28,9 +28,11 @@ These are the original method illustrations from the Beyond Blossom manuscript, 
 
 ## Installation
 
-A C++20 compiler, CMake 3.18+, Python 3.10+, and OpenMP are required. On Debian/Ubuntu, install `g++`, `cmake`, `python3-dev`, and `libgomp1`. On macOS, install CMake and LLVM OpenMP and pass the OpenMP prefix to CMake as needed.
+A C++20 compiler, CMake 3.18+, Python 3.10+, and OpenMP are required. On Debian/Ubuntu, install `g++`, `cmake`, `python3-dev`, `python3-venv`, and `libgomp1`. On macOS, install CMake and LLVM OpenMP and pass the OpenMP prefix to CMake as needed.
 
 ```sh
+python3 -m venv .venv
+. .venv/bin/activate
 python -m pip install .
 ```
 
@@ -52,6 +54,8 @@ for decoding options. The native CMake build provides `beyond_blossom` with the
 same command interface.
 
 ## Structured decoding
+
+Install the optional Stim dependency for this example with `python -m pip install '.[stim]'`.
 
 ```python
 import stim
@@ -106,6 +110,8 @@ The [unstructured](src/beyond_blossom/unstructured) and [structured](src/beyond_
 ## Reproduction and contributions
 
 [AE/README.md](AE/README.md) describes smoke runs, full collection, and replay of archived paper data. Archived measurements describe their original binaries; a new build requires new measurements before a performance claim is made.
+
+The [fresh paper-scale reproduction](AE/results/20261112/README.md) includes all 21 settings, million-shot native measurements, 10,000-shot external comparisons, serial predecoder statistics, and L2/L3 counters. Its figures, tables, source identities, and offline redraw entry are included in the repository.
 
 [Migration validation, 2026-11-12](benchmarks/regression/results/20261112/README.md)
 records this migration's correctness checks, paired measurements, and artifacts.
