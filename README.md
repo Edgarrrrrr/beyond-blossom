@@ -26,6 +26,26 @@ Beyond Blossom reduces the work needed to decode surface-code detection events w
 
 These are the original method illustrations from the Beyond Blossom manuscript, exported for this README. [Figure sources and attribution](assets/paper/README.md) record their provenance. Measured results and their scope are linked under [Reproduction](#reproduction-and-contributions).
 
+## Performance
+
+As of November 12, 2026: in our benchmarks on rotated surface codes with distances 9–33 and circuit-level physical error rates of 0.05%–0.3%, Beyond Blossom achieves a **4.23× geometric-mean speedup** over Sparse Blossom in PyMatching on a single CPU core. At distance 33 and a physical error rate of 0.1%, using 8 CPU cores, decoding a block of 33 measurement rounds takes **21.40 μs on average**, equivalent to **0.65 μs per round**.
+
+The table below summarizes speedups at **p = 0.1%**, with d measurement rounds per block. Both columns use **single-core Sparse Blossom in PyMatching** as the baseline.
+
+| Code distance (d) | Beyond Blossom (1 core) | Beyond Blossom (8 cores) |
+| --- | ---: | ---: |
+| 9 | 3.83× | 2.69× |
+| 13 | 4.77× | 2.56× |
+| 17 | 4.82× | 4.30× |
+| 21 | 4.76× | 5.91× |
+| 25 | 4.63× | 7.31× |
+| 29 | 4.48× | 8.50× |
+| 33 | 4.71× | 10.26× |
+
+These results are obtained on an Intel Xeon Gold 6230R; see [artifact evaluation](AE/README.md) for measurement details and reproduction instructions.
+
+These values describe the [archived measurements](AE/reference/plot-data.csv). The [new million-shot reproduction](AE/results/20261112/README.md) records its own inputs, builds, timings, and audits separately.
+
 ## Installation
 
 A C++20 compiler, CMake 3.18+, Python 3.10+, and OpenMP are required. On Debian/Ubuntu, install `g++`, `cmake`, `python3-dev`, `python3-venv`, and `libgomp1`. On macOS, install CMake and LLVM OpenMP and pass the OpenMP prefix to CMake as needed.
