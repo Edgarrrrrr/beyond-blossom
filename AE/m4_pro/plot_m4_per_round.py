@@ -83,7 +83,7 @@ def load_points(source: Path) -> list[dict[str, str | int]]:
                 raise ValueError(f"Input hashes differ across roles: d={d}, p={p}")
             best = min((group[role] for role in ROLES[1:]),
                        key=lambda row: Decimal(row["time_us"]))
-            for method, row in (("Upstream baseline", group["upstream"]),
+            for method, row in (("PyMatching", group["upstream"]),
                                 ("Beyond Blossom", best)):
                 block_time = Decimal(row["time_us"])
                 points.append({
@@ -101,6 +101,7 @@ def load_points(source: Path) -> list[dict[str, str | int]]:
 
 
 def plot(points: list[dict], palette: dict, target: Path, yscale: str) -> None:
+    plt.rcdefaults()
     colors = palette["color_tokens"]
     neutral = palette["neutrals"]
     plt.rcParams.update({
@@ -119,7 +120,7 @@ def plot(points: list[dict], palette: dict, target: Path, yscale: str) -> None:
     })
     fig, ax = plt.subplots(figsize=FIGURE_SIZE)
     fig.subplots_adjust(left=0.15, right=0.985, bottom=0.185, top=0.80)
-    for method in ("Upstream baseline", "Beyond Blossom"):
+    for method in ("PyMatching", "Beyond Blossom"):
         for p, color_name, marker in zip(ERROR_RATES,
                                          ("BLUE", "TEAL", "ORANGE"),
                                          ("o", "s", "^")):
@@ -163,7 +164,7 @@ def plot(points: list[dict], palette: dict, target: Path, yscale: str) -> None:
         Line2D([], [], color=neutral["text"], linewidth=1.15,
                linestyle=(0, (3.2, 1.8)), marker="o", markersize=3.5,
                markerfacecolor=neutral["background"], markeredgewidth=0.75,
-               label="Upstream baseline"),
+               label="PyMatching"),
         Line2D([], [], color=neutral["text"], linewidth=1.15,
                marker="o", markersize=3.5, markeredgewidth=0.75,
                label="Beyond Blossom"),
@@ -196,6 +197,23 @@ def plot(points: list[dict], palette: dict, target: Path, yscale: str) -> None:
     plt.close(fig)
 
 
+def render_paper(output, native, *, profile='paper'):
+    """Render validated fresh M4 measurements with the manuscript layout."""
+    candidates = ('structured', 'predecoded', 'component-parallel', 'pipelined', 'parallel-predecode')
+    points = []
+    for d, p in sorted({(d, p) for d, p, method in native}):
+        winner = min(candidates, key=lambda m: native[d, p, m]['median_batch_us'])
+        for label, role in (('PyMatching', 'reference'), ('Beyond Blossom', winner)):
+            block_us = native[d, p, role]['median_batch_us']
+            points.append(dict(method=label, distance=d, error_rate=str(p),
+                               time_us_per_round=block_us / d))
+    output = Path(output)
+    output.mkdir(parents=True, exist_ok=True)
+    plot(points, json.loads((ROOT / 'palette.json').read_text()), output, 'log')
+    return [dict(path=str((output / f'm4_pro_per_round.{ext}').resolve()),
+                 sha256=sha256(output / f'm4_pro_per_round.{ext}')) for ext in ('pdf', 'svg', 'png')]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path,
@@ -214,7 +232,7 @@ def main() -> None:
         writer.writerows(points)
     plot(points, json.loads(args.palette.read_text()), args.output_dir, args.yscale)
     counts = []
-    for method in ("Upstream baseline", "Beyond Blossom"):
+    for method in ("PyMatching", "Beyond Blossom"):
         for p in ERROR_RATES:
             group = [row for row in points if row["method"] == method
                      and Decimal(row["error_rate"]) == p]
@@ -246,7 +264,7 @@ def main() -> None:
         groups = {d: {row["method"]: row for row in points
                       if row["distance"] == d and Decimal(row["error_rate"]) == p}
                   for d in DISTANCES}
-        ratios = {d: float(group["Upstream baseline"]["block_time_us"])
+        ratios = {d: float(group["PyMatching"]["block_time_us"])
                   / float(group["Beyond Blossom"]["block_time_us"])
                   for d, group in groups.items()}
         best_d = max(ratios, key=ratios.get)

@@ -1,1 +1,0 @@
-{"scope":"setup only, excluded from all decode timing","model_source":"frozen","detectors":2184,"input_us":1.29423e+06,"model_us":18072.4,"clock_calibration_us":444.671,"graph_us":18701.6,"quantization_scale_bits":4706811636225940306}

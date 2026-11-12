@@ -1,5 +1,0 @@
-[ 66%] Built target libstim
-[ 96%] Built target libbeyond_blossom
-[100%] Building CXX object CMakeFiles/beyond_blossom.dir/src/main.cc.o
-[100%] Linking CXX executable beyond_blossom
-[100%] Built target beyond_blossom

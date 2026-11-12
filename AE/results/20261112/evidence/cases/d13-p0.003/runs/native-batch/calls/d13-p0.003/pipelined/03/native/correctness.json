@@ -1,1 +1,0 @@
-{"status":"passed","shots":1000000,"weight_differences":0,"observable_differences":1,"parent_differences":0,"parent_reference_checked":false,"actual_candidate_witnesses":1,"policy":"upstream integer optimum; equal-weight observable differences require actual candidate parity/weight/observable witness"}

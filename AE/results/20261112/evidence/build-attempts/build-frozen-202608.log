@@ -1,9 +1,0 @@
-wheel
-Traceback (most recent call last):
-  File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/build-frozen.py", line 49, in <module>
-    step('wheel', [str(PYTHON), '-m', 'pip', 'wheel', '--no-index', '--no-deps', '--no-build-isolation',
-  File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/build-frozen.py", line 39, in step
-    run.check_returncode()
-  File "/usr/lib/python3.11/subprocess.py", line 502, in check_returncode
-    raise CalledProcessError(self.returncode, self.args, self.stdout,
-subprocess.CalledProcessError: Command '['/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/bin/python', '-m', 'pip', 'wheel', '--no-index', '--no-deps', '--no-build-isolation', '--wheel-dir', '/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/package-build-attempt2', '/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source']' returned non-zero exit status 1.

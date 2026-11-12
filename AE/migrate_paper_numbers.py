@@ -43,7 +43,7 @@ def digest(path):
 
 def read_json(path):
     path = Path(path)
-    need(path.is_file(), f"缺少文件：{path}")
+    need(path.is_file(), f"Missing file: {path}")
     return json.loads(path.read_bytes(), parse_float=Decimal)
 
 
@@ -58,11 +58,11 @@ def reference(path):
 
 
 def checked_reference(value, base, expected=None):
-    need(isinstance(value, dict) and {"path", "sha256"} <= value.keys(), "来源缺少 path/sha256")
+    need(isinstance(value, dict) and {"path", "sha256"} <= value.keys(), "Source requires path and sha256")
     path = resolve_path(value["path"], base)
-    need(path.is_file(), f"缺少来源凭据：{path}")
-    need(expected is None or path == expected.resolve(), f"凭据指向其他文件：{path}")
-    need(digest(path) == value["sha256"], f"来源 SHA256 不符：{path}")
+    need(path.is_file(), f"Missing source receipt: {path}")
+    need(expected is None or path == expected.resolve(), f"Receipt points to a different file: {path}")
+    need(digest(path) == value["sha256"], f"Source SHA256 differs: {path}")
     return path
 
 
@@ -87,11 +87,11 @@ def declarations(text):
     seen = set()
     for match in DECLARATION.finditer(text):
         key, value = match.group("key", "value")
-        need(key not in seen, f"模板重复定义：{key}")
-        need(NUMBER.fullmatch(value), f"模板值不是裸十进制数：{key}={value}")
+        need(key not in seen, f"Duplicate template definition: {key}")
+        need(NUMBER.fullmatch(value), f"Template value is not a plain decimal: {key}={value}")
         seen.add(key)
         result.append(Declaration(key, value, match.start("value"), match.end("value")))
-    need(result, "模板没有单行 DefinePerfValue 定义")
+    need(result, "Template has no single-line DefinePerfValue definitions")
     return result
 
 
@@ -100,42 +100,42 @@ def is_m4(key):
 
 
 def validate_mapping(config, items):
-    need(config.get("schema_version") == 1, "映射 schema_version 必须为 1")
-    need(not config.get("pending_confirmation"), "仍有待用户确认的映射：" + str(config.get("pending_confirmation")))
+    need(config.get("schema_version") == 1, "Mapping schema_version must be 1")
+    need(not config.get("pending_confirmation"), "Mapping contains unresolved confirmations: " + str(config.get("pending_confirmation")))
     keys = {item.key for item in items}
     rules, preserve = config.get("rules", {}), config.get("preserve", {})
-    need(not (set(rules) & set(preserve)), "同一个字段不能同时修改和保留")
-    need(not ((set(rules) | set(preserve)) - keys), "映射中含模板不存在的字段")
+    need(not (set(rules) & set(preserve)), "A field cannot be both updated and preserved")
+    need(not ((set(rules) | set(preserve)) - keys), "Mapping contains fields absent from the template")
     pending = []
     for item in items:
         if is_m4(item.key):
-            need(item.key not in rules, f"M4 字段禁止配置更新规则：{item.key}")
+            need(item.key not in rules, f"M4 fields cannot have update rules: {item.key}")
         elif item.key in preserve:
             need(isinstance(preserve[item.key], str) and preserve[item.key].strip(),
-                 f"保留字段需要注明已确认原因：{item.key}")
+                 f"Preserved field requires a confirmed reason: {item.key}")
         elif item.key not in rules:
             pending.append(item.key)
-    need(not pending, "以下字段尚未确认映射，请向用户确认后配置 rules/preserve：\n  " + "\n  ".join(pending))
-    need(config.get("metric") in METRICS, "请先确认 metric：batch3_us / min3_us / median3_us")
+    need(not pending, "Confirm the unresolved field mappings before configuring rules/preserve: \n  " + "\n  ".join(pending))
+    need(config.get("metric") in METRICS, "Set the confirmed metric: batch3_us / min3_us / median3_us")
     aliases = config.get("aliases", {})
     for key, rule in rules.items():
         op = rule.get("op")
         need(op in {"time", "time_per_round", "speedup", "best_max_speedup", "min_speedup", "max_speedup", "geomean_speedup", "count_faster", "pmu_miss_percent"},
-             f"未知规则 op：{key}: {op}")
+             f"Unknown rule operation: {key}: {op}")
         if op == "pmu_miss_percent":
             need(config.get("pmu_source") and rule.get("level") in {"L2", "L3"} and
                  rule.get("unit") == "percent" and "d" in rule and "p" in rule,
-                 f"PMU规则需要明确来源、L2/L3、d/p和percent单位：{key}")
-            need(key.rsplit('.', 1)[-1] == rule['level']+'miss', f"PMU宏名与缓存级别不符：{key}")
+                 f"PMU rule requires an explicit source, L2/L3, d/p and percent unit: {key}")
+            need(key.rsplit('.', 1)[-1] == rule['level']+'miss', f"PMU macro name differs from its cache level: {key}")
         required = [rule.get(name) for name in ("method", "reference") if name in rule]
         if op == "best_max_speedup":
-            need(config.get("best_methods"), "请确认 best 所包含的候选版本 best_methods")
+            need(config.get("best_methods"), "Set the confirmed candidate configurations in best_methods")
             required += config["best_methods"]
         for alias in required:
             need(alias in aliases and isinstance(aliases[alias], str) and aliases[alias],
-                 f"请先确认版本映射 aliases[{alias!r}]（用于 {key}）")
+                 f"Confirm the configuration mapping aliases[{alias!r}] (used by {key})")
         if op not in {"time", "time_per_round", "pmu_miss_percent"}:
-            need(rule.get("reference"), f"缺少明确分母/reference：{key}")
+            need(rule.get("reference"), f"Missing explicit baseline/reference: {key}")
 
 
 class Matrix:
@@ -145,58 +145,58 @@ class Matrix:
         self.analysis = resolve_path(analysis_override or spec["analysis"], self.run)
         receipt_path = self.analysis / "complete.json"
         need(receipt_path.is_file(),
-             f"最新矩阵分析尚未完成：{receipt_path}\n不会使用部分数据，也不会自动回退到旧实验。")
+             f"Latest matrix analysis is incomplete: {receipt_path}\nPartial data and automatic fallback to older experiments are disabled.")
         receipt = read_json(receipt_path)
-        need(receipt.get("complete") is True, "分析未完成")
+        need(receipt.get("complete") is True, "Analysis is incomplete")
         revision = self.analysis.name.removeprefix("analysis-")
         submission_path = self.run / f"analysis-submission-{revision}.json"
         analysis_exit = None
         if submission_path.is_file():
             submission = read_json(submission_path)
-            need(submission.get("returncode") == 0 and submission.get("job_id"), "分析提交未成功")
+            need(submission.get("returncode") == 0 and submission.get("job_id"), "Analysis submission failed")
             analysis_exit = self.run / f"exit-{submission['job_id']}_0.txt"
-            need(analysis_exit.is_file() and analysis_exit.read_text().strip() == "0", "分析作业尚未成功退出")
+            need(analysis_exit.is_file() and analysis_exit.read_text().strip() == "0", "Analysis job has not exited successfully")
         summary_path = checked_reference(receipt.get("summary"), self.analysis, self.analysis / "summary.json")
         plan_path = checked_reference(receipt.get("plan"), self.analysis, self.run / "plan.json")
         summary, plan = read_json(summary_path), read_json(plan_path)
-        need(summary.get("complete") is True, "summary 未完成")
+        need(summary.get("complete") is True, "Summary is incomplete")
         for name in ("experiment_id", "implementation_commit"):
-            need(summary.get(name) == plan.get(name) == spec.get(name), f"数据身份不符：{name}")
-        need(summary.get("lto") == spec.get("lto") == plan.get("protocol", {}).get("lto"), "LTO 配置不符")
+            need(summary.get(name) == plan.get(name) == spec.get(name), f"Data identity differs: {name}")
+        need(summary.get("lto") == spec.get("lto") == plan.get("protocol", {}).get("lto"), "LTO configuration differs")
         checked_reference(summary.get("plan"), self.analysis, plan_path)
         need(plan.get("shots") == 1_000_000 and plan["protocol"].get("repeats") == 3,
-             "需要每轮百万 shots、三轮的完整矩阵")
-        need(plan["protocol"].get("warmup_seconds", 0) >= 2, "计划预热不足2秒")
-        need(receipt.get("minimum_warmup_seconds", 0) >= 2, "实际预热不足2秒")
+             "A complete matrix with three repeats of one million shots is required")
+        need(plan["protocol"].get("warmup_seconds", 0) >= 2, "Planned warmup is shorter than two seconds")
+        need(receipt.get("minimum_warmup_seconds", 0) >= 2, "Actual warmup is shorter than two seconds")
         expected_calls = len(plan["cases"]) * len(plan["methods"]) * len(plan["protocol"]["modes"]) * 3
         need(receipt.get("validated_calls") == summary.get("formal_calls") == expected_calls,
-             "正式调用数不完整")
-        need(receipt.get("exact_differences") == 0, "正式结果存在正确性差异")
-        need(len(summary.get("lanes", [])) == len(plan["lanes"]), "节点完成凭据不完整")
+             "Formal call count is incomplete")
+        need(receipt.get("exact_differences") == 0, "Formal results contain correctness differences")
+        need(len(summary.get("lanes", [])) == len(plan["lanes"]), "Node completion receipts are incomplete")
         need({lane["node"] for lane in summary["lanes"]} == {lane["node"] for lane in plan["lanes"]},
-             "节点身份不完整或有重复")
+             "Node identities are incomplete or duplicated")
         for lane in summary["lanes"]:
             path = checked_reference(lane["complete"], self.analysis)
             done = read_json(path)
-            need(done.get("complete") is True and done.get("status") == "complete", f"节点未完成：{path}")
+            need(done.get("complete") is True and done.get("status") == "complete", f"Node is incomplete: {path}")
             checked_reference(done.get("plan"), self.analysis, plan_path)
             exit_path = checked_reference(lane["exit"], self.analysis)
-            need(exit_path.read_text().strip() == "0", f"节点退出非0：{exit_path}")
+            need(exit_path.read_text().strip() == "0", f"Node exited with a nonzero status: {exit_path}")
         self.rows = []
         seen = set()
         plan_metadata = {(int(c["d"]), Decimal(str(c["p"]))): c for c in plan["cases"]}
         plan_cases = set(plan_metadata)
-        need(len(plan_cases) == len(plan["cases"]), "冻结计划中有重复 d/p")
+        need(len(plan_cases) == len(plan["cases"]), "Frozen plan contains duplicate d/p settings")
         for case in summary["cases"]:
             identity = (int(case["d"]), Decimal(str(case["p"])))
-            need(identity not in seen, f"重复 d/p：{identity}")
+            need(identity not in seen, f"Duplicate d/p setting: {identity}")
             seen.add(identity)
-            need(set(case["methods"]) == set(plan["methods"]), f"设置缺少版本：{case['id']}")
+            need(set(case["methods"]) == set(plan["methods"]), f"Setting is missing configurations: {case['id']}")
             self.rows.append(dict(case, rounds=plan_metadata.get(identity, {}).get("rounds")))
-        need(seen == plan_cases and len(summary["cases"]) == len(plan["cases"]), "d/p 矩阵不完整")
+        need(seen == plan_cases and len(summary["cases"]) == len(plan["cases"]), "The d/p matrix is incomplete")
         distances = set(spec["distances"])
         probabilities = {Decimal(str(p)) for p in spec["probabilities"]}
-        need(seen == {(d, p) for d in distances for p in probabilities}, "数据不符合确认的完整 d/p 范围")
+        need(seen == {(d, p) for d in distances for p in probabilities}, "Data does not cover the confirmed d/p range")
         self.metric = config["metric"]
         self.aliases = config["aliases"]
         self.config = config
@@ -218,18 +218,18 @@ class Matrix:
             result = [c for c in result if c["d"] in rule["distances"]]
         if "p" in rule:
             result = [c for c in result if Decimal(str(c["p"])) == Decimal(str(rule["p"]))]
-        need(result, f"规则没有匹配的实测设置：{rule}")
+        need(result, f"Rule matches no measured settings: {rule}")
         if "distances" in rule:
-            need({c["d"] for c in result} == set(rule["distances"]), "规则要求的距离未全部实测")
+            need({c["d"] for c in result} == set(rule["distances"]), "Some distances required by the rule were not measured")
         return result
 
     def time(self, case, alias):
         method = self.aliases[alias]
-        need(method in case["methods"], f"设置 {case['id']} 不含版本 {method}")
+        need(method in case["methods"], f"Setting {case['id']} does not contain configuration {method}")
         raw = case["methods"][method].get(self.metric)
-        need(raw is not None and not isinstance(raw, bool), f"缺少指标：{case['id']} / {method} / {self.metric}")
+        need(raw is not None and not isinstance(raw, bool), f"Missing metric: {case['id']} / {method} / {self.metric}")
         value = Decimal(str(raw))
-        need(value.is_finite() and value > 0, f"耗时必须为有限正数：{case['id']} / {method}")
+        need(value.is_finite() and value > 0, f"Latency must be finite and positive: {case['id']} / {method}")
         return value
 
     def calculate(self, rule):
@@ -260,8 +260,8 @@ class Matrix:
             if op == "time_per_round":
                 rounds = case.get("rounds")
                 need(isinstance(rounds, int) and not isinstance(rounds, bool) and rounds > 0,
-                     f"每轮耗时需要该设置冻结的正整数 rounds：{case['id']}")
-                need("expected_rounds" not in rule or rounds == rule["expected_rounds"], "冻结 rounds 与确认的每轮归一化分母不符")
+                     f"Per-round latency requires the setting's frozen positive integer rounds: {case['id']}")
+                need("expected_rounds" not in rule or rounds == rule["expected_rounds"], "Frozen rounds differs from the confirmed per-round normalization denominator")
                 value /= rounds
             operands.append({"case": case["id"], "method": self.aliases[method], "method_us": denominator,
                              "reference": self.aliases[rule["reference"]] if numerator is not None else None,
@@ -269,7 +269,7 @@ class Matrix:
                              "divide_by_rounds": rounds, "candidate_times_us": candidate_times})
             values.append(value)
         if op in {"time", "time_per_round", "speedup"}:
-            need(len(values) == 1, f"单设置规则匹配了多项：{rule}")
+            need(len(values) == 1, f"Single-setting rule matched multiple settings: {rule}")
             value = values[0]
         elif op == "min_speedup":
             value = min(values)
@@ -289,7 +289,7 @@ def render(text, items, config, matrix):
         context.prec = 60
         for item in items:
             if is_m4(item.key) or item.key in config.get("preserve", {}):
-                reason = "用户要求所有 M4 字段原样保留" if is_m4(item.key) else config["preserve"][item.key]
+                reason = "All M4 fields are preserved as specified" if is_m4(item.key) else config["preserve"][item.key]
                 audit.append({"key": item.key, "status": "preserved", "value": item.value, "reason": reason})
                 continue
             rule = config["rules"][item.key]
@@ -297,7 +297,7 @@ def render(text, items, config, matrix):
             places = len(item.value.partition(".")[2])
             rounded = format(value.quantize(Decimal(1).scaleb(-places), rounding=ROUND_HALF_UP), "f")
             if rule["op"] == "count_faster":
-                need(places == 0, f"设置数应为整数：{item.key}")
+                need(places == 0, f"Setting count must be an integer: {item.key}")
             replacements.append((item.start, item.end, rounded))
             audit.append({"key": item.key, "status": "updated", "old": item.value, "new": rounded,
                           "raw_value": value, "decimal_places": places, "rule": rule, "operands": operands})
@@ -311,14 +311,14 @@ def render(text, items, config, matrix):
         old_skeleton = old_skeleton[:item.start] + "<value>" + old_skeleton[item.end:]
     for item in reversed(after):
         new_skeleton = new_skeleton[:item.start] + "<value>" + new_skeleton[item.end:]
-    need(old_skeleton == new_skeleton, "发生了数值以外的模板修改")
-    need({i.key: i.value for i in items if is_m4(i.key)} == {i.key: i.value for i in after if is_m4(i.key)}, "M4 字段发生变化")
+    need(old_skeleton == new_skeleton, "Template changed beyond numerical values")
+    need({i.key: i.value for i in items if is_m4(i.key)} == {i.key: i.value for i in after if is_m4(i.key)}, "M4 fields changed")
     return output, audit
 
 
 def atomic_write(path, data):
     path = Path(path)
-    need(path.parent.is_dir(), f"输出目录不存在：{path.parent}")
+    need(path.parent.is_dir(), f"Output directory does not exist: {path.parent}")
     fd, name = tempfile.mkstemp(prefix="." + path.name + ".", dir=path.parent)
     try:
         os.fchmod(fd, stat.S_IMODE(path.stat().st_mode) if path.exists() else 0o644)
@@ -336,14 +336,14 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--template", type=Path, default=HERE / "paper_num_template.tex")
     parser.add_argument("--mapping", type=Path, default=HERE / "paper_num_mapping.json")
-    parser.add_argument("--run", type=Path, help="覆盖映射中的矩阵 run 目录")
-    parser.add_argument("--analysis", help="覆盖分析目录名，例如 analysis-r02")
-    parser.add_argument("--pmu-data", type=Path, help="显式改用另一个完整PMU包的SOURCE.json；仍核验全部计数和来源")
+    parser.add_argument("--run", type=Path, help="Override the matrix run directory in the mapping")
+    parser.add_argument("--analysis", help="Override the analysis directory name, such as analysis-r02")
+    parser.add_argument("--pmu-data", type=Path, help="Use another complete PMU bundle SOURCE.json; all counts and sources are still verified")
     destination = parser.add_mutually_exclusive_group()
-    destination.add_argument("--output", type=Path, help="生成新 TeX，模板保留")
-    destination.add_argument("--in-place", action="store_true", help="替换模板数值，并保留带 SHA256 的原模板备份")
-    parser.add_argument("--check", action="store_true", help="完成校验和计算，仅输出预览，不写文件")
-    parser.add_argument("--audit", type=Path, help="溯源 JSON 路径，默认 <输出>.audit.json")
+    destination.add_argument("--output", type=Path, help="Generate a new TeX file and preserve the template")
+    destination.add_argument("--in-place", action="store_true", help="Replace template values and retain a SHA256-identified backup")
+    parser.add_argument("--check", action="store_true", help="Validate and compute a preview without writing files")
+    parser.add_argument("--audit", type=Path, help="Provenance JSON path; defaults to <output>.audit.json")
     args = parser.parse_args(argv)
     try:
         raw = args.template.read_bytes()
@@ -356,12 +356,12 @@ def main(argv=None):
         for change in changes:
             if change["status"] == "updated":
                 print(f"{change['key']}: {change['old']} -> {change['new']}")
-        print(f"已计算 {sum(c['status'] == 'updated' for c in changes)} 项；保留 {sum(c['status'] == 'preserved' for c in changes)} 项（含所有 M4）。")
+        print(f"Computed {sum(c['status'] == 'updated' for c in changes)} values; preserved {sum(c['status'] == 'preserved' for c in changes)} values, including all M4 values.")
         if args.check:
             return 0
-        need(args.in_place or args.output is not None, "请指定 --output 或 --in-place；预览使用 --check")
+        need(args.in_place or args.output is not None, "Specify --output or --in-place; use --check for a preview")
         target = args.template.resolve() if args.in_place else args.output.resolve()
-        need(args.in_place or target != args.template.resolve(), "写回模板必须明确指定 --in-place")
+        need(args.in_place or target != args.template.resolve(), "Overwriting the template requires --in-place")
         audit_path = args.audit.resolve() if args.audit else target.with_name(target.name + ".audit.json")
         protected = {args.template.resolve(), args.mapping.resolve(), Path(matrix.provenance['summary']['path']),
                      Path(matrix.provenance['completion']['path']), Path(matrix.provenance['plan']['path']),
@@ -369,14 +369,14 @@ def main(argv=None):
         if matrix.pmu is not None:
             protected.update(matrix.pmu.paths)
             protected.add(Path(sys.modules[PmuData.__module__].__file__).resolve())
-        need(audit_path != target and audit_path not in protected, "audit 路径不能覆盖模板、输出或数据来源")
-        need(args.in_place or target not in protected, "输出路径不能覆盖数据来源或映射")
-        need(target.parent.is_dir() and audit_path.parent.is_dir(), "输出目录不存在")
+        need(audit_path != target and audit_path not in protected, "Audit path must not overwrite the template, output or data sources")
+        need(args.in_place or target not in protected, "Output path must not overwrite data sources or the mapping")
+        need(target.parent.is_dir() and audit_path.parent.is_dir(), "Output directory does not exist")
         backup = None
         if args.in_place:
             backup = target.with_name(target.name + ".bak-" + hashlib.sha256(raw).hexdigest()[:16])
             if backup.exists():
-                need(backup.read_bytes() == raw, f"已有备份内容不同：{backup}")
+                need(backup.read_bytes() == raw, f"Existing backup has different content: {backup}")
             else:
                 with backup.open("xb") as stream:
                     stream.write(raw)
@@ -391,10 +391,10 @@ def main(argv=None):
         audit_bytes = json_text(audit).encode("utf-8")
         atomic_write(target, data)
         atomic_write(audit_path, audit_bytes)
-        print(f"TeX: {target}\n溯源: {audit_path}")
+        print(f"TeX: {target}\nProvenance: {audit_path}")
         return 0
     except (MigrationError, OSError, ValueError, KeyError, TypeError, InvalidOperation) as exc:
-        print(f"迁移失败：{exc}", file=sys.stderr)
+        print(f"Migration failed: {exc}", file=sys.stderr)
         return 2
 
 

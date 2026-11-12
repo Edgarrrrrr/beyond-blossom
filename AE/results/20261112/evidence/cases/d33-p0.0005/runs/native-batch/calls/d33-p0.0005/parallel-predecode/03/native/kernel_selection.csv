@@ -1,3 +1,0 @@
-component_id,grid_id,requested_backend,requested_simd,actual_selected_simd,matching_nodes,grid_cells
-0,0,avx512vl,4,4,18496,44100
-1,0,avx512vl,4,4,17408,44100

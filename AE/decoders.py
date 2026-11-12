@@ -1,10 +1,11 @@
-"""Seven decoder series on three uniform-noise panels.
+"""Paper comparison rendering and the separate legacy comparison-data renderer.
 
-Each setting has 1,000 independent shots and three native timing repeats.
-Beyond blossom selects the smallest three-repeat mean of six configurations.
-The bundled CSV retains all twelve measured methods for that selection.
+``render_paper`` consumes supplied measurements and draws the six paper series.
+The legacy ``render`` uses the bundled 1,000-shot data and seven series.
 """
 import csv
+from decimal import Decimal
+import hashlib
 import itertools
 import math
 from collections import defaultdict
@@ -102,6 +103,145 @@ def _write_csv(path, records):
         writer = csv.DictWriter(stream, fieldnames=list(records[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(records)
+
+
+PAPER_CANDIDATES = ('structured', 'predecoded', 'component-parallel', 'pipelined', 'parallel-predecode')
+PAPER_SERIES = (
+    ('best', 'Beyond Blossom', '#4D7EA8', 'o'),
+    ('reference', 'PyMatching', '#737B86', 's'),
+    ('parity', 'Parity Blossom', '#C8786D', '^'),
+    ('fusion', 'Fusion Blossom', '#A080AE', 'D'),
+    ('unionfind', 'UnionFind', '#5B9889', 'v'),
+    ('ldpc-uf', 'LDPC-UF', '#A78840', 'P'),
+)
+
+
+def render_paper(output, native, external, *, profile='paper', paper_points=None):
+    """Draw the manuscript comparison layout using explicitly supplied measurements.
+
+    Native/external keys are (distance, Decimal(error_rate), method). Optional
+    paper_points uses the same keys for the six displayed series, including
+    ``best``; each row must provide its measured mean_us and shots. It never falls
+    back to the older 1000-shot comparison data or adds Parity UF to this figure.
+    """
+    from matplotlib.lines import Line2D
+    from plot_fonts import register_paper_fonts
+
+    if profile not in ('paper', 'smoke'):
+        raise ValueError('Expected paper or smoke profile')
+    if paper_points is None:
+        settings = sorted({(int(d), Decimal(str(p))) for d, p, _ in native})
+        points = {}
+        for d, p in settings:
+            winner = min(PAPER_CANDIDATES, key=lambda method: native[d, p, method]['mean_us'])
+            points[d, p, 'best'] = native[d, p, winner]
+            points[d, p, 'reference'] = native[d, p, 'reference']
+            for method, *_ in PAPER_SERIES[2:]:
+                points[d, p, method] = external[d, p, method]
+    else:
+        points = {}
+        for (d, p, method), row in paper_points.items():
+            if type(d) is not int:
+                raise ValueError('Comparison distances must be integers')
+            key = (d, Decimal(str(p)), method)
+            if key in points:
+                raise ValueError('Duplicate comparison point')
+            points[key] = row
+        if profile == 'paper':
+            expected = {(d, Decimal(str(p)), method) for d in DISTANCES
+                        for p in PROBABILITIES for method, *_ in PAPER_SERIES}
+            if set(points) != expected:
+                raise ValueError('Paper comparison requires exactly 21 settings and six series')
+        settings = sorted({(d, p) for d, p, _ in points})
+    if not settings:
+        raise ValueError('No comparison measurements')
+    distances = sorted({d for d, _ in settings})
+    rates = sorted({p for _, p in settings})
+    if any(not p.is_finite() or not 0 < p < 1 for p in rates):
+        raise ValueError('Invalid comparison error rate')
+    if set(points) != {(d, p, method) for d, p in settings for method, *_ in PAPER_SERIES}:
+        raise ValueError('Comparison requires exactly six series per setting')
+    if set(settings) != {(d, p) for d in distances for p in rates}:
+        raise ValueError('Comparison settings must form a rectangular matrix')
+    if min(distances) < 8 or max(distances) > 34:
+        raise ValueError('Comparison distances are outside the manuscript axis range')
+    for d, p in settings:
+        for method, *_ in PAPER_SERIES:
+            row = points[d, p, method]
+            if (not math.isfinite(row['mean_us']) or not .3 <= row['mean_us'] <= 1e5 or
+                    type(row['shots']) is not int or row['shots'] <= 0):
+                raise ValueError('Invalid comparison measurement or value outside the manuscript axis range')
+
+    register_paper_fonts()
+    plt.rcdefaults()
+    plt.rcParams.update({
+        'font.family': 'Arial', 'font.size': 18,
+        'mathtext.fontset': 'custom', 'mathtext.rm': 'Arial',
+        'mathtext.it': 'Arial:italic', 'mathtext.bf': 'Arial:bold',
+        'text.color': '#243240', 'axes.labelcolor': '#243240',
+        'axes.edgecolor': '#B9C2C8', 'axes.linewidth': .75,
+        'axes.labelsize': 26, 'axes.titlesize': 24, 'axes.titleweight': 'bold',
+        'xtick.labelsize': 18, 'ytick.labelsize': 18,
+        'xtick.color': '#46535E', 'ytick.color': '#46535E',
+        'xtick.direction': 'out', 'ytick.direction': 'out',
+        'xtick.major.size': 3.5, 'ytick.major.size': 3.5,
+        'xtick.major.width': .7, 'ytick.major.width': .7,
+        'axes.axisbelow': True, 'grid.color': '#E5E9ED', 'grid.linewidth': .65,
+        'pdf.fonttype': 42, 'ps.fonttype': 42, 'svg.fonttype': 'none',
+        'figure.facecolor': 'white', 'savefig.facecolor': 'white',
+    })
+    fig, axes = plt.subplots(1, len(rates), figsize=(14.4, 6.8), dpi=170,
+                             sharex=True, sharey=True, squeeze=False)
+    fig.subplots_adjust(left=.09, right=.985, bottom=.145, top=.70, wspace=.14)
+    legend_handles = {}
+    for ax, p in zip(axes[0], rates):
+        ax.set_yscale('log')
+        ax.set_ylim(.3, 1e5)
+        ax.set_xlim(8, 34)
+        ax.set_xticks(DISTANCES)
+        ax.yaxis.set_major_locator(FixedLocator([1, 10, 100, 1000, 10000, 100000]))
+        ax.yaxis.set_major_formatter(LogFormatterMathtext())
+        ax.yaxis.set_minor_locator(FixedLocator([]))
+        ax.yaxis.set_minor_formatter(NullFormatter())
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+        ax.tick_params(axis='both', pad=6)
+        ax.grid(axis='y', which='major')
+        for method, label, color, marker in PAPER_SERIES:
+            rows = [points[d, p, method] for d in distances]
+            values = [row['mean_us'] for row in rows]
+            width = 2.6 if method == 'best' else 2
+            zorder = 4 if method == 'best' else 3
+            ax.plot(distances, values, color=color, linestyle='-', linewidth=width, zorder=zorder)
+            for d, value, row in zip(distances, values, rows):
+                ax.plot(d, value, linestyle='none', marker=marker, color=color,
+                        markersize=7.5, markeredgewidth=1.35,
+                        markerfacecolor=color if row['shots'] == 1000000 else 'white', zorder=zorder, clip_on=False)
+            # The paper legend identifies each series; per-point fill records sample count.
+            legend_handles[method] = Line2D([], [], color=color, linestyle='-', linewidth=2.6 if method == 'best' else 2.1,
+                    marker=marker, markersize=7.5, markeredgewidth=1.35, markerfacecolor=color, label=label)
+        ax.set_title(f'p = {float(p) * 100:g}%', pad=18)
+        ax.set_xlabel('Code distance (d)', labelpad=9)
+    axes[0, 0].set_ylabel('Decoding time (μs)', fontsize=22, fontweight='bold', labelpad=12)
+    order = ('best', 'fusion', 'reference', 'unionfind', 'parity', 'ldpc-uf')
+    fig.legend([legend_handles[method] for method in order],
+               [legend_handles[method].get_label() for method in order],
+               loc='upper center', bbox_to_anchor=(.53, .985), ncol=3,
+               frameon=False, fontsize=26, handlelength=1.8, handletextpad=.55,
+               columnspacing=1.65, borderaxespad=0, labelspacing=.55)
+    output = Path(output)
+    output.mkdir(parents=True, exist_ok=True)
+    result = []
+    try:
+        for extension in ('pdf', 'svg', 'png'):
+            path = output / f'decoder_comparison_shows_speedup_v3.{extension}'
+            if path.exists():
+                raise ValueError('Comparison output already exists: ' + str(path))
+            fig.savefig(path, dpi=600 if extension == 'png' else 170)
+            result.append({'path': str(path.resolve()), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()})
+    finally:
+        plt.close(fig)
+    return result
 
 
 def render(output: Path):

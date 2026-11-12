@@ -2,12 +2,22 @@
   "schema_version": 1,
   "manifest": {
     "path": "data/tailreset/SOURCE.json",
-    "sha256": "f8395c7ffe0e5183c14694f12e7cb5b06fc70915dfd3dac4f544be581d7faa66"
+    "sha256": "e4359ae46e7f40360a8953c2dc974c10ae59fb77ccbc3e55811ca0012e58cdf6",
+    "original_sha256": "f8395c7ffe0e5183c14694f12e7cb5b06fc70915dfd3dac4f544be581d7faa66",
+    "translation": "References the published manifest with English CSV labels; all numerical source records are unchanged."
   },
   "experiment_id": "AE-TAILRESET-20261110",
   "implementation_commit": "d7e2f25144cb9a97a5b66f0eb2418a0e847ae9bc",
   "acquisition_commit": "79889da06534ee63d63b6a965c3f056e3bfa5732",
-  "distances": [9, 13, 17, 21, 25, 29, 33],
+  "distances": [
+    9,
+    13,
+    17,
+    21,
+    25,
+    29,
+    33
+  ],
   "physical_error_rate": "0.003",
   "shots": 1000000,
   "batch_repeats": 3,

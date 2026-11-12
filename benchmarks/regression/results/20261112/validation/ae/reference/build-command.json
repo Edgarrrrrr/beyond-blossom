@@ -1,9 +1,0 @@
-[
-  "cmake",
-  "--build",
-  "/tmp/beyond-ae-sealed-reference/build",
-  "--target",
-  "experiment_benchmark",
-  "-j",
-  "4"
-]

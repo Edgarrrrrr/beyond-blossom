@@ -1,2 +1,0 @@
-distance,error_rate,method,repeats,independent_shots,mean_us,median_batch_us
-21,0.003,predecoded,3,1000000,134.65110697333336,134.73821239999998

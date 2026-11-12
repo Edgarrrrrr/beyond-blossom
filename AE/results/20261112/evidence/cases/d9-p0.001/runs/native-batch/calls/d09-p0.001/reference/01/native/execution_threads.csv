@@ -1,3 +1,0 @@
-boundary,thread_index,tid,cpu,affinity_mask,component_id,lane,group_threads,captain,socket,physical_core,buffer_id
-before,0,433874,2,2,-1,0,1,0,0,2,-1
-after,0,433874,2,2,-1,0,1,0,0,2,-1

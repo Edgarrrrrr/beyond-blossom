@@ -1,2 +1,0 @@
-platform,distance,error_rate,selected_configuration,threads,shots,repeats,aggregation,time_us,reference_us,speedup,input_sha256
-xeon,9,0.003,predecoded,1,1025,1,mean_us,3.6355356097560976,11.490405853658537,3.1605812972436844,4b1c262643ef07530297c9a408429ab994bd81110903aef460466404608ca5fd

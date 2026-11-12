@@ -1,266 +1,183 @@
 # Acquisition reference
 
-The artifact contains immutable historical measurements, offline figure generators,
-and native collection tools for Beyond Blossom and five external decoders. Commands
-run from the repository root. Analysis needs Python 3.10+; the complete acquisition
-workflow needs Python 3.11+, CMake 3.21+, a C++20 compiler, OpenMP and Rust nightly.
-Builds and measurements use separate directories outside the source checkout.
+Use [AE/README.md](README.md) for installation and the standard workflows:
+`AE/run.py` collects locally, `AE/slurm.py` distributes complete settings, and
+`AE/replot.py` redraws saved results. Commands run from the repository root, with
+`AE_WORK` set to a work directory outside the checkout.
 
-## Environment and archived results
+## Saved results and paper figures
+
+Replay a completed local or Slurm workflow without running a decoder:
 
 ```sh
-AE_WORK=/absolute/path/ae-work
-mkdir -p "$AE_WORK"
-python3 -m venv "$AE_WORK/venv"
-. "$AE_WORK/venv/bin/activate"
-python -m pip install '.[stim]' -r AE/requirements.txt
-python AE/replot.py --output "$AE_WORK/archived-figures"
-python -m unittest discover -s AE -p 'test_*.py'
+python AE/replot.py --run "$AE_WORK/paper" --output "$AE_WORK/redraw"
 ```
 
-`replot.py` verifies the bundled evidence and writes PDF/SVG/PNG figures, numerical
-CSVs, `performance-macros.tex`, `predecoder_numbers.tex` and a completion receipt.
-It runs no decoder and needs no original million-shot input files or cluster account.
-Fonts use Matplotlib's redistributable DejaVu family; old proprietary-font pixels
-are not part of the numerical reproducibility contract. Existing output directories
-are rejected.
+Alternatively, replay a sealed canonical export, including the compact measurements
+bundled with the repository:
 
-| Paper result | Archived evidence | Individual offline command |
+```sh
+python AE/replot.py --input AE/data/reproduction/canonical.json \
+  --output "$AE_WORK/included-results"
+```
+
+`--input` discovers the adjacent manifest or export receipt; `--manifest` selects
+one explicitly. Replay verifies the canonical data and seal, uses the current
+shared paper renderers, and records their hashes. It copies available tables and
+macros unchanged. It performs no sampling, decoding or raw-run revalidation.
+Output directories must be new.
+
+Fresh collection and canonical replay use the same figure implementations:
+
+| Paper figure | Output basename | Required measurements |
 | --- | --- | --- |
-| Xeon incremental ablation, 21 settings | `data/latest-matrix/`, all LTO off | `python AE/plot.py latest-matrix --output "$AE_WORK/ablation-figure"` |
-| Xeon timings and speedup macros | Same 882-call matrix | `python AE/migrate_paper_numbers.py --check` |
-| Predecoder table, seven distances, p=0.003 | `data/tailreset/`, separate timings and counts | `python AE/generate_predecoder_macros.py --check` |
-| L2/L3 miss percentages | `data/pmu/`, raw event counts | `python AE/pmu_data.py verify` |
-| M4 per-round throughput, 21 settings | `m4_pro/data/`, original 126 configuration rows | `python AE/m4_pro/plot_m4_per_round.py --output-dir "$AE_WORK/m4-figure"` |
-| Historical external comparison | `data/decoders.csv`, 1000 shots per repeat | `python AE/plot.py decoders --output "$AE_WORK/external-figure"` |
-| Earlier grid/cache/distribution study | `data/grid/` | `python AE/plot.py grid --output "$AE_WORK/grid-figures"` |
-| Earlier mixed-LTO ablation | `data/ablation.json` | `python AE/plot.py ablation --output "$AE_WORK/older-ablation"` |
+| Incremental ablation | `incremental_ablation_1107_v1` | Official reference and five Beyond Blossom configurations |
+| Decoder comparison | `decoder_comparison_shows_speedup_v3` | Native and external methods on the same saved input streams |
+| Apple M4 per-round time | `m4_pro_per_round` | M4 batch measurements |
 
-Archived figures and macros always use their recorded source data. Fresh collection
-writes new evidence and never replaces these files. See [measurement provenance](data/SOURCES.md)
-for the sample-count, timing-scope and table-label discrepancies that limit paper claims.
+Each figure is exported as PDF, SVG and PNG. The predecoder experiment is a
+**table**, represented by `predecoder.csv` and `predecoder_numbers.tex`; the paper
+renderer does not add decoding-time or residual-syndrome bar charts. The comparison
+figure has six series. Parity UF remains in the collected external data but is not
+an additional manuscript curve.
 
-## Fixed dependencies and reference
+Rendering uses Matplotlib **3.11.0**, pinned in [requirements.txt](requirements.txt).
+The [font bundle](fonts/README.md) contains all 30 Microsoft Core Fonts files with
+their EULA and checksums. The ablation uses Times New Roman, the comparison uses
+Arial, and the M4 figure uses DejaVu Sans. The renderers register the bundled fonts
+instead of relying on the host's font installation.
 
-The repository bundles the fixed Stim and GoogleTest sources, official upstream
-release 2.3.1 (`e27b8c6a5f5ba10fb74d4ebb29822f2df5e12bcd`), acquisition
-adapter, external decoders, and locked Rust crates. Their hashes and licenses are
-recorded in [vendor/](../vendor/README.md). A fresh clone needs no historical tag,
-private directory, or separately downloaded decoder source. Install the standard
-compiler, Python packages, and pinned Rust toolchain before using `--offline`.
+Original manuscript figures, historical archives and newly collected measurements
+are distinct data sources. The exact input table for the original manuscript's
+external-comparison figure has not been identified; the older 1,000-shot comparison
+CSV is a different dataset. Matching the paper layout does not establish an exact
+redraw of those original measurements. Running `replot.py` without `--run` or `--input` requests all three original
+paper figures and fails explicitly while the original comparison source is
+missing. `--paper-figures ablation m4` selects the two verified original figures.
+Legacy grid and 1,000-shot plots remain separate lower-level utilities. See
+[data provenance](data/SOURCES.md) for the archived scopes.
 
-```sh
-python AE/build_reference.py --offline --jobs 2 --output "$AE_WORK/reference"
-```
+## Measurement scope
 
-This builds the independent official reference, including its fixed Stim library.
-`reference.json` seals the source, adapted acquisition wrapper, dependencies,
-static library and executable. Platform adaptation changes only acquisition code.
+The standard paper matrix contains seven distances, d=9,13,17,21,25,29,33, and
+three error rates, p=0.0005,0.001,0.003. Circuits are rotated memory-X with d rounds,
+the complete X/Z detector stream, and all four circuit-level noise probabilities
+set to p. The official reference and each Beyond configuration use one million
+saved inputs per setting and three timing passes. Repeating the inputs does not
+increase the independent sample count.
 
-For explicit dependency reuse or inspection, `python AE/vendor.py --output "$AE_WORK/deps"` verifies and extracts the bundled sources and writes
-`dependencies.json`. Builder options accept explicit source/library paths when
-needed; they are optional overrides rather than prerequisites.
+The six paper stages are `reference`, `structured`, `predecoded`,
+`component-parallel`, `pipelined` and `parallel-predecode`, using 1/1/1/2/4/8 cores.
+The lower-level collector also supports `unstructured` as a separate regression
+measurement. The reference is the independently built official PyMatching revision
+`e27b8c6a5f5ba10fb74d4ebb29822f2df5e12bcd`; the current unstructured backend does
+not replace it.
 
-## Candidate build and full native matrix
+Native batch timing includes the normal decode lifecycle, result storage and final
+pipeline drain. Model construction, input loading, warmup, correctness checks and
+output are outside the timing window. Weight differences fail validation;
+equal-optimum observable differences require actual candidate correction witnesses.
+The input format does not contain physical observable truth, so these checks do not
+measure logical failure rates.
 
-Commit the complete source before a paper build. `build_native.py` seals the source
-commit and file hashes before and after compilation, compiler/configuration,
-Stim inputs, commands and binary hash. A paper run requires this receipt and the
-fixed reference receipt. `--profile smoke` permits a development tree; omitting
-receipts then produces an integration check with explicitly weaker provenance.
-The explicit commands below use the Xeon `avx512vl` backend; select `avx2` on
-compatible x86 CPUs or `scalar` on other CPUs, including Arm. `AE/run.py` chooses
-the supported backend automatically. Exports label the actual platform and backend.
+Linux results use pooled batch means, calculated from integer elapsed time and shot
+counts. M4 results use the median of three complete-batch means. Speedup is official
+reference latency divided by candidate latency. The best configuration is selected
+from the five measured Beyond configurations per setting; this is a descriptive
+selection, not a measured adaptive dispatcher.
 
-```sh
-python AE/build_native.py --offline --output "$AE_WORK/native" --jobs 2
-python AE/reproduce.py run --profile paper --backend avx512vl \
-  --binary "$AE_WORK/native/bin/bb_benchmark" --build-record "$AE_WORK/native/build.json" \
-  --reference-binary "$AE_WORK/reference/build/bin/experiment_benchmark" \
-  --reference-record "$AE_WORK/reference/reference.json" \
-  --output "$AE_WORK/native-batch"
-python AE/reproduce.py analyze "$AE_WORK/native-batch"
-python AE/reproduce.py run --profile paper --backend avx512vl --measurement latency \
-  --binary "$AE_WORK/native/bin/bb_benchmark" --build-record "$AE_WORK/native/build.json" \
-  --reference-binary "$AE_WORK/reference/build/bin/experiment_benchmark" \
-  --reference-record "$AE_WORK/reference/reference.json" \
-  --input-run "$AE_WORK/native-batch" --link-inputs --output "$AE_WORK/native-latency"
-```
+External collection defaults to a 10,000-shot prefix of each saved native stream,
+with three passes. `--external-shots 1000000` on `run.py` requests the full streams.
+External interfaces have different timing boundaries and integer quantization:
+Parity/Fusion time solve and subgraph extraction without clear; UnionFind and LDPC
+UF also exclude preparation or cleanup steps. See the
+[external reference](external/README.md) for exact scopes and the independent
+integer-weight oracle. Missing measurements are never filled from the old CSVs.
 
-The default paper matrix uses d=9,13,17,21,25,29,33, p=0.0005,0.001,0.003,
-one million saved independent shots per setting and three timing passes. Circuits
-are rotated memory-X with d rounds, the complete X/Z detector stream, and all four
-circuit-level noise probabilities equal to p. Seven methods are collected:
-`reference`, `unstructured`, `structured`, `predecoded`, `component-parallel`,
-`pipelined` and `parallel-predecode`. The six paper stages use 1/1/1/2/4/8 cores;
-`unstructured` is an additional current-code regression measurement.
+## Individual stages
 
-`--input-run` verifies and copies a completed run's saved circuit, DEM and sparse
-inputs. Add `--link-inputs` to reuse the verified files with hard links where
-supported; cross-device reuse falls back to copying and records the actual method.
-Neither mode changes the source files. It preserves original seed and stream IDs, including when selecting only
-some distances or error rates, and performs no sampling. Reused inputs must retain
-the original shot count. This also supports implementation migration comparisons.
+The automatic runners build and schedule these stages. Direct entry points are
+available for hardware-specific work or a selected experiment:
 
-Timing includes the complete native decode, result staging, reset and pipeline
-drain. Construction, saved-input loading, warmup, validation and output are excluded.
-Weight differences fail the run; observable ties require the native witness check.
-`plan.json`, `calls/`, `complete.json` and `summary.csv` retain identities, commands,
-placement, correctness and raw timing. Both pooled means and median-of-three batch
-means are reported. Repeated passes do not increase the independent sample count.
+| Entry point | Purpose |
+| --- | --- |
+| `build_reference.py` | Build and seal the fixed official reference |
+| `build_native.py` | Build and seal a candidate configuration |
+| `reproduce.py run` | Collect batch, latency, PMU or untimed statistics |
+| `reproduce.py external` | Collect external decoders on saved native inputs |
+| `export_results.py` | Validate completed runs and export figures, tables and macros |
 
-Linux automatically selects distinct physical cores on one socket; `--cpus` overrides
-the selection. All seven methods need eight cores. A smaller smoke command is:
+The [vendor bundle](../vendor/README.md) supplies fixed decoder sources, reference
+adapters and locked crates. After installing the standard tools and Python packages,
+`--offline` builds need no network access. Paper builds require a clean source
+checkout and record compiler flags, source files, dependencies and executable hashes.
 
-```sh
-python AE/reproduce.py run --profile smoke --backend scalar \
-  --binary "$AE_WORK/native/bin/bb_benchmark" \
-  --methods unstructured,structured,predecoded --output "$AE_WORK/native-smoke"
-```
+`reproduce.py run --input-run COMPLETED_RUN` reuses verified circuit, DEM and input
+files without sampling. `--link-inputs` requests hard-link reuse where supported;
+otherwise the collector copies the files and records the fallback. Reused inputs
+retain their original seed, stream identity and shot count. `--measurement latency`
+selects a separate per-shot measurement; its values are not substituted for batch
+means.
 
-Smoke defaults to 1025 inputs at d=9, p=0.003, one pass and at least two seconds of
-warmup per call. Without an independent reference, its expected results come from
-the candidate's generic path. The recorded Xeon platform was Gold 6230R, GCC 12.2,
-C++20, `-O3`, AVX-512VL/AVX2 and LTO off; use exclusive cores for new timing claims.
+PMU collection uses `--measurement pmu` and separate L2/L3 builds selected by
+`--cache-level 2` or `3` on both builders. It is Linux-only and measures the calling
+user-space thread, so only serial methods are allowed. L2 uses Cascade Lake demand
+read/request events; L3 uses LLC-loads and LLC-load-misses. The reported percentage
+is `100 * misses / requests`. Unsupported or multiplexed groups fail. The automatic
+workflow collects d=33, p=0.003 when CPU events and permissions permit it, and records
+unavailable results explicitly.
 
-## External native comparison
+For the serial predecoder table, the export roles map to physical build modes:
 
-[External decoder instructions](external/README.md) document source identities,
-correctness overlays, offline Cargo builds and each original timing window. The
-five native methods are Parity Blossom, Fusion Blossom, Parity UF, UnionFind C++
-and LDPC UF. Their correction witnesses are checked against an independent native
-oracle linked to the fixed official reference.
+| Export role | `build_native.py --predecode-mode` | Policy |
+| --- | --- | --- |
+| `0` | `0` | Degree-ordered predecoding |
+| `1` | `1` | No predecoding |
+| `2` | `3` | Simultaneous equal-share simple baseline |
 
-```sh
-rustup toolchain install nightly-2026-03-10 --profile minimal
-python AE/external/build.py --output "$AE_WORK/external-build" \
-  --reference-build "$AE_WORK/reference" \
-  --toolchain nightly-2026-03-10 --jobs 2
-python AE/reproduce.py external --profile paper \
-  --ae-run "$AE_WORK/native-batch" --build "$AE_WORK/external-build" \
-  --limit 10000 --output "$AE_WORK/external-10000"
-BB_EXTERNAL_ORACLE="$AE_WORK/external-build/oracle" \
-  python -m unittest discover -s AE/external -p 'test_*.py' -v
-```
+Mode 3 caps active-active contributions at half the edge weight, keeps the full
+bound for inactive neighbors and boundaries, and rounds down to the even-radius
+lattice. All caps are published before coordinate-order tight matching. Mode 2
+remains the distinct historical coordinate-order, full-cap implementation.
 
-The wrapper consumes all 21 sealed native input cases. The command above selects
-the same 10,000-shot prefix and three repeats for every external method, matching
-`AE/run.py`'s default. The lower-level wrapper defaults to one million distinct
-inputs if `--limit` is omitted. `--shot-counts counts.json`
-can instead provide explicit method defaults and case-specific overrides:
-
-```json
-{"parity": 1000000, "d33-p0.003": {"fusion": 10000}}
-```
-
-These options define new collections. The manuscript does not identify the original
-method/setting assignment of its million-shot and 10,000-shot markers, and that
-assignment cannot be inferred from the archived 1000-shot CSV. Every fresh row records
-its actual distinct count, full/prefix status, three repeats and native timing scope.
-Default warmup reuses a measured prefix and records that policy. `--warmup-root`
-accepts a separate saved AE `inputs/` directory with matching cases and DEMs.
-
-The external scopes differ from the complete-decode scope above: Parity/Fusion time
-`solve + subgraph` and exclude `clear`; UnionFind excludes syndrome preparation,
-edge projection and `clear`; LDPC UF also excludes cluster initialization and cleanup.
-The sparse inputs lack physical observable truth, so this path reports matching
-optimality and correction validity, not logical failure rates.
-
-## Cache counters and predecoder policies
-
-PMU collection is separate from timing and Linux-only. It requires perf permissions
-and the matching CPU events. L2 uses Cascade Lake `L2_RQSTS.ALL_DEMAND_DATA_RD` and
-`L2_RQSTS.DEMAND_DATA_RD_MISS`; L3 uses `LLC-loads` and `LLC-load-misses`. The metric is
-`100 * misses / requests`. Counters cover the calling user-space thread; unsupported
-or multiplexed groups fail. Build both reference and candidate at the same level:
-
-```sh
-for level in 2 3; do
-  python AE/build_reference.py --cache-level "$level" --jobs 2 \
-    --offline --output "$AE_WORK/reference-l$level"
-  python AE/build_native.py --offline --cache-level "$level" --jobs 2 --output "$AE_WORK/native-l$level"
-  python AE/reproduce.py run --profile paper --measurement pmu --repeats 1 \
-    --binary "$AE_WORK/native-l$level/bin/bb_benchmark" --build-record "$AE_WORK/native-l$level/build.json" \
-    --reference-binary "$AE_WORK/reference-l$level/build/bin/experiment_benchmark" \
-    --reference-record "$AE_WORK/reference-l$level/reference.json" \
-    --methods reference,structured --distances 33 --error-rates .003 --backend avx512vl \
-    --input-run "$AE_WORK/native-batch" --link-inputs --output "$AE_WORK/pmu-l$level"
-done
-```
-
-Fresh collection follows the manuscript's serial predecoder table. Build modes 0/1/3
-select degree ordering, no predecoding and simultaneous equal-share growth. Mode 2
-retains the historical coordinate-order, full-cap policy. The export roles 0/1/2
-map to build modes 0/1/3 for the new table. The loop
-below measures all three on the same saved p=0.003 inputs, then separately collects
-untimed residual counters. Counter-enabled binaries reject timing modes. The archived
-table used a four-thread pipeline; that historical scope remains explicitly labeled.
-
-```sh
-for variant in 0:0 1:1 2:3; do
-  policy=${variant%:*}
-  mode=${variant#*:}
-  python AE/build_native.py --predecode-mode "$mode" --jobs 2 \
-    --output "$AE_WORK/policy-$policy"
-  python AE/reproduce.py run --profile paper --methods predecoded --error-rates .003 \
-    --binary "$AE_WORK/policy-$policy/bin/bb_benchmark" --build-record "$AE_WORK/policy-$policy/build.json" \
-    --reference-binary "$AE_WORK/reference/build/bin/experiment_benchmark" \
-    --reference-record "$AE_WORK/reference/reference.json" --backend avx512vl \
-    --input-run "$AE_WORK/native-batch" --link-inputs --output "$AE_WORK/policy-$policy-timing"
-  python AE/build_native.py --predecode-mode "$mode" --statistics --jobs 2 \
-    --output "$AE_WORK/policy-$policy-counts-build"
-  python AE/reproduce.py run --profile paper --measurement statistics --repeats 1 \
-    --methods predecoded --error-rates .003 --backend avx512vl \
-    --binary "$AE_WORK/policy-$policy-counts-build/bin/bb_benchmark" \
-    --build-record "$AE_WORK/policy-$policy-counts-build/build.json" \
-    --reference-binary "$AE_WORK/reference/build/bin/experiment_benchmark" \
-    --reference-record "$AE_WORK/reference/reference.json" \
-    --input-run "$AE_WORK/native-batch" --link-inputs --output "$AE_WORK/policy-$policy-counts"
-done
-```
-
-The simple baseline caps each active-active edge contribution at half its weight,
-retains the full bound for inactive neighbors and boundaries, and rounds down to
-the decoder's even-radius lattice. It publishes all caps before coordinate-order
-tight-edge matching. It performs no degree ordering or additional partner growth.
-
-`statistics.csv` reports integer totals, mean residuals and matched percentages.
-The analyzer requires normalized = residual + 2*pairs + boundaries. No statistics
-call contributes a timing value.
+Timing uses ordinary binaries. Separate `--statistics` builds and
+`--measurement statistics --methods predecoded` runs collect untimed counts;
+statistics binaries reject timing modes. The analyzer checks
+`normalized = residual + 2*pairs + boundaries`. Historical pipeline-table values
+remain separate from the fresh serial table.
 
 ## M4 acquisition
 
-Repeat dependency and reference builds locally on Apple M4 Pro using Apple Clang
-and an installed OpenMP package. Supply `--cxx-flags="-O3 -mcpu=apple-m4"` and
-`--cmake-arg=-DCMAKE_PREFIX_PATH=/path/to/libomp` to the reference builder when needed.
-Use fresh native M4 build and run directories:
+Apple M4 acquisition requires an M4 machine, Apple Clang and an installed OpenMP
+package. The Linux workflow and archived M4 redraw do not establish a new M4 build
+or new M4 timings. For a local M4 collection, set `OMP_PREFIX` to the installed
+OpenMP prefix and use separate build directories:
 
 ```sh
-python AE/build_reference.py --output "$AE_WORK/reference-m4" --jobs 2 \
-  --cxx-flags="-O3 -mcpu=apple-m4" --cmake-arg=-DCMAKE_PREFIX_PATH=/path/to/libomp
-python AE/build_native.py --output "$AE_WORK/native-m4" --jobs 2 \
-  --cxx-flags="-O3 -mcpu=apple-m4" --cmake-arg=-DCMAKE_PREFIX_PATH=/path/to/libomp
+python AE/build_reference.py --offline --output "$AE_WORK/reference-m4" --jobs 2 \
+  --cxx-flags="-O3 -mcpu=apple-m4" --cmake-arg="-DCMAKE_PREFIX_PATH=$OMP_PREFIX"
+python AE/build_native.py --offline --output "$AE_WORK/native-m4" --jobs 2 \
+  --cxx-flags="-O3 -mcpu=apple-m4" --cmake-arg="-DCMAKE_PREFIX_PATH=$OMP_PREFIX"
 python AE/reproduce.py run --profile paper --backend scalar \
   --binary "$AE_WORK/native-m4/bin/bb_benchmark" --build-record "$AE_WORK/native-m4/build.json" \
   --reference-binary "$AE_WORK/reference-m4/build/bin/experiment_benchmark" \
   --reference-record "$AE_WORK/reference-m4/reference.json" --output "$AE_WORK/m4-batch"
 ```
 
-The predecoder's Arm kernel is selected by the platform build. Acquisition requests
-USER_INITIATED QoS and records physical affinity as unverified. The M4 aggregation
-is the median of three complete-batch means; divide a setting's block time by d to
-obtain time per measurement round. Historical CSV recalculation is supported;
-Linux smoke tests do not establish a successful current M4 build or new M4 timings.
+The Arm predecoder kernel is selected during the platform build. Acquisition requests
+USER_INITIATED QoS and records physical P/E-core affinity as unverified. Per-round
+time is the selected batch time divided by the setting's d measurement rounds.
+Use `export_results.py --m4-run` to include a completed M4 run; it must use the same
+source commit as the supplied native matrix.
 
 ## Slurm configuration
 
-The local and Slurm entry points use the same builders and collectors. Slurm requires
-a shared checkout, Python environment, and output directory, with compatible CPUs
-and system libraries across nodes. Resource requests are cluster-specific.
+All nodes need access to the same checkout, Python environment and work directory.
+Builds finish on the submission host before measurement starts. Each setting and
+all its methods, repeats and counters remain on one node. The exporter checks paired
+hosts and input identities while allowing different settings on different hosts.
 
-The authors' cluster uses six 52-core Xeon Gold 6230R nodes. Its `student` partition
-has a ten-minute limit, so full acquisition uses `debug`. This is an example
-configuration, not a requirement for other clusters:
+The recorded six-node campaign used the following cluster-specific allocation:
 
 ```sh
 python AE/slurm.py run --work "$AE_WORK/slurm-paper" --offline \
@@ -268,90 +185,33 @@ python AE/slurm.py run --work "$AE_WORK/slurm-paper" --offline \
   --cpus-per-task 52 --mem 0 --cpus 2,4,6,8,10,12,14,16
 ```
 
-Workers reserve exclusive nodes by default. The explicit allocation above makes
-all 52 CPUs available; measured methods use the listed eight physical cores on one
-socket. No decoder compilation occurs during measurement. `--shared-node` opts
-out of exclusivity where required by site policy. Node names, partition, CPU count,
-memory and time limit are command-line options.
+These node and partition names are examples, not defaults. Each node was a Xeon
+Gold 6230R with 52 cores; methods used the specified eight-core pool on one socket.
+Choose allocation and memory limits for the target cluster. Nodes are exclusive by
+default; `--shared-node` opts out where required by site policy.
 
-The matrix is divided by setting with a deterministic scheduling cost estimate.
-Reference, Beyond, external methods, policies and counters for one setting remain
-on the same node. The final `shards.json` lists completed case bundles. Export
-rejects duplicate/missing settings, mismatched inputs, source variants or paired
-hosts, and records each setting's actual host in `canonical.json` and CSV outputs.
+`slurm.py resume --work ...` retries unfinished stages without replacing completed
+measurements. `slurm.py export --work ...` exports an already completed campaign.
+The final `shards.json` binds disjoint case bundles; duplicate or missing settings
+are rejected.
 
-```sh
-python AE/slurm.py resume --work "$AE_WORK/slurm-paper"
-python AE/slurm.py export --work "$AE_WORK/slurm-paper"
-```
+## Export groups
 
-Resume retains completed cases and stages; an incomplete stage starts another
-attempt. Manual export is useful after successful collection when automatic export
-was interrupted. Existing raw measurements and failed attempts remain unchanged.
+Local and Slurm workflows export automatically. `export_results.py` supports direct
+exports from `--native-run` plus matching stage runs, or from a `--shards` manifest.
+Select `--groups` explicitly when only part of the hardware matrix is available:
 
-## Fresh figures, tables and macros
+| Group | Inputs and outputs |
+| --- | --- |
+| `ablation` | Native batch matrix; incremental-ablation figure |
+| `comparison` | Native and external matrices; six-series comparison figure |
+| `predecoder` | Three policy timing and three statistics runs; table and 58 macros |
+| `m4` | Completed M4 batch matrix; per-round figure |
+| `xeon-macros` | Available local timing, PMU and policy results; unavailable keys listed in the audit |
+| `macros` | Complete native, L2/L3, policy and M4 results; full performance and predecoder macros |
 
-The fresh exporter reads completed runs, verifies their sealed artifacts, and writes
-the current article's figures and numeric macros. Missing settings are never filled
-from archives. Paired local runs must share a source commit, saved inputs and host for each setting; M4 runs
-must identify Apple Silicon and the same source commit. Existing output is rejected.
-
-```sh
-python AE/export_results.py --profile paper \
-  --native-run "$AE_WORK/native-batch" --external-run "$AE_WORK/external-10000" \
-  --l2-run "$AE_WORK/pmu-l2" --l3-run "$AE_WORK/pmu-l3" \
-  --policy-timing "0=$AE_WORK/policy-0-timing" "1=$AE_WORK/policy-1-timing" "2=$AE_WORK/policy-2-timing" \
-  --policy-counts "0=$AE_WORK/policy-0-counts" "1=$AE_WORK/policy-1-counts" "2=$AE_WORK/policy-2-counts" \
-  --m4-run "$AE_WORK/m4-batch" --output "$AE_WORK/fresh-paper"
-```
-
-Outputs include `canonical.json`, per-method CSVs, selected configurations,
-`performance-macros.tex`, `predecoder_numbers.tex`, a calculation audit and a sealed
-completion receipt. Numeric macros use raw integer timing/count operands and final
-decimal rounding. Speedup is the fixed official reference time divided by the
-candidate time; values above one mean the candidate is faster. The
-selection pool is explicitly `structured`, `predecoded`, `component-parallel`,
-`pipelined`, and `parallel-predecode`; the additional `unstructured` regression
-column is not substituted for the reference or a structured variant.
-
-| Group | Fresh outputs | Required runs |
-| --- | --- | --- |
-| `ablation` | `incremental_ablation_1107_v1` PDF/SVG/PNG | Native batch matrix |
-| `comparison` | `decoder_comparison_shows_speedup_v3` PDF/SVG/PNG | Native and external matrices on the same saved inputs |
-| `predecoder` | `decoding_time`, `remaining_syndromes`, `predecoder.csv`, 58 table macros | All three serial policy timings and all three untimed statistics runs; historical pipeline runs must use a consistent recorded scope |
-| `m4` | `m4_pro_per_round` PDF/SVG/PNG | M4 batch matrix, median of three passes |
-| `xeon-macros` | Available local performance and predecoder macros using legacy `xeon` keys, omitted-key audit | Native and supplied local PMU/policy runs; no M4 requirement |
-| `macros` | Complete performance and 58 predecoder macros, audit | Native, both PMU levels, all policy timing/count runs and M4 |
-
-Groups can be exported separately before cross-platform collection finishes:
-
-```sh
-python AE/export_results.py --native-run "$AE_WORK/native-batch" \
-  --groups ablation --output "$AE_WORK/fresh-ablation"
-python AE/export_results.py --native-run "$AE_WORK/native-batch" \
-  --external-run "$AE_WORK/external-10000" --groups comparison \
-  --output "$AE_WORK/fresh-comparison"
-python AE/export_results.py --native-run "$AE_WORK/native-batch" \
-  --policy-timing "0=$AE_WORK/policy-0-timing" "1=$AE_WORK/policy-1-timing" "2=$AE_WORK/policy-2-timing" \
-  --policy-counts "0=$AE_WORK/policy-0-counts" "1=$AE_WORK/policy-1-counts" "2=$AE_WORK/policy-2-counts" \
-  --groups predecoder --output "$AE_WORK/fresh-predecoder"
-python AE/export_results.py --native-run "$AE_WORK/native-batch" \
-  --m4-run "$AE_WORK/m4-batch" --groups m4 --output "$AE_WORK/fresh-m4"
-```
-
-`--no-render` exports verified tables and macros without drawing. `--profile smoke`
-permits small development runs and marks their figures accordingly; it does not
-establish paper performance. External marker fill records the actual shot count,
-and the comparison caption preserves the differing native timing scopes. Replacing
-article figures remains a deliberate operation; the exporter never edits the paper.
-
-## Evidence boundaries
-
-Historical identifiers and checksums remain unchanged. A historical receipt describes
-its original run, not validation of the current implementation. New timings require
-new completed runs on the stated hardware. The commands above collect and plot fresh
-native, PMU, predecoder, M4 and external results. Archived plotting remains bound to
-its original datasets. The three older grid diagnostic figures and the mixed-LTO
-ablation are supplemental archived experiments, not figures referenced by the current
-article; `replot.py` reproduces them without fabricating new measurements for their
-different PMU protocols.
+The export includes `canonical.json`, per-method CSVs, selected configurations,
+applicable LaTeX macros and a completion seal. Numeric macros use integer timing and
+count operands with final decimal rounding. `--no-render` exports the data without
+figures; later `replot.py --input` uses the saved canonical values. It does not add
+missing M4, PMU or policy measurements.

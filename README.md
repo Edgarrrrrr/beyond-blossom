@@ -44,7 +44,7 @@ The table below summarizes speedups at **p = 0.1%**, with d measurement rounds p
 
 These results are obtained on an Intel Xeon Gold 6230R; see [artifact evaluation](AE/README.md) for measurement details and reproduction instructions.
 
-The [new million-shot reproduction](AE/results/20261112/README.md) uses a separately built, fixed official PyMatching reference. Its inputs, builds, timings, and audits are recorded separately from the historical summary above.
+The [new million-shot reproduction](AE/data/reproduction/README.md) uses a separately built, fixed official PyMatching reference. Its inputs, builds, timings, and audits are recorded separately from the historical summary above.
 
 ## Installation
 
@@ -131,9 +131,6 @@ The [unstructured](src/beyond_blossom/unstructured) and [structured](src/beyond_
 
 [AE/README.md](AE/README.md) describes smoke runs, full collection, and replay of archived paper data. Archived measurements describe their original binaries; a new build requires new measurements before a performance claim is made.
 
-The [fresh paper-scale reproduction](AE/results/20261112/README.md) includes all 21 settings, million-shot native measurements, 10,000-shot external comparisons, serial predecoder statistics, and L2/L3 counters. Its figures, tables, source identities, and offline redraw entry are included in the repository.
+The [fresh paper-scale reproduction](AE/data/reproduction/README.md) includes all 21 settings, million-shot native measurements, 10,000-shot external comparisons, serial predecoder statistics, and L2/L3 counters. Its measured tables and source identities are included; the standard AE command redraws them with the paper layouts.
 
-[Migration validation, 2026-11-12](benchmarks/regression/results/20261112/README.md)
-records this migration's correctness checks, paired measurements, and artifacts.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for development and [SECURITY.md](SECURITY.md) for reporting vulnerabilities. The software uses the [Apache License 2.0](LICENSE); original copyright notices are retained and attribution is recorded in [NOTICE](NOTICE). Paper artwork is documented separately in [assets/paper](assets/paper/README.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development and [SECURITY.md](SECURITY.md) for reporting vulnerabilities. The software uses the [Apache License 2.0](LICENSE); original copyright notices are retained and attribution is recorded in [NOTICE](NOTICE). Paper artwork is documented separately in [assets/paper](assets/paper/README.md); the original plotting fonts and their license are in [AE/fonts](AE/fonts/README.md).

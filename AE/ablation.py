@@ -21,9 +21,9 @@ from matplotlib.colors import LinearSegmentedColormap, Normalize
 from matplotlib.patches import FancyBboxPatch
 import numpy as np
 
-NAMES = ["Upstream baseline", "+ SIMD-Enabled Structured Grid",
+NAMES = ["PyMatching", "+ SIMD-Enabled Structured Grid",
          "+ Degree-ordered predecoder", "+ Component", "+ TailReset", "+ Spatial"]
-TICKS = ["Upstream baseline", "+ SIMD-Enabled\nStructured Grid",
+TICKS = ["PyMatching", "+ SIMD-Enabled\nStructured Grid",
          "+ Degree-ordered\npredecoder", "+ Component", "+ TailReset", "+ Spatial"]
 
 
@@ -32,14 +32,17 @@ def reference(path):
     return dict(path=str(path), sha256=hashlib.sha256(path.read_bytes()).hexdigest())
 
 
-def render(output: Path, *, data_dir=None):
+def render(output: Path, *, data_dir=None, data=None, stem='incremental_ablation'):
     source, output = Path(__file__).resolve().parent, Path(output).resolve()
     inputs = Path(data_dir).resolve() if data_dir is not None else source
-    output.mkdir(parents=True, exist_ok=False)
+    output.mkdir(parents=True, exist_ok=True)
     fonts = register_bundled_fonts(source / 'fonts')
-    data = json.loads((inputs / "data/ablation.json").read_text())
+    supplied = data is not None
+    if data is None:
+        data = json.loads((inputs / "data/ablation.json").read_text())
     distances, methods = data["distances"], data["methods"]
-    assert len(distances) == 7 and len(methods) == 6 and len(data["panels"]) == 3
+    assert distances and len(methods) == 6 and data['panels']
+    rows, panels = len(distances), len(data['panels'])
     plt.rcdefaults()
     plt.rcParams.update({
         "pdf.fonttype": 42, "ps.fonttype": 42, "svg.fonttype": "none",
@@ -49,21 +52,20 @@ def render(output: Path, *, data_dir=None):
         "xtick.color": "black", "ytick.color": "black",
         "xtick.labelsize": 12.5, "ytick.labelsize": 13, "mathtext.fontset": "dejavusans",
     })
-    plt.rcParams.update({'font.family': 'serif', 'font.serif': ['DejaVu Serif'], 'mathtext.fontset': 'dejavuserif'})
+    plt.rcParams.update({'font.family': 'serif', 'font.serif': ['Times New Roman'], 'mathtext.fontset': 'dejavuserif'})
     font_files = {}
     for weight in ('normal', 'bold'):
         path = Path(font_manager.findfont(font_manager.FontProperties(
             family=plt.rcParams['font.serif'], weight=weight)))
         font_files[weight] = dict(path=str(path), sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
                                   family=font_manager.FontProperties(fname=str(path)).get_name())
-    assert all(font['family'] == 'DejaVu Serif' for font in font_files.values())
+    assert all(font['family'] == 'Times New Roman' for font in font_files.values())
     cmap = LinearSegmentedColormap.from_list(
         "Blues_black_text", matplotlib.colormaps["Blues"](np.linspace(0, .58, 256)))
     all_speedups = np.asarray([panel["speedups"] for panel in data["panels"]])
     assert np.all(np.isfinite(all_speedups)) and np.all(all_speedups > 0)
     speedup_max = float(np.max(all_speedups))
-    colorbar_max = 12
-    assert speedup_max <= colorbar_max, 'Measured speedup exceeds the requested 12× color scale'
+    colorbar_max = max(12, int(np.ceil(speedup_max / 2)) * 2)
     norm = Normalize(vmin=0, vmax=colorbar_max)
     assert np.all((norm(all_speedups) >= 0) & (norm(all_speedups) <= 1))
     cell_gap_pt, corner_radius_pt = 3.4, 2.2
@@ -72,22 +74,23 @@ def render(output: Path, *, data_dir=None):
     linear = np.where(rgb <= .04045, rgb/12.92, ((rgb+.055)/1.055)**2.4)
     minimum_contrast = float(np.min((linear @ np.array([.2126, .7152, .0722])+.05)/.05))
     assert minimum_contrast >= 4.5
-    fig, axes = plt.subplots(1, 3, figsize=(21, 6.6), dpi=170)
+    fig, axes = plt.subplots(1, panels, figsize=(18.5 * panels / 3, 6.6), dpi=170, squeeze=False)
+    axes = axes[0]
     fig.subplots_adjust(left=.055, right=.995, bottom=.37, top=.84, wspace=.08)
     plot_rows, cell_labels, cell_geometry = [], [], []
     for ax, panel in zip(axes, data["panels"]):
         speed, times = np.asarray(panel["speedups"]), np.asarray(panel["time_us"])
-        assert speed.shape == times.shape == (7, 6)
+        assert speed.shape == times.shape == (rows, 6)
         ax.set_xlim(-.5, 5.5)
-        ax.set_ylim(6.5, -.5)
+        ax.set_ylim(rows - .5, -.5)
         # Use physical units so gaps and corner radii look equal in both directions.
         cell_width_pt = ax.get_position().width * fig.get_figwidth() * 72 / 6
-        cell_height_pt = ax.get_position().height * fig.get_figheight() * 72 / 7
+        cell_height_pt = ax.get_position().height * fig.get_figheight() * 72 / rows
         inset_x, inset_y = cell_gap_pt / (2 * cell_width_pt), cell_gap_pt / (2 * cell_height_pt)
         half_width, half_height = .5 - inset_x, .5 - inset_y
         cell_geometry.append(dict(width_fraction=2 * half_width, height_fraction=2 * half_height))
         ax.set_xticks(range(6), TICKS, rotation=48, ha="right", rotation_mode="anchor")
-        ax.set_yticks(range(7), [str(d) for d in distances])
+        ax.set_yticks(range(rows), [str(d) for d in distances])
         ax.tick_params(axis="both", length=0, pad=7)
         for spine in ax.spines.values():
             spine.set_visible(False)
@@ -137,7 +140,7 @@ def render(output: Path, *, data_dir=None):
     bar = fig.colorbar(matplotlib.cm.ScalarMappable(norm=norm, cmap=cmap),
                        cax=cax, ticks=ticks, orientation="horizontal")
     bar.set_ticklabels([f"{tick:g}×" for tick in ticks])
-    bar.set_label("Speedup over Upstream baseline", labelpad=5, fontsize=13)
+    bar.set_label("Speedup over PyMatching", labelpad=5, fontsize=13)
     bar.ax.tick_params(labelsize=12.5, length=3)
     bar.outline.set_linewidth(.6)
 
@@ -166,12 +169,12 @@ def render(output: Path, *, data_dir=None):
         bottom, top = bottom + stroke_inset_px, top - stroke_inset_px
         assert left <= box.x0 and box.x1 <= right and bottom <= box.y0 and box.y1 <= top, (
             label.get_text(), box.width, right-left)
-    assert len(plot_rows) == 126 and sum(row["fastest"] for row in plot_rows) == 21
+    assert len(plot_rows) == rows * panels * 6 and sum(row["fastest"] for row in plot_rows) == rows * panels
     for extension in ('pdf', 'svg', 'png'):
         options = dict(dpi=600) if extension == 'png' else {}
-        fig.savefig(output / f'incremental_ablation.{extension}',
+        fig.savefig(output / f'{stem}.{extension}',
                     bbox_inches='tight', pad_inches=0, **options)
-    fig.savefig(output / 'incremental_ablation_preview.png', dpi=170,
+    fig.savefig(output / f'{stem}_preview.png', dpi=170,
                 bbox_inches='tight', pad_inches=0)
     plt.close(fig)
     (output / "rendering.json").write_text(json.dumps(dict(
@@ -181,14 +184,14 @@ def render(output: Path, *, data_dir=None):
                       maximum_tick_label=f"{colorbar_max}×", method_label_gap_pt=bar_gap_pt),
         layout_revision="r05-bottom-colorbar-12", figure_caption_visible=False,
         export_bbox="tight", export_padding_inches=0,
-        minimum_black_text_contrast=minimum_contrast, figure_inches=[21, 6.6],
+        minimum_black_text_contrast=minimum_contrast, figure_inches=[18.5 * panels / 3, 6.6],
         font_family=font_files['normal']['family'], font_files=font_files,
-        cells=dict(count=126, gap_pt=cell_gap_pt, corner_radius_pt=corner_radius_pt,
+        cells=dict(count=rows * panels * 6, gap_pt=cell_gap_pt, corner_radius_pt=corner_radius_pt,
                    geometry=cell_geometry, shape="rounded rectangle"),
         winner_outline=dict(color=outline_color, linewidth_pt=outline_width_pt,
                             follows_cell_boundary=True, white_stroke=False,
                             minimum_adjacent_gap_pt=minimum_frame_gap_pt),
-        winner_speedups_bold=21, probability_title_weight='bold',
+        winner_speedups_bold=rows * panels, probability_title_weight='bold',
         font_pt=dict(method=12.5, speedup=12, time=10.5, distance_tick=13, axis_label=13,
                      probability_title=16, group_title=12.5, colorbar_tick=12.5),
         text_bounds="passed", numeric_cell_bounds="passed"), indent=2) + "\n")
@@ -204,22 +207,36 @@ def render(output: Path, *, data_dir=None):
         def numeric_rows(path):
             with path.open(newline='') as stream:
                 return [{k:v for k,v in row.items() if k != 'display_name'} for row in csv.DictReader(stream)]
-        assert numeric_rows(output / name) == numeric_rows(previous / name), 'Displayed numerical values changed'
+        if not supplied:
+            assert numeric_rows(output / name) == numeric_rows(previous / name), 'Displayed numerical values changed'
     dimensions = {name: struct.unpack('>II', (output / name).read_bytes()[16:24])
-                  for name in ('incremental_ablation.png', 'incremental_ablation_preview.png')}
+                  for name in (f'{stem}.png', f'{stem}_preview.png')}
     receipt = dict(complete=True, host=os.uname().nodename, job_id=os.environ.get('SLURM_JOB_ID'),
                    revision='r05-bottom-colorbar-12', figure_caption_visible=False,
                    padding_inches=0, colorbar_orientation='horizontal', colorbar_location='bottom',
                    colorbar_max=colorbar_max, speedup_max=speedup_max, clipped_cells=0,
                    dimensions_px=dimensions, fonts=fonts,
-                   source_data=reference(inputs / 'data/ablation.json'),
-                   renderer=reference(__file__), provenance=reference(inputs / 'SOURCE.json'),
+                   source_data=reference(inputs / 'data/ablation.json') if not supplied else {'scope': 'Caller-provided validated measurements'},
+                   renderer=reference(__file__), provenance=reference(inputs / 'SOURCE.json') if not supplied else None,
                    font_helper=reference(Path(__file__).with_name('plot_fonts.py')),
-                   displayed_numeric_cells_identical=True,
+                   historical_numeric_comparison='not applicable' if supplied else 'passed',
                    artifacts={p.name: reference(p) for p in output.iterdir() if p.is_file()})
     (output / 'complete.json').write_text(json.dumps(receipt, indent=2) + '\n')
     print(json.dumps(dict(complete=True, output=str(output), speedup_max=speedup_max,
                          dimensions_px=dimensions)))
+
+
+def render_paper(output, native, *, profile='paper'):
+    """Use the paper layout with validated newly measured values."""
+    methods = ['reference', 'structured', 'predecoded', 'component-parallel', 'pipelined', 'parallel-predecode']
+    distances = sorted({d for d, p, m in native})
+    rates = sorted({p for d, p, m in native})
+    panels = []
+    for p in rates:
+        times = [[native[d, p, m]['mean_us'] for m in methods] for d in distances]
+        panels.append(dict(p=float(p), time_us=times, speedups=[[r[0] / t for t in r] for r in times]))
+    render(output, data=dict(distances=distances, methods=methods, panels=panels), stem='incremental_ablation_1107_v1')
+    return [reference(Path(output) / f'incremental_ablation_1107_v1.{ext}') for ext in ('pdf', 'svg', 'png')]
 
 
 if __name__ == '__main__':

@@ -445,99 +445,31 @@ def paper_macros(native, pmu, policies, m4, *, xeon_only=False):
         denominator='Fixed official reference; historical pymatching macro key retained for manuscript compatibility',rounding='Decimal precision 60, final ROUND_HALF_UP')
 
 
+def renderer_sources():
+    """Record all shared plotting code and the bundled paper-font manifest."""
+    return [reference(HERE / name) for name in (
+        'export_results.py', 'ablation.py', 'decoders.py',
+        'm4_pro/plot_m4_per_round.py', 'm4_pro/palette.json',
+        'plot_fonts.py', 'fonts/manifest.json')]
+
+
 def render_figures(output, groups, native, external, policies, m4, profile):
-    """Render current article data with adaptive axes and explicit method labels."""
-    os.environ.setdefault('MPLCONFIGDIR', str(output/'.matplotlib'))
-    import matplotlib
-    matplotlib.use('Agg')
-    import matplotlib.pyplot as plt
-    import numpy as np
-    plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'pdf.fonttype':42,'svg.fonttype':'none'})
-    figures = output/'figures'
-    figures.mkdir()
-    exported = []
-    def save(fig, name):
-        if profile == 'smoke':
-            fig.text(.5,1.03,'Development smoke: not paper performance evidence',ha='center',va='bottom',fontsize=9,color='#9d2600')
-        pool=m4 if name=='m4_pro_per_round' else native
-        fig.text(.5,-.025,hardware_note(pool),ha='center',va='top',fontsize=7)
-        hosts=sorted({row['host'] for row in pool.values() if row.get('host')})
-        if len(hosts)>1:
-            fig.text(.5,-.065,'Each setting is paired on one host; collection spans '+', '.join(hosts)+'. See canonical.json.',
-                     ha='center',va='top',fontsize=7)
-        for extension in ('pdf','svg','png'):
-            path = figures/f'{name}.{extension}'
-            fig.savefig(path, dpi=300, bbox_inches='tight')
-            exported.append(reference(path))
-        plt.close(fig)
-    settings = sorted({(d,p) for d,p,m in native})
-    distances, rates = sorted({d for d,p in settings}), sorted({p for d,p in settings})
-    colors = ['#325A7E','#636A73','#BF7A49','#7E64A0','#8B7535','#D1A17B','#A18BBB']
+    """Use the manuscript layouts for both archived and newly measured values."""
+    os.environ.setdefault('MPLCONFIGDIR', str(output / '.matplotlib'))
+    figures = output / 'figures'
+    figures.mkdir(parents=True, exist_ok=True)
+    artifacts = []
     if 'ablation' in groups:
-        fig, axes = plt.subplots(1,len(rates),figsize=(max(6,6*len(rates)),max(3,0.55*len(distances)+2)),squeeze=False,constrained_layout=True)
-        top = max(native[d,p,'reference']['mean_us']/native[d,p,m]['mean_us'] for d,p in settings for m in STAGES)
-        for ax,p in zip(axes[0],rates):
-            values = np.array([[native[d,p,'reference']['mean_us']/native[d,p,m]['mean_us'] for m in STAGES] for d in distances])
-            im=ax.imshow(values,cmap='Blues',vmin=0,vmax=max(1,top),aspect='auto')
-            ax.set_xticks(range(len(STAGES)),[LABELS[m] for m in STAGES],rotation=40,ha='right')
-            ax.set_yticks(range(len(distances)),distances); ax.set_ylabel('Code distance')
-            ax.set_title(f'p = {float(p)*100:g}%')
-            for i,d in enumerate(distances):
-                winner=min(STAGES,key=lambda m:native[d,p,m]['mean_us'])
-                for j,m in enumerate(STAGES):
-                    ax.text(j,i,f"{values[i,j]:.2f}×\n{native[d,p,m]['mean_us']:.3f} μs",ha='center',va='center',
-                            fontsize=8,color='white' if values[i,j]>top*.6 else 'black',fontweight='bold' if m==winner else 'normal')
-        fig.colorbar(im,ax=list(axes[0]),label='Speedup over fixed official reference',orientation='horizontal',shrink=.6)
-        save(fig,'incremental_ablation_1107_v1')
+        import ablation
+        artifacts.extend(ablation.render_paper(figures, native, profile=profile))
     if 'comparison' in groups:
-        fig,axes=plt.subplots(1,len(rates),figsize=(max(5,4*len(rates)),4.6),squeeze=False)
-        fig.subplots_adjust(left=.08,right=.985,bottom=.19,top=.72,wspace=.20)
-        series=['best','reference',*EXTERNAL]
-        for ax,p in zip(axes[0],rates):
-            for index,method in enumerate(series):
-                selected=[native[d,p,min(CANDIDATES,key=lambda m:native[d,p,m]['mean_us'])] if method=='best'
-                          else native[d,p,method] if method=='reference' else external[d,p,method] for d in distances]
-                times=[row['mean_us'] for row in selected]
-                label={'best':'Beyond Blossom','reference':'Official reference'}.get(method,LABELS[method])
-                ax.plot(distances,times,label=label,color=colors[index],linewidth=1.3)
-                for d,time,row in zip(distances,times,selected):
-                    ax.plot(d,time,'o',color=colors[index],markerfacecolor=colors[index] if row['shots']==1000000 else 'white',markersize=4)
-            ax.set_yscale('log'); ax.set_xticks(distances); ax.set_xlabel('Code distance')
-            ax.set_title(f'p = {float(p)*100:g}%'); ax.grid(axis='y',alpha=.2)
-        axes[0,0].set_ylabel('Mean native time (μs/shot)')
-        handles,labels=axes[0,0].get_legend_handles_labels()
-        fig.legend(handles,labels,loc='upper center',bbox_to_anchor=(.5,.99),ncol=4 if len(rates)>1 else 2,frameon=False,fontsize=9)
-        fig.supxlabel('Filled: 1,000,000 distinct inputs; open: recorded smaller prefix. Native timing scopes differ.',fontsize=8)
-        save(fig,'decoder_comparison_shows_speedup_v3')
-    if 'predecoder' in groups:
-        policy_distances=sorted({r['distance'] for r in policies})
-        by={(r['distance'],r['policy']):r for r in policies}
-        for metric,name,ylabel in [('mean_us','decoding_time','Mean complete decode time (μs/shot)'),('mean_residual','remaining_syndromes','Mean unmatched defects per shot')]:
-            fig,ax=plt.subplots(figsize=(8.5,4.5))
-            fig.subplots_adjust(left=.10,right=.985,bottom=.14,top=.76)
-            x=np.arange(len(policy_distances))
-            for i,mode in enumerate((1,2,0)):
-                values=[by[d,mode][metric] for d in policy_distances]
-                bars=ax.bar(x+(i-1)*.27,values,.25,label=by[policy_distances[0],mode]['strategy_label'],color=colors[i])
-                ax.bar_label(bars,fmt='%.2f',padding=3,fontsize=7,rotation=90)
-            ax.set_xticks(x,policy_distances); ax.set_xlabel('Code distance'); ax.set_ylabel(ylabel)
-            ax.margins(y=.2); ax.set_title(('Serial' if policies[0]['execution']=='serial' else 'Four-thread pipeline')+', p = 0.3%')
-            fig.legend(*ax.get_legend_handles_labels(),loc='upper center',bbox_to_anchor=(.54,.99),ncol=3,fontsize=9,frameon=False)
-            save(fig,name)
+        import decoders
+        artifacts.extend(decoders.render_paper(figures, native, external, profile=profile))
     if 'm4' in groups:
-        m4settings=sorted({(d,p) for d,p,m in m4}); ds=sorted({d for d,p in m4settings}); ps=sorted({p for d,p in m4settings})
-        fig,ax=plt.subplots(figsize=(7,4.5))
-        fig.subplots_adjust(left=.12,right=.985,bottom=.14,top=.73)
-        for i,p in enumerate(ps):
-            for best in (False,True):
-                times=[min(m4[d,p,m]['median_batch_us'] for m in CANDIDATES)/d if best else m4[d,p,'reference']['median_batch_us']/d for d in ds]
-                ax.plot(ds,times,marker='o',markersize=4,linestyle='-' if best else '--',color=colors[i],
-                        markerfacecolor=colors[i] if best else 'white',label=f"{'Beyond Blossom' if best else 'Official reference'}, p={float(p)*100:g}%")
-        ax.axhline(1,color='#777777',linestyle=':');ax.set_yscale('log');ax.set_xticks(ds)
-        ax.set_xlabel('Code distance');ax.set_ylabel('Median block time / d (μs/round)')
-        fig.legend(*ax.get_legend_handles_labels(),loc='upper center',bbox_to_anchor=(.54,.99),ncol=2,fontsize=8,frameon=False)
-        save(fig,'m4_pro_per_round')
-    return exported
+        from m4_pro import plot_m4_per_round
+        artifacts.extend(plot_m4_per_round.render_paper(figures, m4, profile=profile))
+    # The paper presents the predecoder experiment as a table, not two bar plots.
+    return artifacts
 
 
 def merge_native_runs(runs):
@@ -738,7 +670,7 @@ def main(argv=None):
             for item in provenance.values():
                 need(R.digest(item['path'])==item['sha256'],'Source receipt changed during export')
         write_json(output/'complete.json',dict(complete=True,profile=args.profile,groups=sorted(groups),sources=sources,
-            exporter=reference(__file__),figures=artifacts,
+            exporter=reference(__file__),renderers=renderer_sources(),figures=artifacts,
             files={str(p.relative_to(output)):R.digest(p) for p in output.rglob('*') if p.is_file() and '.matplotlib' not in p.parts}))
         print(output/'complete.json')
         return 0

@@ -3,10 +3,16 @@
   "source_url": "https://wcncbam07gf8.feishu.cn/wiki/McsNwrj64iyHVrkbSHlc4SkAn3d",
   "document_id": "Xk1jdVrh1oz9Xmx1fnqcJYbPn5f",
   "revision_id": 8,
-  "attachment_name": "M4-六角色逐设置结果.csv",
+  "attachment_name": "M4-six-roles-per-setting-results.csv",
   "attachment_token": "VrFUbpERKoF9ZaxpE1RcpshQn3g",
   "csv_sha256": "af34760e881522d3228a15a73fc98aae2cd77f0a6cca2a234cfb2da8299b124f",
   "code_branch": "test/m4-component-chain-20261105",
   "code_commit": "631202519ea2805368774442c9cd03eb93b9e6ed",
-  "raw_source_modified": false
+  "raw_source_modified": false,
+  "working_copy": {
+    "language": "en",
+    "original_sha256": "904166ef828df460f968d71b5b2f54cb0c5b33755b883e129a66ed7ddabf893b",
+    "transformation": "English display translation of attachment_name. The attachment token and CSV SHA256 identify the unchanged original data."
+  },
+  "raw_source_modified_scope": "The attached CSV bytes are unchanged; this metadata JSON is an English working copy."
 }

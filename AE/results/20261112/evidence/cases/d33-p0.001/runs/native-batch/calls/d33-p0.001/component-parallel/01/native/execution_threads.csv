@@ -1,5 +1,0 @@
-boundary,thread_index,tid,cpu,affinity_mask,component_id,lane,group_threads,captain,socket,physical_core,buffer_id
-before,0,197070,2,2,0,0,1,0,0,2,-1
-before,1,197074,4,4,1,0,1,1,0,4,-1
-after,0,197070,2,2,0,0,1,0,0,2,-1
-after,1,197074,4,4,1,0,1,1,0,4,-1

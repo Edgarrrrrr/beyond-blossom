@@ -2,23 +2,23 @@
   "complete": true,
   "generator": "generate_predecoder_macros.py",
   "script": {
-    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/worktrees/AE-TAILRESET-20261110/integration/AE/generate_predecoder_macros.py",
+    "path": "/home/fujy/dev/beyond_blossom/repo/AE/generate_predecoder_macros.py",
     "sha256": "5251a9c03e69ce712c6a6ce95f78a32b6b1dc8f5e0090e8ba0392dd088ddf785"
   },
   "source": {
-    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/worktrees/AE-TAILRESET-20261110/integration/AE/data/tailreset/SOURCE.json",
-    "sha256": "f8395c7ffe0e5183c14694f12e7cb5b06fc70915dfd3dac4f544be581d7faa66"
+    "path": "/home/fujy/dev/beyond_blossom/repo/AE/data/tailreset/SOURCE.json",
+    "sha256": "e4359ae46e7f40360a8953c2dc974c10ae59fb77ccbc3e55811ca0012e58cdf6"
   },
   "config": {
-    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/worktrees/AE-TAILRESET-20261110/integration/AE/predecoder_macro_source.json",
-    "sha256": "04c93d17dfefc6f4727a473bf0373ba6b363ffc971c5d33b152a8f6cdf8c0f5f"
+    "path": "/home/fujy/dev/beyond_blossom/repo/AE/predecoder_macro_source.json",
+    "sha256": "0ca264a7c561929a7729eebe16743f5210334bd9c0f3bf1ff0d13af8ee9234a7"
   },
   "experiment_id": "AE-TAILRESET-20261110",
   "implementation_commit": "d7e2f25144cb9a97a5b66f0eb2418a0e847ae9bc",
   "rounding": "Decimal precision 60; final ROUND_HALF_UP to two decimal places",
   "output": {
-    "path": "/home/shzr/quantum/predecode_test/reproduction/PyMatching-experiments/.local/worktrees/AE-TAILRESET-20261110/integration/AE/predecoder_numbers.tex",
-    "sha256": "61834d2562c5860d9ac51136486da6b614313b22374fd8456416b9e0bffb94cc"
+    "path": "/home/fujy/dev/beyond_blossom/repo/AE/predecoder_numbers.tex",
+    "sha256": "f0b47a5b1f460b10118444bc2247cd4948045688269a05ec12851ea4159d59db"
   },
   "values": {
     "xeon.predecoder-comparison.d9.p0p3.none.mean-time-us": {

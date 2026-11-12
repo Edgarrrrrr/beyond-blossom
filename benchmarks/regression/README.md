@@ -119,6 +119,4 @@ The collector control-flow tests use mocked native output and perform no timing:
 python -m pytest benchmarks/regression/test_run_structured.py -q
 ```
 
-## Historical evidence
-
-`results/20261112/` contains completed experiment records and the offline report. Scripts named `*.executed.py`, recorded command files, and archival controllers in that directory are historical execution snapshots: their original paths and hashes are preserved, and they are not dependencies of a fresh build or AE run. Open the report directly without any original workspace. Recomputing full native-run summaries requires the separately preserved run archive at a path you explicitly supply; [the recorded replay instructions](results/20261112/README.md) use caller-selected paths. Fresh measurements use the current entry points above or `AE/run.py`/`AE/slurm.py` and new output directories.
+Historical migration reports are retained in the project history. The reviewer workflow and bundled measurements are documented in [AE](../../AE/README.md).

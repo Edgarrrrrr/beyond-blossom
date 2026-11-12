@@ -1,91 +1,133 @@
-# Reproduce the paper
+# Artifact evaluation
 
-AE provides two workflows: regenerate the paper's archived figures, or build and run the decoders to collect new results. Run the commands below from the repository root.
+The AE collects the paper's experiments and generates their figures automatically.
+The collection, saved-result replay, and historical-paper paths use the same
+plotting implementations. No source edits or custom postprocessing scripts are
+required. Run commands from the repository root and use a new output directory
+for each run.
 
 ## Setup
 
-Use Python 3.11+, CMake 3.21+, a C++20 compiler, OpenMP, and Git. Fresh external-decoder measurements also need Rust nightly. On Debian/Ubuntu, install `g++`, `cmake`, `python3-dev`, `python3-venv`, and `libgomp1`.
+Use Python 3.11+ and pip 22.3+. Create an isolated environment:
 
 ```sh
-python3 -m venv .venv
+python3 -m venv --without-pip .venv
+python3 -m pip --python .venv install pip -r AE/requirements.txt
 . .venv/bin/activate
-python -m pip install '.[stim]' -r AE/requirements.txt
-```
-
-For fresh collection, install the pinned Rust toolchain once:
-
-```sh
-rustup toolchain install nightly-2026-03-10 --profile minimal
-```
-
-Use a work directory outside the checkout. Builds, inputs, logs, and results stay there. For the default full matrix, plan for 32 GB RAM and roughly 100 GB of free space with hard-link reuse; the saved inputs alone occupy about 61 GB. Filesystems that require input copies need more space.
-
-```sh
 AE_WORK="$PWD/../beyond-blossom-ae"
 ```
 
-Decoder sources, reference adapters, and locked Rust crates are included in [vendor/](../vendor/README.md). After installing the tools and Python packages, `--offline` builds without network access or private directories. The automatic local and Slurm workflows target Linux and need eight physical cores on one socket. [M4 acquisition](REFERENCE.md#m4-acquisition) provides the macOS commands using QoS without fixed physical placement.
+The plotting environment pins Matplotlib 3.11.0. The paper's Times New Roman and
+Arial fonts are bundled with their license; no host font installation is needed.
 
-## Regenerate archived figures
-
-```sh
-python AE/replot.py --output "$AE_WORK/archived"
-```
-
-This verifies bundled measurements and regenerates PDF/SVG/PNG figures, CSV tables, and LaTeX macros. It runs no decoder. It also reproduces the archived M4 figure on Linux. [Data provenance](data/SOURCES.md) describes the original measurements.
-
-## Run the experiments
-
-Start with a small end-to-end check:
+Fresh experiments also require Git, CMake 3.21+, a C++20 compiler, OpenMP,
+Python development headers, and Rust nightly. Install the package and toolchain:
 
 ```sh
-python AE/run.py run --profile smoke --work "$AE_WORK/smoke"
+python -m pip install '.[stim]'
+rustup toolchain install nightly-2026-03-10 --profile minimal
 ```
 
-Then run the full local matrix from a clean Git checkout:
+On Debian/Ubuntu, the native prerequisites are `g++`, `cmake`, `git`,
+`python3-dev`, and `libgomp1`. The Linux workflow uses eight physical cores on one
+socket. Allow 32 GB RAM and about 100 GB disk space for the full matrix with
+hard-link input reuse. All decoder sources and locked Rust crates are included
+in [vendor/](../vendor/README.md); `--offline` disables build-time downloads.
+
+## Collect and generate figures
+
+First run the complete workflow on a small input set:
 
 ```sh
-python AE/run.py run --work "$AE_WORK/paper" --external-shots 10000
+python AE/run.py run --profile smoke --work "$AE_WORK/smoke" --offline
 ```
 
-The runner discovers CPU placement and SIMD support, verifies bundled dependencies, builds all configurations, and executes the measurements serially. It compares against the separately built official upstream reference. Builds finish before timing starts.
+Then collect the full paper matrix from a clean Git checkout:
 
-| Experiment | Fresh local collection |
+```sh
+python AE/run.py run --work "$AE_WORK/paper" --offline
+```
+
+The runner builds the configurations, generates shared inputs, runs the decoders,
+and exports the figures and tables. Beyond Blossom and the fixed official
+PyMatching reference each use **1,000,000 shots per setting**, with three timing
+passes. Slower external methods use a **10,000-shot prefix** and three passes.
+There are seven distances and three error rates, for 21 settings. Serial
+predecoder timing and residual counts are collected separately at p=0.003;
+L2/L3 counters are collected when the CPU and permissions support them.
+Use `--jobs N` to set build parallelism (default: 2); this does not change the
+measured decoder thread counts.
+
+The final message and `complete.json` identify the export directory. It contains:
+
+| Paper result | Output |
 | --- | --- |
-| Incremental ablation | 21 settings; 1,000,000 saved shots per setting; three passes; reference plus five Beyond Blossom configurations |
-| External comparison | The same saved inputs; 10,000-shot prefix for each slower external method; three passes |
-| Predecoder table | None, simple, and degree-ordered policies; serial execution; seven distances at p=0.003; separate timing and statistics |
-| Cache misses | L2/L3 counters at d=33, p=0.003, when supported by the local CPU and permissions |
+| Incremental ablation | `figures/incremental_ablation_1107_v1.{pdf,svg,png}` |
+| Decoder comparison, six series | `figures/decoder_comparison_shows_speedup_v3.{pdf,svg,png}` |
+| Predecoder table | `predecoder.csv`, `predecoder_numbers.tex` |
+| Paper numbers and input provenance | `performance-macros.tex`, `canonical.json`, CSV tables |
 
-Beyond Blossom and the official reference use **1,000,000 shots in every setting**. External figure markers use the actual recorded sample count. `--external-shots 1000000` requests a million shots for the external methods too; this can take days. On the paper's Xeon class of machine, the native matrix takes hours and the 10,000-shot external matrix adds several hours. Smoke results validate the workflow and are labeled separately from paper measurements.
+The figures retain the paper's layout, fonts, colors, labels, axes and marker
+encoding. Re-execution supplies new measured timings; it does not substitute
+historical numbers. Sample counts, hardware and correctness records stay in the
+result files, without extra annotations being added to the paper artwork.
+Apple M4 measurements require an M4 machine; the [M4 procedure](REFERENCE.md#m4-acquisition)
+generates `m4_pro_per_round.{pdf,svg,png}` with the same paper renderer.
 
-Progress is printed as each stage starts. Per-stage output is in `logs/`; `state.json` records completion and failures. To continue an interrupted workflow:
+Resume an interrupted run with `python AE/run.py resume --work "$AE_WORK/paper"`.
+Completed stages are reused, and failed attempts remain available.
+
+## Reuse completed measurements
+
+The full completed Xeon measurements are bundled for a quick rendering check:
 
 ```sh
-python AE/run.py resume --work "$AE_WORK/paper"
+python AE/replot.py --input AE/data/reproduction/canonical.json \
+  --output "$AE_WORK/included-results"
 ```
 
-Completed stages are reused; an incomplete stage restarts in a new attempt directory. Failed attempts remain available. `plan` prints the configuration. For separate build and measurement phases, use `build --work BUILD_DIR`, then `run --work RUN_DIR --builds-manifest BUILD_DIR/builds.json` with a fresh run directory. `collect --work RUN_DIR` resumes an existing run without building. `--source` selects a fixed checkout, `--jobs` controls compilation, and `--cpus` overrides placement. See `python AE/run.py --help` for all options.
+Replay an existing completed local or Slurm run through the same entry point:
+
+```sh
+python AE/replot.py --run "$AE_WORK/paper" --output "$AE_WORK/redraw"
+```
+
+These commands verify the saved data and generate the same paper layouts used by
+fresh collection. They run no decoder and require no original large input files.
+The included measurements and their sample counts are described in
+[data/reproduction/](data/reproduction/README.md).
 
 ## Optional Slurm execution
 
-Place the checkout, Python environment, and work directory on storage shared by the compute nodes. Compute nodes need Git and the native runtime libraries; compilers are needed only on the build host. Choose the partition and CPU allocation for the cluster; the allocation must contain at least eight physical cores on one socket. For example, on a cluster with a `cpu` partition:
+Keep the checkout, Python environment and work directory on shared storage.
+Compute nodes need Git and the native runtime libraries. Choose the partition
+and allocation for the cluster; each worker needs eight physical cores on one
+socket. For example:
 
 ```sh
 python AE/slurm.py run --work "$AE_WORK/slurm-paper" \
   --partition cpu --shards 6 --cpus-per-task 16 --offline
 ```
 
-`--nodes node01,node02` selects named nodes instead of `--shards`; no cluster names are built into the runner. `--mem` and `--time` set resource limits. Builds finish on the submission host, then each worker runs complete settings serially. All methods and repeats of a setting stay on the same node. An `afterok` job exports the combined results automatically.
+Builds finish before submission. Each setting stays on one node, and an `afterok`
+job exports the combined figures automatically. `--nodes node01,node02` selects
+named nodes instead of `--shards`; node names and partition names have no
+site-specific defaults. `--mem` and `--time` set allocation limits.
+Use `--profile smoke` with a new work directory for a small cluster check.
+`python AE/slurm.py resume --work "$AE_WORK/slurm-paper"` retries unfinished work.
+The [reference](REFERENCE.md#slurm-configuration) includes the authors' cluster example.
 
-Add `--profile smoke` and use a new work directory for a one-setting check. `prepare` writes a plan without building or submitting; `submit --work ...` executes it. `resume --work ...` retries unfinished work. `submissions.json` records job IDs, and `logs/` contains scheduler output. [The acquisition reference](REFERENCE.md#slurm-configuration) includes the configuration used on the authors' cluster.
+## Historical paper figures
 
-## Read the results
+The original ablation and M4 data are available and can be redrawn directly:
 
-The [2026-11-12 reproduction](results/20261112/README.md) includes the full 21-setting run, small measurement records, independent audits, figures, and a [repository-only redraw command](results/20261112/REPRODUCE.md).
+```sh
+python AE/replot.py --paper-figures ablation m4 --output "$AE_WORK/original-figures"
+```
 
-The final export contains the ablation and decoder-comparison figures, predecoder table, per-method CSVs, selected configurations, and paper-compatible LaTeX macros. `canonical.json` records the inputs, hardware, and SIMD backend; completion receipts identify the actual builds and runs. Missing hardware-specific values are listed, not filled from historical data.
-
-Apple M4 performance requires an M4 machine. The Linux workflow does not claim new M4 measurements. [Detailed acquisition commands](REFERENCE.md) cover M4, individual stages, saved-input reuse, timing scopes, and separate exports. [External decoder details](external/README.md) document their native timing scopes and correctness checks.
-
-Historical predecoder data used a four-thread pipeline and a coordinate-order baseline. Fresh local collection follows the manuscript's **serial** configuration and includes an explicit half-edge, equal-share simple baseline. The selected policy and execution scope are recorded; new timings remain separate from the archived paper values.
+The original comparison figure's input table has not yet been recovered. The older
+`data/decoders.csv` is a different 1,000-shot experiment and is not substituted.
+The default request for all three original figures therefore fails explicitly
+until that source is included. Fresh collection and replay of the completed
+reproduction above are available. [Provenance](data/SOURCES.md) and the
+[detailed reference](REFERENCE.md) distinguish the datasets and timing scopes.

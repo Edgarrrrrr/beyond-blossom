@@ -213,16 +213,16 @@
     }
   },
   "pending_confirmation": [],
-  "m4_policy": "所有首段含 m4 的键由脚本强制保留，不需要提供 M4 数据，也禁止配置更新规则",
+  "m4_policy": "The script preserves all keys whose first namespace segment contains m4. M4 data is not required, and update rules for these keys are forbidden.",
   "confirmed_policy": {
-    "baseline": "用户确认：仓库Upstream",
-    "metric": "用户要求与热力图一致；当前analyze.py heatmaps与repository_speedup实际使用batch3_us",
-    "aliases": "用户确认五种版本依次对应GridSIMD/Predecode/Component/TailReset/Spatial",
-    "best_methods": "用户确认逐设置从五个候选选最快，再按每个p对各d取最大加速比",
-    "tail_reset_reference": "用户确认TailReset与Component比较；按未舍入的Batch3严格更快计数",
-    "m4": "用户要求所有M4相关字段原样保留",
-    "summary": "用户确认：Predecode单核几何平均/最大，Spatial八核最大，均统计当前21设置；legacy命名空间保留已有论文调用兼容",
-    "block_round_example": "用户确认改为d33、p0.1%、Spatial八核；宏名d23改d33，每轮值用未舍入Batch3除以冻结rounds=33"
+    "baseline": "Confirmed baseline: repository Upstream.",
+    "metric": "Use the same metric as the heatmaps. The recorded analyze.py heatmaps and repository_speedup use batch3_us.",
+    "aliases": "The five configurations map in order to GridSIMD, Predecode, Component, TailReset and Spatial.",
+    "best_methods": "Select the fastest of five candidates per setting, then take the maximum speedup across distances for each error rate.",
+    "tail_reset_reference": "Compare TailReset with Component; count strictly faster settings using unrounded Batch3 values.",
+    "m4": "Preserve all M4 fields unchanged.",
+    "summary": "Use the Predecode single-core geometric mean and maximum, and the Spatial eight-core maximum, over the current 21 settings. Keep the legacy namespace for existing manuscript references.",
+    "block_round_example": "Use d33, p=0.1%, Spatial with eight cores. Rename the macro from d23 to d33; divide unrounded Batch3 by the frozen rounds=33 for per-round values."
   },
   "pmu_source": {
     "manifest": "data/pmu/SOURCE.json",

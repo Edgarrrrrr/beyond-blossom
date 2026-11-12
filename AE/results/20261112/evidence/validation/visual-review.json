@@ -1,9 +1,0 @@
-{
-  "complete": true,
-  "scope": "Visual inspection of all four original PNGs, the revised vertical-label policy figure, and exact report screenshots at 1440 and 760 pixels. Revised policy labels do not overlap. Local browser checks separately verify every image loads.",
-  "screenshots": {
-    "1440": "cd1a2ae759f8a97ee9089ebbb6eb4ed959b225152234b5084b3c5d9fedf3d504",
-    "760": "fac2e9b6bdd8c72484b758bfa0ff8e4146b9aa82c8937a974e6afc21e0dc94dc"
-  },
-  "final_revision": "Historical Upstream is explicitly a role mapping; final summary image inspected after this text clarification."
-}

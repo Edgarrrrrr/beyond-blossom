@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "source_commit": "75aedd433d1b129e5a973635320f199b5f26cbae",
+  "scope": "Completed fresh Xeon reproduction, not the historical paper dataset",
+  "files": {
+    "canonical.json": "bd1af53817bd727eb23cc1385b49a21bec3ff11b96cb3b61ad6d78639c09b3c3",
+    "external.csv": "0fe01e3fdd643aee984c63f9929f991740bc760226b6e82976a04e891e817474",
+    "macro-audit.json": "3309a39ea75b96373adaadb08f6b1ba30f73aad121b0662933d1048acb762336",
+    "native.csv": "309c1bbe598e54592d518d6b4db7c7ce139c21628fd9a75be6387888fa489a56",
+    "performance-macros.tex": "dcaf2512f81e3d9765245fc0ecdae940ef356e71831d66753b73c620e702d0a8",
+    "predecoder.csv": "c8c9e84c1afce7d25859be995c98daeff92aefa4d917eb89b51110d6f25e7339",
+    "predecoder_numbers.tex": "a54f43d3b08952ad19433e1b6915a0ca6fefd46f4277fda13db5e23f571945ab",
+    "selected-configurations.csv": "57d3fa1b357aa6ad4fe2862a2fa46dfcbd6a5128441a37468a141d79e2e532d3"
+  }
+}

@@ -355,4 +355,204 @@ class FreshExportTest(unittest.TestCase):
         self.assertFalse((output/'predecoder_numbers.tex').exists())
 
 
+class CanonicalReplayTest(unittest.TestCase):
+    """The standard replay CLI never invokes a collector or needs raw inputs."""
+    def setUp(self):
+        import replot
+        self.replay = replot
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+
+    def export(self, root=None):
+        root = root or self.root
+        raw = native_fixture(root/'native', policy=-1)
+        output = root/'exports'
+        self.assertEqual(E.main(['--native-run', str(raw), '--profile', 'smoke',
+                                 '--groups', 'ablation', '--no-render', '--output', str(output)]), 0)
+        return output
+
+    @staticmethod
+    def draw(output, groups, native, external, policies, m4, profile):
+        folder = output/'figures'; folder.mkdir()
+        image = folder/'fixture.svg'; image.write_text('<svg/>')
+        return [E.reference(image)]
+
+    def invoke(self, argv):
+        with patch.object(E, 'render_figures', side_effect=self.draw) as renderer, \
+             patch.object(E, 'native_run', side_effect=AssertionError('Replay must not read raw runs')), \
+             patch.object(self.replay.subprocess, 'run', side_effect=AssertionError('Replay must not execute collectors')):
+            result = self.replay.main(argv)
+        return result, renderer
+
+    def test_standard_input_replay_preserves_values_and_allows_a_new_renderer(self):
+        original = self.export(); receipt = E.read(original/'complete.json')
+        receipt['exporter']['sha256'] = '0'*64  # The acquisition renderer may differ.
+        dump(original/'complete.json', receipt)
+        canonical = (original/'canonical.json').read_bytes()
+        output = self.root/'redraw'
+        with patch.dict(E.LABELS, {'predecoded': 'Updated display label'}):
+            result, renderer = self.invoke(['--input', str(original/'canonical.json'), '--output', str(output)])
+        self.assertEqual(result, 0)
+        self.assertEqual(renderer.call_args.args[1], {'ablation'})
+        self.assertEqual((output/'canonical.json').read_bytes(), canonical)
+        self.assertEqual((output/'native.csv').read_bytes(), (original/'native.csv').read_bytes())
+        done = E.read(output/'complete.json')
+        self.assertEqual(done['recorded_source_exporter']['sha256'], '0'*64)
+        self.assertEqual(done['exporter']['sha256'], E.R.digest(Path(E.__file__)))
+        self.assertEqual(done['profile'], 'smoke')
+        self.assertEqual(done['mode'], 'canonical-replay')
+        self.assertEqual((original/'canonical.json').read_bytes(), canonical)
+
+    def test_standard_slurm_run_reuses_bound_completed_export(self):
+        work = self.root/'slurm'; original = self.export(work)
+        dump(work/'complete.json', dict(complete=True, export=str(original),
+                                       export_receipt_sha256=E.R.digest(original/'complete.json')))
+        before = E.R.digest(work/'complete.json')
+        result, _ = self.invoke(['--run', str(work), '--output', str(self.root/'redraw')])
+        self.assertEqual(result, 0)
+        self.assertEqual(E.R.digest(work/'complete.json'), before)
+
+    def test_standard_local_run_checks_saved_figures_stage(self):
+        work = self.root/'local'; original = self.export(work)
+        dump(work/'complete.json', dict(complete=True, export=str(original)))
+        dump(work/'state.json', {'stages': {'figures': [dict(status='complete', output=str(original),
+                     receipt_sha256=E.R.digest(original/'complete.json'))]}})
+        result, _ = self.invoke(['--run', str(work), '--output', str(self.root/'redraw')])
+        self.assertEqual(result, 0)
+        state = E.read(work/'state.json'); state['stages']['figures'][0]['receipt_sha256'] = '0'*64
+        dump(work/'state.json', state)
+        result, renderer = self.invoke(['--run', str(work), '--output', str(self.root/'rejected')])
+        self.assertEqual(result, 1); renderer.assert_not_called()
+
+    def test_portable_manifest_needs_no_original_worktree_or_old_renderer(self):
+        original = self.export(); portable = self.root/'portable'; portable.mkdir()
+        for name in ['canonical.json', 'native.csv']:
+            (portable/name).write_bytes((original/name).read_bytes())
+        dump(portable/'manifest.json', {'schema': 1, 'exporter_sha256': '1'*64,
+             'files': {name: E.R.digest(portable/name) for name in ['canonical.json', 'native.csv']}})
+        # Original absolute paths in canonical provenance may no longer exist.
+        import shutil
+        shutil.rmtree(original.parent/'native'); shutil.rmtree(original)
+        result, _ = self.invoke(['--input', str(portable/'canonical.json'), '--output', str(self.root/'redraw')])
+        self.assertEqual(result, 0)
+
+    def test_replay_rejects_changed_canonical_and_resealed_wrong_integer_mean(self):
+        original = self.export(); path = original/'canonical.json'; data = E.read(path)
+        data['native'][0]['mean_us'] *= 2; dump(path, data)
+        result, renderer = self.invoke(['--input', str(path), '--output', str(self.root/'changed')])
+        self.assertEqual(result, 1); renderer.assert_not_called()
+        seal = E.read(original/'complete.json'); seal['files']['canonical.json'] = E.R.digest(path)
+        dump(original/'complete.json', seal)
+        result, renderer = self.invoke(['--input', str(path), '--output', str(self.root/'wrong-mean')])
+        self.assertEqual(result, 1); renderer.assert_not_called()
+
+    def test_replay_rejects_incomplete_or_changed_workflow_receipt(self):
+        work = self.root/'slurm'; original = self.export(work)
+        for complete, digest in [(False, E.R.digest(original/'complete.json')), (True, '0'*64)]:
+            with self.subTest(complete=complete):
+                dump(work/'complete.json', dict(complete=complete, export=str(original), export_receipt_sha256=digest))
+                result, renderer = self.invoke(['--run', str(work), '--output', str(self.root/'rejected')])
+                self.assertEqual(result, 1); renderer.assert_not_called()
+
+    def test_replay_rejects_changed_sealed_table_and_existing_output(self):
+        original = self.export()
+        result, renderer = self.invoke(['--input', str(original/'canonical.json'), '--output', str(original)])
+        self.assertEqual(result, 1); renderer.assert_not_called()
+        (original/'native.csv').write_text('changed')
+        result, renderer = self.invoke(['--input', str(original/'canonical.json'), '--output', str(self.root/'rejected')])
+        self.assertEqual(result, 1); renderer.assert_not_called()
+
+
+class PaperComparisonInputTest(unittest.TestCase):
+    def test_archived_paper_points_require_exact_full_matrix_but_smoke_accepts_subset(self):
+        import decoders
+        points = {(d, E.Decimal(str(p)), method): {'mean_us': 10., 'shots': 1000000}
+                  for d in E.DISTANCES for p in E.RATES for method, *_ in decoders.PAPER_SERIES}
+        subset = {key: row for key, row in points.items() if key[:2] == (9, E.Decimal('.003'))}
+        with patch('plot_fonts.register_paper_fonts', side_effect=RuntimeError('validation passed')):
+            for data, profile in [(points, 'paper'), (subset, 'smoke')]:
+                with self.assertRaisesRegex(RuntimeError, 'validation passed'):
+                    decoders.render_paper(Path('unused'), {}, {}, paper_points=data, profile=profile)
+            for data in [subset, {**points, (9, E.Decimal('.003'), 'parity-uf'): {'mean_us': 1., 'shots': 10000}}]:
+                with self.assertRaisesRegex(ValueError, 'exactly 21 settings and six series'):
+                    decoders.render_paper(Path('unused'), {}, {}, paper_points=data)
+            extra = {**subset, (9, E.Decimal('.003'), 'parity-uf'): {'mean_us': 1., 'shots': 10000}}
+            with self.assertRaisesRegex(ValueError, 'exactly six series'):
+                decoders.render_paper(Path('unused'), {}, {}, paper_points=extra, profile='smoke')
+
+
+class HistoricalReplayReceiptTest(unittest.TestCase):
+    def setUp(self):
+        import replot
+        self.replay = replot
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.ae = self.root / 'AE'
+        self.ae.mkdir()
+        self.here = patch.object(replot, 'HERE', self.ae)
+        self.here.start(); self.addCleanup(self.here.stop)
+        for name in ('paper_num_mapping.json', 'paper_num_template.tex', 'predecoder_macro_source.json',
+                     'predecoder_numbers.tex', 'data/predecode.csv', 'replot.py', 'common.py', 'pmu_data.py',
+                     'pmu_runtime.py', 'tailreset_data.py', 'migrate_paper_numbers.py', 'generate_predecoder_macros.py'):
+            path = self.ae/name; path.parent.mkdir(parents=True, exist_ok=True); path.write_text('fixture')
+        dump(self.ae/'fonts/manifest.json', {'files': {}})
+        self.matrix = self.ae/'data/latest-matrix'
+        sums = []
+        for name in ('SOURCE.json', 'data/ablation.json', 'reference/plot-data.csv', 'reference/fastest-cells.csv'):
+            path = self.matrix/'heatmaps/latest-six'/name
+            path.parent.mkdir(parents=True, exist_ok=True); path.write_text('fixture')
+            sums.append(E.R.digest(path)+'  '+path.relative_to(self.matrix).as_posix())
+        (self.matrix/'SHA256SUMS').write_text('\n'.join(sums)+'\n')
+        self.m4 = self.ae/'m4_pro/data/feishu_m4_six_roles.csv'
+        self.m4.parent.mkdir(parents=True); self.m4.write_text('fixture CSV')
+        dump(self.ae/'m4_pro/source/provenance.json', {'csv_sha256': E.R.digest(self.m4)})
+        dump(self.ae/'m4_pro/palette.json', {'fixture': True})
+
+    def test_direct_figure_inputs_match_their_existing_seals(self):
+        refs = self.replay.historical_inputs(('ablation', 'm4'))
+        sealed = [item for item in refs if 'expected_sha256' in item]
+        self.assertEqual(len(sealed), 5)
+        self.assertTrue(all(item['sha256'] == item['expected_sha256'] for item in sealed))
+        for path in [self.m4, self.matrix/'heatmaps/latest-six/data/ablation.json']:
+            original = path.read_bytes(); path.write_bytes(original+b'changed')
+            with self.assertRaisesRegex(ValueError, 'Archived figure input checksum mismatch'):
+                self.replay.historical_inputs(('ablation', 'm4'))
+            path.write_bytes(original)
+
+    def test_historical_receipt_binds_inputs_renderers_and_every_output(self):
+        import ablation
+        import os
+        output = self.root/'redraw'
+        def draw(folder, **kwargs):
+            self.assertEqual(os.environ['MPLCONFIGDIR'], str(output/'.matplotlib'))
+            folder.mkdir(); (folder/'fixture.svg').write_text('<svg/>')
+        with patch.object(E, 'renderer_sources', return_value=[]), \
+             patch.object(self.replay.subprocess, 'run') as command, \
+             patch.object(ablation, 'render', side_effect=draw), patch.dict(os.environ, {}, clear=False):
+            self.replay.historical(output, ('ablation',))
+        done = E.read(output/'complete.json')
+        self.assertTrue(done['complete']); self.assertEqual(command.call_count, 6)
+        self.assertEqual(done['files'], {'figures/fixture.svg': E.R.digest(output/'figures/fixture.svg')})
+        self.assertTrue(done['inputs']); self.assertTrue(done['renderers'])
+        self.assertTrue(all(E.R.digest(item['path']) == item['sha256'] for item in done['inputs']+done['renderers']))
+
+    def test_historical_replay_refuses_midrun_input_or_renderer_changes(self):
+        import ablation
+        import os
+        for index, path in enumerate([self.matrix/'heatmaps/latest-six/data/ablation.json', self.ae/'common.py']):
+            original = path.read_bytes()
+            output = self.root/f'changed-{index}'
+            def draw(folder, **kwargs):
+                path.write_bytes(original+b'changed')
+            with patch.object(E, 'renderer_sources', return_value=[]), \
+                 patch.object(self.replay.subprocess, 'run'), patch.object(ablation, 'render', side_effect=draw), \
+                 patch.dict(os.environ, {}, clear=False):
+                with self.assertRaisesRegex(ValueError, 'Input or renderer changed during historical replay'):
+                    self.replay.historical(output, ('ablation',))
+            self.assertFalse((output/'complete.json').exists())
+            path.write_bytes(original)
+
+
 if __name__=='__main__':unittest.main()

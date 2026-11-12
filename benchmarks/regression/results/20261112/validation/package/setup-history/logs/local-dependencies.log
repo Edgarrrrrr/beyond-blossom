@@ -1,5 +1,0 @@
-Processing /tmp/pybind11-2.13.6-py3-none-any.whl
-Processing /tmp/rustworkx-0.18.1-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
-Installing collected packages: rustworkx, pybind11
-
-Successfully installed pybind11-2.13.6 rustworkx-0.18.1

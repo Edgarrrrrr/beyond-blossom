@@ -8057,8 +8057,12 @@
     },
     "predecode.csv": {
       "path": "predecode.csv",
-      "sha256": "212eab348e8b648eb0035bf585c4bd4ca705896c2839e23128e004f33a829d9f"
+      "sha256": "c59810c1a57ba09d10aa602e3f72beafea985fb583e984169d183ff464e7e45c",
+      "original_sha256": "212eab348e8b648eb0035bf585c4bd4ca705896c2839e23128e004f33a829d9f",
+      "translation": "English working copy; only the label column changed. Metric keys, units, numeric cells and source receipts are unchanged."
     }
   },
-  "offline_scope": "All 133 completed validation/correctness/warmup/time/residual metadata and integer-derived summaries; million-row raw CSVs, input data and binaries remain at their original hash-linked server paths. Offline verification does not re-decode or re-read excluded raw CSVs."
+  "offline_scope": "All 133 completed validation/correctness/warmup/time/residual metadata and integer-derived summaries; million-row raw CSVs, input data and binaries remain at their original hash-linked server paths. Offline verification does not re-decode or re-read excluded raw CSVs.",
+  "original_sha256": "f8395c7ffe0e5183c14694f12e7cb5b06fc70915dfd3dac4f544be581d7faa66",
+  "publication_note": "The predecode.csv export has translated labels and its published SHA256 is updated. Original export and manifest hashes remain recorded. All measurement receipts are unchanged."
 }
