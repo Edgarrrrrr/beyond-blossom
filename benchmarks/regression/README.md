@@ -1,6 +1,6 @@
 # Generic decoder regression
 
-This matrix compares the exact migration source, candidate predecode disabled, and candidate predecode enabled. The source revision is `241160314087e5ae698c6e76c3c055a11c3ad422` from `Edgarrrrrr/PyMatching-experiments`, branch `test/m4-code-ae-merged-20261112`.
+This optional migration suite compares the exact migration source, candidate predecode disabled, and candidate predecode enabled. It is separate from installation, unit tests, and the current-paper [AE workflow](../../AE/README.md). The source revision is `241160314087e5ae698c6e76c3c055a11c3ad422` from `Edgarrrrrr/PyMatching-experiments`, branch `test/m4-code-ae-merged-20261112`.
 
 The workload set includes saved surface-code shots, sparse irregular graphs, degree-64 graphs, dense syndromes, and a ring with no adjacent syndrome seeds. All variants read identical saved inputs. Graph weights use the even integer lattice produced by `UserGraph`.
 
@@ -8,26 +8,34 @@ The workload set includes saved surface-code shots, sparse irregular graphs, deg
 
 ## Build
 
-Extract the source from the public `source-2411603` tag and run from the Beyond Blossom repository root. The two builds must use the same compiler, architecture flags, Stim revision, OpenMP settings, and optimization level. LTO and profiling are disabled.
+Run from the repository root. The bundled `migration-source` component contains the original buildable source subset and its structured acquisition adapter; it is distinct from the fixed official reference. Extraction checks archive and per-file hashes and needs no historical tag, remote repository, or private workspace. The two builds must use the same compiler, architecture flags, Stim revision, OpenMP settings, and optimization level. LTO and profiling are disabled. The following configuration targets x86-64; omit `-march=x86-64` when building on another architecture and select a supported backend.
 
 ```bash
-git fetch --tags
-mkdir -p build/source-snapshot
-git archive source-2411603 | tar -x -C build/source-snapshot
-SOURCE_SNAPSHOT="$PWD/build/source-snapshot"
+python3 AE/vendor.py --only migration-source stim googletest --output build/regression-deps
+SOURCE_SNAPSHOT="$PWD/build/regression-deps/migration-source"
+STIM_SOURCE="$PWD/build/regression-deps/stim"
+GTEST_SOURCE="$PWD/build/regression-deps/googletest"
 cmake -S "$SOURCE_SNAPSHOT" -B build/source -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF -DPYMATCHING_BUILD_PROFILE_TOOLS=OFF \
-  -DPYMATCHING_BUILD_TESTS=OFF
+  -DPYMATCHING_BUILD_TESTS=OFF -DPYMATCHING_BUILD_PYTHON=OFF \
+  -DPYMATCHING_PREDECODE_SIMD=ON -DCMAKE_CXX_FLAGS=-march=x86-64 \
+  -DFETCHCONTENT_SOURCE_DIR_STIM="$STIM_SOURCE" \
+  -DFETCHCONTENT_SOURCE_DIR_GOOGLETEST="$GTEST_SOURCE"
 cmake --build build/source --target libpymatching -j4
 cmake -S . -B build/candidate -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF -DBB_BUILD_PROFILE_TOOLS=OFF \
-  -DBB_BUILD_TESTS=ON -DBB_BUILD_PYTHON=OFF
+  -DBB_BUILD_TESTS=ON -DBB_BUILD_PYTHON=OFF -DBB_PREDECODE_SIMD=ON \
+  -DCMAKE_CXX_FLAGS=-march=x86-64 \
+  -DFETCHCONTENT_SOURCE_DIR_STIM="$STIM_SOURCE" \
+  -DFETCHCONTENT_SOURCE_DIR_GOOGLETEST="$GTEST_SOURCE"
 cmake --build build/candidate --target libbeyond_blossom beyond_blossom_tests -j4
 python3 benchmarks/regression/build_benchmarks.py build/source build/candidate \
   benchmarks/regression/generic_benchmark.cc build/regression-bin
 ```
 
 `build_benchmarks.py` reads each library's compiler and Makefile flags, rejects LTO flags, and records commands and source, flag, library, and binary hashes in `build.json`. Archive both CMake caches, compile commands, source identities, and benchmark binaries with the run. Explicit FetchContent source directories can supply the pinned dependencies offline.
+
+An explicitly supplied original source checkout can replace `SOURCE_SNAPSHOT`. The public `source-2411603` tag is an optional way to inspect the recovered history, rather than a build dependency. [The vendor manifest](../../vendor/manifest.json) identifies the bundled subset and each preserved original file.
 
 ## Inputs and execution
 
@@ -110,3 +118,7 @@ The collector control-flow tests use mocked native output and perform no timing:
 ```bash
 python -m pytest benchmarks/regression/test_run_structured.py -q
 ```
+
+## Historical evidence
+
+`results/20261112/` contains completed experiment records and the offline report. Scripts named `*.executed.py`, recorded command files, and archival controllers in that directory are historical execution snapshots: their original paths and hashes are preserved, and they are not dependencies of a fresh build or AE run. Open the report directly without any original workspace. Recomputing full native-run summaries requires the separately preserved run archive at a path you explicitly supply; [the recorded replay instructions](results/20261112/README.md) use caller-selected paths. Fresh measurements use the current entry points above or `AE/run.py`/`AE/slurm.py` and new output directories.

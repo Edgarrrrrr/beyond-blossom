@@ -13,6 +13,7 @@ import argparse
 from datetime import datetime, timezone
 import fcntl
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -24,11 +25,10 @@ import tempfile
 
 HERE = Path(__file__).resolve().parent
 UPSTREAM = 'e27b8c6a5f5ba10fb74d4ebb29822f2df5e12bcd'
-PINS = {
-    'stim': ('https://github.com/quantumlib/Stim.git', '1320ad7eac7de34d2e9c70daa44fbc6d84174450'),
-    'googletest': ('https://github.com/google/googletest.git', '58d77fa8070e8cec2dc1ed015d66b454c8d78850'),
-    'upstream': ('https://github.com/oscarhiggott/PyMatching.git', UPSTREAM),
-}
+PINNED_TOOLCHAIN = 'nightly-2026-03-10'
+DISTANCES = [9, 13, 17, 21, 25, 29, 33]
+ERROR_RATES = [0.0005, 0.001, 0.003]
+
 METHODS = 'reference,structured,predecoded,component-parallel,pipelined,parallel-predecode'
 POLICY_BUILD_MODES = {0: 0, 1: 1, 2: 3}  # Table slot 2 is true simple half-edge, not historical coordinate mode 2.
 
@@ -119,6 +119,12 @@ def dependency_hints(builds):
                     if not line.startswith(('#', '//')) and ':' in line and '=' in line:
                         name, value = line.split('=', 1)
                         values[name.split(':', 1)[0]] = value
+        receipt = root / 'reference.json'
+        if receipt.exists():
+            for name in ('stim_source', 'stim_archive', 'googletest_source'):
+                value = read(receipt).get(name)
+                if value and Path(value).exists():
+                    result.setdefault(name, str(Path(value).resolve()))
         file = root / 'configure-command.json'
         if file.exists():
             for value in read(file):
@@ -144,6 +150,8 @@ def python_environment(python):
 
 
 def configuration(args):
+    if platform.system() != 'Linux':
+        raise ValueError('AE/run.py automates Linux acquisition; use the M4 procedure in AE/REFERENCE.md on macOS')
     source = args.source.resolve()
     if not (source / 'AE/reproduce.py').is_file():
         raise ValueError('--source must identify a Beyond Blossom source checkout')
@@ -153,23 +161,15 @@ def configuration(args):
     hints = dependency_hints([args.reference_build, args.native_build, args.dependencies_from])
     paths = {}
     for name in ['stim_source', 'stim_archive', 'googletest_source', 'upstream_repository', 'crate_cache',
-                 'reference_build', 'reference_record', 'native_build', 'external_build']:
+                 'reference_build', 'reference_record', 'native_build', 'external_build', 'official_source', 'reference_adapter']:
         value = getattr(args, name, None) or hints.get(name)
         paths[name] = str(Path(value).resolve()) if value else None
-    if not paths['upstream_repository'] and git(source, 'cat-file', '-t', UPSTREAM) == 'commit':
-        paths['upstream_repository'] = str(source)
-    if not paths['crate_cache']:
-        cache = Path(os.environ.get('CARGO_HOME', Path.home() / '.cargo')) / 'registry/cache'
-        candidates = sorted(cache.glob('*')) if cache.exists() else []
-        if candidates:
-            paths['crate_cache'] = str(candidates[0])
-    toolchain = args.toolchain
-    if not toolchain and shutil.which('rustup'):
-        installed = subprocess.run(['rustup', 'toolchain', 'list'], capture_output=True, text=True)
-        names = [line.split()[0] for line in installed.stdout.splitlines() if line.strip()]
-        toolchain = next((n for n in names if n.startswith('nightly-2026-03-10')), None)
-        toolchain = toolchain or next((n for n in names if n.startswith('nightly-')), None)
+    toolchain = args.toolchain or PINNED_TOOLCHAIN
     hardware = cpu_features()
+    backend = args.backend or hardware['backend']
+    ranks = {'scalar': 0, 'avx2': 1, 'avx512vl': 2, 'avx512': 2}
+    if args.action != 'build' and ranks[backend] > ranks[hardware['backend']]:
+        raise ValueError('Requested SIMD backend is not supported by this measurement host')
     external_policy = None
     if args.external_shot_counts:
         overrides = read(args.external_shot_counts)
@@ -178,16 +178,28 @@ def configuration(args):
         external_policy = {method: args.external_shots if args.profile == 'paper' else 32
                            for method in ('parity', 'fusion', 'parity-uf', 'unionfind', 'ldpc-uf')}
         external_policy.update(overrides)
+    distances = [int(v) for v in args.distances.split(',')] if args.distances else (DISTANCES if args.profile == 'paper' else [9])
+    rates = [float(v) for v in args.error_rates.split(',')] if args.error_rates else (ERROR_RATES if args.profile == 'paper' else [.003])
+    if not distances or len(set(distances)) != len(distances) or any(d < 3 or d % 2 == 0 for d in distances):
+        raise ValueError('--distances must select distinct odd distances >= 3')
+    if not rates or len(set(rates)) != len(rates) or any(not 0 < p < .5 for p in rates):
+        raise ValueError('--error-rates must select distinct rates between 0 and .5')
+    if args.profile == 'paper' and not args.no_export and args.action != 'build' and (set(distances) != set(DISTANCES) or set(rates) != set(ERROR_RATES)):
+        raise ValueError('Partial paper selections require --no-export; combine their bundles with export_results.py --shards')
     return {'schema': 1, 'source': str(source), 'source_identity': identity(source), 'work': str(work),
             'orchestrator': {'path': str(Path(__file__).resolve()), 'sha256': digest(__file__)},
-            'profile': args.profile, 'jobs': args.jobs, 'offline': args.offline, 'cpus': select_cpus(args.cpus),
-            'backend': args.backend or hardware['backend'], 'hardware': hardware,
+            'profile': args.profile, 'jobs': args.jobs, 'offline': args.offline, 'cpus': [] if args.action == 'build' else select_cpus(args.cpus),
+            'distances': distances, 'error_rates': rates, 'export': not args.no_export,
+            'builds_manifest': str(args.builds_manifest.resolve()) if args.builds_manifest else None,
+            'placement': {'host': platform.node(), 'affinity': sorted(os.sched_getaffinity(0)),
+                          'slurm': {k: os.environ[k] for k in ('SLURM_JOB_ID', 'SLURMD_NODENAME', 'SLURM_JOB_NODELIST', 'SLURM_CPUS_PER_TASK') if k in os.environ}},
+            'backend': backend, 'hardware': hardware,
             'python': python_environment(args.python), 'toolchain': toolchain, 'dependencies': paths,
             'shots': 1000000 if args.profile == 'paper' else 1025,
             'repeats': 3 if args.profile == 'paper' else 1,
             'external_shots': args.external_shots if args.profile == 'paper' else 32,
             'external_shot_counts': external_policy,
-            'pmu_levels': ([] if args.pmu == 'off' else ([2, 3] if hardware['l2_events_supported_model'] else [3])),
+            'pmu_levels': ([] if args.pmu == 'off' else ([2, 3] if args.action == 'build' or hardware['l2_events_supported_model'] else [3])),
             'render': not args.no_render, 'methods': METHODS, 'policy_execution': 'serial',
             'policy_build_modes': {str(k): v for k, v in POLICY_BUILD_MODES.items()},
             'excluded': ['Apple M4 hardware acquisition'], 'archived_data_used_as_measurements': False}
@@ -204,6 +216,31 @@ class Workflow:
         self.root.mkdir(parents=True, exist_ok=True)
         (self.root / 'logs').mkdir(exist_ok=True)
 
+    def verify_dependency(self, name, output):
+        if name == 'vendor':
+            spec = importlib.util.spec_from_file_location('bb_ae_fixed_vendor', self.ae / 'vendor.py')
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            receipt = read(output / 'dependencies.json')
+            if receipt['manifest_sha256'] != digest(self.ae.parent / 'vendor/manifest.json'):
+                raise ValueError('Vendored dependency manifest changed')
+            manifest = module.load_manifest()
+            for component, key in module.KEYS.items():
+                if key in receipt:
+                    module.verify_tree(receipt[key], manifest['components'][component])
+        elif name == 'stim-library':
+            receipt = read(output / '.dependency.json')
+            if not receipt.get('source_files') or not receipt.get('artifacts'):
+                raise ValueError('Stim dependency receipt lacks source/library identities')
+            source = Path(receipt['source_root'])
+            files = {str(source / name) for name in ('CMakeLists.txt', 'LICENSE') if (source / name).is_file()}
+            files |= {str(p) for folder in ('src', 'file_lists') for p in (source / folder).rglob('*') if p.is_file()}
+            if set(receipt['source_files']) != files:
+                raise ValueError('Stim source file set changed')
+            for path, sha in {**receipt['source_files'], **receipt['artifacts']}.items():
+                if digest(path) != sha:
+                    raise ValueError(f'Stim dependency changed: {path}')
+
     def stage(self, name, category, commands, marker='complete.json', optional_pmu=False, build_allowed=True):
         attempts = self.state['stages'].setdefault(name, [])
         if attempts and attempts[-1]['status'] in ('complete', 'unavailable'):
@@ -213,6 +250,8 @@ class Workflow:
             path = Path(last['output']) / marker
             if digest(path) != last['receipt_sha256'] or not read(path).get('complete'):
                 raise ValueError(f'Completed stage receipt changed: {name}')
+            if category == 'deps':
+                self.verify_dependency(name, Path(last['output']))
             print(f'{name}: reuse completed stage', flush=True)
             return Path(last['output'])
         if not build_allowed and category in ('builds', 'deps'):
@@ -223,6 +262,12 @@ class Workflow:
         if output.exists():
             raise ValueError(f'Untracked stage directory exists: {output}')
         argv_list = commands(output)
+        dependency_sources = {}
+        if name == 'stim-library':
+            source = Path(argv_list[0][argv_list[0].index('-S') + 1])
+            files = [source / name for name in ('CMakeLists.txt', 'LICENSE') if (source / name).is_file()]
+            files += sorted(p for folder in ('src', 'file_lists') for p in (source / folder).rglob('*') if p.is_file())
+            dependency_sources = {str(p): digest(p) for p in files}
         log_path = self.root / 'logs' / f'{name}{suffix}.log'
         record = {'output': str(output), 'commands': argv_list, 'status': 'running',
                   'started_utc': datetime.now(timezone.utc).isoformat(), 'log': str(log_path)}
@@ -236,7 +281,10 @@ class Workflow:
                                    env={**os.environ, 'MPLCONFIGDIR': str(self.root / '.matplotlib')})
             receipt = output / marker
             if marker == '.dependency.json':
-                save(receipt, {'complete': True, 'commands': argv_list})
+                save(receipt, {'complete': True, 'commands': argv_list, 'source_files': dependency_sources, 'source_root': str(source) if name == 'stim-library' else None,
+                    'artifacts': {str(output / 'out/libstim.a'): digest(output / 'out/libstim.a')} if name == 'stim-library' else {}})
+            if category == 'deps':
+                self.verify_dependency(name, output)
             if not read(receipt).get('complete'):
                 raise ValueError(f'Stage did not produce a complete receipt: {name}')
             record.update(status='complete', receipt_sha256=digest(receipt))
@@ -258,54 +306,92 @@ class Workflow:
             save(self.state_path, self.state)
         return output if record['status'] == 'complete' else None
 
-    def external_build(self, path, kind, marker):
+    def external_build(self, path, kind, marker, variant=None, cache_level=3):
         path = Path(path)
         marker = Path(marker)
         record = read(marker if marker.is_absolute() else path / marker)
         if not record.get('complete'):
             raise ValueError(f'Existing {kind} build is incomplete: {path}')
         if kind == 'reference':
-            if record.get('upstream_revision') != UPSTREAM or str(record.get('cache_level')) != '3':
-                raise ValueError('Existing reference must be the fixed official L3 build')
+            if record.get('upstream_revision') != UPSTREAM or str(record.get('cache_level')) != str(cache_level):
+                raise ValueError('Existing reference must be the fixed official build at the requested cache level')
         else:
             built = record.get('source', {})
             if built.get('commit') != self.config['source_identity']['commit'] or built.get('status') or built.get('dirty'):
                 raise ValueError(f'Existing {kind} build is from another or dirty source; rebuild without rewriting its receipt')
         if kind == 'candidate':
             options = record.get('configuration', {})
-            if (str(options.get('BB_TAILRESET_PREDECODE_MODE')) != '0'
-                    or options.get('BB_TAILRESET_SYNDROME_STATS') not in ('OFF', 'FALSE', '0')
-                    or str(options.get('BB_AE_CACHE_LEVEL')) != '3'):
-                raise ValueError('Existing candidate must be policy 0, statistics off, cache level 3')
+            policy, statistics, level = variant or (0, False, 3)
+            stats = str(options.get('BB_TAILRESET_SYNDROME_STATS')).upper()
+            if (str(options.get('BB_TAILRESET_PREDECODE_MODE')) != str(POLICY_BUILD_MODES[policy])
+                    or stats not in (('ON', 'TRUE', '1') if statistics else ('OFF', 'FALSE', '0'))
+                    or str(options.get('BB_AE_CACHE_LEVEL')) != str(level)):
+                raise ValueError('Existing candidate configuration does not match the requested variant')
         binaries = record.get('binaries', {}) if kind == 'external' else {'native': record['binary']}
         for binary in binaries.values():
             if digest(binary['path']) != binary['sha256']:
                 raise ValueError(f'Existing {kind} executable changed')
         return path
 
-    def clone(self, name, allowed):
-        if self.config['offline']:
-            raise ValueError(f'Missing {name} source in offline mode; supply its local path')
-        url, revision = PINS[name]
-        return self.stage(name, 'deps', lambda out: [['git', 'clone', '--no-checkout', url, str(out)],
-            ['git', '-C', str(out), 'checkout', '--detach', revision]], '.dependency.json', build_allowed=allowed)
+    def shared_builds(self, filename):
+        manifest = read(filename)
+        if not manifest.get('complete') or manifest.get('source_identity') != self.config['source_identity']:
+            raise ValueError('Shared builds do not match this clean source checkout')
+        if manifest.get('machine') != platform.machine():
+            raise ValueError('Shared binaries target another machine architecture')
+        expected_receipts = {str(Path(v) / 'build.json') for v in manifest['native'].values()}
+        expected_receipts.add(str(Path(manifest['external']) / 'build.json'))
+        expected_receipts.update(manifest['reference_records'].values())
+        if set(manifest['receipts']) != expected_receipts:
+            raise ValueError('Shared manifest must bind every build receipt exactly once')
+        for path, sha in manifest['receipts'].items():
+            if digest(path) != sha:
+                raise ValueError(f'Shared build receipt changed: {path}')
+        native = {k: Path(v) for k, v in manifest['native'].items()}
+        references = {int(k): Path(v) for k, v in manifest['references'].items()}
+        self.reference_records = {int(k): v for k, v in manifest['reference_records'].items()}
+        required = [(p, stats, 3) for p in range(3) for stats in (False, True)]
+        required += [(0, False, level) for level in self.config['pmu_levels'] if level != 3]
+        for p, stats, level in required:
+            key = f'policy-{p}-' + ('statistics' if stats else f'l{level}')
+            self.external_build(native[key], 'candidate', 'build.json', (p, stats, level))
+        for level in set([3] + self.config['pmu_levels']):
+            self.external_build(references[level], 'reference', self.reference_records[level], cache_level=level)
+        external = self.external_build(manifest['external'], 'external', 'build.json')
+        return native, references, external
+
+    def record_builds(self, native, references, external, reference_records):
+        receipts = [p / 'build.json' for p in native.values()] + [external / 'build.json']
+        receipts += [Path(p) for p in reference_records.values()]
+        save(self.root / 'builds.json', {'schema': 1, 'complete': True, 'machine': platform.machine(),
+            'source_identity': self.config['source_identity'], 'native': {k: str(v) for k, v in native.items()},
+            'references': {str(k): str(v) for k, v in references.items()},
+            'reference_records': {str(k): str(v) for k, v in reference_records.items()},
+            'external': str(external), 'receipts': {str(p): digest(p) for p in receipts}})
 
     def builds(self, allowed=True):
         c, d = self.config, dict(self.config['dependencies'])
+        if c.get('builds_manifest'):
+            return self.shared_builds(c['builds_manifest'])
         provided = {}
         for key, kind, marker in [('reference_build', 'reference', d['reference_record'] or 'reference.json'),
                                   ('native_build', 'candidate', 'build.json'), ('external_build', 'external', 'build.json')]:
             if d[key]:
                 provided[key] = self.external_build(d[key], kind, marker)
-        needed = [('stim', 'stim_source')]
+        needed = ['stim_source'] + ([] if d['external_build'] else ['crate_cache'])
         if not d['reference_build'] or 2 in c['pmu_levels']:
-            needed += [('googletest', 'googletest_source'), ('upstream', 'upstream_repository')]
-        for name, key in needed:
-            if not d[key]:
-                d[key] = str(self.clone(name, allowed))
+            needed += ['googletest_source', 'reference_adapter']
+            if not d.get('upstream_repository'):
+                needed.append('official_source')
+        if any(not d.get(k) for k in needed):
+            vendored = self.stage('vendor', 'deps', lambda out: [[self.python,
+                str(self.ae / 'vendor.py'), '--output', str(out)]], 'dependencies.json', build_allowed=allowed)
+            values = read(vendored / 'dependencies.json')
+            for key in ('stim_source', 'googletest_source', 'official_source', 'reference_adapter', 'crate_cache'):
+                d[key] = d.get(key) or values[key]
         if not d['stim_archive']:
             out = self.stage('stim-library', 'deps', lambda p: [
-                ['cmake', '-S', d['stim_source'], '-B', str(p), '-DCMAKE_BUILD_TYPE=Release', '-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF'],
+                ['cmake', '-S', d['stim_source'], '-B', str(p), '-DCMAKE_BUILD_TYPE=Release', '-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF', '-DSIMD_WIDTH=128'],
                 ['cmake', '--build', str(p), '--target', 'libstim', '-j', str(c['jobs'])]], '.dependency.json', build_allowed=allowed)
             d['stim_archive'] = str(out / 'out/libstim.a')
         common = ['--stim-source', d['stim_source'], '--stim-archive', d['stim_archive'], '--jobs', str(c['jobs'])]
@@ -315,8 +401,9 @@ class Workflow:
                 references[level] = provided['reference_build']
             else:
                 references[level] = self.stage(f'reference-l{level}', 'builds', lambda out, level=level: [[self.python,
-                    str(self.ae / 'build_reference.py'), '--output', str(out), '--upstream-repository', d['upstream_repository'],
-                    '--history-checkout', c['source'], '--history-ref', 'source-2411603', '--googletest-source', d['googletest_source'],
+                    str(self.ae / 'build_reference.py'), '--output', str(out),
+                    *(['--upstream-repository', d['upstream_repository']] if d.get('upstream_repository') else ['--upstream-source', d['official_source']]),
+                    '--reference-adapter', d['reference_adapter'], '--googletest-source', d['googletest_source'],
                     '--cache-level', str(level), *common]], 'reference.json', build_allowed=allowed)
         native = {}
         variants = [(0, False, 3), (1, False, 3), (2, False, 3), (0, True, 3), (1, True, 3), (2, True, 3)]
@@ -329,15 +416,17 @@ class Workflow:
             else:
                 native[key] = self.stage(key, 'builds', lambda out, policy=policy, statistics=statistics, level=level: [[self.python,
                     str(self.ae / 'build_native.py'), '--output', str(out), '--profile', c['profile'], '--predecode-mode', str(POLICY_BUILD_MODES[policy]),
-                    '--cache-level', str(level), *(['--statistics'] if statistics else []), *common]], 'build.json', build_allowed=allowed)
+                    '--cache-level', str(level), *(['--statistics'] if statistics else []), *(['--offline'] if c['offline'] else []), *common]], 'build.json', build_allowed=allowed)
         if d['external_build']:
             external = provided['external_build']
         else:
             external = self.stage('external', 'builds', lambda out: [[self.python, str(self.ae / 'external/build.py'),
                 '--output', str(out), '--reference-build', str(references[3]), '--toolchain', c['toolchain'], *common,
                 *(['--reference-record', d['reference_record']] if d['reference_record'] else []),
-                *(['--crate-cache', d['crate_cache']] if d['crate_cache'] else (['--offline'] if c['offline'] else []))]],
+                *(['--crate-cache', d['crate_cache']] if d['crate_cache'] else []), *(['--offline'] if c['offline'] else [])]],
                 'build.json', build_allowed=allowed)
+        self.reference_records = {level: (d['reference_record'] if level == 3 and d['reference_record'] else str(path / 'reference.json')) for level, path in references.items()}
+        self.record_builds(native, references, external, self.reference_records)
         return native, references, external
 
     def collect(self, native, references, external):
@@ -345,15 +434,16 @@ class Workflow:
         placement = ['--cpus', ','.join(map(str, c['cpus'])), '--backend', c['backend']]
         def reference_args(level=3):
             root = references[level]
-            record = c['dependencies']['reference_record'] if level == 3 else None
+            record = getattr(self, 'reference_records', {}).get(level) or (c['dependencies']['reference_record'] if level == 3 else None)
             return ['--reference-binary', str(root / 'build/bin/experiment_benchmark'),
                     '--reference-record', record or str(root / 'reference.json')]
         def native_command(out, build, methods, measurement='batch', source_run=None, rate=None, profile=None, level=3, distance=None):
             return [self.python, str(self.ae / 'reproduce.py'), 'run', '--profile', profile or c['profile'],
                 '--binary', str(build / 'bin/bb_benchmark'), '--build-record', str(build / 'build.json'),
                 *reference_args(level), '--methods', methods, '--measurement', measurement, *placement,
-                *(['--input-run', str(source_run), '--link-inputs'] if source_run else []), *(['--error-rates', str(rate)] if rate else []),
-                *(['--distances', str(distance)] if distance else []),
+                *(['--input-run', str(source_run), '--link-inputs'] if source_run else []),
+                '--error-rates', str(rate) if rate else ','.join(map(str, c.get('error_rates', ERROR_RATES if c['profile']=='paper' else [.003]))),
+                '--distances', str(distance) if distance else ','.join(map(str, c.get('distances', DISTANCES if c['profile']=='paper' else [9]))),
                 *(['--repeats', '1'] if measurement in ('statistics', 'pmu') else []), '--output', str(out)]
         batch = self.stage('native-batch', 'runs', lambda out: [native_command(out, native['policy-0-l3'], METHODS)])
         external_selection = ['--limit', str(c['external_shots'])]
@@ -368,50 +458,64 @@ class Workflow:
             '--profile', c['profile'], '--ae-run', str(batch), '--build', str(external), '--output', str(out),
             '--cpus', ','.join(map(str, c['cpus'][:4])), *external_selection]])
         timings, counts = {}, {}
-        for policy in range(3):
+        for policy in (range(3) if .003 in c.get('error_rates', [.003]) else []):
             timings[policy] = self.stage(f'policy-{policy}-timing', 'runs', lambda out, policy=policy: [
                 native_command(out, native[f'policy-{policy}-l3'], 'predecoded', source_run=batch, rate='.003')])
             counts[policy] = self.stage(f'policy-{policy}-counts', 'runs', lambda out, policy=policy: [
                 native_command(out, native[f'policy-{policy}-statistics'], 'predecoded', 'statistics', batch, '.003')])
         pmu = {}
-        for level in c['pmu_levels']:
+        pmu_target = (33 if c['profile']=='paper' else 9) in c.get('distances', DISTANCES) and .003 in c.get('error_rates', [.003])
+        for level in (c['pmu_levels'] if pmu_target else []):
             probe = self.stage(f'pmu-l{level}-probe', 'capabilities', lambda out, level=level: [
-                native_command(out, native[f'policy-0-l{level}'], 'reference,structured', 'pmu', profile='smoke', level=level)], optional_pmu=True)
+                native_command(out, native[f'policy-0-l{level}'], 'reference,structured', 'pmu', profile='smoke', level=level, rate='.003', distance=9)], optional_pmu=True)
             if probe:
                 pmu[level] = self.stage(f'pmu-l{level}', 'runs', lambda out, level=level: [
                     native_command(out, native[f'policy-0-l{level}'], 'reference,structured', 'pmu', batch,
                                    rate='.003', level=level, distance=33 if c['profile']=='paper' else 9)])
-        groups = ['ablation', 'comparison', 'predecoder', 'xeon-macros']
-        export = self.stage('figures', 'exports', lambda out: [[self.python, str(self.ae / 'export_results.py'),
-            '--profile', c['profile'], '--native-run', str(batch), '--external-run', str(external_run),
-            '--policy-timing', *[f'{p}={timings[p]}' for p in range(3)],
-            '--policy-counts', *[f'{p}={counts[p]}' for p in range(3)],
-            *(['--l2-run', str(pmu[2])] if 2 in pmu else []), *(['--l3-run', str(pmu[3])] if 3 in pmu else []),
-            '--groups', *groups, *(['--no-render'] if not c['render'] else []), '--output', str(out)]])
+        bundle = {'native_run': str(batch), 'external_run': str(external_run),
+                  'policy_timing': {str(p): str(v) for p, v in timings.items()},
+                  'policy_counts': {str(p): str(v) for p, v in counts.items()},
+                  **{f'l{level}_run': str(path) for level, path in pmu.items()}}
+        export = None
+        if c.get('export', True):
+            groups = ['ablation', 'comparison', 'xeon-macros'] + (['predecoder'] if timings else [])
+            export = self.stage('figures', 'exports', lambda out: [[self.python, str(self.ae / 'export_results.py'),
+                '--profile', c['profile'], '--native-run', str(batch), '--external-run', str(external_run),
+                *(['--policy-timing', *[f'{p}={timings[p]}' for p in range(3)],
+                   '--policy-counts', *[f'{p}={counts[p]}' for p in range(3)]] if timings else []),
+                *(['--l2-run', str(pmu[2])] if 2 in pmu else []), *(['--l3-run', str(pmu[3])] if 3 in pmu else []),
+                '--groups', *groups, *(['--no-render'] if not c['render'] else []), '--output', str(out)]])
         save(self.root / 'complete.json', {'complete': True, 'scope': 'Fresh local Linux paper workflow',
             'profile': c['profile'], 'native_shots_per_case': c['shots'], 'external_shots_per_case': c['external_shots'],
-            'external_shot_counts': c.get('external_shot_counts'),
-            'pmu_levels_collected': sorted(pmu), 'pmu_levels_unavailable': sorted(set(c['pmu_levels']) - set(pmu)),
-            'excluded': c['excluded'], 'export': str(export), 'config_sha256': digest(self.root / 'config.json')})
-        print(f'Complete: {export}', flush=True)
+            'external_shot_counts': c.get('external_shot_counts'), 'bundle': bundle, 'placement': c.get('placement'),
+            'pmu_levels_collected': sorted(pmu),
+            'pmu_levels_unavailable': sorted(set(c['pmu_levels']) - set(pmu)) if pmu_target else [],
+            'pmu_applicable': pmu_target, 'excluded': c['excluded'], 'export': str(export) if export else None,
+            'config_sha256': digest(self.root / 'config.json')})
+        print(f'Complete: {export or self.root}', flush=True)
+
 
 
 def parser():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument('action', nargs='?', choices=['run', 'plan', 'build', 'collect', 'resume'], default='run')
+    p.add_argument('action', nargs='?', choices=['run', 'plan', 'build', 'build-resume', 'collect', 'resume'], default='run')
     p.add_argument('--work', type=Path, required=True)
     p.add_argument('--source', type=Path, default=HERE.parent)
     p.add_argument('--profile', choices=['paper', 'smoke'], default='paper')
     p.add_argument('--external-shots', type=int, choices=[10000, 1000000], default=10000)
     p.add_argument('--external-shot-counts', type=Path, help='Optional per-method/case overrides; unspecified external methods retain --external-shots')
     p.add_argument('--python', default=sys.executable)
-    p.add_argument('--cpus'); p.add_argument('--backend', choices=['scalar', 'avx2', 'avx512vl', 'avx512'])
+    p.add_argument('--cpus', help='Eight physical cores on one socket, including smoke; auto-discovered when omitted'); p.add_argument('--backend', choices=['scalar', 'avx2', 'avx512vl', 'avx512'])
     p.add_argument('--jobs', type=int, default=2)
+    p.add_argument('--distances', help='Comma-separated case distances')
+    p.add_argument('--error-rates', help='Comma-separated case error rates')
+    p.add_argument('--builds-manifest', type=Path, help='Reuse every shared build without compiling on this host')
+    p.add_argument('--no-export', action='store_true', help='Save a case bundle for later multi-host aggregation')
     p.add_argument('--pmu', choices=['auto', 'off'], default='auto')
     p.add_argument('--offline', action='store_true'); p.add_argument('--no-render', action='store_true')
-    p.add_argument('--toolchain', help='Installed Rust nightly; automatically detected when omitted')
+    p.add_argument('--toolchain', help='Installed Rust toolchain (default: fixed nightly-2026-03-10)')
     for name in ['stim-source', 'stim-archive', 'googletest-source', 'upstream-repository', 'crate-cache',
-                 'reference-build', 'reference-record', 'native-build', 'external-build', 'dependencies-from']:
+                 'reference-build', 'reference-record', 'native-build', 'external-build', 'dependencies-from', 'official-source', 'reference-adapter']:
         p.add_argument('--' + name, type=Path)
     return p
 
@@ -423,7 +527,7 @@ def main(argv=None):
         if args.jobs < 1:
             raise ValueError('--jobs must be positive')
         config_path = args.work.resolve() / 'config.json'
-        if args.action in ('resume', 'collect'):
+        if args.action in ('resume', 'collect', 'build-resume'):
             if any(a.startswith('--') and a.split('=')[0] != '--work' for a in argv):
                 raise ValueError('resume/collect use the saved configuration; supply only --work')
             config = read(config_path)
@@ -442,7 +546,7 @@ def main(argv=None):
         environment = python_environment(config['python']['executable'])
         if not environment['available']:
             raise ValueError('Install beyond_blossom, stim, numpy and matplotlib in --python before starting:\n' + environment['error'])
-        if not config['dependencies']['external_build'] and not config['toolchain']:
+        if not config.get('builds_manifest') and not config['dependencies']['external_build'] and not config['toolchain']:
             raise ValueError('Install Rust nightly once: rustup toolchain install nightly-2026-03-10 --profile minimal')
         config_path.parent.mkdir(parents=True, exist_ok=True)
         with (config_path.parent / '.workflow.lock').open('a') as lock:
@@ -450,13 +554,15 @@ def main(argv=None):
                 fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             except BlockingIOError:
                 raise ValueError('This workflow is already running; wait before resuming it')
-            if args.action not in ('resume', 'collect'):
+            if args.action not in ('resume', 'collect', 'build-resume'):
                 if config_path.exists():
                     raise ValueError('Workflow already exists; use resume or collect with the same --work')
                 save(config_path, config)
             workflow = Workflow(config)
             builds = workflow.builds(allowed=args.action != 'collect')
-            if args.action != 'build':
+            if args.action not in ('build', 'build-resume'):
+                if not config['cpus']:
+                    raise ValueError('This was a build-only workflow; use a fresh run with --builds-manifest ' + str(workflow.root / 'builds.json'))
                 workflow.collect(*builds)
         return 0
     except (OSError, ValueError, RuntimeError, KeyError, subprocess.CalledProcessError) as error:

@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import export_results as E
 
@@ -28,17 +29,20 @@ def reseal_external_group(root, path):
     dump(root/'complete.json',complete)
 
 
-def native_fixture(root, measurement='batch', *, policy=0, m4=False, level='L2', full=False, serial_policy=False):
+def native_fixture(root, measurement='batch', *, policy=0, m4=False, level='L2', full=False, serial_policy=False,
+                   distances_override=None,rates_override=None,host='fixture-host'):
     distances = E.DISTANCES if full else [9]
     rates = E.RATES if full and measurement not in ('statistics',) else [.003]
     if policy != -1:rates=[.003]
+    if distances_override is not None:distances=distances_override
+    if rates_override is not None:rates=rates_override
     methods = ['pipelined'] if policy != -1 else E.STAGES+['unstructured']
     if policy != -1 and serial_policy:methods=['predecoded']
     if measurement=='pmu':methods=['reference','structured']
     repeats=3 if measurement=='batch' else 1
     plan=dict(profile='smoke',source=dict(commit='fixture-only',status=''),measurement=measurement,
         distances=distances,error_rates=rates,shots=2,repeats=repeats,backend='scalar' if m4 else 'avx512vl',
-        host='fixture-host',platform='Darwin-fixture' if m4 else 'Linux-fixture',machine='arm64' if m4 else 'x86_64',
+        host=host,platform='Darwin-fixture' if m4 else 'Linux-fixture',machine='arm64' if m4 else 'x86_64',
         methods={m:dict(threads=E.R.METHODS[m]['threads'],execution=E.R.METHODS[m]['execution']) for m in methods},timing='fixture complete decode scope',
         binary=dict(sha256='fixture-binary'),reference=dict(independent=True),seed=1)
     dump(root/'plan.json',plan)
@@ -98,7 +102,8 @@ def external_fixture(root, native_path):
             (folder/f'{method}.corrections.jsonl').write_text('[]\n[]\n')
             results.append(dict(method=method,shots=2,repeats=3,mean_us_per_shot=10+index,
                 timing_scope='fixture preserved native timing',files={name:E.R.digest(folder/name) for name in [f'{method}.csv',f'{method}.corrections.jsonl']}))
-        dump(folder/'summary.json',dict(complete=True,configuration=dict(input_provenance=dict(
+        dump(folder/'summary.json',dict(complete=True,configuration=dict(host=source['plan']['host'],
+            platform=source['plan']['platform'],machine=source['plan']['machine'],build={'source':{'commit':source['plan']['source']['commit'],'dirty':False}},input_provenance=dict(
             source=dict(sha256=digest,distance=distance,error_rate=probability),
             selected_shots=2,repeats=3,files={'native-input.json':E.R.digest(prepared/'native-input.json')})),
             oracle=dict(sha256=E.R.digest(folder/'oracle.jsonl')),results=results))
@@ -238,6 +243,28 @@ class FreshExportTest(unittest.TestCase):
         path=native_fixture(self.root/'native',policy=-1)
         with self.assertRaisesRegex(ValueError,'formal'):
             E.native_run(path,'batch','paper')
+
+    def test_scalar_export_labels_arm_and_x86_without_claiming_xeon_hardware(self):
+        # Validate the exporter separately from formal acquisition validation:
+        # these two-shot sealed fixtures are never represented as real measurements.
+        for machine in ('aarch64','arm64','x86_64'):
+            with self.subTest(machine=machine):
+                path=native_fixture(self.root/machine,policy=-1,full=True)
+                plan=E.read(path/'plan.json');plan.update(backend='scalar',machine=machine)
+                dump(path/'plan.json',plan)
+                done=E.read(path/'complete.json');done['plan_sha256']=E.R.digest(path/'plan.json');dump(path/'complete.json',done)
+                native=E.native_run(path,'batch','smoke')
+                output=self.root/(machine+'-export')
+                with patch.object(E,'native_run',return_value=native):
+                    self.assertEqual(E.main(['--native-run',str(path),'--profile','paper','--groups',
+                        'ablation','xeon-macros','--no-render','--output',str(output)]),0)
+                canonical=E.read(output/'canonical.json');audit=E.read(output/'macro-audit.json')
+                self.assertEqual(canonical['hardware']['structured_backend'],'scalar')
+                self.assertEqual(audit['hardware']['manuscript_hardware_equivalence'],'not asserted')
+                self.assertTrue(all(row['machine']==machine and row['structured_backend']=='scalar' for row in canonical['native']))
+                self.assertIn(machine,E.hardware_note(E.aggregate(native)))
+                self.assertIn('structured backend: scalar',(output/'performance-macros.tex').read_text())
+                self.assertTrue(all(not k.startswith('m4pro.') for k in audit['performance_values']))
 
     def test_serial_policies_are_explicit_and_cannot_mix_pipeline_counts(self):
         timing={m:E.native_run(native_fixture(self.root/f't{m}',policy=m,full=True,serial_policy=True),'batch','smoke') for m in E.POLICIES}

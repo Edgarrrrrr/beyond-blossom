@@ -4,7 +4,7 @@ AE provides two workflows: regenerate the paper's archived figures, or build and
 
 ## Setup
 
-Use Python 3.11+, CMake 3.21+, a C++20 compiler, OpenMP, and Git. Fresh external-decoder measurements also need Rust nightly. On Debian/Ubuntu, the native packages are `g++`, `cmake`, `python3-dev`, and `libgomp1`.
+Use Python 3.11+, CMake 3.21+, a C++20 compiler, OpenMP, and Git. Fresh external-decoder measurements also need Rust nightly. On Debian/Ubuntu, install `g++`, `cmake`, `python3-dev`, `python3-venv`, and `libgomp1`.
 
 ```sh
 python3 -m venv .venv
@@ -23,6 +23,8 @@ Use a work directory outside the checkout. Builds, inputs, logs, and results sta
 ```sh
 AE_WORK="$PWD/../beyond-blossom-ae"
 ```
+
+Decoder sources, reference adapters, and locked Rust crates are included in [vendor/](../vendor/README.md). After installing the tools and Python packages, `--offline` builds without network access or private directories. The automatic local and Slurm workflows target Linux and need eight physical cores on one socket. [M4 acquisition](REFERENCE.md#m4-acquisition) provides the macOS commands using QoS without fixed physical placement.
 
 ## Regenerate archived figures
 
@@ -46,7 +48,7 @@ Then run the full local matrix from a clean Git checkout:
 python AE/run.py run --work "$AE_WORK/paper" --external-shots 10000
 ```
 
-The runner discovers CPU placement and SIMD support, obtains pinned dependencies, builds all configurations, and executes the measurements serially. It compares against the separately built official upstream reference. Builds finish before timing starts.
+The runner discovers CPU placement and SIMD support, verifies bundled dependencies, builds all configurations, and executes the measurements serially. It compares against the separately built official upstream reference. Builds finish before timing starts.
 
 | Experiment | Fresh local collection |
 | --- | --- |
@@ -63,11 +65,24 @@ Progress is printed as each stage starts. Per-stage output is in `logs/`; `state
 python AE/run.py resume --work "$AE_WORK/paper"
 ```
 
-Completed stages are reused. Failed attempts remain available for inspection. `plan` prints the configuration without building or measuring; `build` and `collect` expose the two phases separately. `--source` selects a fixed source checkout, `--jobs` controls build parallelism, and `--cpus` overrides CPU placement. See `python AE/run.py --help` for offline dependency and existing-build options.
+Completed stages are reused; an incomplete stage restarts in a new attempt directory. Failed attempts remain available. `plan` prints the configuration; `build` and `collect` expose the two phases. `--source` selects a fixed checkout, `--jobs` controls compilation, and `--cpus` overrides placement. See `python AE/run.py --help` for all options.
+
+## Optional Slurm execution
+
+Place the checkout, Python environment, and work directory on storage shared by the compute nodes. Choose the partition and CPU allocation for the cluster; the allocation must contain at least eight physical cores on one socket. For example, on a cluster with a `cpu` partition:
+
+```sh
+python AE/slurm.py run --work "$AE_WORK/slurm-paper" \
+  --partition cpu --shards 6 --cpus-per-task 16 --offline
+```
+
+`--nodes node01,node02` selects named nodes instead of `--shards`; no cluster names are built into the runner. `--mem` and `--time` set resource limits. Builds finish on the submission host, then each worker runs complete settings serially. All methods and repeats of a setting stay on the same node. An `afterok` job exports the combined results automatically.
+
+Add `--profile smoke` and use a new work directory for a one-setting check. `prepare` writes a plan without building or submitting; `submit --work ...` executes it. `resume --work ...` retries unfinished work. `submissions.json` records job IDs, and `logs/` contains scheduler output. [The acquisition reference](REFERENCE.md#slurm-configuration) includes the configuration used on the authors' cluster.
 
 ## Read the results
 
-The final export contains the ablation and decoder-comparison figures, predecoder table, per-method CSVs, selected configurations, and available Xeon LaTeX macros. `canonical.json` records the inputs behind the figures; completion receipts identify the actual builds and runs. Missing hardware-specific values are listed, not filled from historical data.
+The final export contains the ablation and decoder-comparison figures, predecoder table, per-method CSVs, selected configurations, and paper-compatible LaTeX macros. `canonical.json` records the inputs, hardware, and SIMD backend; completion receipts identify the actual builds and runs. Missing hardware-specific values are listed, not filled from historical data.
 
 Apple M4 performance requires an M4 machine. The Linux workflow does not claim new M4 measurements. [Detailed acquisition commands](REFERENCE.md) cover M4, individual stages, saved-input reuse, timing scopes, and separate exports. [External decoder details](external/README.md) document their native timing scopes and correctness checks.
 

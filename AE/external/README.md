@@ -23,14 +23,13 @@ rustup toolchain install nightly-2026-03-10 --profile minimal
 python AE/external/build.py \
   --output /path/to/external-build \
   --reference-build /path/to/official-reference \
-  --stim-source /path/to/fixed-stim-source \
-  --stim-archive /path/to/fixed-libstim.a \
+  --offline \
   --toolchain nightly-2026-03-10 --jobs 2
 ```
 
 Output directories must be new and outside the source repository. `build.json` is written only after all selected binaries build successfully. A supplemented reference receipt can be supplied with `--reference-record`; its provenance remains in the build record. To satisfy Clang's narrowing checks, the builder writes a generated UF source with an explicit checked 32-bit graph-size conversion before decoder construction. The original source remains unchanged; the generated file hash is recorded, and the timed function is unchanged.
 
-For offline builds, use `--offline` with a populated Cargo cache, or `--crate-cache /path/to/crate-archives`. The latter verifies each archive against `Cargo.lock` and creates an isolated vendored directory under the build output. It requires all locked registry packages, including packages for other target platforms, so Cargo can resolve the complete locked graph. The package cache is not part of the source repository.
+The repository includes the exact crate archives required by `Cargo.lock`, including packages for other target platforms. `--offline` uses these verified sources without a populated user Cargo cache or network access. The builder obtains fixed Stim paths from the reference receipt. `--crate-cache`, `--stim-source`, and `--stim-archive` remain optional overrides. Install the standard compiler and pinned Rust toolchain before building offline. See the [dependency manifest](../../vendor/README.md).
 
 ## Prepare identical inputs
 

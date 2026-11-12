@@ -10,6 +10,7 @@ import subprocess
 import sys
 
 from reproduce import HERE, digest, source_identity, write
+from vendor import materialize
 
 
 def file_identity(root, paths):
@@ -18,7 +19,8 @@ def file_identity(root, paths):
 
 def source_files():
     repo = HERE.parent
-    paths = [repo / 'CMakeLists.txt', HERE / 'build_native.py', HERE / 'tailreset_statistics.h']
+    paths = [repo / 'CMakeLists.txt', HERE / 'build_native.py', HERE / 'vendor.py', HERE / 'tailreset_statistics.h',
+             repo / 'vendor/manifest.json', *sorted((repo / 'vendor/core').glob('*.tar.gz'))]
     for directory in (repo / 'src', repo / 'cmake', HERE / 'native'):
         paths.extend(directory.rglob('*'))
     return file_identity(repo, paths)
@@ -51,6 +53,7 @@ def main(argv=None):
     parser.add_argument('--statistics', action='store_true')
     parser.add_argument('--stim-source', type=Path)
     parser.add_argument('--stim-archive', type=Path)
+    parser.add_argument('--offline', action='store_true', help='Require local or bundled dependency sources; never download')
     parser.add_argument('--cxx-flags', default='-O3')
     parser.add_argument('--cmake-arg', action='append', default=[])
     args = parser.parse_args(argv)
@@ -64,12 +67,16 @@ def main(argv=None):
         parser.error('Paper builds require a clean committed source checkout')
     sources = source_files()
     root.mkdir(parents=True)
+    if args.stim_source is None:
+        args.stim_source = Path(materialize(root / 'dependencies', ['stim'])['stim_source'])
     configure = ['cmake', '-S', str(HERE / 'native'), '-B', str(root),
                  '-DCMAKE_BUILD_TYPE=Release', '-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF',
                  '-DCMAKE_CXX_FLAGS=' + args.cxx_flags,
                  '-DBB_AE_CACHE_LEVEL=' + args.cache_level,
                  '-DBB_TAILRESET_PREDECODE_MODE=' + args.predecode_mode,
                  '-DBB_TAILRESET_SYNDROME_STATS=' + ('ON' if args.statistics else 'OFF')]
+    if args.offline:
+        configure.append('-DBB_OFFLINE=ON')
     if args.stim_source:
         configure.append('-DFETCHCONTENT_SOURCE_DIR_STIM=' + str(args.stim_source.resolve()))
     if args.stim_archive:

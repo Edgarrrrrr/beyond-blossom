@@ -87,6 +87,26 @@ def decimal_mean(row):
         return Decimal(sum(row['repeat_elapsed_ns']))/(row['shots']*row['repeats']*1000)
 
 
+def hardware_context(native):
+    """Report the measured platform without inferring the manuscript's hardware."""
+    plan=native['plan']
+    need(plan['backend'] in ('scalar','avx2','avx512vl','avx512'), 'Unsupported recorded structured backend')
+    cases=native.get('case_placement') or {
+        case:{field:plan.get(field) for field in ('host','platform','machine')}
+        for case in native['inputs']}
+    return dict(structured_backend=plan['backend'],cases=cases,
+        manuscript_hardware_equivalence='not asserted',
+        macro_namespace='Historical xeon keys are compatibility identifiers, not measured hardware labels')
+
+
+def hardware_note(rows):
+    platforms=sorted({str(row.get('platform') or 'unrecorded').split('-')[0] for row in rows.values()})
+    machines=sorted({str(row.get('machine') or 'unrecorded') for row in rows.values()})
+    backends=sorted({str(row.get('structured_backend') or 'unrecorded') for row in rows.values()})
+    return ('Recorded platform: '+', '.join(platforms)+' / '+', '.join(machines)+
+            '; structured backend: '+', '.join(backends)+'. Hardware equivalence to the manuscript is not asserted.')
+
+
 def native_run(directory, measurement, profile='paper'):
     root = Path(directory).resolve()
     plan, done = read(root/'plan.json'), read(root/'complete.json')
@@ -129,6 +149,7 @@ def native_run(directory, measurement, profile='paper'):
         need(integer(correctness.get('actual_candidate_witnesses'),'candidate witnesses') >= differences,
              'Observable ties lack actual candidate correction witnesses')
         row = dict(case=call['case'], distance=call['distance'], error_rate=call['error_rate'], method=call['method'], repeat=call['repeat'],
+                   host=plan.get('host'), platform=plan.get('platform'), machine=plan.get('machine'),structured_backend=plan['backend'],
                    shots=plan['shots'], input_sha256=inputs[call['case']], validation=reference(folder/'correctness.json'),
                    source=reference(folder/('syndromes.json' if measurement == 'statistics' else 'pmu.json' if measurement == 'pmu' else 'measurement.csv')))
         if measurement == 'batch':
@@ -184,6 +205,7 @@ def aggregate(run):
             mean_us=sum(r['elapsed_ns'] for r in rows)/n/1000,
             median_batch_us=statistics.median(r['elapsed_ns']/r['shots']/1000 for r in rows),
             input_sha256=rows[0]['input_sha256'], threads=rows[0]['threads'], execution=rows[0]['execution'], timing_scope=rows[0]['scope'],
+            host=rows[0].get('host'),platform=rows[0].get('platform'),machine=rows[0].get('machine'),structured_backend=rows[0].get('structured_backend'),
             sources=[r['source'] for r in rows])
     return result
 
@@ -200,9 +222,13 @@ def complete_matrix(rows, methods, profile):
 
 def same_inputs(left, right, methods=None):
     need(left['plan']['source']['commit'] == right['plan']['source']['commit'], 'Results use different candidate source commits')
-    if left['plan'].get('host') or right['plan'].get('host'):
-        need(left['plan'].get('host') == right['plan'].get('host'), 'Paired native results use different hosts')
     for case, digest in right['inputs'].items():
+        a=left.get('case_placement',{}).get(case,left['plan'])
+        b=right.get('case_placement',{}).get(case,right['plan'])
+        if a.get('host') or b.get('host'):
+            need(a.get('host') == b.get('host'), f'Paired native results use different hosts for {case}')
+        for field in ('platform','machine'):
+            if a.get(field) and b.get(field):need(a[field]==b[field], f'Paired native {field} differs for {case}')
         need(left['inputs'].get(case) == digest, f'Different saved inputs for {case}')
 
 
@@ -221,6 +247,9 @@ def external_run(directory, native, profile):
         value = read(summary_path)
         need(value.get('complete'), 'External method group is incomplete')
         folder = summary_path.parent
+        configuration=value['configuration']
+        if configuration.get('host'):
+            need(configuration['host']==native['plan'].get('host'), 'External and native timings must identify the same host')
         if profile == 'paper':
             configuration = value['configuration']
             build_source=configuration['build']['source']
@@ -263,6 +292,8 @@ def external_run(directory, native, profile):
             if profile == 'paper':
                 need(item['shots'] in (10000,1000000) and item['repeats'] == 3, 'External paper counts differ')
             result[identity] = dict(distance=d,error_rate=str(p),method=method,shots=item['shots'],repeats=item['repeats'],
+                host=configuration.get('host'),platform=configuration.get('platform'),machine=configuration.get('machine'),
+                source_commit=(configuration.get('build') or {}).get('source',{}).get('commit'),
                 repeat_elapsed_ns=totals,repeat_mean_us=means,mean_us=sum(means)/len(means),
                 input_sha256=provenance['source']['sha256'], timing_scope=item['timing_scope'],
                 physical_observable_truth_available=False, source=reference(summary_path),
@@ -304,6 +335,7 @@ def policy_results(timing, counts, profile):
             need(t['shots'] == s['shots'] and s['normalized'] > 0, 'Table timing/count inputs differ or no initial defects')
             rows.append(dict(distance=setting[0],error_rate=str(setting[1]),policy=mode,physical_policy=physical_mode,
                 strategy=strategy,strategy_label=label,macro_strategy=POLICIES[mode][0],
+                host=t.get('host'),platform=t.get('platform'),machine=t.get('machine'),structured_backend=t.get('structured_backend'),
                 shots=s['shots'],repeats=t['repeats'],threads=threads,execution=execution,method=method,mean_us=t['mean_us'],
                 repeat_elapsed_ns=t['repeat_elapsed_ns'], normalized=s['normalized'],residual=s['residual'],
                 pairs=s['pairs'],boundaries=s['boundaries'],completed_shots=s['completed_shots'],
@@ -405,10 +437,11 @@ def paper_macros(native, pmu, policies, m4, *, xeon_only=False):
             template = template[:item.start]+formatted+template[item.end:]
         if xeon_only:
             template='\n'.join(line for line in template.splitlines() if not any(line.startswith('\\DefinePerfValue{'+key+'}{') for key in omitted))+'\n'
-            template='% Xeon-only subset: unavailable PMU/M4 macros are intentionally undefined; no archived values.\n'+template
+            template='% Linux-result subset (legacy xeon keys): unavailable PMU/M4 macros are intentionally undefined; no archived values.\n'+template
+        template='% '+hardware_note(rows)+'\n% Legacy xeon keys do not identify the measurement hardware.\n'+template
     return template, predecoder_macros(policies) if policies and (not xeon_only or len(policies)==21) else '', dict(performance_values=values,performance_operands=audit,predecoder_rows=policies,
         scope='xeon-only subset' if xeon_only else 'full paper',omitted_performance_keys=omitted,
-        native_matrix_complete=full_native,
+        native_matrix_complete=full_native,placement=native.get('case_placement'),hardware=hardware_context(native),
         denominator='Fixed official reference; historical pymatching macro key retained for manuscript compatibility',rounding='Decimal precision 60, final ROUND_HALF_UP')
 
 
@@ -426,6 +459,12 @@ def render_figures(output, groups, native, external, policies, m4, profile):
     def save(fig, name):
         if profile == 'smoke':
             fig.text(.5,1.03,'Development smoke: not paper performance evidence',ha='center',va='bottom',fontsize=9,color='#9d2600')
+        pool=m4 if name=='m4_pro_per_round' else native
+        fig.text(.5,-.025,hardware_note(pool),ha='center',va='top',fontsize=7)
+        hosts=sorted({row['host'] for row in pool.values() if row.get('host')})
+        if len(hosts)>1:
+            fig.text(.5,-.065,'Each setting is paired on one host; collection spans '+', '.join(hosts)+'. See canonical.json.',
+                     ha='center',va='top',fontsize=7)
         for extension in ('pdf','svg','png'):
             path = figures/f'{name}.{extension}'
             fig.savefig(path, dpi=300, bbox_inches='tight')
@@ -501,6 +540,96 @@ def render_figures(output, groups, native, external, policies, m4, profile):
     return exported
 
 
+def merge_native_runs(runs):
+    """Combine disjoint case matrices without inventing a shared measurement host."""
+    need(bool(runs),'Missing native shard collection')
+    first=runs[0]
+    variant_keys=('BB_TAILRESET_PREDECODE_MODE','BB_TAILRESET_SYNDROME_STATS','BB_AE_CACHE_LEVEL',
+                  'BB_STRUCTURED_STORAGE_DIRECTIONS','BB_PREDECODE_SIMD','BB_PREDECODE_ENABLED',
+                  'BB_STRUCTURED_PROFILE_COUNTERS','BB_STRUCTURED_PROFILE_TIMERS','BB_STRUCTURED_PROFILE_TIMELINE',
+                  'CMAKE_INTERPROCEDURAL_OPTIMIZATION','CMAKE_CXX_FLAGS','CMAKE_CXX_FLAGS_RELEASE')
+    def variant(run):
+        config=(run['plan']['binary'].get('build_record') or {}).get('configuration',{})
+        return {name:config.get(name) for name in variant_keys}
+    expected_variant=variant(first)
+    inputs,records,placements,provenance={},{},{},{}
+    for index,run in enumerate(runs):
+        need(run['kind']==first['kind'],'Mixed native measurement kinds')
+        need(run['plan']['source']['commit']==first['plan']['source']['commit'],'Shards use different candidate source commits')
+        need(run['plan']['backend']==first['plan']['backend'],'Shards use different structured SIMD backends')
+        need(variant(run)==expected_variant,'Shards use different native build variants/configuration')
+        for case,digest in run['inputs'].items():
+            need(case not in inputs,f'Duplicate native shard case: {case}')
+            need(bool(run['plan'].get('host')),f'Shard host identity missing for {case}')
+            inputs[case]=digest
+            placements[case]={field:run['plan'].get(field) for field in ('host','platform','machine')}
+        for row in run['records']:
+            identity=(row['case'],row['method'],row['repeat'])
+            need(identity not in records,'Duplicate native shard measurement')
+            records[identity]=row
+        for name,item in run['provenance'].items():provenance[f'shard_{index:03d}_{name}']=item
+    hosts=sorted({p['host'] for p in placements.values()})
+    plan=dict(first['plan'],host=hosts[0] if len(hosts)==1 else None,hosts=hosts,
+              collection_scope='per-setting paired multi-host' if len(hosts)>1 else 'single host')
+    return dict(kind=first['kind'],plan=plan,records=list(records.values()),inputs=inputs,
+                case_placement=placements,provenance=provenance)
+
+
+def shard_runs(path, groups, profile):
+    """Each bundle owns all comparisons for its cases; only case-disjoint bundles merge."""
+    path=Path(path).resolve()
+    manifest=read(path)
+    need(manifest.get('schema')==1 and isinstance(manifest.get('shards'),list) and manifest['shards'],
+         'Expected schema 1 and a nonempty shards list')
+    resolve=lambda value:(path.parent/Path(value)).resolve()
+    natives,external,policy_timing,policy_counts,cache=[],{}, {},{},{}
+    sources={'shards_manifest':{'manifest':reference(path)}}
+    allowed={'native_run','external_run','policy_timing','policy_counts','l2_run','l3_run'}
+    for index,bundle in enumerate(manifest['shards']):
+        need(isinstance(bundle,dict) and set(bundle)<=allowed and bundle.get('native_run'), 'Unknown or missing shard bundle field')
+        native=native_run(resolve(bundle['native_run']),'batch',profile)
+        complete_matrix(aggregate(native),STAGES,'smoke')
+        natives.append(native)
+        if 'comparison' in groups:
+            need(bundle.get('external_run'),'Every comparison shard requires external_run')
+            imported=external_run(resolve(bundle['external_run']),native,profile)
+            need({key(r['distance'],r['error_rate']) for r in imported['rows'].values()} ==
+                 {key(r['distance'],r['error_rate']) for r in native['records']}, 'External/native shard case matrices differ')
+            for identity,row in imported['rows'].items():
+                need(identity not in external,'Duplicate external shard setting/method')
+                need(row.get('host')==native['plan'].get('host'),'External shard host identity missing or mismatched')
+                need(row.get('source_commit')==native['plan']['source']['commit'],'External shard candidate source commit differs')
+                external[identity]=row
+            sources[f'shard_{index:03d}_external']=imported['provenance']
+        if bundle.get('policy_timing') or bundle.get('policy_counts'):
+            need(set(bundle.get('policy_timing',{}))==set(bundle.get('policy_counts',{}))=={'0','1','2'},
+                 'Each policy shard requires timing and counts for all three roles')
+            for label,measurement,collection in [('policy_timing','batch',policy_timing),('policy_counts','statistics',policy_counts)]:
+                for mode,location in bundle[label].items():
+                    run=native_run(resolve(location),measurement,profile)
+                    same_inputs(native,run)
+                    collection.setdefault(int(mode),[]).append(run)
+        for level,label in [('L2','l2_run'),('L3','l3_run')]:
+            if bundle.get(label):
+                run=native_run(resolve(bundle[label]),'pmu',profile)
+                same_inputs(native,run)
+                cache.setdefault(level,[]).append(run)
+    native=merge_native_runs(natives)
+    sources['native']=native['provenance']
+    need_policy=bool(groups & {'predecoder','macros'}) or bool(policy_timing or policy_counts)
+    policies=[]
+    if need_policy:
+        timing={mode:merge_native_runs(runs) for mode,runs in policy_timing.items()}
+        counts={mode:merge_native_runs(runs) for mode,runs in policy_counts.items()}
+        policies=policy_results(timing,counts,profile)
+        for mode in timing:
+            sources[f'policy_{mode}_timing']=timing[mode]['provenance']
+            sources[f'policy_{mode}_counts']=counts[mode]['provenance']
+    pmu={level:merge_native_runs(runs) for level,runs in cache.items()}
+    for level,run in pmu.items():sources[level]=run['provenance']
+    return native,external,policies,pmu,sources
+
+
 def mode_paths(specs):
     result={}
     for spec in specs or []:
@@ -512,7 +641,9 @@ def mode_paths(specs):
 
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--native-run',type=Path,required=True)
+    input_group=parser.add_mutually_exclusive_group(required=True)
+    input_group.add_argument('--native-run',type=Path)
+    input_group.add_argument('--shards',type=Path,help='Schema-1 manifest of case-disjoint, internally host-paired runs')
     parser.add_argument('--external-run',type=Path)
     parser.add_argument('--l2-run',type=Path)
     parser.add_argument('--l3-run',type=Path)
@@ -529,20 +660,26 @@ def main(argv=None):
         parser.error('Use a fresh output directory outside AE')
     groups=set(args.groups)
     try:
-        native=native_run(args.native_run,'batch',args.profile)
+        if args.shards:
+            need(not any((args.external_run,args.l2_run,args.l3_run,args.policy_timing,args.policy_counts)),
+                 'With --shards, paired native runs must be specified only inside the manifest')
+            native,ext,policies,pmu,sources=shard_runs(args.shards,groups,args.profile)
+        else:
+            native=native_run(args.native_run,'batch',args.profile)
+            sources={'native':native['provenance']}
+            ext,policies,pmu={},[],{}
         rows=aggregate(native)
         complete_matrix(rows,STAGES,args.profile)
-        if args.profile=='paper':
-            need(native['plan']['backend'] in ('avx2','avx512vl','avx512'), 'Xeon structured figure requires the recorded SIMD backend')
-        sources={'native':native['provenance']}
-        ext,policies,m4rows,pmu,m4={},[],{}, {},None
+        hardware=hardware_context(native)
+        m4rows,m4={},None
         if 'comparison' in groups:
-            need(args.external_run,'Comparison requires --external-run; archived CSV is never substituted')
-            imported=external_run(args.external_run,native,args.profile)
-            ext=imported['rows'];sources['external']=imported['provenance']
+            if not args.shards:
+                need(args.external_run,'Comparison requires --external-run; archived CSV is never substituted')
+                imported=external_run(args.external_run,native,args.profile)
+                ext=imported['rows'];sources['external']=imported['provenance']
             complete_matrix(ext,EXTERNAL,args.profile)
             need({(d,p) for d,p,m in ext} == {(d,p) for d,p,m in rows},'External/native case matrices differ')
-        if groups & {'predecoder','macros'} or ('xeon-macros' in groups and (args.policy_timing or args.policy_counts)):
+        if not args.shards and (groups & {'predecoder','macros'} or ('xeon-macros' in groups and (args.policy_timing or args.policy_counts))):
             timing={mode:native_run(path,'batch',args.profile) for mode,path in mode_paths(args.policy_timing).items()}
             counts={mode:native_run(path,'statistics',args.profile) for mode,path in mode_paths(args.policy_counts).items()}
             policies=policy_results(timing,counts,args.profile)
@@ -557,12 +694,14 @@ def main(argv=None):
             need(m4['plan']['source']['commit']==native['plan']['source']['commit'],'M4 and Xeon results use different source commits')
             m4rows=aggregate(m4);complete_matrix(m4rows,STAGES,args.profile);sources['m4']=m4['provenance']
         if groups & {'macros','xeon-macros'}:
-            if 'macros' in groups:need(args.l2_run and args.l3_run,'Performance macros require both --l2-run and --l3-run')
-            pmu={level:native_run(path,'pmu',args.profile) for level,path in [('L2',args.l2_run),('L3',args.l3_run)] if path}
+            if not args.shards:pmu={level:native_run(path,'pmu',args.profile) for level,path in [('L2',args.l2_run),('L3',args.l3_run)] if path}
+            if 'macros' in groups:need(set(pmu)=={'L2','L3'},'Performance macros require both L2 and L3 runs')
             for level,run in pmu.items():sources[level]=run['provenance']
             performance,predecoder,macro_audit=paper_macros(native,pmu,policies,m4,xeon_only='macros' not in groups)
         output.mkdir(parents=True)
         canonical=dict(schema=1,complete=True,profile=args.profile,groups=sorted(groups),sources=sources,
+            hardware=hardware,placement=dict(scope=native['plan'].get('collection_scope','single host'),
+                           cases=native.get('case_placement',{case:{field:native['plan'].get(field) for field in ('host','platform','machine')} for case in native['inputs']})),
             method_labels=LABELS,ablation_stages=STAGES,best_configuration_pool=CANDIDATES,
             macro_aliases=ALIASES,baseline_policy='reference always means the independently built official e27b8c6a revision',
             native=list(rows.values()),external=list(ext.values()),predecoder=policies,m4=list(m4rows.values()),
@@ -580,11 +719,14 @@ def main(argv=None):
                 chosen=min(CANDIDATES,key=lambda method:pool[d,p,method][metric])
                 item=pool[d,p,chosen]
                 selections.append(dict(platform=name,distance=d,error_rate=str(p),selected_configuration=chosen,
+                    host=item.get('host'),machine=item.get('machine'),recorded_platform=item.get('platform'),structured_backend=item.get('structured_backend'),
                     threads=item['threads'],shots=item['shots'],repeats=item['repeats'],aggregation=metric,
                     time_us=item[metric],reference_us=pool[d,p,'reference'][metric],
                     speedup=pool[d,p,'reference'][metric]/item[metric],input_sha256=item['input_sha256']))
         write_csv(output/'selected-configurations.csv',selections)
         banner='% Fresh verified AE export; '+args.profile+' profile.\n'
+        banner+='% '+hardware_note(rows)+'\n'
+        if args.shards:banner+='% Per-setting host pairing; distributed collection. See canonical.json placement.cases.\n'
         if policies and len(policies)==21:
             (output/'predecoder_numbers.tex').write_text(banner+predecoder_macros(policies))
         if groups & {'macros','xeon-macros'}:

@@ -116,13 +116,12 @@ if(BB_TEST_COVERAGE)
 endif()
 
 include(FetchContent)
+include(cmake/VendoredDependencies.cmake)
 if (BB_BUILD_TESTS)
     set(INSTALL_GTEST OFF CACHE BOOL "Do not install private test dependencies")
-    FetchContent_Declare(
-            googletest
-            GIT_REPOSITORY https://github.com/google/googletest.git
-            GIT_TAG 58d77fa8070e8cec2dc1ed015d66b454c8d78850
-    )
+    bb_declare_vendored_dependency(googletest
+        "${BB_VENDOR_GOOGLETEST_ARCHIVE}" "${BB_VENDOR_GOOGLETEST_SHA256}"
+        "https://github.com/google/googletest.git" "58d77fa8070e8cec2dc1ed015d66b454c8d78850")
 
     FetchContent_MakeAvailable(googletest)
     if (TARGET gtest_main AND NOT TARGET GTest::gtest_main)
@@ -140,9 +139,9 @@ if (BB_BUILD_TESTS)
     endif()
 endif ()
 
-FetchContent_Declare(stim
-        GIT_REPOSITORY https://github.com/quantumlib/Stim.git 
-        GIT_TAG 1320ad7eac7de34d2e9c70daa44fbc6d84174450)
+bb_declare_vendored_dependency(stim
+    "${BB_VENDOR_STIM_ARCHIVE}" "${BB_VENDOR_STIM_SHA256}"
+    "https://github.com/quantumlib/Stim.git" "1320ad7eac7de34d2e9c70daa44fbc6d84174450")
 FetchContent_GetProperties(stim)
 if(NOT stim_POPULATED)
     FetchContent_Populate(stim)

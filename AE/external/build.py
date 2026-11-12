@@ -4,16 +4,23 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
 import platform
 import shutil
 import subprocess
+import sys
 import tarfile
 import tomllib
 
 from common import HERE, REFERENCE_REVISION, sha256, source_identity, verify_files, verify_sources, write_json
+
+_vendor_spec = importlib.util.spec_from_file_location('beyond_blossom_ae_vendor', HERE.parent / 'vendor.py')
+_vendor = importlib.util.module_from_spec(_vendor_spec)
+_vendor_spec.loader.exec_module(_vendor)
+materialize = _vendor.materialize
 
 
 def checked_version(command):
@@ -82,7 +89,7 @@ def main():
     parser.add_argument('--cargo', default='cargo')
     parser.add_argument('--toolchain', required=False, help='Explicit installed Rust toolchain, e.g. nightly-2026-03-10')
     parser.add_argument('--jobs', type=int, default=4)
-    parser.add_argument('--offline', action='store_true')
+    parser.add_argument('--offline', action='store_true', help='Disable Cargo networking; locked bundled crates are used by default')
     parser.add_argument('--crate-cache', type=Path, help='Directory containing every .crate in Cargo.lock; enables offline vendoring')
     parser.add_argument('--reference-build', type=Path, help='Output of AE/build_reference.py; required for oracle')
     parser.add_argument('--reference-record', type=Path, help='Optional supplemented reference receipt; otherwise reference-build/reference.json')
@@ -93,8 +100,16 @@ def main():
         parser.error('--jobs must be positive')
     if 'blossom' in args.only and not args.toolchain:
         parser.error('--toolchain is required for blossom; the historical floating nightly is not a version lock')
-    if 'oracle' in args.only and not all((args.reference_build, args.stim_source, args.stim_archive)):
-        parser.error('oracle requires --reference-build, --stim-source and --stim-archive')
+    if 'oracle' in args.only and not args.reference_build:
+        parser.error('oracle requires --reference-build from AE/build_reference.py')
+    if 'oracle' in args.only:
+        record = json.loads((args.reference_record or args.reference_build / 'reference.json').read_text())
+        if args.stim_source is None and record.get('stim_source'):
+            args.stim_source = Path(record['stim_source'])
+        if args.stim_archive is None and record.get('stim_archive'):
+            args.stim_archive = Path(record['stim_archive'])
+        if not args.stim_source or not args.stim_archive:
+            parser.error('An older reference receipt requires explicit --stim-source and --stim-archive; new bundled builds record both')
     root = args.output.resolve()
     if root.exists():
         parser.error('Use a fresh output directory')
@@ -106,17 +121,26 @@ def main():
     common_start = sha256(HERE / 'common.py')
     oracle_start = sha256(HERE / 'native/oracle.cpp') if 'oracle' in args.only else None
     root.mkdir(parents=True)
+    vendored = None
+    if 'blossom' in args.only and args.crate_cache is None:
+        vendored = materialize(root / 'dependencies', ['crates'])
+        args.crate_cache = Path(vendored['crate_cache'])
     versions = dict(cxx=checked_version([args.cxx, '--version']))
     commands, binaries, generated_sources = {}, {}, {}
     environment = os.environ.copy()
     # Record inherited compiler settings; default builds preserve the historical flags.
-    inherited = {key: environment[key] for key in ('CXXFLAGS', 'CPPFLAGS', 'LDFLAGS', 'RUSTFLAGS', 'CARGO_ENCODED_RUSTFLAGS') if key in environment}
+    inherited = {key: environment[key] for key in ('CXXFLAGS', 'CPPFLAGS', 'LDFLAGS', 'RUSTFLAGS', 'CARGO_ENCODED_RUSTFLAGS', 'CARGO_HOME', 'RUSTUP_HOME') if key in environment}
+    # Keep Cargo's cache/config separate from the user's global Cargo directory.
+    # RUSTUP_HOME and the explicitly selected installed toolchain stay unchanged.
+    cargo_home = root / 'cargo-home'
+    cargo_home.mkdir()
+    environment['CARGO_HOME'] = str(cargo_home)
 
     def run(name, command):
         commands[name] = command
         write_json(root / (name + '-command.json'), command)
         with (root / (name + '.log')).open('x') as stream:
-            subprocess.run(command, stdout=stream, stderr=subprocess.STDOUT, env=environment, check=True)
+            subprocess.run(command, stdout=stream, stderr=subprocess.STDOUT, env=environment, cwd=root, check=True)
 
     uf, ldpc = HERE / 'sources/unionfind', HERE / 'sources/ldpc-union-find'
     common = [args.cxx, '-std=c++20', '-O3', '-DNDEBUG']
@@ -185,12 +209,15 @@ def main():
         consistent_identity.update(dirty=True, status='Repository identity changed during compilation; see source_start/source_finish')
     receipt = dict(schema=1, complete=True, source=consistent_identity, source_start=start_identity, source_finish=finish_identity, platform=platform.platform(),
                    machine=platform.machine(), compilers=versions, inherited_environment=inherited,
+                   build_environment=dict(cwd=str(root), cargo_home=str(cargo_home), rustup_home=environment.get('RUSTUP_HOME')),
                    commands=commands, generated_sources=generated_sources, sources_lock_sha256=sha256(HERE / 'sources.lock.json'),
                    builder_sha256=sha256(__file__), common_sha256=sha256(HERE / 'common.py'),
                    oracle_source_sha256=sha256(HERE / 'native/oracle.cpp') if 'oracle' in binaries else None,
                    cargo_lock_sha256=sha256(HERE / 'native/blossom/Cargo.lock'), rust_toolchain=args.toolchain,
                    reference=reference, binaries={name: dict(path=str(path), sha256=sha256(path)) for name, path in binaries.items()},
                    historical_source_files_verified=len(lock['files']))
+    if vendored:
+        receipt['vendored_dependencies'] = vendored
     write_json(root / 'build.json', receipt)
     print(root / 'build.json')
 

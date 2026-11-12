@@ -25,7 +25,7 @@ class LocalWorkflowTests(unittest.TestCase):
             'external_shots': 10000, 'render': False, 'excluded': ['Apple M4 hardware acquisition'],
             'pmu_levels': [2, 3], 'dependencies': {
                 'stim_source': '/deps/stim', 'stim_archive': '/deps/libstim.a', 'googletest_source': '/deps/gtest',
-                'upstream_repository': '/deps/upstream', 'crate_cache': '/deps/crates', 'reference_build': None,
+                'upstream_repository': '/deps/upstream', 'reference_adapter': '/deps/adapter', 'official_source': None, 'crate_cache': '/deps/crates', 'reference_build': None,
                 'reference_record': None, 'native_build': None, 'external_build': None}}
         self.workflow = R.Workflow(self.config)
         R.save(self.workflow.root / 'config.json', self.config)
@@ -102,7 +102,7 @@ class LocalWorkflowTests(unittest.TestCase):
             output = self.workflow.root / category / name
             stages.append((name, category, commands(output)))
             return output
-        with patch.object(self.workflow, 'stage', side_effect=stage), contextlib.redirect_stdout(io.StringIO()):
+        with patch.object(self.workflow, 'stage', side_effect=stage), patch.object(self.workflow, 'record_builds'), contextlib.redirect_stdout(io.StringIO()):
             builds = self.workflow.builds()
             build_count = len(stages)
             self.workflow.collect(*builds)
@@ -171,6 +171,108 @@ class LocalWorkflowTests(unittest.TestCase):
              patch.object(R, 'identity', return_value={'commit':'mock','status':''}):
             c = R.configuration(args)
         self.assertEqual(c['shots'], 1025); self.assertEqual(c['external_shots'], 32)
+
+
+    def test_case_bundle_runs_only_applicable_policy_and_pmu(self):
+        self.config.update(distances=[33], error_rates=[.0005], export=False)
+        stages = {}
+        def stage(name, category, commands, *args, **kwargs):
+            out = self.workflow.root / category / name
+            stages[name] = commands(out)[0]
+            return out
+        native = {f'policy-{p}-{kind}': Path('/build') for p in range(3) for kind in ['l2','l3','statistics']}
+        with patch.object(self.workflow, 'stage', side_effect=stage), contextlib.redirect_stdout(io.StringIO()):
+            self.workflow.collect(native, {2: Path('/ref2'), 3: Path('/ref3')}, Path('/ext'))
+        self.assertEqual(set(stages), {'native-batch', 'external'})
+        command = stages['native-batch']
+        self.assertEqual(command[command.index('--distances')+1], '33')
+        self.assertEqual(command[command.index('--error-rates')+1], '0.0005')
+        done = R.read(self.workflow.root / 'complete.json')
+        self.assertFalse(done['pmu_applicable'])
+        self.assertEqual(done['bundle']['policy_counts'], {})
+        self.assertIsNone(done['export'])
+
+    def test_shared_stim_build_uses_portable_simd_width(self):
+        self.config['dependencies']['stim_archive'] = None
+        commands = {}
+        def stage(name, category, factory, *a, **k):
+            output = self.workflow.root / category / name
+            commands[name] = factory(output)
+            return output
+        with patch.object(self.workflow,'stage',side_effect=stage),patch.object(self.workflow,'record_builds'):
+            self.workflow.builds()
+        self.assertIn('-DSIMD_WIDTH=128',commands['stim-library'][0])
+        for name in ['reference-l2','reference-l3']:
+            self.assertIn('--reference-adapter',commands[name][0])
+            self.assertNotIn('--history-ref',commands[name][0])
+
+    def test_shared_manifest_skips_build_commands_and_checks_variants(self):
+        receipt = self.root / 'receipt.json'; R.save(receipt, {'complete': True})
+        native = {f'policy-{p}-{kind}': str(self.root/'builds'/f'{p}{kind}') for p in range(3) for kind in ['l2','l3','statistics']}
+        external = self.root/'external'; external.mkdir()
+        R.save(external/'build.json', {'complete': True})
+        receipts = {str(receipt): R.digest(receipt), str(external/'build.json'): R.digest(external/'build.json')}
+        for location in native.values():
+            path=Path(location);path.mkdir(parents=True)
+            R.save(path/'build.json',{'complete':True})
+            receipts[str(path/'build.json')]=R.digest(path/'build.json')
+        manifest = self.root / 'builds.json'
+        R.save(manifest, {'complete': True, 'source_identity': self.config['source_identity'], 'machine': R.platform.machine(),
+            'receipts': receipts, 'native': native, 'references': {'2':'/ref2','3':'/ref3'},
+            'reference_records': {'2':str(receipt),'3':str(receipt)}, 'external':str(external)})
+        self.config['builds_manifest'] = str(manifest)
+        with patch.object(self.workflow, 'stage') as stage, patch.object(self.workflow, 'external_build', side_effect=lambda path,*a,**k: Path(path)) as verify:
+            builds = self.workflow.builds(allowed=False)
+            stage.assert_not_called(); self.assertEqual(verify.call_count, 10)
+            self.assertEqual(builds[2], external)
+        receipt.write_text('{}')
+        with self.assertRaisesRegex(ValueError, 'receipt changed'):
+            self.workflow.builds(allowed=False)
+
+    def test_shared_manifest_cannot_omit_receipt(self):
+        manifest=self.root/'missing-build.json'
+        R.save(manifest, {'complete':True,'machine':R.platform.machine(),'source_identity':self.config['source_identity'],
+            'native':{'policy-0-l3':'/candidate'},'external':'/external','reference_records':{'3':'/ref/reference.json'},'receipts':{}})
+        with self.assertRaisesRegex(ValueError,'every build receipt'):
+            self.workflow.shared_builds(manifest)
+
+    def test_stim_resume_rejects_modified_source_or_library(self):
+        source=self.root/'stim';(source/'src').mkdir(parents=True)
+        (source/'CMakeLists.txt').write_text('cmake')
+        header=source/'src/header.h';header.write_text('original')
+        output=self.root/'stim-build';(output/'out').mkdir(parents=True)
+        library=output/'out/libstim.a';library.write_bytes(b'archive')
+        R.save(output/'.dependency.json',{'complete':True,'source_root':str(source),
+            'source_files':{str(p):R.digest(p) for p in [source/'CMakeLists.txt',header]},
+            'artifacts':{str(library):R.digest(library)}})
+        self.workflow.verify_dependency('stim-library',output)
+        header.write_text('changed')
+        with self.assertRaisesRegex(ValueError,'dependency changed'):
+            self.workflow.verify_dependency('stim-library',output)
+        header.write_text('original')
+        (source/'file_lists').mkdir(); (source/'file_lists/new.cmake').write_text('new source list')
+        with self.assertRaisesRegex(ValueError,'file set changed'):
+            self.workflow.verify_dependency('stim-library',output)
+        (source/'file_lists/new.cmake').unlink()
+        library.write_bytes(b'changed')
+        with self.assertRaisesRegex(ValueError,'dependency changed'):
+            self.workflow.verify_dependency('stim-library',output)
+
+    def test_build_configuration_needs_no_measurement_cpus_and_uses_fixed_toolchain(self):
+        args = R.parser().parse_args(['build', '--work', str(self.root/'build'), '--source', str(R.HERE.parent)])
+        with patch.object(R, 'select_cpus') as select, patch.object(R, 'python_environment', return_value={'executable':'mock','available':True}), patch.object(R, 'identity', return_value={'commit':'mock','status':''}):
+            c = R.configuration(args)
+        select.assert_not_called()
+        self.assertEqual(c['cpus'], [])
+        self.assertEqual(c['toolchain'], 'nightly-2026-03-10')
+        self.assertEqual(c['pmu_levels'], [2, 3])
+        self.assertIsNone(c['dependencies']['upstream_repository'])
+
+    def test_partial_paper_requires_bundle_output_before_running(self):
+        args = R.parser().parse_args(['plan','--work',str(self.root/'partial'),'--distances','9'])
+        with patch.object(R, 'select_cpus', return_value=list(range(8))), patch.object(R, 'python_environment', return_value={}):
+            with self.assertRaisesRegex(ValueError, 'Partial paper selections require --no-export'):
+                R.configuration(args)
 
 
 if __name__ == '__main__':

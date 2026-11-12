@@ -34,7 +34,7 @@ A C++20 compiler, CMake 3.18+, Python 3.10+, and OpenMP are required. On Debian/
 python -m pip install .
 ```
 
-The build downloads a pinned Stim revision. `CMAKE_ARGS` accepts ordinary CMake arguments, including `-DFETCHCONTENT_SOURCE_DIR_STIM=/path/to/stim` for offline builds. Wheels build the native extension without requiring LTO.
+Pinned Stim and GoogleTest source archives are bundled and verified locally; the default CMake build requires no dependency download. `CMAKE_ARGS` accepts ordinary CMake arguments, including `-DFETCHCONTENT_SOURCE_DIR_STIM=/path/to/stim` to use an explicit local source. Wheels build the native extension without requiring LTO. [Vendored dependencies](vendor/README.md) also cover the fixed reference and external AE decoders.
 
 ```python
 import beyond_blossom as bb

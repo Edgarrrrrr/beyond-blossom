@@ -6,27 +6,26 @@ They are direct raster exports of the PDFs included by `sections/03-method.tex` 
 
 | README image | Original manuscript PDF | Figure label |
 | --- | --- | --- |
-| [Parallel architecture](parallel-architecture.png) | `figures/multilevel_parallelism.pdf` | `fig:multilevel-parallelism` |
-| [One-hop predecoding](one-hop-predecoding.png) | `figures/beyond_blossom_predecoder_v6.pdf` | `fig:predecode` |
-| [Structured grid](structured-grid.png) | `figures/structured_grid_stencil.pdf` | `fig:structured-grid` |
+| [Parallel architecture](parallel-architecture.png) | [PDF](source/multilevel_parallelism.pdf) | `fig:multilevel-parallelism` |
+| [One-hop predecoding](one-hop-predecoding.png) | [PDF](source/beyond_blossom_predecoder_v6.pdf) | `fig:predecode` |
+| [Structured grid](structured-grid.png) | [PDF](source/structured_grid_stencil.pdf) | `fig:structured-grid` |
 
 ## Export
 
 Each PNG is 2,400 pixels wide, preserves the PDF page's aspect ratio, and uses an opaque white background for consistent display on GitHub. Full-size images are linked from the main README. Raster exports keep the asset bundle small; the parallel architecture's direct SVG conversion alone was over 11 MB.
 
-With Poppler's `pdftocairo` installed, run from the manuscript directory:
+The original PDFs are included in `source/`. With Poppler's `pdftocairo` installed, regenerate the PNGs from the repository root:
 
 ```sh
-mkdir -p exported
 pdftocairo -png -singlefile -scale-to-x 2400 -scale-to-y -1 \
-  figures/multilevel_parallelism.pdf exported/parallel-architecture
+  assets/paper/source/multilevel_parallelism.pdf assets/paper/parallel-architecture
 pdftocairo -png -singlefile -scale-to-x 2400 -scale-to-y -1 \
-  figures/beyond_blossom_predecoder_v6.pdf exported/one-hop-predecoding
+  assets/paper/source/beyond_blossom_predecoder_v6.pdf assets/paper/one-hop-predecoding
 pdftocairo -png -singlefile -scale-to-x 2400 -scale-to-y -1 \
-  figures/structured_grid_stencil.pdf exported/structured-grid
+  assets/paper/source/structured_grid_stencil.pdf assets/paper/structured-grid
 ```
 
-[provenance.json](provenance.json) records the source PDF hashes, exported image hashes and dimensions, and conversion tool version. Original PDFs remain in the manuscript source; this directory contains only the README exports.
+[provenance.json](provenance.json) records the included source PDF hashes, exported image hashes and dimensions, and conversion tool version. No separate manuscript checkout is required.
 
 ## Attribution and rights
 

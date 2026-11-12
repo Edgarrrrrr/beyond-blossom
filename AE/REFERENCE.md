@@ -42,38 +42,24 @@ for the sample-count, timing-scope and table-label discrepancies that limit pape
 
 ## Fixed dependencies and reference
 
-The independent reference is upstream release 2.3.1 at
-`e27b8c6a5f5ba10fb74d4ebb29822f2df5e12bcd`. It is built separately from the
-current unstructured backend. The historical tag `source-2411603` contains the
-original acquisition adapter; `historical_sources.json` checks every recovered file.
-Fetch that tag explicitly after a shallow clone.
+The repository bundles the fixed Stim and GoogleTest sources, official upstream
+release 2.3.1 (`e27b8c6a5f5ba10fb74d4ebb29822f2df5e12bcd`), acquisition
+adapter, external decoders, and locked Rust crates. Their hashes and licenses are
+recorded in [vendor/](../vendor/README.md). A fresh clone needs no historical tag,
+private directory, or separately downloaded decoder source. Install the standard
+compiler, Python packages, and pinned Rust toolchain before using `--offline`.
 
 ```sh
-git fetch origin tag source-2411603
-git clone https://github.com/oscarhiggott/PyMatching.git "$AE_WORK/upstream"
-git clone https://github.com/quantumlib/Stim.git "$AE_WORK/stim"
-git -C "$AE_WORK/stim" checkout --detach 1320ad7eac7de34d2e9c70daa44fbc6d84174450
-git clone https://github.com/google/googletest.git "$AE_WORK/googletest"
-git -C "$AE_WORK/googletest" checkout --detach 58d77fa8070e8cec2dc1ed015d66b454c8d78850
-cmake -S "$AE_WORK/stim" -B "$AE_WORK/stim-build" \
-  -DCMAKE_BUILD_TYPE=Release -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
-cmake --build "$AE_WORK/stim-build" --target libstim -j 2
-python AE/build_reference.py \
-  --upstream-repository "$AE_WORK/upstream" \
-  --history-checkout . --history-ref source-2411603 \
-  --stim-source "$AE_WORK/stim" --stim-archive "$AE_WORK/stim-build/out/libstim.a" \
-  --googletest-source "$AE_WORK/googletest" --jobs 2 --output "$AE_WORK/reference"
+python AE/build_reference.py --offline --jobs 2 --output "$AE_WORK/reference"
 ```
 
-The output seals the original source, adapted acquisition wrapper, dependencies,
-static library and executable in `reference.json`. Platform adaptation changes only
-acquisition code. `--history-archive /path/to/original-source.tar.gz` is an alternative
-to the historical tag. Recovery for source inspection is also available:
+This builds the independent official reference, including its fixed Stim library.
+`reference.json` seals the source, adapted acquisition wrapper, dependencies,
+static library and executable. Platform adaptation changes only acquisition code.
 
-```sh
-python AE/recover_history.py --checkout . --ref source-2411603 \
-  --output "$AE_WORK/historical-tools"
-```
+For explicit dependency reuse or inspection, `python AE/vendor.py --output "$AE_WORK/deps"` verifies and extracts the bundled sources and writes
+`dependencies.json`. Builder options accept explicit source/library paths when
+needed; they are optional overrides rather than prerequisites.
 
 ## Candidate build and full native matrix
 
@@ -84,8 +70,7 @@ fixed reference receipt. `--profile smoke` permits a development tree; omitting
 receipts then produces an integration check with explicitly weaker provenance.
 
 ```sh
-python AE/build_native.py --output "$AE_WORK/native" --jobs 2 \
-  --stim-source "$AE_WORK/stim" --stim-archive "$AE_WORK/stim-build/out/libstim.a"
+python AE/build_native.py --offline --output "$AE_WORK/native" --jobs 2
 python AE/reproduce.py run --profile paper --backend avx512vl \
   --binary "$AE_WORK/native/bin/bb_benchmark" --build-record "$AE_WORK/native/build.json" \
   --reference-binary "$AE_WORK/reference/build/bin/experiment_benchmark" \
@@ -147,7 +132,6 @@ oracle linked to the fixed official reference.
 rustup toolchain install nightly-2026-03-10 --profile minimal
 python AE/external/build.py --output "$AE_WORK/external-build" \
   --reference-build "$AE_WORK/reference" \
-  --stim-source "$AE_WORK/stim" --stim-archive "$AE_WORK/stim-build/out/libstim.a" \
   --toolchain nightly-2026-03-10 --jobs 2
 python AE/reproduce.py external --profile paper \
   --ae-run "$AE_WORK/native-batch" --build "$AE_WORK/external-build" \
@@ -189,11 +173,8 @@ or multiplexed groups fail. Build both reference and candidate at the same level
 ```sh
 for level in 2 3; do
   python AE/build_reference.py --cache-level "$level" --jobs 2 \
-    --upstream-repository "$AE_WORK/upstream" --history-checkout . --history-ref source-2411603 \
-    --stim-source "$AE_WORK/stim" --stim-archive "$AE_WORK/stim-build/out/libstim.a" \
-    --googletest-source "$AE_WORK/googletest" --output "$AE_WORK/reference-l$level"
-  python AE/build_native.py --cache-level "$level" --jobs 2 --output "$AE_WORK/native-l$level" \
-    --stim-source "$AE_WORK/stim" --stim-archive "$AE_WORK/stim-build/out/libstim.a"
+    --offline --output "$AE_WORK/reference-l$level"
+  python AE/build_native.py --offline --cache-level "$level" --jobs 2 --output "$AE_WORK/native-l$level"
   python AE/reproduce.py run --profile paper --measurement pmu --repeats 1 \
     --binary "$AE_WORK/native-l$level/bin/bb_benchmark" --build-record "$AE_WORK/native-l$level/build.json" \
     --reference-binary "$AE_WORK/reference-l$level/build/bin/experiment_benchmark" \
@@ -216,7 +197,6 @@ for variant in 0:0 1:1 2:3; do
   policy=${variant%:*}
   mode=${variant#*:}
   python AE/build_native.py --predecode-mode "$mode" --jobs 2 \
-    --stim-source "$AE_WORK/stim" --stim-archive "$AE_WORK/stim-build/out/libstim.a" \
     --output "$AE_WORK/policy-$policy"
   python AE/reproduce.py run --profile paper --methods predecoded --error-rates .003 \
     --binary "$AE_WORK/policy-$policy/bin/bb_benchmark" --build-record "$AE_WORK/policy-$policy/build.json" \
@@ -224,7 +204,6 @@ for variant in 0:0 1:1 2:3; do
     --reference-record "$AE_WORK/reference/reference.json" --backend avx512vl \
     --input-run "$AE_WORK/native-batch" --output "$AE_WORK/policy-$policy-timing"
   python AE/build_native.py --predecode-mode "$mode" --statistics --jobs 2 \
-    --stim-source "$AE_WORK/stim" --stim-archive "$AE_WORK/stim-build/out/libstim.a" \
     --output "$AE_WORK/policy-$policy-counts-build"
   python AE/reproduce.py run --profile paper --measurement statistics --repeats 1 \
     --methods predecoded --error-rates .003 --backend avx512vl \
@@ -254,12 +233,8 @@ Use fresh native M4 build and run directories:
 
 ```sh
 python AE/build_reference.py --output "$AE_WORK/reference-m4" --jobs 2 \
-  --upstream-repository "$AE_WORK/upstream" --history-checkout . --history-ref source-2411603 \
-  --stim-source "$AE_WORK/stim" --stim-archive "$AE_WORK/stim-build/out/libstim.a" \
-  --googletest-source "$AE_WORK/googletest" \
   --cxx-flags="-O3 -mcpu=apple-m4" --cmake-arg=-DCMAKE_PREFIX_PATH=/path/to/libomp
 python AE/build_native.py --output "$AE_WORK/native-m4" --jobs 2 \
-  --stim-source "$AE_WORK/stim" --stim-archive "$AE_WORK/stim-build/out/libstim.a" \
   --cxx-flags="-O3 -mcpu=apple-m4" --cmake-arg=-DCMAKE_PREFIX_PATH=/path/to/libomp
 python AE/reproduce.py run --profile paper --backend scalar \
   --binary "$AE_WORK/native-m4/bin/bb_benchmark" --build-record "$AE_WORK/native-m4/build.json" \
@@ -273,11 +248,48 @@ is the median of three complete-batch means; divide a setting's block time by d 
 obtain time per measurement round. Historical CSV recalculation is supported;
 Linux smoke tests do not establish a successful current M4 build or new M4 timings.
 
+## Slurm configuration
+
+The local and Slurm entry points use the same builders and collectors. Slurm requires
+a shared checkout, Python environment, and output directory, with compatible CPUs
+and system libraries across nodes. Resource requests are cluster-specific.
+
+The authors' cluster uses six 52-core Xeon Gold 6230R nodes. Its `student` partition
+has a ten-minute limit, so full acquisition uses `debug`. This is an example
+configuration, not a requirement for other clusters:
+
+```sh
+python AE/slurm.py run --work "$AE_WORK/slurm-paper" --offline \
+  --nodes ares1,ares2,ares3,ares4,ares5,ares6 --partition debug \
+  --cpus-per-task 52 --mem 0 --cpus 2,4,6,8,10,12,14,16
+```
+
+Workers reserve exclusive nodes by default. The explicit allocation above makes
+all 52 CPUs available; measured methods use the listed eight physical cores on one
+socket. No decoder compilation occurs during measurement. `--shared-node` opts
+out of exclusivity where required by site policy. Node names, partition, CPU count,
+memory and time limit are command-line options.
+
+The matrix is divided by setting with a deterministic scheduling cost estimate.
+Reference, Beyond, external methods, policies and counters for one setting remain
+on the same node. The final `shards.json` lists completed case bundles. Export
+rejects duplicate/missing settings, mismatched inputs, source variants or paired
+hosts, and records each setting's actual host in `canonical.json` and CSV outputs.
+
+```sh
+python AE/slurm.py resume --work "$AE_WORK/slurm-paper"
+python AE/slurm.py export --work "$AE_WORK/slurm-paper"
+```
+
+Resume retains completed cases and stages; an incomplete stage starts another
+attempt. Manual export is useful after successful collection when automatic export
+was interrupted. Existing raw measurements and failed attempts remain unchanged.
+
 ## Fresh figures, tables and macros
 
 The fresh exporter reads completed runs, verifies their sealed artifacts, and writes
 the current article's figures and numeric macros. Missing settings are never filled
-from archives. Xeon runs must share a source commit, saved inputs and host; M4 runs
+from archives. Paired Xeon runs must share a source commit, saved inputs and host for each setting; M4 runs
 must identify Apple Silicon and the same source commit. Existing output is rejected.
 
 ```sh
