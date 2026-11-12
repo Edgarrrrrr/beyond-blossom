@@ -28,11 +28,12 @@ def reseal_external_group(root, path):
     dump(root/'complete.json',complete)
 
 
-def native_fixture(root, measurement='batch', *, policy=0, m4=False, level='L2', full=False):
+def native_fixture(root, measurement='batch', *, policy=0, m4=False, level='L2', full=False, serial_policy=False):
     distances = E.DISTANCES if full else [9]
     rates = E.RATES if full and measurement not in ('statistics',) else [.003]
     if policy != -1:rates=[.003]
     methods = ['pipelined'] if policy != -1 else E.STAGES+['unstructured']
+    if policy != -1 and serial_policy:methods=['predecoded']
     if measurement=='pmu':methods=['reference','structured']
     repeats=3 if measurement=='batch' else 1
     plan=dict(profile='smoke',source=dict(commit='fixture-only',status=''),measurement=measurement,
@@ -65,7 +66,7 @@ def native_fixture(root, measurement='batch', *, policy=0, m4=False, level='L2',
                     elif measurement=='statistics':
                         residual={0:4,1:20,2:8}[policy]
                         dump(folder/'syndromes.json',dict(complete=True,timed=False,shots=2,mode=policy,completed_shots=0,
-                            scope='fixture untimed pipeline replay',components=[dict(normalized=10,residual=residual//2,pairs=(20-residual)//4,boundaries=0)]*2))
+                            execution='serial' if serial_policy else 'pipeline',scope='fixture untimed replay',components=[dict(normalized=10,residual=residual//2,pairs=(20-residual)//4,boundaries=0)]*2))
                     else:
                         spec=E.P.LEVELS[level];loads=10000;misses=100 if method=='reference' else 50
                         dump(folder/'pmu.json',dict(mode='pmu',shots=2,events=spec['events'],latency_collected=False,
@@ -237,6 +238,94 @@ class FreshExportTest(unittest.TestCase):
         path=native_fixture(self.root/'native',policy=-1)
         with self.assertRaisesRegex(ValueError,'formal'):
             E.native_run(path,'batch','paper')
+
+    def test_serial_policies_are_explicit_and_cannot_mix_pipeline_counts(self):
+        timing={m:E.native_run(native_fixture(self.root/f't{m}',policy=m,full=True,serial_policy=True),'batch','smoke') for m in E.POLICIES}
+        counts={m:E.native_run(native_fixture(self.root/f'c{m}','statistics',policy=m,full=True,serial_policy=True),'statistics','smoke') for m in E.POLICIES}
+        rows=E.policy_results(timing,counts,'smoke')
+        self.assertTrue(all(r['execution']=='serial' and r['threads']==1 for r in rows))
+        self.assertIn('Fresh serial table, 1 thread(s)',E.predecoder_macros(rows))
+        counts[0]=E.native_run(native_fixture(self.root/'pipeline','statistics',policy=0,full=True),'statistics','smoke')
+        with self.assertRaisesRegex(ValueError,'consistent serial or pipeline'):
+            E.policy_results(timing,counts,'smoke')
+
+    def test_xeon_macro_subset_does_not_require_or_fill_missing_platform_or_pmu(self):
+        path=native_fixture(self.root/'native',policy=-1,full=True)
+        native=E.native_run(path,'batch','smoke')
+        performance,predecoder,audit=E.paper_macros(native,{},[],None,xeon_only=True)
+        keys={item.key for item in __import__('migrate_paper_numbers').declarations(performance)}
+        self.assertTrue(keys)
+        self.assertFalse(any(k.startswith('m4pro.') or k.endswith(('L2miss','L3miss')) for k in keys))
+        self.assertEqual(set(audit['performance_values']),keys)
+        self.assertTrue(audit['omitted_performance_keys'])
+        self.assertEqual(predecoder,'')
+        output=self.root/'xeon-export'
+        self.assertEqual(E.main(['--native-run',str(path),'--profile','smoke','--groups','xeon-macros','--no-render','--output',str(output)]),0)
+        self.assertFalse((output/'predecoder_numbers.tex').exists())
+        self.assertEqual(E.read(output/'macro-audit.json')['scope'],'xeon-only subset')
+        l2=E.native_run(native_fixture(self.root/'l2','pmu',policy=-1,full=True,level='L2'),'pmu','smoke')
+        performance,_,audit=E.paper_macros(native,{'L2':l2},[],None,xeon_only=True)
+        keys={item.key for item in __import__('migrate_paper_numbers').declarations(performance)}
+        self.assertTrue(any(k.endswith('L2miss') for k in keys))
+        self.assertFalse(any(k.endswith('L3miss') for k in keys))
+        # Only the d33/p=.003 PMU point is required by the actual article.
+        l2['records']=[r for r in l2['records'] if r['distance']==33 and r['error_rate']==.003]
+        l2['inputs']={k:v for k,v in l2['inputs'].items() if k=='d33-p0.003'}
+        performance,_,_=E.paper_macros(native,{'L2':l2},[],None,xeon_only=True)
+        self.assertIn('pymatching.L2miss}{1.000}',performance)
+
+    def test_small_smoke_xeon_export_never_claims_full_matrix_macros(self):
+        path=native_fixture(self.root/'small',policy=-1)
+        output=self.root/'small-export'
+        self.assertEqual(E.main(['--native-run',str(path),'--profile','smoke','--groups','xeon-macros','--no-render','--output',str(output)]),0)
+        audit=E.read(output/'macro-audit.json')
+        self.assertFalse(audit['native_matrix_complete'])
+        self.assertEqual(audit['performance_values'],{})
+        self.assertTrue(audit['omitted_performance_keys'])
+
+    def test_real_simple_policy_is_distinct_from_legacy_coordinate_and_preserves_macro_keys(self):
+        timing={m:E.native_run(native_fixture(self.root/f't{m}',policy=m,full=True,serial_policy=True),'batch','smoke') for m in E.POLICIES}
+        counts={m:E.native_run(native_fixture(self.root/f'c{m}','statistics',policy=m,full=True,serial_policy=True),'statistics','smoke') for m in E.POLICIES}
+        legacy=E.policy_results(timing,counts,'smoke')
+        self.assertTrue(all(r['strategy']=='coordinate' and r['physical_policy']==2 for r in legacy if r['policy']==2))
+        for row in counts[2]['records']:row['policy']=3
+        timing[2]['plan']['binary']['build_record']={'configuration':{'BB_TAILRESET_PREDECODE_MODE':'3'}}
+        actual=E.policy_results(timing,counts,'smoke')
+        self.assertTrue(all(r['strategy']=='simple-equal-rate' and r['physical_policy']==3 for r in actual if r['policy']==2))
+        macros=E.predecoder_macros(actual)
+        self.assertIn('third policy=simple-equal-rate',macros)
+        self.assertIn('.coordinate.mean-time-us}',macros)
+        timing[2]['plan']['binary']['build_record']['configuration']['BB_TAILRESET_PREDECODE_MODE']='2'
+        with self.assertRaisesRegex(ValueError,'Timing binary policy differs'):
+            E.policy_results(timing,counts,'smoke')
+
+    def test_local_workflow_smoke_exports_serial_simple_single_point_pmu_without_m4(self):
+        native=native_fixture(self.root/'native',policy=-1)
+        external=external_fixture(self.root/'external',native)
+        for mode in E.POLICIES:
+            native_fixture(self.root/f't{mode}',policy=mode,serial_policy=True)
+            native_fixture(self.root/f'c{mode}','statistics',policy=mode,serial_policy=True)
+        counts=self.root/'c2'
+        path=next(counts.glob('calls/*/*/*/native/syndromes.json'))
+        value=E.read(path);value['mode']=3
+        dump(path,value);reseal_native_call(counts,path)
+        timing=self.root/'t2';plan=E.read(timing/'plan.json')
+        plan['binary']['build_record']={'configuration':{'BB_TAILRESET_PREDECODE_MODE':'3'}}
+        dump(timing/'plan.json',plan)
+        done=E.read(timing/'complete.json');done['plan_sha256']=E.R.digest(timing/'plan.json');dump(timing/'complete.json',done)
+        for level in ('L2','L3'):native_fixture(self.root/level,'pmu',policy=-1,level=level)
+        output=self.root/'workflow-export'
+        command=['--profile','smoke','--native-run',str(native),'--external-run',str(external),
+            '--policy-timing',*[f'{m}={self.root}/t{m}' for m in E.POLICIES],
+            '--policy-counts',*[f'{m}={self.root}/c{m}' for m in E.POLICIES],
+            '--l2-run',str(self.root/'L2'),'--l3-run',str(self.root/'L3'),
+            '--groups','ablation','comparison','predecoder','xeon-macros','--no-render','--output',str(output)]
+        self.assertEqual(E.main(command),0)
+        self.assertTrue(E.read(output/'complete.json')['complete'])
+        self.assertEqual(E.read(output/'macro-audit.json')['performance_values'],{})
+        rows=E.read(output/'canonical.json')['predecoder']
+        self.assertEqual(next(r for r in rows if r['policy']==2)['physical_policy'],3)
+        self.assertFalse((output/'predecoder_numbers.tex').exists())
 
 
 if __name__=='__main__':unittest.main()

@@ -51,6 +51,9 @@ void with_structured_decoder(const Options& o, const stim::DetectorErrorModel& d
     const auto spec = frozen_grid_spec_from_dem(dem, o.distance, o.distance, true, selected_backend(o.backend));
     beyond_blossom::structured::ComponentDecoder serial(graph, spec, beyond_blossom::NUM_DISTINCT_WEIGHTS, search, o.predecode);
     if (serial.components().size() != 2) throw std::runtime_error("Expected independent X/Z components");
+    // The core's OneHopPredecoder::run binds the compiled AE predecode
+    // policy for serial decoding too. Keep normal timing on the unchanged decode
+    // lifecycle; only the separate statistics mode uses the prepared-state API.
     if (o.execution == "serial") { serial.initialize_serial_seed_storage(); callback(serial); return; }
     if (o.execution == "pipeline") {
 #if BB_EXPERIMENT_PIPELINE

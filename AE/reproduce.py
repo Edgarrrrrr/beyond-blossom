@@ -3,6 +3,7 @@
 from __future__ import annotations
 import argparse
 import csv
+import errno
 import hashlib
 import json
 import os
@@ -37,6 +38,22 @@ def digest(path):
         for block in iter(lambda: f.read(1024*1024), b''):
             h.update(block)
     return h.hexdigest()
+
+
+def reuse_input(source, destination, link=False):
+    """Preserve input bytes without changing permissions; record the actual method."""
+    record=dict(source=str(Path(source).resolve()),method='copy')
+    if link:
+        try:
+            os.link(source,destination)
+            record['method']='hardlink'
+            return record
+        except OSError as error:
+            if error.errno not in {errno.EXDEV,errno.EPERM,errno.EACCES,errno.ENOTSUP,errno.EOPNOTSUPP,errno.EMLINK}:
+                raise
+            record['link_fallback_errno']=error.errno
+    shutil.copyfile(source,destination)
+    return record
 
 
 def write(path, data):
@@ -127,6 +144,8 @@ def saved_inputs(run):
 
 
 def collect(args):
+    if args.link_inputs and not args.input_run:
+        raise ValueError('--link-inputs requires --input-run')
     root = args.output.resolve()
     if root.exists():
         raise ValueError('Use a new --output directory; existing runs are never overwritten')
@@ -150,8 +169,8 @@ def collect(args):
     methods = args.methods.split(',') if args.methods else list(METHODS)
     if not methods or len(set(methods)) != len(methods) or set(methods)-METHODS.keys():
         raise ValueError('Unknown or duplicate method')
-    if args.measurement == 'statistics' and (not args.reference_binary or any(METHODS[m]['execution']!='pipeline' for m in methods)):
-        raise ValueError('Statistics requires --reference-binary and pipeline methods only')
+    if args.measurement == 'statistics' and (not args.reference_binary or any(m!='predecoded' and METHODS[m]['execution']!='pipeline' for m in methods)):
+        raise ValueError('Statistics requires --reference-binary and predecoded (serial) or pipeline methods only')
     if args.measurement == 'pmu' and any(METHODS[m]['threads'] != 1 for m in methods):
         raise ValueError('PMU measures the calling thread only; choose serial methods')
     cpus = [int(v) for v in args.cpus.split(',')] if args.cpus else physical_cpus()
@@ -200,7 +219,7 @@ def collect(args):
                 reference=dict(path=str(reference),sha256=digest(reference),independent=bool(args.reference_binary),build_record=reference_record),
                 collector_sha256=digest(__file__), distances=distances,error_rates=rates,rounds='distance',
                 shots=shots,repeats=repeats,seed=seed,cpus=cpus[:needed],backend=args.backend,
-                reused_inputs=dict(run=str(reused[0]),plan_sha256=digest(reused[0]/'plan.json')) if reused else None,
+                reused_inputs=dict(run=str(reused[0]),plan_sha256=digest(reused[0]/'plan.json'),link_requested=args.link_inputs) if reused else None,
                 methods={m:METHODS[m] for m in methods},measurement=args.measurement,
                 timing='Complete native decode, result staging and reset; excludes setup, warmup, validation and I/O',
                 aggregation='sum(elapsed_ns)/sum(shots); also emit median of batch means')
@@ -212,11 +231,12 @@ def collect(args):
             data_dir = root/'inputs'/case
             data_dir.mkdir(parents=True)
             dataset = data_dir/'dataset.bin'
+            reuse={}
             if reused:
                 if case not in reused[2]:
                     raise ValueError(f'Requested case absent from saved inputs: {case}')
                 for name in ('dataset.bin', 'model.dem', 'circuit.stim'):
-                    shutil.copyfile(reused[0]/'inputs'/case/name, data_dir/name)
+                    reuse[name]=reuse_input(reused[0]/'inputs'/case/name, data_dir/name,args.link_inputs)
                 with dataset.open('rb') as f:
                     raw = f.read(96)
                 if len(raw) != 96:
@@ -232,7 +252,7 @@ def collect(args):
                 prepared=invoke([str(reference),*common,'--mode','prepare','--main-cpu',str(cpus[0])],root/'preparation'/case)
                 for name in ('model.dem','circuit.stim'):
                     shutil.copyfile(prepared/name,data_dir/name)
-            inputs.append(dict(case=case,files={str(f.relative_to(root)):digest(f) for f in data_dir.iterdir() if f.is_file()}))
+            inputs.append(dict(case=case,reuse=reuse,files={str(f.relative_to(root)):digest(f) for f in data_dir.iterdir() if f.is_file()}))
             for repeat in range(repeats):
                 order = methods[repeat % len(methods):] + methods[:repeat % len(methods)]
                 for method in order:
@@ -240,7 +260,7 @@ def collect(args):
                     threads = options.pop('threads')
                     options.setdefault('backend',args.backend)
                     mode = args.measurement
-                    if mode == 'statistics':mode='pipe-statistics'
+                    if mode == 'statistics':mode='pipe-statistics' if options['execution']=='pipeline' else 'serial-statistics'
                     if mode == 'batch' and options['execution']=='pipeline':mode='pipe-batch'
                     if mode == 'latency' and options['execution']=='pipeline':mode='pipe-latency'
                     command=[str(reference if method=='reference' else binary),*common,'--mode',mode,
@@ -283,9 +303,11 @@ def analyze(root):
         for call in done['calls']:
             data=json.loads((root/call['directory']/'syndromes.json').read_text())
             if not data['complete'] or data['timed'] or data['shots']!=plan['shots']:raise ValueError('Invalid statistics replay')
+            execution=plan['methods'][call['method']]['execution']
+            if data.get('execution','pipeline')!=execution:raise ValueError('Statistics execution mismatch')
             totals={key:sum(c[key] for c in data['components']) for key in ('normalized','residual','pairs','boundaries')}
             if totals['normalized']!=totals['residual']+2*totals['pairs']+totals['boundaries']:raise ValueError('Residual conservation failed')
-            statistics_rows.append(dict(distance=call['distance'],error_rate=call['error_rate'],method=call['method'],repeat=call['repeat'],policy=data['mode'],shots=data['shots'],**totals,mean_residual=totals['residual']/data['shots'],matched_percent=100*(totals['normalized']-totals['residual'])/totals['normalized'] if totals['normalized'] else 0))
+            statistics_rows.append(dict(distance=call['distance'],error_rate=call['error_rate'],method=call['method'],execution=execution,repeat=call['repeat'],policy=data['mode'],shots=data['shots'],**totals,mean_residual=totals['residual']/data['shots'],matched_percent=100*(totals['normalized']-totals['residual'])/totals['normalized'] if totals['normalized'] else 0))
         target=root/'statistics.csv'
         if not target.exists():
             with target.open('x',newline='') as f:
@@ -334,6 +356,7 @@ def main(argv=None):
     run.add_argument('--reference-record',type=Path)
     run.add_argument('--output',type=Path,required=True)
     run.add_argument('--input-run',type=Path,help='Reuse sealed saved inputs from a completed AE run without sampling')
+    run.add_argument('--link-inputs',action='store_true',help='With --input-run, hardlink verified read-only inputs when supported; otherwise copy and record the fallback')
     run.add_argument('--backend',choices=['scalar','avx2','avx512vl','avx512'],default='scalar')
     run.add_argument('--methods',help=','.join(METHODS))
     run.add_argument('--distances');run.add_argument('--error-rates');run.add_argument('--cpus')

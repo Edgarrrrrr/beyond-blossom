@@ -1,5 +1,6 @@
 """Exercise provenance and saved-input orchestration without building or decoding."""
 import argparse
+import errno
 import json
 from pathlib import Path
 import struct
@@ -48,7 +49,7 @@ class OrchestrationTest(unittest.TestCase):
         with mock.patch.object(reproduce, 'invoke', side_effect=invoke), mock.patch.object(
                 reproduce, 'source_identity', return_value=dict(commit='test', status='')):
             code = reproduce.main(['run', '--binary', str(binary), '--input-run', str(source),
-                '--output', str(output), '--methods', 'structured', '--cpus', '0'])
+                '--link-inputs', '--output', str(output), '--methods', 'structured', '--cpus', '0'])
         self.assertEqual(code, 0)
         self.assertEqual(len(calls), 1)
         self.assertNotIn('prepare', calls[0])
@@ -56,6 +57,8 @@ class OrchestrationTest(unittest.TestCase):
         self.assertEqual(calls[0][calls[0].index('--root-seed') + 1], '555')
         self.assertEqual(reproduce.digest(source / 'inputs/d09-p0.003/dataset.bin'),
                          reproduce.digest(output / 'inputs/d09-p0.003/dataset.bin'))
+        receipt=json.loads((output/'complete.json').read_text())
+        self.assertEqual({r['method'] for r in receipt['inputs'][0]['reuse'].values()},{'hardlink'})
 
     def test_saved_input_corruption_and_duplicates_are_rejected(self):
         source = self.saved_run()
@@ -70,6 +73,27 @@ class OrchestrationTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Changed'):
             reproduce.saved_inputs(source)
 
+    def test_serial_statistics_use_explicit_native_mode_and_keep_untimed_scope(self):
+        source=self.saved_run()
+        binary=self.root/'candidate';binary.write_text('mock only')
+        reference=self.root/'official';reference.write_text('independent mock only')
+        calls=[]
+        def invoke(command,directory):
+            calls.append(command)
+            native=directory/'native';native.mkdir(parents=True)
+            reproduce.write(native/'correctness.json',dict(status='passed',weight_differences=0))
+            reproduce.write(native/'syndromes.json',dict(complete=True,timed=False,shots=2,mode=0,execution='serial',
+                components=[dict(normalized=4,residual=2,pairs=1,boundaries=0)]))
+            return native
+        with mock.patch.object(reproduce,'invoke',side_effect=invoke),mock.patch.object(reproduce,'source_identity',return_value=dict(commit='test',status='')):
+            self.assertEqual(reproduce.main(['run','--binary',str(binary),'--reference-binary',str(reference),
+                '--input-run',str(source),'--output',str(self.root/'statistics'),'--methods','predecoded',
+                '--measurement','statistics','--cpus','0']),0)
+        self.assertEqual(len(calls),1)
+        self.assertEqual(calls[0][calls[0].index('--mode')+1],'serial-statistics')
+        self.assertEqual(calls[0][calls[0].index('--execution')+1],'serial')
+        self.assertIn('serial',(self.root/'statistics/statistics.csv').read_text())
+
     def test_external_command_preserves_explicit_zero_and_method_list(self):
         args = argparse.Namespace(ae_run=Path('/a'), build=Path('/b'), output=Path('/c'),
                                   profile='smoke', warmup_seconds=0, methods=['parity', 'fusion'])
@@ -77,6 +101,29 @@ class OrchestrationTest(unittest.TestCase):
         self.assertEqual(command[command.index('--warmup-seconds') + 1], '0')
         self.assertEqual(command[-3:], ['--methods', 'parity', 'fusion'])
         self.assertNotIn('--limit', command)
+
+    def test_explicit_input_links_preserve_bytes_and_record_cross_device_fallback(self):
+        source=self.root/'original';source.write_bytes(b'sealed input')
+        mode=source.stat().st_mode
+        linked=self.root/'linked'
+        record=reproduce.reuse_input(source,linked,True)
+        self.assertEqual(record['method'],'hardlink')
+        self.assertEqual(source.stat().st_ino,linked.stat().st_ino)
+        self.assertEqual(source.stat().st_mode,mode)
+        copied=self.root/'copied'
+        with mock.patch.object(reproduce.os,'link',side_effect=OSError(errno.EXDEV,'cross device')):
+            record=reproduce.reuse_input(source,copied,True)
+        self.assertEqual(record['method'],'copy')
+        self.assertEqual(record['link_fallback_errno'],errno.EXDEV)
+        self.assertNotEqual(source.stat().st_ino,copied.stat().st_ino)
+        self.assertEqual(copied.read_bytes(),source.read_bytes())
+        default=self.root/'default-copy'
+        with mock.patch.object(reproduce.os,'link',side_effect=AssertionError('link must be explicit')):
+            self.assertEqual(reproduce.reuse_input(source,default)['method'],'copy')
+
+    def test_input_links_require_a_completed_source_run(self):
+        self.assertEqual(reproduce.main(['run','--binary',str(self.root/'unused'),
+            '--link-inputs','--output',str(self.root/'out')]),1)
 
     def test_receipt_rejects_wrong_binary_or_source_commit(self):
         fake_ae = self.root / 'repo/AE'
@@ -119,10 +166,12 @@ class OrchestrationTest(unittest.TestCase):
              mock.patch.object(build_native, 'source_files', return_value={'CMakeLists.txt': 'test-hash'}),
              mock.patch.object(build_native.subprocess, 'run', side_effect=run),
              mock.patch.object(build_native.subprocess, 'check_output', return_value='test compiler')):
-            self.assertEqual(build_native.main(['--output', str(output), '--stim-source', str(stim)]), 0)
+            self.assertEqual(build_native.main(['--output', str(output), '--stim-source', str(stim), '--predecode-mode','3']), 0)
         receipt = json.loads((output / 'build.json').read_text())
         self.assertEqual(receipt['binary']['sha256'], reproduce.digest(output / 'bin/bb_benchmark'))
         self.assertEqual(receipt['dependency']['archive_sha256'], reproduce.digest(output / 'libstim.a'))
+        configure=json.loads((output/'configure-command.json').read_text())
+        self.assertIn('-DBB_TAILRESET_PREDECODE_MODE=3',configure)
         output = self.root / 'changed-build'
         with (mock.patch.object(build_native, 'source_identity', side_effect=[
                   dict(commit='test', status=''), dict(commit='changed', status='')]),

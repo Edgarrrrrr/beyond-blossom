@@ -36,8 +36,8 @@ ALIASES = {'pymatching': 'reference', 'structured-simd': 'structured', 'predecod
            'component-parallel': 'component-parallel', 'tail-reset': 'pipelined',
            'parallel-predecoding': 'parallel-predecode', 'tail-reset-reference': 'component-parallel'}
 POLICIES = {0: ('degree-ordered', 'Degree ordered'), 1: ('none', 'No predecoding'),
-            2: ('coordinate', 'Equal-rate coordinate ordered')}
-GROUPS = ['ablation', 'comparison', 'predecoder', 'm4', 'macros']
+            2: ('coordinate', 'Coordinate ordered (full-cap)')}
+GROUPS = ['ablation', 'comparison', 'predecoder', 'm4', 'macros', 'xeon-macros']
 
 
 def need(condition, message):
@@ -153,7 +153,10 @@ def native_run(directory, measurement, profile='paper'):
             totals = {name: sum(integer(c[name], name) for c in value['components']) for name in ('normalized','residual','pairs','boundaries')}
             need(totals['normalized'] == totals['residual'] + 2*totals['pairs'] + totals['boundaries'], 'Residual conservation failed')
             need(integer(value['completed_shots'],'completed shots') <= plan['shots'], 'Invalid complete-predecode count')
-            row.update(policy=value['mode'], components=value['components'], completed_shots=value['completed_shots'], scope=value['scope'], **totals)
+            execution=plan['methods'][call['method']]['execution']
+            need(value.get('execution', 'pipeline') == execution, 'Statistics execution differs from planned decoder')
+            row.update(policy=value['mode'], execution=execution, threads=plan['methods'][call['method']]['threads'],
+                       components=value['components'], completed_shots=value['completed_shots'], scope=value['scope'], **totals)
         else:
             value = read(folder/'pmu.json')
             levels = [level for level, spec in P.LEVELS.items() if value['events'] == spec['events']]
@@ -180,7 +183,7 @@ def aggregate(run):
             repeat_mean_us=[r['elapsed_ns']/r['shots']/1000 for r in rows],
             mean_us=sum(r['elapsed_ns'] for r in rows)/n/1000,
             median_batch_us=statistics.median(r['elapsed_ns']/r['shots']/1000 for r in rows),
-            input_sha256=rows[0]['input_sha256'], threads=rows[0]['threads'], timing_scope=rows[0]['scope'],
+            input_sha256=rows[0]['input_sha256'], threads=rows[0]['threads'], execution=rows[0]['execution'], timing_scope=rows[0]['scope'],
             sources=[r['source'] for r in rows])
     return result
 
@@ -273,22 +276,35 @@ def policy_results(timing, counts, profile):
     timings = {mode:aggregate(run) for mode,run in timing.items()}
     stat = {mode:{key(r['distance'],r['error_rate']):r for r in run['records']} for mode,run in counts.items()}
     settings = set(stat[1])
+    methods = {r['method'] for run in counts.values() for r in run['records']}
+    need(len(methods) == 1 and methods <= {'predecoded','pipelined'}, 'Policies require one consistent serial or pipeline execution')
+    method = next(iter(methods))
+    execution, threads = ('serial',1) if method == 'predecoded' else ('pipeline',4)
     if profile == 'paper':
         need(settings == {key(d,.003) for d in DISTANCES}, 'Predecoder table requires all seven p=0.003 distances')
     for mode in POLICIES:
         same_inputs(timing[1],timing[mode]); same_inputs(timing[1],counts[mode])
         need(set(stat[mode]) == settings and len(stat[mode]) == len(counts[mode]['records']), 'Duplicate/missing residual statistics')
         configuration = (timing[mode]['plan']['binary'].get('build_record') or {}).get('configuration', {})
+        physical_modes={row['policy'] for row in counts[mode]['records']}
+        need(len(physical_modes)==1, 'Mixed physical predecoder policies in one table role')
+        physical_mode=next(iter(physical_modes))
+        need(physical_mode in ((2,3) if mode==2 else (mode,)), 'Physical predecoder policy differs from table role')
+        strategy,label=('simple-equal-rate','Simple equal-rate') if physical_mode==3 else POLICIES[mode]
         if profile == 'paper':
-            need(str(configuration.get('BB_TAILRESET_PREDECODE_MODE')) == str(mode), 'Timing binary policy differs from requested table role')
+            need(str(configuration.get('BB_TAILRESET_PREDECODE_MODE')) == str(physical_mode), 'Timing binary policy differs from requested table role')
+        elif configuration.get('BB_TAILRESET_PREDECODE_MODE') is not None:
+            need(str(configuration['BB_TAILRESET_PREDECODE_MODE']) == str(physical_mode), 'Timing binary policy differs from counts')
         for setting in sorted(settings):
-            need((*setting,'pipelined') in timings[mode], 'Table timing requires the measured four-thread pipeline')
-            t, s, initial = timings[mode][(*setting,'pipelined')], stat[mode][setting], stat[1][setting]
-            need(t['threads'] == 4 and s['method'] == 'pipelined' and s['policy'] == mode, 'Predecoder execution or mode differs')
+            need((*setting,method) in timings[mode], 'Table timing requires the same serial or pipeline execution as counts')
+            t, s, initial = timings[mode][(*setting,method)], stat[mode][setting], stat[1][setting]
+            need(t['threads'] == threads and t['execution'] == execution and s['execution'] == execution
+                 and s['method'] == method and s['policy'] == physical_mode, 'Predecoder execution or mode differs')
             need(s['normalized'] == initial['normalized'] and initial['residual'] == initial['normalized'], 'Predecoder policies do not share normalized inputs')
             need(t['shots'] == s['shots'] and s['normalized'] > 0, 'Table timing/count inputs differ or no initial defects')
-            rows.append(dict(distance=setting[0],error_rate=str(setting[1]),policy=mode,strategy=POLICIES[mode][0],
-                shots=s['shots'],repeats=t['repeats'],threads=4,mean_us=t['mean_us'],
+            rows.append(dict(distance=setting[0],error_rate=str(setting[1]),policy=mode,physical_policy=physical_mode,
+                strategy=strategy,strategy_label=label,macro_strategy=POLICIES[mode][0],
+                shots=s['shots'],repeats=t['repeats'],threads=threads,execution=execution,method=method,mean_us=t['mean_us'],
                 repeat_elapsed_ns=t['repeat_elapsed_ns'], normalized=s['normalized'],residual=s['residual'],
                 pairs=s['pairs'],boundaries=s['boundaries'],completed_shots=s['completed_shots'],
                 mean_residual=s['residual']/s['shots'],matched_percent=100*(s['normalized']-s['residual'])/s['normalized'],
@@ -300,12 +316,17 @@ def policy_results(timing, counts, profile):
 def predecoder_macros(policies):
     need(len(policies) == 21 and {(r['distance'],r['policy']) for r in policies} ==
          {(d,m) for d in DISTANCES for m in POLICIES}, 'All predecoder rows required for macros')
-    pre = ['% Fresh four-thread pipeline table; independent untimed residual replay.']
+    executions={(row['execution'],row['threads']) for row in policies}
+    need(len(executions)==1, 'Mixed predecoder execution cannot populate one table')
+    execution,threads=next(iter(executions))
+    third={row['strategy'] for row in policies if row['policy']==2}
+    need(len(third)==1, 'Mixed simple/coordinate policies cannot populate one table')
+    pre = [f'% Fresh {execution} table, {threads} thread(s); third policy={next(iter(third))}; legacy coordinate macro namespace retained; independent untimed residual replay.']
     rates = []
     with localcontext() as ctx:
         ctx.prec = 60
         for row in policies:
-            prefix = f"xeon.predecoder-comparison.d{row['distance']}.p0p3.{row['strategy']}."
+            prefix = f"xeon.predecoder-comparison.d{row['distance']}.p0p3.{row.get('macro_strategy',row['strategy'])}."
             entries = {'mean-time-us':decimal_mean(row),
                        'mean-remaining-syndromes':Decimal(row['residual'])/row['shots']}
             if row['policy'] != 1:
@@ -319,11 +340,13 @@ def predecoder_macros(policies):
     return '\n'.join(pre)+'\n'
 
 
-def paper_macros(native, pmu, policies, m4):
+def paper_macros(native, pmu, policies, m4, *, xeon_only=False):
     """Reuse published numeric rules with explicit current roles and new sources."""
     import migrate_paper_numbers as M
-    rows, m4rows = aggregate(native), aggregate(m4)
-    complete_matrix(rows,STAGES,'paper'); complete_matrix(m4rows,STAGES,'paper')
+    rows, m4rows = aggregate(native), aggregate(m4) if m4 else {}
+    full_native={(d,p) for d,p,m in rows} == {key(d,p) for d in DISTANCES for p in RATES}
+    if not xeon_only or full_native:complete_matrix(rows,STAGES,'paper')
+    if not xeon_only:complete_matrix(m4rows,STAGES,'paper')
     config = read(HERE/'paper_num_mapping.json')
     config['aliases'] = ALIASES
     matrix = object.__new__(M.Matrix)
@@ -343,8 +366,12 @@ def paper_macros(native, pmu, policies, m4):
     with localcontext() as ctx:
         ctx.prec = 60
         for name, rule in config['rules'].items():
+            # A smoke prefix cannot stand in for a paper-wide geomean, maximum,
+            # crossover count, or fixed workload. Keep all missing values undefined.
+            if xeon_only and not full_native:continue
             if rule['op'] == 'pmu_miss_percent':
                 identity = (*key(rule['d'],rule['p']),ALIASES[rule['method']],rule['level'])
+                if xeon_only and identity not in counts:continue
                 need(identity in counts,'Missing PMU input for '+name)
                 requests, misses = counts[identity]
                 value, operands = Decimal(100)*misses/requests,dict(requests=requests,misses=misses,method=identity[2],level=identity[3])
@@ -352,7 +379,7 @@ def paper_macros(native, pmu, policies, m4):
                 value, operands = matrix.calculate(rule)
             values[name] = value
             audit[name] = dict(value=str(value),rule=rule,operands=operands)
-        for p, token in [(.0005,'p0p05'),(.001,'p0p1'),(.003,'p0p3')]:
+        for p, token in ([] if xeon_only else [(.0005,'p0p05'),(.001,'p0p1'),(.003,'p0p3')]):
             q = Decimal(str(p))
             def median_us(row):return Decimal(statistics.median(row['repeat_elapsed_ns']))/(row['shots']*1000)
             speedups = [median_us(m4rows[d,q,'reference'])/min(median_us(m4rows[d,q,m]) for m in CANDIDATES) for d in DISTANCES]
@@ -360,7 +387,7 @@ def paper_macros(native, pmu, policies, m4):
             values[macro] = max(speedups)
             audit[macro] = dict(value=str(values[macro]),aggregation='median of three complete-batch means',
                                distances=DISTANCES,speedups=speedups,candidates=CANDIDATES,reference='reference')
-        for name, methods in [('beyond-blossom',CANDIDATES),('pymatching',['reference'])]:
+        for name, methods in ([] if xeon_only else [('beyond-blossom',CANDIDATES),('pymatching',['reference'])]):
             macro=f'm4pro.realtime.{name}.num-supported-settings'
             values[macro] = Decimal(sum(
                 min(median_us(m4rows[d,Decimal(str(p)),m]) for m in methods)/d <= 1
@@ -369,12 +396,19 @@ def paper_macros(native, pmu, policies, m4):
                                settings=[dict(distance=d,error_rate=p,us_per_round=min(median_us(m4rows[d,Decimal(str(p)),m]) for m in methods)/d) for d in DISTANCES for p in RATES])
         template = (HERE/'paper_num_template.tex').read_text()
         items = M.declarations(template)
-        need(set(values) == {item.key for item in items}, 'Performance macro coverage incomplete')
+        omitted=sorted({item.key for item in items}-set(values))
+        if not xeon_only:need(not omitted, 'Performance macro coverage incomplete')
         for item in reversed(items):
+            if item.key not in values:continue
             places = len(item.value.partition('.')[2])
             formatted = format(values[item.key].quantize(Decimal(1).scaleb(-places),rounding=ROUND_HALF_UP),'f')
             template = template[:item.start]+formatted+template[item.end:]
-    return template, predecoder_macros(policies), dict(performance_values=values,performance_operands=audit,predecoder_rows=policies,
+        if xeon_only:
+            template='\n'.join(line for line in template.splitlines() if not any(line.startswith('\\DefinePerfValue{'+key+'}{') for key in omitted))+'\n'
+            template='% Xeon-only subset: unavailable PMU/M4 macros are intentionally undefined; no archived values.\n'+template
+    return template, predecoder_macros(policies) if policies and (not xeon_only or len(policies)==21) else '', dict(performance_values=values,performance_operands=audit,predecoder_rows=policies,
+        scope='xeon-only subset' if xeon_only else 'full paper',omitted_performance_keys=omitted,
+        native_matrix_complete=full_native,
         denominator='Fixed official reference; historical pymatching macro key retained for manuscript compatibility',rounding='Decimal precision 60, final ROUND_HALF_UP')
 
 
@@ -445,10 +479,10 @@ def render_figures(output, groups, native, external, policies, m4, profile):
             x=np.arange(len(policy_distances))
             for i,mode in enumerate((1,2,0)):
                 values=[by[d,mode][metric] for d in policy_distances]
-                bars=ax.bar(x+(i-1)*.27,values,.25,label=POLICIES[mode][1],color=colors[i])
+                bars=ax.bar(x+(i-1)*.27,values,.25,label=by[policy_distances[0],mode]['strategy_label'],color=colors[i])
                 ax.bar_label(bars,fmt='%.2f',padding=3,fontsize=8)
             ax.set_xticks(x,policy_distances); ax.set_xlabel('Code distance'); ax.set_ylabel(ylabel)
-            ax.margins(y=.2); ax.set_title('Four-thread pipeline, p = 0.3%')
+            ax.margins(y=.2); ax.set_title(('Serial' if policies[0]['execution']=='serial' else 'Four-thread pipeline')+', p = 0.3%')
             fig.legend(*ax.get_legend_handles_labels(),loc='upper center',bbox_to_anchor=(.54,.99),ncol=3,fontsize=9,frameon=False)
             save(fig,name)
     if 'm4' in groups:
@@ -485,7 +519,7 @@ def main(argv=None):
     parser.add_argument('--policy-timing',nargs='+',metavar='MODE=RUN')
     parser.add_argument('--policy-counts',nargs='+',metavar='MODE=RUN')
     parser.add_argument('--m4-run',type=Path)
-    parser.add_argument('--groups',nargs='+',choices=GROUPS,default=GROUPS)
+    parser.add_argument('--groups',nargs='+',choices=GROUPS,default=GROUPS[:-1])
     parser.add_argument('--profile',choices=['smoke','paper'],default='paper')
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--no-render',action='store_true',help='Export verified tables/macros without figures')
@@ -508,7 +542,7 @@ def main(argv=None):
             ext=imported['rows'];sources['external']=imported['provenance']
             complete_matrix(ext,EXTERNAL,args.profile)
             need({(d,p) for d,p,m in ext} == {(d,p) for d,p,m in rows},'External/native case matrices differ')
-        if groups & {'predecoder','macros'}:
+        if groups & {'predecoder','macros'} or ('xeon-macros' in groups and (args.policy_timing or args.policy_counts)):
             timing={mode:native_run(path,'batch',args.profile) for mode,path in mode_paths(args.policy_timing).items()}
             counts={mode:native_run(path,'statistics',args.profile) for mode,path in mode_paths(args.policy_counts).items()}
             policies=policy_results(timing,counts,args.profile)
@@ -522,11 +556,11 @@ def main(argv=None):
             need(m4['plan']['backend']=='scalar','M4 source role must use the scalar structured dual backend')
             need(m4['plan']['source']['commit']==native['plan']['source']['commit'],'M4 and Xeon results use different source commits')
             m4rows=aggregate(m4);complete_matrix(m4rows,STAGES,args.profile);sources['m4']=m4['provenance']
-        if 'macros' in groups:
-            need(args.l2_run and args.l3_run,'Performance macros require both --l2-run and --l3-run')
-            pmu={level:native_run(path,'pmu',args.profile) for level,path in [('L2',args.l2_run),('L3',args.l3_run)]}
+        if groups & {'macros','xeon-macros'}:
+            if 'macros' in groups:need(args.l2_run and args.l3_run,'Performance macros require both --l2-run and --l3-run')
+            pmu={level:native_run(path,'pmu',args.profile) for level,path in [('L2',args.l2_run),('L3',args.l3_run)] if path}
             for level,run in pmu.items():sources[level]=run['provenance']
-            performance,predecoder,macro_audit=paper_macros(native,pmu,policies,m4)
+            performance,predecoder,macro_audit=paper_macros(native,pmu,policies,m4,xeon_only='macros' not in groups)
         output.mkdir(parents=True)
         canonical=dict(schema=1,complete=True,profile=args.profile,groups=sorted(groups),sources=sources,
             method_labels=LABELS,ablation_stages=STAGES,best_configuration_pool=CANDIDATES,
@@ -553,7 +587,7 @@ def main(argv=None):
         banner='% Fresh verified AE export; '+args.profile+' profile.\n'
         if policies and len(policies)==21:
             (output/'predecoder_numbers.tex').write_text(banner+predecoder_macros(policies))
-        if 'macros' in groups:
+        if groups & {'macros','xeon-macros'}:
             (output/'performance-macros.tex').write_text(banner+performance)
             write_json(output/'macro-audit.json',macro_audit)
         artifacts=render_figures(output,groups,rows,ext,policies,m4rows,args.profile) if not args.no_render else []

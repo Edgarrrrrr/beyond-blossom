@@ -15,8 +15,8 @@
 #ifndef BB_TAILRESET_PREDECODE_MODE
 #define BB_TAILRESET_PREDECODE_MODE 0
 #endif
-#if BB_TAILRESET_PREDECODE_MODE < 0 || BB_TAILRESET_PREDECODE_MODE > 2
-#error "TailReset predecode mode must be 0 (degree), 1 (skip), or 2 (coordinate)"
+#if BB_TAILRESET_PREDECODE_MODE < 0 || BB_TAILRESET_PREDECODE_MODE > 3
+#error "AE predecode mode must be 0 (degree), 1 (skip), 2 (coordinate), or 3 (simple equal-share)"
 #endif
 #ifndef BB_TAILRESET_SYNDROME_STATS
 #define BB_TAILRESET_SYNDROME_STATS 0

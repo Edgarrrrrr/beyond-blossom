@@ -15,7 +15,7 @@ set(BB_SHARED_COMPONENT_PARALLELISM 2 CACHE STRING "Independent components" FORC
 set(BB_STRUCTURED_PROFILE_COUNTERS OFF CACHE BOOL "Pure timing" FORCE)
 set(BB_STRUCTURED_PROFILE_TIMERS OFF CACHE BOOL "Pure timing" FORCE)
 set(BB_STRUCTURED_PROFILE_TIMELINE OFF CACHE BOOL "Pure timing" FORCE)
-set(BB_TAILRESET_PREDECODE_MODE 0 CACHE STRING "0 degree, 1 skip, 2 equal-rate")
+set(BB_TAILRESET_PREDECODE_MODE 0 CACHE STRING "0 degree, 1 skip, 2 coordinate, 3 simple equal-share")
 set(BB_TAILRESET_SYNDROME_STATS OFF CACHE BOOL "Separate untimed residual replay")
 set(BB_AE_CACHE_LEVEL 3 CACHE STRING "Cache events: 2 or 3, Xeon only")
 add_subdirectory("${BB_SOURCE_DIR}" decoder EXCLUDE_FROM_ALL)

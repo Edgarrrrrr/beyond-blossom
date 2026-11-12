@@ -1350,3 +1350,76 @@ TEST(OneHopPredecoder, FixedSeedViewCompleteEdgesAndResetIgnoreHoleRecords) {
         EXPECT_EQ(node.grid_component->predecode.radii[node.grid_cell], 0U);
     }
 }
+
+#if BB_TAILRESET_PREDECODE_MODE == 3
+TEST(OneHopPredecoder, SimpleEqualShareCapsAndEvenRounding) {
+    for (const int weight : {0, 4, 6, 7, 8}) {
+        const std::vector<Edge> edges{{0, 1, weight}};
+        auto decoder = decoder_for(2, edges);
+        auto& pre = decoder.predecoder;
+        pre.prepare(decoder.flooder.graph, {0, 1}, {});
+        pre.run();
+        assert_dual_and_matching(decoder, edges);
+        const auto half = (weight / 2) & ~1;
+        EXPECT_EQ(pre.seed_view.storage[0].radius, half);
+        EXPECT_EQ(pre.seed_view.storage[1].radius, half);
+        EXPECT_EQ(pre.complete, 2 * half == weight);
+        // Public graph construction quantizes weights onto the even lattice.
+        // Raw odd edges above test only predecoder dual feasibility and refusal
+        // to accept a non-tight match; the existing full timeline requires even
+        // weights. The 2-mod-4 case must still recover its exact optimum.
+        if (weight % 2 == 0) {
+            verify_case(decoder, edges, 3);
+            verify_case(decoder, edges, 0);
+        }
+    }
+}
+
+TEST(OneHopPredecoder, SimpleEqualShareRespectsInactiveAndBoundaryConstraints) {
+    {
+        const std::vector<Edge> edges{{0, 1, 8}, {0, 2, 2}, {1, -1, 20}, {2, -1, 20}};
+        auto decoder = decoder_for(3, edges);
+        auto& pre = decoder.predecoder;
+        pre.prepare(decoder.flooder.graph, {0, 1}, {});
+        pre.run();
+        assert_dual_and_matching(decoder, edges);
+        EXPECT_EQ(pre.seed_view.storage[0].radius, 2U);
+        EXPECT_EQ(pre.seed_view.storage[1].radius, 4U);
+        EXPECT_FALSE(pre.complete);
+        EXPECT_EQ(pre.seed_view.storage[0].mate, PredecodeSeed::UNMATCHED);
+        EXPECT_EQ(pre.seed_view.storage[1].mate, PredecodeSeed::UNMATCHED);
+        verify_case(decoder, edges, 3);
+    }
+    {
+        const std::vector<Edge> edges{{0, 1, 8}, {0, -1, 2}, {1, -1, 20}};
+        auto decoder = decoder_for(2, edges);
+        auto& pre = decoder.predecoder;
+        pre.prepare(decoder.flooder.graph, {0, 1}, {});
+        pre.run();
+        assert_dual_and_matching(decoder, edges);
+        EXPECT_EQ(pre.seed_view.storage[0].radius, 2U);
+        EXPECT_EQ(pre.seed_view.storage[0].mate, PredecodeSeed::BOUNDARY);
+        EXPECT_EQ(pre.seed_view.storage[1].radius, 4U);
+        EXPECT_EQ(pre.seed_view.storage[1].mate, PredecodeSeed::UNMATCHED);
+        verify_case(decoder, edges, 3);
+    }
+    auto boundary = decoder_for(1, {{0, -1, 6}});
+    boundary.predecoder.prepare(boundary.flooder.graph, {0}, {});
+    boundary.predecoder.run();
+    EXPECT_TRUE(boundary.predecoder.complete);
+    EXPECT_EQ(boundary.predecoder.seed_view.storage[0].radius, 6U);
+}
+
+TEST(OneHopPredecoder, SimpleEqualShareExhaustiveCorrectionOracle) {
+    // Competing local pairs, unequal caps, boundaries, 2-mod-4 weights, empty
+    // shots, and multiple observable bits on the public even-weight lattice.
+    // The oracle enumerates original edge subsets independently of the decoder.
+    for (const int weight : {0, 2, 4, 6, 12}) {
+        const std::vector<Edge> edges{{0, 1, weight}, {0, 2, 4}, {1, 3, 8}, {2, 3, 6},
+                                      {0, -1, 2}, {3, -1, 10}};
+        auto decoder = decoder_for(4, edges);
+        for (size_t bits = 0; bits < 16; ++bits) verify_case(decoder, edges, bits);
+        for (size_t bits = 16; bits-- > 0;) verify_case(decoder, edges, bits);
+    }
+}
+#endif

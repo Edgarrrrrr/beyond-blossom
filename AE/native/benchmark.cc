@@ -198,7 +198,7 @@ Options parse(int argc, char** argv) {
         throw std::invalid_argument("Invalid error rate");
     if (
 #if BB_TAILRESET_SYNDROME_STATS
-        o.mode != "pipe-statistics" &&
+        o.mode != "pipe-statistics" && o.mode != "serial-statistics" &&
 #endif
         o.mode != "pmu" && o.mode != "prepare" && o.mode != "import" && o.mode != "batch" && o.mode != "latency" &&
         o.mode != "diagnostic" && o.mode != "diag-time-only" && o.mode != "prefix" && o.mode != "prefix-timeline" &&
@@ -295,6 +295,17 @@ Options parse(int argc, char** argv) {
     }
     if (o.mode == "input-features" && (o.backend == "generic" || o.execution != "serial"))
         throw std::invalid_argument("Input features require a serial structured graph construction");
+#if BB_TAILRESET_PREDECODE_MODE == 3
+    if (o.backend != "generic" && o.execution != "serial")
+        throw std::invalid_argument("Simple equal-share AE baseline requires serial whole-component execution");
+#endif
+#if BB_TAILRESET_SYNDROME_STATS
+    if ((o.mode == "serial-statistics" && o.execution != "serial") ||
+        (o.mode == "pipe-statistics" && o.execution != "pipeline") ||
+        ((o.mode == "serial-statistics" || o.mode == "pipe-statistics") &&
+         (o.backend == "generic" || !o.predecode)))
+        throw std::invalid_argument("Statistics require the matching structured execution and enabled predecode lifecycle");
+#endif
     return o;
 }
 uint64_t mix(uint64_t state, uint64_t value) {
@@ -753,7 +764,7 @@ void decode_window(const Options& o, Decoder& decoder, Callback&& callback) {
 
 void run(const Options& o) {
 #if BB_TAILRESET_SYNDROME_STATS
-    if (o.mode != "pipe-statistics")
+    if (o.mode != "pipe-statistics" && o.mode != "serial-statistics")
         throw std::invalid_argument("Syndrome-statistics binary cannot collect decoding times");
 #endif
     std::filesystem::create_directories(o.output);
@@ -873,6 +884,14 @@ void run(const Options& o) {
             if (!scope) throw std::runtime_error("Feature scope persistence failed");
             return;
         }
+#if BB_TAILRESET_SYNDROME_STATS
+        if (o.mode == "serial-statistics") {
+            if constexpr (std::is_same_v<std::decay_t<decltype(decoder)>, beyond_blossom::structured::ComponentDecoder>)
+                values = collect_tailreset_syndromes(o, data, decoder);
+            else throw std::runtime_error("Serial statistics require ComponentDecoder");
+            return;
+        }
+#endif
         if constexpr (requires { decoder.next_buffer(); decoder.drain(); }) {
 #if BB_EXPERIMENT_PIPELINE
 #if BB_STRUCTURED_PROFILE_TIMERS

@@ -46,7 +46,8 @@ def main(argv=None):
     parser.add_argument('--profile', choices=['smoke', 'paper'], default='paper')
     parser.add_argument('--jobs', type=int, default=2)
     parser.add_argument('--cache-level', choices=['2', '3'], default='3')
-    parser.add_argument('--predecode-mode', choices=['0', '1', '2'], default='0')
+    parser.add_argument('--predecode-mode', choices=['0', '1', '2', '3'], default='0',
+                        help='0 degree ordered; 1 none; 2 historical coordinate/full-cap; 3 simple equal-rate')
     parser.add_argument('--statistics', action='store_true')
     parser.add_argument('--stim-source', type=Path)
     parser.add_argument('--stim-archive', type=Path)

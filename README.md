@@ -1,8 +1,30 @@
 # Beyond Blossom
 
-Beyond Blossom is a minimum-weight perfect-matching decoder for quantum error correction. It provides an arbitrary-graph decoder and a structured surface-code decoder with SIMD, certified predecoding, and persistent OpenMP teams.
+**Exact minimum-weight perfect matching for quantum error correction, accelerated through local predecoding, SIMD, and CPU parallelism.**
 
-The project is based on PyMatching, with redesigned backends and additional optimizations. The familiar `Matching` Python API is available under `beyond_blossom`. Original copyright notices and the Apache-2.0 license are retained.
+Beyond Blossom reduces the work needed to decode surface-code detection events while preserving the minimum-weight matching objective. It combines degree-ordered one-hop predecoding, a structured graph representation, and parallel execution across the decoding pipeline. It builds on PyMatching and provides Python APIs for arbitrary graphs (`Matching`) and structured surface-code graphs (`StructuredDecoder`), alongside a native C++ library.
+
+[![Beyond Blossom parallel architecture: independent X/Z components, parallel local predecoding, conflict processing, and overlapping workspace reset.](assets/paper/parallel-architecture.png)](assets/paper/parallel-architecture.png)
+
+*Pipeline-wide parallelism from the paper. Independent components run concurrently; local predecoding is split across threads; alternating workspaces overlap reset with decoding the next shot. The remaining MWPM search runs sequentially within each component.*
+
+[Installation](#installation) · [Structured decoding](#structured-decoding) · [Native build](#native-build) · [Reproduction](#reproduction-and-contributions)
+
+## Core ideas
+
+**Degree-ordered one-hop predecoding.** Common local patterns can be resolved directly through adjacent edges. The predecoder processes detection events in candidate-degree order, maintains a feasible dual state, and accepts tight-edge matches. Fully matched inputs have an optimal solution immediately. Otherwise, the partial matching and dual state initialize the full solver, which can revise those matches as needed.
+
+[![Comparison of event-driven Sparse Blossom and Beyond Blossom's degree-ordered one-hop predecoder.](assets/paper/one-hop-predecoding.png)](assets/paper/one-hop-predecoding.png)
+
+**Structured storage and SIMD.** Surface-code graphs are embedded in a three-dimensional lattice with a twelve-direction stencil. Fixed neighbor offsets and separate storage for frequently accessed state improve locality and allow several neighbor candidates to be evaluated together with SIMD.
+
+<p align="center">
+  <a href="assets/paper/structured-grid.png"><img src="assets/paper/structured-grid.png" width="600" alt="Surface-code spacetime graph embedded in a lattice, with a twelve-direction neighbor stencil and direct offset addressing."></a>
+</p>
+
+**Parallelism around the remaining search.** Persistent worker teams combine independent-component decoding, parallel predecoding with a deferred conflict band, and overlapped reset. Single-core and multi-core strategies share the same exact matching objective; their usefulness depends on the workload and available cores.
+
+These are the original method illustrations from the Beyond Blossom manuscript, exported for this README. [Figure sources and attribution](assets/paper/README.md) record their provenance. Measured results and their scope are linked under [Reproduction](#reproduction-and-contributions).
 
 ## Installation
 
@@ -79,20 +101,7 @@ target_link_libraries(my_decoder PRIVATE BeyondBlossom::decoder)
 
 `BB_PREDECODE_SIMD=ON` enables construction-time selection of the supported SIMD kernels. GNU and Clang x86-64 builds explicitly use the baseline x86-64 target; specialized functions enable their own SIMD features. The portable executable does not require AVX2 for every function. `BB_SANITIZERS=ON` enables ASan and UBSan. `BB_BUILD_PROFILE_TOOLS=ON` builds separate diagnostic tools; their instrumentation is excluded from the normal decoder.
 
-## Source layout
-
-| Directory | Responsibility |
-| --- | --- |
-| `src/beyond_blossom/core` | Shared result types, observable helpers, queues, and geometry |
-| `src/beyond_blossom/unstructured` | Arbitrary-graph flooding, primal matching, and search |
-| `src/beyond_blossom/structured` | Fixed-stencil storage, SIMD kernels, predecoding, and parallel execution |
-| `src/beyond_blossom/driver` | Graph construction and construction-bound decoder strategies |
-| `src/beyond_blossom/bindings` | Native Python interfaces |
-| `python/beyond_blossom` | Python API |
-| `tests` | Public API and differential tests |
-| `AE` | Paper data, collection commands, verification, and plotting |
-
-Structured primal hot paths are inline definitions shared by callers. Backend selection occurs during decoder construction. Arbitrary graphs remain supported by the unstructured backend.
+The [unstructured](src/beyond_blossom/unstructured) and [structured](src/beyond_blossom/structured) backends are separate implementations with shared [core types and utilities](src/beyond_blossom/core). Backend selection occurs during decoder construction, and structured primal hot paths are inline definitions shared by callers.
 
 ## Reproduction and contributions
 
@@ -101,4 +110,4 @@ Structured primal hot paths are inline definitions shared by callers. Backend se
 [Migration validation, 2026-11-12](benchmarks/regression/results/20261112/README.md)
 records this migration's correctness checks, paired measurements, and artifacts.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for development and [SECURITY.md](SECURITY.md) for reporting vulnerabilities. The project uses the [Apache License 2.0](LICENSE); attribution is recorded in [NOTICE](NOTICE).
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development and [SECURITY.md](SECURITY.md) for reporting vulnerabilities. The software uses the [Apache License 2.0](LICENSE); original copyright notices are retained and attribution is recorded in [NOTICE](NOTICE). Paper artwork is documented separately in [assets/paper](assets/paper/README.md).

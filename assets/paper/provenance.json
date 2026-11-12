@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "manuscript_title": "Beyond Blossom: Accelerating MWPM Decoding for Surface Codes With Local Predecoding and Architecture-Aware Optimizations",
+  "conversion": "Direct PDF rasterization; original page extent, labels, and artwork retained. No redrawing or benchmark data changes.",
+  "tool": "pdftocairo version 22.12.0 (Poppler)",
+  "files": [
+    {
+      "file": "parallel-architecture.png",
+      "width_px": 2400,
+      "height_px": 1104,
+      "bytes": 682417,
+      "sha256": "2ecf14e549bcb9ebbac347651eef57287686d8896d10da3de2720973cc232593",
+      "source": {
+        "manuscript_path": "figures/multilevel_parallelism.pdf",
+        "figure_label": "fig:multilevel-parallelism",
+        "included_by": "sections/03-method.tex",
+        "bytes": 2055499,
+        "sha256": "cec2fd4da9f6e81064154b769b5785ea409414a24a40fffbd504d36c16bac118"
+      },
+      "command": [
+        "pdftocairo",
+        "-png",
+        "-singlefile",
+        "-scale-to-x",
+        "2400",
+        "-scale-to-y",
+        "-1",
+        "figures/multilevel_parallelism.pdf",
+        "exported/parallel-architecture"
+      ]
+    },
+    {
+      "file": "one-hop-predecoding.png",
+      "width_px": 2400,
+      "height_px": 1089,
+      "bytes": 278218,
+      "sha256": "f7ebb52b2e7faedf26c2b3667bc86143e442beff54481e270753aea3b29df0a0",
+      "source": {
+        "manuscript_path": "figures/beyond_blossom_predecoder_v6.pdf",
+        "figure_label": "fig:predecode",
+        "included_by": "sections/03-method.tex",
+        "bytes": 675208,
+        "sha256": "45521d0b675f41ca598ad4b6778d74619e156849f4b31cad1cab9d159e340dae"
+      },
+      "command": [
+        "pdftocairo",
+        "-png",
+        "-singlefile",
+        "-scale-to-x",
+        "2400",
+        "-scale-to-y",
+        "-1",
+        "figures/beyond_blossom_predecoder_v6.pdf",
+        "exported/one-hop-predecoding"
+      ]
+    },
+    {
+      "file": "structured-grid.png",
+      "width_px": 2400,
+      "height_px": 2144,
+      "bytes": 526126,
+      "sha256": "f9e5d34c66ab20c6778f9c36ec9ed4b741618f3a85e35ccc60366026d2198282",
+      "source": {
+        "manuscript_path": "figures/structured_grid_stencil.pdf",
+        "figure_label": "fig:structured-grid",
+        "included_by": "sections/03-method.tex",
+        "bytes": 488345,
+        "sha256": "7e76cca9f8095b5b1791de73fcf5ab0467cd738e20aaa5c990549334052708c5"
+      },
+      "command": [
+        "pdftocairo",
+        "-png",
+        "-singlefile",
+        "-scale-to-x",
+        "2400",
+        "-scale-to-y",
+        "-1",
+        "figures/structured_grid_stencil.pdf",
+        "exported/structured-grid"
+      ]
+    }
+  ]
+}
