@@ -64,7 +64,7 @@ python AE/external/collect.py \
   --profile paper --cpus 0,2,4,6
 ```
 
-The paper profile defaults to 1,000,000 distinct inputs per case and three timing repeats. Add `--limit 10000` for an explicitly recorded 10,000-input prefix. To choose counts per method or case, supply `--shot-counts counts.json`, for example `{"fusion":10000,"d33-p0.003":{"parity":10000}}`. Unspecified entries retain the profile default or `--limit`. Paper counts must be 10,000 or 1,000,000, with three repeats; the saved case must contain at least that many inputs. These are fresh collection policies. The recovered paper caption does not identify which historical cases used the smaller sample count, so the wrapper does not invent that assignment.
+The paper profile uses the manuscript's [per-setting sample counts](../REFERENCE.md#external-sample-counts) and three timing repeats. Add `--limit 10000` or `--limit 1000000` for an explicit uniform override. To choose counts per method or case, supply `--shot-counts counts.json`, for example `{"fusion":10000,"d33-p0.003":{"parity":10000}}`. Unspecified entries retain the manuscript count or explicit `--limit`. Counts must be 10,000 or 1,000,000, and the saved case must contain at least that many inputs. The original caption and marker fills establish the default count assignment; they do not supply the missing original timing values.
 
 The smoke profile defaults to at most 64 distinct inputs and one repeat. `--repeats` changes smoke repeats; `--warmup-root /path/to/separate-ae-inputs` selects a separate saved warmup case for every matrix entry. Matrix summaries preserve the source count, selected count, prefix/full status and method-specific timing scope.
 

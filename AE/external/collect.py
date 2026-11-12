@@ -10,7 +10,7 @@ from pathlib import Path
 import subprocess
 import sys
 
-from common import HERE, METHODS, sha256, source_identity, verify_files, write_json
+from common import HERE, METHODS, sha256, source_identity, verify_files, write_json, resolve_shot_counts, classify_shot_counts
 from input_adapter import SparseDataset
 
 
@@ -51,7 +51,7 @@ def main(argv=None):
     parser.add_argument('--profile', choices=['smoke', 'paper'], default='smoke')
     parser.add_argument('--methods', nargs='+', choices=METHODS, default=list(METHODS))
     parser.add_argument('--cpus')
-    parser.add_argument('--limit', type=int, help='Common distinct-shot prefix; paper accepts 10000 or 1000000')
+    parser.add_argument('--limit', type=int, help='Explicit uniform prefix; paper defaults to the manuscript per-case counts')
     parser.add_argument('--shot-counts', type=Path, help='JSON method->count defaults and/or case->{method:count} overrides')
     parser.add_argument('--repeats', type=int)
     parser.add_argument('--warmup-seconds', type=float)
@@ -77,6 +77,8 @@ def main(argv=None):
     policy = json.loads(args.shot_counts.read_text()) if args.shot_counts else {}
     if not isinstance(policy, dict):
         parser.error('--shot-counts must contain a JSON object')
+    policy = resolve_shot_counts(args.profile, [(d, p) for _, d, p in cases], args.limit, policy,
+                                 smoke_default=min(64, plan['shots']))
     case_names = {case for case, _, _ in cases}
     for key, value in policy.items():
         if key in METHODS:
@@ -101,6 +103,8 @@ def main(argv=None):
             grouped.setdefault(count, []).append(method)
         schedule.extend(dict(case=case, distance=distance, error_rate=error_rate, shots=count,
                              source_shots=saved.shots, methods=methods) for count, methods in grouped.items())
+    count_classification = classify_shot_counts([dict(distance=t['distance'], error_rate=t['error_rate'],
+        method=m, shots=t['shots']) for t in schedule for m in t['methods']])
     root.mkdir(parents=True)
     controller = {name: sha256(HERE / name) for name in ('collect.py', 'input_adapter.py', 'run.py', 'common.py')}
     configuration = dict(schema=1, source=identity, profile=args.profile,
@@ -111,7 +115,8 @@ def main(argv=None):
                          warmup_root=str(args.warmup_root.resolve()) if args.warmup_root else None,
                          shot_counts=policy, requested_limit=args.limit, schedule=schedule,
                          sampling_policy='Saved source order; every reduced workload is a prefix of the identical saved case',
-                         historical_claim='Fresh collection policy; no historical million/ten-thousand assignment is inferred',
+                         shot_policy=count_classification,
+                         historical_claim='Sample-count policy is separate from timing-data provenance; no original timing values are inferred',
                          controller_sha256=controller)
     write_json(root / 'plan.json', configuration)
     results, completed = [], []

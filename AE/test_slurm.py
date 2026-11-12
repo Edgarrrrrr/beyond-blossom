@@ -39,6 +39,9 @@ class SlurmWorkflowTests(unittest.TestCase):
         self.assertEqual(plan['build_command'][2], 'build')
         self.assertIn('--source', plan['build_command'])
         self.assertNotIn('source-2411603', str(plan))
+        self.assertNotIn('--external-shots', plan['build_command'])
+        self.assertEqual(plan['external_shot_counts']['d09-p0.003']['unionfind'], 1000000)
+        self.assertEqual(plan['external_shot_counts']['d33-p0.003']['fusion'], 10000)
 
     def test_smoke_is_one_real_case_and_worker(self):
         plan = self.plan('--profile','smoke')

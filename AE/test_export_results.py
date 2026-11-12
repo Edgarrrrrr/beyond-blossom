@@ -447,6 +447,16 @@ class CanonicalReplayTest(unittest.TestCase):
         result, renderer = self.invoke(['--input', str(path), '--output', str(self.root/'wrong-mean')])
         self.assertEqual(result, 1); renderer.assert_not_called()
 
+    def test_replay_rejects_a_false_sample_policy_declaration(self):
+        original = self.export()
+        path = original/'canonical.json'; data = E.read(path)
+        data['comparison_shot_policy'] = {'policy': 'manuscript-comparison-markers-v1'}
+        dump(path, data)
+        seal = E.read(original/'complete.json'); seal['files']['canonical.json'] = E.R.digest(path)
+        dump(original/'complete.json', seal)
+        result, renderer = self.invoke(['--input', str(path), '--output', str(self.root/'wrong-policy')])
+        self.assertEqual(result, 1); renderer.assert_not_called()
+
     def test_replay_rejects_incomplete_or_changed_workflow_receipt(self):
         work = self.root/'slurm'; original = self.export(work)
         for complete, digest in [(False, E.R.digest(original/'complete.json')), (True, '0'*64)]:

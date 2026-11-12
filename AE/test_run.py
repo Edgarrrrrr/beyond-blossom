@@ -164,6 +164,16 @@ class LocalWorkflowTests(unittest.TestCase):
             self.assertEqual(R.main(['plan', '--work', str(self.root / 'plan-only')]), 0)
             workflow.assert_not_called()
 
+    def test_paper_configuration_defaults_to_manuscript_mixed_counts(self):
+        args = R.parser().parse_args(['plan', '--work', str(self.root/'mixed'), '--source', str(R.HERE.parent)])
+        with patch.object(R, 'select_cpus', return_value=list(range(8))), \
+             patch.object(R, 'python_environment', return_value={'executable':'mock','available':True}), \
+             patch.object(R, 'identity', return_value={'commit':'mock','status':''}):
+            c = R.configuration(args)
+        self.assertIsNone(c['external_shots'])
+        self.assertEqual(c['external_shot_counts']['d09-p0.003']['unionfind'], 1000000)
+        self.assertEqual(c['external_shot_counts']['d33-p0.003']['parity'], 10000)
+
     def test_smoke_uses_small_external_inputs_and_records_actual_count(self):
         args = R.parser().parse_args(['plan', '--work', str(self.root/'smoke'), '--source', str(R.HERE.parent), '--profile', 'smoke'])
         with patch.object(R, 'select_cpus', return_value=list(range(8))),\

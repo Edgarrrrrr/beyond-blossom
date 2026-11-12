@@ -48,7 +48,9 @@ def assign_cases(cases, count):
 
 def forwarded(args):
     values = ['--source', str(args.source.resolve()), '--profile', args.profile, '--python', args.python,
-              '--jobs', str(args.jobs), '--pmu', args.pmu, '--external-shots', str(args.external_shots)]
+              '--jobs', str(args.jobs), '--pmu', args.pmu]
+    if args.external_shots is not None:
+        values += ['--external-shots', str(args.external_shots)]
     for option in ('toolchain', 'dependencies_from', 'stim_source', 'stim_archive', 'googletest_source',
                    'upstream_repository', 'official_source', 'reference_adapter', 'crate_cache',
                    'reference_build', 'reference_record', 'native_build', 'external_build', 'external_shot_counts'):
@@ -99,7 +101,9 @@ def prepare(args):
             'repeats': 3 if args.profile == 'paper' else 1,
             'external_requested_shots': args.external_shots,
             'external_shots': args.external_shots if args.profile == 'paper' else 32,
-            'external_shot_counts': local.read(args.external_shot_counts) if args.external_shot_counts else None,
+            'external_shot_counts': local.resolve_shot_counts(args.profile, cases,
+                args.external_shots if args.profile == 'paper' else 32,
+                local.read(args.external_shot_counts) if args.external_shot_counts else None),
             'builds_manifest': str(manifest), 'build_command': None if args.builds_manifest else build_command,
             'resources': {'partition': args.partition, 'cpus_per_task': args.cpus_per_task,
                           'memory': args.mem, 'time': args.time, 'exclusive': not args.shared_node},
@@ -286,8 +290,9 @@ def worker(plan, index):
                         '--source', plan['source'], '--python', plan['python'], '--profile', plan['profile'],
                         '--builds-manifest', plan['builds_manifest'], '--distances', str(case['distance']),
                         '--error-rates', str(case['error_rate']), '--cpus', ','.join(map(str, cpus)),
-                        '--backend', plan['backend'], '--pmu', plan['pmu'], '--no-export',
-                        '--external-shots', str(plan['external_requested_shots'])]
+                        '--backend', plan['backend'], '--pmu', plan['pmu'], '--no-export']
+                    if plan['external_requested_shots'] is not None:
+                        command += ['--external-shots', str(plan['external_requested_shots'])]
                     if plan['external_shot_counts'] is not None:
                         command += ['--external-shot-counts', str(root / 'external-shot-counts.json')]
                 print(f"{case['name']}: {shlex.join(command)}", flush=True)

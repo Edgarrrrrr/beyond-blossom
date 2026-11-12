@@ -131,6 +131,6 @@ The [unstructured](src/beyond_blossom/unstructured) and [structured](src/beyond_
 
 [AE/README.md](AE/README.md) describes smoke runs, full collection, and replay of archived paper data. Archived measurements describe their original binaries; a new build requires new measurements before a performance claim is made.
 
-The [fresh paper-scale reproduction](AE/data/reproduction/README.md) includes all 21 settings, million-shot native measurements, 10,000-shot external comparisons, serial predecoder statistics, and L2/L3 counters. Its measured tables and source identities are included; the standard AE command redraws them with the paper layouts.
+The [saved 21-setting run](AE/data/reproduction/README.md) includes million-shot native measurements, 10,000-shot external comparisons, serial predecoder statistics, and L2/L3 counters. Its uniform external sample counts differ from the paper's mixed-count policy. Its measured tables and source identities are included; the standard AE command redraws them with the paper layouts.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development and [SECURITY.md](SECURITY.md) for reporting vulnerabilities. The software uses the [Apache License 2.0](LICENSE); original copyright notices are retained and attribution is recorded in [NOTICE](NOTICE). Paper artwork is documented separately in [assets/paper](assets/paper/README.md); the original plotting fonts and their license are in [AE/fonts](AE/fonts/README.md).

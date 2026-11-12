@@ -2,7 +2,7 @@
 """Run the local paper workflow: discover dependencies, build, collect serially, export.
 
 Examples:
-  python AE/run.py run --work ../ae-work --external-shots 10000
+  python AE/run.py run --work ../ae-work
   python AE/run.py resume --work ../ae-work
   python AE/run.py plan --work ../ae-work --offline --reference-build /path/to/reference
 
@@ -22,6 +22,11 @@ import shutil
 import subprocess
 import sys
 import tempfile
+
+try:
+    from .external.common import resolve_shot_counts, classify_shot_counts
+except ImportError:
+    from external.common import resolve_shot_counts, classify_shot_counts
 
 HERE = Path(__file__).resolve().parent
 UPSTREAM = 'e27b8c6a5f5ba10fb74d4ebb29822f2df5e12bcd'
@@ -170,14 +175,6 @@ def configuration(args):
     ranks = {'scalar': 0, 'avx2': 1, 'avx512vl': 2, 'avx512': 2}
     if args.action != 'build' and ranks[backend] > ranks[hardware['backend']]:
         raise ValueError('Requested SIMD backend is not supported by this measurement host')
-    external_policy = None
-    if args.external_shot_counts:
-        overrides = read(args.external_shot_counts)
-        if not isinstance(overrides, dict):
-            raise ValueError('--external-shot-counts must contain a JSON object')
-        external_policy = {method: args.external_shots if args.profile == 'paper' else 32
-                           for method in ('parity', 'fusion', 'parity-uf', 'unionfind', 'ldpc-uf')}
-        external_policy.update(overrides)
     distances = [int(v) for v in args.distances.split(',')] if args.distances else (DISTANCES if args.profile == 'paper' else [9])
     rates = [float(v) for v in args.error_rates.split(',')] if args.error_rates else (ERROR_RATES if args.profile == 'paper' else [.003])
     if not distances or len(set(distances)) != len(distances) or any(d < 3 or d % 2 == 0 for d in distances):
@@ -186,6 +183,9 @@ def configuration(args):
         raise ValueError('--error-rates must select distinct rates between 0 and .5')
     if args.profile == 'paper' and not args.no_export and args.action != 'build' and (set(distances) != set(DISTANCES) or set(rates) != set(ERROR_RATES)):
         raise ValueError('Partial paper selections require --no-export; combine their bundles with export_results.py --shards')
+    external_policy = resolve_shot_counts(args.profile, [(d, p) for d in distances for p in rates],
+        args.external_shots if args.profile == 'paper' else 32,
+        read(args.external_shot_counts) if args.external_shot_counts else None)
     return {'schema': 1, 'source': str(source), 'source_identity': identity(source), 'work': str(work),
             'orchestrator': {'path': str(Path(__file__).resolve()), 'sha256': digest(__file__)},
             'profile': args.profile, 'jobs': args.jobs, 'offline': args.offline, 'cpus': [] if args.action == 'build' else select_cpus(args.cpus),
@@ -502,8 +502,9 @@ def parser():
     p.add_argument('--work', type=Path, required=True)
     p.add_argument('--source', type=Path, default=HERE.parent)
     p.add_argument('--profile', choices=['paper', 'smoke'], default='paper')
-    p.add_argument('--external-shots', type=int, choices=[10000, 1000000], default=10000)
-    p.add_argument('--external-shot-counts', type=Path, help='Optional per-method/case overrides; unspecified external methods retain --external-shots')
+    p.add_argument('--external-shots', type=int, choices=[10000, 1000000],
+                   help='Explicit uniform override; default uses the manuscript per-case sample counts')
+    p.add_argument('--external-shot-counts', type=Path, help='Per-method/case overrides; unspecified points use manuscript counts or explicit --external-shots')
     p.add_argument('--python', default=sys.executable)
     p.add_argument('--cpus', help='Eight physical cores on one socket, including smoke; auto-discovered when omitted'); p.add_argument('--backend', choices=['scalar', 'avx2', 'avx512vl', 'avx512'])
     p.add_argument('--jobs', type=int, default=2)

@@ -19,6 +19,7 @@ import sys
 
 import reproduce as R
 import pmu_data as P
+from external.common import classify_shot_counts
 
 HERE = Path(__file__).resolve().parent
 DISTANCES = [9, 13, 17, 21, 25, 29, 33]
@@ -298,6 +299,8 @@ def external_run(directory, native, profile):
                 input_sha256=provenance['source']['sha256'], timing_scope=item['timing_scope'],
                 physical_observable_truth_available=False, source=reference(summary_path),
                 quantization='Original external even-integer graph, maximum q=20000')
+    if 'shot_policy' in plan:
+        need(plan['shot_policy'] == classify_shot_counts(result.values()), 'External shot policy declaration differs from measured rows')
     return dict(rows=result,provenance=dict(plan=reference(root/'plan.json'),completion=reference(root/'complete.json')))
 
 
@@ -450,7 +453,7 @@ def renderer_sources():
     return [reference(HERE / name) for name in (
         'export_results.py', 'ablation.py', 'decoders.py',
         'm4_pro/plot_m4_per_round.py', 'm4_pro/palette.json',
-        'plot_fonts.py', 'fonts/manifest.json')]
+        'plot_fonts.py', 'fonts/manifest.json', 'external/common.py')]
 
 
 def render_figures(output, groups, native, external, policies, m4, profile):
@@ -637,6 +640,7 @@ def main(argv=None):
             method_labels=LABELS,ablation_stages=STAGES,best_configuration_pool=CANDIDATES,
             macro_aliases=ALIASES,baseline_policy='reference always means the independently built official e27b8c6a revision',
             native=list(rows.values()),external=list(ext.values()),predecoder=policies,m4=list(m4rows.values()),
+            comparison_shot_policy=classify_shot_counts(ext.values()),
             scope='Current article only; historical grid diagnostics and mixed-LTO plots remain archived supplemental material',
             aggregation=dict(xeon='sum integer elapsed_ns / sum measured shots',m4='median of three complete-batch means',
                              selection='minimum across explicitly listed configurations; descriptive envelope, not measured adaptive switching'))

@@ -86,8 +86,26 @@ reference latency divided by candidate latency. The best configuration is select
 from the five measured Beyond configurations per setting; this is a descriptive
 selection, not a measured adaptive dispatcher.
 
-External collection defaults to a 10,000-shot prefix of each saved native stream,
-with three passes. `--external-shots 1000000` on `run.py` requests the full streams.
+## External sample counts
+
+The default follows the manuscript comparison's caption and marker fills.
+Beyond Blossom, PyMatching and UnionFind use one million shots at every setting.
+The following external points use a 10,000-shot prefix; all other plotted points
+use one million shots. Each timing run has three passes.
+
+| Method | p = 0.0005: reduced distances | p = 0.001: reduced distances | p = 0.003: reduced distances |
+| --- | --- | --- | --- |
+| Parity Blossom | 33 | 25, 29, 33 | 17, 21, 25, 29, 33 |
+| Fusion Blossom | 25, 29, 33 | 17, 21, 25, 29, 33 | 13, 17, 21, 25, 29, 33 |
+| LDPC-UF | 33 | 29, 33 | 21, 25, 29, 33 |
+
+Supplementary Parity-UF, which has no curve in the manuscript figure, uses 10,000
+shots. `--external-shots 10000` or `1000000` selects an explicit uniform override;
+`--external-shot-counts counts.json` overrides selected methods or cases.
+Saved results retain actual counts and are classified separately when they differ
+from the manuscript. Recovering the count assignment does not recover the missing
+original comparison timings.
+
 External interfaces have different timing boundaries and integer quantization:
 Parity/Fusion time solve and subgraph extraction without clear; UnionFind and LDPC
 UF also exclude preparation or cleanup steps. See the

@@ -128,6 +128,9 @@ def canonical_tables(data, exporter):
     need(data['hardware']['structured_backend'] in ('scalar', 'avx2', 'avx512vl', 'avx512'), 'Invalid structured backend')
     native = timing_rows(data['native'], exporter.STAGES, data['profile'], exporter)
     external = timing_rows(data['external'], exporter.EXTERNAL, data['profile'], exporter, external=True) if 'comparison' in groups else {}
+    if 'comparison_shot_policy' in data:
+        need(data['comparison_shot_policy'] == exporter.classify_shot_counts(external.values()),
+             'Canonical sample-count policy differs from measured rows')
     if external:
         need({(d, p) for d, p, _ in external} == {(d, p) for d, p, _ in native}, 'Native/external settings differ')
     m4 = timing_rows(data['m4'], exporter.STAGES, data['profile'], exporter) if 'm4' in groups else {}
@@ -178,6 +181,7 @@ def replay(input_path, seal_path, output, bindings=()):
         files[str(path.relative_to(output))] = figure['sha256']
     receipt = dict(schema=1, complete=True, mode='canonical-replay', profile=data['profile'],
                    groups=sorted(groups), input=reference(input_path), seal=reference(seal_path),
+                   comparison_shot_policy=exporter.classify_shot_counts(external.values()),
                    workflow_bindings=list(bindings), exporter=renderer, renderers=renderers,
                    recorded_source_exporter=seal.get('exporter') or {
                        name: seal[name] for name in ('original_exporter_sha256', 'exporter_sha256') if name in seal},

@@ -6,6 +6,11 @@ independently built PyMatching reference used 1,000,000 inputs per setting;
 each external decoder used the same inputs' 10,000-shot prefix. Timing was
 repeated three times. The seven predecoder settings used serial execution.
 
+The external sample counts are a custom uniform policy: 54 of the 84 external
+points in the paper use one million shots instead. The current AE defaults to
+the manuscript's mixed counts. This archived run retains its actual counts and
+is useful for checking the standard rendering workflow.
+
 Redraw these measurements through the standard AE entry point:
 
 ```sh

@@ -1,6 +1,7 @@
 """Identity and validation helpers for the external native benchmarks."""
 from __future__ import annotations
 
+from decimal import Decimal
 import hashlib
 import json
 from pathlib import Path
@@ -9,6 +10,84 @@ import subprocess
 HERE = Path(__file__).resolve().parent
 REFERENCE_REVISION = 'e27b8c6a5f5ba10fb74d4ebb29822f2df5e12bcd'
 METHODS = ('parity', 'fusion', 'parity-uf', 'unionfind', 'ldpc-uf')
+PAPER_COUNT_POLICY = 'manuscript-comparison-markers-v1'
+PAPER_DISTANCES = (9, 13, 17, 21, 25, 29, 33)
+PAPER_RATES = (Decimal('.0005'), Decimal('.001'), Decimal('.003'))
+# Sample-count assignments come from the manuscript caption and marker fills.
+# They do not supply or reconstruct the missing original timing measurements.
+PAPER_REDUCED = {
+    'parity': ({33}, {25, 29, 33}, {17, 21, 25, 29, 33}),
+    'fusion': ({25, 29, 33}, {17, 21, 25, 29, 33}, {13, 17, 21, 25, 29, 33}),
+    'ldpc-uf': ({33}, {29, 33}, {21, 25, 29, 33}),
+}
+
+
+def paper_shots(distance, rate, method):
+    rate = Decimal(str(rate))
+    if distance not in PAPER_DISTANCES or rate not in PAPER_RATES or method not in METHODS:
+        raise ValueError('No manuscript shot assignment for this setting/method; specify custom counts')
+    if method == 'parity-uf':
+        return 10000  # Supplementary method, absent from the manuscript figure.
+    reduced = PAPER_REDUCED.get(method)
+    return 10000 if reduced and distance in reduced[PAPER_RATES.index(rate)] else 1000000
+
+
+def shot_case(distance, rate):
+    return f'd{distance:02d}-p{float(rate):g}'
+
+
+def resolve_shot_counts(profile, settings, uniform=None, overrides=None, smoke_default=32):
+    """Resolve and project method/case overrides to the selected input cases."""
+    settings = tuple(settings)
+    overrides = {} if overrides is None else overrides
+    if not isinstance(overrides, dict):
+        raise ValueError('Shot counts must contain a JSON object')
+    known_cases = {shot_case(d, p) for d in PAPER_DISTANCES for p in PAPER_RATES}
+    known_cases.update(shot_case(d, p) for d, p in settings)
+    for name, value in overrides.items():
+        if name in METHODS:
+            values = [value]
+        elif name in known_cases and isinstance(value, dict) and not set(value) - set(METHODS):
+            values = value.values()
+        else:
+            raise ValueError('Unknown shot policy method/case: ' + str(name))
+        if any(type(n) is not int or n <= 0 or (profile == 'paper' and n not in (10000, 1000000)) for n in values):
+            raise ValueError('Unsupported distinct shot count')
+    resolved = {}
+    for d, p in settings:
+        case = shot_case(d, p)
+        resolved[case] = {}
+        for method in METHODS:
+            if method in overrides.get(case, {}):
+                value = overrides[case][method]
+            elif method in overrides:
+                value = overrides[method]
+            else:
+                value = uniform if uniform is not None else (paper_shots(d, p, method) if profile == 'paper' else smoke_default)
+            if type(value) is not int or value <= 0 or (profile == 'paper' and value not in (10000, 1000000)):
+                raise ValueError('Unsupported distinct shot count')
+            resolved[case][method] = value
+    return resolved
+
+
+def classify_shot_counts(rows):
+    """Describe measured counts without relabeling older custom-policy results."""
+    mismatches = []
+    displayed = 0
+    for row in sorted(rows, key=lambda r: (r['distance'], Decimal(str(r['error_rate'])), r['method'])):
+        if row['method'] == 'parity-uf':
+            continue
+        displayed += 1
+        try:
+            expected = paper_shots(row['distance'], row['error_rate'], row['method'])
+        except ValueError:
+            expected = None
+        if row['shots'] != expected:
+            mismatches.append(dict(distance=row['distance'], error_rate=str(row['error_rate']),
+                method=row['method'], actual_shots=row['shots'], manuscript_shots=expected))
+    return dict(policy=PAPER_COUNT_POLICY if displayed and not mismatches else 'custom-counts',
+                displayed_points=displayed, mismatched_points=len(mismatches), mismatches=mismatches,
+                scope='Sample counts only; fresh timing values are not the recovered original paper measurements')
 TIMING_SCOPES = {
     'parity': 'Rust SolverSerial.solve + subgraph; clear, input, validation and output excluded',
     'fusion': 'Rust SolverParallel.solve + subgraph; clear, input, validation and output excluded',

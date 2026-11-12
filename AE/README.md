@@ -51,7 +51,9 @@ python AE/run.py run --work "$AE_WORK/paper" --offline
 The runner builds the configurations, generates shared inputs, runs the decoders,
 and exports the figures and tables. Beyond Blossom and the fixed official
 PyMatching reference each use **1,000,000 shots per setting**, with three timing
-passes. Slower external methods use a **10,000-shot prefix** and three passes.
+passes. External methods use the paper's per-setting **1,000,000 / 10,000-shot**
+assignment and three passes; reduced runs use the same input stream's prefix.
+The [sample-count table](REFERENCE.md#external-sample-counts) lists the assignments.
 There are seven distances and three error rates, for 21 settings. Serial
 predecoder timing and residual counts are collected separately at p=0.003;
 L2/L3 counters are collected when the CPU and permissions support them.
@@ -79,7 +81,9 @@ Completed stages are reused, and failed attempts remain available.
 
 ## Reuse completed measurements
 
-The full completed Xeon measurements are bundled for a quick rendering check:
+Completed 21-setting Xeon measurements are bundled for a quick rendering check.
+Their native runs use one million shots; their external runs uniformly use
+10,000 shots, which differs from the paper's mixed-count policy at 54 points:
 
 ```sh
 python AE/replot.py --input AE/data/reproduction/canonical.json \
