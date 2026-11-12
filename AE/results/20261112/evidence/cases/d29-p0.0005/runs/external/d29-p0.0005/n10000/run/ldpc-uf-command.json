@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.0005/runs/external/d29-p0.0005/n10000/run/bin/ldpc-uf",
+    "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.0005/runs/external/d29-p0.0005/n10000/input/native-input.json",
+    "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.0005/runs/external/d29-p0.0005/n10000/run/ldpc-uf"
+  ],
+  "cpus": [
+    2
+  ]
+}

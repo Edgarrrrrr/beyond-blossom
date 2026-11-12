@@ -1,0 +1,3431 @@
+{
+  "performance_values": {
+    "xeon.decoder-comparison.p0p05.best.vs-pymatching.max-speedup": "8.95824471195996490096323682351659537689819044820839914044130",
+    "xeon.decoder-comparison.p0p1.best.vs-pymatching.max-speedup": "9.73663946938455664518015364920549768211388975300941256482543",
+    "xeon.decoder-comparison.p0p3.best.vs-pymatching.max-speedup": "7.22007398054013792963723084647785310290488871515818519245187",
+    "xeon.ablation.d33.p0p3.pymatching.mean-time-us": "947.664747521",
+    "xeon.ablation.d33.p0p3.structured-simd.mean-time-us": "651.931329453666666666666666666666666666666666666666666666667",
+    "xeon.ablation.d33.p0p3.structured-simd.vs-pymatching.speedup": "1.45362663935044307089591587976932382686272686226426604739241",
+    "xeon.ablation.d9.p0p05.pymatching.mean-time-us": "1.20471508133333333333333333333333333333333333333333333333333",
+    "xeon.ablation.d9.p0p05.structured-simd.mean-time-us": "1.16795960833333333333333333333333333333333333333333333333333",
+    "xeon.ablation.predecoding.vs-structured-simd.min-speedup": "2.39532582379713538201546510707420348670066576418150290600263",
+    "xeon.ablation.predecoding.vs-structured-simd.max-speedup": "4.82746777632794751859283508434033808852484193788718880140963",
+    "xeon.ablation.d13.p0p1.predecoding.mean-time-us": "1.847475041",
+    "xeon.ablation.d13.p0p1.component-parallel.mean-time-us": "2.70673360033333333333333333333333333333333333333333333333333",
+    "xeon.ablation.d33.p0p1.predecoding.mean-time-us": "46.1176108213333333333333333333333333333333333333333333333333",
+    "xeon.ablation.d33.p0p1.component-parallel.mean-time-us": "32.1781600346666666666666666666666666666666666666666666666667",
+    "xeon.ablation.d33.p0p1.component-parallel.vs-predecoding.speedup": "1.43319601778501955104909630932796223515050713013989673394885",
+    "xeon.ablation.d33.p0p3.tail-reset.mean-time-us": "158.898423623666666666666666666666666666666666666666666666667",
+    "xeon.ablation.d33.p0p3.parallel-predecoding.mean-time-us": "131.254160286333333333333333333333333333333333333333333333333",
+    "xeon.ablation.d33.p0p3.parallel-predecoding.vs-pymatching.speedup": "7.22007398054013792963723084647785310290488871515818519245187",
+    "xeon.ablation.tail-reset.num-improved-settings": "11",
+    "legacy.single-core.vs-pymatching.geomean-speedup": "4.20391991126776238745983781196640648012816451410668866254438",
+    "legacy.single-core.vs-pymatching.max-speedup": "5.58072092614689543641637984280228837547474891871528087856413",
+    "legacy.eight-core.vs-pymatching.max-speedup": "9.73663946938455664518015364920549768211388975300941256482543",
+    "legacy.d33.p0p1.beyond-blossom.mean-block-time-us": "21.793362327",
+    "legacy.d33.p0p1.beyond-blossom.mean-round-time-us": "0.660404919",
+    "xeon.ablation.d33.p0p3.pymatching.L3miss": "0.115775286679369464620425509037738609373880612874726818496656",
+    "xeon.ablation.d33.p0p3.structured-simd.L3miss": "0.0191757395420844156599042102057627677176977199881712033511444",
+    "xeon.ablation.d33.p0p3.pymatching.L2miss": "60.1571249212884458776472611446665097128268477119649039742603",
+    "xeon.ablation.d33.p0p3.structured-simd.L2miss": "27.7622106158133453006006806134110851147706462948468235005218"
+  },
+  "performance_operands": {
+    "xeon.decoder-comparison.p0p05.best.vs-pymatching.max-speedup": {
+      "value": "8.95824471195996490096323682351659537689819044820839914044130",
+      "rule": {
+        "op": "best_max_speedup",
+        "reference": "pymatching",
+        "p": "0.0005"
+      },
+      "operands": [
+        {
+          "case": "d09-p0.0005",
+          "method": "predecoded",
+          "method_us": "0.324577302666666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "1.20471508133333333333333333333333333333333333333333333333333",
+          "speedup": "3.71164302443707123542263544679897662345065105949059646097166",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "1.16795960833333333333333333333333333333333333333333333333333",
+            "predecoded": "0.324577302666666666666666666666666666666666666666666666666667",
+            "component-parallel": "0.386689135333333333333333333333333333333333333333333333333333",
+            "pipelined": "0.558781255666666666666666666666666666666666666666666666666667",
+            "parallel-predecode": "0.561357377666666666666666666666666666666666666666666666666667"
+          }
+        },
+        {
+          "case": "d13-p0.0005",
+          "method": "predecoded",
+          "method_us": "0.805414401666666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "3.999225537",
+          "speedup": "4.96542590835759846451384019515535481868018331374883266355631",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "3.42867611033333333333333333333333333333333333333333333333333",
+            "predecoded": "0.805414401666666666666666666666666666666666666666666666666667",
+            "component-parallel": "1.04819294466666666666666666666666666666666666666666666666667",
+            "pipelined": "1.208612801",
+            "parallel-predecode": "1.34149884733333333333333333333333333333333333333333333333333"
+          }
+        },
+        {
+          "case": "d17-p0.0005",
+          "method": "predecoded",
+          "method_us": "1.76101108566666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "9.72012121366666666666666666666666666666666666666666666666667",
+          "speedup": "5.51962522711032027107301626437594087626997499326928806422237",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "8.332620034",
+            "predecoded": "1.76101108566666666666666666666666666666666666666666666666667",
+            "component-parallel": "2.739028384",
+            "pipelined": "2.64390569366666666666666666666666666666666666666666666666667",
+            "parallel-predecode": "3.124692257"
+          }
+        },
+        {
+          "case": "d21-p0.0005",
+          "method": "predecoded",
+          "method_us": "3.53469551766666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "19.726149243",
+          "speedup": "5.58072092614689543641637984280228837547474891871528087856413",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "17.0636287106666666666666666666666666666666666666666666666667",
+            "predecoded": "3.53469551766666666666666666666666666666666666666666666666667",
+            "component-parallel": "4.42045900066666666666666666666666666666666666666666666666667",
+            "pipelined": "4.166644392",
+            "parallel-predecode": "3.98712203766666666666666666666666666666666666666666666666667"
+          }
+        },
+        {
+          "case": "d25-p0.0005",
+          "method": "parallel-predecode",
+          "method_us": "5.30030976433333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "33.770902092",
+          "speedup": "6.37149593015299247390974484223184451839697895070691576843553",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "30.3729878833333333333333333333333333333333333333333333333333",
+            "predecoded": "6.39952079933333333333333333333333333333333333333333333333333",
+            "component-parallel": "6.899074434",
+            "pipelined": "6.51174808166666666666666666666666666666666666666666666666667",
+            "parallel-predecode": "5.30030976433333333333333333333333333333333333333333333333333"
+          }
+        },
+        {
+          "case": "d29-p0.0005",
+          "method": "parallel-predecode",
+          "method_us": "6.88629177466666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "55.009657364",
+          "speedup": "7.98828442999901227343308981770202390326405747372232895130859",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "50.5971191463333333333333333333333333333333333333333333333333",
+            "predecoded": "10.7185183933333333333333333333333333333333333333333333333333",
+            "component-parallel": "10.1822776463333333333333333333333333333333333333333333333333",
+            "pipelined": "9.574343385",
+            "parallel-predecode": "6.88629177466666666666666666666666666666666666666666666666667"
+          }
+        },
+        {
+          "case": "d33-p0.0005",
+          "method": "parallel-predecode",
+          "method_us": "9.69211327066666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "86.8243224546666666666666666666666666666666666666666666666667",
+          "speedup": "8.95824471195996490096323682351659537689819044820839914044130",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "79.8158150263333333333333333333333333333333333333333333333333",
+            "predecoded": "17.544819784",
+            "component-parallel": "15.0535121833333333333333333333333333333333333333333333333333",
+            "pipelined": "14.4344455323333333333333333333333333333333333333333333333333",
+            "parallel-predecode": "9.69211327066666666666666666666666666666666666666666666666667"
+          }
+        }
+      ]
+    },
+    "xeon.decoder-comparison.p0p1.best.vs-pymatching.max-speedup": {
+      "value": "9.73663946938455664518015364920549768211388975300941256482543",
+      "rule": {
+        "op": "best_max_speedup",
+        "reference": "pymatching",
+        "p": "0.001"
+      },
+      "operands": [
+        {
+          "case": "d09-p0.001",
+          "method": "predecoded",
+          "method_us": "0.670908131666666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "2.60118255166666666666666666666666666666666666666666666666667",
+          "speedup": "3.87710690762507501679086072785439657772916296371515882580635",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "2.29089582266666666666666666666666666666666666666666666666667",
+            "predecoded": "0.670908131666666666666666666666666666666666666666666666666667",
+            "component-parallel": "0.767656898666666666666666666666666666666666666666666666666667",
+            "pipelined": "0.918759439666666666666666666666666666666666666666666666666667",
+            "parallel-predecode": "0.976559796333333333333333333333333333333333333333333333333333"
+          }
+        },
+        {
+          "case": "d13-p0.001",
+          "method": "predecoded",
+          "method_us": "1.847475041",
+          "reference": "reference",
+          "reference_us": "8.488801228",
+          "speedup": "4.59481240049943386488218327167105690820534338141567347972632",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "7.00059977066666666666666666666666666666666666666666666666667",
+            "predecoded": "1.847475041",
+            "component-parallel": "2.70673360033333333333333333333333333333333333333333333333333",
+            "pipelined": "2.70835620366666666666666666666666666666666666666666666666667",
+            "parallel-predecode": "3.377852238"
+          }
+        },
+        {
+          "case": "d17-p0.001",
+          "method": "predecoded",
+          "method_us": "4.35658950766666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "20.6816504806666666666666666666666666666666666666666666666667",
+          "speedup": "4.74721119450693732841101519484041745029151806654380178726904",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "17.2581111593333333333333333333333333333333333333333333333333",
+            "predecoded": "4.35658950766666666666666666666666666666666666666666666666667",
+            "component-parallel": "4.833491638",
+            "pipelined": "4.74500492266666666666666666666666666666666666666666666666667",
+            "parallel-predecode": "4.93314729466666666666666666666666666666666666666666666666667"
+          }
+        },
+        {
+          "case": "d21-p0.001",
+          "method": "parallel-predecode",
+          "method_us": "7.31045542766666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "41.609942411",
+          "speedup": "5.69183997121790262153910331460583722721822547201310631632753",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "35.6072762943333333333333333333333333333333333333333333333333",
+            "predecoded": "8.86969366933333333333333333333333333333333333333333333333333",
+            "component-parallel": "8.30278993133333333333333333333333333333333333333333333333333",
+            "pipelined": "7.987509638",
+            "parallel-predecode": "7.31045542766666666666666666666666666666666666666666666666667"
+          }
+        },
+        {
+          "case": "d25-p0.001",
+          "method": "parallel-predecode",
+          "method_us": "10.357145132",
+          "reference": "reference",
+          "reference_us": "74.589675195",
+          "speedup": "7.20176016116098198168997135957098027850634544917179403294278",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "64.3552330676666666666666666666666666666666666666666666666667",
+            "predecoded": "16.4569267926666666666666666666666666666666666666666666666667",
+            "component-parallel": "13.9763819396666666666666666666666666666666666666666666666667",
+            "pipelined": "13.0825227463333333333333333333333333333333333333333333333333",
+            "parallel-predecode": "10.357145132"
+          }
+        },
+        {
+          "case": "d29-p0.001",
+          "method": "parallel-predecode",
+          "method_us": "15.43451287",
+          "reference": "reference",
+          "reference_us": "126.720455493",
+          "speedup": "8.21020116153494127087407067612882815912284765226931324590615",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "107.658994404333333333333333333333333333333333333333333333333",
+            "predecoded": "28.0886549473333333333333333333333333333333333333333333333333",
+            "component-parallel": "21.9640248226666666666666666666666666666666666666666666666667",
+            "pipelined": "20.836490669",
+            "parallel-predecode": "15.43451287"
+          }
+        },
+        {
+          "case": "d33-p0.001",
+          "method": "parallel-predecode",
+          "method_us": "21.793362327",
+          "reference": "reference",
+          "reference_us": "212.194111803666666666666666666666666666666666666666666666667",
+          "speedup": "9.73663946938455664518015364920549768211388975300941256482543",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "173.865451621",
+            "predecoded": "46.1176108213333333333333333333333333333333333333333333333333",
+            "component-parallel": "32.1781600346666666666666666666666666666666666666666666666667",
+            "pipelined": "31.3087711366666666666666666666666666666666666666666666666667",
+            "parallel-predecode": "21.793362327"
+          }
+        }
+      ]
+    },
+    "xeon.decoder-comparison.p0p3.best.vs-pymatching.max-speedup": {
+      "value": "7.22007398054013792963723084647785310290488871515818519245187",
+      "rule": {
+        "op": "best_max_speedup",
+        "reference": "pymatching",
+        "p": "0.003"
+      },
+      "operands": [
+        {
+          "case": "d09-p0.003",
+          "method": "predecoded",
+          "method_us": "3.22436953066666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "10.1104603716666666666666666666666666666666666666666666666667",
+          "speedup": "3.13563947168804822200635541050896950377169920641370589505319",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "7.982786509",
+            "predecoded": "3.22436953066666666666666666666666666666666666666666666666667",
+            "component-parallel": "3.71265181766666666666666666666666666666666666666666666666667",
+            "pipelined": "3.73245146",
+            "parallel-predecode": "4.626670977"
+          }
+        },
+        {
+          "case": "d13-p0.003",
+          "method": "component-parallel",
+          "method_us": "8.78881436233333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "33.676155439",
+          "speedup": "3.83170630879719160960180825167212286103686079649777221389680",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "25.6592510273333333333333333333333333333333333333333333333333",
+            "predecoded": "10.509435789",
+            "component-parallel": "8.78881436233333333333333333333333333333333333333333333333333",
+            "pipelined": "8.85172862033333333333333333333333333333333333333333333333333",
+            "parallel-predecode": "9.51656297133333333333333333333333333333333333333333333333333"
+          }
+        },
+        {
+          "case": "d17-p0.003",
+          "method": "parallel-predecode",
+          "method_us": "18.069977299",
+          "reference": "reference",
+          "reference_us": "82.495789412",
+          "speedup": "4.56535102656522711993474541442477326268831412769335986535486",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "63.0124381593333333333333333333333333333333333333333333333333",
+            "predecoded": "25.5851735176666666666666666666666666666666666666666666666667",
+            "component-parallel": "18.5648304083333333333333333333333333333333333333333333333333",
+            "pipelined": "18.5437438796666666666666666666666666666666666666666666666667",
+            "parallel-predecode": "18.069977299"
+          }
+        },
+        {
+          "case": "d21-p0.003",
+          "method": "parallel-predecode",
+          "method_us": "32.593271547",
+          "reference": "reference",
+          "reference_us": "172.066337998666666666666666666666666666666666666666666666667",
+          "speedup": "5.27919812377669283211297471496093465375216286405355203622779",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "133.004100006666666666666666666666666666666666666666666666667",
+            "predecoded": "52.5123801",
+            "component-parallel": "35.2804252786666666666666666666666666666666666666666666666667",
+            "pipelined": "35.5419572446666666666666666666666666666666666666666666666667",
+            "parallel-predecode": "32.593271547"
+          }
+        },
+        {
+          "case": "d25-p0.003",
+          "method": "parallel-predecode",
+          "method_us": "53.3952092603333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "333.558139187666666666666666666666666666666666666666666666667",
+          "speedup": "6.24696754275037640619252329526193574408787739656172618586619",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "241.492524783666666666666666666666666666666666666666666666667",
+            "predecoded": "97.8810212823333333333333333333333333333333333333333333333333",
+            "component-parallel": "61.1740205983333333333333333333333333333333333333333333333333",
+            "pipelined": "61.5758078246666666666666666666666666666666666666666666666667",
+            "parallel-predecode": "53.3952092603333333333333333333333333333333333333333333333333"
+          }
+        },
+        {
+          "case": "d29-p0.003",
+          "method": "parallel-predecode",
+          "method_us": "84.3798138886666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "590.566374156333333333333333333333333333333333333333333333333",
+          "speedup": "6.99890586314334436389362435878510997047321740615219738714140",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "409.324002058666666666666666666666666666666666666666666666667",
+            "predecoded": "169.080048604666666666666666666666666666666666666666666666667",
+            "component-parallel": "99.1615964886666666666666666666666666666666666666666666666667",
+            "pipelined": "100.723543073333333333333333333333333333333333333333333333333",
+            "parallel-predecode": "84.3798138886666666666666666666666666666666666666666666666667"
+          }
+        },
+        {
+          "case": "d33-p0.003",
+          "method": "parallel-predecode",
+          "method_us": "131.254160286333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "947.664747521",
+          "speedup": "7.22007398054013792963723084647785310290488871515818519245187",
+          "divide_by_rounds": null,
+          "candidate_times_us": {
+            "structured": "651.931329453666666666666666666666666666666666666666666666667",
+            "predecoded": "272.168121337333333333333333333333333333333333333333333333333",
+            "component-parallel": "158.721065307333333333333333333333333333333333333333333333333",
+            "pipelined": "158.898423623666666666666666666666666666666666666666666666667",
+            "parallel-predecode": "131.254160286333333333333333333333333333333333333333333333333"
+          }
+        }
+      ]
+    },
+    "xeon.ablation.d33.p0p3.pymatching.mean-time-us": {
+      "value": "947.664747521",
+      "rule": {
+        "op": "time",
+        "method": "pymatching",
+        "d": 33,
+        "p": "0.003"
+      },
+      "operands": [
+        {
+          "case": "d33-p0.003",
+          "method": "reference",
+          "method_us": "947.664747521",
+          "reference": null,
+          "reference_us": null,
+          "speedup": null,
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.d33.p0p3.structured-simd.mean-time-us": {
+      "value": "651.931329453666666666666666666666666666666666666666666666667",
+      "rule": {
+        "op": "time",
+        "method": "structured-simd",
+        "d": 33,
+        "p": "0.003"
+      },
+      "operands": [
+        {
+          "case": "d33-p0.003",
+          "method": "structured",
+          "method_us": "651.931329453666666666666666666666666666666666666666666666667",
+          "reference": null,
+          "reference_us": null,
+          "speedup": null,
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.d33.p0p3.structured-simd.vs-pymatching.speedup": {
+      "value": "1.45362663935044307089591587976932382686272686226426604739241",
+      "rule": {
+        "op": "speedup",
+        "method": "structured-simd",
+        "reference": "pymatching",
+        "d": 33,
+        "p": "0.003"
+      },
+      "operands": [
+        {
+          "case": "d33-p0.003",
+          "method": "structured",
+          "method_us": "651.931329453666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "947.664747521",
+          "speedup": "1.45362663935044307089591587976932382686272686226426604739241",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.d9.p0p05.pymatching.mean-time-us": {
+      "value": "1.20471508133333333333333333333333333333333333333333333333333",
+      "rule": {
+        "op": "time",
+        "method": "pymatching",
+        "d": 9,
+        "p": "0.0005"
+      },
+      "operands": [
+        {
+          "case": "d09-p0.0005",
+          "method": "reference",
+          "method_us": "1.20471508133333333333333333333333333333333333333333333333333",
+          "reference": null,
+          "reference_us": null,
+          "speedup": null,
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.d9.p0p05.structured-simd.mean-time-us": {
+      "value": "1.16795960833333333333333333333333333333333333333333333333333",
+      "rule": {
+        "op": "time",
+        "method": "structured-simd",
+        "d": 9,
+        "p": "0.0005"
+      },
+      "operands": [
+        {
+          "case": "d09-p0.0005",
+          "method": "structured",
+          "method_us": "1.16795960833333333333333333333333333333333333333333333333333",
+          "reference": null,
+          "reference_us": null,
+          "speedup": null,
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.predecoding.vs-structured-simd.min-speedup": {
+      "value": "2.39532582379713538201546510707420348670066576418150290600263",
+      "rule": {
+        "op": "min_speedup",
+        "method": "predecoding",
+        "reference": "structured-simd"
+      },
+      "operands": [
+        {
+          "case": "d09-p0.0005",
+          "method": "predecoded",
+          "method_us": "0.324577302666666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "1.16795960833333333333333333333333333333333333333333333333333",
+          "speedup": "3.59840197924375710198047653995538985665035842699323354206031",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d09-p0.001",
+          "method": "predecoded",
+          "method_us": "0.670908131666666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "2.29089582266666666666666666666666666666666666666666666666667",
+          "speedup": "3.41461925193190695142342128764231528082611628503663066100016",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d09-p0.003",
+          "method": "predecoded",
+          "method_us": "3.22436953066666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "7.982786509",
+          "speedup": "2.47576663688094363946741475803748528826605774963887637911054",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.0005",
+          "method": "predecoded",
+          "method_us": "0.805414401666666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "3.42867611033333333333333333333333333333333333333333333333333",
+          "speedup": "4.25703352614291159486157768625778711708782643012130064117448",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.001",
+          "method": "predecoded",
+          "method_us": "1.847475041",
+          "reference": "structured",
+          "reference_us": "7.00059977066666666666666666666666666666666666666666666666667",
+          "speedup": "3.78927975496620885968800845448967917432702500399661240493406",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.003",
+          "method": "predecoded",
+          "method_us": "10.509435789",
+          "reference": "structured",
+          "reference_us": "25.6592510273333333333333333333333333333333333333333333333333",
+          "speedup": "2.44154410783786495175600652155365039390825220763269781021860",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.0005",
+          "method": "predecoded",
+          "method_us": "1.76101108566666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "8.332620034",
+          "speedup": "4.73172491747575610614786633360010286984267606324477847215641",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.001",
+          "method": "predecoded",
+          "method_us": "4.35658950766666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "17.2581111593333333333333333333333333333333333333333333333333",
+          "speedup": "3.96138105941878279124591960457018416928239885094405661647998",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.003",
+          "method": "predecoded",
+          "method_us": "25.5851735176666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "63.0124381593333333333333333333333333333333333333333333333333",
+          "speedup": "2.46284974834440687999433780610347233951095369102368935633423",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.0005",
+          "method": "predecoded",
+          "method_us": "3.53469551766666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "17.0636287106666666666666666666666666666666666666666666666667",
+          "speedup": "4.82746777632794751859283508434033808852484193788718880140963",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.001",
+          "method": "predecoded",
+          "method_us": "8.86969366933333333333333333333333333333333333333333333333333",
+          "reference": "structured",
+          "reference_us": "35.6072762943333333333333333333333333333333333333333333333333",
+          "speedup": "4.01448771759100204397408477384872186338228761425250646897500",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.003",
+          "method": "predecoded",
+          "method_us": "52.5123801",
+          "reference": "structured",
+          "reference_us": "133.004100006666666666666666666666666666666666666666666666667",
+          "speedup": "2.53281416217252484936721934389461556069645121011505373885475",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.0005",
+          "method": "predecoded",
+          "method_us": "6.39952079933333333333333333333333333333333333333333333333333",
+          "reference": "structured",
+          "reference_us": "30.3729878833333333333333333333333333333333333333333333333333",
+          "speedup": "4.74613472410268955597453375529560835818577836413269968215252",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.001",
+          "method": "predecoded",
+          "method_us": "16.4569267926666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "64.3552330676666666666666666666666666666666666666666666666667",
+          "speedup": "3.91052557251113580929429642567437563463826194576502507152652",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.003",
+          "method": "predecoded",
+          "method_us": "97.8810212823333333333333333333333333333333333333333333333333",
+          "reference": "structured",
+          "reference_us": "241.492524783666666666666666666666666666666666666666666666667",
+          "speedup": "2.46720479230690200543254107589334643576557287480194883760203",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.0005",
+          "method": "predecoded",
+          "method_us": "10.7185183933333333333333333333333333333333333333333333333333",
+          "reference": "structured",
+          "reference_us": "50.5971191463333333333333333333333333333333333333333333333333",
+          "speedup": "4.72053294024326654465183455744022392587407349500472844891495",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.001",
+          "method": "predecoded",
+          "method_us": "28.0886549473333333333333333333333333333333333333333333333333",
+          "reference": "structured",
+          "reference_us": "107.658994404333333333333333333333333333333333333333333333333",
+          "speedup": "3.83282840015642005909164357562961137334009759441709852747667",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.003",
+          "method": "predecoded",
+          "method_us": "169.080048604666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "409.324002058666666666666666666666666666666666666666666666667",
+          "speedup": "2.42088883600763990691190484494027864497715018788309775257074",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.0005",
+          "method": "predecoded",
+          "method_us": "17.544819784",
+          "reference": "structured",
+          "reference_us": "79.8158150263333333333333333333333333333333333333333333333333",
+          "speedup": "4.54925248643028941888693345459861996456134891543969667789740",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.001",
+          "method": "predecoded",
+          "method_us": "46.1176108213333333333333333333333333333333333333333333333333",
+          "reference": "structured",
+          "reference_us": "173.865451621",
+          "speedup": "3.77004464291485761337726767597317992268090700070425122684318",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.003",
+          "method": "predecoded",
+          "method_us": "272.168121337333333333333333333333333333333333333333333333333",
+          "reference": "structured",
+          "reference_us": "651.931329453666666666666666666666666666666666666666666666667",
+          "speedup": "2.39532582379713538201546510707420348670066576418150290600263",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.predecoding.vs-structured-simd.max-speedup": {
+      "value": "4.82746777632794751859283508434033808852484193788718880140963",
+      "rule": {
+        "op": "max_speedup",
+        "method": "predecoding",
+        "reference": "structured-simd"
+      },
+      "operands": [
+        {
+          "case": "d09-p0.0005",
+          "method": "predecoded",
+          "method_us": "0.324577302666666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "1.16795960833333333333333333333333333333333333333333333333333",
+          "speedup": "3.59840197924375710198047653995538985665035842699323354206031",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d09-p0.001",
+          "method": "predecoded",
+          "method_us": "0.670908131666666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "2.29089582266666666666666666666666666666666666666666666666667",
+          "speedup": "3.41461925193190695142342128764231528082611628503663066100016",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d09-p0.003",
+          "method": "predecoded",
+          "method_us": "3.22436953066666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "7.982786509",
+          "speedup": "2.47576663688094363946741475803748528826605774963887637911054",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.0005",
+          "method": "predecoded",
+          "method_us": "0.805414401666666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "3.42867611033333333333333333333333333333333333333333333333333",
+          "speedup": "4.25703352614291159486157768625778711708782643012130064117448",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.001",
+          "method": "predecoded",
+          "method_us": "1.847475041",
+          "reference": "structured",
+          "reference_us": "7.00059977066666666666666666666666666666666666666666666666667",
+          "speedup": "3.78927975496620885968800845448967917432702500399661240493406",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.003",
+          "method": "predecoded",
+          "method_us": "10.509435789",
+          "reference": "structured",
+          "reference_us": "25.6592510273333333333333333333333333333333333333333333333333",
+          "speedup": "2.44154410783786495175600652155365039390825220763269781021860",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.0005",
+          "method": "predecoded",
+          "method_us": "1.76101108566666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "8.332620034",
+          "speedup": "4.73172491747575610614786633360010286984267606324477847215641",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.001",
+          "method": "predecoded",
+          "method_us": "4.35658950766666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "17.2581111593333333333333333333333333333333333333333333333333",
+          "speedup": "3.96138105941878279124591960457018416928239885094405661647998",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.003",
+          "method": "predecoded",
+          "method_us": "25.5851735176666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "63.0124381593333333333333333333333333333333333333333333333333",
+          "speedup": "2.46284974834440687999433780610347233951095369102368935633423",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.0005",
+          "method": "predecoded",
+          "method_us": "3.53469551766666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "17.0636287106666666666666666666666666666666666666666666666667",
+          "speedup": "4.82746777632794751859283508434033808852484193788718880140963",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.001",
+          "method": "predecoded",
+          "method_us": "8.86969366933333333333333333333333333333333333333333333333333",
+          "reference": "structured",
+          "reference_us": "35.6072762943333333333333333333333333333333333333333333333333",
+          "speedup": "4.01448771759100204397408477384872186338228761425250646897500",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.003",
+          "method": "predecoded",
+          "method_us": "52.5123801",
+          "reference": "structured",
+          "reference_us": "133.004100006666666666666666666666666666666666666666666666667",
+          "speedup": "2.53281416217252484936721934389461556069645121011505373885475",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.0005",
+          "method": "predecoded",
+          "method_us": "6.39952079933333333333333333333333333333333333333333333333333",
+          "reference": "structured",
+          "reference_us": "30.3729878833333333333333333333333333333333333333333333333333",
+          "speedup": "4.74613472410268955597453375529560835818577836413269968215252",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.001",
+          "method": "predecoded",
+          "method_us": "16.4569267926666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "64.3552330676666666666666666666666666666666666666666666666667",
+          "speedup": "3.91052557251113580929429642567437563463826194576502507152652",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.003",
+          "method": "predecoded",
+          "method_us": "97.8810212823333333333333333333333333333333333333333333333333",
+          "reference": "structured",
+          "reference_us": "241.492524783666666666666666666666666666666666666666666666667",
+          "speedup": "2.46720479230690200543254107589334643576557287480194883760203",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.0005",
+          "method": "predecoded",
+          "method_us": "10.7185183933333333333333333333333333333333333333333333333333",
+          "reference": "structured",
+          "reference_us": "50.5971191463333333333333333333333333333333333333333333333333",
+          "speedup": "4.72053294024326654465183455744022392587407349500472844891495",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.001",
+          "method": "predecoded",
+          "method_us": "28.0886549473333333333333333333333333333333333333333333333333",
+          "reference": "structured",
+          "reference_us": "107.658994404333333333333333333333333333333333333333333333333",
+          "speedup": "3.83282840015642005909164357562961137334009759441709852747667",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.003",
+          "method": "predecoded",
+          "method_us": "169.080048604666666666666666666666666666666666666666666666667",
+          "reference": "structured",
+          "reference_us": "409.324002058666666666666666666666666666666666666666666666667",
+          "speedup": "2.42088883600763990691190484494027864497715018788309775257074",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.0005",
+          "method": "predecoded",
+          "method_us": "17.544819784",
+          "reference": "structured",
+          "reference_us": "79.8158150263333333333333333333333333333333333333333333333333",
+          "speedup": "4.54925248643028941888693345459861996456134891543969667789740",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.001",
+          "method": "predecoded",
+          "method_us": "46.1176108213333333333333333333333333333333333333333333333333",
+          "reference": "structured",
+          "reference_us": "173.865451621",
+          "speedup": "3.77004464291485761337726767597317992268090700070425122684318",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.003",
+          "method": "predecoded",
+          "method_us": "272.168121337333333333333333333333333333333333333333333333333",
+          "reference": "structured",
+          "reference_us": "651.931329453666666666666666666666666666666666666666666666667",
+          "speedup": "2.39532582379713538201546510707420348670066576418150290600263",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.d13.p0p1.predecoding.mean-time-us": {
+      "value": "1.847475041",
+      "rule": {
+        "op": "time",
+        "method": "predecoding",
+        "d": 13,
+        "p": "0.001"
+      },
+      "operands": [
+        {
+          "case": "d13-p0.001",
+          "method": "predecoded",
+          "method_us": "1.847475041",
+          "reference": null,
+          "reference_us": null,
+          "speedup": null,
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.d13.p0p1.component-parallel.mean-time-us": {
+      "value": "2.70673360033333333333333333333333333333333333333333333333333",
+      "rule": {
+        "op": "time",
+        "method": "component-parallel",
+        "d": 13,
+        "p": "0.001"
+      },
+      "operands": [
+        {
+          "case": "d13-p0.001",
+          "method": "component-parallel",
+          "method_us": "2.70673360033333333333333333333333333333333333333333333333333",
+          "reference": null,
+          "reference_us": null,
+          "speedup": null,
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.d33.p0p1.predecoding.mean-time-us": {
+      "value": "46.1176108213333333333333333333333333333333333333333333333333",
+      "rule": {
+        "op": "time",
+        "method": "predecoding",
+        "d": 33,
+        "p": "0.001"
+      },
+      "operands": [
+        {
+          "case": "d33-p0.001",
+          "method": "predecoded",
+          "method_us": "46.1176108213333333333333333333333333333333333333333333333333",
+          "reference": null,
+          "reference_us": null,
+          "speedup": null,
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.d33.p0p1.component-parallel.mean-time-us": {
+      "value": "32.1781600346666666666666666666666666666666666666666666666667",
+      "rule": {
+        "op": "time",
+        "method": "component-parallel",
+        "d": 33,
+        "p": "0.001"
+      },
+      "operands": [
+        {
+          "case": "d33-p0.001",
+          "method": "component-parallel",
+          "method_us": "32.1781600346666666666666666666666666666666666666666666666667",
+          "reference": null,
+          "reference_us": null,
+          "speedup": null,
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.d33.p0p1.component-parallel.vs-predecoding.speedup": {
+      "value": "1.43319601778501955104909630932796223515050713013989673394885",
+      "rule": {
+        "op": "speedup",
+        "method": "component-parallel",
+        "reference": "predecoding",
+        "d": 33,
+        "p": "0.001"
+      },
+      "operands": [
+        {
+          "case": "d33-p0.001",
+          "method": "component-parallel",
+          "method_us": "32.1781600346666666666666666666666666666666666666666666666667",
+          "reference": "predecoded",
+          "reference_us": "46.1176108213333333333333333333333333333333333333333333333333",
+          "speedup": "1.43319601778501955104909630932796223515050713013989673394885",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.d33.p0p3.tail-reset.mean-time-us": {
+      "value": "158.898423623666666666666666666666666666666666666666666666667",
+      "rule": {
+        "op": "time",
+        "method": "tail-reset",
+        "d": 33,
+        "p": "0.003"
+      },
+      "operands": [
+        {
+          "case": "d33-p0.003",
+          "method": "pipelined",
+          "method_us": "158.898423623666666666666666666666666666666666666666666666667",
+          "reference": null,
+          "reference_us": null,
+          "speedup": null,
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.d33.p0p3.parallel-predecoding.mean-time-us": {
+      "value": "131.254160286333333333333333333333333333333333333333333333333",
+      "rule": {
+        "op": "time",
+        "method": "parallel-predecoding",
+        "d": 33,
+        "p": "0.003"
+      },
+      "operands": [
+        {
+          "case": "d33-p0.003",
+          "method": "parallel-predecode",
+          "method_us": "131.254160286333333333333333333333333333333333333333333333333",
+          "reference": null,
+          "reference_us": null,
+          "speedup": null,
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.d33.p0p3.parallel-predecoding.vs-pymatching.speedup": {
+      "value": "7.22007398054013792963723084647785310290488871515818519245187",
+      "rule": {
+        "op": "speedup",
+        "method": "parallel-predecoding",
+        "reference": "pymatching",
+        "d": 33,
+        "p": "0.003"
+      },
+      "operands": [
+        {
+          "case": "d33-p0.003",
+          "method": "parallel-predecode",
+          "method_us": "131.254160286333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "947.664747521",
+          "speedup": "7.22007398054013792963723084647785310290488871515818519245187",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.tail-reset.num-improved-settings": {
+      "value": "11",
+      "rule": {
+        "op": "count_faster",
+        "method": "tail-reset",
+        "reference": "tail-reset-reference"
+      },
+      "operands": [
+        {
+          "case": "d09-p0.0005",
+          "method": "pipelined",
+          "method_us": "0.558781255666666666666666666666666666666666666666666666666667",
+          "reference": "component-parallel",
+          "reference_us": "0.386689135333333333333333333333333333333333333333333333333333",
+          "speedup": "0.692022381588274787315745124251713222733031464184159787555077",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d09-p0.001",
+          "method": "pipelined",
+          "method_us": "0.918759439666666666666666666666666666666666666666666666666667",
+          "reference": "component-parallel",
+          "reference_us": "0.767656898666666666666666666666666666666666666666666666666667",
+          "speedup": "0.835536339028177799921227766258825330186113182570805542805563",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d09-p0.003",
+          "method": "pipelined",
+          "method_us": "3.73245146",
+          "reference": "component-parallel",
+          "reference_us": "3.71265181766666666666666666666666666666666666666666666666667",
+          "speedup": "0.994695271312829522146462600391504265313785665860117218153098",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.0005",
+          "method": "pipelined",
+          "method_us": "1.208612801",
+          "reference": "component-parallel",
+          "reference_us": "1.04819294466666666666666666666666666666666666666666666666667",
+          "speedup": "0.867269437986588615212480003069789318462353988146007289117460",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.001",
+          "method": "pipelined",
+          "method_us": "2.70835620366666666666666666666666666666666666666666666666667",
+          "reference": "component-parallel",
+          "reference_us": "2.70673360033333333333333333333333333333333333333333333333333",
+          "speedup": "0.999400889982219991372821159306761698925916922327882112206816",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.003",
+          "method": "pipelined",
+          "method_us": "8.85172862033333333333333333333333333333333333333333333333333",
+          "reference": "component-parallel",
+          "reference_us": "8.78881436233333333333333333333333333333333333333333333333333",
+          "speedup": "0.992892432574640905466641651836413030782816255883557342351677",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.0005",
+          "method": "pipelined",
+          "method_us": "2.64390569366666666666666666666666666666666666666666666666667",
+          "reference": "component-parallel",
+          "reference_us": "2.739028384",
+          "speedup": "1.03597809504370545513157594179700923702172578790193991791977",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.001",
+          "method": "pipelined",
+          "method_us": "4.74500492266666666666666666666666666666666666666666666666667",
+          "reference": "component-parallel",
+          "reference_us": "4.833491638",
+          "speedup": "1.01864839273625121679255570126711652175786488794178678438305",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.003",
+          "method": "pipelined",
+          "method_us": "18.5437438796666666666666666666666666666666666666666666666667",
+          "reference": "component-parallel",
+          "reference_us": "18.5648304083333333333333333333333333333333333333333333333333",
+          "speedup": "1.00113712359292171737352032706809078165985560375883591715063",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.0005",
+          "method": "pipelined",
+          "method_us": "4.166644392",
+          "reference": "component-parallel",
+          "reference_us": "4.42045900066666666666666666666666666666666666666666666666667",
+          "speedup": "1.06091583173116316825980446345387726735156108005740910050446",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.001",
+          "method": "pipelined",
+          "method_us": "7.987509638",
+          "reference": "component-parallel",
+          "reference_us": "8.30278993133333333333333333333333333333333333333333333333333",
+          "speedup": "1.03947166358753548377669367055520958024706089667109999590254",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.003",
+          "method": "pipelined",
+          "method_us": "35.5419572446666666666666666666666666666666666666666666666667",
+          "reference": "component-parallel",
+          "reference_us": "35.2804252786666666666666666666666666666666666666666666666667",
+          "speedup": "0.992641599217520728851441551394613238623428293968202447109102",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.0005",
+          "method": "pipelined",
+          "method_us": "6.51174808166666666666666666666666666666666666666666666666667",
+          "reference": "component-parallel",
+          "reference_us": "6.899074434",
+          "speedup": "1.05948116350259638128215273819321525457589690862859237314849",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.001",
+          "method": "pipelined",
+          "method_us": "13.0825227463333333333333333333333333333333333333333333333333",
+          "reference": "component-parallel",
+          "reference_us": "13.9763819396666666666666666666666666666666666666666666666667",
+          "speedup": "1.06832468100113620392296529717233164551272926573329856998380",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.003",
+          "method": "pipelined",
+          "method_us": "61.5758078246666666666666666666666666666666666666666666666667",
+          "reference": "component-parallel",
+          "reference_us": "61.1740205983333333333333333333333333333333333333333333333333",
+          "speedup": "0.993474917495562578746650613288139732785758434250178990292172",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.0005",
+          "method": "pipelined",
+          "method_us": "9.574343385",
+          "reference": "component-parallel",
+          "reference_us": "10.1822776463333333333333333333333333333333333333333333333333",
+          "speedup": "1.06349618317280912244336986805631823840558162029336211585368",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.001",
+          "method": "pipelined",
+          "method_us": "20.836490669",
+          "reference": "component-parallel",
+          "reference_us": "21.9640248226666666666666666666666666666666666666666666666667",
+          "speedup": "1.05411343837012742535097893680086031509583024144451561372792",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.003",
+          "method": "pipelined",
+          "method_us": "100.723543073333333333333333333333333333333333333333333333333",
+          "reference": "component-parallel",
+          "reference_us": "99.1615964886666666666666666666666666666666666666666666666667",
+          "speedup": "0.984492735888674336063587589997076553064471260460646301592267",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.0005",
+          "method": "pipelined",
+          "method_us": "14.4344455323333333333333333333333333333333333333333333333333",
+          "reference": "component-parallel",
+          "reference_us": "15.0535121833333333333333333333333333333333333333333333333333",
+          "speedup": "1.04288814901918353439438083861609736825333436557311389941992",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.001",
+          "method": "pipelined",
+          "method_us": "31.3087711366666666666666666666666666666666666666666666666667",
+          "reference": "component-parallel",
+          "reference_us": "32.1781600346666666666666666666666666666666666666666666666667",
+          "speedup": "1.02776822169752398461563338813895857769938210119302073010000",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.003",
+          "method": "pipelined",
+          "method_us": "158.898423623666666666666666666666666666666666666666666666667",
+          "reference": "component-parallel",
+          "reference_us": "158.721065307333333333333333333333333333333333333333333333333",
+          "speedup": "0.998883825828547003840284716177511080001670352882975160712055",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "legacy.single-core.vs-pymatching.geomean-speedup": {
+      "value": "4.20391991126776238745983781196640648012816451410668866254438",
+      "rule": {
+        "op": "geomean_speedup",
+        "method": "predecoding",
+        "reference": "pymatching"
+      },
+      "operands": [
+        {
+          "case": "d09-p0.0005",
+          "method": "predecoded",
+          "method_us": "0.324577302666666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "1.20471508133333333333333333333333333333333333333333333333333",
+          "speedup": "3.71164302443707123542263544679897662345065105949059646097166",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d09-p0.001",
+          "method": "predecoded",
+          "method_us": "0.670908131666666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "2.60118255166666666666666666666666666666666666666666666666667",
+          "speedup": "3.87710690762507501679086072785439657772916296371515882580635",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d09-p0.003",
+          "method": "predecoded",
+          "method_us": "3.22436953066666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "10.1104603716666666666666666666666666666666666666666666666667",
+          "speedup": "3.13563947168804822200635541050896950377169920641370589505319",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.0005",
+          "method": "predecoded",
+          "method_us": "0.805414401666666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "3.999225537",
+          "speedup": "4.96542590835759846451384019515535481868018331374883266355631",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.001",
+          "method": "predecoded",
+          "method_us": "1.847475041",
+          "reference": "reference",
+          "reference_us": "8.488801228",
+          "speedup": "4.59481240049943386488218327167105690820534338141567347972632",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.003",
+          "method": "predecoded",
+          "method_us": "10.509435789",
+          "reference": "reference",
+          "reference_us": "33.676155439",
+          "speedup": "3.20437329987287293753691347664030149392447084867954370447508",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.0005",
+          "method": "predecoded",
+          "method_us": "1.76101108566666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "9.72012121366666666666666666666666666666666666666666666666667",
+          "speedup": "5.51962522711032027107301626437594087626997499326928806422237",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.001",
+          "method": "predecoded",
+          "method_us": "4.35658950766666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "20.6816504806666666666666666666666666666666666666666666666667",
+          "speedup": "4.74721119450693732841101519484041745029151806654380178726904",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.003",
+          "method": "predecoded",
+          "method_us": "25.5851735176666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "82.495789412",
+          "speedup": "3.22435919205458274263291738918577691585263659908097763793691",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.0005",
+          "method": "predecoded",
+          "method_us": "3.53469551766666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "19.726149243",
+          "speedup": "5.58072092614689543641637984280228837547474891871528087856413",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.001",
+          "method": "predecoded",
+          "method_us": "8.86969366933333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "41.609942411",
+          "speedup": "4.69124909633181270820083934256854963384310803252675790418264",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.003",
+          "method": "predecoded",
+          "method_us": "52.5123801",
+          "reference": "reference",
+          "reference_us": "172.066337998666666666666666666666666666666666666666666666667",
+          "speedup": "3.27668137820069341451667826167846211691072571792773618095187",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.0005",
+          "method": "predecoded",
+          "method_us": "6.39952079933333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "33.770902092",
+          "speedup": "5.27709857518051440926436392021356389895251364226651820995374",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.001",
+          "method": "predecoded",
+          "method_us": "16.4569267926666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "74.589675195",
+          "speedup": "4.53241824155392936252201607847147487517479969293427642971902",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.003",
+          "method": "predecoded",
+          "method_us": "97.8810212823333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "333.558139187666666666666666666666666666666666666666666666667",
+          "speedup": "3.40779177431683569910738930977586640492113772506111049139016",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.0005",
+          "method": "predecoded",
+          "method_us": "10.7185183933333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "55.009657364",
+          "speedup": "5.13220720862080292031207280806774737826187331902257020834932",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.001",
+          "method": "predecoded",
+          "method_us": "28.0886549473333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "126.720455493",
+          "speedup": "4.51144619529140263042192201331419723376624433049650121752534",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.003",
+          "method": "predecoded",
+          "method_us": "169.080048604666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "590.566374156333333333333333333333333333333333333333333333333",
+          "speedup": "3.49282117570927585586241296679701060535583863781197237222036",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.0005",
+          "method": "predecoded",
+          "method_us": "17.544819784",
+          "reference": "reference",
+          "reference_us": "86.8243224546666666666666666666666666666666666666666666666667",
+          "speedup": "4.94871554815547979792612879577621694348129684195259823289312",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.001",
+          "method": "predecoded",
+          "method_us": "46.1176108213333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "212.194111803666666666666666666666666666666666666666666666667",
+          "speedup": "4.60115144788699177607319101283043754425407771534526983936112",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.003",
+          "method": "predecoded",
+          "method_us": "272.168121337333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "947.664747521",
+          "speedup": "3.48190942739556146067487921285856281038284474652900429940832",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "legacy.single-core.vs-pymatching.max-speedup": {
+      "value": "5.58072092614689543641637984280228837547474891871528087856413",
+      "rule": {
+        "op": "max_speedup",
+        "method": "predecoding",
+        "reference": "pymatching"
+      },
+      "operands": [
+        {
+          "case": "d09-p0.0005",
+          "method": "predecoded",
+          "method_us": "0.324577302666666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "1.20471508133333333333333333333333333333333333333333333333333",
+          "speedup": "3.71164302443707123542263544679897662345065105949059646097166",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d09-p0.001",
+          "method": "predecoded",
+          "method_us": "0.670908131666666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "2.60118255166666666666666666666666666666666666666666666666667",
+          "speedup": "3.87710690762507501679086072785439657772916296371515882580635",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d09-p0.003",
+          "method": "predecoded",
+          "method_us": "3.22436953066666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "10.1104603716666666666666666666666666666666666666666666666667",
+          "speedup": "3.13563947168804822200635541050896950377169920641370589505319",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.0005",
+          "method": "predecoded",
+          "method_us": "0.805414401666666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "3.999225537",
+          "speedup": "4.96542590835759846451384019515535481868018331374883266355631",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.001",
+          "method": "predecoded",
+          "method_us": "1.847475041",
+          "reference": "reference",
+          "reference_us": "8.488801228",
+          "speedup": "4.59481240049943386488218327167105690820534338141567347972632",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.003",
+          "method": "predecoded",
+          "method_us": "10.509435789",
+          "reference": "reference",
+          "reference_us": "33.676155439",
+          "speedup": "3.20437329987287293753691347664030149392447084867954370447508",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.0005",
+          "method": "predecoded",
+          "method_us": "1.76101108566666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "9.72012121366666666666666666666666666666666666666666666666667",
+          "speedup": "5.51962522711032027107301626437594087626997499326928806422237",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.001",
+          "method": "predecoded",
+          "method_us": "4.35658950766666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "20.6816504806666666666666666666666666666666666666666666666667",
+          "speedup": "4.74721119450693732841101519484041745029151806654380178726904",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.003",
+          "method": "predecoded",
+          "method_us": "25.5851735176666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "82.495789412",
+          "speedup": "3.22435919205458274263291738918577691585263659908097763793691",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.0005",
+          "method": "predecoded",
+          "method_us": "3.53469551766666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "19.726149243",
+          "speedup": "5.58072092614689543641637984280228837547474891871528087856413",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.001",
+          "method": "predecoded",
+          "method_us": "8.86969366933333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "41.609942411",
+          "speedup": "4.69124909633181270820083934256854963384310803252675790418264",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.003",
+          "method": "predecoded",
+          "method_us": "52.5123801",
+          "reference": "reference",
+          "reference_us": "172.066337998666666666666666666666666666666666666666666666667",
+          "speedup": "3.27668137820069341451667826167846211691072571792773618095187",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.0005",
+          "method": "predecoded",
+          "method_us": "6.39952079933333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "33.770902092",
+          "speedup": "5.27709857518051440926436392021356389895251364226651820995374",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.001",
+          "method": "predecoded",
+          "method_us": "16.4569267926666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "74.589675195",
+          "speedup": "4.53241824155392936252201607847147487517479969293427642971902",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.003",
+          "method": "predecoded",
+          "method_us": "97.8810212823333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "333.558139187666666666666666666666666666666666666666666666667",
+          "speedup": "3.40779177431683569910738930977586640492113772506111049139016",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.0005",
+          "method": "predecoded",
+          "method_us": "10.7185183933333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "55.009657364",
+          "speedup": "5.13220720862080292031207280806774737826187331902257020834932",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.001",
+          "method": "predecoded",
+          "method_us": "28.0886549473333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "126.720455493",
+          "speedup": "4.51144619529140263042192201331419723376624433049650121752534",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.003",
+          "method": "predecoded",
+          "method_us": "169.080048604666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "590.566374156333333333333333333333333333333333333333333333333",
+          "speedup": "3.49282117570927585586241296679701060535583863781197237222036",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.0005",
+          "method": "predecoded",
+          "method_us": "17.544819784",
+          "reference": "reference",
+          "reference_us": "86.8243224546666666666666666666666666666666666666666666666667",
+          "speedup": "4.94871554815547979792612879577621694348129684195259823289312",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.001",
+          "method": "predecoded",
+          "method_us": "46.1176108213333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "212.194111803666666666666666666666666666666666666666666666667",
+          "speedup": "4.60115144788699177607319101283043754425407771534526983936112",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.003",
+          "method": "predecoded",
+          "method_us": "272.168121337333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "947.664747521",
+          "speedup": "3.48190942739556146067487921285856281038284474652900429940832",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "legacy.eight-core.vs-pymatching.max-speedup": {
+      "value": "9.73663946938455664518015364920549768211388975300941256482543",
+      "rule": {
+        "op": "max_speedup",
+        "method": "parallel-predecoding",
+        "reference": "pymatching"
+      },
+      "operands": [
+        {
+          "case": "d09-p0.0005",
+          "method": "parallel-predecode",
+          "method_us": "0.561357377666666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "1.20471508133333333333333333333333333333333333333333333333333",
+          "speedup": "2.14607508382777805872048118499446721739679781281672689491620",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d09-p0.001",
+          "method": "parallel-predecode",
+          "method_us": "0.976559796333333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "2.60118255166666666666666666666666666666666666666666666666667",
+          "speedup": "2.66361830727956150426397391704488657956694933078221550064638",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d09-p0.003",
+          "method": "parallel-predecode",
+          "method_us": "4.626670977",
+          "reference": "reference",
+          "reference_us": "10.1104603716666666666666666666666666666666666666666666666667",
+          "speedup": "2.18525596955728081086468549774869082216707338311052471165742",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.0005",
+          "method": "parallel-predecode",
+          "method_us": "1.34149884733333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "3.999225537",
+          "speedup": "2.98116211202847146091547070336630444544186168168907821613430",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.001",
+          "method": "parallel-predecode",
+          "method_us": "3.377852238",
+          "reference": "reference",
+          "reference_us": "8.488801228",
+          "speedup": "2.51307654387693201398112785062565546124993049503546697177936",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d13-p0.003",
+          "method": "parallel-predecode",
+          "method_us": "9.51656297133333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "33.676155439",
+          "speedup": "3.53868886702503983718188404776115172769339268745210398337022",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.0005",
+          "method": "parallel-predecode",
+          "method_us": "3.124692257",
+          "reference": "reference",
+          "reference_us": "9.72012121366666666666666666666666666666666666666666666666667",
+          "speedup": "3.11074512758542886057616222609875615237800573801167987042081",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.001",
+          "method": "parallel-predecode",
+          "method_us": "4.93314729466666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "20.6816504806666666666666666666666666666666666666666666666667",
+          "speedup": "4.19238454587116239389666432639913463374494913486698347441546",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d17-p0.003",
+          "method": "parallel-predecode",
+          "method_us": "18.069977299",
+          "reference": "reference",
+          "reference_us": "82.495789412",
+          "speedup": "4.56535102656522711993474541442477326268831412769335986535486",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.0005",
+          "method": "parallel-predecode",
+          "method_us": "3.98712203766666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "19.726149243",
+          "speedup": "4.94746562975636593993785064239509746707474599644837407377499",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.001",
+          "method": "parallel-predecode",
+          "method_us": "7.31045542766666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "41.609942411",
+          "speedup": "5.69183997121790262153910331460583722721822547201310631632753",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d21-p0.003",
+          "method": "parallel-predecode",
+          "method_us": "32.593271547",
+          "reference": "reference",
+          "reference_us": "172.066337998666666666666666666666666666666666666666666666667",
+          "speedup": "5.27919812377669283211297471496093465375216286405355203622779",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.0005",
+          "method": "parallel-predecode",
+          "method_us": "5.30030976433333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "33.770902092",
+          "speedup": "6.37149593015299247390974484223184451839697895070691576843553",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.001",
+          "method": "parallel-predecode",
+          "method_us": "10.357145132",
+          "reference": "reference",
+          "reference_us": "74.589675195",
+          "speedup": "7.20176016116098198168997135957098027850634544917179403294278",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d25-p0.003",
+          "method": "parallel-predecode",
+          "method_us": "53.3952092603333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "333.558139187666666666666666666666666666666666666666666666667",
+          "speedup": "6.24696754275037640619252329526193574408787739656172618586619",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.0005",
+          "method": "parallel-predecode",
+          "method_us": "6.88629177466666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "55.009657364",
+          "speedup": "7.98828442999901227343308981770202390326405747372232895130859",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.001",
+          "method": "parallel-predecode",
+          "method_us": "15.43451287",
+          "reference": "reference",
+          "reference_us": "126.720455493",
+          "speedup": "8.21020116153494127087407067612882815912284765226931324590615",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d29-p0.003",
+          "method": "parallel-predecode",
+          "method_us": "84.3798138886666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "590.566374156333333333333333333333333333333333333333333333333",
+          "speedup": "6.99890586314334436389362435878510997047321740615219738714140",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.0005",
+          "method": "parallel-predecode",
+          "method_us": "9.69211327066666666666666666666666666666666666666666666666667",
+          "reference": "reference",
+          "reference_us": "86.8243224546666666666666666666666666666666666666666666666667",
+          "speedup": "8.95824471195996490096323682351659537689819044820839914044130",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.001",
+          "method": "parallel-predecode",
+          "method_us": "21.793362327",
+          "reference": "reference",
+          "reference_us": "212.194111803666666666666666666666666666666666666666666666667",
+          "speedup": "9.73663946938455664518015364920549768211388975300941256482543",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        },
+        {
+          "case": "d33-p0.003",
+          "method": "parallel-predecode",
+          "method_us": "131.254160286333333333333333333333333333333333333333333333333",
+          "reference": "reference",
+          "reference_us": "947.664747521",
+          "speedup": "7.22007398054013792963723084647785310290488871515818519245187",
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "legacy.d33.p0p1.beyond-blossom.mean-block-time-us": {
+      "value": "21.793362327",
+      "rule": {
+        "op": "time",
+        "method": "parallel-predecoding",
+        "d": 33,
+        "p": "0.001"
+      },
+      "operands": [
+        {
+          "case": "d33-p0.001",
+          "method": "parallel-predecode",
+          "method_us": "21.793362327",
+          "reference": null,
+          "reference_us": null,
+          "speedup": null,
+          "divide_by_rounds": null,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "legacy.d33.p0p1.beyond-blossom.mean-round-time-us": {
+      "value": "0.660404919",
+      "rule": {
+        "op": "time_per_round",
+        "method": "parallel-predecoding",
+        "d": 33,
+        "p": "0.001",
+        "expected_rounds": 33
+      },
+      "operands": [
+        {
+          "case": "d33-p0.001",
+          "method": "parallel-predecode",
+          "method_us": "21.793362327",
+          "reference": null,
+          "reference_us": null,
+          "speedup": null,
+          "divide_by_rounds": 33,
+          "candidate_times_us": null
+        }
+      ]
+    },
+    "xeon.ablation.d33.p0p3.pymatching.L3miss": {
+      "value": "0.115775286679369464620425509037738609373880612874726818496656",
+      "rule": {
+        "op": "pmu_miss_percent",
+        "method": "pymatching",
+        "level": "L3",
+        "unit": "percent",
+        "d": 33,
+        "p": "0.003"
+      },
+      "operands": {
+        "requests": 72944533693,
+        "misses": 84451743,
+        "method": "reference",
+        "level": "L3"
+      }
+    },
+    "xeon.ablation.d33.p0p3.structured-simd.L3miss": {
+      "value": "0.0191757395420844156599042102057627677176977199881712033511444",
+      "rule": {
+        "op": "pmu_miss_percent",
+        "method": "structured-simd",
+        "level": "L3",
+        "unit": "percent",
+        "d": 33,
+        "p": "0.003"
+      },
+      "operands": {
+        "requests": 23841813193,
+        "misses": 4571844,
+        "method": "structured",
+        "level": "L3"
+      }
+    },
+    "xeon.ablation.d33.p0p3.pymatching.L2miss": {
+      "value": "60.1571249212884458776472611446665097128268477119649039742603",
+      "rule": {
+        "op": "pmu_miss_percent",
+        "method": "pymatching",
+        "level": "L2",
+        "unit": "percent",
+        "d": 33,
+        "p": "0.003"
+      },
+      "operands": {
+        "requests": 120610607691,
+        "misses": 72555873937,
+        "method": "reference",
+        "level": "L2"
+      }
+    },
+    "xeon.ablation.d33.p0p3.structured-simd.L2miss": {
+      "value": "27.7622106158133453006006806134110851147706462948468235005218",
+      "rule": {
+        "op": "pmu_miss_percent",
+        "method": "structured-simd",
+        "level": "L2",
+        "unit": "percent",
+        "d": 33,
+        "p": "0.003"
+      },
+      "operands": {
+        "requests": 84792405586,
+        "misses": 23540246225,
+        "method": "structured",
+        "level": "L2"
+      }
+    }
+  },
+  "predecoder_rows": [
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "policy": 0,
+      "physical_policy": 0,
+      "strategy": "degree-ordered",
+      "strategy_label": "Degree ordered",
+      "macro_strategy": "degree-ordered",
+      "host": "ares4",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 3.222493119333333,
+      "repeat_elapsed_ns": [
+        3218461001,
+        3221788671,
+        3227229686
+      ],
+      "normalized": 34952855,
+      "residual": 1686161,
+      "pairs": 15289143,
+      "boundaries": 2688408,
+      "completed_shots": 325067,
+      "mean_residual": 1.686161,
+      "matched_percent": 95.17589907891644,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "50b4faa740aeb67ac01b7c527c37ce2efe09666aa511fa42a9a67c76d5010dbe",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.003/runs/policy-0-timing/calls/d09-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "602b2b4795be78f91fb8b0f776a032e16d1c9fbabee7fef070d2ba43910cef4e"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.003/runs/policy-0-timing/calls/d09-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "6fa808c58143aa05b14da41b41732519b4fcfd008ba6cf6e09bfcf4413ef57ed"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.003/runs/policy-0-timing/calls/d09-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "85b3c1badad919e65dadba0f0d506037a9e9c6e13ced1cae731487b066ba9afa"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.003/runs/policy-0-counts/calls/d09-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "430d123f52bb4b1b725c0757b2a2c49397a5893b9adc9a4f07c7af3b564a7f03"
+      }
+    },
+    {
+      "distance": 13,
+      "error_rate": "0.003",
+      "policy": 0,
+      "physical_policy": 0,
+      "strategy": "degree-ordered",
+      "strategy_label": "Degree ordered",
+      "macro_strategy": "degree-ordered",
+      "host": "ares4",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 10.669702735333335,
+      "repeat_elapsed_ns": [
+        10529881695,
+        10696877898,
+        10782348613
+      ],
+      "normalized": 110577784,
+      "residual": 5424678,
+      "pairs": 49648502,
+      "boundaries": 5856102,
+      "completed_shots": 38464,
+      "mean_residual": 5.424678,
+      "matched_percent": 95.09424243842687,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "bd4b02311d811824ec86ec8aeb80e8c330a300aaabd4b5870951567eb62fe4fa",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/policy-0-timing/calls/d13-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "4de585587e205a6ec19073594aa019b03fa1bf95e516278cb559ca06d0bf4dda"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/policy-0-timing/calls/d13-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "9f95142e40b253d5d5c6798cd5e15007f0da107094d6f2cfe8691aa76ecb2814"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/policy-0-timing/calls/d13-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "251597645bb2955d3d3c73a6e57958b5e7fc7583b70ae51ea5c79bb7af32a2a3"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/policy-0-counts/calls/d13-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "a147ba15df92ac20583b071b9fd9f3d35fc8fa60b3ebacb245499eba1f2eddff"
+      }
+    },
+    {
+      "distance": 17,
+      "error_rate": "0.003",
+      "policy": 0,
+      "physical_policy": 0,
+      "strategy": "degree-ordered",
+      "strategy_label": "Degree ordered",
+      "macro_strategy": "degree-ordered",
+      "host": "ares4",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 25.63630959333333,
+      "repeat_elapsed_ns": [
+        25628197671,
+        25634426299,
+        25646304810
+      ],
+      "normalized": 253687238,
+      "residual": 12688062,
+      "pairs": 115372416,
+      "boundaries": 10254344,
+      "completed_shots": 746,
+      "mean_residual": 12.688062,
+      "matched_percent": 94.99854147176296,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "e4be67422e885bf81fb532ce4f8088a45cad1f511e67635f495a5d31902e66fd",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/policy-0-timing/calls/d17-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "2fc6902c621123ffdd28fc27f825e1c01fccefb73e37509914976d35605ccb2c"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/policy-0-timing/calls/d17-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "ab67013e09e848e3e3c8f6924d453a2e43b809202a0e39fba6d0ce6a281fd6e7"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/policy-0-timing/calls/d17-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "19aef8249cdb66330a807bc4bd659f78d34c141cb9e67ee375455b962632bf8b"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/policy-0-counts/calls/d17-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "62c844631804ac74449c6d63e9d9d2b11d962e5d02c88272ed3dd12f48075005"
+      }
+    },
+    {
+      "distance": 21,
+      "error_rate": "0.003",
+      "policy": 0,
+      "physical_policy": 0,
+      "strategy": "degree-ordered",
+      "strategy_label": "Degree ordered",
+      "macro_strategy": "degree-ordered",
+      "host": "ares5",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 52.54282591933334,
+      "repeat_elapsed_ns": [
+        52441665372,
+        52584236644,
+        52602575742
+      ],
+      "normalized": 485693486,
+      "residual": 24632970,
+      "pairs": 222594223,
+      "boundaries": 15872070,
+      "completed_shots": 0,
+      "mean_residual": 24.63297,
+      "matched_percent": 94.92828899088838,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "e569e8761bff0b4b99d1a60cf48f7f56b64be2447fe2d918863ad1a497b08a1b",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.003/runs/policy-0-timing/calls/d21-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "a85a1621d511323daa6123efe757f48bbb62023a6ee876847e2632649da05e2f"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.003/runs/policy-0-timing/calls/d21-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "2be2f4e6e92a1bda137ae0ede4f08c89a81678690531becd4731b1f4ae5afd38"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.003/runs/policy-0-timing/calls/d21-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "b555bf67fac52121aa88cbd12f79414e7a2180a9235dee7a48ac0069bed7fcfa"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.003/runs/policy-0-counts/calls/d21-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "f2c8b710ef0f6106a8dfd1d0540a9e48d6a359db6e1f4d6eaba888f118a11000"
+      }
+    },
+    {
+      "distance": 25,
+      "error_rate": "0.003",
+      "policy": 0,
+      "physical_policy": 0,
+      "strategy": "degree-ordered",
+      "strategy_label": "Degree ordered",
+      "macro_strategy": "degree-ordered",
+      "host": "ares3",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 97.77508862799999,
+      "repeat_elapsed_ns": [
+        97415044610,
+        98074971247,
+        97835250027
+      ],
+      "normalized": 828196036,
+      "residual": 42479454,
+      "pairs": 381503145,
+      "boundaries": 22710292,
+      "completed_shots": 0,
+      "mean_residual": 42.479454,
+      "matched_percent": 94.87084553010345,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "cbbf9ecdd34092b78d96be58006b6462c7871bef86199b34520e0afafad40581",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d25-p0.003/runs/policy-0-timing/calls/d25-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "0af1206fc78963ba69b80975d02dacb05195c04487e08a3b3491d8728387aeca"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d25-p0.003/runs/policy-0-timing/calls/d25-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "e51cb64f58d833ab5d92a208eabaaf1685345eb71e1cf9475ad192207813eab5"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d25-p0.003/runs/policy-0-timing/calls/d25-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "1f4610cbb0731ecb51c421bd81f90ee9036633a4937b7652902ffd5cbb3c5921"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d25-p0.003/runs/policy-0-counts/calls/d25-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "dc87c09ccf7085c9439c80e192f645750051c5486a1a5b2c75a03f6f9f92dabc"
+      }
+    },
+    {
+      "distance": 29,
+      "error_rate": "0.003",
+      "policy": 0,
+      "physical_policy": 0,
+      "strategy": "degree-ordered",
+      "strategy_label": "Degree ordered",
+      "macro_strategy": "degree-ordered",
+      "host": "ares2",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 167.92341917966667,
+      "repeat_elapsed_ns": [
+        170456185407,
+        169694025562,
+        163620046570
+      ],
+      "normalized": 1302450806,
+      "residual": 67342222,
+      "pairs": 602167768,
+      "boundaries": 30773048,
+      "completed_shots": 0,
+      "mean_residual": 67.342222,
+      "matched_percent": 94.82957654217921,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "c42cad62b25646658d1c514f74550bd9a66d7d69000a87728500d23720054125",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.003/runs/policy-0-timing/calls/d29-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "1bbf52ecf2a05e16b393ce72e36952f3360294de9c8f93a8f598ee2b667745e0"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.003/runs/policy-0-timing/calls/d29-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "66b71fa57c93bb687d91f9919cd9594877ad00ce0891eca842e301269d95e231"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.003/runs/policy-0-timing/calls/d29-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "a5c23f08b60f8d70e77cccdde8f1c8a808bc9b7759effbb5d8862674dde63574"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.003/runs/policy-0-counts/calls/d29-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "ac7a891bf146727cace2d6b21c035aa1d335588f278192b774779460cad66807"
+      }
+    },
+    {
+      "distance": 33,
+      "error_rate": "0.003",
+      "policy": 0,
+      "physical_policy": 0,
+      "strategy": "degree-ordered",
+      "strategy_label": "Degree ordered",
+      "macro_strategy": "degree-ordered",
+      "host": "ares1",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 273.38478740799997,
+      "repeat_elapsed_ns": [
+        275361564691,
+        272101071141,
+        272691726392
+      ],
+      "normalized": 1929840356,
+      "residual": 100449513,
+      "pairs": 894672135,
+      "boundaries": 40046573,
+      "completed_shots": 0,
+      "mean_residual": 100.449513,
+      "matched_percent": 94.79493147255958,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "737b5e34750debfe8ed121825d2ffc5867be4aae342dca8ac407255538dd4c06",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-0-timing/calls/d33-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "10377a35b2640651b4d40124ad16048ebd61c4e38275d91313c4a7d8b202f01c"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-0-timing/calls/d33-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "a0bfd6ac8f36a26fe535c7979b1e827b17d96ee13bff37fda10b1c29c9dce781"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-0-timing/calls/d33-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "89a33419fb6a9d5702e63667929715fcc982912884ea2da264710006f53e9015"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-0-counts/calls/d33-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "931f49fa26252e5ddc08daa41c765c0e899e00e509ba8442bedc1bc10be76bf8"
+      }
+    },
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "policy": 1,
+      "physical_policy": 1,
+      "strategy": "none",
+      "strategy_label": "No predecoding",
+      "macro_strategy": "none",
+      "host": "ares4",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 8.608396345,
+      "repeat_elapsed_ns": [
+        8643928724,
+        8594676098,
+        8586584213
+      ],
+      "normalized": 34952855,
+      "residual": 34952855,
+      "pairs": 0,
+      "boundaries": 0,
+      "completed_shots": 0,
+      "mean_residual": 34.952855,
+      "matched_percent": 0.0,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "50b4faa740aeb67ac01b7c527c37ce2efe09666aa511fa42a9a67c76d5010dbe",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.003/runs/policy-1-timing/calls/d09-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "5a5f426225acbc82260301669b44d115cb91734661f0018bc6234ba9740e27b3"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.003/runs/policy-1-timing/calls/d09-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "4769e55f0acea4cbf61a7d0e65b7c9edbc0011bc07656776771a95281c4636a1"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.003/runs/policy-1-timing/calls/d09-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "73352f829a903af753e897f615e13e21637ddeafc633a9ca376d3e472a463ccc"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.003/runs/policy-1-counts/calls/d09-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "97cc96a02e9db8a59bef426805328d2b213fe64b3ccdd09d8ca5190e2d3bfc0f"
+      }
+    },
+    {
+      "distance": 13,
+      "error_rate": "0.003",
+      "policy": 1,
+      "physical_policy": 1,
+      "strategy": "none",
+      "strategy_label": "No predecoding",
+      "macro_strategy": "none",
+      "host": "ares4",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 27.590196514,
+      "repeat_elapsed_ns": [
+        27543515662,
+        27545117044,
+        27681956836
+      ],
+      "normalized": 110577784,
+      "residual": 110577784,
+      "pairs": 0,
+      "boundaries": 0,
+      "completed_shots": 0,
+      "mean_residual": 110.577784,
+      "matched_percent": 0.0,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "bd4b02311d811824ec86ec8aeb80e8c330a300aaabd4b5870951567eb62fe4fa",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/policy-1-timing/calls/d13-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "3bf438fd5f7ac7c39b4186008b8c7ff314cb0f014084104780b3e389a4e7f479"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/policy-1-timing/calls/d13-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "f2be7f8a1370837d66559b2bf5005ed725599ad71f075f0f097fe560ad20192d"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/policy-1-timing/calls/d13-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "9163fe9a52c1975b87055a40ebb3385abeb2561045baa772b584847e34e7c11b"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/policy-1-counts/calls/d13-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "30b6ca3c746738f42da71a5302bd8767fa6735621cf13b418486757e1525e239"
+      }
+    },
+    {
+      "distance": 17,
+      "error_rate": "0.003",
+      "policy": 1,
+      "physical_policy": 1,
+      "strategy": "none",
+      "strategy_label": "No predecoding",
+      "macro_strategy": "none",
+      "host": "ares4",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 67.23968563933333,
+      "repeat_elapsed_ns": [
+        67761308576,
+        67037746249,
+        66920002093
+      ],
+      "normalized": 253687238,
+      "residual": 253687238,
+      "pairs": 0,
+      "boundaries": 0,
+      "completed_shots": 0,
+      "mean_residual": 253.687238,
+      "matched_percent": 0.0,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "e4be67422e885bf81fb532ce4f8088a45cad1f511e67635f495a5d31902e66fd",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/policy-1-timing/calls/d17-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "a21d9ed51c53eaba6d59d07d6c693b943b381e41618ccf2066f8bcd24e945a2e"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/policy-1-timing/calls/d17-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "241765b341ca64312801da8efad68d523f9f842b82f28e9943200c6f27845856"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/policy-1-timing/calls/d17-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "19fb9f1fc0b53e0b4c5fc18a222c806182b702e37108e78897c269699b0315f9"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/policy-1-counts/calls/d17-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "be9b51d9ca648a6c0666d27c0e13a547c84d9bdba177eb1d4d4ba1cbb14a204d"
+      }
+    },
+    {
+      "distance": 21,
+      "error_rate": "0.003",
+      "policy": 1,
+      "physical_policy": 1,
+      "strategy": "none",
+      "strategy_label": "No predecoding",
+      "macro_strategy": "none",
+      "host": "ares5",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 134.65110697333336,
+      "repeat_elapsed_ns": [
+        134417288731,
+        134797819789,
+        134738212400
+      ],
+      "normalized": 485693486,
+      "residual": 485693486,
+      "pairs": 0,
+      "boundaries": 0,
+      "completed_shots": 0,
+      "mean_residual": 485.693486,
+      "matched_percent": 0.0,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "e569e8761bff0b4b99d1a60cf48f7f56b64be2447fe2d918863ad1a497b08a1b",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.003/runs/policy-1-timing/calls/d21-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "ecb65aa6e65257ae22fd4450ada57c7a611514802bce7f40d8cd9d712209e988"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.003/runs/policy-1-timing/calls/d21-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "156c20196a5c6d1f389eb3b5d0424fd685c21467d9dbf7a0398b4fbb7bc61bd8"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.003/runs/policy-1-timing/calls/d21-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "fd93c14ca3b1242dcb0a778700a60c41241b34e2d6c8cd2ab934a083f77380fb"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.003/runs/policy-1-counts/calls/d21-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "ee832ee46bc8e17fc96ceb4df1695775b4125b054b2dc04e0b5238430809267a"
+      }
+    },
+    {
+      "distance": 25,
+      "error_rate": "0.003",
+      "policy": 1,
+      "physical_policy": 1,
+      "strategy": "none",
+      "strategy_label": "No predecoding",
+      "macro_strategy": "none",
+      "host": "ares3",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 246.11670368833333,
+      "repeat_elapsed_ns": [
+        245531855516,
+        245856607581,
+        246961647968
+      ],
+      "normalized": 828196036,
+      "residual": 828196036,
+      "pairs": 0,
+      "boundaries": 0,
+      "completed_shots": 0,
+      "mean_residual": 828.196036,
+      "matched_percent": 0.0,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "cbbf9ecdd34092b78d96be58006b6462c7871bef86199b34520e0afafad40581",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d25-p0.003/runs/policy-1-timing/calls/d25-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "67497924ac90ee626b48f09d8005991415512a1e80d0c466e2f92d97761fc041"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d25-p0.003/runs/policy-1-timing/calls/d25-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "97a885e4dae414e612dede4677ed774ff599c76aab218b7915ccb51f55bc5e91"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d25-p0.003/runs/policy-1-timing/calls/d25-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "e9079399d8126491451bb62a3700996afe2cfb70006907259347a693fe344832"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d25-p0.003/runs/policy-1-counts/calls/d25-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "c49d2fc19952d5f07739eddd9d4d1e57c4b4249e46279db606227d25f504e5fe"
+      }
+    },
+    {
+      "distance": 29,
+      "error_rate": "0.003",
+      "policy": 1,
+      "physical_policy": 1,
+      "strategy": "none",
+      "strategy_label": "No predecoding",
+      "macro_strategy": "none",
+      "host": "ares2",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 414.7098602473334,
+      "repeat_elapsed_ns": [
+        413625559011,
+        417383170551,
+        413120851180
+      ],
+      "normalized": 1302450806,
+      "residual": 1302450806,
+      "pairs": 0,
+      "boundaries": 0,
+      "completed_shots": 0,
+      "mean_residual": 1302.450806,
+      "matched_percent": 0.0,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "c42cad62b25646658d1c514f74550bd9a66d7d69000a87728500d23720054125",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.003/runs/policy-1-timing/calls/d29-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "16a6fa92479001e3df41a6723ba49c8f71b7b09c24c618d2c5158ee1409879c0"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.003/runs/policy-1-timing/calls/d29-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "59665c2aa5a40102dda255aeeb9d515e6afb2c9defd12c5b0f74f1fa7aacc83e"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.003/runs/policy-1-timing/calls/d29-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "0498451fb110865314d279c797f81577738f2201ea5f4682d7d4b9f3abe9dbbd"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.003/runs/policy-1-counts/calls/d29-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "822248e9699a294fab25aa3b25532232eba91c86d7e7c1afc4117b2f41c63c3d"
+      }
+    },
+    {
+      "distance": 33,
+      "error_rate": "0.003",
+      "policy": 1,
+      "physical_policy": 1,
+      "strategy": "none",
+      "strategy_label": "No predecoding",
+      "macro_strategy": "none",
+      "host": "ares1",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 651.1405236433334,
+      "repeat_elapsed_ns": [
+        653484730376,
+        657474035513,
+        642462805041
+      ],
+      "normalized": 1929840356,
+      "residual": 1929840356,
+      "pairs": 0,
+      "boundaries": 0,
+      "completed_shots": 0,
+      "mean_residual": 1929.840356,
+      "matched_percent": 0.0,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "737b5e34750debfe8ed121825d2ffc5867be4aae342dca8ac407255538dd4c06",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-1-timing/calls/d33-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "91bf386a4bcbd8d8e59124067243075923619c07e9aa79aa4ee92f47a8b4d9fd"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-1-timing/calls/d33-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "e958d66cdc94b92292c39f82adc548d467cfee59afac6027f5fd75ef63b9cc05"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-1-timing/calls/d33-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "082b14e813749fb4e55a638655b296ee2d43f35d13572b823951a5cac4f8498e"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-1-counts/calls/d33-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "05ca5203fece400fffdc1b4f736287da4a2d3bfcf186a2e0175ac6ff628cd15c"
+      }
+    },
+    {
+      "distance": 9,
+      "error_rate": "0.003",
+      "policy": 2,
+      "physical_policy": 3,
+      "strategy": "simple-equal-rate",
+      "strategy_label": "Simple equal-rate",
+      "macro_strategy": "coordinate",
+      "host": "ares4",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 7.330869657999999,
+      "repeat_elapsed_ns": [
+        7324237225,
+        7333159058,
+        7335212691
+      ],
+      "normalized": 34952855,
+      "residual": 18251036,
+      "pairs": 7162673,
+      "boundaries": 2376473,
+      "completed_shots": 274,
+      "mean_residual": 18.251036,
+      "matched_percent": 47.78384769999475,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "50b4faa740aeb67ac01b7c527c37ce2efe09666aa511fa42a9a67c76d5010dbe",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.003/runs/policy-2-timing/calls/d09-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "fce6b69c51fbdeddea7934ab5351fa8388d63ba08f56aef1bd87b16859d2a81c"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.003/runs/policy-2-timing/calls/d09-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "b7c6743e431de8cf49b83d4dcc2f3691705f78a221b8cedc6cf184731c225e2a"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.003/runs/policy-2-timing/calls/d09-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "fb58d3e602b09eef075e6d0abf621b45c73479a0135dcb7e1fd64d319012b1cf"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.003/runs/policy-2-counts/calls/d09-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "f783f94eb927301267a6e153b517e7458885cab9a9e99f003be1f31eda13bec9"
+      }
+    },
+    {
+      "distance": 13,
+      "error_rate": "0.003",
+      "policy": 2,
+      "physical_policy": 3,
+      "strategy": "simple-equal-rate",
+      "strategy_label": "Simple equal-rate",
+      "macro_strategy": "coordinate",
+      "host": "ares4",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 24.690085233333335,
+      "repeat_elapsed_ns": [
+        24730596097,
+        24626782351,
+        24712877252
+      ],
+      "normalized": 110577784,
+      "residual": 62794221,
+      "pairs": 21349227,
+      "boundaries": 5085109,
+      "completed_shots": 0,
+      "mean_residual": 62.794221,
+      "matched_percent": 43.21262487951468,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "bd4b02311d811824ec86ec8aeb80e8c330a300aaabd4b5870951567eb62fe4fa",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/policy-2-timing/calls/d13-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "45564e6f93e2290e374bc39497af2c2fec6393b4994172dae795c44f0665bf91"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/policy-2-timing/calls/d13-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "d176ec9bf8ce9e70057cb845ae5cf53b991295c4fbce383980945570d37bba89"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/policy-2-timing/calls/d13-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "9eab142e4902c4eca498bef396cfab45ce2a95454dba15caca85f3b630f5f470"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/policy-2-counts/calls/d13-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "28c12f797b40bc514a3f595c5eb463e1acea3ddd7722d2736fc5d8891487414c"
+      }
+    },
+    {
+      "distance": 17,
+      "error_rate": "0.003",
+      "policy": 2,
+      "physical_policy": 3,
+      "strategy": "simple-equal-rate",
+      "strategy_label": "Simple equal-rate",
+      "macro_strategy": "coordinate",
+      "host": "ares4",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 62.357460891,
+      "repeat_elapsed_ns": [
+        62299150938,
+        62553633210,
+        62219598525
+      ],
+      "normalized": 253687238,
+      "residual": 150277765,
+      "pairs": 47297887,
+      "boundaries": 8813699,
+      "completed_shots": 0,
+      "mean_residual": 150.277765,
+      "matched_percent": 40.76258380801954,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "e4be67422e885bf81fb532ce4f8088a45cad1f511e67635f495a5d31902e66fd",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/policy-2-timing/calls/d17-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "c871aa020cc9f04e45453f81b317577c2531cddde1583978fcc2125a10d30e2f"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/policy-2-timing/calls/d17-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "a4c87be027eab0b73fe8f689b4768a2be2262ee39bc9fb9a4ef50eee5b66fa33"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/policy-2-timing/calls/d17-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "33fe93618d19ef836195dc5e0bb8375e57580752b7574c7415760ba19dab5bbc"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/policy-2-counts/calls/d17-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "6c2e431589ff0741dfac3a5cc466c60b95c65ecc3052f43f4594709f1b5bb386"
+      }
+    },
+    {
+      "distance": 21,
+      "error_rate": "0.003",
+      "policy": 2,
+      "physical_policy": 3,
+      "strategy": "simple-equal-rate",
+      "strategy_label": "Simple equal-rate",
+      "macro_strategy": "coordinate",
+      "host": "ares5",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 129.671837323,
+      "repeat_elapsed_ns": [
+        129792270740,
+        129820367892,
+        129402873337
+      ],
+      "normalized": 485693486,
+      "residual": 295182079,
+      "pairs": 88479525,
+      "boundaries": 13552357,
+      "completed_shots": 0,
+      "mean_residual": 295.182079,
+      "matched_percent": 39.224616448736974,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "e569e8761bff0b4b99d1a60cf48f7f56b64be2447fe2d918863ad1a497b08a1b",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.003/runs/policy-2-timing/calls/d21-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "0cef846ee4f6c8f7ec99cccda85b6f9ecf4b8655032ed62720baf917f650e1e7"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.003/runs/policy-2-timing/calls/d21-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "7c81de39511724a676e84a7b0e7b4637a3895e3a18e0bd531aa6cb24a399ce62"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.003/runs/policy-2-timing/calls/d21-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "b97de19288603ca6fa8890da7fc1b0b2d79d3935f13c87ccc242a443994cbbcf"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.003/runs/policy-2-counts/calls/d21-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "7b5d6196954e33593445f78a4298e259340dc0c8f75456e08de1531cdc956a3e"
+      }
+    },
+    {
+      "distance": 25,
+      "error_rate": "0.003",
+      "policy": 2,
+      "physical_policy": 3,
+      "strategy": "simple-equal-rate",
+      "strategy_label": "Simple equal-rate",
+      "macro_strategy": "coordinate",
+      "host": "ares3",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 242.80493912966665,
+      "repeat_elapsed_ns": [
+        242551011391,
+        243449287788,
+        242414518210
+      ],
+      "normalized": 828196036,
+      "residual": 512094186,
+      "pairs": 148399436,
+      "boundaries": 19302978,
+      "completed_shots": 0,
+      "mean_residual": 512.094186,
+      "matched_percent": 38.16751545041203,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "cbbf9ecdd34092b78d96be58006b6462c7871bef86199b34520e0afafad40581",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d25-p0.003/runs/policy-2-timing/calls/d25-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "f87043cb6fb66d3c7900c2bb72ed924e65fa20622f2dfa1d7958b6845d472961"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d25-p0.003/runs/policy-2-timing/calls/d25-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "1ccf05b5cbd6743c21ec4c4bd1133ee62490e6b078bf53081f8fd802113be9a9"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d25-p0.003/runs/policy-2-timing/calls/d25-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "9e174ccf1472f0e4971e4da3455b3e2e3d7228ade172e816caf97fe90d406850"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d25-p0.003/runs/policy-2-counts/calls/d25-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "3d312d4e046b87d984df70e7d5f4e89c839fb11ca7b13e722be957e345c455a7"
+      }
+    },
+    {
+      "distance": 29,
+      "error_rate": "0.003",
+      "policy": 2,
+      "physical_policy": 3,
+      "strategy": "simple-equal-rate",
+      "strategy_label": "Simple equal-rate",
+      "macro_strategy": "coordinate",
+      "host": "ares2",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 405.44525323333335,
+      "repeat_elapsed_ns": [
+        400495836923,
+        407301917879,
+        408538004898
+      ],
+      "normalized": 1302450806,
+      "residual": 815336335,
+      "pairs": 230524128,
+      "boundaries": 26066215,
+      "completed_shots": 0,
+      "mean_residual": 815.336335,
+      "matched_percent": 37.39983642806391,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "c42cad62b25646658d1c514f74550bd9a66d7d69000a87728500d23720054125",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.003/runs/policy-2-timing/calls/d29-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "05ecce0f33d9ee1c6f87a43a98a3494bedbdc799beb4fdd8f36dbd26d47ffbc9"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.003/runs/policy-2-timing/calls/d29-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "4246942b5088a0262a53f1da9ee6c93d405987e427b1c1fd39e38e1384940287"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.003/runs/policy-2-timing/calls/d29-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "179c302bfbee8c9c3584374de49d651a446b5b3e2a3468a13dfa4c86b7d83ef5"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.003/runs/policy-2-counts/calls/d29-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "f2fac6b0e94a0cc279ab4b717c6a2f38f4572d97f9202706c5986cf28e9c46fc"
+      }
+    },
+    {
+      "distance": 33,
+      "error_rate": "0.003",
+      "policy": 2,
+      "physical_policy": 3,
+      "strategy": "simple-equal-rate",
+      "strategy_label": "Simple equal-rate",
+      "macro_strategy": "coordinate",
+      "host": "ares1",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64",
+      "structured_backend": "avx512vl",
+      "shots": 1000000,
+      "repeats": 3,
+      "threads": 1,
+      "execution": "serial",
+      "method": "predecoded",
+      "mean_us": 629.4429372946666,
+      "repeat_elapsed_ns": [
+        628629557361,
+        629074295696,
+        630624958827
+      ],
+      "normalized": 1929840356,
+      "residual": 1219351440,
+      "pairs": 338325039,
+      "boundaries": 33838838,
+      "completed_shots": 0,
+      "mean_residual": 1219.35144,
+      "matched_percent": 36.81594251001351,
+      "timing_scope": "normal decode call, return and result store; existing decoder cleanup remains in its normal API cycle",
+      "count_scope": "serial ComponentDecoder after prepare_for_mwpm, before solve_prepared; explicit reset_after_shot; full decode verifies results; X/Z summed; statistics excluded from time results",
+      "input_sha256": "737b5e34750debfe8ed121825d2ffc5867be4aae342dca8ac407255538dd4c06",
+      "timing_sources": [
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-2-timing/calls/d33-p0.003/predecoded/01/native/measurement.csv",
+          "sha256": "2da29617aeac4ee8aaeac0fa90f15ac41893d0c2823a1c80f282b55960b8fd61"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-2-timing/calls/d33-p0.003/predecoded/02/native/measurement.csv",
+          "sha256": "0fa43460e1739094edea8d981dd734ae34788a4d272178fc60caa7cc2e49342d"
+        },
+        {
+          "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-2-timing/calls/d33-p0.003/predecoded/03/native/measurement.csv",
+          "sha256": "102d154724cfea4404e554bb7d1a4b80fa78c74fd05ce442df29435cb98dd078"
+        }
+      ],
+      "statistics_source": {
+        "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-2-counts/calls/d33-p0.003/predecoded/01/native/syndromes.json",
+        "sha256": "d6290b6bf2fffac74315b0c19b04dae602e86936f2bb76ba381ea56fbcd60c56"
+      }
+    }
+  ],
+  "scope": "xeon-only subset",
+  "omitted_performance_keys": [
+    "m4pro.decoder-comparison.p0p05.best.vs-pymatching.max-speedup",
+    "m4pro.decoder-comparison.p0p1.best.vs-pymatching.max-speedup",
+    "m4pro.decoder-comparison.p0p3.best.vs-pymatching.max-speedup",
+    "m4pro.realtime.beyond-blossom.num-supported-settings",
+    "m4pro.realtime.pymatching.num-supported-settings"
+  ],
+  "native_matrix_complete": true,
+  "placement": {
+    "d33-p0.003": {
+      "host": "ares1",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d29-p0.003": {
+      "host": "ares2",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d25-p0.003": {
+      "host": "ares3",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d25-p0.0005": {
+      "host": "ares3",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d17-p0.0005": {
+      "host": "ares3",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d13-p0.001": {
+      "host": "ares3",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d33-p0.001": {
+      "host": "ares4",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d17-p0.003": {
+      "host": "ares4",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d13-p0.003": {
+      "host": "ares4",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d09-p0.003": {
+      "host": "ares4",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d21-p0.003": {
+      "host": "ares5",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d25-p0.001": {
+      "host": "ares5",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d21-p0.001": {
+      "host": "ares5",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d17-p0.001": {
+      "host": "ares5",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d13-p0.0005": {
+      "host": "ares5",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d09-p0.001": {
+      "host": "ares5",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d29-p0.001": {
+      "host": "ares6",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d33-p0.0005": {
+      "host": "ares6",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d29-p0.0005": {
+      "host": "ares6",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d21-p0.0005": {
+      "host": "ares6",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    },
+    "d09-p0.0005": {
+      "host": "ares6",
+      "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+      "machine": "x86_64"
+    }
+  },
+  "hardware": {
+    "structured_backend": "avx512vl",
+    "cases": {
+      "d33-p0.003": {
+        "host": "ares1",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d29-p0.003": {
+        "host": "ares2",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d25-p0.003": {
+        "host": "ares3",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d25-p0.0005": {
+        "host": "ares3",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d17-p0.0005": {
+        "host": "ares3",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d13-p0.001": {
+        "host": "ares3",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d33-p0.001": {
+        "host": "ares4",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d17-p0.003": {
+        "host": "ares4",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d13-p0.003": {
+        "host": "ares4",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d09-p0.003": {
+        "host": "ares4",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d21-p0.003": {
+        "host": "ares5",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d25-p0.001": {
+        "host": "ares5",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d21-p0.001": {
+        "host": "ares5",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d17-p0.001": {
+        "host": "ares5",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d13-p0.0005": {
+        "host": "ares5",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d09-p0.001": {
+        "host": "ares5",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d29-p0.001": {
+        "host": "ares6",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d33-p0.0005": {
+        "host": "ares6",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d29-p0.0005": {
+        "host": "ares6",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d21-p0.0005": {
+        "host": "ares6",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      },
+      "d09-p0.0005": {
+        "host": "ares6",
+        "platform": "Linux-6.1.0-26-amd64-x86_64-with-glibc2.36",
+        "machine": "x86_64"
+      }
+    },
+    "manuscript_hardware_equivalence": "not asserted",
+    "macro_namespace": "Historical xeon keys are compatibility identifiers, not measured hardware labels"
+  },
+  "denominator": "Fixed official reference; historical pymatching macro key retained for manuscript compatibility",
+  "rounding": "Decimal precision 60, final ROUND_HALF_UP"
+}

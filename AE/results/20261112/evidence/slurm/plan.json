@@ -1,0 +1,180 @@
+{
+  "archived_data_used_as_measurements": false,
+  "assignment": "descending d^3*p scheduling proxy; all methods and repeats of one case stay together",
+  "backend": "avx512vl",
+  "build_command": null,
+  "builds_manifest": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/shared-build/builds.json",
+  "controller_sha256": "f00b3c90285ba0eb8a62392aa59655160eb81fcdcc58f9ed4a0b3a7a78362b11",
+  "cpus": "2,4,6,8,10,12,14,16",
+  "created_utc": "2026-11-12T05:19:52.013787+00:00",
+  "excluded": [
+    "Apple M4 acquisition"
+  ],
+  "external_requested_shots": 10000,
+  "external_shot_counts": null,
+  "external_shots": 10000,
+  "local_entry_sha256": "3db4265bb60492c9ee1c0fd45defcb9ee46fb314f93df19f77153e0e6b95d333",
+  "native_shots_per_case": 1000000,
+  "pmu": "auto",
+  "profile": "paper",
+  "python": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/bin/python",
+  "render": true,
+  "repeats": 3,
+  "resources": {
+    "cpus_per_task": 52,
+    "exclusive": true,
+    "memory": "0",
+    "partition": "debug",
+    "time": null
+  },
+  "schema": 1,
+  "shards": [
+    {
+      "cases": [
+        {
+          "distance": 33,
+          "error_rate": 0.003,
+          "name": "d33-p0.003"
+        }
+      ],
+      "index": 0,
+      "node": "ares1"
+    },
+    {
+      "cases": [
+        {
+          "distance": 29,
+          "error_rate": 0.003,
+          "name": "d29-p0.003"
+        }
+      ],
+      "index": 1,
+      "node": "ares2"
+    },
+    {
+      "cases": [
+        {
+          "distance": 25,
+          "error_rate": 0.003,
+          "name": "d25-p0.003"
+        },
+        {
+          "distance": 25,
+          "error_rate": 0.0005,
+          "name": "d25-p0.0005"
+        },
+        {
+          "distance": 17,
+          "error_rate": 0.0005,
+          "name": "d17-p0.0005"
+        },
+        {
+          "distance": 13,
+          "error_rate": 0.001,
+          "name": "d13-p0.001"
+        }
+      ],
+      "index": 2,
+      "node": "ares3"
+    },
+    {
+      "cases": [
+        {
+          "distance": 33,
+          "error_rate": 0.001,
+          "name": "d33-p0.001"
+        },
+        {
+          "distance": 17,
+          "error_rate": 0.003,
+          "name": "d17-p0.003"
+        },
+        {
+          "distance": 13,
+          "error_rate": 0.003,
+          "name": "d13-p0.003"
+        },
+        {
+          "distance": 9,
+          "error_rate": 0.003,
+          "name": "d9-p0.003"
+        }
+      ],
+      "index": 3,
+      "node": "ares4"
+    },
+    {
+      "cases": [
+        {
+          "distance": 21,
+          "error_rate": 0.003,
+          "name": "d21-p0.003"
+        },
+        {
+          "distance": 25,
+          "error_rate": 0.001,
+          "name": "d25-p0.001"
+        },
+        {
+          "distance": 21,
+          "error_rate": 0.001,
+          "name": "d21-p0.001"
+        },
+        {
+          "distance": 17,
+          "error_rate": 0.001,
+          "name": "d17-p0.001"
+        },
+        {
+          "distance": 13,
+          "error_rate": 0.0005,
+          "name": "d13-p0.0005"
+        },
+        {
+          "distance": 9,
+          "error_rate": 0.001,
+          "name": "d9-p0.001"
+        }
+      ],
+      "index": 4,
+      "node": "ares5"
+    },
+    {
+      "cases": [
+        {
+          "distance": 29,
+          "error_rate": 0.001,
+          "name": "d29-p0.001"
+        },
+        {
+          "distance": 33,
+          "error_rate": 0.0005,
+          "name": "d33-p0.0005"
+        },
+        {
+          "distance": 29,
+          "error_rate": 0.0005,
+          "name": "d29-p0.0005"
+        },
+        {
+          "distance": 21,
+          "error_rate": 0.0005,
+          "name": "d21-p0.0005"
+        },
+        {
+          "distance": 9,
+          "error_rate": 0.0005,
+          "name": "d9-p0.0005"
+        }
+      ],
+      "index": 5,
+      "node": "ares6"
+    }
+  ],
+  "source": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source",
+  "source_identity": {
+    "commit": "75aedd433d1b129e5a973635320f199b5f26cbae",
+    "status": ""
+  },
+  "work": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper"
+}

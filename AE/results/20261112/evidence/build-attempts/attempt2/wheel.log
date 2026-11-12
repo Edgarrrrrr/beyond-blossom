@@ -1,0 +1,430 @@
+Processing ./.
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: beyond-blossom
+  Building wheel for beyond-blossom (pyproject.toml): started
+  Building wheel for beyond-blossom (pyproject.toml): still running...
+  Building wheel for beyond-blossom (pyproject.toml): still running...
+  Building wheel for beyond-blossom (pyproject.toml): finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  × Building wheel for beyond-blossom (pyproject.toml) did not run successfully.
+  │ exit code: 1
+  ╰─> [411 lines of output]
+      running bdist_wheel
+      running build
+      running build_py
+      creating build/python/lib.linux-x86_64-cpython-311/beyond_blossom
+      copying python/beyond_blossom/__init__.py -> build/python/lib.linux-x86_64-cpython-311/beyond_blossom
+      copying python/beyond_blossom/matching.py -> build/python/lib.linux-x86_64-cpython-311/beyond_blossom
+      copying python/beyond_blossom/_version.py -> build/python/lib.linux-x86_64-cpython-311/beyond_blossom
+      copying python/beyond_blossom/structured.py -> build/python/lib.linux-x86_64-cpython-311/beyond_blossom
+      copying python/beyond_blossom/_cli_argv.py -> build/python/lib.linux-x86_64-cpython-311/beyond_blossom
+      running build_ext
+      -- The CXX compiler identification is GNU 12.2.0
+      -- Detecting CXX compiler ABI info
+      -- Detecting CXX compiler ABI info - done
+      -- Check for working CXX compiler: /usr/bin/c++ - skipped
+      -- Detecting CXX compile features
+      -- Detecting CXX compile features - done
+      -- Found OpenMP_CXX: -fopenmp (found version "4.5")
+      -- Found OpenMP: TRUE (found version "4.5") found components: CXX
+      CMake Warning (dev) at /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/cmake/data/share/cmake-3.31/Modules/FetchContent.cmake:1953 (message):
+        Calling FetchContent_Populate(stim) is deprecated, call
+        FetchContent_MakeAvailable(stim) instead.  Policy CMP0169 can be set to OLD
+        to allow FetchContent_Populate(stim) to be called directly for now, but the
+        ability to call it with declared details will be removed completely in a
+        future version.
+      Call Stack (most recent call first):
+        CMakeLists.txt:147 (FetchContent_Populate)
+      This warning is for project developers.  Use -Wno-dev to suppress it.
+      
+      -- The C compiler identification is GNU 12.2.0
+      -- Detecting C compiler ABI info
+      -- Detecting C compiler ABI info - done
+      -- Check for working C compiler: /usr/bin/cc - skipped
+      -- Detecting C compile features
+      -- Detecting C compile features - done
+      WARNING: Skipped stim_test target. `GTest` not found. To fix, follow Standalone CMake Project install instructions at https://github.com/google/googletest/blob/master/googletest/README.md
+      -- Could NOT find Python (missing: Python_EXECUTABLE Python_INCLUDE_DIRS Python_LIBRARIES Interpreter Development Development.Module Development.Embed)
+      CMake Warning (dev) at /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/share/cmake/pybind11/FindPythonLibsNew.cmake:101 (message):
+        Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+        are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+        the cmake_policy command to set the policy and suppress this warning, or
+        preferably upgrade to using FindPython, either by calling it explicitly
+        before pybind11, or by setting PYBIND11_FINDPYTHON ON before pybind11.
+      Call Stack (most recent call first):
+        /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/share/cmake/pybind11/pybind11Tools.cmake:44 (find_package)
+        /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/share/cmake/pybind11/pybind11Common.cmake:243 (include)
+        /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/share/cmake/pybind11/pybind11Config.cmake:257 (include)
+        build/python/temp.linux-x86_64-cpython-311/beyond_blossom._cpp_beyond_blossom/_deps/stim-src/CMakeLists.txt:95 (find_package)
+      This warning is for project developers.  Use -Wno-dev to suppress it.
+      
+      -- Found PythonInterp: /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/bin/python (found suitable version "3.11.2", minimum required is "3.9")
+      -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.11.so.1.0
+      -- Performing Test HAS_FLTO_AUTO
+      -- Performing Test HAS_FLTO_AUTO - Success
+      -- Found pybind11: /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include (found version "3.1.0")
+      WARNING: Skipped stim_python_bindings target. `pybind11` not found. To fix, install pybind11. On debian based distributions, the package name is `pybind11-dev`
+      CMake Warning (dev) at /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/share/cmake/pybind11/FindPythonLibsNew.cmake:101 (message):
+        Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+        are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+        the cmake_policy command to set the policy and suppress this warning, or
+        preferably upgrade to using FindPython, either by calling it explicitly
+        before pybind11, or by setting PYBIND11_FINDPYTHON ON before pybind11.
+      Call Stack (most recent call first):
+        /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/share/cmake/pybind11/pybind11Tools.cmake:44 (find_package)
+        /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/share/cmake/pybind11/pybind11Common.cmake:243 (include)
+        /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/share/cmake/pybind11/pybind11Config.cmake:257 (include)
+        CMakeLists.txt:379 (find_package)
+      This warning is for project developers.  Use -Wno-dev to suppress it.
+      
+      -- Configuring done (72.2s)
+      -- Generating done (12.1s)
+      -- Build files have been written to: /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/build/python/temp.linux-x86_64-cpython-311/beyond_blossom._cpp_beyond_blossom
+      [  2%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/cmd/command_m2d.cc.o
+      [  2%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/cmd/command_repl.cc.o
+      [  2%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/cmd/command_explain_errors.cc.o
+      [  2%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/circuit/circuit.cc.o
+      [  2%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/cmd/command_sample.cc.o
+      [  2%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/circuit/circuit_instruction.cc.o
+      [  2%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/cmd/command_analyze_errors.cc.o
+      [  2%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/cmd/command_gen.cc.o
+      [  2%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/cmd/command_diagram.cc.o
+      [  2%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/cmd/command_convert.cc.o
+      [  2%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/circuit/gate_decomposition.cc.o
+      [ 12%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim.cc.o
+      [ 12%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/circuit/gate_target.cc.o
+      [ 12%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/cmd/command_help.cc.o
+      [ 12%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/cmd/command_detect.cc.o
+      [ 12%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/cmd/command_sample_dem.cc.o
+      [ 12%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/dem/dem_instruction.cc.o
+      [ 12%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/dem/detector_error_model.cc.o
+      [ 12%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/ascii_diagram.cc.o
+      [ 15%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/circuit_timeline_helper.cc.o
+      [ 15%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/basic_3d_diagram.cc.o
+      [ 15%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/base64.cc.o
+      [ 17%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/crumble.cc.o
+      [ 17%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/crumble_data.cc.o
+      [ 17%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/detector_slice/detector_slice_set.cc.o
+      [ 17%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/diagram_util.cc.o
+      [ 22%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/gltf.cc.o
+      [ 22%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/gate_data_3d_texture_data.cc.o
+      [ 22%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/gate_data_svg.cc.o
+      [ 22%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/gate_data_3d.cc.o
+      [ 22%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/graph/match_graph_svg_drawer.cc.o
+      [ 22%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/json_obj.cc.o
+      [ 22%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/lattice_map.cc.o
+      [ 27%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/graph/match_graph_3d_drawer.cc.o
+      [ 27%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/timeline/timeline_3d_drawer.cc.o
+      [ 27%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/timeline/timeline_ascii_drawer.cc.o
+      [ 27%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/diagram/timeline/timeline_svg_drawer.cc.o
+      [ 27%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gate_data_annotations.cc.o
+      [ 27%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gate_data_blocks.cc.o
+      [ 27%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gate_data_collapsing.cc.o
+      [ 27%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gate_data_controlled.cc.o
+      [ 30%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gate_data_heralded.cc.o
+      [ 30%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gate_data_hada.cc.o
+      [ 30%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gate_data_noisy.cc.o
+      [ 30%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gate_data_pair_measure.cc.o
+      [ 32%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gate_data_pauli.cc.o
+      [ 32%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gate_data_pauli_product.cc.o
+      [ 32%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gate_data_period_3.cc.o
+      [ 35%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gate_data_period_4.cc.o
+      [ 35%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gate_data_pp.cc.o
+      [ 35%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gate_data_swaps.cc.o
+      [ 35%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gates/gates.cc.o
+      [ 37%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gen/circuit_gen_params.cc.o
+      [ 37%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gen/gen_color_code.cc.o
+      [ 37%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gen/gen_rep_code.cc.o
+      [ 37%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/gen/gen_surface_code.cc.o
+      [ 40%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/io/measure_record.cc.o
+      [ 40%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/io/measure_record_batch_writer.cc.o
+      [ 40%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/io/measure_record_writer.cc.o
+      [ 40%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/io/raii_file.cc.o
+      [ 42%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/io/sparse_shot.cc.o
+      [ 42%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/io/stim_data_formats.cc.o
+      [ 42%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/main_namespaced.cc.o
+      [ 42%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/mem/bit_ref.cc.o
+      [ 45%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/mem/simd_word.cc.o
+      [ 45%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/mem/simd_util.cc.o
+      [ 45%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/mem/sparse_xor_vec.cc.o
+      [ 47%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/search/graphlike/algo.cc.o
+      [ 47%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/search/graphlike/edge.cc.o
+      [ 47%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/search/graphlike/graph.cc.o
+      [ 47%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/search/graphlike/node.cc.o
+      [ 50%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/search/hyper/algo.cc.o
+      [ 50%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/search/graphlike/search_state.cc.o
+      [ 50%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/search/hyper/edge.cc.o
+      [ 50%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/search/hyper/graph.cc.o
+      [ 52%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/search/hyper/search_state.cc.o
+      [ 52%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/search/hyper/node.cc.o
+      [ 52%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/search/sat/wcnf.cc.o
+      [ 55%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/simulators/error_analyzer.cc.o
+      [ 55%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/simulators/error_matcher.cc.o
+      [ 55%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/simulators/force_streaming.cc.o
+      [ 55%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/simulators/graph_simulator.cc.o
+      [ 57%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/simulators/matched_error.cc.o
+      [ 57%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/simulators/sparse_rev_frame_tracker.cc.o
+      [ 57%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/simulators/vector_simulator.cc.o
+      [ 57%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/stabilizers/flex_pauli_string.cc.o
+      [ 60%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/util_bot/arg_parse.cc.o
+      [ 60%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/util_bot/error_decomp.cc.o
+      [ 60%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/util_bot/probability_util.cc.o
+      [ 60%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/util_top/circuit_inverse_qec.cc.o
+      [ 62%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/util_top/circuit_to_detecting_regions.cc.o
+      [ 62%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/util_top/circuit_inverse_unitary.cc.o
+      [ 65%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/util_top/export_crumble_url.cc.o
+      [ 65%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/util_top/circuit_vs_amplitudes.cc.o
+      [ 65%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/util_top/export_qasm.cc.o
+      [ 65%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/util_top/export_quirk_url.cc.o
+      [ 65%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/util_top/reference_sample_tree.cc.o
+      [ 67%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/util_top/simplified_circuit.cc.o
+      [ 67%] Building CXX object _deps/stim-build/CMakeFiles/libstim.dir/src/stim/util_top/transform_without_feedback.cc.o
+      In file included from /usr/include/c++/12/ios:40,
+                       from /usr/include/c++/12/ostream:38,
+                       from /usr/include/c++/12/iostream:39,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/build/python/temp.linux-x86_64-cpython-311/beyond_blossom._cpp_beyond_blossom/_deps/stim-src/src/stim/circuit/circuit.h:23,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/build/python/temp.linux-x86_64-cpython-311/beyond_blossom._cpp_beyond_blossom/_deps/stim-src/src/stim/util_top/export_quirk_url.h:4,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/build/python/temp.linux-x86_64-cpython-311/beyond_blossom._cpp_beyond_blossom/_deps/stim-src/src/stim/util_top/export_quirk_url.cc:1:
+      In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+          inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:423:21,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1647:19,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:815:28,
+          inlined from ‘void QuirkExporter::do_single_qubit_gate(stim::GateType, stim::GateTarget)’ at /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/build/python/temp.linux-x86_64-cpython-311/beyond_blossom._cpp_beyond_blossom/_deps/stim-src/src/stim/util_top/export_quirk_url.cc:193:51:
+      /usr/include/c++/12/bits/char_traits.h:431:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+        431 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+            |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+      In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+          inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:423:21,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1647:19,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:815:28,
+          inlined from ‘void QuirkExporter::do_multi_measure_gate(stim::GateType, std::span<const stim::GateTarget, 18446744073709551615>)’ at /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/build/python/temp.linux-x86_64-cpython-311/beyond_blossom._cpp_beyond_blossom/_deps/stim-src/src/stim/util_top/export_quirk_url.cc:219:40:
+      /usr/include/c++/12/bits/char_traits.h:431:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+        431 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+            |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+      In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+          inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:423:21,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1647:19,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:815:28,
+          inlined from ‘void QuirkExporter::do_multi_measure_gate(stim::GateType, std::span<const stim::GateTarget, 18446744073709551615>)’ at /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/build/python/temp.linux-x86_64-cpython-311/beyond_blossom._cpp_beyond_blossom/_deps/stim-src/src/stim/util_top/export_quirk_url.cc:226:44:
+      /usr/include/c++/12/bits/char_traits.h:431:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+        431 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+            |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+      In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+          inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:423:21,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1647:19,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:815:28,
+          inlined from ‘void QuirkExporter::do_multi_measure_gate(stim::GateType, std::span<const stim::GateTarget, 18446744073709551615>)’ at /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/build/python/temp.linux-x86_64-cpython-311/beyond_blossom._cpp_beyond_blossom/_deps/stim-src/src/stim/util_top/export_quirk_url.cc:228:48:
+      /usr/include/c++/12/bits/char_traits.h:431:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+        431 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+            |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+      In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+          inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:423:21,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1647:19,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:815:28,
+          inlined from ‘void QuirkExporter::do_multi_measure_gate(stim::GateType, std::span<const stim::GateTarget, 18446744073709551615>)’ at /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/build/python/temp.linux-x86_64-cpython-311/beyond_blossom._cpp_beyond_blossom/_deps/stim-src/src/stim/util_top/export_quirk_url.cc:230:44:
+      /usr/include/c++/12/bits/char_traits.h:431:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+        431 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+            |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+      In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+          inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:423:21,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1647:19,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:815:28,
+          inlined from ‘void QuirkExporter::do_multi_measure_gate(stim::GateType, std::span<const stim::GateTarget, 18446744073709551615>)’ at /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/build/python/temp.linux-x86_64-cpython-311/beyond_blossom._cpp_beyond_blossom/_deps/stim-src/src/stim/util_top/export_quirk_url.cc:232:48:
+      /usr/include/c++/12/bits/char_traits.h:431:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+        431 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+            |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+      In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+          inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:423:21,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1647:19,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:815:28,
+          inlined from ‘void QuirkExporter::do_multi_measure_gate(stim::GateType, std::span<const stim::GateTarget, 18446744073709551615>)’ at /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/build/python/temp.linux-x86_64-cpython-311/beyond_blossom._cpp_beyond_blossom/_deps/stim-src/src/stim/util_top/export_quirk_url.cc:234:44:
+      /usr/include/c++/12/bits/char_traits.h:431:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+        431 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+            |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+      In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+          inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:423:21,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1647:19,
+          inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:815:28,
+          inlined from ‘void QuirkExporter::do_multi_measure_gate(stim::GateType, std::span<const stim::GateTarget, 18446744073709551615>)’ at /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/build/python/temp.linux-x86_64-cpython-311/beyond_blossom._cpp_beyond_blossom/_deps/stim-src/src/stim/util_top/export_quirk_url.cc:236:48:
+      /usr/include/c++/12/bits/char_traits.h:431:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+        431 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+            |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+      [ 67%] Linking CXX static library out/libstim.a
+      [ 67%] Built target libstim
+      [ 70%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/flooder/detector_node.cc.o
+      [ 70%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/predecode/one_hop_predecoder.cc.o
+      [ 70%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/tracker/flood_check_event.cc.o
+      [ 70%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/driver/mwpm_decoding.cc.o
+      [ 70%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/matcher/alternating_tree.cc.o
+      [ 70%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/driver/namespaced_main.cc.o
+      [ 70%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/flooder/graph_flooder.cc.o
+      [ 70%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/flooder/match.cc.o
+      [ 70%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/interop/region_edge.cc.o
+      [ 70%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/interop/mwpm_event.cc.o
+      [ 70%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/interop/compressed_edge.cc.o
+      [ 80%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/flooder/graph.cc.o
+      [ 80%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/decoder.cc.o
+      [ 80%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/matcher/mwpm.cc.o
+      [ 80%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/flooder/graph_fill_region.cc.o
+      [ 80%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/diagram/animation_main.cc.o
+      [ 80%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/diagram/mwpm_diagram.cc.o
+      [ 80%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/search/search_graph.cc.o
+      [ 80%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/search/search_detector_node.cc.o
+      [ 82%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/driver/user_graph.cc.o
+      [ 82%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/rand/rand_gen.cc.o
+      [ 82%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/unstructured/search/search_flooder.cc.o
+      [ 85%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/driver/decoder_strategy.cc.o
+      [ 85%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/diagram/mwpm_diagram.cc.o
+      [ 85%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/driver/backend_user_graph.cc.o
+      [ 85%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/driver/component_decoder.cc.o
+      [ 87%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/driver/mwpm_decoding.cc.o
+      [ 87%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/driver/shared_component_decoder.cc.o
+      [ 87%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/predecode/one_hop_predecoder.cc.o
+      [ 87%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder/detector_node.cc.o
+      [ 90%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder/graph.cc.o
+      [ 90%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder/graph_fill_region.cc.o
+      [ 90%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder/graph_flooder.cc.o
+      [ 90%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder/match.cc.o
+      [ 92%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder_matcher_interop/compressed_edge.cc.o
+      [ 92%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder_matcher_interop/mwpm_event.cc.o
+      [ 92%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/flooder_matcher_interop/region_edge.cc.o
+      [ 95%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/grid/static_grid.cc.o
+      [ 95%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/matcher/alternating_tree.cc.o
+      [ 95%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/matcher/mwpm.cc.o
+      [ 95%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/search/search_detector_node.cc.o
+      [ 95%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/search/search_graph.cc.o
+      [ 97%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/search/search_flooder.cc.o
+      [ 97%] Building CXX object CMakeFiles/libbeyond_blossom.dir/src/beyond_blossom/structured/tracker/flood_check_event.cc.o
+      [ 97%] Linking CXX static library libbeyond_blossom.a
+      [ 97%] Built target libbeyond_blossom
+      [ 97%] Building CXX object CMakeFiles/_cpp_beyond_blossom.dir/src/beyond_blossom/bindings/structured.pybind.cc.o
+      [ 97%] Building CXX object CMakeFiles/_cpp_beyond_blossom.dir/src/beyond_blossom/driver/user_graph.pybind.cc.o
+      In file included from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/detail/common.h:12,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/attr.h:13,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/detail/class.h:12,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/pybind11.h:12,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/src/beyond_blossom/bindings/structured.pybind.h:5,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/src/beyond_blossom/bindings/structured.pybind.cc:3:
+      /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/conduit/wrap_include_python_h.h:44:10: fatal error: Python.h: No such file or directory
+         44 | #include <Python.h>
+            |          ^~~~~~~~~~
+      compilation terminated.
+      gmake[3]: *** [CMakeFiles/_cpp_beyond_blossom.dir/build.make:79: CMakeFiles/_cpp_beyond_blossom.dir/src/beyond_blossom/bindings/structured.pybind.cc.o] Error 1
+      gmake[3]: *** Waiting for unfinished jobs....
+      [100%] Building CXX object CMakeFiles/_cpp_beyond_blossom.dir/src/beyond_blossom/rand/rand_gen.pybind.cc.o
+      [100%] Building CXX object CMakeFiles/_cpp_beyond_blossom.dir/src/beyond_blossom/bindings/module.cc.o
+      In file included from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/detail/common.h:12,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/attr.h:13,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/detail/class.h:12,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/pybind11.h:12,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/src/beyond_blossom/bindings/module.cc:16:
+      /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/conduit/wrap_include_python_h.h:44:10: fatal error: Python.h: No such file or directory
+         44 | #include <Python.h>
+            |          ^~~~~~~~~~
+      compilation terminated.
+      gmake[3]: *** [CMakeFiles/_cpp_beyond_blossom.dir/build.make:121: CMakeFiles/_cpp_beyond_blossom.dir/src/beyond_blossom/bindings/module.cc.o] Error 1
+      In file included from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/detail/common.h:12,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/attr.h:13,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/detail/class.h:12,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/pybind11.h:12,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/src/beyond_blossom/rand/rand_gen.pybind.h:19,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/src/beyond_blossom/rand/rand_gen.pybind.cc:16:
+      /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/conduit/wrap_include_python_h.h:44:10: fatal error: Python.h: No such file or directory
+         44 | #include <Python.h>
+            |          ^~~~~~~~~~
+      compilation terminated.
+      gmake[3]: *** [CMakeFiles/_cpp_beyond_blossom.dir/build.make:107: CMakeFiles/_cpp_beyond_blossom.dir/src/beyond_blossom/rand/rand_gen.pybind.cc.o] Error 1
+      In file included from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/detail/common.h:12,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/attr.h:13,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/detail/class.h:12,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/pybind11.h:12,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/numpy.h:12,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/src/beyond_blossom/driver/user_graph.pybind.h:20,
+                       from /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/src/beyond_blossom/driver/user_graph.pybind.cc:16:
+      /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pybind11/include/pybind11/conduit/wrap_include_python_h.h:44:10: fatal error: Python.h: No such file or directory
+         44 | #include <Python.h>
+            |          ^~~~~~~~~~
+      compilation terminated.
+      gmake[3]: *** [CMakeFiles/_cpp_beyond_blossom.dir/build.make:93: CMakeFiles/_cpp_beyond_blossom.dir/src/beyond_blossom/driver/user_graph.pybind.cc.o] Error 1
+      gmake[2]: *** [CMakeFiles/Makefile2:185: CMakeFiles/_cpp_beyond_blossom.dir/all] Error 2
+      gmake[1]: *** [CMakeFiles/Makefile2:192: CMakeFiles/_cpp_beyond_blossom.dir/rule] Error 2
+      gmake: *** [Makefile:195: _cpp_beyond_blossom] Error 2
+      Traceback (most recent call last):
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 406, in <module>
+          main()
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 381, in main
+          json_out["return_val"] = hook(**hook_input["kwargs"])
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 286, in build_wheel
+          return _build_backend().build_wheel(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/build_meta.py", line 441, in build_wheel
+          return _build(['bdist_wheel', '--dist-info-dir', str(metadata_directory)])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/build_meta.py", line 429, in _build
+          return self._build_with_temp_dir(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/build_meta.py", line 410, in _build_with_temp_dir
+          self.run_setup()
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/build_meta.py", line 317, in run_setup
+          exec(code, locals())  # noqa: S102 # exec is intentional here
+          ^^^^^^^^^^^^^^^^^^^^
+        File "<string>", line 140, in <module>
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/__init__.py", line 117, in setup
+          return distutils.core.setup(**attrs)  # type: ignore[return-value]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/_distutils/core.py", line 168, in setup
+          return run_commands(dist)
+                 ^^^^^^^^^^^^^^^^^^
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/_distutils/core.py", line 184, in run_commands
+          dist.run_commands()
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/_distutils/dist.py", line 1028, in run_commands
+          self.run_command(cmd)
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/dist.py", line 1106, in run_command
+          super().run_command(command)
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/_distutils/dist.py", line 1047, in run_command
+          cmd_obj.run()
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/command/bdist_wheel.py", line 454, in run
+          self.run_command("build")
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/_distutils/cmd.py", line 342, in run_command
+          self.distribution.run_command(command)
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/dist.py", line 1106, in run_command
+          super().run_command(command)
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/_distutils/dist.py", line 1047, in run_command
+          cmd_obj.run()
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/_distutils/command/build.py", line 137, in run
+          self.run_command(cmd_name)
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/_distutils/cmd.py", line 342, in run_command
+          self.distribution.run_command(command)
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/dist.py", line 1106, in run_command
+          super().run_command(command)
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/_distutils/dist.py", line 1047, in run_command
+          cmd_obj.run()
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/command/build_ext.py", line 108, in run
+          _build_ext.run(self)
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/_distutils/command/build_ext.py", line 382, in run
+          self.build_extensions()
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/_distutils/command/build_ext.py", line 498, in build_extensions
+          self._build_extensions_serial()
+        File "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/lib/python3.11/site-packages/setuptools/_distutils/command/build_ext.py", line 524, in _build_extensions_serial
+          self.build_extension(ext)
+        File "<string>", line 130, in build_extension
+        File "/usr/lib/python3.11/subprocess.py", line 413, in check_call
+          raise CalledProcessError(retcode, cmd)
+      subprocess.CalledProcessError: Command '['cmake', '--build', '.', '--target', '_cpp_beyond_blossom']' returned non-zero exit status 2.
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for beyond-blossom
+Failed to build beyond-blossom
+ERROR: Failed to build one or more wheels

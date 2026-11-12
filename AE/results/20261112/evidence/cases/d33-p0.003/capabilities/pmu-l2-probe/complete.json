@@ -1,0 +1,60 @@
+{
+  "complete": true,
+  "plan_sha256": "6dfbc2bfc163d38bdc48a2bebe8537d83b1a03fa7a2d3bdc3a406d85fb8c44d4",
+  "inputs": [
+    {
+      "case": "d09-p0.003",
+      "reuse": {},
+      "files": {
+        "inputs/d09-p0.003/circuit.stim": "b83f66b33f3fc75a30e58cd3b417abdb9ef05b278c5ed2a6ee2eb501a16cf27e",
+        "inputs/d09-p0.003/model.dem": "a1e1db0549ad07336e5f0e8bbdeca4aa661d64376e7e2ad11cd83e8a99c4580d",
+        "inputs/d09-p0.003/dataset.bin": "4b1c262643ef07530297c9a408429ab994bd81110903aef460466404608ca5fd"
+      }
+    }
+  ],
+  "calls": [
+    {
+      "case": "d09-p0.003",
+      "distance": 9,
+      "error_rate": 0.003,
+      "method": "reference",
+      "repeat": 1,
+      "directory": "calls/d09-p0.003/reference/01/native",
+      "files": {
+        "calls/d09-p0.003/reference/01/native/execution.csv": "00022b84bf47695cbd24d5f41c6ede2d18876c7818ba331c6d285566a7a93a00",
+        "calls/d09-p0.003/reference/01/native/process.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "calls/d09-p0.003/reference/01/native/setup.json": "4f764a964a0c7d0ee7d463d9b269feef113db2fc5f5999cdbbf40f1dd0e850c7",
+        "calls/d09-p0.003/reference/01/native/correctness.json": "18308547ef15bd8baaf61d35451fb3810e670e823f6d84dd41afcdc2856536ef",
+        "calls/d09-p0.003/reference/01/native/storage.json": "172e78e8662f1abda69de095ac9e46dc0f8085ba7830c5781404aa390af832b9",
+        "calls/d09-p0.003/reference/01/native/warmup.json": "ec54ccabf3315b2122396ed36be9d060356bf8f01255883201601f5acfeb2091",
+        "calls/d09-p0.003/reference/01/native/placement.json": "b85d4cb3dbc152901b1895e1ac40dcaf82605dc594f534c09aa994b2874d30fe",
+        "calls/d09-p0.003/reference/01/native/native_shots.csv": "d6c2084c2799e63fe640b3b64801b01ea4a514609454603bef3219026c65890f",
+        "calls/d09-p0.003/reference/01/native/execution_threads.csv": "15ff889d3eb298fcdcc8adecda3a24f215e1eed193fcfbe768baaeee7609ac10",
+        "calls/d09-p0.003/reference/01/native/pmu.json": "b922149c255f306e3c54c030a186bc35caa85ba5e43085f642e9fc187832e3cc"
+      }
+    },
+    {
+      "case": "d09-p0.003",
+      "distance": 9,
+      "error_rate": 0.003,
+      "method": "structured",
+      "repeat": 1,
+      "directory": "calls/d09-p0.003/structured/01/native",
+      "files": {
+        "calls/d09-p0.003/structured/01/native/execution.csv": "5622bd7bdf96dfcf583b9c2aa38c8c7ead3ddcfb84e8f2f24c5b539a79650375",
+        "calls/d09-p0.003/structured/01/native/kernel_selection.csv": "cb4d3c2a1100dfb43aff2e9b07b47a57ac1abc3e5cca115236f9a100bcd90edc",
+        "calls/d09-p0.003/structured/01/native/process.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "calls/d09-p0.003/structured/01/native/setup.json": "06b2e82efbeb96f41fa146c42b47331d41af11b23374d086b7a1b5528797f9ae",
+        "calls/d09-p0.003/structured/01/native/correctness.json": "547cbf578343438efda0d8fc0ea6d1b552259933c4da75e25f5c018f8a0482c2",
+        "calls/d09-p0.003/structured/01/native/storage.json": "172e78e8662f1abda69de095ac9e46dc0f8085ba7830c5781404aa390af832b9",
+        "calls/d09-p0.003/structured/01/native/warmup.json": "0b686ee01d9d48ab64cb8aa5044506d76f10fc7a3ac8ee840c2185d10a74679b",
+        "calls/d09-p0.003/structured/01/native/differences.csv": "7a6c0d1060dc3da4db28e8ca36cfc9e5550603a54d178f4ffcd2a0da2688508d",
+        "calls/d09-p0.003/structured/01/native/input_features.csv": "65b6dcd80d2343787dd7bf89d0857d39f8728cf3e8bdfad304931d597afb6399",
+        "calls/d09-p0.003/structured/01/native/placement.json": "b85d4cb3dbc152901b1895e1ac40dcaf82605dc594f534c09aa994b2874d30fe",
+        "calls/d09-p0.003/structured/01/native/native_shots.csv": "d6c2084c2799e63fe640b3b64801b01ea4a514609454603bef3219026c65890f",
+        "calls/d09-p0.003/structured/01/native/execution_threads.csv": "881740689209bcc37af9c1d963e1a6b489eab7b3f250a792ccde0407a316e6e6",
+        "calls/d09-p0.003/structured/01/native/pmu.json": "cf7382a777defd651555751e9afe84688c88901a60e86cb4dd8632ef6fe84bb7"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+execution,total_threads,main_tid,main_cpu,team_entries,placement_checks,scope,component_parallelism
+pipeline,8,2631033,2,1,2,before_warmup_and_after_all_shots,2

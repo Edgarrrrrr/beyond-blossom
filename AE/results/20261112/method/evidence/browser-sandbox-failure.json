@@ -1,0 +1,8 @@
+{
+  "complete": false,
+  "scope": "First local Chromium attempt in child sandbox; did not validate the page",
+  "exit_code": 133,
+  "error": "Crashpad setsockopt: Operation not permitted (EPERM)",
+  "source_html": "/home/fujy/dev/beyond_blossom/repo/AE/results/20261112/method/index.html",
+  "resolution": "Retained failed attempt; authorized parent will execute the same local validation through normal escalated browser execution."
+}

@@ -1,0 +1,43 @@
+{
+  "complete": true,
+  "scope": "Bundled evidence checks, numerical regeneration and figure rendering; no decoder execution",
+  "commands": [
+    [
+      "pmu_data.py",
+      "verify"
+    ],
+    [
+      "tailreset_data.py",
+      "verify"
+    ],
+    [
+      "migrate_paper_numbers.py",
+      "--check"
+    ],
+    [
+      "generate_predecoder_macros.py",
+      "--check"
+    ],
+    [
+      "plot.py",
+      "all",
+      "--output",
+      "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/archived-figures-clean-env/figures"
+    ],
+    [
+      "m4_pro/plot_m4_per_round.py",
+      "--output-dir",
+      "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/archived-figures-clean-env/figures/m4"
+    ],
+    [
+      "migrate_paper_numbers.py",
+      "--output",
+      "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/archived-figures-clean-env/performance-macros.tex"
+    ],
+    [
+      "generate_predecoder_macros.py",
+      "--output",
+      "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/archived-figures-clean-env/predecoder_numbers.tex"
+    ]
+  ]
+}

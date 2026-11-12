@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.001/runs/external/d29-p0.001/n10000/run/bin/blossom",
+    "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.001/runs/external/d29-p0.001/n10000/input/native-input.json",
+    "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.001/runs/external/d29-p0.001/n10000/run/parity-uf",
+    "parity-uf"
+  ],
+  "cpus": [
+    2
+  ]
+}

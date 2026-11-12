@@ -1,0 +1,2 @@
+execution,total_threads,main_tid,main_cpu,team_entries,placement_checks,scope,component_parallelism
+serial,1,433488,2,0,2,before_warmup_and_after_all_shots,1

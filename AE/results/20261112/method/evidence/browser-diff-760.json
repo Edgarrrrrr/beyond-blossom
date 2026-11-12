@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "viewport": [
+    760,
+    913
+  ],
+  "checks": [
+    "diff side",
+    "diff unified",
+    "diff larger font",
+    "diff missing search",
+    "diff default explanations",
+    "no document horizontal overflow"
+  ],
+  "name": "diff-760",
+  "html_sha256": "41955b87b35194103d07279e82c604f5f569b31026eb33fa8995f10ca2402261",
+  "screenshot_sha256": "07fe2403578dc247e40373a93ea24613c2eba0ef315114be1b26c56df532152f"
+}

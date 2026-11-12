@@ -1,0 +1,74 @@
+{
+  "stages": {
+    "external": [
+      {
+        "commands": [
+          [
+            "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/bin/python",
+            "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/AE/reproduce.py",
+            "external",
+            "--profile",
+            "paper",
+            "--ae-run",
+            "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.0005/runs/native-batch",
+            "--build",
+            "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/shared-build/builds/external",
+            "--output",
+            "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.0005/runs/external",
+            "--cpus",
+            "2,4,6,8",
+            "--limit",
+            "10000"
+          ]
+        ],
+        "finished_utc": "2026-11-12T07:43:09.824588+00:00",
+        "log": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.0005/logs/external.log",
+        "output": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.0005/runs/external",
+        "receipt_sha256": "8be0e72c30042a112d8d98adb10173948351a2f777af26bf4529f3f0e4e79ee8",
+        "started_utc": "2026-11-12T07:42:05.175939+00:00",
+        "status": "complete"
+      }
+    ],
+    "native-batch": [
+      {
+        "commands": [
+          [
+            "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/bin/python",
+            "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/AE/reproduce.py",
+            "run",
+            "--profile",
+            "paper",
+            "--binary",
+            "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/shared-build/builds/policy-0-l3/bin/bb_benchmark",
+            "--build-record",
+            "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/shared-build/builds/policy-0-l3/build.json",
+            "--reference-binary",
+            "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/shared-build/builds/reference-l3/build/bin/experiment_benchmark",
+            "--reference-record",
+            "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/shared-build/builds/reference-l3/reference.json",
+            "--methods",
+            "reference,structured,predecoded,component-parallel,pipelined,parallel-predecode",
+            "--measurement",
+            "batch",
+            "--cpus",
+            "2,4,6,8,10,12,14,16",
+            "--backend",
+            "avx512vl",
+            "--error-rates",
+            "0.0005",
+            "--distances",
+            "9",
+            "--output",
+            "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.0005/runs/native-batch"
+          ]
+        ],
+        "finished_utc": "2026-11-12T07:42:05.117975+00:00",
+        "log": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.0005/logs/native-batch.log",
+        "output": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.0005/runs/native-batch",
+        "receipt_sha256": "760d4b15cbd5e3072511badc8485c462cf84d5e055b116aae7762565c7e4bcb7",
+        "started_utc": "2026-11-12T07:39:44.047222+00:00",
+        "status": "complete"
+      }
+    ]
+  }
+}

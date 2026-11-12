@@ -1,0 +1,1590 @@
+{
+  "schema": 1,
+  "revision": "r1",
+  "entries": {
+    "after:core:693": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 693,
+      "code": "void OneHopPredecoder::run_fused_range(uint32_t begin, uint32_t end, PartialResult& partial,",
+      "explanation": "run_fused_range 处理半开 seed 区间，把局部匹配写入 partial。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:694": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 694,
+      "code": "                                      uint16_t* masks, uint32_t* links, Grid* known_grid) {",
+      "explanation": "masks/links 是已准备的 scratch；known_grid 只供其他模式的绑定快路径使用。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:695": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 695,
+      "code": "#if BB_TAILRESET_PREDECODE_MODE == 1",
+      "explanation": "模式1在编译期选择直接跳过路径。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:696": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 696,
+      "code": "    return;",
+      "explanation": "模式1直接返回；模式3不会运行这一行。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:697": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 697,
+      "code": "#elif BB_TAILRESET_PREDECODE_MODE == 2",
+      "explanation": "模式2仍是历史 coordinate/full-cap 策略。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:698": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 698,
+      "code": "    const auto ordered = prepare_order_with_scratch(begin, end, partial, masks, nullptr, links);",
+      "explanation": "历史模式2准备坐标顺序。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:699": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 699,
+      "code": "    run_order(ordered, partial);",
+      "explanation": "历史模式2调用 run_order→run_one，仍会执行旧 full-cap/grow 逻辑；未重命名为 simple。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:700": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 700,
+      "code": "#elif BB_TAILRESET_PREDECODE_MODE == 3",
+      "explanation": "新增模式3的编译期分支；正式 simple equal-share 通过这个物理模式选择。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:701": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 701,
+      "code": "    // AE simple baseline: simultaneous conservative equal shares, followed by",
+      "explanation": "注释定义同时计算的保守等分上界。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:702": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 702,
+      "code": "    // coordinate-order tight matching. Each active-active edge bounds both",
+      "explanation": "坐标顺序只决定 tight 边竞争次序；活动—活动边约束两端。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:703": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 703,
+      "code": "    // endpoints by w/2; inactive and boundary endpoints retain radius zero and",
+      "explanation": "活动边每端上界为 w/2；非活动端点与边界保持半径0。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:704": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 704,
+      "code": "    // impose w. Round down to the solver's even-radius lattice, so odd and",
+      "explanation": "非活动/边界边给予单个活动端完整 w 上界，并向偶数半径格对齐。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:705": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 705,
+      "code": "    // 2-mod-4 weights can defer a pair to MWPM rather than overgrow its edge.",
+      "explanation": "奇数或2模4权重可能不能在预解码中配对；残余继续交给完整求解器。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:706": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 706,
+      "code": "    // Publish every radius before examining matches. There is no degree sort,",
+      "explanation": "任何匹配开始之前先发布所有 seed 半径；不做 degree 排序。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:707": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 707,
+      "code": "    // neighbor chase, or additional growth after a neighbor freezes.",
+      "explanation": "不追赶邻点，也不在邻点冻结后继续增加半径。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:708": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 708,
+      "code": "    // The AE runner restricts this baseline to the serial whole-component path.",
+      "explanation": "AE入口将该策略限制在串行完整组件，避免分区间半径尚未全部发布。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:709": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 709,
+      "code": "    const auto ordered = prepare_order_with_scratch(begin, end, partial, masks, nullptr, links);",
+      "explanation": "复用坐标顺序/候选 mask 的准备函数；degree scratch 传空指针。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:710": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 710,
+      "code": "    for (const uint32_t index : ordered.sources) {",
+      "explanation": "第一轮按坐标遍历所有活动 seed，只计算和发布半径。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:711": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 711,
+      "code": "        auto& seed = seed_view.storage[index];",
+      "explanation": "引用当前 seed，以便写入 radius。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:712": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 712,
+      "code": "        auto& grid = *seed.grid;",
+      "explanation": "引用该 seed 所属 grid。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:713": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 713,
+      "code": "        weight_int cap = UINT32_MAX;",
+      "explanation": "cap 初始为无有限边的 UINT32_MAX 哨兵。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:714": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 714,
+      "code": "        auto present = grid.present[seed.cell];",
+      "explanation": "读取当前 cell 的存在边位图；包括活动、非活动和边界边。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:715": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 715,
+      "code": "        const auto active = ordered.masks_by_seed[index] & ~grid.boundary_mask[seed.cell];",
+      "explanation": "从活动候选 mask 去掉 boundary 位；active 表示两端都活动的真实边槽。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:716": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 716,
+      "code": "        while (present) {",
+      "explanation": "逐条扫描 present 中存在的边。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:717": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 717,
+      "code": "            const uint8_t slot = std::countr_zero(present);",
+      "explanation": "countr_zero 找到最低置位槽号；调用时 present 非零。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:718": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 718,
+      "code": "            present &= present - 1;",
+      "explanation": "清除刚选中的最低置位，后续迭代不会重复扫描它。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:719": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 719,
+      "code": "            const auto weight = grid.weights[seed.cell][slot];",
+      "explanation": "按 cell/slot 读取该条边的整数权重。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:720": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 720,
+      "code": "            cap = std::min(cap, (active & (uint16_t{1} << slot)) ? weight / 2 : weight);",
+      "explanation": "活动边贡献整数半权 w/2，其他边贡献 w；和之前 cap 取最小值，保障每条边的对偶约束。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:721": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 721,
+      "code": "        }",
+      "explanation": "结束当前 seed 的边扫描。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:722": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 722,
+      "code": "        seed.radius = cap == UINT32_MAX ? 0 : cap & ~weight_int{1};",
+      "explanation": "没有有限边则半径0；否则清掉 cap 最低位，向下取到偶数格。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:723": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 723,
+      "code": "        grid.predecode.radii[seed.cell] = seed.radius;",
+      "explanation": "把同一半径发布到 grid 状态，使导入和后续读取与 seed.radius 一致。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:724": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 724,
+      "code": "    }",
+      "explanation": "结束第一轮；所有半径都已发布。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:725": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 725,
+      "code": "    for (const uint32_t index : ordered.sources) {",
+      "explanation": "第二轮才开始匹配；遍历顺序仍为坐标顺序。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:726": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 726,
+      "code": "        auto& seed = seed_view.storage[index];",
+      "explanation": "引用当前 source seed。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:727": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 727,
+      "code": "        if (seed.mate != PredecodeSeed::UNMATCHED) continue;",
+      "explanation": "已有 mate 的 source 立即跳过，防止一个端点加入多条匹配边。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:728": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 728,
+      "code": "        auto& grid = *seed.grid;",
+      "explanation": "获取当前 source 的 grid。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:729": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 729,
+      "code": "        auto candidates = ordered.masks_by_seed[index];",
+      "explanation": "复制当前 seed 的活动候选 mask，供逐位置位扫描。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:730": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 730,
+      "code": "        while (candidates) {",
+      "explanation": "仍有活动候选时继续。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:731": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 731,
+      "code": "            const uint8_t slot = std::countr_zero(candidates);",
+      "explanation": "选择最低候选槽；边竞争遵循固定槽序。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:732": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 732,
+      "code": "            candidates &= candidates - 1;",
+      "explanation": "从局部候选 mask 清除此槽，不改变原始 mask。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:733": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 733,
+      "code": "            const auto cell = ptrdiff_t(seed.cell) + grid.predecode.offsets[slot];",
+      "explanation": "使用有符号 cell+offset 得到邻点 cell，避免负偏移的无符号语义。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:734": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 734,
+      "code": "            const auto other = grid.predecode.active[cell] - 1;",
+      "explanation": "active[cell] 保存 seed索引+1；活动候选保证其非零，减1恢复原索引。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:735": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 735,
+      "code": "            if (seed_view.storage[other].mate == PredecodeSeed::UNMATCHED &&",
+      "explanation": "先要求邻 seed 尚未匹配；否则短路，不接受这条边。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:736": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 736,
+      "code": "                uint64_t(seed.radius) + seed_view.storage[other].radius == grid.weights[seed.cell][slot]) {",
+      "explanation": "以64位和比较两端半径之和是否等于边权；严格相等才是 tight。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:737": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 737,
+      "code": "                pair(index, other, slot, partial);",
+      "explanation": "对 tight 活动边调用 pair，同时写两端 mate 和局部结果。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:738": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 738,
+      "code": "                break;",
+      "explanation": "一次成功配对后停止当前 source 的候选扫描。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:739": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 739,
+      "code": "            }",
+      "explanation": "结束候选接受条件。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:740": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 740,
+      "code": "        }",
+      "explanation": "结束活动候选循环。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:741": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 741,
+      "code": "        if (seed.mate != PredecodeSeed::UNMATCHED) continue;",
+      "explanation": "source 已配对则跳过边界扫描，活动候选优先。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:742": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 742,
+      "code": "        auto boundaries = grid.boundary_mask[seed.cell];",
+      "explanation": "读取当前 cell 的 boundary 位图。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:743": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 743,
+      "code": "        while (boundaries) {",
+      "explanation": "逐条考虑存在的边界边。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:744": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 744,
+      "code": "            const uint8_t slot = std::countr_zero(boundaries);",
+      "explanation": "选择最低 boundary 槽。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:745": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 745,
+      "code": "            boundaries &= boundaries - 1;",
+      "explanation": "清除这一条待检查的 boundary 位。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:746": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 746,
+      "code": "            if (seed.radius == grid.weights[seed.cell][slot]) {",
+      "explanation": "边界半径为0，所以 tight 条件退化为 source.radius == w。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:747": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 747,
+      "code": "                pair(index, PredecodeSeed::BOUNDARY, slot, partial);",
+      "explanation": "用 BOUNDARY 哨兵建立单端点匹配，不访问不存在的 partner seed。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:748": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 748,
+      "code": "                break;",
+      "explanation": "接受边界后停止本 source 的边界扫描。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:749": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 749,
+      "code": "            }",
+      "explanation": "结束边界接受条件。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:750": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 750,
+      "code": "        }",
+      "explanation": "结束边界扫描。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:751": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 751,
+      "code": "    }",
+      "explanation": "结束第二轮匹配；未接受的 seed 保持 unmatched。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:799": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 799,
+      "code": "#endif",
+      "explanation": "结束整个编译期策略分流。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:800": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 800,
+      "code": "}",
+      "explanation": "返回 void；seed 状态和 partial 是输出，complete 由外层 finish 随后判断。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:508": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 508,
+      "code": "OneHopPredecoder::PreparedOrder OneHopPredecoder::prepare_order_with_scratch(",
+      "explanation": "准备候选位图和遍历顺序；返回 PreparedOrder 视图而非复制 seed。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:509": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 509,
+      "code": "    size_t begin, size_t end, PartialResult& partial,",
+      "explanation": "begin/end 是半开 seed 区间；partial 供其他模式的统计使用。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:510": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 510,
+      "code": "    uint16_t* masks_by_seed, uint8_t* degrees_by_seed, uint32_t* order_by_seed) {",
+      "explanation": "调用方提供 mask、degree、order scratch；模式3不读取 degree 指针。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:511": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 511,
+      "code": "    assert(begin <= end && end <= seed_view.storage.size());",
+      "explanation": "断言区间合法并处于 seed backing storage 内。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:512": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 512,
+      "code": "#if BB_TAILRESET_PREDECODE_MODE == 1",
+      "explanation": "编译期模式1表示跳过预解码。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:513": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 513,
+      "code": "    return {{}, masks_by_seed};",
+      "explanation": "模式1返回空源集合；模式3不执行此分支。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:514": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 514,
+      "code": "#elif BB_TAILRESET_PREDECODE_MODE == 2 || BB_TAILRESET_PREDECODE_MODE == 3",
+      "explanation": "模式2和模式3共用坐标排序辅助路径，但后续半径算法不同。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:515": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 515,
+      "code": "    if (begin == end) return {{}, masks_by_seed};",
+      "explanation": "空区间立即返回空 span，保留 mask 指针。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:516": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 516,
+      "code": "    for (uint32_t k = begin; k < end; ++k) {",
+      "explanation": "按 storage 索引遍历输入 seed，先生成候选 mask 与原索引。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:517": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 517,
+      "code": "        const auto& seed = seed_view.storage[k];",
+      "explanation": "只读当前 seed；它的物理 storage 身份保持不变。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:518": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 518,
+      "code": "        const auto& grid = *seed.grid;",
+      "explanation": "只读当前 seed 的 grid。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:519": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 519,
+      "code": "        masks_by_seed[k] = uint16_t(grid.predecode.neighborhood(grid, seed.cell, grid.boundary_mask[seed.cell]));",
+      "explanation": "调用构造期已绑定的邻域函数；保存低16位活动候选位图。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:520": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 520,
+      "code": "        order_by_seed[k] = k;",
+      "explanation": "初始顺序表记录原索引 k，之后排序这个表。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:521": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 521,
+      "code": "    }",
+      "explanation": "结束候选位图准备循环。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:522": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 522,
+      "code": "    // Sort source indices only; the shared seed backing retains its identity.",
+      "explanation": "注释强调只重排索引，避免改变 active[cell] 与 seed 索引的对应关系。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:523": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 523,
+      "code": "    // Linear cells encode (t, gy, gx), including rotated-grid embedding.",
+      "explanation": "线性 cell 按时间、网格纵坐标、横坐标编码，包含旋转码嵌入。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:524": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 524,
+      "code": "    const auto less = [&](uint32_t a, uint32_t b) {",
+      "explanation": "定义严格排序比较器；对同一 grid 按 cell 排序。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:525": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 525,
+      "code": "        const auto& lhs = seed_view.storage[a];",
+      "explanation": "读取左侧 seed。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:526": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 526,
+      "code": "        const auto& rhs = seed_view.storage[b];",
+      "explanation": "读取右侧 seed。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:527": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 527,
+      "code": "        if (lhs.grid != rhs.grid && lhs.grid->group != rhs.grid->group)",
+      "explanation": "跨 grid 且属于不同组件组时，先比较组号。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:528": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 528,
+      "code": "            return lhs.grid->group < rhs.grid->group;",
+      "explanation": "组号较小者在前；本页示例只使用同一个组件。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:529": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 529,
+      "code": "        return lhs.cell < rhs.cell;",
+      "explanation": "在同组坐标次序中，cell 较小的 seed 在前。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:530": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 530,
+      "code": "    };",
+      "explanation": "结束比较器定义。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:531": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 531,
+      "code": "    auto* first = order_by_seed + begin;",
+      "explanation": "排序范围起点是 order scratch 加 begin。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:532": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 532,
+      "code": "    auto* last = order_by_seed + end;",
+      "explanation": "排序范围终点是 order scratch 加 end。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:533": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 533,
+      "code": "    if (!std::is_sorted(first, last, less)) std::sort(first, last, less);",
+      "explanation": "先检查是否已有序；必要时才按坐标排序。模式3没有 degree 排序。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:534": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 534,
+      "code": "    return {std::span<const uint32_t>(first, end - begin), masks_by_seed};",
+      "explanation": "返回有序索引 span 和按原 seed 索引寻址的 masks。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:562": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 562,
+      "code": "#endif",
+      "explanation": "结束 prepare_order 的编译期策略选择。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:563": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 563,
+      "code": "}",
+      "explanation": "结束 prepare_order_with_scratch 函数。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:kernel:20": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "line": 20,
+      "code": "template <typename Box, typename Stencil, size_t... D>",
+      "explanation": "编译期方向序列 D 展开固定 stencil，方向不是动态后端标签。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:kernel:21": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "line": 21,
+      "code": "uint16_t one_hop_syndrome_mask_impl(const OneHopPredecoder::Grid& w, size_t cell, std::index_sequence<D...>) {",
+      "explanation": "以当前 cell 为中心构造活动邻点位图。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:kernel:22": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "line": 22,
+      "code": "    const auto* active = w.predecode.active.data() + cell;",
+      "explanation": "取得以当前 cell 为基准的 active 数组指针。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:kernel:23": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "line": 23,
+      "code": "    // The grid builder guarantees a readable halo for all twelve offsets.",
+      "explanation": "构造期 halo 保证全部十二个偏移都可读，包括无边方向。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:kernel:24": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "line": 24,
+      "code": "    return w.present[cell] &",
+      "explanation": "对读取形成的位图再与 present 相交；无边方向仍发生了读取。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:kernel:25": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "line": 25,
+      "code": "           ((uint16_t(active[Box::template offset<D>()] != 0) << CircuitStorage<Stencil>::template slot<D>) | ...);",
+      "explanation": "每个方向读取32位active编号，非零转成一个槽位bit，折叠OR；没有把缺失边误认为活动候选。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:kernel:26": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "line": 26,
+      "code": "}",
+      "explanation": "结束位图计算实现。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:kernel:28": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "line": 28,
+      "code": "template <typename Box, typename Stencil>",
+      "explanation": "按固定 Box/Stencil 实例化公开辅助入口。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:kernel:29": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "line": 29,
+      "code": "uint16_t one_hop_syndrome_mask(const OneHopPredecoder::Grid& w, size_t cell) {",
+      "explanation": "邻域位图辅助函数的完整签名。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:kernel:30": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "line": 30,
+      "code": "    return one_hop_syndrome_mask_impl<Box, Stencil>(w, cell, typename Stencil::Directions{});",
+      "explanation": "传入 stencil 的编译期方向序列，转发到固定偏移展开实现。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:kernel:31": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "line": 31,
+      "code": "}",
+      "explanation": "返回 uint16_t mask；结束辅助入口。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:21": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 21,
+      "code": "#if BB_TAILRESET_PREDECODE_MODE == 2 || BB_TAILRESET_PREDECODE_MODE == 3",
+      "explanation": "编译期选择：历史模式2与新增模式3均使用坐标邻域入口；不是每条边的运行时分派。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:22": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 22,
+      "code": "template <typename Box, typename Stencil>",
+      "explanation": "以固定网格 Box 和电路方向 Stencil 实例化辅助函数。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:23": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 23,
+      "code": "uint32_t coordinate_neighborhood(const OneHopPredecoder::Grid& grid, size_t cell, uint16_t) {",
+      "explanation": "坐标模式的邻域入口；第三个边界 mask 参数在此入口中不使用。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:24": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 24,
+      "code": "    return one_hop_syndrome_mask<Box, Stencil>(grid, cell);",
+      "explanation": "只返回活动邻点位图；不附加高16位的 degree 计数。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:25": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 25,
+      "code": "}",
+      "explanation": "结束坐标邻域辅助函数。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:338": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 338,
+      "code": "void OneHopPredecoder::pair(uint32_t source, uint32_t target, uint8_t slot, PartialResult& partial) {",
+      "explanation": "接受一条已经通过 tight 检查的边；source/target 是 seed 索引，boundary 用专门哨兵。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:339": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 339,
+      "code": "    auto& seed = seed_view.storage[source];",
+      "explanation": "引用 source 对应的 seed，之后直接更新该对象。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:340": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 340,
+      "code": "#if BB_STRUCTURED_PROFILE_COUNTERS",
+      "explanation": "只有单独的 profile-counter 构建才编译后面的统计累加。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:341": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 341,
+      "code": "    if (target == PredecodeSeed::BOUNDARY) {",
+      "explanation": "统计构建区分边界匹配与双活动端点匹配。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:342": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 342,
+      "code": "        ++partial.stats.matched_boundaries;",
+      "explanation": "边界匹配统计加一；本页计数器关闭，不执行此行。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:343": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 343,
+      "code": "    } else {",
+      "explanation": "统计构建中的另一分支：双端点匹配。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:344": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 344,
+      "code": "        ++partial.stats.matched_pairs;",
+      "explanation": "活动配对统计加一；不计为性能结果。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:345": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 345,
+      "code": "    }",
+      "explanation": "结束统计类型分支。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:346": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 346,
+      "code": "#endif",
+      "explanation": "结束可选计数器编译条件。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:347": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 347,
+      "code": "    seed.mate = target;",
+      "explanation": "写 source 的 mate；此写入使后续坐标循环能够跳过已经配对的 seed。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:348": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 348,
+      "code": "    seed.match_slot = slot;",
+      "explanation": "记录 source 所用的物理边槽位。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:349": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 349,
+      "code": "    if (target != UINT32_MAX - 1) {",
+      "explanation": "boundary 哨兵没有 partner seed；普通匹配才写第二个端点。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:350": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 350,
+      "code": "        seed_view.storage[target].mate = source;",
+      "explanation": "把 partner 的 mate 反向指回 source。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:351": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 351,
+      "code": "        seed_view.storage[target].match_slot = slot ^ 1;",
+      "explanation": "成对方向以 slot xor 1 得到反向槽位，保持同一条无向边。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:352": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 352,
+      "code": "    }",
+      "explanation": "结束普通 partner 写回。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:353": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 353,
+      "code": "    const auto& grid = *seed.grid;",
+      "explanation": "读取 source 所属 grid 的权重和 observable 存储。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:354": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 354,
+      "code": "    partial.result.weight += grid.weights[seed.cell][slot];",
+      "explanation": "局部匹配权重加上这条边的原始归一化整数权重。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:355": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 355,
+      "code": "    partial.result.obs_mask ^= grid.observables[seed.cell][slot];",
+      "explanation": "将该边 observable mask 与局部 mask 异或；不是按位或。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:356": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 356,
+      "code": "}",
+      "explanation": "pair 返回 void；这里只建立局部匹配，不判定整次解码是否完成。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:655": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 655,
+      "code": "void OneHopPredecoder::finish() {",
+      "explanation": "调用方在合并局部结果后判断整个活动 seed 集是否完成匹配。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:656": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 656,
+      "code": "    PredecodePhaseScope<PredecodePhase::Complete> phase(stats);",
+      "explanation": "完成检查的阶段作用域；纯计时构建不启用内部阶段读钟。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:657": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 657,
+      "code": "    complete = true;",
+      "explanation": "先假设完整，随后查找 unmatched seed。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:658": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 658,
+      "code": "    for (const auto& range : seed_view.active_ranges()) {",
+      "explanation": "遍历 seed_view 的有效区间；无效容量槽不参与判定。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:659": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 659,
+      "code": "        const auto seeds = seed_view.storage.subspan(range.begin, range.count());",
+      "explanation": "获取当前有效 seed 子跨度。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:660": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 660,
+      "code": "        if (!std::all_of(seeds.begin(), seeds.end(), [](const auto& seed) {",
+      "explanation": "要求此有效区间中每个 seed 都满足下面的 mate 条件。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:661": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 661,
+      "code": "                return seed.mate != PredecodeSeed::UNMATCHED;",
+      "explanation": "mate 不为 UNMATCHED 才算完成；boundary 也是有效匹配。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:662": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 662,
+      "code": "            })) {",
+      "explanation": "如果存在 unmatched seed，则进入不完整分支。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:663": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 663,
+      "code": "            complete = false;",
+      "explanation": "标记 complete=false；局部匹配不能作为整个 syndrome 的最终解返回。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:664": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 664,
+      "code": "            break;",
+      "explanation": "发现残余后停止扫描其余区间。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:665": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 665,
+      "code": "        }",
+      "explanation": "结束残余判定。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:666": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 666,
+      "code": "    }",
+      "explanation": "结束有效区间扫描。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:667": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 667,
+      "code": "    result_pending = complete;",
+      "explanation": "只有完整结果才设置 result_pending，供提取阶段消费。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:668": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 668,
+      "code": "}",
+      "explanation": "结束 finish；这个函数不求解残余 MWPM。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:834": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 834,
+      "code": "    run_fused_range(0, uint32_t(seed_view.storage.size()), partial,",
+      "explanation": "外层 run 将整段活动 seed 交给 run_fused_range。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:835": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 835,
+      "code": "        reinterpret_cast<uint16_t*>(layout.mask_address), reinterpret_cast<uint32_t*>(layout.order_address), known_grid);",
+      "explanation": "将对齐 scratch 地址还原为mask/order指针，并传递已知grid。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:836": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 836,
+      "code": "    merge(partial);",
+      "explanation": "把局部 partial.result 合并到预解码结果；不等于宣布完整解码。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:core:837": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 837,
+      "code": "    finish();",
+      "explanation": "随后检查所有 mate，决定 complete/result_pending。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:driver:35": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "line": 35,
+      "code": "    if constexpr (Predecode) {",
+      "explanation": "Predecode 是模板编译期分支；此处展示启用预解码的路径。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:driver:36": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "line": 36,
+      "code": "        {",
+      "explanation": "建立预解码准备阶段作用域。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:driver:37": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "line": 37,
+      "code": "            PredecodePhaseScope<PredecodePhase::Prepare> phase(mwpm.predecoder.stats);",
+      "explanation": "可选统计作用域，不改变解码状态。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:driver:38": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "line": 38,
+      "code": "            if (run_predecoder)",
+      "explanation": "调用参数允许执行预解码时，进入 run。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:driver:39": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "line": 39,
+      "code": "                mwpm.predecoder.run(mwpm.single_predecode_grid());",
+      "explanation": "完整 run 包含局部预解码、合并与 finish；本页动画聚焦其中 mode3 fused 调用。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:driver:40": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "line": 40,
+      "code": "        }",
+      "explanation": "退出准备阶段作用域。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:driver:41": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "line": 41,
+      "code": "        if (mwpm.predecoder.complete)",
+      "explanation": "检查外层 finish 产生的 complete。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:driver:42": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "line": 42,
+      "code": "            return;",
+      "explanation": "完整证书可直接结束时间线准备；后续提取其结果。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:driver:43": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "line": 43,
+      "code": "        if (!state_imported) {",
+      "explanation": "未完成且尚未导入时，准备合法 warm start。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:driver:44": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "line": 44,
+      "code": "            PredecodePhaseScope<PredecodePhase::Handoff> phase(mwpm.predecoder.stats);",
+      "explanation": "进入导入阶段作用域。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:driver:45": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "line": 45,
+      "code": "            if (packed) mwpm.import_packed_predecode_state();",
+      "explanation": "packed 路径导入包含已匹配端点与未匹配端点的全部 seed 状态。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:driver:46": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "line": 46,
+      "code": "            else mwpm.import_predecode_state(mwpm.predecoder.seed_view.storage);",
+      "explanation": "普通路径同样导入整个 seed storage；先前局部匹配可在全局增广中改变。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:driver:47": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "line": 47,
+      "code": "        }",
+      "explanation": "结束导入分支。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:guard:298": {
+      "side": "after",
+      "path": "AE/native/benchmark.cc",
+      "line": 298,
+      "code": "#if BB_TAILRESET_PREDECODE_MODE == 3",
+      "explanation": "模式3的AE限制在编译期启用。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:guard:299": {
+      "side": "after",
+      "path": "AE/native/benchmark.cc",
+      "line": 299,
+      "code": "    if (o.backend != \"generic\" && o.execution != \"serial\")",
+      "explanation": "结构化后端必须使用 serial；官方 generic 对照不套用该策略。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:guard:300": {
+      "side": "after",
+      "path": "AE/native/benchmark.cc",
+      "line": 300,
+      "code": "        throw std::invalid_argument(\"Simple equal-share AE baseline requires serial whole-component execution\");",
+      "explanation": "不满足时显式抛异常；不是仅在debug有效的assert。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "after:guard:301": {
+      "side": "after",
+      "path": "AE/native/benchmark.cc",
+      "line": 301,
+      "code": "#endif",
+      "explanation": "结束mode3运行配置校验。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "before:core:19": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 19,
+      "code": "namespace beyond_blossom::structured {",
+      "explanation": "进入结构化后端命名空间。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "after:core:19": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 19,
+      "code": "namespace beyond_blossom::structured {",
+      "explanation": "进入结构化后端命名空间。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "before:core:20": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 20,
+      "code": "namespace {",
+      "explanation": "进入本翻译单元内部辅助函数作用域。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "after:core:20": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 20,
+      "code": "namespace {",
+      "explanation": "进入本翻译单元内部辅助函数作用域。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "before:core:21": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 21,
+      "code": "#if BB_TAILRESET_PREDECODE_MODE == 2",
+      "explanation": "旧提交只为物理模式2选择这条坐标路径；模式2仍采用 full-cap/grow，没有新增模式3的半权规则。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "before:core:22": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 22,
+      "code": "template <typename Box, typename Stencil>",
+      "explanation": "以固定网格 Box 和电路方向 Stencil 实例化辅助函数。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "before:core:23": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 23,
+      "code": "uint32_t coordinate_neighborhood(const OneHopPredecoder::Grid& grid, size_t cell, uint16_t) {",
+      "explanation": "坐标模式的邻域入口；第三个边界 mask 参数在此入口中不使用。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "before:core:24": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 24,
+      "code": "    return one_hop_syndrome_mask<Box, Stencil>(grid, cell);",
+      "explanation": "只返回活动邻点位图；不附加高16位的 degree 计数。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "before:core:28": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 28,
+      "code": "void bind_kernels(OneHopPredecoder::Grid& w) {",
+      "explanation": "为此 grid 绑定邻域、半径等内核。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "after:core:28": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 28,
+      "code": "void bind_kernels(OneHopPredecoder::Grid& w) {",
+      "explanation": "为此 grid 绑定邻域、半径等内核。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "before:core:29": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 29,
+      "code": "    // Only the row/slice strides enter these kernels. Time extent is immaterial.",
+      "explanation": "这组内核只需要行、片步长；这里的模板时间长度不影响偏移计算。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "after:core:29": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 29,
+      "code": "    // Only the row/slice strides enter these kernels. Time extent is immaterial.",
+      "explanation": "这组内核只需要行、片步长；这里的模板时间长度不影响偏移计算。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "before:core:30": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 30,
+      "code": "    using Box = StaticGridBox<NX, NX, 1>;",
+      "explanation": "实例化固定 NX×NX 行片布局；不会在候选扫描中改变形状。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "after:core:30": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 30,
+      "code": "    using Box = StaticGridBox<NX, NX, 1>;",
+      "explanation": "实例化固定 NX×NX 行片布局；不会在候选扫描中改变形状。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "before:core:31": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 31,
+      "code": "#if BB_TAILRESET_PREDECODE_MODE == 2",
+      "explanation": "旧提交只为物理模式2选择这条坐标路径；模式2仍采用 full-cap/grow，没有新增模式3的半权规则。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "after:core:31": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 31,
+      "code": "#if BB_TAILRESET_PREDECODE_MODE == 2 || BB_TAILRESET_PREDECODE_MODE == 3",
+      "explanation": "模式2/3在编译期绑定坐标邻域，不走默认 degree 邻域。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "before:core:32": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 32,
+      "code": "    w.predecode.neighborhood = coordinate_neighborhood<Box, Stencil>;",
+      "explanation": "将坐标邻域函数写入 grid 的构造期函数指针。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "after:core:32": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 32,
+      "code": "    w.predecode.neighborhood = coordinate_neighborhood<Box, Stencil>;",
+      "explanation": "将坐标邻域函数写入 grid 的构造期函数指针。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "before:core:33": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 33,
+      "code": "#else",
+      "explanation": "其他策略保留已有 degree 内核分支。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "after:core:33": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 33,
+      "code": "#else",
+      "explanation": "其他策略保留已有 degree 内核分支。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "before:core:34": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 34,
+      "code": "    w.predecode.neighborhood = one_hop_neighborhood_portable<Box, Stencil>;",
+      "explanation": "默认模式绑定可移植的 degree 邻域入口。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "after:core:34": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 34,
+      "code": "    w.predecode.neighborhood = one_hop_neighborhood_portable<Box, Stencil>;",
+      "explanation": "默认模式绑定可移植的 degree 邻域入口。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "before:core:511": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 511,
+      "code": "    assert(begin <= end && end <= seed_view.storage.size());",
+      "explanation": "断言区间合法并处于 seed backing storage 内。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "before:core:512": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 512,
+      "code": "#if BB_TAILRESET_PREDECODE_MODE == 1",
+      "explanation": "编译期模式1表示跳过预解码。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "before:core:513": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 513,
+      "code": "    return {{}, masks_by_seed};",
+      "explanation": "模式1返回空源集合；模式3不执行此分支。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "before:core:514": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 514,
+      "code": "#elif BB_TAILRESET_PREDECODE_MODE == 2",
+      "explanation": "旧提交只为物理模式2选择这条坐标路径；模式2仍采用 full-cap/grow，没有新增模式3的半权规则。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "before:core:515": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 515,
+      "code": "    if (begin == end) return {{}, masks_by_seed};",
+      "explanation": "空区间立即返回空 span，保留 mask 指针。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "before:core:516": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 516,
+      "code": "    for (uint32_t k = begin; k < end; ++k) {",
+      "explanation": "按 storage 索引遍历输入 seed，先生成候选 mask 与原索引。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "before:core:517": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 517,
+      "code": "        const auto& seed = seed_view.storage[k];",
+      "explanation": "只读当前 seed；它的物理 storage 身份保持不变。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "before:core:697": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 697,
+      "code": "#elif BB_TAILRESET_PREDECODE_MODE == 2",
+      "explanation": "模式2仍是历史 coordinate/full-cap 策略。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "before:core:698": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 698,
+      "code": "    const auto ordered = prepare_order_with_scratch(begin, end, partial, masks, nullptr, links);",
+      "explanation": "历史模式2准备坐标顺序。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "before:core:699": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 699,
+      "code": "    run_order(ordered, partial);",
+      "explanation": "历史模式2调用 run_order→run_one，仍会执行旧 full-cap/grow 逻辑；未重命名为 simple。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "before:core:700": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 700,
+      "code": "#else",
+      "explanation": "下面保留默认模式0的既有 degree/bound fast path；模式3不编译该分支。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "after:core:752": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 752,
+      "code": "#else",
+      "explanation": "下面保留默认模式0的既有 degree/bound fast path；模式3不编译该分支。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "before:core:701": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 701,
+      "code": "    if (try_run_bound_range(known_grid, begin, end, partial, masks, links))",
+      "explanation": "默认模式0先尝试构造期绑定的融合快路径；不是本页 simple 分支。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "after:core:753": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 753,
+      "code": "    if (try_run_bound_range(known_grid, begin, end, partial, masks, links))",
+      "explanation": "默认模式0先尝试构造期绑定的融合快路径；不是本页 simple 分支。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    },
+    "before:core:702": {
+      "side": "before",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 702,
+      "code": "        return;",
+      "explanation": "绑定快路径成功时默认模式0提前返回。",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "after:core:754": {
+      "side": "after",
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "line": 754,
+      "code": "        return;",
+      "explanation": "绑定快路径成功时默认模式0提前返回。",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    }
+  }
+}

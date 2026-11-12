@@ -1,0 +1,258 @@
+Internal ctest changing into directory: /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/native-mode3-validation/build
+Test project /home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/native-mode3-validation/build
+        Start   1: MatchingResult.IndependentComponentComposition
+        Start   2: ObservableBits.RoundTripAllBitsAndXorExistingOutput
+        Start   3: HeaderODR.StructuredPrimalUsesOneDefinitionAcrossTranslationUnits
+        Start   4: UnstructuredPredecode.ExhaustiveTJoinOracleWithNegativeWeightsAndBoundaries
+  1/126 Test   #1: MatchingResult.IndependentComponentComposition ..........................................................   Passed    0.08 sec
+        Start   5: UnstructuredPredecode.ProvisionalPairIsRevisedByFullMatching
+  2/126 Test   #2: ObservableBits.RoundTripAllBitsAndXorExistingOutput .....................................................   Passed    0.14 sec
+        Start   6: UnstructuredPredecode.CompleteShotAvoidsArenasAndSupportsReverseSeedOrder
+  3/126 Test   #3: HeaderODR.StructuredPrimalUsesOneDefinitionAcrossTranslationUnits .......................................   Passed    0.16 sec
+        Start   7: UnstructuredPredecode.WideObservablesNegativeEdgesAndEdgeExtraction
+  4/126 Test   #4: UnstructuredPredecode.ExhaustiveTJoinOracleWithNegativeWeightsAndBoundaries .............................   Passed    0.21 sec
+        Start   8: UnstructuredPredecode.BoundaryNodesErrorsMovesAndRepeatedShots
+  5/126 Test   #5: UnstructuredPredecode.ProvisionalPairIsRevisedByFullMatching ............................................   Passed    0.24 sec
+        Start   9: UnstructuredPredecode.ArbitraryHighDegreeGraph
+  6/126 Test   #6: UnstructuredPredecode.CompleteShotAvoidsArenasAndSupportsReverseSeedOrder ...............................   Passed    0.20 sec
+        Start  10: UnstructuredPredecode.CorrelationPassesBypassAndRestorePredecoder
+  7/126 Test   #7: UnstructuredPredecode.WideObservablesNegativeEdgesAndEdgeExtraction .....................................   Passed    0.28 sec
+        Start  11: UnstructuredPredecode.OddLowLevelWeightsKeepDualFeasibleCaps
+  8/126 Test   #8: UnstructuredPredecode.BoundaryNodesErrorsMovesAndRepeatedShots ..........................................   Passed    0.24 sec
+        Start  12: UnstructuredPredecode.RebuildsCapsAfterPublicGraphWeightChanges
+  9/126 Test   #9: UnstructuredPredecode.ArbitraryHighDegreeGraph ..........................................................   Passed    0.22 sec
+        Start  13: UnstructuredPredecode.CorrelationInputFailuresLeaveDecoderReusable
+ 10/126 Test  #10: UnstructuredPredecode.CorrelationPassesBypassAndRestorePredecoder .......................................   Passed    0.16 sec
+        Start  14: UnstructuredPredecode.SparseHighDegreeFallbackPreservesDenseComponentsAndGraphChanges
+ 11/126 Test  #11: UnstructuredPredecode.OddLowLevelWeightsKeepDualFeasibleCaps ............................................   Passed    0.17 sec
+        Start  15: UnstructuredPredecode.SparseFallbackNormalizesNegativeWeightsAndRecoversFromErrors
+ 12/126 Test  #12: UnstructuredPredecode.RebuildsCapsAfterPublicGraphWeightChanges .........................................   Passed    0.16 sec
+        Start 161: StaticGrid.RadiusStoreOwnershipAndZeroState
+ 13/126 Test  #13: UnstructuredPredecode.CorrelationInputFailuresLeaveDecoderReusable ......................................   Passed    0.19 sec
+        Start 162: StaticGrid.StorageMappingPreservesDirectionPairsAndRowSize
+ 14/126 Test  #14: UnstructuredPredecode.SparseHighDegreeFallbackPreservesDenseComponentsAndGraphChanges ...................   Passed    0.15 sec
+        Start 163: StaticGrid.SimdSignedArithmeticMasksAndFirstMinimumAcrossBatches
+ 15/126 Test  #15: UnstructuredPredecode.SparseFallbackNormalizesNegativeWeightsAndRecoversFromErrors ......................   Passed    0.19 sec
+        Start 164: StaticGrid.SingleWeightRowDoesNotReadPastTwelveSlotTail
+ 16/126 Test #161: StaticGrid.RadiusStoreOwnershipAndZeroState .............................................................   Passed    0.15 sec
+        Start 165: StaticGrid.LastWeightBatchDoesNotTouchGuardPage
+ 17/126 Test #162: StaticGrid.StorageMappingPreservesDirectionPairsAndRowSize ..............................................   Passed    0.21 sec
+        Start 166: StaticGrid.IndependentComponentsAndVirtualBoundaries
+ 18/126 Test #163: StaticGrid.SimdSignedArithmeticMasksAndFirstMinimumAcrossBatches ........................................   Passed    0.22 sec
+        Start 167: StaticGrid.TwelveDirectionComponentsPreserveEveryOriginalEdge
+ 19/126 Test #164: StaticGrid.SingleWeightRowDoesNotReadPastTwelveSlotTail .................................................   Passed    0.24 sec
+        Start 168: StaticGrid.ReusedDecoderMatchesGenericSurfaceGraphs
+ 20/126 Test #165: StaticGrid.LastWeightBatchDoesNotTouchGuardPage .........................................................   Passed    0.21 sec
+        Start 169: StaticGrid.AllSimdKernelsMatchIndependentCollisionFormula
+ 21/126 Test #166: StaticGrid.IndependentComponentsAndVirtualBoundaries ....................................................   Passed    0.22 sec
+        Start 170: StaticGrid.InvalidConfigurationPreservesDecoder
+ 22/126 Test #167: StaticGrid.TwelveDirectionComponentsPreserveEveryOriginalEdge ...........................................   Passed    0.25 sec
+        Start 171: StaticGrid.FailedStencilConstructionPreservesAdjacencyForRetry
+ 23/126 Test #168: StaticGrid.ReusedDecoderMatchesGenericSurfaceGraphs .....................................................   Passed    0.29 sec
+        Start 172: StaticGrid.UniformEventsRespectSlopesAndDirectionOrder
+ 24/126 Test #169: StaticGrid.AllSimdKernelsMatchIndependentCollisionFormula ...............................................   Passed    0.29 sec
+        Start 173: StaticGrid.DiagramUsesOriginalDetectorIds
+ 25/126 Test #170: StaticGrid.InvalidConfigurationPreservesDecoder .........................................................   Passed    0.24 sec
+        Start 174: StaticGrid.CollisionStateTracksRegionTransitions
+ 26/126 Test #171: StaticGrid.FailedStencilConstructionPreservesAdjacencyForRetry ..........................................   Passed    0.22 sec
+        Start 175: StaticGrid.MaskedDirectionsAndSignedPackedState
+ 27/126 Test #172: StaticGrid.UniformEventsRespectSlopesAndDirectionOrder ..................................................   Passed    0.22 sec
+        Start 176: StaticGrid.MoveWithActiveRegionsPreservesNodeAddresses
+ 28/126 Test #173: StaticGrid.DiagramUsesOriginalDetectorIds ...............................................................   Passed    0.22 sec
+        Start 177: StaticGrid.MovePreservesReweightedEdgeAddresses
+ 29/126 Test #174: StaticGrid.CollisionStateTracksRegionTransitions ........................................................   Passed    0.45 sec
+        Start 178: StaticGrid.IndependentDecodersUseGlobalIdsAndIgnoreSharedBoundary
+ 30/126 Test #175: StaticGrid.MaskedDirectionsAndSignedPackedState .........................................................   Passed    0.44 sec
+        Start 179: StaticGrid.IndependentDecodersKeepGlobalQuantizationAndNegativeWeights
+ 31/126 Test #176: StaticGrid.MoveWithActiveRegionsPreservesNodeAddresses ..................................................   Passed    0.44 sec
+        Start 180: StaticGrid.EqualExplicitLabelsDoNotMergeDisconnectedComponents
+ 32/126 Test #177: StaticGrid.MovePreservesReweightedEdgeAddresses .........................................................   Passed    0.25 sec
+        Start 181: StaticGrid.IndependentDecodersMergeManyObservablesAdditively
+ 33/126 Test #178: StaticGrid.IndependentDecodersUseGlobalIdsAndIgnoreSharedBoundary .......................................   Passed    0.21 sec
+        Start 182: StaticGrid.ComponentFailureDoesNotContaminateOtherDecoder
+ 34/126 Test #179: StaticGrid.IndependentDecodersKeepGlobalQuantizationAndNegativeWeights ..................................   Passed    0.23 sec
+        Start 183: StaticGrid.CorrelatedDecodeIsRejectedAtStructuredEntry
+ 35/126 Test #180: StaticGrid.EqualExplicitLabelsDoNotMergeDisconnectedComponents ..........................................   Passed    0.29 sec
+        Start 184: StaticGrid.ShortestPathsUseGlobalIdsAndRejectUnreachableBoundary
+ 36/126 Test #181: StaticGrid.IndependentDecodersMergeManyObservablesAdditively ............................................   Passed    0.23 sec
+        Start 185: StaticGrid.LargeDistanceRegistryIncludesThreeDistanceRounds
+ 37/126 Test #182: StaticGrid.ComponentFailureDoesNotContaminateOtherDecoder ...............................................   Passed    0.17 sec
+        Start 186: StaticGrid.ConstructedCellAccessKeepsInactiveCellsAndFirstMinimumMasked
+ 38/126 Test #183: StaticGrid.CorrelatedDecodeIsRejectedAtStructuredEntry ..................................................   Passed    0.18 sec
+        Start 187: StaticGrid.OneShotSeedOwnerPreservesComponentOrderAndMoveLifetime
+ 39/126 Test #184: StaticGrid.ShortestPathsUseGlobalIdsAndRejectUnreachableBoundary ........................................   Passed    0.13 sec
+        Start 188: StaticGrid.ShotSeedNegativeParityAndDeferredIndexRebuild
+ 40/126 Test #186: StaticGrid.ConstructedCellAccessKeepsInactiveCellsAndFirstMinimumMasked .................................   Passed    0.11 sec
+        Start 189: StaticGrid.ShotAddressEpochWrapResetAndFailedAttemptReuse
+ 41/126 Test #187: StaticGrid.OneShotSeedOwnerPreservesComponentOrderAndMoveLifetime .......................................   Passed    0.17 sec
+        Start 190: StaticGrid.ShotStaticAddressesAvoidMutableDetectorMetadata
+ 42/126 Test #185: StaticGrid.LargeDistanceRegistryIncludesThreeDistanceRounds .............................................   Passed    0.33 sec
+        Start 191: StaticGrid.ShotAddressEpochKeepsNegativeCycleCorrections
+ 43/126 Test #188: StaticGrid.ShotSeedNegativeParityAndDeferredIndexRebuild ................................................   Passed    0.21 sec
+        Start 193: OneHopPredecoder.ExhaustiveSquareWeightsSyndromesAndBoundaries
+ 44/126 Test #189: StaticGrid.ShotAddressEpochWrapResetAndFailedAttemptReuse ...............................................   Passed    0.24 sec
+        Start 197: OneHopPredecoder.NonSyndromeNeighborsBoundGrowthAndEnableMultihopSolution
+ 45/126 Test #190: StaticGrid.ShotStaticAddressesAvoidMutableDetectorMetadata ..............................................   Passed    0.20 sec
+        Start 198: OneHopPredecoder.PartialTightPairRemainsReversible
+ 46/126 Test #191: StaticGrid.ShotAddressEpochKeepsNegativeCycleCorrections ................................................   Passed    0.23 sec
+        Start 201: OneHopPredecoder.BoundaryPriorityAndZeroTightEdges
+ 47/126 Test #193: OneHopPredecoder.ExhaustiveSquareWeightsSyndromesAndBoundaries ..........................................   Passed    0.20 sec
+        Start 202: OneHopPredecoder.NegativeWeightsAndSelfLoopsUseOriginalSignedObjective
+ 48/126 Test #197: OneHopPredecoder.NonSyndromeNeighborsBoundGrowthAndEnableMultihopSolution ...............................   Passed    0.17 sec
+        Start 203: OneHopPredecoder.InvalidAndOddInputsDoNotContaminateNextShot
+ 49/126 Test #198: OneHopPredecoder.PartialTightPairRemainsReversible ......................................................   Passed    0.12 sec
+        Start 253: Varying.GrowingZeroRadiusAtTime
+ 50/126 Test #201: OneHopPredecoder.BoundaryPriorityAndZeroTightEdges ......................................................   Passed    0.11 sec
+        Start 254: Varying.GetDistanceAtTime
+ 51/126 Test #202: OneHopPredecoder.NegativeWeightsAndSelfLoopsUseOriginalSignedObjective ..................................   Passed    0.12 sec
+        Start 255: Varying.VaryingString
+ 52/126 Test #203: OneHopPredecoder.InvalidAndOddInputsDoNotContaminateNextShot ............................................   Passed    0.11 sec
+        Start 256: Varying.ThenSlopeAt
+ 53/126 Test #253: Varying.GrowingZeroRadiusAtTime .........................................................................   Passed    0.11 sec
+        Start 257: Varying.AdditionAndSubtraction
+ 54/126 Test #254: Varying.GetDistanceAtTime ...............................................................................   Passed    0.12 sec
+        Start 258: Varying.InplaceAdditionAndSubtraction
+ 55/126 Test #255: Varying.VaryingString ...................................................................................   Passed    0.18 sec
+        Start 259: Varying.from_base_and_growth
+ 56/126 Test #256: Varying.ThenSlopeAt .....................................................................................   Passed    0.23 sec
+        Start 260: Varying.growing_value_at_time
+ 57/126 Test #257: Varying.AdditionAndSubtraction ..........................................................................   Passed    0.18 sec
+        Start 261: Varying.shrinking_value_at_time
+ 58/126 Test #258: Varying.InplaceAdditionAndSubtraction ...................................................................   Passed    0.18 sec
+        Start 262: Varying.frozen
+ 59/126 Test #259: Varying.from_base_and_growth ............................................................................   Passed    0.18 sec
+        Start 263: Varying.TimeToXInterceptWhenAddedTo
+ 60/126 Test #260: Varying.growing_value_at_time ...........................................................................   Passed    0.20 sec
+        Start 264: Varying.TimeToXIntercept
+ 61/126 Test #261: Varying.shrinking_value_at_time .........................................................................   Passed    0.16 sec
+        Start 265: Varying.Equality
+ 62/126 Test #262: Varying.frozen ..........................................................................................   Passed    0.17 sec
+        Start 266: Graph.AddEdge
+ 63/126 Test #263: Varying.TimeToXInterceptWhenAddedTo .....................................................................   Passed    0.17 sec
+        Start 267: Graph.AddBoundaryEdge
+ 64/126 Test #264: Varying.TimeToXIntercept ................................................................................   Passed    0.19 sec
+        Start 268: Graph.AddEdgeWithImpliedWeights
+ 65/126 Test #265: Varying.Equality ........................................................................................   Passed    0.18 sec
+        Start 269: Graph.AddBoundaryEdgeWithImpliedWeights
+ 66/126 Test #266: Graph.AddEdge ...........................................................................................   Passed    0.19 sec
+        Start 270: DetectorNode.IndexOfNeighber
+ 67/126 Test #267: Graph.AddBoundaryEdge ...................................................................................   Passed    0.11 sec
+        Start 271: DetectorNode.compute_wrapped_radius_within_layer_at_time
+ 68/126 Test #268: Graph.AddEdgeWithImpliedWeights .........................................................................   Passed    0.08 sec
+        Start 272: DetectorNode.compute_stitch_radius_at_time_bounded_by_region_towards_neighbor_across_collision
+ 69/126 Test #269: Graph.AddBoundaryEdgeWithImpliedWeights .................................................................   Passed    0.07 sec
+        Start 273: DetectorNode.compute_stitch_radius_at_time_bounded_by_region_towards_neighbor_across_skewed_collision
+ 70/126 Test #270: DetectorNode.IndexOfNeighber ............................................................................   Passed    0.19 sec
+        Start 274: CompressedEdge.Reversed
+ 71/126 Test #271: DetectorNode.compute_wrapped_radius_within_layer_at_time ................................................   Passed    0.19 sec
+        Start 275: CompressedEdge.MergedWith
+ 72/126 Test #272: DetectorNode.compute_stitch_radius_at_time_bounded_by_region_towards_neighbor_across_collision ..........   Passed    0.27 sec
+        Start 276: GraphFillRegion.BlossomBuilder
+ 73/126 Test #273: DetectorNode.compute_stitch_radius_at_time_bounded_by_region_towards_neighbor_across_skewed_collision ...   Passed    0.20 sec
+        Start 277: GraphFillRegion.TopRegion
+ 74/126 Test #274: CompressedEdge.Reversed .................................................................................   Passed    0.18 sec
+        Start 278: GraphFillRegion.AddMatch
+ 75/126 Test #275: CompressedEdge.MergedWith ...............................................................................   Passed    0.23 sec
+        Start 279: GraphFillRegion.descendance_ordering_le
+ 76/126 Test #276: GraphFillRegion.BlossomBuilder ..........................................................................   Passed    0.21 sec
+        Start 280: GraphFillRegion.descendance_ordering_lt
+ 77/126 Test #277: GraphFillRegion.TopRegion ...............................................................................   Passed    0.25 sec
+        Start 281: MatchTest.equality
+ 78/126 Test #278: GraphFillRegion.AddMatch ................................................................................   Passed    0.19 sec
+        Start 282: GraphFlooder.PriorityQueue
+ 79/126 Test #279: GraphFillRegion.descendance_ordering_le .................................................................   Passed    0.21 sec
+        Start 283: GraphFlooder.CreateRegion
+ 80/126 Test #280: GraphFillRegion.descendance_ordering_lt .................................................................   Passed    0.15 sec
+        Start 284: GraphFlooder.RegionGrowingToBoundary
+ 81/126 Test #281: MatchTest.equality ......................................................................................   Passed    0.12 sec
+        Start 285: GraphFlooder.RegionHitRegion
+ 82/126 Test #282: GraphFlooder.PriorityQueue ..............................................................................   Passed    0.12 sec
+        Start 286: GraphFlooder.RegionGrowingThenFrozenThenStartShrinking
+ 83/126 Test #283: GraphFlooder.CreateRegion ...............................................................................   Passed    0.20 sec
+        Start 287: AlternatingTree.FindRoot
+ 84/126 Test #284: GraphFlooder.RegionGrowingToBoundary ....................................................................   Passed    0.22 sec
+        Start 288: AlternatingTree.UnstableEraseInt
+ 85/126 Test #285: GraphFlooder.RegionHitRegion ............................................................................   Passed    0.27 sec
+        Start 289: AlternatingTree.UnstableEraseAltTreeEdge
+ 86/126 Test #286: GraphFlooder.RegionGrowingThenFrozenThenStartShrinking ..................................................   Passed    0.23 sec
+        Start 290: AlternatingTree.AllNodesInTree
+ 87/126 Test #287: AlternatingTree.FindRoot ................................................................................   Passed    0.26 sec
+        Start 291: AlternatingTree.TreeEqual
+ 88/126 Test #288: AlternatingTree.UnstableEraseInt ........................................................................   Passed    0.25 sec
+        Start 292: AlternatingTree.BecomeRoot
+ 89/126 Test #289: AlternatingTree.UnstableEraseAltTreeEdge ................................................................   Passed    0.24 sec
+        Start 293: AlternatingTree.CommonAncestor
+ 90/126 Test #290: AlternatingTree.AllNodesInTree ..........................................................................   Passed    0.23 sec
+        Start 294: AlternatingTree.PrunedUpwardPathStoppingBefore
+ 91/126 Test #291: AlternatingTree.TreeEqual ...............................................................................   Passed    0.18 sec
+        Start 295: AlternatingTree.PrunedUpwardBackEdgePathStoppingBefore
+ 92/126 Test #292: AlternatingTree.BecomeRoot ..............................................................................   Passed    0.24 sec
+        Start 296: Mwpm.BlossomCreatedThenShattered
+ 93/126 Test #293: AlternatingTree.CommonAncestor ..........................................................................   Passed    0.22 sec
+        Start 297: Mwpm.BlossomShatterDrivenWithoutFlooder
+ 94/126 Test #294: AlternatingTree.PrunedUpwardPathStoppingBefore ..........................................................   Passed    0.23 sec
+        Start 298: Mwpm.BranchingTreeFormsBlossomThenHitsBoundaryMatch
+ 95/126 Test #295: AlternatingTree.PrunedUpwardBackEdgePathStoppingBefore ..................................................   Passed    0.22 sec
+        Start 299: Mwpm.BoundaryMatchHitsTree
+ 96/126 Test #296: Mwpm.BlossomCreatedThenShattered ........................................................................   Passed    0.20 sec
+        Start 300: Mwpm.ShatterBlossomAndExtractMatchesForPair
+ 97/126 Test #297: Mwpm.BlossomShatterDrivenWithoutFlooder .................................................................   Passed    0.26 sec
+        Start 301: Mwpm.ObsMaskToSetBits
+ 98/126 Test #298: Mwpm.BranchingTreeFormsBlossomThenHitsBoundaryMatch .....................................................   Passed    0.29 sec
+        Start 302: Mwpm.ShatterBlossomAndExtractMatches
+ 99/126 Test #299: Mwpm.BoundaryMatchHitsTree ..............................................................................   Passed    0.27 sec
+        Start 303: Mwpm.ShatterBlossomAndExtractMatchEdges
+100/126 Test #300: Mwpm.ShatterBlossomAndExtractMatchesForPair .............................................................   Passed    0.24 sec
+        Start 304: Mwpm.ShatterAndMatchBlossomMatchedToBoundaryMatch
+101/126 Test #301: Mwpm.ObsMaskToSetBits ...................................................................................   Passed    0.26 sec
+        Start 305: Mwpm.ShatterAndMatchBlossomMatchedToBoundaryMatchEdges
+102/126 Test #302: Mwpm.ShatterBlossomAndExtractMatches ....................................................................   Passed    0.26 sec
+        Start 306: Mwpm.MatchingResult
+103/126 Test #303: Mwpm.ShatterBlossomAndExtractMatchEdges .................................................................   Passed    0.27 sec
+        Start 307: Mwpm.TwoRegionsGrowingThenMatching
+104/126 Test #304: Mwpm.ShatterAndMatchBlossomMatchedToBoundaryMatch .......................................................   Passed    0.31 sec
+        Start 308: Mwpm.RegionHittingMatchThenMatchedToOtherRegion
+105/126 Test #305: Mwpm.ShatterAndMatchBlossomMatchedToBoundaryMatchEdges ..................................................   Passed    0.27 sec
+        Start 309: Mwpm.RegionHittingMatchFormingBlossomThenMatchingToBoundary
+106/126 Test #306: Mwpm.MatchingResult .....................................................................................   Passed    0.24 sec
+        Start 310: flood_check_event.basic_usage
+107/126 Test #307: Mwpm.TwoRegionsGrowingThenMatching ......................................................................   Passed    0.16 sec
+        Start 311: radix_heap_queue.basic_usage
+108/126 Test #308: Mwpm.RegionHittingMatchThenMatchedToOtherRegion .........................................................   Passed    0.23 sec
+        Start 312: radix_heap_queue.sorts_fuzz
+109/126 Test #309: Mwpm.RegionHittingMatchFormingBlossomThenMatchingToBoundary .............................................   Passed    0.20 sec
+        Start 313: radix_heap_queue.bucket_for
+110/126 Test #310: flood_check_event.basic_usage ...........................................................................   Passed    0.23 sec
+        Start 314: radix_heap_queue.wraparound_all_the_way_around
+111/126 Test #311: radix_heap_queue.basic_usage ............................................................................   Passed    0.21 sec
+        Start 315: radix_heap_queue.clear
+112/126 Test #312: radix_heap_queue.sorts_fuzz .............................................................................   Passed    0.18 sec
+        Start 316: radix_heap_queue.sparse_bucket_bitmap_survives_wraparound_and_clear
+113/126 Test #313: radix_heap_queue.bucket_for .............................................................................   Passed    0.26 sec
+        Start 317: mwpm_event.basic_usage
+114/126 Test #314: radix_heap_queue.wraparound_all_the_way_around ..........................................................   Passed    0.29 sec
+        Start 318: QueuedEventTracker.basic_usage
+115/126 Test #315: radix_heap_queue.clear ..................................................................................   Passed    0.29 sec
+        Start 319: cyclic.comparison
+116/126 Test #316: radix_heap_queue.sparse_bucket_bitmap_survives_wraparound_and_clear .....................................   Passed    0.30 sec
+        Start 320: cyclic.arithmetic
+117/126 Test #317: mwpm_event.basic_usage ..................................................................................   Passed    0.29 sec
+        Start 321: cyclic.widen_from_nearby_reference
+118/126 Test #318: QueuedEventTracker.basic_usage ..........................................................................   Passed    0.29 sec
+        Start 322: SearchGraph.AddEdge
+119/126 Test #319: cyclic.comparison .......................................................................................   Passed    0.25 sec
+        Start 323: SearchGraph.AddBoundaryEdge
+120/126 Test #320: cyclic.arithmetic .......................................................................................   Passed    0.27 sec
+        Start 324: SearchFlooder.RepCodeDetectorSearch
+121/126 Test #321: cyclic.widen_from_nearby_reference ......................................................................   Passed    0.27 sec
+        Start 325: SearchFlooder.RepCodeBoundarySearch
+122/126 Test #322: SearchGraph.AddEdge .....................................................................................   Passed    0.22 sec
+        Start 326: SearchFlooder.RepCodeSourceToDestPath
+123/126 Test #323: SearchGraph.AddBoundaryEdge .............................................................................   Passed    0.32 sec
+124/126 Test #324: SearchFlooder.RepCodeDetectorSearch .....................................................................   Passed    0.25 sec
+125/126 Test #325: SearchFlooder.RepCodeBoundarySearch .....................................................................   Passed    0.23 sec
+126/126 Test #326: SearchFlooder.RepCodeSourceToDestPath ...................................................................   Passed    0.15 sec
+
+100% tests passed, 0 tests failed out of 126
+
+Total Test time (real) =   8.10 sec

@@ -1,0 +1,6 @@
+case,distance,error_rate,method,shots,source_shots,workload,repeats,mean_us_per_shot,p50_us,p99_us,max_us,timing_scope,summary
+d29-p0.003,29,0.003,parity,10000,1000000,prefix,3,20888.783936366664,20718.039,27862.73,38246.982,"Rust SolverSerial.solve + subgraph; clear, input, validation and output excluded",d29-p0.003/n10000/run/summary.json
+d29-p0.003,29,0.003,fusion,10000,1000000,prefix,3,41659.30167676666,41136.978,57158.595,88327.545,"Rust SolverParallel.solve + subgraph; clear, input, validation and output excluded",d29-p0.003/n10000/run/summary.json
+d29-p0.003,29,0.003,parity-uf,10000,1000000,prefix,3,19057.467292033332,18946.911,24816.074,34438.226,"Rust SolverSerial.solve + subgraph with max_tree_size=0; clear, input, validation and output excluded",d29-p0.003/n10000/run/summary.json
+d29-p0.003,29,0.003,unionfind,10000,1000000,prefix,3,1066.0662881,1062.002,1251.823,4483.778,"C++ Decoder.decode including returned correction copy; syndrome preparation, edge projection and clear excluded",d29-p0.003/n10000/run/summary.json
+d29-p0.003,29,0.003,ldpc-uf,10000,1000000,prefix,3,8136.2080979,8007.319,10824.104,44030.509,"C++ PreparedUfDecoder.decode_prepared; cluster initialization, correction extraction and cleanup excluded",d29-p0.003/n10000/run/summary.json

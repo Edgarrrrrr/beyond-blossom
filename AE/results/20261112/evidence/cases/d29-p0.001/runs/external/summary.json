@@ -1,0 +1,357 @@
+{
+  "complete": true,
+  "configuration": {
+    "ae_complete_sha256": "0c64cd23a25b6c417bbfab6ae235c2dc9d8816d9f580aa7c579e9c670754f3e7",
+    "ae_plan_sha256": "1422df0307dcea4ea2c2c02fa54e3c9c00303e94ca806496f14a70508caf703e",
+    "ae_run": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.001/runs/native-batch",
+    "controller_sha256": {
+      "collect.py": "0428964538a3dfc7a7d075e2d01b32b7b0ee4704cd624694610ce660728d0b22",
+      "common.py": "53809e4c5021f9e693602cfa8934b8e397ca09c17fef4e6aff35a947c8f2e512",
+      "input_adapter.py": "2c787a617dac82b8da10c9498fdcfb9e18ada57b5af7ef1172edb443531f0e61",
+      "run.py": "3b61427c3191c8009581d259b084924038552212d0264a0d95f3424c9211f7c2"
+    },
+    "external_build": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/shared-build/builds/external",
+    "external_build_sha256": "8f3412438dfca48a676654c081c826bfe6673f1ef21b173f4d13a071ca60ad79",
+    "historical_claim": "Fresh collection policy; no historical million/ten-thousand assignment is inferred",
+    "profile": "paper",
+    "repeats": 3,
+    "requested_limit": 10000,
+    "sampling_policy": "Saved source order; every reduced workload is a prefix of the identical saved case",
+    "schedule": [
+      {
+        "case": "d29-p0.001",
+        "distance": 29,
+        "error_rate": 0.001,
+        "methods": [
+          "parity",
+          "fusion",
+          "parity-uf",
+          "unionfind",
+          "ldpc-uf"
+        ],
+        "shots": 10000,
+        "source_shots": 1000000
+      }
+    ],
+    "schema": 1,
+    "shot_counts": {},
+    "source": {
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae",
+      "dirty": false,
+      "status": ""
+    },
+    "warmup_prefix": 256,
+    "warmup_root": null,
+    "warmup_seconds": 2.0
+  },
+  "results": [
+    {
+      "case": "d29-p0.001",
+      "cpus": [
+        2
+      ],
+      "distance": 29,
+      "error_rate": 0.001,
+      "files": {
+        "parity.corrections.jsonl": "3b254a817ae12f0fcf291df8ecd6cfe874a92c5c409feae4a9092598bcb27987",
+        "parity.csv": "a42ac3fa5ccf652bfe76349cfbacf1ca70274fb7a6dfd2dcfeb1622427b269d7",
+        "parity.log": "eced3b3b554c4879e33a7a180276d881414c919b0b1f9e6a6a852c9e7bcf7b66"
+      },
+      "independent_chain_checks": 10000,
+      "independent_measurement_inputs": 10000,
+      "integer_optimality": "required",
+      "logical_failures": null,
+      "max_us": 8197.16,
+      "mean_us_per_shot": 3703.4783629333333,
+      "method": "parity",
+      "native_parity_checks": 30000,
+      "native_status": {
+        "completed": true,
+        "warmup_calls": 768,
+        "warmup_wall_seconds": 2.864402924
+      },
+      "p50_us": 3679.14,
+      "p99_us": 4947.213,
+      "physical_observable_truth_available": false,
+      "repeat_decode_seconds": [
+        37.177317463,
+        36.996480245,
+        36.93055318
+      ],
+      "repeat_mean_us": [
+        3717.7317463000004,
+        3699.6480245,
+        3693.055318
+      ],
+      "repeats": 3,
+      "shots": 10000,
+      "source_shots": 1000000,
+      "std_repeat_mean_us": 12.776351114331028,
+      "summary": "d29-p0.001/n10000/run/summary.json",
+      "timing_scope": "Rust SolverSerial.solve + subgraph; clear, input, validation and output excluded",
+      "wall_seconds": 117.4594562575221,
+      "weight_gaps": [
+        {
+          "mean_integer_gap": 0.0,
+          "nonoptimal_shots": 0
+        },
+        {
+          "mean_integer_gap": 0.0,
+          "nonoptimal_shots": 0
+        },
+        {
+          "mean_integer_gap": 0.0,
+          "nonoptimal_shots": 0
+        }
+      ],
+      "workload": "prefix"
+    },
+    {
+      "case": "d29-p0.001",
+      "cpus": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "distance": 29,
+      "error_rate": 0.001,
+      "files": {
+        "fusion.corrections.jsonl": "c73328fa0e892f956515434bd088bf1a59ed2fcbe1f9b2fcf681b23c370b000b",
+        "fusion.csv": "e03ba8aee1995caf5f36bcd967e2bcb7f8592e61a4f57419acfefe1c13a90b94",
+        "fusion.log": "a7173c1cc71c71c9a725488e1f4954d0bd6f9848feb04b86249d147e2a8551fb"
+      },
+      "independent_chain_checks": 10000,
+      "independent_measurement_inputs": 10000,
+      "integer_optimality": "required",
+      "logical_failures": null,
+      "max_us": 20118.87,
+      "mean_us_per_shot": 9935.134421666668,
+      "method": "fusion",
+      "native_parity_checks": 30000,
+      "native_status": {
+        "completed": true,
+        "warmup_calls": 256,
+        "warmup_wall_seconds": 2.622940036
+      },
+      "p50_us": 9819.736,
+      "p99_us": 13590.681,
+      "physical_observable_truth_available": false,
+      "repeat_decode_seconds": [
+        99.331487685,
+        99.430173511,
+        99.292371454
+      ],
+      "repeat_mean_us": [
+        9933.148768500001,
+        9943.0173511,
+        9929.2371454
+      ],
+      "repeats": 3,
+      "shots": 10000,
+      "source_shots": 1000000,
+      "std_repeat_mean_us": 7.101452749775127,
+      "summary": "d29-p0.001/n10000/run/summary.json",
+      "timing_scope": "Rust SolverParallel.solve + subgraph; clear, input, validation and output excluded",
+      "wall_seconds": 314.83097348175943,
+      "weight_gaps": [
+        {
+          "mean_integer_gap": 0.0,
+          "nonoptimal_shots": 0
+        },
+        {
+          "mean_integer_gap": 0.0,
+          "nonoptimal_shots": 0
+        },
+        {
+          "mean_integer_gap": 0.0,
+          "nonoptimal_shots": 0
+        }
+      ],
+      "workload": "prefix"
+    },
+    {
+      "case": "d29-p0.001",
+      "cpus": [
+        2
+      ],
+      "distance": 29,
+      "error_rate": 0.001,
+      "files": {
+        "parity-uf.corrections.jsonl": "171885cd1c6ba5777fec3811470654369a51c35df45c3270456f0c01efa5d1ec",
+        "parity-uf.csv": "f9b2788c24b2304cee524d7086842e4fc2e9aede6b8dfe98e4695a68570bf5aa",
+        "parity-uf.log": "45821a345e3a3b8104c3033bea1623eaa013ee79dc3495387edec7b45048b396"
+      },
+      "independent_chain_checks": 10000,
+      "independent_measurement_inputs": 10000,
+      "integer_optimality": "measured gap; not an exact decoder",
+      "logical_failures": null,
+      "max_us": 8054.894,
+      "mean_us_per_shot": 3652.286846566667,
+      "method": "parity-uf",
+      "native_parity_checks": 30000,
+      "native_status": {
+        "completed": true,
+        "warmup_calls": 768,
+        "warmup_wall_seconds": 2.820116851
+      },
+      "p50_us": 3629.849,
+      "p99_us": 4853.255,
+      "physical_observable_truth_available": false,
+      "repeat_decode_seconds": [
+        36.475174033,
+        36.516460852,
+        36.576970512
+      ],
+      "repeat_mean_us": [
+        3647.5174033,
+        3651.6460852,
+        3657.6970512000003
+      ],
+      "repeats": 3,
+      "shots": 10000,
+      "source_shots": 1000000,
+      "std_repeat_mean_us": 5.119984295752786,
+      "summary": "d29-p0.001/n10000/run/summary.json",
+      "timing_scope": "Rust SolverSerial.solve + subgraph with max_tree_size=0; clear, input, validation and output excluded",
+      "wall_seconds": 115.5158821195364,
+      "weight_gaps": [
+        {
+          "mean_integer_gap": 11742.9806,
+          "nonoptimal_shots": 6257
+        },
+        {
+          "mean_integer_gap": 11742.9806,
+          "nonoptimal_shots": 6257
+        },
+        {
+          "mean_integer_gap": 11742.9806,
+          "nonoptimal_shots": 6257
+        }
+      ],
+      "workload": "prefix"
+    },
+    {
+      "case": "d29-p0.001",
+      "cpus": [
+        2
+      ],
+      "distance": 29,
+      "error_rate": 0.001,
+      "files": {
+        "unionfind.corrections.jsonl": "b017006116b640248e4ea32f7a5c93dbb23d44ed61279fce5cdb518e6ae9a945",
+        "unionfind.csv": "8a5815a6c50fb8aaf9c0b010639de7f44061f592117abe7df4ccc02929b3ed0c",
+        "unionfind.log": "55688eaf4b35e0f664ce7a0413bfd5e3f5fa9eee5c6285a8a74d2154ad9bdbc3"
+      },
+      "independent_chain_checks": 10000,
+      "independent_measurement_inputs": 10000,
+      "integer_optimality": "measured gap; not an exact decoder",
+      "logical_failures": null,
+      "max_us": 2325.772,
+      "mean_us_per_shot": 327.0576805,
+      "method": "unionfind",
+      "native_parity_checks": 30000,
+      "native_status": {
+        "completed": true,
+        "warmup_calls": 5888,
+        "warmup_wall_seconds": 2.047981595
+      },
+      "p50_us": 324.474,
+      "p99_us": 407.528,
+      "physical_observable_truth_available": false,
+      "repeat_decode_seconds": [
+        3.287184697,
+        3.265047168,
+        3.25949855
+      ],
+      "repeat_mean_us": [
+        328.7184697,
+        326.5047168,
+        325.94985499999996
+      ],
+      "repeats": 3,
+      "shots": 10000,
+      "source_shots": 1000000,
+      "std_repeat_mean_us": 1.464798101924757,
+      "summary": "d29-p0.001/n10000/run/summary.json",
+      "timing_scope": "C++ Decoder.decode including returned correction copy; syndrome preparation, edge projection and clear excluded",
+      "wall_seconds": 14.893530432134867,
+      "weight_gaps": [
+        {
+          "mean_integer_gap": 71263.8094,
+          "nonoptimal_shots": 9940
+        },
+        {
+          "mean_integer_gap": 71263.8094,
+          "nonoptimal_shots": 9940
+        },
+        {
+          "mean_integer_gap": 71263.8094,
+          "nonoptimal_shots": 9940
+        }
+      ],
+      "workload": "prefix"
+    },
+    {
+      "case": "d29-p0.001",
+      "cpus": [
+        2
+      ],
+      "distance": 29,
+      "error_rate": 0.001,
+      "files": {
+        "ldpc-uf.corrections.jsonl": "a8f72bbcbbc4991e8beba4973f27a8762c57b16b37e0bd2f33f487bac9961ebb",
+        "ldpc-uf.csv": "dd52e10a9591d50c3f605bf92e94baca71f74e9aa12409be0acc044726692261",
+        "ldpc-uf.log": "5416fad25dc626ba890a34807b74ddcc064d02c4264bad58ffcae9ea8b96705f"
+      },
+      "independent_chain_checks": 10000,
+      "independent_measurement_inputs": 10000,
+      "integer_optimality": "measured gap; not an exact decoder",
+      "logical_failures": null,
+      "max_us": 4006.742,
+      "mean_us_per_shot": 2137.656858733333,
+      "method": "ldpc-uf",
+      "native_parity_checks": 30000,
+      "native_status": {
+        "completed": true,
+        "warmup_calls": 1024,
+        "warmup_wall_seconds": 2.598603372
+      },
+      "p50_us": 2129.829,
+      "p99_us": 2617.453,
+      "physical_observable_truth_available": false,
+      "repeat_decode_seconds": [
+        21.404598352,
+        21.369547089,
+        21.355560321
+      ],
+      "repeat_mean_us": [
+        2140.4598352000003,
+        2136.9547089,
+        2135.5560321
+      ],
+      "repeats": 3,
+      "shots": 10000,
+      "source_shots": 1000000,
+      "std_repeat_mean_us": 2.5261793289929417,
+      "summary": "d29-p0.001/n10000/run/summary.json",
+      "timing_scope": "C++ PreparedUfDecoder.decode_prepared; cluster initialization, correction extraction and cleanup excluded",
+      "wall_seconds": 80.79793342016637,
+      "weight_gaps": [
+        {
+          "mean_integer_gap": 228691.608,
+          "nonoptimal_shots": 9994
+        },
+        {
+          "mean_integer_gap": 228691.608,
+          "nonoptimal_shots": 9994
+        },
+        {
+          "mean_integer_gap": 228691.608,
+          "nonoptimal_shots": 9994
+        }
+      ],
+      "workload": "prefix"
+    }
+  ]
+}

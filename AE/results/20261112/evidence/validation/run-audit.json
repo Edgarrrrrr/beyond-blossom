@@ -1,0 +1,535 @@
+{
+  "schema": 1,
+  "observed_utc": "2026-11-12T05:26:02.213131+00:00",
+  "scope": "Read-only audit of ongoing frozen Slurm acquisition; no new measurement or source change",
+  "run": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper",
+  "source_identity": {
+    "commit": "75aedd433d1b129e5a973635320f199b5f26cbae",
+    "status": ""
+  },
+  "checks": {
+    "exact_21_cases": true,
+    "no_duplicates": true,
+    "plan_sha_matches_submission": true,
+    "configured_native_shots": 1000000,
+    "configured_external_shots": 10000,
+    "configured_repeats": 3
+  },
+  "workers": [
+    {
+      "index": 0,
+      "assigned_node": "ares1",
+      "observed_host": "ares1",
+      "job_id": "202615",
+      "cpus": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ],
+      "hardware": {
+        "backend": "avx512vl",
+        "l2_events_supported_model": true,
+        "model": "Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz"
+      },
+      "host_matches": true,
+      "plan_sha_matches": true,
+      "build_sha_matches": true,
+      "cases": [
+        "d33-p0.003"
+      ]
+    },
+    {
+      "index": 1,
+      "assigned_node": "ares2",
+      "observed_host": "ares2",
+      "job_id": "202616",
+      "cpus": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ],
+      "hardware": {
+        "backend": "avx512vl",
+        "l2_events_supported_model": true,
+        "model": "Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz"
+      },
+      "host_matches": true,
+      "plan_sha_matches": true,
+      "build_sha_matches": true,
+      "cases": [
+        "d29-p0.003"
+      ]
+    },
+    {
+      "index": 2,
+      "assigned_node": "ares3",
+      "observed_host": "ares3",
+      "job_id": "202617",
+      "cpus": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ],
+      "hardware": {
+        "backend": "avx512vl",
+        "l2_events_supported_model": true,
+        "model": "Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz"
+      },
+      "host_matches": true,
+      "plan_sha_matches": true,
+      "build_sha_matches": true,
+      "cases": [
+        "d25-p0.003",
+        "d25-p0.0005",
+        "d17-p0.0005",
+        "d13-p0.001"
+      ]
+    },
+    {
+      "index": 3,
+      "assigned_node": "ares4",
+      "observed_host": "ares4",
+      "job_id": "202618",
+      "cpus": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ],
+      "hardware": {
+        "backend": "avx512vl",
+        "l2_events_supported_model": true,
+        "model": "Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz"
+      },
+      "host_matches": true,
+      "plan_sha_matches": true,
+      "build_sha_matches": true,
+      "cases": [
+        "d33-p0.001",
+        "d17-p0.003",
+        "d13-p0.003",
+        "d9-p0.003"
+      ]
+    },
+    {
+      "index": 4,
+      "assigned_node": "ares5",
+      "observed_host": "ares5",
+      "job_id": "202619",
+      "cpus": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ],
+      "hardware": {
+        "backend": "avx512vl",
+        "l2_events_supported_model": true,
+        "model": "Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz"
+      },
+      "host_matches": true,
+      "plan_sha_matches": true,
+      "build_sha_matches": true,
+      "cases": [
+        "d21-p0.003",
+        "d25-p0.001",
+        "d21-p0.001",
+        "d17-p0.001",
+        "d13-p0.0005",
+        "d9-p0.001"
+      ]
+    },
+    {
+      "index": 5,
+      "assigned_node": "ares6",
+      "observed_host": "ares6",
+      "job_id": "202620",
+      "cpus": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ],
+      "hardware": {
+        "backend": "avx512vl",
+        "l2_events_supported_model": true,
+        "model": "Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz"
+      },
+      "host_matches": true,
+      "plan_sha_matches": true,
+      "build_sha_matches": true,
+      "cases": [
+        "d29-p0.001",
+        "d33-p0.0005",
+        "d29-p0.0005",
+        "d21-p0.0005",
+        "d9-p0.0005"
+      ]
+    }
+  ],
+  "observed_progress": [
+    {
+      "case": "d33-p0.003",
+      "native_shots": 1000000,
+      "native_repeats": 3,
+      "external_configured_shots": 10000,
+      "host": "ares1",
+      "cpus": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ],
+      "host_cpu_match_worker": true,
+      "preparation_completed_shots_from_csv_tail": 268486,
+      "elapsed_since_native_plan_seconds": 365.335337,
+      "partial_dataset_bytes": 3912200192,
+      "native_completed_calls": 0,
+      "preparation_complete": false,
+      "projected_input_bytes": 14571337768.077291,
+      "projected_total_preparation_seconds": 1360.723974434421,
+      "projection_caveat": "Prefix extrapolation, not measured completed-million preparation; file writes are buffered. After preparation completes, elapsed includes later native work."
+    },
+    {
+      "case": "d29-p0.003",
+      "native_shots": 1000000,
+      "native_repeats": 3,
+      "external_configured_shots": 10000,
+      "host": "ares2",
+      "cpus": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ],
+      "host_cpu_match_worker": true,
+      "preparation_completed_shots_from_csv_tail": 428318,
+      "elapsed_since_native_plan_seconds": 365.282108,
+      "partial_dataset_bytes": 3405774848,
+      "native_completed_calls": 0,
+      "preparation_complete": false,
+      "projected_input_bytes": 7951509971.563184,
+      "projected_total_preparation_seconds": 852.8292250150589,
+      "projection_caveat": "Prefix extrapolation, not measured completed-million preparation; file writes are buffered. After preparation completes, elapsed includes later native work."
+    },
+    {
+      "case": "d25-p0.003",
+      "native_shots": 1000000,
+      "native_repeats": 3,
+      "external_configured_shots": 10000,
+      "host": "ares3",
+      "cpus": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ],
+      "host_cpu_match_worker": true,
+      "preparation_completed_shots_from_csv_tail": 755943,
+      "elapsed_since_native_plan_seconds": 364.624695,
+      "partial_dataset_bytes": 3472883712,
+      "native_completed_calls": 0,
+      "preparation_complete": false,
+      "projected_input_bytes": 4594107904.961088,
+      "projected_total_preparation_seconds": 482.3441648378251,
+      "projection_caveat": "Prefix extrapolation, not measured completed-million preparation; file writes are buffered. After preparation completes, elapsed includes later native work."
+    },
+    {
+      "case": "d33-p0.001",
+      "native_shots": 1000000,
+      "native_repeats": 3,
+      "external_configured_shots": 10000,
+      "host": "ares4",
+      "cpus": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ],
+      "host_cpu_match_worker": true,
+      "preparation_completed_shots_from_csv_tail": 824514,
+      "elapsed_since_native_plan_seconds": 364.58367,
+      "partial_dataset_bytes": 3414163456,
+      "native_completed_calls": 0,
+      "preparation_complete": false,
+      "projected_input_bytes": 4140819265.652251,
+      "projected_total_preparation_seconds": 442.18008426782325,
+      "projection_caveat": "Prefix extrapolation, not measured completed-million preparation; file writes are buffered. After preparation completes, elapsed includes later native work."
+    },
+    {
+      "case": "d21-p0.003",
+      "native_shots": 1000000,
+      "native_repeats": 3,
+      "external_configured_shots": 10000,
+      "host": "ares5",
+      "cpus": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ],
+      "host_cpu_match_worker": true,
+      "preparation_completed_shots_from_csv_tail": 1000000,
+      "elapsed_since_native_plan_seconds": 365.060028,
+      "partial_dataset_bytes": 3909547984,
+      "native_completed_calls": 0,
+      "preparation_complete": true,
+      "projected_input_bytes": 3909547984.0,
+      "projected_total_preparation_seconds": null,
+      "projection_caveat": "Prefix extrapolation, not measured completed-million preparation; file writes are buffered. After preparation completes, elapsed includes later native work.",
+      "actual_preparation_setup_seconds": 258.412747003
+    },
+    {
+      "case": "d29-p0.001",
+      "native_shots": 1000000,
+      "native_repeats": 3,
+      "external_configured_shots": 10000,
+      "host": "ares6",
+      "cpus": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ],
+      "host_cpu_match_worker": true,
+      "preparation_completed_shots_from_csv_tail": 1000000,
+      "elapsed_since_native_plan_seconds": 360.401965,
+      "partial_dataset_bytes": 3626519032,
+      "native_completed_calls": 0,
+      "preparation_complete": true,
+      "projected_input_bytes": 3626519032.0,
+      "projected_total_preparation_seconds": null,
+      "projection_caveat": "Prefix extrapolation, not measured completed-million preparation; file writes are buffered. After preparation completes, elapsed includes later native work.",
+      "actual_preparation_setup_seconds": 271.83018672500003
+    }
+  ],
+  "memory_estimate": {
+    "case": "d33-p0.003",
+    "projected_sparse_input_gib": 14.445753324599494,
+    "node_memory_gib_reported": 120,
+    "implementation": "AE/native/benchmark.cc::load keeps one vector of uint64 detector IDs per shot and compact expected/result arrays; measurement and pipeline paths reference the same Dataset. External converter streams one shot at a time.",
+    "interpretation": "Sparse input is expected to fit with substantial headroom. This is a prefix-based allocation estimate, not measured peak RSS or a worst-case proof.",
+    "accounting_limit": "sstat returned blank RSS fields and an invalid AveCPU value; these were not treated as measurements.",
+    "recent_completed_shots_sample": 315,
+    "mean_events_in_recent_sample": 1935.8761904761905,
+    "projection_basis": "Mean detection-event count in recent completed preparation CSV records; avoids growth-time NFS size-cache lag. Each v2 shot stores 24 fixed bytes plus 8 bytes per event."
+  },
+  "external_conversion_cost": {
+    "source": "source/AE/external/input_adapter.py:67-113,292-299",
+    "output_shots": 10000,
+    "source_shots": 1000000,
+    "full_source_validation_passes": 4,
+    "reason": "records(limit) continues validating all source shots; samples, warmup, blossom_samples and blossom_warmup all traverse the same source by default.",
+    "d33_p003_approx_events_per_shot": 1935.8761904761905,
+    "approx_python_event_visits_for_four_passes": 7743504762,
+    "interpretation": "Potential substantial wall-time preparation cost beyond the 10k-shot decoder timing estimate; streaming does not expand the million-shot input into Python memory.",
+    "wall_time_status": "Not yet observed; no duration claim or new benchmark was made."
+  },
+  "eta": {
+    "status": "Provisional planning estimate calibrated by two completed million-shot official-reference batches; not a measurement of total run wall time",
+    "historical_timing_source": "/tmp/beyond-build/structured-final-run/raw.csv",
+    "historical_timing_sha256": "5ca69db78382cda364b3db944e268d87084028ff9bfa4d8096a1fd6beee4cce0",
+    "historical_shots_per_case": 10000,
+    "median_observed_reference_scale": 0.9254384242679522,
+    "node_model": [
+      {
+        "node": "ares1",
+        "native_seconds": 6973.07261274496,
+        "policy_and_counts_scenario_seconds": [
+          4822.812989013837,
+          6311.05627645658
+        ],
+        "pmu_seconds": 3210.4160451645766,
+        "total_computation_scenario_seconds": [
+          15006.301646923373,
+          16494.544934366117
+        ]
+      },
+      {
+        "node": "ares2",
+        "native_seconds": 4426.60454539437,
+        "policy_and_counts_scenario_seconds": [
+          3071.3068070465424,
+          4077.294772089209
+        ],
+        "pmu_seconds": 0,
+        "total_computation_scenario_seconds": [
+          7497.911352440912,
+          8503.899317483578
+        ]
+      },
+      {
+        "node": "ares3",
+        "native_seconds": 3013.512952569472,
+        "policy_and_counts_scenario_seconds": [
+          1782.7092888955115,
+          2381.8756235315354
+        ],
+        "pmu_seconds": 0,
+        "total_computation_scenario_seconds": [
+          4796.222241464983,
+          5395.388576101008
+        ]
+      },
+      {
+        "node": "ares4",
+        "native_seconds": 2657.832348248161,
+        "policy_and_counts_scenario_seconds": [
+          722.5813869756086,
+          951.3844882745003
+        ],
+        "pmu_seconds": 0,
+        "total_computation_scenario_seconds": [
+          3380.4137352237694,
+          3609.216836522661
+        ]
+      },
+      {
+        "node": "ares5",
+        "native_seconds": 2533.1034517179937,
+        "policy_and_counts_scenario_seconds": [
+          952.52917083516,
+          1273.940263731365
+        ],
+        "pmu_seconds": 0,
+        "total_computation_scenario_seconds": [
+          3485.632622553154,
+          3807.0437154493584
+        ]
+      },
+      {
+        "node": "ares6",
+        "native_seconds": 2238.806827152126,
+        "policy_and_counts_scenario_seconds": [
+          0,
+          0
+        ],
+        "pmu_seconds": 0,
+        "total_computation_scenario_seconds": [
+          2238.806827152126,
+          2238.806827152126
+        ]
+      }
+    ],
+    "model_assumptions": [
+      "Apply the two observed official-reference ratios to historical native method medians; this does not establish candidate scaling on every case.",
+      "Model true-simple policy cost between prior predecoded and structured method costs; count collection costs one further decode pass per policy. These are scenarios, not proven bounds.",
+      "Add two PMU levels only for d33,p=.003 when available."
+    ],
+    "critical_node": "ares1",
+    "critical_node_computation_hours_scenario": [
+      4.168417124145382,
+      4.581818037323921
+    ],
+    "excluded_from_computation_model": [
+      "reference preparation",
+      "input loading and checksum scans",
+      "external converters and external decoders",
+      "output verification and CSV/figure export"
+    ],
+    "planning_allowance_total_hours": [
+      6,
+      9
+    ],
+    "planning_allowance_caveat": "A coarse scheduling allowance, not a confidence interval or guaranteed upper bound. Four full Python event-validation passes have not yet run and can materially extend the wall time.",
+    "next_review": "Only after a material phase transition or root request; no frequent polling."
+  },
+  "updated_utc": "2026-11-12T05:30:04.748877+00:00",
+  "first_completed_native_batches": [
+    {
+      "case": "d21-p0.003",
+      "method": "reference",
+      "repeat": 1,
+      "shots": 1000000,
+      "elapsed_seconds": 171.861879267,
+      "ns_per_shot": 171861.879267,
+      "correctness": {
+        "status": "passed",
+        "shots": 1000000,
+        "weight_differences": 0,
+        "observable_differences": 0,
+        "actual_candidate_witnesses": 0,
+        "policy": "exact upstream reference"
+      },
+      "input_load_seconds": 4.75127,
+      "process_peak_rss_kib": 3905596,
+      "rss_scope": "Linux native process lifetime peak through measured-end snapshot; includes setup, graph, warmup and record arrays; excludes later checking and CSV; not a window-only peak",
+      "historical_official_median_ns": 189072.6061,
+      "ratio_to_historical_official": 0.9089729221593461,
+      "measurement": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.003/runs/native-batch/calls/d21-p0.003/reference/01/native/measurement.csv"
+    },
+    {
+      "case": "d29-p0.001",
+      "method": "reference",
+      "repeat": 1,
+      "shots": 1000000,
+      "elapsed_seconds": 127.765165433,
+      "ns_per_shot": 127765.165433,
+      "correctness": {
+        "status": "passed",
+        "shots": 1000000,
+        "weight_differences": 0,
+        "observable_differences": 0,
+        "actual_candidate_witnesses": 0,
+        "policy": "exact upstream reference"
+      },
+      "input_load_seconds": 4.38125,
+      "process_peak_rss_kib": 3679956,
+      "rss_scope": "Linux native process lifetime peak through measured-end snapshot; includes setup, graph, warmup and record arrays; excludes later checking and CSV; not a window-only peak",
+      "historical_official_median_ns": 135645.6448,
+      "ratio_to_historical_official": 0.9419039263765583,
+      "measurement": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d29-p0.001/runs/native-batch/calls/d29-p0.001/reference/01/native/measurement.csv"
+    }
+  ]
+}

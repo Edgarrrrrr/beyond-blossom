@@ -1,0 +1,1 @@
+{"final_drain_called":false,"final_drain_ns":null,"last_shot_result_return_ns":null,"sample_elapsed_total_ns":2596815537,"complete_elapsed_ns":2596815537,"complete_outer_wall_ns":2596845855,"scope":"latency final drain is separate; batch final drain inside last block; complete outer wall includes clocks, stores and loop control"}

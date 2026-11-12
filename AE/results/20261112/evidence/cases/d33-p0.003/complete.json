@@ -1,0 +1,98 @@
+{
+  "bundle": {
+    "external_run": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/external",
+    "l2_run": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/pmu-l2",
+    "l3_run": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/pmu-l3",
+    "native_run": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/native-batch",
+    "policy_counts": {
+      "0": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-0-counts",
+      "1": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-1-counts",
+      "2": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-2-counts"
+    },
+    "policy_timing": {
+      "0": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-0-timing",
+      "1": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-1-timing",
+      "2": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/policy-2-timing"
+    }
+  },
+  "complete": true,
+  "config_sha256": "95e63f04443a2c060ff3486781271103b3614ca7f2de82e83f9e1f5f760b198d",
+  "excluded": [
+    "Apple M4 hardware acquisition"
+  ],
+  "export": null,
+  "external_shot_counts": null,
+  "external_shots_per_case": 10000,
+  "native_shots_per_case": 1000000,
+  "placement": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ],
+    "host": "ares1",
+    "slurm": {
+      "SLURMD_NODENAME": "ares1",
+      "SLURM_CPUS_PER_TASK": "52",
+      "SLURM_JOB_ID": "202615",
+      "SLURM_JOB_NODELIST": "ares1"
+    }
+  },
+  "pmu_applicable": true,
+  "pmu_levels_collected": [
+    2,
+    3
+  ],
+  "pmu_levels_unavailable": [],
+  "profile": "paper",
+  "scope": "Fresh local Linux paper workflow"
+}

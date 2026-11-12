@@ -1,0 +1,81 @@
+% Fresh verified AE export; paper profile.
+% Recorded platform: Linux / x86_64; structured backend: avx512vl. Hardware equivalence to the manuscript is not asserted.
+% Per-setting host pairing; distributed collection. See canonical.json placement.cases.
+% Recorded platform: Linux / x86_64; structured backend: avx512vl. Hardware equivalence to the manuscript is not asserted.
+% Legacy xeon keys do not identify the measurement hardware.
+% Linux-result subset (legacy xeon keys): unavailable PMU/M4 macros are intentionally undefined; no archived values.
+% Shared performance numbers for 00-abstract.tex, 01-intro-han.tex, and 04-evaluation.tex.
+% Automation: update the SECOND argument of \DefinePerfValue{key}{value}.
+% One declaration per line; values are bare decimal numbers with original precision.
+% Units, percent signs, and speedup symbols stay in the manuscript.
+% Prefer loading this file in the main preamble, before any list of figures/tables.
+% Section-level loaders also support inputting the three sections independently.
+% Key: platform.experiment.[d<distance>.p<percent with p as decimal point>].variant.metric
+% Example: p0p05 means physical error rate 0.05%, not probability 0.05.
+% Xeon timing/speedup values use the completed Batch3 matrix; cache-miss values use independent PMU runs.
+% Existing values are formatting placeholders until migration succeeds; see the generated audit JSON.
+% Workload d/p, setting count, real-time target, hardware/software versions, and theoretical bounds stay literal.
+% The predecoder-strategy table and narrative load separate generated predecoder_numbers.tex.
+% Load this shared API file before that supplemental macro file.
+% d33/p0p1 etc. inside keys identify fixed workloads; they are not adjustable d/p parameters.
+% L2/L3 miss values are percentages from the completed independent PMU runs.
+% Figures are external PDFs: editing this file does not change their embedded numbers.
+
+% Idempotent loading when multiple manuscript sections are input.
+\ifdefined\PerfValue\expandafter\endinput\fi
+
+\newcommand{\DefinePerfValue}[2]{%
+  \expandafter\newcommand\csname BBPerfValue@#1\endcsname{#2}%
+}
+\DeclareRobustCommand{\PerfValue}[1]{%
+  \ifcsname BBPerfValue@#1\endcsname%
+    \csname BBPerfValue@#1\endcsname%
+  \else%
+    \PackageError{performance-macros}{Undefined performance key '#1'}%
+      {Declare the key using \string\DefinePerfValue\space before use.}%
+  \fi%
+}
+
+% Abstract/introduction summaries; legacy key namespace retained for manuscript compatibility.
+% Xeon workload: d=9/13/17/21/25/29/33; p=0.05%, 0.1%, 0.3%; all 21 settings.
+% Single-core=Predecode; eight-core=Spatial. The d33/p0.1% example uses Spatial; round time=block time/33.
+\DefinePerfValue{legacy.single-core.vs-pymatching.geomean-speedup}{4.20}
+\DefinePerfValue{legacy.single-core.vs-pymatching.max-speedup}{5.58}
+\DefinePerfValue{legacy.eight-core.vs-pymatching.max-speedup}{9.74}
+\DefinePerfValue{legacy.d33.p0p1.beyond-blossom.mean-block-time-us}{21.79}
+\DefinePerfValue{legacy.d33.p0p1.beyond-blossom.mean-round-time-us}{0.66}
+
+% Xeon decoder-comparison figure
+% Best configuration per setting; maxima over code distances at each physical error rate.
+% Use the same completed Xeon matrix and Batch3 statistic as the ablation below.
+\DefinePerfValue{xeon.decoder-comparison.p0p05.best.vs-pymatching.max-speedup}{8.96}
+\DefinePerfValue{xeon.decoder-comparison.p0p1.best.vs-pymatching.max-speedup}{9.74}
+\DefinePerfValue{xeon.decoder-comparison.p0p3.best.vs-pymatching.max-speedup}{7.22}
+
+% Xeon incremental ablation
+% Keys identify workload, configuration, and metric. Relative speedups name their denominator.
+\DefinePerfValue{xeon.ablation.d33.p0p3.pymatching.mean-time-us}{947.66}
+\DefinePerfValue{xeon.ablation.d33.p0p3.structured-simd.mean-time-us}{651.93}
+\DefinePerfValue{xeon.ablation.d33.p0p3.structured-simd.vs-pymatching.speedup}{1.45}
+
+% PMU percentages: 100 * miss requests / read requests; separate million-shot, LTO OFF runs.
+\DefinePerfValue{xeon.ablation.d33.p0p3.pymatching.L3miss}{0.116}
+\DefinePerfValue{xeon.ablation.d33.p0p3.structured-simd.L3miss}{0.019}
+\DefinePerfValue{xeon.ablation.d33.p0p3.pymatching.L2miss}{60.157}
+\DefinePerfValue{xeon.ablation.d33.p0p3.structured-simd.L2miss}{27.762}
+\DefinePerfValue{xeon.ablation.d9.p0p05.pymatching.mean-time-us}{1.205}
+\DefinePerfValue{xeon.ablation.d9.p0p05.structured-simd.mean-time-us}{1.168}
+\DefinePerfValue{xeon.ablation.predecoding.vs-structured-simd.min-speedup}{2.40}
+\DefinePerfValue{xeon.ablation.predecoding.vs-structured-simd.max-speedup}{4.83}
+\DefinePerfValue{xeon.ablation.d13.p0p1.predecoding.mean-time-us}{1.847}
+\DefinePerfValue{xeon.ablation.d13.p0p1.component-parallel.mean-time-us}{2.707}
+\DefinePerfValue{xeon.ablation.d33.p0p1.predecoding.mean-time-us}{46.118}
+\DefinePerfValue{xeon.ablation.d33.p0p1.component-parallel.mean-time-us}{32.178}
+\DefinePerfValue{xeon.ablation.d33.p0p1.component-parallel.vs-predecoding.speedup}{1.43}
+\DefinePerfValue{xeon.ablation.d33.p0p3.tail-reset.mean-time-us}{158.898}
+\DefinePerfValue{xeon.ablation.d33.p0p3.parallel-predecoding.mean-time-us}{131.254}
+\DefinePerfValue{xeon.ablation.d33.p0p3.parallel-predecoding.vs-pymatching.speedup}{7.22}
+\DefinePerfValue{xeon.ablation.tail-reset.num-improved-settings}{11}
+
+% Apple M4 Pro comparison and real-time coverage
+% Equal-valued results for different error rates/decoders remain independent keys.

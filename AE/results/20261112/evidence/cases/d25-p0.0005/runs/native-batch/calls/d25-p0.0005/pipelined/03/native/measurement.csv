@@ -1,0 +1,2 @@
+mode,shots,elapsed_ns,ns_per_shot,outer_wall_ns,warmup_shots,block_size,syndrome_hash,result_hash,reference_result_hash,observable_diff,weight_diff,total_threads,execution
+pipe-batch,1000000,6504552551,6504.5525509999998,6504638102,320512,1024,13869452772852940488,2685152090749884002,2685152090749884002,0,0,4,pipeline

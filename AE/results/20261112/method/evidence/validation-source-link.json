@@ -1,0 +1,12 @@
+{
+  "native_receipt_sha256": "ed55969106e23d3ecb378d9f56162fb25686d4f9fd042ce50d3291528feca642",
+  "native_source_before_sha256": "30cc4cbe76aa13519291add1e4e92b0e73edbcea937e382fca041732ccad0e2f",
+  "after_commit": "75aedd433d1b129e5a973635320f199b5f26cbae",
+  "matching_cpp_files": {
+    "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc": "ceeec80cea5e64bdba8047d7537f18eb4604430bb0fbdaf08d4bdfee26bacb61",
+    "src/beyond_blossom/structured/predecode/one_hop_kernels.h": "19f1bee83fae28fdc3af541d2149798bc74c14cfbbe88678e50cc0ad12742c4b",
+    "src/beyond_blossom/structured/driver/mwpm_decoding.cc": "56b2db661d94ae9cf9d32566834d3508b3173fde7d302add6f29d75132843289",
+    "src/beyond_blossom/structured/predecode/one_hop_predecoder.test.cc": "aed402e014f8ab2fac95323494dbed39bed4cf84d9d18b432829950f75592aae"
+  },
+  "scope": "Frozen C++ files equal the already tested development snapshot; this does not relabel that receipt as a clean release build."
+}

@@ -1,0 +1,53 @@
+{
+  "complete": true,
+  "plan_sha256": "e1033d17bbe0373cd1fe33dd645f702c570adb5aa580ea085712fd024ec3dd0c",
+  "inputs": [
+    {
+      "case": "d33-p0.003",
+      "reuse": {
+        "dataset.bin": {
+          "source": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/native-batch/inputs/d33-p0.003/dataset.bin",
+          "method": "hardlink"
+        },
+        "model.dem": {
+          "source": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/native-batch/inputs/d33-p0.003/model.dem",
+          "method": "hardlink"
+        },
+        "circuit.stim": {
+          "source": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d33-p0.003/runs/native-batch/inputs/d33-p0.003/circuit.stim",
+          "method": "hardlink"
+        }
+      },
+      "files": {
+        "inputs/d33-p0.003/circuit.stim": "ba9bb3397f10afbaa62ff36a43390878c1c5c90b6a05b10fc8e7e1ab7ec857b8",
+        "inputs/d33-p0.003/model.dem": "0aedfa815b2605fe24211dd2b490c8902307cd3e7d4a01b89cc471b80653526c",
+        "inputs/d33-p0.003/dataset.bin": "737b5e34750debfe8ed121825d2ffc5867be4aae342dca8ac407255538dd4c06"
+      }
+    }
+  ],
+  "calls": [
+    {
+      "case": "d33-p0.003",
+      "distance": 33,
+      "error_rate": 0.003,
+      "method": "predecoded",
+      "repeat": 1,
+      "directory": "calls/d33-p0.003/predecoded/01/native",
+      "files": {
+        "calls/d33-p0.003/predecoded/01/native/execution.csv": "00ddb24931d405f9192193452e3a59705b52913c2569b4ff22b6ee262be0a431",
+        "calls/d33-p0.003/predecoded/01/native/kernel_selection.csv": "b32e0c13c67e7bc497d281fc2e40c803f5f2b3e32f88c3a2ab0253c5e6bb9522",
+        "calls/d33-p0.003/predecoded/01/native/process.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "calls/d33-p0.003/predecoded/01/native/setup.json": "74b1252bbc4a0602c417a136092645e2733ba3d0e3f1ca50f790982ebe9a2f26",
+        "calls/d33-p0.003/predecoded/01/native/correctness.json": "1943443f6f3f3f410d90545fb065cdf0fed4bd3aaf4b572fe914197357b0fa20",
+        "calls/d33-p0.003/predecoded/01/native/syndromes.json": "931f49fa26252e5ddc08daa41c765c0e899e00e509ba8442bedc1bc10be76bf8",
+        "calls/d33-p0.003/predecoded/01/native/storage.json": "172e78e8662f1abda69de095ac9e46dc0f8085ba7830c5781404aa390af832b9",
+        "calls/d33-p0.003/predecoded/01/native/warmup.json": "22b8ad69f499bba27eafff6233d07abd57f1b8fbe2478770853ed188e2e56a4f",
+        "calls/d33-p0.003/predecoded/01/native/differences.csv": "7a6c0d1060dc3da4db28e8ca36cfc9e5550603a54d178f4ffcd2a0da2688508d",
+        "calls/d33-p0.003/predecoded/01/native/input_features.csv": "e1b052575bfa20d88851c213d79c5d4b712e583dde98dc9bbd90b5d964807ef5",
+        "calls/d33-p0.003/predecoded/01/native/placement.json": "b85d4cb3dbc152901b1895e1ac40dcaf82605dc594f534c09aa994b2874d30fe",
+        "calls/d33-p0.003/predecoded/01/native/syndromes.csv": "997798ae177057ebfdcf676ee67a69138f251124a5b79e730b2bc67be73f642a",
+        "calls/d33-p0.003/predecoded/01/native/execution_threads.csv": "5e9d9a7aac95ed3a5faed4cab793e4db81c115d75fbc6621cfbf2705568c7eb8"
+      }
+    }
+  ]
+}

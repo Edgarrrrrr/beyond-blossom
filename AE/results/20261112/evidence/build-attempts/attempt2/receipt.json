@@ -1,0 +1,33 @@
+{
+  "complete": false,
+  "scope": "Frozen source package and all-configuration AE builds; no measurements",
+  "host": "ares6",
+  "job_id": "202608",
+  "driver_sha256": "a812fbb18ade3d03ca42907d8eeeaa3c446bc5884188651c8b3019e3f8d05c72",
+  "python_sdk_receipt_sha256": "dc9f8a5e9f7f245e22c72e3f450b3ec40ebc27507cfb9b24f55cac3bcf2f923c",
+  "source_commit": "75aedd433d1b129e5a973635320f199b5f26cbae",
+  "started_utc": "2026-11-12T04:32:38.142231+00:00",
+  "steps": [
+    {
+      "name": "wheel",
+      "command": [
+        "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/bin/python",
+        "-m",
+        "pip",
+        "wheel",
+        "--no-index",
+        "--no-deps",
+        "--no-build-isolation",
+        "--wheel-dir",
+        "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/package-build-attempt2",
+        "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source"
+      ],
+      "started_utc": "2026-11-12T04:32:38.517976+00:00",
+      "exit_code": 1,
+      "finished_utc": "2026-11-12T04:35:24.342854+00:00"
+    }
+  ],
+  "package_cmake_args": "-DBB_OFFLINE=ON -DPYTHON_INCLUDE_DIR=/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/python-sdk/root/usr/include/python3.11 -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.11.so.1.0 -DCMAKE_CXX_FLAGS=-I/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/python-sdk/root/usr/include",
+  "error": "CalledProcessError(1, ['/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/bin/python', '-m', 'pip', 'wheel', '--no-index', '--no-deps', '--no-build-isolation', '--wheel-dir', '/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/package-build-attempt2', '/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source'], None, None)",
+  "finished_utc": "2026-11-12T04:35:24.392799+00:00"
+}

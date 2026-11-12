@@ -1,0 +1,114 @@
+{
+  "complete": true,
+  "plan_sha256": "bd5edcb0e383134c2d9463b212a15c5f2acf0e3fa46a9c2874195225013dcf09",
+  "inputs": [
+    {
+      "case": "d13-p0.003",
+      "reuse": {
+        "dataset.bin": {
+          "source": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/native-batch/inputs/d13-p0.003/dataset.bin",
+          "method": "hardlink"
+        },
+        "model.dem": {
+          "source": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/native-batch/inputs/d13-p0.003/model.dem",
+          "method": "hardlink"
+        },
+        "circuit.stim": {
+          "source": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.003/runs/native-batch/inputs/d13-p0.003/circuit.stim",
+          "method": "hardlink"
+        }
+      },
+      "files": {
+        "inputs/d13-p0.003/circuit.stim": "28253c2fc03ea71d137a81072e7b80672b7d61c4699334af508ecb7bd9a5d886",
+        "inputs/d13-p0.003/model.dem": "76819e39f239b270eae251433884d5d81cdf6a2b02478cd89c3413c51365fc21",
+        "inputs/d13-p0.003/dataset.bin": "bd4b02311d811824ec86ec8aeb80e8c330a300aaabd4b5870951567eb62fe4fa"
+      }
+    }
+  ],
+  "calls": [
+    {
+      "case": "d13-p0.003",
+      "distance": 13,
+      "error_rate": 0.003,
+      "method": "predecoded",
+      "repeat": 1,
+      "directory": "calls/d13-p0.003/predecoded/01/native",
+      "files": {
+        "calls/d13-p0.003/predecoded/01/native/native_blocks.csv": "bafb723b6c1f5ee511577d4ea8f3a55aa307599604202e10013fabfa47d06d8a",
+        "calls/d13-p0.003/predecoded/01/native/execution.csv": "9944ea5b150bd0e1c3bc2c13267d42ee16d784e300680d1fb62ef18ec45c1862",
+        "calls/d13-p0.003/predecoded/01/native/kernel_selection.csv": "cf62d29bcc0a174710bffe27e11d429f70461badfae6df7f2571e3010971c7da",
+        "calls/d13-p0.003/predecoded/01/native/process.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "calls/d13-p0.003/predecoded/01/native/setup.json": "629637a8e503c4df84893e32f50bcb1c0a455a7da08c28adef2f387dad076fc5",
+        "calls/d13-p0.003/predecoded/01/native/process_usage.json": "9b114449dedf534ed9bfdfa1d8257415931e2a040ddc69c78c047d914bd07ed7",
+        "calls/d13-p0.003/predecoded/01/native/correctness.json": "1943443f6f3f3f410d90545fb065cdf0fed4bd3aaf4b572fe914197357b0fa20",
+        "calls/d13-p0.003/predecoded/01/native/measurement_scope.json": "4c8cf42c83d219c183f7476fc0914b342930182f074f2c3259bd32ef869d8c4a",
+        "calls/d13-p0.003/predecoded/01/native/storage.json": "172e78e8662f1abda69de095ac9e46dc0f8085ba7830c5781404aa390af832b9",
+        "calls/d13-p0.003/predecoded/01/native/warmup.json": "a01b753636d742e2e2176cb550f38ed3cd252049ca620366d110fd5c0811e580",
+        "calls/d13-p0.003/predecoded/01/native/differences.csv": "7a6c0d1060dc3da4db28e8ca36cfc9e5550603a54d178f4ffcd2a0da2688508d",
+        "calls/d13-p0.003/predecoded/01/native/input_features.csv": "3abf597eff565cf473f517175bd676dbdfc6e08f89f35470a6d953f6444df92d",
+        "calls/d13-p0.003/predecoded/01/native/placement.json": "b85d4cb3dbc152901b1895e1ac40dcaf82605dc594f534c09aa994b2874d30fe",
+        "calls/d13-p0.003/predecoded/01/native/clock.json": "9723423731b4c2c4ec627c6a718c264ffa4fd0774e2be6d0d479ab50581d6512",
+        "calls/d13-p0.003/predecoded/01/native/completion.json": "c6b8ae573f950c2dccd10b2c18f526d3a8bade2cb97cad4754de637a11f0945f",
+        "calls/d13-p0.003/predecoded/01/native/measurement.csv": "3bf438fd5f7ac7c39b4186008b8c7ff314cb0f014084104780b3e389a4e7f479",
+        "calls/d13-p0.003/predecoded/01/native/native_shots.csv": "a5ae91c0ca539533660142b9df817b4c6f348fc47c99448a666145986bfc2c44",
+        "calls/d13-p0.003/predecoded/01/native/execution_threads.csv": "da51cd3eae7e6ebb3a56144dcaeb9de16b16d43baa24c2f561e448f0ae1babdd"
+      }
+    },
+    {
+      "case": "d13-p0.003",
+      "distance": 13,
+      "error_rate": 0.003,
+      "method": "predecoded",
+      "repeat": 2,
+      "directory": "calls/d13-p0.003/predecoded/02/native",
+      "files": {
+        "calls/d13-p0.003/predecoded/02/native/native_blocks.csv": "70221476c13d8e0fb597f2043fe10f493932224e34e0f673dc6a099bb35ae557",
+        "calls/d13-p0.003/predecoded/02/native/execution.csv": "5ef13c2d5385bb7f9fd3426c8596d8f2eb83f3bf940d387fd70e6810547a0d53",
+        "calls/d13-p0.003/predecoded/02/native/kernel_selection.csv": "cf62d29bcc0a174710bffe27e11d429f70461badfae6df7f2571e3010971c7da",
+        "calls/d13-p0.003/predecoded/02/native/process.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "calls/d13-p0.003/predecoded/02/native/setup.json": "3e920a169266697a34c46e769e1e1e6fd38691612518020bcd9d795c09aeac56",
+        "calls/d13-p0.003/predecoded/02/native/process_usage.json": "6ba9eee29d8ab43439afc532c070dbba9f2919d279dea88e24ebd0ebb81c391c",
+        "calls/d13-p0.003/predecoded/02/native/correctness.json": "1943443f6f3f3f410d90545fb065cdf0fed4bd3aaf4b572fe914197357b0fa20",
+        "calls/d13-p0.003/predecoded/02/native/measurement_scope.json": "4c8cf42c83d219c183f7476fc0914b342930182f074f2c3259bd32ef869d8c4a",
+        "calls/d13-p0.003/predecoded/02/native/storage.json": "172e78e8662f1abda69de095ac9e46dc0f8085ba7830c5781404aa390af832b9",
+        "calls/d13-p0.003/predecoded/02/native/warmup.json": "57f9c740af13e56798e2c37d8f3b88402504a44b219013adc931dd0e7e916e0a",
+        "calls/d13-p0.003/predecoded/02/native/differences.csv": "7a6c0d1060dc3da4db28e8ca36cfc9e5550603a54d178f4ffcd2a0da2688508d",
+        "calls/d13-p0.003/predecoded/02/native/input_features.csv": "3abf597eff565cf473f517175bd676dbdfc6e08f89f35470a6d953f6444df92d",
+        "calls/d13-p0.003/predecoded/02/native/placement.json": "b85d4cb3dbc152901b1895e1ac40dcaf82605dc594f534c09aa994b2874d30fe",
+        "calls/d13-p0.003/predecoded/02/native/clock.json": "9723423731b4c2c4ec627c6a718c264ffa4fd0774e2be6d0d479ab50581d6512",
+        "calls/d13-p0.003/predecoded/02/native/completion.json": "a2a9f80b7a256a261dd616eb4d2a98018fe41c4fc8f3aa32eaf1dfba628f211f",
+        "calls/d13-p0.003/predecoded/02/native/measurement.csv": "f2be7f8a1370837d66559b2bf5005ed725599ad71f075f0f097fe560ad20192d",
+        "calls/d13-p0.003/predecoded/02/native/native_shots.csv": "a5ae91c0ca539533660142b9df817b4c6f348fc47c99448a666145986bfc2c44",
+        "calls/d13-p0.003/predecoded/02/native/execution_threads.csv": "b3296e77acfe39110da0bed2bd3a6a549de8690ac11f852363dce2ffce95d51f"
+      }
+    },
+    {
+      "case": "d13-p0.003",
+      "distance": 13,
+      "error_rate": 0.003,
+      "method": "predecoded",
+      "repeat": 3,
+      "directory": "calls/d13-p0.003/predecoded/03/native",
+      "files": {
+        "calls/d13-p0.003/predecoded/03/native/native_blocks.csv": "f80f6a1c748b8f4b6e9279b51d43e472b23f47d8b2b45d7c0939bdd43a02fb84",
+        "calls/d13-p0.003/predecoded/03/native/execution.csv": "495fbe47cc246d3d3a0f89b6d56d2fa5a374ddbcc194cc0064f45c69d4b5db4a",
+        "calls/d13-p0.003/predecoded/03/native/kernel_selection.csv": "cf62d29bcc0a174710bffe27e11d429f70461badfae6df7f2571e3010971c7da",
+        "calls/d13-p0.003/predecoded/03/native/process.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "calls/d13-p0.003/predecoded/03/native/setup.json": "880b162bf75bd714500ab9109cdb12ad133d9531c7f0bc892e1deec2af1c8abd",
+        "calls/d13-p0.003/predecoded/03/native/process_usage.json": "e3ae0031d73a0ac9b6acf8d9ce6b6836442fc05b3e82f757d9de6565fdd97913",
+        "calls/d13-p0.003/predecoded/03/native/correctness.json": "1943443f6f3f3f410d90545fb065cdf0fed4bd3aaf4b572fe914197357b0fa20",
+        "calls/d13-p0.003/predecoded/03/native/measurement_scope.json": "4c8cf42c83d219c183f7476fc0914b342930182f074f2c3259bd32ef869d8c4a",
+        "calls/d13-p0.003/predecoded/03/native/storage.json": "172e78e8662f1abda69de095ac9e46dc0f8085ba7830c5781404aa390af832b9",
+        "calls/d13-p0.003/predecoded/03/native/warmup.json": "4cec7fb4456a7f4c9e51a265c7d55d99d3539f6d653794957185b0e523be49c7",
+        "calls/d13-p0.003/predecoded/03/native/differences.csv": "7a6c0d1060dc3da4db28e8ca36cfc9e5550603a54d178f4ffcd2a0da2688508d",
+        "calls/d13-p0.003/predecoded/03/native/input_features.csv": "3abf597eff565cf473f517175bd676dbdfc6e08f89f35470a6d953f6444df92d",
+        "calls/d13-p0.003/predecoded/03/native/placement.json": "b85d4cb3dbc152901b1895e1ac40dcaf82605dc594f534c09aa994b2874d30fe",
+        "calls/d13-p0.003/predecoded/03/native/clock.json": "a5566f3c559e9766eaba8ee120105b544c6ff6188b3a7925ba1b422c91fa0695",
+        "calls/d13-p0.003/predecoded/03/native/completion.json": "ce56ea48b5eedfca044407e2ffbef63c22405fb2199197df950a8a065f5e1f7d",
+        "calls/d13-p0.003/predecoded/03/native/measurement.csv": "9163fe9a52c1975b87055a40ebb3385abeb2561045baa772b584847e34e7c11b",
+        "calls/d13-p0.003/predecoded/03/native/native_shots.csv": "a5ae91c0ca539533660142b9df817b4c6f348fc47c99448a666145986bfc2c44",
+        "calls/d13-p0.003/predecoded/03/native/execution_threads.csv": "8d88688b492fd2e49ff4497fa44e5b48ac0198e441ffb2af6c4964dc2fd702df"
+      }
+    }
+  ]
+}

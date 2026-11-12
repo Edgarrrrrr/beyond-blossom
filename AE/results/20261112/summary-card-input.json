@@ -1,0 +1,444 @@
+{
+  "schema_version": 1,
+  "experiment_id": "20261112-slurm-paper",
+  "status": "final",
+  "title": "Beyond Blossom: method and measured effect",
+  "baseline_label": "Official upstream e27b8c6a",
+  "candidate_label": "Best of five measured Beyond configurations",
+  "source_commit": "75aedd433d1b129e5a973635320f199b5f26cbae",
+  "official_revision": "e27b8c6a5f5ba10fb74d4ebb29822f2df5e12bcd",
+  "scope": {
+    "metric": "latency",
+    "direction": "lower_is_better",
+    "total_cases": 21,
+    "workload": "Surface-code circuit-level noise, d=9..33; p=0.05%, 0.1%, 0.3%",
+    "measurement": "Pooled mean of three full-batch repeats; native normal decode lifecycle",
+    "environment": "Linux / Intel Xeon Gold 6230R / ares1-6 / AVX512VL",
+    "coverage": "All 21 settings; within-case same host and saved input",
+    "native_shots": 1000000,
+    "external_shots": 10000,
+    "repeats": 3,
+    "native_methods": [
+      "reference",
+      "structured",
+      "predecoded",
+      "component-parallel",
+      "pipelined",
+      "parallel-predecode"
+    ],
+    "fresh_m4": false,
+    "native_cpu_counts": [
+      1,
+      2,
+      4,
+      8
+    ]
+  },
+  "changes": [
+    {
+      "before": "Official sparse-blossom reference",
+      "after": "Structured graph and SIMD",
+      "mechanism": "Exploit fixed grid adjacency and vectorized local graph operations."
+    },
+    {
+      "before": "Full solver starts from every defect",
+      "after": "One-hop predecode plus exact fallback",
+      "mechanism": "Accept tight local matches; pass valid partial state to the full solver."
+    },
+    {
+      "before": "Serial execution",
+      "after": "Component parallelism, pipeline, parallel predecode",
+      "mechanism": "Use X/Z independence and overlap work across shots and worker teams."
+    }
+  ],
+  "stages": [
+    {
+      "method": "reference",
+      "label": "Official upstream reference",
+      "threads": [
+        1
+      ]
+    },
+    {
+      "method": "structured",
+      "label": "Structured",
+      "threads": [
+        1
+      ]
+    },
+    {
+      "method": "predecoded",
+      "label": "Predecoded",
+      "threads": [
+        1
+      ]
+    },
+    {
+      "method": "component-parallel",
+      "label": "Component parallel",
+      "threads": [
+        2
+      ]
+    },
+    {
+      "method": "pipelined",
+      "label": "Pipelined",
+      "threads": [
+        4
+      ]
+    },
+    {
+      "method": "parallel-predecode",
+      "label": "Parallel predecode",
+      "threads": [
+        8
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "d9-p0.0005",
+      "distance": 9,
+      "error_rate": 0.0005,
+      "label": "d=9, p=0.0005",
+      "baseline": 1.2047150813333334,
+      "candidate": 0.3245773026666666,
+      "unit": "us/shot",
+      "selected_method": "predecoded",
+      "host": "ares6",
+      "input_sha256": "be939dc1d5333768abe0db13b627c6b010bbef20f3fa6e7ce7645e1c192b4e41",
+      "speedup": 3.711643024437072
+    },
+    {
+      "case_id": "d9-p0.001",
+      "distance": 9,
+      "error_rate": 0.001,
+      "label": "d=9, p=0.001",
+      "baseline": 2.6011825516666667,
+      "candidate": 0.6709081316666667,
+      "unit": "us/shot",
+      "selected_method": "predecoded",
+      "host": "ares5",
+      "input_sha256": "a112120f5d92431d849eb4c99379b438718e98a480b079c040ca3c5ae319a60b",
+      "speedup": 3.8771069076250746
+    },
+    {
+      "case_id": "d9-p0.003",
+      "distance": 9,
+      "error_rate": 0.003,
+      "label": "d=9, p=0.003",
+      "baseline": 10.110460371666665,
+      "candidate": 3.224369530666667,
+      "unit": "us/shot",
+      "selected_method": "predecoded",
+      "host": "ares4",
+      "input_sha256": "50b4faa740aeb67ac01b7c527c37ce2efe09666aa511fa42a9a67c76d5010dbe",
+      "speedup": 3.1356394716880476
+    },
+    {
+      "case_id": "d13-p0.0005",
+      "distance": 13,
+      "error_rate": 0.0005,
+      "label": "d=13, p=0.0005",
+      "baseline": 3.9992255369999996,
+      "candidate": 0.8054144016666667,
+      "unit": "us/shot",
+      "selected_method": "predecoded",
+      "host": "ares5",
+      "input_sha256": "c559105c14290841c4233bd2ad6ba5570df2e2b04163c65924b643ed2e2491c5",
+      "speedup": 4.965425908357598
+    },
+    {
+      "case_id": "d13-p0.001",
+      "distance": 13,
+      "error_rate": 0.001,
+      "label": "d=13, p=0.001",
+      "baseline": 8.488801228,
+      "candidate": 1.8474750409999998,
+      "unit": "us/shot",
+      "selected_method": "predecoded",
+      "host": "ares3",
+      "input_sha256": "a57f6daa2fdcc7e42b35ecd6d316305b87a301364aa1ece9c647d277a46d4889",
+      "speedup": 4.594812400499435
+    },
+    {
+      "case_id": "d13-p0.003",
+      "distance": 13,
+      "error_rate": 0.003,
+      "label": "d=13, p=0.003",
+      "baseline": 33.676155439,
+      "candidate": 8.788814362333333,
+      "unit": "us/shot",
+      "selected_method": "component-parallel",
+      "host": "ares4",
+      "input_sha256": "bd4b02311d811824ec86ec8aeb80e8c330a300aaabd4b5870951567eb62fe4fa",
+      "speedup": 3.8317063087971914
+    },
+    {
+      "case_id": "d17-p0.0005",
+      "distance": 17,
+      "error_rate": 0.0005,
+      "label": "d=17, p=0.0005",
+      "baseline": 9.720121213666667,
+      "candidate": 1.7610110856666668,
+      "unit": "us/shot",
+      "selected_method": "predecoded",
+      "host": "ares3",
+      "input_sha256": "eca7e1b4f7dfd255f577caab8fcbf5cadd58180869850317ef8997e6b558664e",
+      "speedup": 5.51962522711032
+    },
+    {
+      "case_id": "d17-p0.001",
+      "distance": 17,
+      "error_rate": 0.001,
+      "label": "d=17, p=0.001",
+      "baseline": 20.68165048066667,
+      "candidate": 4.3565895076666665,
+      "unit": "us/shot",
+      "selected_method": "predecoded",
+      "host": "ares5",
+      "input_sha256": "6c014d526970f350ceec184aab22332bf63b105c367a1a7494c53325d08b31f8",
+      "speedup": 4.747211194506938
+    },
+    {
+      "case_id": "d17-p0.003",
+      "distance": 17,
+      "error_rate": 0.003,
+      "label": "d=17, p=0.003",
+      "baseline": 82.495789412,
+      "candidate": 18.069977298999998,
+      "unit": "us/shot",
+      "selected_method": "parallel-predecode",
+      "host": "ares4",
+      "input_sha256": "e4be67422e885bf81fb532ce4f8088a45cad1f511e67635f495a5d31902e66fd",
+      "speedup": 4.565351026565227
+    },
+    {
+      "case_id": "d21-p0.0005",
+      "distance": 21,
+      "error_rate": 0.0005,
+      "label": "d=21, p=0.0005",
+      "baseline": 19.726149243,
+      "candidate": 3.5346955176666666,
+      "unit": "us/shot",
+      "selected_method": "predecoded",
+      "host": "ares6",
+      "input_sha256": "ac9fa0cb8ef422b802c67df749494af42311905976b4c4d3c92d98a58d5a29d1",
+      "speedup": 5.5807209261468955
+    },
+    {
+      "case_id": "d21-p0.001",
+      "distance": 21,
+      "error_rate": 0.001,
+      "label": "d=21, p=0.001",
+      "baseline": 41.609942411000006,
+      "candidate": 7.310455427666667,
+      "unit": "us/shot",
+      "selected_method": "parallel-predecode",
+      "host": "ares5",
+      "input_sha256": "71569b5709c2230c8de56ef7930446be1e5bebf86cbb0cd852dec3865089fe68",
+      "speedup": 5.691839971217903
+    },
+    {
+      "case_id": "d21-p0.003",
+      "distance": 21,
+      "error_rate": 0.003,
+      "label": "d=21, p=0.003",
+      "baseline": 172.06633799866665,
+      "candidate": 32.593271547,
+      "unit": "us/shot",
+      "selected_method": "parallel-predecode",
+      "host": "ares5",
+      "input_sha256": "e569e8761bff0b4b99d1a60cf48f7f56b64be2447fe2d918863ad1a497b08a1b",
+      "speedup": 5.279198123776692
+    },
+    {
+      "case_id": "d25-p0.0005",
+      "distance": 25,
+      "error_rate": 0.0005,
+      "label": "d=25, p=0.0005",
+      "baseline": 33.770902092,
+      "candidate": 5.300309764333333,
+      "unit": "us/shot",
+      "selected_method": "parallel-predecode",
+      "host": "ares3",
+      "input_sha256": "33aa361ffc32f50d85055061b1685913e94f5033656bae4adb66dbf75608018a",
+      "speedup": 6.371495930152993
+    },
+    {
+      "case_id": "d25-p0.001",
+      "distance": 25,
+      "error_rate": 0.001,
+      "label": "d=25, p=0.001",
+      "baseline": 74.589675195,
+      "candidate": 10.357145132,
+      "unit": "us/shot",
+      "selected_method": "parallel-predecode",
+      "host": "ares5",
+      "input_sha256": "7625d4401abc45d775cb2da8a8397580199a6a07d76316568d177079e4c528c6",
+      "speedup": 7.2017601611609825
+    },
+    {
+      "case_id": "d25-p0.003",
+      "distance": 25,
+      "error_rate": 0.003,
+      "label": "d=25, p=0.003",
+      "baseline": 333.55813918766665,
+      "candidate": 53.39520926033334,
+      "unit": "us/shot",
+      "selected_method": "parallel-predecode",
+      "host": "ares3",
+      "input_sha256": "cbbf9ecdd34092b78d96be58006b6462c7871bef86199b34520e0afafad40581",
+      "speedup": 6.246967542750376
+    },
+    {
+      "case_id": "d29-p0.0005",
+      "distance": 29,
+      "error_rate": 0.0005,
+      "label": "d=29, p=0.0005",
+      "baseline": 55.009657364,
+      "candidate": 6.886291774666666,
+      "unit": "us/shot",
+      "selected_method": "parallel-predecode",
+      "host": "ares6",
+      "input_sha256": "3bfd4af0ef626edea3fcf4630eff075410124e7b58e4f09576f518f91145da42",
+      "speedup": 7.9882844299990134
+    },
+    {
+      "case_id": "d29-p0.001",
+      "distance": 29,
+      "error_rate": 0.001,
+      "label": "d=29, p=0.001",
+      "baseline": 126.720455493,
+      "candidate": 15.43451287,
+      "unit": "us/shot",
+      "selected_method": "parallel-predecode",
+      "host": "ares6",
+      "input_sha256": "1c5086b3ffb3589584d92ab2811fb0bcafa55700f3e08441f6c6dc5179f9966f",
+      "speedup": 8.210201161534942
+    },
+    {
+      "case_id": "d29-p0.003",
+      "distance": 29,
+      "error_rate": 0.003,
+      "label": "d=29, p=0.003",
+      "baseline": 590.5663741563334,
+      "candidate": 84.37981388866667,
+      "unit": "us/shot",
+      "selected_method": "parallel-predecode",
+      "host": "ares2",
+      "input_sha256": "c42cad62b25646658d1c514f74550bd9a66d7d69000a87728500d23720054125",
+      "speedup": 6.998905863143344
+    },
+    {
+      "case_id": "d33-p0.0005",
+      "distance": 33,
+      "error_rate": 0.0005,
+      "label": "d=33, p=0.0005",
+      "baseline": 86.82432245466666,
+      "candidate": 9.692113270666667,
+      "unit": "us/shot",
+      "selected_method": "parallel-predecode",
+      "host": "ares6",
+      "input_sha256": "6f70a3353ec06532204f904d0b661748407e519699bf38165b9a4588a94fea28",
+      "speedup": 8.958244711959964
+    },
+    {
+      "case_id": "d33-p0.001",
+      "distance": 33,
+      "error_rate": 0.001,
+      "label": "d=33, p=0.001",
+      "baseline": 212.19411180366666,
+      "candidate": 21.793362327,
+      "unit": "us/shot",
+      "selected_method": "parallel-predecode",
+      "host": "ares4",
+      "input_sha256": "8a9ea3b3dfce7e699eb6de91841901ad05e1743edcc64ce168af27471cbd2f3f",
+      "speedup": 9.736639469384556
+    },
+    {
+      "case_id": "d33-p0.003",
+      "distance": 33,
+      "error_rate": 0.003,
+      "label": "d=33, p=0.003",
+      "baseline": 947.664747521,
+      "candidate": 131.25416028633333,
+      "unit": "us/shot",
+      "selected_method": "parallel-predecode",
+      "host": "ares1",
+      "input_sha256": "737b5e34750debfe8ed121825d2ffc5867be4aae342dca8ac407255538dd4c06",
+      "speedup": 7.220073980540138
+    }
+  ],
+  "metrics": {
+    "geometric_mean_speedup": 5.66469695875717,
+    "minimum_speedup": 3.1356394716880476,
+    "maximum_speedup": 9.736639469384556,
+    "wins": 21,
+    "native_weight_differences": 0,
+    "distinct_observable_ties": 1,
+    "repeated_observable_ties": 9,
+    "historical_role_gm_range": [
+      1.0437872127971948,
+      1.0766953976991385
+    ],
+    "historical_reference_role_gm": 0.9468065734989992
+  },
+  "historical_role_comparison": {
+    "reference": {
+      "count": 21,
+      "geometric_mean": 0.9468065734989992,
+      "maximum": 1.001996360426297,
+      "minimum": 0.8874738572878459
+    },
+    "structured": {
+      "count": 21,
+      "geometric_mean": 1.0766953976991385,
+      "maximum": 1.1171229432899852,
+      "minimum": 1.02949629106961
+    },
+    "predecoded": {
+      "count": 21,
+      "geometric_mean": 1.0437872127971948,
+      "maximum": 1.1040044308390022,
+      "minimum": 1.016593476464385
+    },
+    "component-parallel": {
+      "count": 21,
+      "geometric_mean": 1.0480038006061925,
+      "maximum": 1.1240963236434112,
+      "minimum": 0.9970980647979615
+    },
+    "pipelined": {
+      "count": 21,
+      "geometric_mean": 1.0700297653582207,
+      "maximum": 1.1086929675925927,
+      "minimum": 1.0416773692365835
+    },
+    "parallel-predecode": {
+      "count": 21,
+      "geometric_mean": 1.0606116112383681,
+      "maximum": 1.088695425120773,
+      "minimum": 1.0244409066746005
+    }
+  },
+  "decision": "Retain all five configurations; report the best observed configuration per setting.",
+  "limitations": [
+    "Best-of-five is descriptive selection on the measured settings, not measured adaptive switching or an independent validation set.",
+    "Composite end-to-end gains cannot be attributed to one code change; methods use 1/2/4/8 cores.",
+    "Historical new/old latency ratios compare different inputs, builds and acquisition windows; they do not establish a code regression or statistical equivalence.",
+    "External solvers use a 10k prefix, their own timing scope and integer quantization. Physical observable truth is absent; no logical-error-rate claim. No fresh Apple M4 run."
+  ],
+  "source_refs": [
+    {
+      "label": "Canonical export",
+      "path": "canonical.json",
+      "sha256": "bd1af53817bd727eb23cc1385b49a21bec3ff11b96cb3b61ad6d78639c09b3c3"
+    },
+    {
+      "label": "Independent main-matrix audit",
+      "path": "evidence/validation/main-matrix-audit.json",
+      "sha256": "ca9d0de6b56fd307e5e9e0fe6f8af4d31a026a1ac55f48120425454aedcc47cb"
+    }
+  ]
+}

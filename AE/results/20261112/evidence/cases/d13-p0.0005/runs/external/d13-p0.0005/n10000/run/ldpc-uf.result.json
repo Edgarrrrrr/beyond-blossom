@@ -1,0 +1,55 @@
+{
+  "cpus": [
+    2
+  ],
+  "files": {
+    "ldpc-uf.corrections.jsonl": "c4eb67ab266823e4aa67ac216f5ab5c8c88015be3f0c1bd7fc96eecbdc844f0b",
+    "ldpc-uf.csv": "11a3de9cea83ef167c17fb6906267d3da6edce5deb85eab069beae83d474a729",
+    "ldpc-uf.log": "87cfeb057566e8b46a9c446d376501f97727e47a256c11b524e9ab3d574d4d74"
+  },
+  "independent_chain_checks": 10000,
+  "independent_measurement_inputs": 10000,
+  "integer_optimality": "measured gap; not an exact decoder",
+  "logical_failures": null,
+  "max_us": 239.048,
+  "mean_us_per_shot": 74.77666603333333,
+  "method": "ldpc-uf",
+  "native_parity_checks": 30000,
+  "native_status": {
+    "completed": true,
+    "warmup_calls": 20480,
+    "warmup_wall_seconds": 2.008995439
+  },
+  "p50_us": 71.672,
+  "p99_us": 155.817,
+  "physical_observable_truth_available": false,
+  "repeat_decode_seconds": [
+    0.748949614,
+    0.748146049,
+    0.746204318
+  ],
+  "repeat_mean_us": [
+    74.8949614,
+    74.8146049,
+    74.6204318
+  ],
+  "repeats": 3,
+  "shots": 10000,
+  "std_repeat_mean_us": 0.14114228112795482,
+  "timing_scope": "C++ PreparedUfDecoder.decode_prepared; cluster initialization, correction extraction and cleanup excluded",
+  "wall_seconds": 5.508586561307311,
+  "weight_gaps": [
+    {
+      "mean_integer_gap": 4485.3482,
+      "nonoptimal_shots": 1518
+    },
+    {
+      "mean_integer_gap": 4485.3482,
+      "nonoptimal_shots": 1518
+    },
+    {
+      "mean_integer_gap": 4485.3482,
+      "nonoptimal_shots": 1518
+    }
+  ]
+}

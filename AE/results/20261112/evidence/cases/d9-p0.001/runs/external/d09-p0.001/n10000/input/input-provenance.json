@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "complete": true,
+  "source": {
+    "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.001/runs/native-batch/inputs/d09-p0.001/dataset.bin",
+    "sha256": "a112120f5d92431d849eb4c99379b438718e98a480b079c040ca3c5ae319a60b",
+    "format_version": 2,
+    "distance": 9,
+    "error_rate": 0.001,
+    "saved_shots": 1000000,
+    "num_detectors": 720,
+    "oracle_integer_scale": 4077594.0517170443,
+    "stream_id": 1,
+    "mixed_seed": 9612686024890404727
+  },
+  "dem": {
+    "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.001/runs/native-batch/inputs/d09-p0.001/model.dem",
+    "sha256": "6a9cdf2abf5628f2a4d71cc2ae357a749717c686f55d2c9c996c404ae2bfaf9e"
+  },
+  "selected_shots": 10000,
+  "independent_measurement_inputs": 10000,
+  "repeats": 3,
+  "warmup": {
+    "source": {
+      "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d9-p0.001/runs/native-batch/inputs/d09-p0.001/dataset.bin",
+      "sha256": "a112120f5d92431d849eb4c99379b438718e98a480b079c040ca3c5ae319a60b",
+      "format_version": 2,
+      "distance": 9,
+      "error_rate": 0.001,
+      "saved_shots": 1000000,
+      "num_detectors": 720,
+      "oracle_integer_scale": 4077594.0517170443,
+      "stream_id": 1,
+      "mixed_seed": 9612686024890404727
+    },
+    "selected_shots": 256,
+    "seconds": 2.0,
+    "policy": "reused_measurement_prefix"
+  },
+  "input_adapter_sha256": "2c787a617dac82b8da10c9498fdcfb9e18ada57b5af7ef1172edb443531f0e61",
+  "graph_converter": {
+    "package": "beyond_blossom",
+    "version": "0.1.0",
+    "stim_version": "1.16.0",
+    "artifacts": {
+      "matching.py": "c09971f577e17e5c0a37f50889bac0fe0603b84df93193c9f96b86a6f8b4bca3",
+      "_cpp_beyond_blossom.cpython-311-x86_64-linux-gnu.so": "562f7065ea79b37cd1b5b9df049b25cfd768cf199492fd06fb559fdfb794da8e"
+    }
+  },
+  "external_integer_scale": 2430.435594773652,
+  "source_oracle_scope": "Original decoder quantization only; not an external integer-MWPM oracle",
+  "external_integer_oracle_status": "pending_native_validation",
+  "physical_observable_truth_available": false,
+  "partition_policy": "Stable time order; private boundary per boundary edge; time distance//2 is the interface",
+  "files": {
+    "graph.json": "093765c3f35e60e52df820bdd64061153008e9be0d422fafd605281d95024771",
+    "native-input.json": "f6633989d9324d258f4e46a963f2382f254749ce1f6b08d8df59535ca8815840",
+    "shot-reference.jsonl": "4229288126f299529574e456e6e1c0f9394bd0d20cf6cfede7363a8a94ad310d"
+  }
+}

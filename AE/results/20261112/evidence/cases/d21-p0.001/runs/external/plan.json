@@ -1,0 +1,44 @@
+{
+  "ae_complete_sha256": "74992e523b935eda2ed948749f80778e8803b50b8823f4919725010f3ba56856",
+  "ae_plan_sha256": "d4dc499b3e39fef960dc850818ee398401354b31665141b23207468968572016",
+  "ae_run": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.001/runs/native-batch",
+  "controller_sha256": {
+    "collect.py": "0428964538a3dfc7a7d075e2d01b32b7b0ee4704cd624694610ce660728d0b22",
+    "common.py": "53809e4c5021f9e693602cfa8934b8e397ca09c17fef4e6aff35a947c8f2e512",
+    "input_adapter.py": "2c787a617dac82b8da10c9498fdcfb9e18ada57b5af7ef1172edb443531f0e61",
+    "run.py": "3b61427c3191c8009581d259b084924038552212d0264a0d95f3424c9211f7c2"
+  },
+  "external_build": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/shared-build/builds/external",
+  "external_build_sha256": "8f3412438dfca48a676654c081c826bfe6673f1ef21b173f4d13a071ca60ad79",
+  "historical_claim": "Fresh collection policy; no historical million/ten-thousand assignment is inferred",
+  "profile": "paper",
+  "repeats": 3,
+  "requested_limit": 10000,
+  "sampling_policy": "Saved source order; every reduced workload is a prefix of the identical saved case",
+  "schedule": [
+    {
+      "case": "d21-p0.001",
+      "distance": 21,
+      "error_rate": 0.001,
+      "methods": [
+        "parity",
+        "fusion",
+        "parity-uf",
+        "unionfind",
+        "ldpc-uf"
+      ],
+      "shots": 10000,
+      "source_shots": 1000000
+    }
+  ],
+  "schema": 1,
+  "shot_counts": {},
+  "source": {
+    "commit": "75aedd433d1b129e5a973635320f199b5f26cbae",
+    "dirty": false,
+    "status": ""
+  },
+  "warmup_prefix": 256,
+  "warmup_root": null,
+  "warmup_seconds": 2.0
+}

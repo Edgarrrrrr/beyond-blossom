@@ -1,0 +1,216 @@
+{
+  "schema_version": 3,
+  "status": "complete",
+  "identity": {
+    "kind": "git_commits",
+    "repository": "/home/fujy/dev/beyond_blossom/repo",
+    "base": {
+      "requested": "dc56db5233d474c11628f392d12c2ae6f654b60b",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b"
+    },
+    "candidate": {
+      "requested": "75aedd433d1b129e5a973635320f199b5f26cbae",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae"
+    }
+  },
+  "scope": {
+    "literal_paths": [
+      "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc"
+    ],
+    "all_paths": false,
+    "snapshot_exclusions": [],
+    "working_tree_included": false
+  },
+  "generator_sha256": "e3a78534ab189445f3364b390d231d270843412d787d4c86dd225086647ca8c8",
+  "invocation_argv": [
+    "/home/fujy/dev/beyond_blossom/repo/AE/results/20261112/method/scripts/render_code_diff.py",
+    "--repo",
+    "/home/fujy/dev/beyond_blossom/repo",
+    "--base",
+    "dc56db5233d474c11628f392d12c2ae6f654b60b",
+    "--candidate",
+    "75aedd433d1b129e5a973635320f199b5f26cbae",
+    "--out",
+    "/home/fujy/dev/beyond_blossom/repo/AE/results/20261112/method/code-diff",
+    "--presentation",
+    "full-page",
+    "--path",
+    "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+    "--initial-path",
+    "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+    "--initial-line",
+    "700"
+  ],
+  "git_commands_argv": [
+    [
+      "git",
+      "--no-pager",
+      "--literal-pathspecs",
+      "-c",
+      "color.ui=false",
+      "-c",
+      "core.quotePath=true",
+      "-C",
+      "/home/fujy/dev/beyond_blossom/repo",
+      "rev-parse",
+      "--verify",
+      "--end-of-options",
+      "dc56db5233d474c11628f392d12c2ae6f654b60b^{commit}"
+    ],
+    [
+      "git",
+      "--no-pager",
+      "--literal-pathspecs",
+      "-c",
+      "color.ui=false",
+      "-c",
+      "core.quotePath=true",
+      "-C",
+      "/home/fujy/dev/beyond_blossom/repo",
+      "rev-parse",
+      "--verify",
+      "--end-of-options",
+      "75aedd433d1b129e5a973635320f199b5f26cbae^{commit}"
+    ],
+    [
+      "git",
+      "--no-pager",
+      "--literal-pathspecs",
+      "-c",
+      "color.ui=false",
+      "-c",
+      "core.quotePath=true",
+      "-C",
+      "/home/fujy/dev/beyond_blossom/repo",
+      "diff",
+      "--raw",
+      "-z",
+      "--no-abbrev",
+      "--no-ext-diff",
+      "--no-textconv",
+      "--find-renames",
+      "dc56db5233d474c11628f392d12c2ae6f654b60b",
+      "75aedd433d1b129e5a973635320f199b5f26cbae",
+      "--",
+      "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc"
+    ],
+    [
+      "git",
+      "--no-pager",
+      "--literal-pathspecs",
+      "-c",
+      "color.ui=false",
+      "-c",
+      "core.quotePath=true",
+      "-C",
+      "/home/fujy/dev/beyond_blossom/repo",
+      "diff",
+      "--binary",
+      "--full-index",
+      "--no-ext-diff",
+      "--no-textconv",
+      "--find-renames",
+      "dc56db5233d474c11628f392d12c2ae6f654b60b",
+      "75aedd433d1b129e5a973635320f199b5f26cbae",
+      "--",
+      "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc"
+    ],
+    [
+      "git",
+      "--no-pager",
+      "--literal-pathspecs",
+      "-c",
+      "color.ui=false",
+      "-c",
+      "core.quotePath=true",
+      "-C",
+      "/home/fujy/dev/beyond_blossom/repo",
+      "cat-file",
+      "blob",
+      "59b406c7cdac256a9f6e3d52eda544554b15b99c"
+    ],
+    [
+      "git",
+      "--no-pager",
+      "--literal-pathspecs",
+      "-c",
+      "color.ui=false",
+      "-c",
+      "core.quotePath=true",
+      "-C",
+      "/home/fujy/dev/beyond_blossom/repo",
+      "cat-file",
+      "blob",
+      "32abe43181eb5675e911226dae77a8bf0de3fa00"
+    ]
+  ],
+  "max_html_bytes": 500000,
+  "changed_files": 1,
+  "files": [
+    {
+      "status": "M",
+      "old_path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "new_path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "base": {
+        "mode": "100644",
+        "git_object": "59b406c7cdac256a9f6e3d52eda544554b15b99c",
+        "bytes": 34308,
+        "sha256": "7bd0191ba20a91e968b75240e48962d18c8e829b76d7c6e57a67cb62c30a17b2",
+        "kind": "file"
+      },
+      "candidate": {
+        "mode": "100644",
+        "git_object": "32abe43181eb5675e911226dae77a8bf0de3fa00",
+        "bytes": 37142,
+        "sha256": "ceeec80cea5e64bdba8047d7537f18eb4604430bb0fbdaf08d4bdfee26bacb61",
+        "kind": "file"
+      },
+      "initial_candidate_line": 700,
+      "display_path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "html_id": "file-0",
+      "representation": "utf8_text",
+      "initial_hunk_id": "change-0-4",
+      "added_lines": 55,
+      "deleted_lines": 3
+    }
+  ],
+  "presentation": {
+    "mode": "full-page",
+    "initial_path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+    "initial_candidate_line": 700,
+    "code_font_px": 15,
+    "initial_height_px": null,
+    "height_mode": "viewport",
+    "requires_hosted_top_level_link": true,
+    "unified_below_width_px": 1100,
+    "provenance_initially_collapsed": true
+  },
+  "artifacts": {
+    "diff.patch": {
+      "sha256": "4b4d89498e5793694338893526aa04b48fa3a3fbe78026f5764be3b9a69faecc",
+      "bytes": 4900
+    },
+    "index.html": {
+      "sha256": "41955b87b35194103d07279e82c604f5f569b31026eb33fa8995f10ca2402261",
+      "bytes": 71892
+    }
+  },
+  "limitations": [
+    "HTML shows changed hunks with three context lines; raw comparison is retained.",
+    "Source diffs do not prove performance, build identity, or client rendering.",
+    "Line counts describe the displayed difflib comparison, which can differ from Git's hunk alignment."
+  ],
+  "line_counts": {
+    "added": 55,
+    "deleted": 3,
+    "unavailable_files": 0
+  },
+  "html_pages": [
+    "index.html"
+  ],
+  "annotation_generator": {
+    "path": "../scripts/build_material.py",
+    "sha256": "df979fc46fb349124e493c5051f0448f4b3583c6f05db2d4c394bf411351e62c",
+    "explanations_sha256": "b466e0a1d36fa9d9df0f99a9dd1938ebfc0719cbf5d01c476f2bf2e36c1d451f"
+  }
+}

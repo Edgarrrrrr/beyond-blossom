@@ -1,0 +1,9 @@
+boundary,thread_index,tid,cpu,affinity_mask,component_id,lane,group_threads,captain,socket,physical_core,buffer_id
+before,0,199465,2,2,0,0,1,0,0,2,0
+before,1,199466,4,4,1,0,1,1,0,4,0
+before,2,199467,6,6,0,0,1,2,0,6,1
+before,3,199468,8,8,1,0,1,3,0,9,1
+after,0,199465,2,2,0,0,1,0,0,2,0
+after,1,199466,4,4,1,0,1,1,0,4,0
+after,2,199467,6,6,0,0,1,2,0,6,1
+after,3,199468,8,8,1,0,1,3,0,9,1

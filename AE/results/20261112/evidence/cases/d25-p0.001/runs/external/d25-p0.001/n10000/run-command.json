@@ -1,0 +1,22 @@
+[
+  "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/bin/python",
+  "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/AE/external/run.py",
+  "--input",
+  "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d25-p0.001/runs/external/d25-p0.001/n10000/input",
+  "--build",
+  "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/shared-build/builds/external",
+  "--output",
+  "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d25-p0.001/runs/external/d25-p0.001/n10000/run",
+  "--profile",
+  "paper",
+  "--timeout",
+  "0",
+  "--methods",
+  "parity",
+  "fusion",
+  "parity-uf",
+  "unionfind",
+  "ldpc-uf",
+  "--cpus",
+  "2,4,6,8"
+]

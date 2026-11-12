@@ -1,0 +1,18 @@
+[
+  "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/venv-clean/bin/python",
+  "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/source/AE/external/input_adapter.py",
+  "--dataset",
+  "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.001/runs/native-batch/inputs/d13-p0.001/dataset.bin",
+  "--dem",
+  "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.001/runs/native-batch/inputs/d13-p0.001/model.dem",
+  "--output",
+  "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.001/runs/external/d13-p0.001/n10000/input",
+  "--limit",
+  "10000",
+  "--repeats",
+  "3",
+  "--warmup-seconds",
+  "2.0",
+  "--warmup-prefix",
+  "256"
+]

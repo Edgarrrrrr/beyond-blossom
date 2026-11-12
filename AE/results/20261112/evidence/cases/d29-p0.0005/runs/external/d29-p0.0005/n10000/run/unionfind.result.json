@@ -1,0 +1,55 @@
+{
+  "cpus": [
+    2
+  ],
+  "files": {
+    "unionfind.corrections.jsonl": "599ce013351835d75ed2d221ae0603cb39cd3393f38d8b619a95f8b8ba2ee127",
+    "unionfind.csv": "b259b806e9249115ec34a3b7d147054fcd30d23710f704d76b4589d57a537723",
+    "unionfind.log": "83f9066b31a91cd7bf2d8cd3deb10363aab5980108f814179c278df0e73b6880"
+  },
+  "independent_chain_checks": 10000,
+  "independent_measurement_inputs": 10000,
+  "integer_optimality": "measured gap; not an exact decoder",
+  "logical_failures": null,
+  "max_us": 1380.531,
+  "mean_us_per_shot": 180.91137096666668,
+  "method": "unionfind",
+  "native_parity_checks": 30000,
+  "native_status": {
+    "completed": true,
+    "warmup_calls": 10240,
+    "warmup_wall_seconds": 2.026732663
+  },
+  "p50_us": 179.392,
+  "p99_us": 226.948,
+  "physical_observable_truth_available": false,
+  "repeat_decode_seconds": [
+    1.811627084,
+    1.809735235,
+    1.80597881
+  ],
+  "repeat_mean_us": [
+    181.1627084,
+    180.9735235,
+    180.597881
+  ],
+  "repeats": 3,
+  "shots": 10000,
+  "std_repeat_mean_us": 0.28749730606999857,
+  "timing_scope": "C++ Decoder.decode including returned correction copy; syndrome preparation, edge projection and clear excluded",
+  "wall_seconds": 9.288492806255817,
+  "weight_gaps": [
+    {
+      "mean_integer_gap": 16903.7128,
+      "nonoptimal_shots": 7218
+    },
+    {
+      "mean_integer_gap": 16903.7128,
+      "nonoptimal_shots": 7218
+    },
+    {
+      "mean_integer_gap": 16903.7128,
+      "nonoptimal_shots": 7218
+    }
+  ]
+}

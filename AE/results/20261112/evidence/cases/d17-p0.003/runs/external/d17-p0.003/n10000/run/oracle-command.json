@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/external/d17-p0.003/n10000/run/bin/oracle",
+    "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/external/d17-p0.003/n10000/input/native-input.json",
+    "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d17-p0.003/runs/external/d17-p0.003/n10000/run/oracle.jsonl"
+  ],
+  "cpus": [
+    2
+  ]
+}

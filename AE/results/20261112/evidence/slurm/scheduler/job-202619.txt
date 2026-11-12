@@ -1,0 +1,29 @@
+JobId=202619 JobName=bb-ae-worker-4
+   UserId=fujy(1015) GroupId=lab(1002) MCS_label=N/A
+   Priority=311 Nice=0 Account=fujy QOS=normal
+   JobState=COMPLETED Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=02:57:02 TimeLimit=UNLIMITED TimeMin=N/A
+   SubmitTime=2026-11-12T13:19:52 EligibleTime=2026-11-12T13:19:52
+   AccrueTime=2026-11-12T13:19:52
+   StartTime=2026-11-12T13:19:52 EndTime=2026-11-12T16:16:54 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-12T13:19:52 Scheduler=Main
+   Partition=debug AllocNode:Sid=zeus:129945
+   ReqNodeList=ares5 ExcNodeList=(null)
+   NodeList=ares5
+   BatchHost=ares5
+   NumNodes=1 NumCPUs=52 NumTasks=1 CPUs/Task=52 ReqB:S:C:T=0:0:*:1
+   ReqTRES=cpu=52,mem=120G,node=1,billing=52
+   AllocTRES=cpu=52,mem=120G,node=1,billing=52
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=52 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) Network=(null)
+   Command=/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/jobs/worker-4.sh
+   WorkDir=/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper
+   StdErr=/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/logs/worker-4-202619.log
+   StdIn=/dev/null
+   StdOut=/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/logs/worker-4-202619.log
+   TresPerTask=cpu=52
+   
+

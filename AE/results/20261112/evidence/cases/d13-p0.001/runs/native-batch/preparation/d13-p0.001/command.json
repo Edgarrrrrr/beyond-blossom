@@ -1,0 +1,19 @@
+[
+  "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/shared-build/builds/reference-l3/build/bin/experiment_benchmark",
+  "--distance",
+  "13",
+  "--error-rate",
+  "0.001",
+  "--shots",
+  "1000000",
+  "--dataset",
+  "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d13-p0.001/runs/native-batch/inputs/d13-p0.001/dataset.bin",
+  "--root-seed",
+  "20261112",
+  "--stream-id",
+  "1",
+  "--mode",
+  "prepare",
+  "--main-cpu",
+  "2"
+]

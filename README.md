@@ -28,9 +28,9 @@ These are the original method illustrations from the Beyond Blossom manuscript, 
 
 ## Performance
 
-As of November 12, 2026: in our benchmarks on rotated surface codes with distances 9–33 and circuit-level physical error rates of 0.05%–0.3%, Beyond Blossom achieves a **4.23× geometric-mean speedup** over Sparse Blossom in PyMatching on a single CPU core. At distance 33 and a physical error rate of 0.1%, using 8 CPU cores, decoding a block of 33 measurement rounds takes **21.40 μs on average**, equivalent to **0.65 μs per round**.
+In the [archived Xeon benchmarks](AE/data/latest-matrix/originals/measurements.csv) on rotated surface codes with distances 9–33 and circuit-level physical error rates of 0.05%–0.3%, Beyond Blossom achieves a **4.23× geometric-mean speedup** over the repository's single-core `Upstream` reference. At distance 33 and a physical error rate of 0.1%, using 8 CPU cores, decoding a block of 33 measurement rounds takes **21.40 μs on average**, equivalent to **0.65 μs per round**.
 
-The table below summarizes speedups at **p = 0.1%**, with d measurement rounds per block. Both columns use **single-core Sparse Blossom in PyMatching** as the baseline.
+The table below summarizes speedups at **p = 0.1%**, with d measurement rounds per block. Both columns use the archived **single-core `Upstream` configuration** as the baseline (`repository_speedup` in the source CSV).
 
 | Code distance (d) | Beyond Blossom (1 core) | Beyond Blossom (8 cores) |
 | --- | ---: | ---: |
@@ -44,7 +44,7 @@ The table below summarizes speedups at **p = 0.1%**, with d measurement rounds p
 
 These results are obtained on an Intel Xeon Gold 6230R; see [artifact evaluation](AE/README.md) for measurement details and reproduction instructions.
 
-These values describe the [archived measurements](AE/reference/plot-data.csv). The [new million-shot reproduction](AE/results/20261112/README.md) records its own inputs, builds, timings, and audits separately.
+The [new million-shot reproduction](AE/results/20261112/README.md) uses a separately built, fixed official PyMatching reference. Its inputs, builds, timings, and audits are recorded separately from the historical summary above.
 
 ## Installation
 

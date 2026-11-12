@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "complete": true,
+  "source": {
+    "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.0005/runs/native-batch/inputs/d21-p0.0005/dataset.bin",
+    "sha256": "ac9fa0cb8ef422b802c67df749494af42311905976b4c4d3c92d98a58d5a29d1",
+    "format_version": 2,
+    "distance": 21,
+    "error_rate": 0.0005,
+    "saved_shots": 1000000,
+    "num_detectors": 9240,
+    "oracle_integer_scale": 3760699.1019156375,
+    "stream_id": 1,
+    "mixed_seed": 4459998804971616093
+  },
+  "dem": {
+    "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.0005/runs/native-batch/inputs/d21-p0.0005/model.dem",
+    "sha256": "aafdedd2914582f75561a09dcb203e7a603d29874288f20fb3deecdb8a9e6b1f"
+  },
+  "selected_shots": 10000,
+  "independent_measurement_inputs": 10000,
+  "repeats": 3,
+  "warmup": {
+    "source": {
+      "path": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/slurm-paper/cases/d21-p0.0005/runs/native-batch/inputs/d21-p0.0005/dataset.bin",
+      "sha256": "ac9fa0cb8ef422b802c67df749494af42311905976b4c4d3c92d98a58d5a29d1",
+      "format_version": 2,
+      "distance": 21,
+      "error_rate": 0.0005,
+      "saved_shots": 1000000,
+      "num_detectors": 9240,
+      "oracle_integer_scale": 3760699.1019156375,
+      "stream_id": 1,
+      "mixed_seed": 4459998804971616093
+    },
+    "selected_shots": 256,
+    "seconds": 2.0,
+    "policy": "reused_measurement_prefix"
+  },
+  "input_adapter_sha256": "2c787a617dac82b8da10c9498fdcfb9e18ada57b5af7ef1172edb443531f0e61",
+  "graph_converter": {
+    "package": "beyond_blossom",
+    "version": "0.1.0",
+    "stim_version": "1.16.0",
+    "artifacts": {
+      "matching.py": "c09971f577e17e5c0a37f50889bac0fe0603b84df93193c9f96b86a6f8b4bca3",
+      "_cpp_beyond_blossom.cpython-311-x86_64-linux-gnu.so": "562f7065ea79b37cd1b5b9df049b25cfd768cf199492fd06fb559fdfb794da8e"
+    }
+  },
+  "external_integer_scale": 2241.551474375001,
+  "source_oracle_scope": "Original decoder quantization only; not an external integer-MWPM oracle",
+  "external_integer_oracle_status": "pending_native_validation",
+  "physical_observable_truth_available": false,
+  "partition_policy": "Stable time order; private boundary per boundary edge; time distance//2 is the interface",
+  "files": {
+    "graph.json": "41ee11233dbd1fa68d3ea7fe8b6807512015fbe9e5655257fae3fa7238c8c132",
+    "native-input.json": "8fa2e0abe1b408bad1884e28df417f247db8e04d87c2f5a48ca75d86247b77ac",
+    "shot-reference.jsonl": "9361e0dec710460bc5bed2bd73fc51e1d7603b68cef0198b7aadc651eaa123f0"
+  }
+}

@@ -1,0 +1,2 @@
+mode,shots,elapsed_ns,ns_per_shot,outer_wall_ns,warmup_shots,block_size,syndrome_hash,result_hash,reference_result_hash,observable_diff,weight_diff,total_threads,execution
+batch,1000000,35289007650,35289.00765,35289087947,57344,1024,8066635467613927439,192111019076534266,192111019076534266,0,0,2,shared

@@ -1,0 +1,90 @@
+diff --git a/src/beyond_blossom/structured/predecode/one_hop_predecoder.cc b/src/beyond_blossom/structured/predecode/one_hop_predecoder.cc
+index 59b406c7cdac256a9f6e3d52eda544554b15b99c..32abe43181eb5675e911226dae77a8bf0de3fa00 100644
+--- a/src/beyond_blossom/structured/predecode/one_hop_predecoder.cc
++++ b/src/beyond_blossom/structured/predecode/one_hop_predecoder.cc
+@@ -18,7 +18,7 @@
+ 
+ namespace beyond_blossom::structured {
+ namespace {
+-#if BB_TAILRESET_PREDECODE_MODE == 2
++#if BB_TAILRESET_PREDECODE_MODE == 2 || BB_TAILRESET_PREDECODE_MODE == 3
+ template <typename Box, typename Stencil>
+ uint32_t coordinate_neighborhood(const OneHopPredecoder::Grid& grid, size_t cell, uint16_t) {
+     return one_hop_syndrome_mask<Box, Stencil>(grid, cell);
+@@ -28,7 +28,7 @@ template <size_t NX, typename Stencil>
+ void bind_kernels(OneHopPredecoder::Grid& w) {
+     // Only the row/slice strides enter these kernels. Time extent is immaterial.
+     using Box = StaticGridBox<NX, NX, 1>;
+-#if BB_TAILRESET_PREDECODE_MODE == 2
++#if BB_TAILRESET_PREDECODE_MODE == 2 || BB_TAILRESET_PREDECODE_MODE == 3
+     w.predecode.neighborhood = coordinate_neighborhood<Box, Stencil>;
+ #else
+     w.predecode.neighborhood = one_hop_neighborhood_portable<Box, Stencil>;
+@@ -511,7 +511,7 @@ OneHopPredecoder::PreparedOrder OneHopPredecoder::prepare_order_with_scratch(
+     assert(begin <= end && end <= seed_view.storage.size());
+ #if BB_TAILRESET_PREDECODE_MODE == 1
+     return {{}, masks_by_seed};
+-#elif BB_TAILRESET_PREDECODE_MODE == 2
++#elif BB_TAILRESET_PREDECODE_MODE == 2 || BB_TAILRESET_PREDECODE_MODE == 3
+     if (begin == end) return {{}, masks_by_seed};
+     for (uint32_t k = begin; k < end; ++k) {
+         const auto& seed = seed_view.storage[k];
+@@ -697,6 +697,58 @@ void OneHopPredecoder::run_fused_range(uint32_t begin, uint32_t end, PartialResu
+ #elif BB_TAILRESET_PREDECODE_MODE == 2
+     const auto ordered = prepare_order_with_scratch(begin, end, partial, masks, nullptr, links);
+     run_order(ordered, partial);
++#elif BB_TAILRESET_PREDECODE_MODE == 3
++    // AE simple baseline: simultaneous conservative equal shares, followed by
++    // coordinate-order tight matching. Each active-active edge bounds both
++    // endpoints by w/2; inactive and boundary endpoints retain radius zero and
++    // impose w. Round down to the solver's even-radius lattice, so odd and
++    // 2-mod-4 weights can defer a pair to MWPM rather than overgrow its edge.
++    // Publish every radius before examining matches. There is no degree sort,
++    // neighbor chase, or additional growth after a neighbor freezes.
++    // The AE runner restricts this baseline to the serial whole-component path.
++    const auto ordered = prepare_order_with_scratch(begin, end, partial, masks, nullptr, links);
++    for (const uint32_t index : ordered.sources) {
++        auto& seed = seed_view.storage[index];
++        auto& grid = *seed.grid;
++        weight_int cap = UINT32_MAX;
++        auto present = grid.present[seed.cell];
++        const auto active = ordered.masks_by_seed[index] & ~grid.boundary_mask[seed.cell];
++        while (present) {
++            const uint8_t slot = std::countr_zero(present);
++            present &= present - 1;
++            const auto weight = grid.weights[seed.cell][slot];
++            cap = std::min(cap, (active & (uint16_t{1} << slot)) ? weight / 2 : weight);
++        }
++        seed.radius = cap == UINT32_MAX ? 0 : cap & ~weight_int{1};
++        grid.predecode.radii[seed.cell] = seed.radius;
++    }
++    for (const uint32_t index : ordered.sources) {
++        auto& seed = seed_view.storage[index];
++        if (seed.mate != PredecodeSeed::UNMATCHED) continue;
++        auto& grid = *seed.grid;
++        auto candidates = ordered.masks_by_seed[index];
++        while (candidates) {
++            const uint8_t slot = std::countr_zero(candidates);
++            candidates &= candidates - 1;
++            const auto cell = ptrdiff_t(seed.cell) + grid.predecode.offsets[slot];
++            const auto other = grid.predecode.active[cell] - 1;
++            if (seed_view.storage[other].mate == PredecodeSeed::UNMATCHED &&
++                uint64_t(seed.radius) + seed_view.storage[other].radius == grid.weights[seed.cell][slot]) {
++                pair(index, other, slot, partial);
++                break;
++            }
++        }
++        if (seed.mate != PredecodeSeed::UNMATCHED) continue;
++        auto boundaries = grid.boundary_mask[seed.cell];
++        while (boundaries) {
++            const uint8_t slot = std::countr_zero(boundaries);
++            boundaries &= boundaries - 1;
++            if (seed.radius == grid.weights[seed.cell][slot]) {
++                pair(index, PredecodeSeed::BOUNDARY, slot, partial);
++                break;
++            }
++        }
++    }
+ #else
+     if (try_run_bound_range(known_grid, begin, end, partial, masks, links))
+         return;

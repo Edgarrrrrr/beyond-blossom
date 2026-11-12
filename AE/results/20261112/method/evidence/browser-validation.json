@@ -1,0 +1,65 @@
+{
+  "complete": true,
+  "scope": "Final standalone local HTML/browser controls at 1440 and 760 widths; no remote publication or native performance execution. Browser images/profiles remain in persistent workspace, not duplicated in the repository.",
+  "validated_pages": [
+    {
+      "page": "mechanism",
+      "width": 1440,
+      "attempt": "r3",
+      "receipt": "browser-mechanism-1440.json",
+      "receipt_sha256": "16ef2debe218fa74363d20bc5d8abdc3eb75fca69617b241710d314218a62eff",
+      "html_sha256": "755558910b1ef564a456bb5b355da6f7ebfc1b69627fa1e5bca685dfe707e1af",
+      "original_dom": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/method-browser-validation/attempts/r3/mechanism-1440.dom.html",
+      "dom_sha256": "c3b4a6a9c29e51546eb35c0db97df45190795f807a99ed6247db29b791500eb1",
+      "screenshot": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/method-browser-validation/attempts/r3/mechanism-1440.png",
+      "screenshot_sha256": "8e56ad921017d8d62f981e65e600201c850e3e770bc674aca959e4304d356a63",
+      "manual_screenshot_review": "Reviewed using view_image; diagram/text readable, current source highlighted and visible on wide viewport; narrow viewport stacks panels without horizontal overflow."
+    },
+    {
+      "page": "mechanism",
+      "width": 760,
+      "attempt": "r3",
+      "receipt": "browser-mechanism-760.json",
+      "receipt_sha256": "fef634dd8c8a84965e56c9c4568b19eeb6490fb4ce9942e2da70f68e230ae29a",
+      "html_sha256": "755558910b1ef564a456bb5b355da6f7ebfc1b69627fa1e5bca685dfe707e1af",
+      "original_dom": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/method-browser-validation/attempts/r3/mechanism-760.dom.html",
+      "dom_sha256": "7d9356c1c96d8d0651d2e27b182d5dea9cd3a24fd4586f2bcf8512c0768a9d2a",
+      "screenshot": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/method-browser-validation/attempts/r3/mechanism-760.png",
+      "screenshot_sha256": "4ebf4d7198bea7438f826f3e694bdd57f9290d61e2097b2ed560e4b232764c29",
+      "manual_screenshot_review": "Reviewed using view_image; diagram/text readable, current source highlighted and visible on wide viewport; narrow viewport stacks panels without horizontal overflow."
+    },
+    {
+      "page": "diff",
+      "width": 1440,
+      "attempt": "r1",
+      "receipt": "browser-diff-1440.json",
+      "receipt_sha256": "c780f45c164aa99631f133da2440d7b1df72530d76f677d507b938bb46d73ef8",
+      "html_sha256": "41955b87b35194103d07279e82c604f5f569b31026eb33fa8995f10ca2402261",
+      "original_dom": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/method-browser-validation/attempts/r1/diff-1440.dom.html",
+      "dom_sha256": "5ce115f845df2662daccbb6f103980bbec3b441bd65140b837880e0595935221",
+      "screenshot": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/method-browser-validation/attempts/r1/diff-1440.png",
+      "screenshot_sha256": "d3fadbaa38abfbdc40461b4af361377416cb0f7960881f7a919501fb2e711e95",
+      "manual_screenshot_review": "Reviewed using view_image; diagram/text readable, current source highlighted and visible on wide viewport; narrow viewport stacks panels without horizontal overflow."
+    },
+    {
+      "page": "diff",
+      "width": 760,
+      "attempt": "r1",
+      "receipt": "browser-diff-760.json",
+      "receipt_sha256": "9e183a2ddeb8cbd60a9317c4649e664e6924c43dcbfa91e5fd41182f88f719e0",
+      "html_sha256": "41955b87b35194103d07279e82c604f5f569b31026eb33fa8995f10ca2402261",
+      "original_dom": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/method-browser-validation/attempts/r1/diff-760.dom.html",
+      "dom_sha256": "7782d98c63e2acb136dde82ccf5fc877fa52db62bc7faf299932fc52928dd7d8",
+      "screenshot": "/home/fujy/dev/beyond_blossom/ae-runs/20261112-local-paper/method-browser-validation/attempts/r1/diff-760.png",
+      "screenshot_sha256": "07fe2403578dc247e40373a93ea24613c2eba0ef315114be1b26c56df532152f",
+      "manual_screenshot_review": "Reviewed using view_image; diagram/text readable, current source highlighted and visible on wide viewport; narrow viewport stacks panels without horizontal overflow."
+    }
+  ],
+  "historical_attempts": {
+    "sandbox": "Initial child-sandbox browser launch was blocked by setsockopt EPERM before page validation; failure retained.",
+    "r1_mechanism": "First screenshot identified source-scroll visibility issue; superseded.",
+    "r2_mechanism": "Scroll fix passed; later teaching-model is_sorted branch and permanent scope wording superseded this HTML.",
+    "r3_mechanism": "Final validated mechanism bytes.",
+    "r1_diff": "Unchanged final diff bytes, retained original validation."
+  }
+}

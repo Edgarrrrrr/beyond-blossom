@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "groups": [
+    {
+      "case": "d17-p0.001",
+      "methods": [
+        "parity",
+        "fusion",
+        "parity-uf",
+        "unionfind",
+        "ldpc-uf"
+      ],
+      "sha256": "1f66858176c6483ebcdec495968c8a30008879c862c53bd2448b8e9a69161173",
+      "shots": 10000,
+      "summary": "d17-p0.001/n10000/run/summary.json"
+    }
+  ],
+  "plan_sha256": "b4ef3f098b86d52c16515c666fd536fdd72f61676f9a959820388dd88e29de91",
+  "summary_csv_sha256": "2f4a5d6ea5b2f55d503ce70476825c33959affb97a537887709151f5a4cbccf1",
+  "summary_sha256": "8e7e7f453e238d67798a14af429431f9f18fddd3348c1ead127e1dfed209fe37"
+}

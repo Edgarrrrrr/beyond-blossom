@@ -1,0 +1,55 @@
+{
+  "cpus": [
+    2
+  ],
+  "files": {
+    "parity.corrections.jsonl": "85dc510a8f26c861a79bdc3e7cd8d862d19c11d65cf55610183507a62acc3ab5",
+    "parity.csv": "d296d85942e43b024700145780e0acdd4fef6106dffb6640b7c068f227eba7c4",
+    "parity.log": "f1d3a9ab3ea3735dcec96332e1178e41e6d1630e8dfe422b9f259f0507ba9d29"
+  },
+  "independent_chain_checks": 10000,
+  "independent_measurement_inputs": 10000,
+  "integer_optimality": "required",
+  "logical_failures": null,
+  "max_us": 14028.658,
+  "mean_us_per_shot": 5285.665624166667,
+  "method": "parity",
+  "native_parity_checks": 30000,
+  "native_status": {
+    "completed": true,
+    "warmup_calls": 512,
+    "warmup_wall_seconds": 2.703696884
+  },
+  "p50_us": 5196.038,
+  "p99_us": 7734.33,
+  "physical_observable_truth_available": false,
+  "repeat_decode_seconds": [
+    52.850317463,
+    52.85558217,
+    52.864069092
+  ],
+  "repeat_mean_us": [
+    5285.0317463,
+    5285.558217,
+    5286.4069092
+  ],
+  "repeats": 3,
+  "shots": 10000,
+  "std_repeat_mean_us": 0.6938447052277249,
+  "timing_scope": "Rust SolverSerial.solve + subgraph; clear, input, validation and output excluded",
+  "wall_seconds": 163.42068616114557,
+  "weight_gaps": [
+    {
+      "mean_integer_gap": 0.0,
+      "nonoptimal_shots": 0
+    },
+    {
+      "mean_integer_gap": 0.0,
+      "nonoptimal_shots": 0
+    },
+    {
+      "mean_integer_gap": 0.0,
+      "nonoptimal_shots": 0
+    }
+  ]
+}

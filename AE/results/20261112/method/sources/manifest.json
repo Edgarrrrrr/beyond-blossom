@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "before_commit": "dc56db5233d474c11628f392d12c2ae6f654b60b",
+  "after_commit": "75aedd433d1b129e5a973635320f199b5f26cbae",
+  "diff_scope": [
+    "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc"
+  ],
+  "scope_note": "完整对比仅限one_hop_predecoder.cc；其余固定文件提供辅助函数、handoff、串行限制和正确性测试证据，不宣称覆盖整个提交。",
+  "files": {
+    "sources/before/src/beyond_blossom/structured/predecode/one_hop_predecoder.cc": {
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "commit": "dc56db5233d474c11628f392d12c2ae6f654b60b",
+      "sha256": "7bd0191ba20a91e968b75240e48962d18c8e829b76d7c6e57a67cb62c30a17b2",
+      "bytes": 34308
+    },
+    "sources/after/src/beyond_blossom/structured/predecode/one_hop_predecoder.cc": {
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.cc",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae",
+      "sha256": "ceeec80cea5e64bdba8047d7537f18eb4604430bb0fbdaf08d4bdfee26bacb61",
+      "bytes": 37142
+    },
+    "sources/after/src/beyond_blossom/structured/predecode/one_hop_kernels.h": {
+      "path": "src/beyond_blossom/structured/predecode/one_hop_kernels.h",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae",
+      "sha256": "19f1bee83fae28fdc3af541d2149798bc74c14cfbbe88678e50cc0ad12742c4b",
+      "bytes": 4871
+    },
+    "sources/after/src/beyond_blossom/structured/driver/mwpm_decoding.cc": {
+      "path": "src/beyond_blossom/structured/driver/mwpm_decoding.cc",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae",
+      "sha256": "56b2db661d94ae9cf9d32566834d3508b3173fde7d302add6f29d75132843289",
+      "bytes": 21356
+    },
+    "sources/after/src/beyond_blossom/structured/predecode/one_hop_predecoder.test.cc": {
+      "path": "src/beyond_blossom/structured/predecode/one_hop_predecoder.test.cc",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae",
+      "sha256": "aed402e014f8ab2fac95323494dbed39bed4cf84d9d18b432829950f75592aae",
+      "bytes": 71674
+    },
+    "sources/after/AE/native/benchmark.cc": {
+      "path": "AE/native/benchmark.cc",
+      "commit": "75aedd433d1b129e5a973635320f199b5f26cbae",
+      "sha256": "09b5c707df9ea3a8bf9fa549c5054158066f1ce373d3ae0698a5b53344cea0b7",
+      "bytes": 49927
+    }
+  }
+}

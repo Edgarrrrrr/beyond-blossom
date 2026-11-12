@@ -1,0 +1,1 @@
+{"clock_id":"std::chrono::steady_clock/CLOCK_MONOTONIC","resolution_ns":1,"adjacent_read_min_ns":26,"adjacent_read_median_ns":29,"adjacent_read_p99_ns":30,"samples":10000,"subtraction_applied":false,"method":"Back-to-back reads before decoder warmup; pure batch control measures whole-protocol disturbance."}
